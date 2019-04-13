@@ -17,7 +17,7 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 1. [Add Columns to Table](table/ff_mat2tab.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/table/ff_mat2tab.m) \|  html \| pdf |
     + *call*: ff_mat2tab(mt_data, ar_st_colnames)
     + **core**: *array2table, table.Properties.VariableNames*
-2. [Export Table or Mat](table/ff_sup_savemat_prep.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/table/ff_sup_savemat_prep.m) \|  html \| pdf |
+2. [Export Table or Mat](table/ff_sup_save_prep.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/table/ff_sup_save_prep.m) \|  html \| pdf |
     + *call*: ff_sup_save_prep(st_path_folder, st_file_name, bl_exp_csv, mt_data, ar_st_colnames); *dependency*: ff_mat2tab
     + **core**: *mkdir, csvwrite, save*
 
@@ -25,6 +25,6 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 # Matlab Functionalities
 
 1. [Matlab Function with Different Default Parameters](support/funcdefine/ff_varargin.m)
-  + **core**: *function [out_put] = func_name(varargin), cell2mat*
+    + **core**: *function [out_put] = func_name(varargin), cell2mat*
 2. [Matlab Map with Any Value Types](support/dtype/map.m)
-  + **core**: *containers.Map('KeyType','char', 'ValueType','any')*
+    + **core**: *containers.Map('KeyType','char', 'ValueType','any')*

@@ -13,7 +13,7 @@ end
 st_path_folder_default = "_data/table_test/";
 st_file_name_default = "ff_sup_save_prep";
 % Save file to csv. If false, save all workspace results to .mat
-bl_exp_csv_default = true;
+bl_exp_csv_default = false;
 mt_data_default = rand(3,4);
 % This does not need to be specified, column names will be expanded later if not sufficient
 ar_st_colnames_default = ["col1", "col2", "col3", "col4"];
@@ -37,7 +37,7 @@ mkdir(st_path_folder)
 % Save Results to Mat
 if (bl_exp_csv)
     % Save All Results in Workspace to mat
-    tb_mt_data = ff_mat2tab(mt_data, ar_st_colnames);    
+    tb_mt_data = ff_mat2tab(mt_data, ar_st_colnames);
     % Genreate Path
     st_fil_path_name_full = strcat(st_path_folder, st_file_name, '.csv');
     % Save to CSV

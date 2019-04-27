@@ -6,3 +6,7 @@ param_map('equi_w_j') = 'abc';
 param_map('equi_P_j') = zeros(2,3);
 param_map.keys
 param_map.values
+
+% Parameter Dealing from Map
+params_group = values(param_map, {'equi_P_j', 'equi_r_j'})
+[equi_P_j, equi_r_j] = params_group{:}

@@ -23,7 +23,7 @@
 % Author:   Jan Hannes Lang
 % Date:     6.7.2010
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [s, Pi] = fo_st_tauchen_jhl(mu,rho,sig,N)
+function [s, Pi, stationary, z_vector] = fo_st_tauchen_jhl(mu,rho,sig,N)
 
 m       = 3;
 s       = zeros(N,1);
@@ -48,6 +48,12 @@ for j = 1:N
         end
     end
 end
+
+stationary = Pi^1000;
+stationary = stationary(1,:);
+Lagg = stationary*exp(s);
+z_vector = exp(s')/Lagg;
+
 
 function c = cdf_normal(x)
     c = 0.5 * erfc(-x/sqrt(2));

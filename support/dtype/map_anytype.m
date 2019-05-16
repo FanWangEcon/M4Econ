@@ -1,3 +1,5 @@
+clear all
+
 % Create A Map with String Keys and any values
 param_map = containers.Map('KeyType','char', 'ValueType','any');
 param_map('share_unbanked_j') = 12;

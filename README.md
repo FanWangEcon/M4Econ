@@ -21,15 +21,17 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 
 # Matlab Functionalities
 
-1. **Default parameters**: Matlab does not have standard default parameters like most modern languages. The hacks below allow for maintaining code testability. The varargin structure could lead to excessive code preambles. Container Map works well.
+1. **Default parameters**: Default parameters allow for maintaining code testability. The varargin structure could lead to excessive code lines. Container Map works well.
     + [Multi-type Varargin Structure](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_varargin.m)
         - use for functions with limited parameters
         - *function [out_put] = func_name(varargin), cell2mat*
-    + [Container Map Structure](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.html): ipynb \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.mlx) \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap.m) \|  [**html**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.html) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.pdf)
-        - core model functions with potentially many parameters
+    + [Container Map Structure](https://fanwangecon.github.io/M4Econ/support/funcdefine/ff_defaultmap_test.html): ipynb \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.mlx) \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/funcdefine/ff_defaultmap_test.html) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.pdf)
+        - core model functions with potentially many parameters, preferred
         - *function [out_put] = func_name(varargin); cm_defaults = {cm_a, cm_b}; [cm_defaults{1:optional_params_len}] = varargin{:}; cm_c = [cm_a;cm_b]*
 2. **Container Maps**: Use this structure for carrying parameters and input arrays. By using container maps, if parameters are added to model, code editing is limited to actual location where parameter is used and initial location of definition.
     + [Any Type Container Maps](support/dtype/map_anytype.m):
+        - cells, arrays, floats in the same map
         - *containers.Map('KeyType','char', 'ValueType','any')*
     + [Combining Container Maps](support/dtype/map_override.m)
+        - container b overrides container a if keys exist in both
         - *cm_c = [cm_a;cm_b]*

@@ -1,6 +1,6 @@
 function ff_defaultmap(varargin)
 % @examples
-% https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.html
+% https://fanwangecon.github.io/M4Econ/support/funcdefine/ff_defaultmap_test.html
 
 params_len = length(varargin);
 if params_len > 2

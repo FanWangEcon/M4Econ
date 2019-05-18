@@ -34,7 +34,7 @@ yline(0);
 title('Choice Grids Conditional on kp+bp=w')
 ylabel('Capital Choice')
 xlabel({'Borrowing or Saving'})
-legend2plot = fliplr([1 round(numel(chart)/3) round((2*numel(chart))/4)  numel(chart)]);
+legend2plot = fliplr([1 round(numel(chart)/3) round((2*numel(chart))/3)  numel(chart)]);
 legendCell = cellstr(num2str(ar_lam', 'kp+bp=%3.2f'));
 legend(chart(legend2plot), legendCell(legend2plot), 'Location','northeast');
 

@@ -8,9 +8,9 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 
 ## Interpolation
 
-1. [Rational Exponent: Interpolation over Utility of Consumption](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exponent_interp.html): u(c) where u evaluation involves rational exponentiation, pre-calculate and interpolate
+1. [Rational Exponent: Interpolation over Utility of Consumption](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_main.html): u(c) where u evaluation involves rational exponentiation, pre-calculate and interpolate
     - Interpolate function testing: [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_main.ipynb) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_main.html)
-    - Interpolate function (griddedInterpolant): [**m**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/ff_rational_exp_interp.m) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/html/ff_rational_exp_interp.html)
+    - Interpolate function (griddedInterpolant): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/ff_rational_exp_interp.m) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/html/ff_rational_exp_interp.html)
     - Direct evaluation and interpolate speed comparison:  [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.m) \| [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.ipynb) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_test.html)
         + **core**: *interp1, griddedInterpolant, nearest vs linear vs spline*
 

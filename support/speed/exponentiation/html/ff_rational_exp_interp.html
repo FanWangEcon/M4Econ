@@ -1,0 +1,438 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ff_rational_exp_interp</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-23"><meta name="DC.source" content="ff_rational_exp_interp.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Parameters</a></li><li><a href="#3">Function Codes</a></li><li><a href="#4">Profiling</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> ff_rational_exp_interp(varargin)
+</pre><h2 id="2">Parameters</h2><pre class="codeinput">params_len = length(varargin);
+<span class="keyword">if</span> params_len &gt; 2
+    error(<span class="string">'ff_defaultmap:Can only have 2 container map parameters'</span>);
+<span class="keyword">end</span>
+
+<span class="comment">% Defaults</span>
+param_map = containers.Map(<span class="string">'KeyType'</span>,<span class="string">'char'</span>, <span class="string">'ValueType'</span>,<span class="string">'any'</span>);
+param_map(<span class="string">'fl_crra'</span>) = 1.5;
+param_map(<span class="string">'c_min'</span>) = 0.001;
+param_map(<span class="string">'c_min_for_util'</span>) = 0.001;
+param_map(<span class="string">'c_gap'</span>) = 10^-3;
+param_map(<span class="string">'c_max'</span>) = 60;
+param_map(<span class="string">'it_rown'</span>) = 100;
+param_map(<span class="string">'st_single_double'</span>) = <span class="string">'double'</span>;
+
+support_map = containers.Map(<span class="string">'KeyType'</span>,<span class="string">'char'</span>, <span class="string">'ValueType'</span>,<span class="string">'any'</span>);
+support_map(<span class="string">'bl_display'</span>) = true;
+support_map(<span class="string">'bl_graph'</span>) = true;
+support_map(<span class="string">'bl_graph_onebyones'</span>) = true;
+support_map(<span class="string">'bl_time'</span>) = true;
+support_map(<span class="string">'bl_profile'</span>) = false;
+support_map(<span class="string">'st_profile_path'</span>) = [pwd <span class="string">'/profile'</span>];
+default_maps = {param_map, support_map};
+
+<span class="comment">% Parse Parameters</span>
+<span class="comment">% see: C:\Users\fan\M4Econ\support\dtype\map_override.m</span>
+[default_maps{1:params_len}] = varargin{:};
+param_map = [param_map; default_maps{1}];
+support_map = [support_map; default_maps{2}];
+
+params_group = values(param_map, {<span class="string">'fl_crra'</span>, <span class="string">'c_min'</span>, <span class="string">'c_min_for_util'</span>, <span class="string">'c_gap'</span>, <span class="string">'c_max'</span>});
+[fl_crra, c_min, c_min_for_util, c_gap, c_max] = params_group{:};
+params_group = values(param_map, {<span class="string">'it_rown'</span>});
+[it_rown] = params_group{:};
+params_group = values(param_map, {<span class="string">'st_single_double'</span>});
+[st_single_double] = params_group{:};
+
+<span class="comment">% support</span>
+params_group = values(support_map, {<span class="string">'bl_display'</span>, <span class="string">'bl_graph'</span>, <span class="string">'bl_graph_onebyones'</span>});
+[bl_display, bl_graph, bl_graph_onebyones] = params_group{:};
+params_group = values(support_map, {<span class="string">'bl_time'</span>, <span class="string">'bl_profile'</span>, <span class="string">'st_profile_path'</span>});
+[bl_time, bl_profile, st_profile_path] = params_group{:};
+<span class="comment">% Profile On</span>
+<span class="keyword">if</span> (bl_profile)
+    close <span class="string">all</span>;
+    profile <span class="string">off</span>;
+    profile <span class="string">on</span>;
+<span class="keyword">end</span>
+<span class="keyword">if</span> (bl_time); tic; <span class="keyword">end</span>
+</pre><h2 id="3">Function Codes</h2><p>Test Consumption Matrix</p><pre class="codeinput">it_coln = round(((it_rown-1)*it_rown)/2 + it_rown);
+mt_c = rand([it_rown, it_coln])*(c_max - c_min) + c_min;
+<span class="keyword">if</span> (strcmp(st_single_double, <span class="string">'single'</span>))
+    mt_c = single(mt_c);
+<span class="keyword">end</span>
+
+<span class="comment">% Define CRRA Utility Function with Minimum Consumption</span>
+fu_c = @(c) (((c).^(1-fl_crra)-1)./(1-fl_crra));
+fu_c_cmin = @(mt_c) (fu_c(mt_c).*(mt_c &gt; c_min_for_util) + <span class="keyword">...</span>
+    fu_c(c_min_for_util).*(mt_c &lt;= c_min_for_util)) ;
+
+<span class="comment">% Exact Utility Evaluation at Full Grid</span>
+mt_fl_u_at_fullc = fu_c_cmin(mt_c);
+
+<span class="comment">% Interpolation Grid</span>
+fl_mt_c_min = min(mt_c, [], <span class="string">'all'</span>);
+fl_mt_c_max = max(mt_c, [], <span class="string">'all'</span>);
+it_interp_c_grid_n = (fl_mt_c_max-fl_mt_c_min)/c_gap;
+ar_fl_c_grid = linspace(fl_mt_c_min, fl_mt_c_max, it_interp_c_grid_n);
+<span class="keyword">if</span> (strcmp(st_single_double, <span class="string">'single'</span>))
+    ar_fl_c_grid = single(ar_fl_c_grid);
+<span class="keyword">end</span>
+ar_fl_u_at_c_grid = fu_c_cmin(ar_fl_c_grid);
+
+<span class="comment">% Interpolation</span>
+f_grid_interpolant_near = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid(:), <span class="string">'nearest'</span>);
+f_grid_interpolant_linr = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid(:), <span class="string">'linear'</span>);
+f_grid_interpolant_spln = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid(:), <span class="string">'spline'</span>);
+<span class="keyword">if</span> (bl_display)
+    disp(f_grid_interpolant_near);
+    disp(f_grid_interpolant_linr);
+    disp(f_grid_interpolant_spln);
+<span class="keyword">end</span>
+
+ar_interp_gridded_near = f_grid_interpolant_near(mt_c);
+ar_interp_gridded_linr = f_grid_interpolant_linr(mt_c);
+ar_interp_gridded_spln = f_grid_interpolant_spln(mt_c);
+
+<span class="comment">% Graphing Comparison</span>
+<span class="keyword">if</span> (bl_graph)
+
+    <span class="keyword">if</span> (bl_graph_onebyones)
+    <span class="keyword">else</span>
+        figure(<span class="string">'PaperPosition'</span>, [0 0 17 12]);
+    <span class="keyword">end</span>
+
+    <span class="keyword">for</span> sub_j=1:1:6
+        <span class="keyword">if</span> (bl_graph_onebyones)
+            figure(<span class="string">'PaperPosition'</span>, [0 0 6 8]);
+        <span class="keyword">else</span>
+            subplot(2,3,sub_j)
+        <span class="keyword">end</span>
+        hold <span class="string">on</span>;
+
+        <span class="keyword">if</span> (sub_j == 1)
+            ar_divide_by = 0;
+        <span class="keyword">else</span>
+            ar_divide_by = mt_fl_u_at_fullc(:);
+        <span class="keyword">end</span>
+
+        <span class="keyword">if</span> (sub_j &lt;= 4)
+            ar_x_vec = mt_fl_u_at_fullc(:);
+        <span class="keyword">else</span>
+            ar_x_vec = 1:1:length(mt_fl_u_at_fullc(:));
+        <span class="keyword">end</span>
+
+        g1 = scatter(ar_x_vec,  ar_interp_gridded_near(:)-ar_divide_by, 20, <span class="string">'filled'</span>);
+        g2 = scatter(ar_x_vec,  ar_interp_gridded_linr(:)-ar_divide_by, 20, <span class="string">'filled'</span>);
+        g3 = scatter(ar_x_vec,  ar_interp_gridded_spln(:)-ar_divide_by, 20, <span class="string">'filled'</span>);
+        legend([g1, g2, g3], {<span class="string">'near'</span>,<span class="string">'linear'</span>,<span class="string">'spline'</span>}, <span class="string">'Location'</span>,<span class="string">'northwest'</span>,<span class="keyword">...</span>
+            <span class="string">'NumColumns'</span>,1,<span class="string">'FontSize'</span>,12,<span class="string">'TextColor'</span>,<span class="string">'black'</span>);
+
+        <span class="keyword">if</span> (sub_j == 1)
+            hline = refline([1 0]);
+            hline.Color = <span class="string">'k'</span>;
+            hline.LineStyle = <span class="string">':'</span>;
+            hline.HandleVisibility = <span class="string">'off'</span>;
+            ylabel(<span class="string">'Actual Utility Evaluated at c'</span>)
+        <span class="keyword">else</span>
+            yline0 = yline(0);
+            yline0.HandleVisibility = <span class="string">'off'</span>;
+            yline1 = yline(0.1);
+            yline1.HandleVisibility = <span class="string">'off'</span>;
+            yline2 = yline(-0.1);
+            yline2.HandleVisibility = <span class="string">'off'</span>;
+
+            <span class="keyword">if</span> (sub_j == 2 || sub_j == 3 || sub_j == 4)
+                ylabel(<span class="string">'(Interpolated Util)/(Actual Util)'</span>)
+            <span class="keyword">end</span>
+            <span class="keyword">if</span> (sub_j == 5 || sub_j == 6)
+                ylabel(<span class="string">'(Interpolated Util) - (Actual Util)'</span>)
+            <span class="keyword">end</span>
+
+            <span class="keyword">if</span> (sub_j == 3)
+                ylim([-0.1, 0.1])
+            <span class="keyword">end</span>
+            <span class="keyword">if</span> (sub_j == 4)
+                ylim([-0.01, 0.01])
+            <span class="keyword">end</span>
+            <span class="keyword">if</span> (sub_j == 5)
+                ylim([-0.1, 0.1])
+            <span class="keyword">end</span>
+            <span class="keyword">if</span> (sub_j == 6)
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+
+        grid <span class="string">on</span>;
+        grid <span class="string">minor</span>;
+
+        title(sprintf(<span class="string">'griddedInterpolant: u approx, interp grid n=%d'</span>, it_interp_c_grid_n))
+        xlabel(<span class="string">'Approx U based on Interpolation'</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">  griddedInterpolant with properties:
+
+            GridVectors: {[1&times;59998 double]}
+                 Values: [59998&times;1 double]
+                 Method: 'nearest'
+    ExtrapolationMethod: 'nearest'
+
+  griddedInterpolant with properties:
+
+            GridVectors: {[1&times;59998 double]}
+                 Values: [59998&times;1 double]
+                 Method: 'linear'
+    ExtrapolationMethod: 'linear'
+
+  griddedInterpolant with properties:
+
+            GridVectors: {[1&times;59998 double]}
+                 Values: [59998&times;1 double]
+                 Method: 'spline'
+    ExtrapolationMethod: 'spline'
+
+</pre><img vspace="5" hspace="5" src="ff_rational_exp_interp_01.png" alt=""> <img vspace="5" hspace="5" src="ff_rational_exp_interp_02.png" alt=""> <img vspace="5" hspace="5" src="ff_rational_exp_interp_03.png" alt=""> <img vspace="5" hspace="5" src="ff_rational_exp_interp_04.png" alt=""> <img vspace="5" hspace="5" src="ff_rational_exp_interp_05.png" alt=""> <img vspace="5" hspace="5" src="ff_rational_exp_interp_06.png" alt=""> <h2 id="4">Profiling</h2><pre class="codeinput"><span class="keyword">if</span> (bl_profile)
+    profile <span class="string">off</span>
+    profile <span class="string">viewer</span>
+    profsave(profile(<span class="string">'info'</span>), st_profile_path);
+<span class="keyword">end</span>
+<span class="keyword">if</span> (bl_time); toc; <span class="keyword">end</span>
+</pre><pre class="codeoutput">Elapsed time is 8.246185 seconds.
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function ff_rational_exp_interp(varargin)
+%% Parameters
+params_len = length(varargin);
+if params_len > 2
+    error('ff_defaultmap:Can only have 2 container map parameters');
+end
+
+% Defaults
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+param_map('fl_crra') = 1.5;
+param_map('c_min') = 0.001;
+param_map('c_min_for_util') = 0.001;
+param_map('c_gap') = 10^-3;
+param_map('c_max') = 60;
+param_map('it_rown') = 100;
+param_map('st_single_double') = 'double';
+
+support_map = containers.Map('KeyType','char', 'ValueType','any');
+support_map('bl_display') = true;
+support_map('bl_graph') = true;
+support_map('bl_graph_onebyones') = true;
+support_map('bl_time') = true;
+support_map('bl_profile') = false;
+support_map('st_profile_path') = [pwd '/profile'];
+default_maps = {param_map, support_map};
+
+% Parse Parameters
+% see: C:\Users\fan\M4Econ\support\dtype\map_override.m
+[default_maps{1:params_len}] = varargin{:};
+param_map = [param_map; default_maps{1}];
+support_map = [support_map; default_maps{2}];
+
+params_group = values(param_map, {'fl_crra', 'c_min', 'c_min_for_util', 'c_gap', 'c_max'});
+[fl_crra, c_min, c_min_for_util, c_gap, c_max] = params_group{:};
+params_group = values(param_map, {'it_rown'});
+[it_rown] = params_group{:};
+params_group = values(param_map, {'st_single_double'});
+[st_single_double] = params_group{:};
+
+% support
+params_group = values(support_map, {'bl_display', 'bl_graph', 'bl_graph_onebyones'});
+[bl_display, bl_graph, bl_graph_onebyones] = params_group{:};
+params_group = values(support_map, {'bl_time', 'bl_profile', 'st_profile_path'});
+[bl_time, bl_profile, st_profile_path] = params_group{:};
+% Profile On
+if (bl_profile)
+    close all;
+    profile off;
+    profile on;
+end
+if (bl_time); tic; end
+%% Function Codes
+% Test Consumption Matrix
+it_coln = round(((it_rown-1)*it_rown)/2 + it_rown);
+mt_c = rand([it_rown, it_coln])*(c_max - c_min) + c_min;
+if (strcmp(st_single_double, 'single'))
+    mt_c = single(mt_c);
+end
+
+% Define CRRA Utility Function with Minimum Consumption
+fu_c = @(c) (((c).^(1-fl_crra)-1)./(1-fl_crra));
+fu_c_cmin = @(mt_c) (fu_c(mt_c).*(mt_c > c_min_for_util) + ...
+    fu_c(c_min_for_util).*(mt_c <= c_min_for_util)) ;
+
+% Exact Utility Evaluation at Full Grid
+mt_fl_u_at_fullc = fu_c_cmin(mt_c);
+
+% Interpolation Grid
+fl_mt_c_min = min(mt_c, [], 'all');
+fl_mt_c_max = max(mt_c, [], 'all');
+it_interp_c_grid_n = (fl_mt_c_max-fl_mt_c_min)/c_gap;
+ar_fl_c_grid = linspace(fl_mt_c_min, fl_mt_c_max, it_interp_c_grid_n);
+if (strcmp(st_single_double, 'single'))
+    ar_fl_c_grid = single(ar_fl_c_grid);
+end
+ar_fl_u_at_c_grid = fu_c_cmin(ar_fl_c_grid);
+
+% Interpolation
+f_grid_interpolant_near = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid(:), 'nearest');
+f_grid_interpolant_linr = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid(:), 'linear');
+f_grid_interpolant_spln = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid(:), 'spline');
+if (bl_display)
+    disp(f_grid_interpolant_near);
+    disp(f_grid_interpolant_linr);
+    disp(f_grid_interpolant_spln);
+end
+
+ar_interp_gridded_near = f_grid_interpolant_near(mt_c);
+ar_interp_gridded_linr = f_grid_interpolant_linr(mt_c);
+ar_interp_gridded_spln = f_grid_interpolant_spln(mt_c);
+
+% Graphing Comparison
+if (bl_graph)
+    
+    if (bl_graph_onebyones)        
+    else
+        figure('PaperPosition', [0 0 17 12]);
+    end
+    
+    for sub_j=1:1:6
+        if (bl_graph_onebyones)
+            figure('PaperPosition', [0 0 6 8]);
+        else
+            subplot(2,3,sub_j)
+        end
+        hold on;
+        
+        if (sub_j == 1)
+            ar_divide_by = 0;
+        else
+            ar_divide_by = mt_fl_u_at_fullc(:);
+        end
+        
+        if (sub_j <= 4)
+            ar_x_vec = mt_fl_u_at_fullc(:);
+        else
+            ar_x_vec = 1:1:length(mt_fl_u_at_fullc(:));
+        end
+        
+        g1 = scatter(ar_x_vec,  ar_interp_gridded_near(:)-ar_divide_by, 20, 'filled');
+        g2 = scatter(ar_x_vec,  ar_interp_gridded_linr(:)-ar_divide_by, 20, 'filled');
+        g3 = scatter(ar_x_vec,  ar_interp_gridded_spln(:)-ar_divide_by, 20, 'filled');
+        legend([g1, g2, g3], {'near','linear','spline'}, 'Location','northwest',...
+            'NumColumns',1,'FontSize',12,'TextColor','black');
+        
+        if (sub_j == 1)
+            hline = refline([1 0]);
+            hline.Color = 'k';
+            hline.LineStyle = ':';
+            hline.HandleVisibility = 'off';
+            ylabel('Actual Utility Evaluated at c')
+        else
+            yline0 = yline(0);
+            yline0.HandleVisibility = 'off';
+            yline1 = yline(0.1);
+            yline1.HandleVisibility = 'off';
+            yline2 = yline(-0.1);
+            yline2.HandleVisibility = 'off';
+            
+            if (sub_j == 2 || sub_j == 3 || sub_j == 4)
+                ylabel('(Interpolated Util)/(Actual Util)')
+            end
+            if (sub_j == 5 || sub_j == 6)
+                ylabel('(Interpolated Util) - (Actual Util)')
+            end
+            
+            if (sub_j == 3)
+                ylim([-0.1, 0.1])
+            end
+            if (sub_j == 4)
+                ylim([-0.01, 0.01])
+            end
+            if (sub_j == 5)
+                ylim([-0.1, 0.1])
+            end
+            if (sub_j == 6)
+            end
+        end
+        
+        grid on;
+        grid minor;
+        
+        title(sprintf('griddedInterpolant: u approx, interp grid n=%d', it_interp_c_grid_n))
+        xlabel('Approx U based on Interpolation')
+    end
+end
+%% Profiling
+if (bl_profile)
+    profile off
+    profile viewer
+    profsave(profile('info'), st_profile_path);
+end
+if (bl_time); toc; end
+end
+##### SOURCE END #####
+--></body></html>

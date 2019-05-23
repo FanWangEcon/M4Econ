@@ -8,9 +8,11 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 
 ## Interpolation
 
-1. [Rational Exponent: Interpolation over Utility of Consumption](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exponent.html): [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exponent.ipynb) \| mlx \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exponent.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exponent.html) \| pdf
-    - u(c) where u evaluation involves rational exponentiation, pre-calculate and interpolate
-    - *interp1, griddedInterpolant, nearest vs linear vs spline*
+1. [Rational Exponent: Interpolation over Utility of Consumption](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exponent_interp.html): u(c) where u evaluation involves rational exponentiation, pre-calculate and interpolate
+    - Interpolate function testing: [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_main.ipynb) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_main.html)
+    - Interpolate function (griddedInterpolant): [**m**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/ff_rational_exp_interp.m) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/html/ff_rational_exp_interp.html)
+    - Direct evaluation and interpolate speed comparison:  [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.m) \| [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.ipynb) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_test.html)
+        + **core**: *interp1, griddedInterpolant, nearest vs linear vs spline*
 
 ## Matrix and Index
 
@@ -58,10 +60,10 @@ Use this structure for carrying parameters and input arrays. By using container 
 
 ## Basic Tables
 
-1. [Add Columns to Table](table/ff_mat2tab.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/table/ff_mat2tab.m) \|  html \| pdf
+1. [Add Columns to Table](https://fanwangecon.github.io/M4Econ/table/ff_mat2tab.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/table/ff_mat2tab.m) \|  html \| pdf
     + *call*: ff_mat2tab(mt_data, ar_st_colnames)
     + **core**: *array2table, table.Properties.VariableNames*
-2. [Export Table or Mat](table/ff_sup_save_prep.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/table/ff_sup_save_prep.m) \|  html \| pdf
+2. [Export Table or Mat](https://fanwangecon.github.io/M4Econ/table/ff_sup_save_prep.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/table/ff_sup_save_prep.m) \|  html \| pdf
     + *call*: ff_sup_save_prep(st_path_folder, st_file_name, bl_exp_csv, mt_data, ar_st_colnames); *dependency*: ff_mat2tab
     + **core**: *mkdir, csvwrite, save*
 
@@ -69,6 +71,6 @@ Use this structure for carrying parameters and input arrays. By using container 
 
 ## Discretization
 
-1. [Linspace + Logspace Asset Grid](asset/grid/ff_grid_loglin.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.m) \|  html \| pdf
+1. [Linspace + Logspace Asset Grid](https://fanwangecon.github.io/M4Econ/asset/grid/ff_grid_loglin.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/asset/grid/ff_grid_loglin.m) \|  html \| pdf
     + *call*: ff_grid_loglin(it_a_vec_n, fl_amax, fl_amin, fl_loglin_threshold)
     + **core**: *while + logspace + start:gap:fin + unique*

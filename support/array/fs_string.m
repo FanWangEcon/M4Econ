@@ -10,3 +10,8 @@ contains(st_efg, st_abc2)
 
 
 util(rand([300, 45150], 'single'), 1.5);
+
+% Display Convert to String
+fprintf('Display string [%s]', num2str([1,2,3]));
+fprintf('Display string [%s]', num2str(1.1));
+fprintf('Display string [%s]', 'abc');

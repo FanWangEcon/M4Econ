@@ -1,14 +1,16 @@
 
 clear all;
-st_single_double = 'single';
-bl_show_fig = false;
+st_single_double = 'double';
+bl_show_fig = true;
 z = 15;
 iter = 50;
 
-it_rown = 300 % 4GB if 1000
+it_rown = 500 % 4GB if 1000
 it_coln = round(((it_rown-1)*it_rown)/2 + it_rown);
 
-c_min = 0.01;
+c_min = 0.001;
+c_min_for_util = 0.001;
+c_gap = 10^-3;
 c_max = 60;
 tic;
 mt_c = rand([it_rown*it_coln,1])*(c_max - c_min) + c_min;
@@ -27,7 +29,8 @@ if (strcmp(st_single_double, 'single'))
     fl_crra = single(fl_crra);
 end
 fu_c = @(c) (((c).^(1-fl_crra)-1)./(1-fl_crra));
-fu_c_fixed = @() fu_c(mt_c);
+fu_c_fixed = @() (fu_c(mt_c).*(mt_c > c_min_for_util) + ...
+                  fu_c(c_min_for_util).*(mt_c <= c_min_for_util)) ;
 
 % Compute Time Cost
 fl_t_direct_eval = timeit(fu_c_fixed);
@@ -37,10 +40,11 @@ ar_cl_method_names{1} = 'Direct Evaluation';
 % C array
 fl_mt_c_min = min(mt_c, [], 'all');
 fl_mt_c_max = max(mt_c, [], 'all');
-it_max_n = (fl_mt_c_max-fl_mt_c_min)/(10^-3);
+it_max_n = (fl_mt_c_max-fl_mt_c_min)/(c_gap);
 it_interp_points = min(it_rown*it_coln, it_max_n)
 
-ar_fl_c_grid = linspace(fl_mt_c_min, fl_mt_c_max, min(it_rown*it_coln, it_max_n));
+it_interp_c_grid_n = min(it_rown*it_coln, it_max_n);
+ar_fl_c_grid = linspace(fl_mt_c_min, fl_mt_c_max, it_interp_c_grid_n);
 if (strcmp(st_single_double, 'single'))
     ar_fl_c_grid = single(ar_fl_c_grid);
 end
@@ -50,6 +54,11 @@ disp(ar_fl_c_grid(2) - ar_fl_c_grid(1))
 
 % Evaluate
 ar_fl_u_at_c_grid = fu_c(ar_fl_c_grid);
+% Dealing with Minimum Consumption Threshold
+mt_it_c_valid_idx = (ar_fl_c_grid <= c_min_for_util);
+fl_u_neg_c = fu_c(c_min_for_util);
+ar_fl_u_at_c_grid(mt_it_c_valid_idx) = fl_u_neg_c;
+
 % Interpolation Evaluator
 fu_interp_near_c_fixed = @() interp1(ar_fl_c_grid, ar_fl_u_at_c_grid, mt_c, 'nearest');
 fu_interp_linr_c_fixed = @() interp1(ar_fl_c_grid, ar_fl_u_at_c_grid, mt_c, 'linear');
@@ -119,7 +128,7 @@ disp(fl_time_interp_near_rnd*z*iter)
 ar_fl_compute_t(9) = fl_time_interp_near_idx;
 ar_cl_method_names{9} = 'fan index interp round';
 
-fu_interp_near_c_rnd_dflt = @() ar_fl_u_at_c_grid(round(mt_c)+1);
+fu_interp_near_c_rnd_dflt = @() ar_fl_u_at_c_grid(round(mt_c - min(mt_c))+1);
 
 % Compute Time Cost
 fl_time_interp_rnd_dflt = timeit(fu_interp_near_c_rnd_dflt);
@@ -129,7 +138,6 @@ ar_fl_compute_t(10) = fl_time_interp_rnd_dflt;
 ar_cl_method_names{10} = 'fan index interp round default grid';
 
 % Generate Interpolant
-ar_fl_u_at_c_grid = fu_c(ar_fl_c_grid);
 f_grid_interpolant_near = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid, 'nearest')
 f_grid_interpolant_linr = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid, 'linear')
 f_grid_interpolant_spln = griddedInterpolant(ar_fl_c_grid, ar_fl_u_at_c_grid, 'spline')
@@ -195,16 +203,18 @@ tb_fl_compute_t.Properties.RowNames = ar_cl_method_names;
 tb_fl_compute_t.Properties.VariableNames = {'speedmat', 'speedfull'};
 disp(tb_fl_compute_t);
 
+% fl_fu_c_fixed'
+
 if (bl_show_fig)
     fl_fu_c_fixed = fu_c_fixed();
     ar_interp_gridded_near = fu_interp_gridded_near();
-    ar_interp_gridded_linr = f_grid_interpolant_linr();
+    ar_interp_gridded_linr = fu_interp_gridded_linr();
     ar_interp_gridded_spln = fu_interp_gridded_spln();
 
-    figure('PaperPosition', [0 0 15 15]);
+    figure('PaperPosition', [0 0 22 15]);
 
-    for sub_j=1:1:4    
-        subplot(2,2,sub_j)
+    for sub_j=1:1:6    
+        subplot(2,3,sub_j)
         hold on;
 
         if (sub_j == 1) 
@@ -212,10 +222,16 @@ if (bl_show_fig)
         else
             ar_divide_by = fl_fu_c_fixed(:);
         end
+        
+        if (sub_j <= 4) 
+            ar_x_vec = fl_fu_c_fixed(:);
+        else
+            ar_x_vec = 1:1:length(fl_fu_c_fixed(:));
+        end
 
-        g1 = scatter(fl_fu_c_fixed(:),  ar_interp_gridded_near(:)-ar_divide_by, 30, 'filled');
-        g2 = scatter(fl_fu_c_fixed(:),  ar_interp_gridded_linr(:)-ar_divide_by, 30, 'filled');
-        g3 = scatter(fl_fu_c_fixed(:),  ar_interp_gridded_spln(:)-ar_divide_by, 30, 'filled');
+        g1 = scatter(ar_x_vec,  ar_interp_gridded_near(:)-ar_divide_by, 30, 'filled');
+        g2 = scatter(ar_x_vec,  ar_interp_gridded_linr(:)-ar_divide_by, 30, 'filled');
+        g3 = scatter(ar_x_vec,  ar_interp_gridded_spln(:)-ar_divide_by, 30, 'filled');
         legend([g1, g2, g3], {'near','linear','spline'}, 'Location','northwest',...
                 'NumColumns',1,'FontSize',12,'TextColor','black');        
 
@@ -239,7 +255,12 @@ if (bl_show_fig)
             end
             if (sub_j == 4) 
                 ylim([-0.01, 0.01])
-            end        
+            end
+            if (sub_j == 5) 
+                ylim([-0.1, 0.1])
+            end
+            if (sub_j == 6) 
+            end            
         end
 
         grid on;

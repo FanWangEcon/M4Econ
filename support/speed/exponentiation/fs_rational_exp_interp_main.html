@@ -13134,18 +13134,15 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Files">Files<a class="anchor-link" href="#Files">&#182;</a></h2><ol>
-<li>There are various interpolation methods available, several are tested in this <a href="https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_test.html">file</a><ul>
-<li>The tests show the speed gains achieved by various u(c) interpolants compared to raw full evaluation with rational exponent. </li>
+<h2 id="Files">Files<a class="anchor-link" href="#Files">&#182;</a></h2><ul>
+<li>Interpolate function testing: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_main.ipynb"><strong>ipynb</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_main.html"><strong>html</strong></a></li>
+<li>Interpolate function (griddedInterpolant): <a href="https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/ff_rational_exp_interp.m"><strong>m</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/html/ff_rational_exp_interp.html"><strong>html</strong></a></li>
+<li>Direct evaluation and interpolate speed comparison:  <a href="https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.ipynb"><strong>ipynb</strong></a> |  <a href="https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_test.html"><strong>html</strong></a><ul>
+<li><strong>core</strong>: <em>interp1, griddedInterpolant, nearest vs linear vs spline</em></li>
 </ul>
 </li>
-<li>The matlab function that uses the fastest interpolation method is <a href="https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/ff_rational_exp_interp.m">here</a>.<ul>
-<li>Below I invoke the best interpolation function out of the ones tested with some different parameters and look at resulting graphs.</li>
-<li>The figure below show how well interpolation fits, but does not show speed differences between interpolated and non-interpolated results</li>
 </ul>
-</li>
-</ol>
-<p>The code below shows the core codes contained in the interpolation file <a href="https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/ff_rational_exp_interp.m">here</a>.</p>
+<p>Below I invoke the best interpolation function out of the ones tested with some different parameters and look at resulting graphs. The figure below show how well interpolation fits, but does not show speed differences between interpolated and non-interpolated results. The code below shows the core codes contained in the interpolation file <a href="https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/ff_rational_exp_interp.m">here</a>.</p>
 
 </div>
 </div>

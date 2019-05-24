@@ -45,13 +45,24 @@ params_group = values(support_map, {'bl_display', 'bl_graph', 'bl_graph_onebyone
 [bl_display, bl_graph, bl_graph_onebyones] = params_group{:};
 params_group = values(support_map, {'bl_time', 'bl_profile', 'st_profile_path'});
 [bl_time, bl_profile, st_profile_path] = params_group{:};
+
+%% Main Porgram
+% Tic toc starts
+if (bl_time); tic; end
+
+
+% Print Parameters
+if (bl_display)
+    disp(param_map.keys);
+    disp(param_map.values);
+end
+
 % Profile On
 if (bl_profile)
     close all;
     profile off;
     profile on;
 end
-if (bl_time); tic; end
 
 %% Profiling
 if (bl_profile)
@@ -63,4 +74,3 @@ end
 if (bl_time); toc; end
 
 end
-

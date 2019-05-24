@@ -1,0 +1,311 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ff_u_c_partrepeat</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-23"><meta name="DC.source" content="ff_u_c_partrepeat.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">Parameters</a></li><li><a href="#4">Function Core</a></li><li><a href="#5">Profiling</a></li><li><a href="#7">Partial Replace with Cell Indexing</a></li><li><a href="#8">Full Replace</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> ff_u_c_partrepeat(varargin)
+</pre><pre class="codeinput"><span class="comment">% Use Cell array indexing to avoid redoing u(c) computation</span>
+</pre><h2 id="3">Parameters</h2><pre class="codeinput">params_len = length(varargin);
+<span class="keyword">if</span> params_len &gt; 2
+    error(<span class="string">'ff_defaultmap:Can only have 2 container map parameters'</span>);
+<span class="keyword">end</span>
+
+<span class="comment">% Defaults</span>
+param_map = containers.Map(<span class="string">'KeyType'</span>,<span class="string">'char'</span>, <span class="string">'ValueType'</span>,<span class="string">'any'</span>);
+param_map(<span class="string">'it_z'</span>) = 15;
+param_map(<span class="string">'it_rown'</span>) = 50;
+param_map(<span class="string">'it_rown_update'</span>) = floor(param_map(<span class="string">'it_rown'</span>)/7);
+param_map(<span class="string">'it_coln'</span>) = round(((param_map(<span class="string">'it_rown'</span>)-1)*param_map(<span class="string">'it_rown'</span>))/2 + param_map(<span class="string">'it_rown'</span>));
+param_map(<span class="string">'it_iter'</span>) = 50;
+
+support_map = containers.Map(<span class="string">'KeyType'</span>,<span class="string">'char'</span>, <span class="string">'ValueType'</span>,<span class="string">'any'</span>);
+support_map(<span class="string">'bl_display'</span>) = true;
+support_map(<span class="string">'bl_time'</span>) = true;
+support_map(<span class="string">'bl_profile'</span>) = false;
+support_map(<span class="string">'st_profile_path'</span>) = [pwd <span class="string">'/profile'</span>];
+default_maps = {param_map, support_map};
+
+<span class="comment">% Parse Parameters</span>
+<span class="comment">% see: C:\Users\fan\M4Econ\support\dtype\map_override.m</span>
+[default_maps{1:params_len}] = varargin{:};
+param_map = [param_map; default_maps{1}];
+support_map = [support_map; default_maps{2}];
+
+params_group = values(param_map, {<span class="string">'it_z'</span>, <span class="string">'it_rown'</span>, <span class="string">'it_rown_update'</span>, <span class="string">'it_coln'</span>, <span class="string">'it_iter'</span>});
+[it_z, it_rown, it_rown_update, it_coln, it_iter] = params_group{:};
+
+<span class="comment">% support</span>
+params_group = values(support_map, {<span class="string">'bl_display'</span>});
+[bl_display] = params_group{:};
+params_group = values(support_map, {<span class="string">'bl_time'</span>, <span class="string">'bl_profile'</span>, <span class="string">'st_profile_path'</span>});
+[bl_time, bl_profile, st_profile_path] = params_group{:};
+<span class="comment">% Profile On</span>
+<span class="keyword">if</span> (bl_profile)
+    close <span class="string">all</span>;
+    profile <span class="string">off</span>;
+    profile <span class="string">on</span>;
+<span class="keyword">end</span>
+<span class="keyword">if</span> (bl_time); tic; <span class="keyword">end</span>
+</pre><h2 id="4">Function Core</h2><p>Initialize</p><pre class="codeinput">it_coll = 0;
+ar_it_rows_replace = sort(datasample(1:it_rown, it_rown_update, <span class="string">'Replace'</span>, false));
+
+<span class="comment">% define Functions</span>
+f_c = @(coh, kp, bp) coh - (kp + bp/(1+0.02));
+f_u = @(c) log(c);
+
+<span class="comment">% define Arrays</span>
+ar_coh = rand([1,it_coln]);
+ar_kp = rand([1,it_rown]);
+ar_bp = rand([1,it_rown]);
+
+<span class="comment">% Method Cell Replace</span>
+f_ff_subset_update_func = @() ffs_full_replace(ar_coh, ar_kp', ar_bp', f_u, f_c, it_iter, it_z);
+fl_exe_time = timeit(f_ff_subset_update_func);
+it_coll = it_coll + 1;
+ar_fl_exe_times(it_coll) = fl_exe_time;
+ar_fl_exe_desc{it_coll} = <span class="string">'Recompuate u(c) every time: mt_u = f_u(f_c())'</span>;
+
+f_ff_subset_update_func = @() ffs_cellpart_replace(ar_it_rows_replace, ar_coh, ar_kp', ar_bp', f_u, f_c, it_iter, it_z);
+fl_exe_time = timeit(f_ff_subset_update_func);
+it_coll = it_coll + 1;
+ar_fl_exe_times(it_coll) = fl_exe_time;
+ar_fl_exe_desc{it_coll} = <span class="string">'Update u(c) where c changes: mt_u = cl_u_store{it_z_m}'</span>;
+
+<span class="comment">% Display Resuplts</span>
+tb_exe_times = array2table([ar_fl_exe_times', ar_fl_exe_times'*it_z*it_iter]);
+tb_exe_times.Properties.RowNames = ar_fl_exe_desc;
+tb_exe_times.Properties.VariableNames = {<span class="string">'speedmat'</span>, <span class="string">'speedfull'</span>};
+
+<span class="keyword">if</span> (bl_display)
+    disp(param_map.keys);
+    disp(param_map.values);
+    disp(tb_exe_times);
+<span class="keyword">end</span>
+</pre><h2 id="5">Profiling</h2><pre class="codeinput"><span class="keyword">if</span> (bl_profile)
+    profile <span class="string">off</span>
+    profile <span class="string">viewer</span>
+    profsave(profile(<span class="string">'info'</span>), st_profile_path);
+<span class="keyword">end</span>
+<span class="keyword">if</span> (bl_time); toc; <span class="keyword">end</span>
+</pre><pre class="codeoutput">Elapsed time is 0.130919 seconds.
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><h2 id="7">Partial Replace with Cell Indexing</h2><pre class="codeinput"><span class="keyword">function</span> ffs_cellpart_replace(ar_it_rows_replace, ar_coh, ar_kp, ar_bp, f_u, f_c, it_iter, it_z)
+<span class="comment">% This is the most efficient method</span>
+cl_u_store = cell([it_z, 1]);
+tic;
+<span class="keyword">for</span> it_iter_n=1:1:it_iter
+    <span class="keyword">for</span> it_z_m=1:1:it_z
+        <span class="keyword">if</span> (it_iter_n == 1)
+            mt_c = f_c(ar_coh, ar_kp, ar_bp);
+            mt_u = f_u(mt_c);
+            cl_u_store{it_z_m} = mt_u;
+        <span class="keyword">else</span>
+            cl_u_store{it_z_m}(ar_it_rows_replace,:) = f_u(f_c(ar_coh, ar_kp(ar_it_rows_replace), ar_bp(ar_it_rows_replace)));
+            mt_u = cl_u_store{it_z_m};
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">    'it_coln'    'it_iter'    'it_rown'    'it_rown_update'    'it_z'
+
+    [1275]    [50]    [50]    [7]    [15]
+
+                                                              speedmat    speedfull
+                                                              ________    _________
+
+    Recompuate u(c) every time: mt_u = f_u(f_c())             0.24234      181.75  
+    Update u(c) where c changes: mt_u = cl_u_store{it_z_m}     0.1203      90.223  
+
+</pre><h2 id="8">Full Replace</h2><pre class="codeinput"><span class="keyword">function</span> ffs_full_replace(ar_coh, ar_kp, ar_bp, f_u, f_c, it_iter, it_z)
+<span class="keyword">for</span> it_iter_n=1:1:it_iter
+    <span class="keyword">for</span> it_z_m=1:1:it_z
+        mt_u = f_u(f_c(ar_coh, ar_kp, ar_bp));
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function ff_u_c_partrepeat(varargin)
+% Use Cell array indexing to avoid redoing u(c) computation
+
+%% Parameters
+params_len = length(varargin);
+if params_len > 2
+    error('ff_defaultmap:Can only have 2 container map parameters');
+end
+
+% Defaults
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+param_map('it_z') = 15;
+param_map('it_rown') = 50;
+param_map('it_rown_update') = floor(param_map('it_rown')/7);
+param_map('it_coln') = round(((param_map('it_rown')-1)*param_map('it_rown'))/2 + param_map('it_rown'));
+param_map('it_iter') = 50;
+
+support_map = containers.Map('KeyType','char', 'ValueType','any');
+support_map('bl_display') = true;
+support_map('bl_time') = true;
+support_map('bl_profile') = false;
+support_map('st_profile_path') = [pwd '/profile'];
+default_maps = {param_map, support_map};
+
+% Parse Parameters
+% see: C:\Users\fan\M4Econ\support\dtype\map_override.m
+[default_maps{1:params_len}] = varargin{:};
+param_map = [param_map; default_maps{1}];
+support_map = [support_map; default_maps{2}];
+
+params_group = values(param_map, {'it_z', 'it_rown', 'it_rown_update', 'it_coln', 'it_iter'});
+[it_z, it_rown, it_rown_update, it_coln, it_iter] = params_group{:};
+
+% support
+params_group = values(support_map, {'bl_display'});
+[bl_display] = params_group{:};
+params_group = values(support_map, {'bl_time', 'bl_profile', 'st_profile_path'});
+[bl_time, bl_profile, st_profile_path] = params_group{:};
+% Profile On
+if (bl_profile)
+    close all;
+    profile off;
+    profile on;
+end
+if (bl_time); tic; end
+%% Function Core
+% Initialize
+it_coll = 0;
+ar_it_rows_replace = sort(datasample(1:it_rown, it_rown_update, 'Replace', false));
+
+% define Functions
+f_c = @(coh, kp, bp) coh - (kp + bp/(1+0.02));
+f_u = @(c) log(c);
+
+% define Arrays
+ar_coh = rand([1,it_coln]);
+ar_kp = rand([1,it_rown]);
+ar_bp = rand([1,it_rown]);
+
+% Method Cell Replace
+f_ff_subset_update_func = @() ffs_full_replace(ar_coh, ar_kp', ar_bp', f_u, f_c, it_iter, it_z);
+fl_exe_time = timeit(f_ff_subset_update_func);
+it_coll = it_coll + 1;
+ar_fl_exe_times(it_coll) = fl_exe_time;
+ar_fl_exe_desc{it_coll} = 'Recompuate u(c) every time: mt_u = f_u(f_c())';
+
+f_ff_subset_update_func = @() ffs_cellpart_replace(ar_it_rows_replace, ar_coh, ar_kp', ar_bp', f_u, f_c, it_iter, it_z);
+fl_exe_time = timeit(f_ff_subset_update_func);
+it_coll = it_coll + 1;
+ar_fl_exe_times(it_coll) = fl_exe_time;
+ar_fl_exe_desc{it_coll} = 'Update u(c) where c changes: mt_u = cl_u_store{it_z_m}';
+
+% Display Resuplts
+tb_exe_times = array2table([ar_fl_exe_times', ar_fl_exe_times'*it_z*it_iter]);
+tb_exe_times.Properties.RowNames = ar_fl_exe_desc;
+tb_exe_times.Properties.VariableNames = {'speedmat', 'speedfull'};
+
+if (bl_display)
+    disp(param_map.keys);
+    disp(param_map.values);
+    disp(tb_exe_times);
+end
+
+%% Profiling
+if (bl_profile)
+    profile off
+    profile viewer
+    profsave(profile('info'), st_profile_path);
+end
+if (bl_time); toc; end
+end
+
+%% Partial Replace with Cell Indexing
+function ffs_cellpart_replace(ar_it_rows_replace, ar_coh, ar_kp, ar_bp, f_u, f_c, it_iter, it_z)
+% This is the most efficient method
+cl_u_store = cell([it_z, 1]);
+tic;
+for it_iter_n=1:1:it_iter
+    for it_z_m=1:1:it_z
+        if (it_iter_n == 1)
+            mt_c = f_c(ar_coh, ar_kp, ar_bp);
+            mt_u = f_u(mt_c);
+            cl_u_store{it_z_m} = mt_u;
+        else
+            cl_u_store{it_z_m}(ar_it_rows_replace,:) = f_u(f_c(ar_coh, ar_kp(ar_it_rows_replace), ar_bp(ar_it_rows_replace)));
+            mt_u = cl_u_store{it_z_m};
+        end
+    end
+end
+end
+
+%% Full Replace
+function ffs_full_replace(ar_coh, ar_kp, ar_bp, f_u, f_c, it_iter, it_z)
+for it_iter_n=1:1:it_iter
+    for it_z_m=1:1:it_z
+        mt_u = f_u(f_c(ar_coh, ar_kp, ar_bp));
+    end
+end
+end
+##### SOURCE END #####
+--></body></html>

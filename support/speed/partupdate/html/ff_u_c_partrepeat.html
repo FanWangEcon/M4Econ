@@ -126,13 +126,13 @@ f_ff_subset_update_func = @() ffs_full_replace(ar_coh, ar_kp', ar_bp', f_u, f_c,
 fl_exe_time = timeit(f_ff_subset_update_func);
 it_coll = it_coll + 1;
 ar_fl_exe_times(it_coll) = fl_exe_time;
-ar_fl_exe_desc{it_coll} = <span class="string">'Recompuate u(c) every time: mt_u = f_u(f_c())'</span>;
+ar_fl_exe_desc{it_coll} = <span class="string">'Recompute u(c) every time: mt_u=f_u(f_c(coh,k,b))'</span>;
 
 f_ff_subset_update_func = @() ffs_cellpart_replace(ar_it_rows_replace, ar_coh, ar_kp', ar_bp', f_u, f_c, it_iter, it_z);
 fl_exe_time = timeit(f_ff_subset_update_func);
 it_coll = it_coll + 1;
 ar_fl_exe_times(it_coll) = fl_exe_time;
-ar_fl_exe_desc{it_coll} = <span class="string">'Update u(c) where c changes: mt_u = cl_u_store{it_z_m}'</span>;
+ar_fl_exe_desc{it_coll} = <span class="string">'Update u(c): str{i}(rows,:)=f_u(f_c(coh,k(rows),b(rows)));'</span>;
 
 <span class="comment">% Display Resuplts</span>
 tb_exe_times = array2table([ar_fl_exe_times', ar_fl_exe_times'*it_z*it_iter]);
@@ -150,7 +150,7 @@ tb_exe_times.Properties.VariableNames = {<span class="string">'speedmat'</span>,
     profsave(profile(<span class="string">'info'</span>), st_profile_path);
 <span class="keyword">end</span>
 <span class="keyword">if</span> (bl_time); toc; <span class="keyword">end</span>
-</pre><pre class="codeoutput">Elapsed time is 0.130919 seconds.
+</pre><pre class="codeoutput">Elapsed time is 0.137935 seconds.
 </pre><pre class="codeinput"><span class="keyword">end</span>
 </pre><h2 id="7">Partial Replace with Cell Indexing</h2><pre class="codeinput"><span class="keyword">function</span> ffs_cellpart_replace(ar_it_rows_replace, ar_coh, ar_kp, ar_bp, f_u, f_c, it_iter, it_z)
 <span class="comment">% This is the most efficient method</span>
@@ -173,11 +173,11 @@ tic;
 
     [1275]    [50]    [50]    [7]    [15]
 
-                                                              speedmat    speedfull
-                                                              ________    _________
+                                                                  speedmat    speedfull
+                                                                  ________    _________
 
-    Recompuate u(c) every time: mt_u = f_u(f_c())             0.24234      181.75  
-    Update u(c) where c changes: mt_u = cl_u_store{it_z_m}     0.1203      90.223  
+    Recompute u(c) every time: mt_u=f_u(f_c(coh,k,b))             0.23609      177.07  
+    Update u(c): str{i}(rows,:)=f_u(f_c(coh,k(rows),b(rows)));    0.12169      91.267  
 
 </pre><h2 id="8">Full Replace</h2><pre class="codeinput"><span class="keyword">function</span> ffs_full_replace(ar_coh, ar_kp, ar_bp, f_u, f_c, it_iter, it_z)
 <span class="keyword">for</span> it_iter_n=1:1:it_iter
@@ -252,13 +252,13 @@ f_ff_subset_update_func = @() ffs_full_replace(ar_coh, ar_kp', ar_bp', f_u, f_c,
 fl_exe_time = timeit(f_ff_subset_update_func);
 it_coll = it_coll + 1;
 ar_fl_exe_times(it_coll) = fl_exe_time;
-ar_fl_exe_desc{it_coll} = 'Recompuate u(c) every time: mt_u = f_u(f_c())';
+ar_fl_exe_desc{it_coll} = 'Recompute u(c) every time: mt_u=f_u(f_c(coh,k,b))';
 
 f_ff_subset_update_func = @() ffs_cellpart_replace(ar_it_rows_replace, ar_coh, ar_kp', ar_bp', f_u, f_c, it_iter, it_z);
 fl_exe_time = timeit(f_ff_subset_update_func);
 it_coll = it_coll + 1;
 ar_fl_exe_times(it_coll) = fl_exe_time;
-ar_fl_exe_desc{it_coll} = 'Update u(c) where c changes: mt_u = cl_u_store{it_z_m}';
+ar_fl_exe_desc{it_coll} = 'Update u(c): str{i}(rows,:)=f_u(f_c(coh,k(rows),b(rows)));';
 
 % Display Resuplts
 tb_exe_times = array2table([ar_fl_exe_times', ar_fl_exe_times'*it_z*it_iter]);

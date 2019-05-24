@@ -16,10 +16,10 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 
 ## Matrix and Index
 
-1. [Cell Array Store U(C) to Avoid Duplicate Computation over Iteration](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html): u(c) where u evaluation involves rational exponentiation, pre-calculate and interpolate
+1. [Cell Array Store u(c) to Avoid Duplicate Computation over Iteration](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html): u(c) across iterations often shares many common values
     - Cell matrix part update function testing: [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/fs_u_c_partrepeat_main.ipynb) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html)
     - Cell matrix part update function: [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/ff_u_c_partrepeat.m) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/html/ff_u_c_partrepeat.html)
-    - Direct evaluation and interpolate speed comparison:  [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/fs_u_c_partrepeat_test.m) \| [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/fs_u_c_partrepeat_test.ipynb) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_test.html)
+    - Methods for matrix updating speed comparisons:  [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/fs_u_c_partrepeat_test.m) \| [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/fs_u_c_partrepeat_test.ipynb) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_test.html)
         + **core**: *cell{}, cl_u_store{i}(ar_it_update,:) = f_u(f_c(ar_coh, ar_kp(ar_it_update), ar_bp(ar_it_update)));*
 2. [Matrix Index Value Replace: Negative Consumption Utility](https://fanwangecon.github.io/M4Econ/support/speed/index/fs_subscript.html): [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/index/fs_subscript.ipynb) \| mlx \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/index/fs_subscript.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/speed/index/fs_subscript.html) \| pdf
     - u(c) when c < 0, quickly replace matrix values by index

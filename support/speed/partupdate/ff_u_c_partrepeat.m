@@ -62,13 +62,13 @@ f_ff_subset_update_func = @() ffs_full_replace(ar_coh, ar_kp', ar_bp', f_u, f_c,
 fl_exe_time = timeit(f_ff_subset_update_func);
 it_coll = it_coll + 1;
 ar_fl_exe_times(it_coll) = fl_exe_time;
-ar_fl_exe_desc{it_coll} = 'Recompuate u(c) every time: mt_u = f_u(f_c(coh, k, b))';
+ar_fl_exe_desc{it_coll} = 'Recompute u(c) every time: mt_u=f_u(f_c(coh,k,b))';
 
 f_ff_subset_update_func = @() ffs_cellpart_replace(ar_it_rows_replace, ar_coh, ar_kp', ar_bp', f_u, f_c, it_iter, it_z);
 fl_exe_time = timeit(f_ff_subset_update_func);
 it_coll = it_coll + 1;
 ar_fl_exe_times(it_coll) = fl_exe_time;
-ar_fl_exe_desc{it_coll} = 'Update u(c) where c changes: store{i}(replace_rows,:) = f_u(f_c(coh, k(replace_rows), b(replace_rows)));';
+ar_fl_exe_desc{it_coll} = 'Update u(c): str{i}(rows,:)=f_u(f_c(coh,k(rows),b(rows)));';
 
 % Display Resuplts
 tb_exe_times = array2table([ar_fl_exe_times', ar_fl_exe_times'*it_z*it_iter]);

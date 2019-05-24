@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Subset-Replacement-of-U(C)-and-Storage-in-Cell-Array">Subset Replacement of U(C) and Storage in Cell Array<a class="anchor-link" href="#Subset-Replacement-of-U(C)-and-Storage-in-Cell-Array">&#182;</a></h1><p>Back to <a href="http://fanwangecon.github.io"><strong>Fan</strong></a>'s <a href="https://fanwangecon.github.io/M4Econ/"><strong>Matlab Examples Table of Content</strong></a></p>
-<p><a href="https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html">Cell Array Store U(C) to Avoid Duplicate Computation over Iteration</a>: u(c) where u evaluation involves rational exponentiation, pre-calculate and interpolate</p>
+<p><a href="https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html">Cell Array Store U(C) to Avoid Duplicate Computation over Iteration</a>: u(c) across iterations often shares many common values</p>
 <p>During Iteration Solution Procedure, sometimes only a subset of rows/columns need to be updated for some core matrix after each iteration.</p>
 <p>Potentially, there could be significant speed gains if one does not need to fully recompute based on some N by M matrix, but can compute based on some N-n by M-m matrix, and update values in the N by M matrix with new values. See this <a href="https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_repeat_test.html"><strong>file</strong></a> for examples when we fully reuse matrixes.</p>
 <p>As stated <a href="https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_test.html">here</a>, we will store existing calculations in cell arrays.</p>
@@ -13138,7 +13138,7 @@ div#notebook {
 </ul>
 </li>
 </ul>
-<p>Below I invoke the best subset replace function out of the ones tested with some different parameters and look at resulting speeds. The code below shows the core codes contained in the data subset updating file <a href="https://fanwangecon.github.io/M4Econ/support/speed/partupdate/ff_u_c_partrepeat.m">here</a>.</p>
+<p>Below I invoke the best subset replace function out of the ones tested with some different parameters and look at resulting speeds. The code below shows the core codes contained in the data subset updating file <a href="https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/fs_u_c_partrepeat_test.m">here</a>.</p>
 
 </div>
 </div>

@@ -1,3 +1,8 @@
+% Convert Numeric Array to String, Apeend Prefix to all elements.
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
+ar_st_wth_prefix = strcat('row=', string(ar_abc1));
+disp(ar_st_wth_prefix);
+
 % Does Array Exist in Longer Array as Subset
 ar_abc1 = [0.4 0.1 0.25 0.3 0.4];
 ar_abc2 = [0.4 0.1 0.2 0.3 0.4];

@@ -2,13 +2,7 @@ function ff_defaultmap(varargin)
 % @examples
 % https://fanwangecon.github.io/M4Econ/support/funcdefine/ff_defaultmap_test.html
 
-%% Parameters
-params_len = length(varargin);
-if params_len > 2
-    error('ff_defaultmap:Can only have 2 container map parameters');
-end
-
-% Defaults
+%% Parameters  Defaults
 param_map = containers.Map('KeyType','char', 'ValueType','any');
 param_map('fl_crra') = 1.5;
 param_map('c_min') = 0.001;
@@ -27,12 +21,17 @@ support_map('bl_profile') = false;
 support_map('st_profile_path') = [pwd '/profile'];
 default_maps = {param_map, support_map};
 
-% Parse Parameters
+%% Parse Parameter INputs if they exist
+params_len = length(varargin);
+if params_len > 2
+    error('ff_defaultmap:Can only have 2 container map parameters');
+end
 % see: C:\Users\fan\M4Econ\support\dtype\map_override.m
 [default_maps{1:params_len}] = varargin{:};
 param_map = [param_map; default_maps{1}];
 support_map = [support_map; default_maps{2}];
 
+%% Retrieve Parameters from Map
 params_group = values(param_map, {'fl_crra', 'c_min', 'c_min_for_util', 'c_gap', 'c_max'});
 [fl_crra, c_min, c_min_for_util, c_gap, c_max] = params_group{:};
 params_group = values(param_map, {'it_rown'});

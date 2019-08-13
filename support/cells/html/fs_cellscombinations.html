@@ -1,0 +1,164 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Cells: All Possible Combinations of Multiple Arrays</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-07-21"><meta name="DC.source" content="fs_cellscombinations.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Cells: All Possible Combinations of Multiple Arrays</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab Codes</a> Table of Content.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Given Several Arrays of Possibly different Length in Container, all Possible combinations</a></li></ul></div><h2 id="1">Given Several Arrays of Possibly different Length in Container, all Possible combinations</h2><pre class="codeinput">param_tstar_map = containers.Map(<span class="string">'KeyType'</span>,<span class="string">'char'</span>, <span class="string">'ValueType'</span>,<span class="string">'any'</span>);
+param_tstar_map(<span class="string">'a'</span>) = linspace(1, 5, 5);
+param_tstar_map(<span class="string">'b'</span>) = linspace(0.87, 0.97, 6);
+param_tstar_map(<span class="string">'c'</span>) = linspace(0, 0.5, 10);
+
+cl_st_param_keys = {<span class="string">'a'</span>,<span class="string">'c'</span>};
+cl_ar_param_subset_values = values(param_tstar_map, {<span class="string">'a'</span>,<span class="string">'c'</span>});
+
+cl_mt_all = cl_ar_param_subset_values;
+[cl_mt_all{:}] = ndgrid(cl_ar_param_subset_values{:});
+mt_param_vals_combi = cell2mat(cellfun(@(m) m(:), cl_mt_all, <span class="string">'uni'</span>, 0));
+
+tb_all_combi = array2table(mt_param_vals_combi, <span class="string">'VariableNames'</span>, cl_st_param_keys);
+
+disp(tb_all_combi);
+</pre><pre class="codeoutput">    a       c    
+    _    ________
+
+    1           0
+    2           0
+    3           0
+    4           0
+    5           0
+    1    0.055556
+    2    0.055556
+    3    0.055556
+    4    0.055556
+    5    0.055556
+    1     0.11111
+    2     0.11111
+    3     0.11111
+    4     0.11111
+    5     0.11111
+    1     0.16667
+    2     0.16667
+    3     0.16667
+    4     0.16667
+    5     0.16667
+    1     0.22222
+    2     0.22222
+    3     0.22222
+    4     0.22222
+    5     0.22222
+    1     0.27778
+    2     0.27778
+    3     0.27778
+    4     0.27778
+    5     0.27778
+    1     0.33333
+    2     0.33333
+    3     0.33333
+    4     0.33333
+    5     0.33333
+    1     0.38889
+    2     0.38889
+    3     0.38889
+    4     0.38889
+    5     0.38889
+    1     0.44444
+    2     0.44444
+    3     0.44444
+    4     0.44444
+    5     0.44444
+    1         0.5
+    2         0.5
+    3         0.5
+    4         0.5
+    5         0.5
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Cells: All Possible Combinations of Multiple Arrays
+% *back to <https://fanwangecon.github.io Fan>'s
+% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
+% Table of Content.*
+
+
+%% Given Several Arrays of Possibly different Length in Container, all Possible combinations
+
+param_tstar_map = containers.Map('KeyType','char', 'ValueType','any');
+param_tstar_map('a') = linspace(1, 5, 5);
+param_tstar_map('b') = linspace(0.87, 0.97, 6);
+param_tstar_map('c') = linspace(0, 0.5, 10);
+
+cl_st_param_keys = {'a','c'};
+cl_ar_param_subset_values = values(param_tstar_map, {'a','c'});
+
+cl_mt_all = cl_ar_param_subset_values;
+[cl_mt_all{:}] = ndgrid(cl_ar_param_subset_values{:});
+mt_param_vals_combi = cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0));
+
+tb_all_combi = array2table(mt_param_vals_combi, 'VariableNames', cl_st_param_keys);
+
+disp(tb_all_combi);
+##### SOURCE END #####
+--></body></html>

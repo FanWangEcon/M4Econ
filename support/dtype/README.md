@@ -12,3 +12,4 @@ To help clarify data types for inputs, add prefix to variable names:
 - ts = higher dimensions matrix, 3d tensor
 - tb = matlab table format
 - bl = boolean
+- sc = struct

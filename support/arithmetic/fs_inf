@@ -1,0 +1,7 @@
+a = inf
+b = [1 2 inf -inf]
+max(b)
+min(b)
+c = [1 2 -inf]
+max(c)
+min(c)

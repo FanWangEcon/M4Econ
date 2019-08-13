@@ -1,0 +1,297 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>fs_tables</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-01"><meta name="DC.source" content="fs_tables.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1></h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Displays</a></li><li><a href="#2">table with makevalidname</a></li><li><a href="#3">Generate Table and show</a></li><li><a href="#4">Store and Print Variable Names</a></li></ul></div><h2 id="1">Displays</h2><pre class="codeinput">tb_exe_times = array2table([ar_fl_exe_times', ar_fl_exe_times'*it_z*it_iter]);
+tb_exe_times.Properties.RowNames = ar_fl_exe_desc;
+tb_exe_times.Properties.VariableNames = {<span class="string">'speedmat'</span>, <span class="string">'speedfull'</span>};
+disp(tb_exe_times);
+
+
+<span class="comment">% Generate Table From Two Arrays with Row Labels</span>
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
+ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
+number1 = <span class="string">'123'</span>;
+number2 = <span class="string">'456'</span>;
+mt_data = [ar_fl_abc1' ar_fl_abc2'];
+
+tb_test = array2table(mt_data);
+cl_col_names = {[<span class="string">'col'</span> num2str(number1)], [<span class="string">'col'</span> num2str(number2)]};
+cl_row_names = strcat(<span class="string">'row='</span>, string((1:size(mt_data,1))));
+
+tb_test.Properties.VariableNames = cl_col_names;
+tb_test.Properties.RowNames = cl_row_names;
+disp(tb_test);
+
+
+<span class="comment">% Generate Table From Two Arrays and One Matrix</span>
+tb_valpol_iter = array2table([ar_val_diff_norm(1:it_display_every:it_iter)';<span class="keyword">...</span>
+                              ar_pol_diff_norm(1:it_display_every:it_iter)'; <span class="keyword">...</span>
+                              ar_pol_perc_change(1:it_display_every:it_iter, :)']');
+cl_col_names = [<span class="string">'valgap'</span>, <span class="string">'polgap'</span>, strcat(<span class="string">'z'</span>, string((1:size(mt_val_cur,2))))];
+cl_row_names = strcat(<span class="string">'iter='</span>, string((1:it_display_every:it_iter)));
+tb_valpol_iter.Properties.VariableNames = cl_col_names;
+tb_valpol_iter.Properties.RowNames = cl_row_names;
+tb_valpol_iter.Properties.VariableDescriptions{<span class="string">'valgap'</span>} = <span class="string">'norm(mt_val - mt_val_cur)'</span>;
+tb_valpol_iter.Properties.VariableDescriptions{<span class="string">'valgap'</span>} = <span class="string">'norm(mt_pol_a - mt_pol_a_cur)'</span>;
+tb_valpol_iter.Properties.VariableDescriptions{<span class="string">'z1'</span>} = <span class="string">'z1 perc change: sum((mt_pol_a ~= mt_pol_a_cur))/(it_a_n)'</span>;
+disp(summary(tb_valpol_iter));
+disp(tb_valpol_iter);
+</pre><pre class="codeoutput error">Undefined function or variable 'ar_fl_exe_times'.
+
+Error in fs_tables (line 4)
+tb_exe_times = array2table([ar_fl_exe_times', ar_fl_exe_times'*it_z*it_iter]);
+</pre><h2 id="2">table with makevalidname</h2><pre class="codeinput">tb_val = array2table(mt_val_print);
+tb_val.Properties.RowNames = strcat(<span class="string">'a'</span>,string(ar_it_rows), <span class="string">'='</span>, string(ar_a(ar_it_rows)));
+tb_val.Properties.VariableNames = matlab.lang.makeValidName(strcat(<span class="string">'z='</span>, string(ar_z(ar_it_cols))));
+disp(<span class="string">'tb_val'</span>);
+summary(tb_val);
+disp(tb_val);
+</pre><h2 id="3">Generate Table and show</h2><p>2019-07-01 15:50</p><pre class="codeinput"><span class="comment">% Genereate Table</span>
+tab_ak_choices = array2table([ar_bwithrplusk_mesha, ar_aplusk_mesha, <span class="keyword">...</span>
+    ar_k_mesha, b_with_r, ar_a_meshk, ar_a_nobridge_meshk, ar_bridge_a]);
+cl_col_names = {<span class="string">'ar_bwithrplusk_mesha'</span>, <span class="string">'ar_aplusk_mesha'</span>, <span class="keyword">...</span>
+    <span class="string">'ar_k_mesha'</span>, <span class="string">'b_with_r'</span>, <span class="string">'ar_a_meshk'</span>, <span class="string">'ar_a_nobridge_meshk'</span>, <span class="string">'ar_bridge_a'</span>};
+tab_ak_choices.Properties.VariableNames = cl_col_names;
+
+<span class="comment">% Label Table Variables</span>
+tab_ak_choices.Properties.VariableDescriptions{<span class="string">'ar_bwithrplusk_mesha'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_coh_today*: cash on hand someone arrives in the period with given debt and current income'</span>;
+tab_ak_choices.Properties.VariableDescriptions{<span class="string">'ar_aplusk_mesha'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_aprime*: func called during finding optimal aprime, this is the current aprime overall choice'</span>;
+tab_ak_choices.Properties.VariableDescriptions{<span class="string">'ar_k_mesha'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_b_bridge*: amount of bridge loan required to cover negative coh (includes interest if bl_b_is_principle = false)'</span>;
+tab_ak_choices.Properties.VariableDescriptions{<span class="string">'b_with_r'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_c_bridge*: consumption gain today from the bridge loan to cover negative coh'</span>;
+tab_ak_choices.Properties.VariableDescriptions{<span class="string">'ar_a_meshk'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_a_meshk*: ar_aprime_nobridge:'</span>;
+tab_ak_choices.Properties.VariableDescriptions{<span class="string">'ar_a_nobridge_meshk'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_aprime_nobridge*: ar_aprime_nobridge:'</span>;
+tab_ak_choices.Properties.VariableDescriptions{<span class="string">'ar_bridge_a'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_bridge_a* :'</span>;
+
+cl_var_desc = tab_ak_choices.Properties.VariableDescriptions;
+<span class="keyword">for</span> it_var_name = 1:length(cl_var_desc)
+    disp(cl_var_desc{it_var_name});
+<span class="keyword">end</span>
+
+disp(<span class="string">'----------------------------------------'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+disp(<span class="string">'mt_w_by_interp_coh_interp_grid'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+it_rows_toshow = length(ar_w_level)*it_ak_perc_n*1;
+disp(size(tab_ak_choices));
+disp(head(array2table(tab_ak_choices), it_rows_toshow));
+disp(tail(array2table(tab_ak_choices), it_rows_toshow));
+</pre><h2 id="4">Store and Print Variable Names</h2><p>2019-06-23 10:40</p><pre class="codeinput">disp([<span class="string">'bl_b_is_principle:'</span>, num2str(bl_b_is_principle)]);
+disp([<span class="string">'fl_r_bridge:'</span>, num2str(fl_r_bridge)]);
+disp([<span class="string">'ar_aprime:'</span>, num2str(ar_aprime')]);
+disp([<span class="string">'ar_b_bridge:'</span>, num2str(ar_coh_today')]);
+disp([<span class="string">'bl_display_infbridge:'</span>, num2str(bl_display_infbridge)]);
+
+tab_aprime_bridge = table(ar_coh_today, ar_aprime, ar_b_bridge, ar_c_bridge, ar_aprime_nobridge);
+tab_aprime_bridge.Properties.VariableDescriptions{<span class="string">'ar_coh_today'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_coh_today*: cash on hand someone arrives in the period with given debt and current income'</span>;
+tab_aprime_bridge.Properties.VariableDescriptions{<span class="string">'ar_aprime'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_aprime*: func called during finding optimal aprime, this is the current aprime overall choice'</span>;
+tab_aprime_bridge.Properties.VariableDescriptions{<span class="string">'ar_b_bridge'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_b_bridge*: amount of bridge loan required to cover negative coh (includes interest if bl_b_is_principle = false)'</span>;
+tab_aprime_bridge.Properties.VariableDescriptions{<span class="string">'ar_c_bridge'</span>} = <span class="keyword">...</span>
+    <span class="string">'*ar_c_bridge*: consumption gain today from the bridge loan to cover negative coh'</span>;
+tab_aprime_bridge.Properties.VariableDescriptions{<span class="string">'ar_aprime_nobridge'</span>} = <span class="keyword">...</span>
+    [<span class="string">'ar_aprime_nobridge:'</span> <span class="keyword">...</span>
+     <span class="string">'aprime = -10, -5 for bridge; -5 left for other borrowing choices;'</span> <span class="keyword">...</span>
+     <span class="string">'aprime = -10, -11 for bridge (given r), +1 savings left, reduces consumption, back to neg coh, infeasible state;'</span>];
+
+disp(tab_aprime_bridge);
+sc_summary = summary(tab_aprime_bridge);
+cl_var_name = fieldnames(sc_summary);
+<span class="keyword">for</span> it_var_name = 1:length(cl_var_name)
+    disp(sc_summary.(cl_var_name{it_var_name}).Description);
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+
+
+%% Displays
+tb_exe_times = array2table([ar_fl_exe_times', ar_fl_exe_times'*it_z*it_iter]);
+tb_exe_times.Properties.RowNames = ar_fl_exe_desc;
+tb_exe_times.Properties.VariableNames = {'speedmat', 'speedfull'};
+disp(tb_exe_times);
+
+
+% Generate Table From Two Arrays with Row Labels
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
+ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
+number1 = '123';
+number2 = '456';
+mt_data = [ar_fl_abc1' ar_fl_abc2'];
+
+tb_test = array2table(mt_data);
+cl_col_names = {['col' num2str(number1)], ['col' num2str(number2)]};
+cl_row_names = strcat('row=', string((1:size(mt_data,1))));
+
+tb_test.Properties.VariableNames = cl_col_names;
+tb_test.Properties.RowNames = cl_row_names;
+disp(tb_test);
+
+
+% Generate Table From Two Arrays and One Matrix
+tb_valpol_iter = array2table([ar_val_diff_norm(1:it_display_every:it_iter)';...
+                              ar_pol_diff_norm(1:it_display_every:it_iter)'; ...
+                              ar_pol_perc_change(1:it_display_every:it_iter, :)']');
+cl_col_names = ['valgap', 'polgap', strcat('z', string((1:size(mt_val_cur,2))))];
+cl_row_names = strcat('iter=', string((1:it_display_every:it_iter)));
+tb_valpol_iter.Properties.VariableNames = cl_col_names;
+tb_valpol_iter.Properties.RowNames = cl_row_names;
+tb_valpol_iter.Properties.VariableDescriptions{'valgap'} = 'norm(mt_val - mt_val_cur)';
+tb_valpol_iter.Properties.VariableDescriptions{'valgap'} = 'norm(mt_pol_a - mt_pol_a_cur)';
+tb_valpol_iter.Properties.VariableDescriptions{'z1'} = 'z1 perc change: sum((mt_pol_a ~= mt_pol_a_cur))/(it_a_n)';
+disp(summary(tb_valpol_iter));
+disp(tb_valpol_iter);
+
+
+%% table with makevalidname
+tb_val = array2table(mt_val_print);
+tb_val.Properties.RowNames = strcat('a',string(ar_it_rows), '=', string(ar_a(ar_it_rows)));
+tb_val.Properties.VariableNames = matlab.lang.makeValidName(strcat('z=', string(ar_z(ar_it_cols))));
+disp('tb_val');
+summary(tb_val);
+disp(tb_val);
+
+%% Generate Table and show
+% 2019-07-01 15:50
+
+% Genereate Table
+tab_ak_choices = array2table([ar_bwithrplusk_mesha, ar_aplusk_mesha, ...
+    ar_k_mesha, b_with_r, ar_a_meshk, ar_a_nobridge_meshk, ar_bridge_a]);
+cl_col_names = {'ar_bwithrplusk_mesha', 'ar_aplusk_mesha', ...
+    'ar_k_mesha', 'b_with_r', 'ar_a_meshk', 'ar_a_nobridge_meshk', 'ar_bridge_a'};
+tab_ak_choices.Properties.VariableNames = cl_col_names;
+
+% Label Table Variables
+tab_ak_choices.Properties.VariableDescriptions{'ar_bwithrplusk_mesha'} = ...
+    '*ar_coh_today*: cash on hand someone arrives in the period with given debt and current income';
+tab_ak_choices.Properties.VariableDescriptions{'ar_aplusk_mesha'} = ...
+    '*ar_aprime*: func called during finding optimal aprime, this is the current aprime overall choice';
+tab_ak_choices.Properties.VariableDescriptions{'ar_k_mesha'} = ...
+    '*ar_b_bridge*: amount of bridge loan required to cover negative coh (includes interest if bl_b_is_principle = false)';
+tab_ak_choices.Properties.VariableDescriptions{'b_with_r'} = ...
+    '*ar_c_bridge*: consumption gain today from the bridge loan to cover negative coh';
+tab_ak_choices.Properties.VariableDescriptions{'ar_a_meshk'} = ...
+    '*ar_a_meshk*: ar_aprime_nobridge:';
+tab_ak_choices.Properties.VariableDescriptions{'ar_a_nobridge_meshk'} = ...
+    '*ar_aprime_nobridge*: ar_aprime_nobridge:';
+tab_ak_choices.Properties.VariableDescriptions{'ar_bridge_a'} = ...
+    '*ar_bridge_a* :';
+
+cl_var_desc = tab_ak_choices.Properties.VariableDescriptions;
+for it_var_name = 1:length(cl_var_desc)
+    disp(cl_var_desc{it_var_name});
+end
+
+disp('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+disp('mt_w_by_interp_coh_interp_grid');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+it_rows_toshow = length(ar_w_level)*it_ak_perc_n*1;
+disp(size(tab_ak_choices));
+disp(head(array2table(tab_ak_choices), it_rows_toshow));
+disp(tail(array2table(tab_ak_choices), it_rows_toshow));
+
+%% Store and Print Variable Names
+% 2019-06-23 10:40
+
+disp(['bl_b_is_principle:', num2str(bl_b_is_principle)]);
+disp(['fl_r_bridge:', num2str(fl_r_bridge)]);
+disp(['ar_aprime:', num2str(ar_aprime')]);
+disp(['ar_b_bridge:', num2str(ar_coh_today')]);
+disp(['bl_display_infbridge:', num2str(bl_display_infbridge)]);
+
+tab_aprime_bridge = table(ar_coh_today, ar_aprime, ar_b_bridge, ar_c_bridge, ar_aprime_nobridge);
+tab_aprime_bridge.Properties.VariableDescriptions{'ar_coh_today'} = ...
+    '*ar_coh_today*: cash on hand someone arrives in the period with given debt and current income';
+tab_aprime_bridge.Properties.VariableDescriptions{'ar_aprime'} = ...
+    '*ar_aprime*: func called during finding optimal aprime, this is the current aprime overall choice';
+tab_aprime_bridge.Properties.VariableDescriptions{'ar_b_bridge'} = ...
+    '*ar_b_bridge*: amount of bridge loan required to cover negative coh (includes interest if bl_b_is_principle = false)';
+tab_aprime_bridge.Properties.VariableDescriptions{'ar_c_bridge'} = ...
+    '*ar_c_bridge*: consumption gain today from the bridge loan to cover negative coh';
+tab_aprime_bridge.Properties.VariableDescriptions{'ar_aprime_nobridge'} = ...
+    ['ar_aprime_nobridge:' ...
+     'aprime = -10, -5 for bridge; -5 left for other borrowing choices;' ...
+     'aprime = -10, -11 for bridge (given r), +1 savings left, reduces consumption, back to neg coh, infeasible state;'];
+
+disp(tab_aprime_bridge);
+sc_summary = summary(tab_aprime_bridge);
+cl_var_name = fieldnames(sc_summary);
+for it_var_name = 1:length(cl_var_name)
+    disp(sc_summary.(cl_var_name{it_var_name}).Description);
+end
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,261 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Graph: Line and Related Plots</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-07-15"><meta name="DC.source" content="fs_lines.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Graph: Line and Related Plots</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab Codes</a> Table of Content.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Six lines Plot</a></li><li><a href="#2">Horizontal and Vertical Lines and 45 Degree</a></li></ul></div><h2 id="1">Six lines Plot</h2><p>colors from <a href="http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/">optimal colors</a>.</p><pre class="codeinput">close <span class="string">all</span>
+figure();
+hold <span class="string">on</span>;
+
+blue = [57 106 177]./255;
+red = [204 37 41]./255;
+black = [83 81 84]./255;
+green = [62 150 81]./255;
+brown = [146 36 40]./255;
+purple = [107 76 154]./255;
+cl_colors = {blue, red, black, <span class="keyword">...</span>
+             green, brown, purple};
+cl_legend = {<span class="string">'For Borr'</span>, <span class="string">'Inf Borr'</span>, <span class="string">'For+Inf Br'</span>, <span class="string">'For+Br+Save'</span>, <span class="string">'Bridge Loan'</span>, <span class="string">'For Save'</span>};
+cl_scatter_shapes = {<span class="string">'s'</span>,<span class="string">'x'</span>,<span class="string">'o'</span>,<span class="string">'d'</span>,<span class="string">'p'</span>,<span class="string">'*'</span>};
+cl_linestyle = {<span class="string">'--'</span>,<span class="string">'-'</span>,<span class="string">':'</span>,<span class="string">'-.'</span>,<span class="string">'--'</span>,<span class="string">'-'</span>};
+it_sca_bs = 20;
+cl_scatter_csizes = {10*it_sca_bs, 20*it_sca_bs, 10*it_sca_bs, 10*it_sca_bs, 5*it_sca_bs, 8*it_sca_bs};
+it_line_bs = 2;
+cl_line_csizes = {1*it_line_bs, 2*it_line_bs, 1*it_line_bs, 1*it_line_bs, 1*it_line_bs, 2*it_line_bs};
+
+it_x_groups_n = length(cl_scatter_csizes);
+it_x_n = 10;
+
+<span class="comment">% Generate Random Data</span>
+rng(123);
+mat_y = rand([it_x_n, it_x_groups_n]);
+mat_y = mat_y + sqrt(1:it_x_groups_n);
+mat_y = mat_y + log(1:it_x_n)';
+ar_x = 1:1:it_x_n;
+
+ar_it_graphs_run = 1:6;
+it_graph_counter = 0;
+<span class="keyword">for</span> it_fig = ar_it_graphs_run
+
+    <span class="comment">% Counter</span>
+    it_graph_counter = it_graph_counter + 1;
+
+    <span class="comment">% Y Outcome</span>
+    ar_y = mat_y(:, it_fig)';
+
+    <span class="comment">% Color and Size etc</span>
+    it_csize = cl_scatter_csizes{it_fig};
+    ar_color = cl_colors{it_fig};
+    st_shape = cl_scatter_shapes{it_fig};
+    st_lnsty = cl_linestyle{it_fig};
+    st_lnwth = cl_line_csizes{it_fig};
+
+    <span class="comment">% plot scatter and include in legend</span>
+    ls_chart(it_graph_counter) = scatter(ar_x, ar_y, it_csize, ar_color, st_shape);
+
+    <span class="comment">% plot line do not include in legend</span>
+    line = plot(ar_x, ar_y);
+    line.HandleVisibility = <span class="string">'off'</span>;
+    line.Color = ar_color;
+    line.LineStyle = st_lnsty;
+    line.HandleVisibility = <span class="string">'off'</span>;
+    line.LineWidth = st_lnwth;
+
+    <span class="comment">% Legend to include</span>
+    cl_legend{it_graph_counter} = cl_legend{it_fig};
+<span class="keyword">end</span>
+
+<span class="comment">% Legend</span>
+legend(ls_chart, cl_legend, <span class="string">'Location'</span>, <span class="string">'southeast'</span>);
+
+<span class="comment">% labeling</span>
+title(<span class="string">'Optimal Savings'</span>);
+ylabel(<span class="string">'Savings Levels'</span>);
+xlabel(<span class="string">'Cash-on-Hand Today'</span>);
+grid <span class="string">on</span>;
+
+snapnow;
+</pre><img vspace="5" hspace="5" src="fs_lines_01.png" alt=""> <h2 id="2">Horizontal and Vertical Lines and 45 Degree</h2><pre class="codeinput">figure();
+
+xline0 = xline(0);
+xline0.HandleVisibility = <span class="string">'off'</span>;
+yline0 = yline(0);
+yline0.HandleVisibility = <span class="string">'off'</span>;
+yline0.LineWidth = 1;
+
+hline = refline([1 0]);
+hline.Color = <span class="string">'k'</span>;
+hline.LineStyle = <span class="string">':'</span>;
+hline.HandleVisibility = <span class="string">'off'</span>;
+
+snapnow
+
+close <span class="string">all</span>
+</pre><img vspace="5" hspace="5" src="fs_lines_02.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Graph: Line and Related Plots
+% *back to <https://fanwangecon.github.io Fan>'s
+% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
+% Table of Content.*
+
+%% Six lines Plot
+% colors from
+% <http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/
+% optimal colors>.
+
+close all
+figure();
+hold on;
+
+blue = [57 106 177]./255;
+red = [204 37 41]./255;
+black = [83 81 84]./255;
+green = [62 150 81]./255;
+brown = [146 36 40]./255;
+purple = [107 76 154]./255;
+cl_colors = {blue, red, black, ...
+             green, brown, purple};
+cl_legend = {'For Borr', 'Inf Borr', 'For+Inf Br', 'For+Br+Save', 'Bridge Loan', 'For Save'};
+cl_scatter_shapes = {'s','x','o','d','p','*'};
+cl_linestyle = {'REPLACE_WITH_DASH_DASH','-',':','-.','REPLACE_WITH_DASH_DASH','-'};
+it_sca_bs = 20;
+cl_scatter_csizes = {10*it_sca_bs, 20*it_sca_bs, 10*it_sca_bs, 10*it_sca_bs, 5*it_sca_bs, 8*it_sca_bs};
+it_line_bs = 2;
+cl_line_csizes = {1*it_line_bs, 2*it_line_bs, 1*it_line_bs, 1*it_line_bs, 1*it_line_bs, 2*it_line_bs};
+
+it_x_groups_n = length(cl_scatter_csizes);
+it_x_n = 10;
+
+% Generate Random Data
+rng(123);
+mat_y = rand([it_x_n, it_x_groups_n]);
+mat_y = mat_y + sqrt(1:it_x_groups_n);
+mat_y = mat_y + log(1:it_x_n)';
+ar_x = 1:1:it_x_n;
+
+ar_it_graphs_run = 1:6;
+it_graph_counter = 0;
+for it_fig = ar_it_graphs_run
+
+    % Counter
+    it_graph_counter = it_graph_counter + 1;
+
+    % Y Outcome
+    ar_y = mat_y(:, it_fig)';
+
+    % Color and Size etc
+    it_csize = cl_scatter_csizes{it_fig};
+    ar_color = cl_colors{it_fig};
+    st_shape = cl_scatter_shapes{it_fig};
+    st_lnsty = cl_linestyle{it_fig};
+    st_lnwth = cl_line_csizes{it_fig};
+    
+    % plot scatter and include in legend
+    ls_chart(it_graph_counter) = scatter(ar_x, ar_y, it_csize, ar_color, st_shape);
+
+    % plot line do not include in legend
+    line = plot(ar_x, ar_y);
+    line.HandleVisibility = 'off';
+    line.Color = ar_color;
+    line.LineStyle = st_lnsty;
+    line.HandleVisibility = 'off';
+    line.LineWidth = st_lnwth;
+
+    % Legend to include
+    cl_legend{it_graph_counter} = cl_legend{it_fig};
+end
+
+% Legend
+legend(ls_chart, cl_legend, 'Location', 'southeast');
+
+% labeling
+title('Optimal Savings');
+ylabel('Savings Levels');
+xlabel('Cash-on-Hand Today');
+grid on;
+
+snapnow;
+
+%% Horizontal and Vertical Lines and 45 Degree
+
+figure();
+
+xline0 = xline(0);
+xline0.HandleVisibility = 'off';
+yline0 = yline(0);
+yline0.HandleVisibility = 'off';
+yline0.LineWidth = 1;
+
+hline = refline([1 0]);
+hline.Color = 'k';
+hline.LineStyle = ':';
+hline.HandleVisibility = 'off';
+
+snapnow
+
+close all
+##### SOURCE END #####
+--></body></html>

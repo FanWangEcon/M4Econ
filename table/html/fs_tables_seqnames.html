@@ -1,0 +1,272 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Matlab Tables Sort and Order</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-01"><meta name="DC.source" content="fs_tables_seqnames.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Matlab Tables Sort and Order</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab</a> Repository or <a href="https://fanwangecon.github.io/CodeDynaAsset/">Dynamic Asset</a> Repository.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Named Columns, Shock Rows</a></li><li><a href="#2">More Examples</a></li><li><a href="#3">Sequence Name Subsetting</a></li></ul></div><h2 id="1">Named Columns, Shock Rows</h2><pre class="codeinput">disp(<span class="string">'----------------------------------------'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+disp(<span class="string">'Borrow R Shock: ar_z_r_borr_mesh_wage'</span>);
+disp(<span class="string">'Prod/Wage Shock: mt_z_wage_mesh_r_borr'</span>);
+disp(<span class="string">'show which shock is inner and which is outter'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+
+tb_two_shocks = array2table([ar_z_r_borr_mesh_wage;<span class="keyword">...</span>
+                              ar_z_wage_mesh_r_borr]');
+
+cl_col_names = [<span class="string">"Borrow R Shock (Meshed)"</span>, <span class="string">"Wage R Shock (Meshed)"</span>];
+cl_row_names = strcat(<span class="string">'zi='</span>, string((1:length(ar_z_r_borr_mesh_wage))));
+
+tb_two_shocks.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
+tb_two_shocks.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+
+disp(size(tb_two_shocks));
+disp(head(tb_two_shocks, 20));
+disp(tail(tb_two_shocks, 20));
+disp(tb_ev_condi_z_max_kp(1:round(it_row_n_keep/2)));
+disp(tb_ev_condi_z_max_kp((round(it_row_n_keep/2)+1):it_row_n_keep));
+</pre><pre class="codeoutput">----------------------------------------
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Borrow R Shock: ar_z_r_borr_mesh_wage
+Prod/Wage Shock: mt_z_wage_mesh_r_borr
+show which shock is inner and which is outter
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+     5     2
+
+            BorrowRShock_Meshed_    WageRShock_Meshed_
+            ____________________    __________________
+
+    zi_1          0.69647                0.42311      
+    zi_2          0.28614                0.98076      
+    zi_3          0.22685                0.68483      
+    zi_4          0.55131                0.48093      
+    zi_5          0.71947                0.39212      
+
+            BorrowRShock_Meshed_    WageRShock_Meshed_
+            ____________________    __________________
+
+    zi_1          0.69647                0.42311      
+    zi_2          0.28614                0.98076      
+    zi_3          0.22685                0.68483      
+    zi_4          0.55131                0.48093      
+    zi_5          0.71947                0.39212      
+
+</pre><pre class="codeoutput error">Undefined function or variable 'it_row_n_keep'.
+
+Error in fs_tables_seqnames (line 27)
+disp(tb_ev_condi_z_max_kp(1:round(it_row_n_keep/2)));
+</pre><h2 id="2">More Examples</h2><pre class="codeinput">disp(<span class="string">'----------------------------------------'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+disp(<span class="string">'Wage Prod Shock Transition Matrix: mt_z_r_borr_prob_trans'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+it_col_n_keep = 15;
+it_row_n_keep = 15;
+[it_row_n, it_col_n] = size(mt_z_wage_trans);
+[ar_it_cols, ar_it_rows] = fft_row_col_subset(it_col_n, it_col_n_keep, it_row_n, it_row_n_keep);
+cl_st_full_rowscols = cellstr([num2str(ar_z_wage', <span class="string">'w%3.2f'</span>)]);
+tb_z_wage_trans = array2table(round(mt_z_wage_trans(ar_it_rows, ar_it_cols),6));
+cl_col_names = strcat(<span class="string">'zi='</span>, num2str(ar_it_cols'), <span class="string">':'</span>, cl_st_full_rowscols(ar_it_cols));
+cl_row_names = strcat(<span class="string">'zi='</span>, num2str(ar_it_rows'), <span class="string">':'</span>, cl_st_full_rowscols(ar_it_rows));
+tb_z_wage_trans.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
+tb_z_wage_trans.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+
+disp(size(tb_z_wage_trans));
+disp(tb_z_wage_trans);
+disp(tb_ev_condi_z_max_kp(1:round(it_row_n_keep/2)));
+disp(tb_ev_condi_z_max_kp((round(it_row_n_keep/2)+1):it_row_n_keep));
+
+disp(<span class="string">'----------------------------------------'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+disp(<span class="string">'Full Transition Matrix: mt_z_trans'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+it_col_n_keep = it_z_wage_n*3;
+it_row_n_keep = it_z_wage_n*3;
+[it_row_n, it_col_n] = size(mt_z_trans);
+[ar_it_cols, ar_it_rows] = fft_row_col_subset(it_col_n, it_col_n_keep, it_row_n, it_row_n_keep);
+cl_st_full_rowscols = cellstr([num2str(ar_z_r_borr_mesh_wage_w1r2', <span class="string">'r%3.2f;'</span>), <span class="keyword">...</span>
+                               num2str(ar_z_wage_mesh_r_borr_w1r2', <span class="string">'w%3.2f'</span>)]);
+tb_mt_z_trans = array2table(round(mt_z_trans(ar_it_rows, ar_it_cols),6));
+cl_col_names = strcat(<span class="string">'i'</span>, num2str(ar_it_cols'), <span class="string">':'</span>, cl_st_full_rowscols(ar_it_cols));
+cl_row_names = strcat(<span class="string">'i'</span>, num2str(ar_it_rows'), <span class="string">':'</span>, cl_st_full_rowscols(ar_it_rows));
+tb_mt_z_trans.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
+tb_mt_z_trans.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+
+disp(size(tb_mt_z_trans));
+disp(tb_mt_z_trans);
+disp(tb_ev_condi_z_max_kp(1:round(it_row_n_keep/2)));
+disp(tb_ev_condi_z_max_kp((round(it_row_n_keep/2)+1):it_row_n_keep));
+</pre><h2 id="3">Sequence Name Subsetting</h2><pre class="codeinput">disp(<span class="string">'----------------------------------------'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+disp(<span class="string">'Full Transition Matrix: mt_z_trans'</span>);
+disp(<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>);
+
+[it_row_n, it_col_n] = size(mt_z_trans);
+[ar_it_cols, ar_it_rows] = fft_row_col_subset(it_col_n, it_col_n_keep, it_row_n, it_row_n_keep);
+cl_st_full_rowscols = cellstr([num2str(ar_z_r_borr_mesh_wage', <span class="string">'zr=%3.2f;'</span>), <span class="keyword">...</span>
+                               num2str(ar_z_wage_mesh_r_borr', <span class="string">'zw=%3.2f'</span>)]);
+tb_mt_z_trans = array2table(round(mt_z_trans(ar_it_rows, ar_it_cols),6));
+cl_col_names = strcat(<span class="string">'zi='</span>, num2str(ar_it_cols'), <span class="string">':'</span>, cl_st_full_rowscols(ar_it_cols));
+cl_row_names = strcat(<span class="string">'zi='</span>, num2str(ar_it_rows'), <span class="string">':'</span>, cl_st_full_rowscols(ar_it_cols));
+tb_mt_z_trans.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
+tb_mt_z_trans.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+
+disp(size(tb_mt_z_trans));
+disp(tb_mt_z_trans);
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Matlab Tables Sort and Order
+% *back to <https://fanwangecon.github.io Fan>'s
+% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab>
+% Repository or <https://fanwangecon.github.io/CodeDynaAsset/ Dynamic Asset> Repository.*
+
+%% Named Columns, Shock Rows
+
+disp('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+disp('Borrow R Shock: ar_z_r_borr_mesh_wage');
+disp('Prod/Wage Shock: mt_z_wage_mesh_r_borr');
+disp('show which shock is inner and which is outter');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+
+tb_two_shocks = array2table([ar_z_r_borr_mesh_wage;...
+                              ar_z_wage_mesh_r_borr]');
+
+cl_col_names = ["Borrow R Shock (Meshed)", "Wage R Shock (Meshed)"];
+cl_row_names = strcat('zi=', string((1:length(ar_z_r_borr_mesh_wage))));
+
+tb_two_shocks.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
+tb_two_shocks.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+
+disp(size(tb_two_shocks));
+disp(head(tb_two_shocks, 20));
+disp(tail(tb_two_shocks, 20));
+disp(tb_ev_condi_z_max_kp(1:round(it_row_n_keep/2)));
+disp(tb_ev_condi_z_max_kp((round(it_row_n_keep/2)+1):it_row_n_keep));
+
+%% More Examples
+
+disp('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+disp('Wage Prod Shock Transition Matrix: mt_z_r_borr_prob_trans');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+it_col_n_keep = 15;
+it_row_n_keep = 15;
+[it_row_n, it_col_n] = size(mt_z_wage_trans);
+[ar_it_cols, ar_it_rows] = fft_row_col_subset(it_col_n, it_col_n_keep, it_row_n, it_row_n_keep);
+cl_st_full_rowscols = cellstr([num2str(ar_z_wage', 'w%3.2f')]);
+tb_z_wage_trans = array2table(round(mt_z_wage_trans(ar_it_rows, ar_it_cols),6));
+cl_col_names = strcat('zi=', num2str(ar_it_cols'), ':', cl_st_full_rowscols(ar_it_cols));
+cl_row_names = strcat('zi=', num2str(ar_it_rows'), ':', cl_st_full_rowscols(ar_it_rows));
+tb_z_wage_trans.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
+tb_z_wage_trans.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+
+disp(size(tb_z_wage_trans));
+disp(tb_z_wage_trans);
+disp(tb_ev_condi_z_max_kp(1:round(it_row_n_keep/2)));
+disp(tb_ev_condi_z_max_kp((round(it_row_n_keep/2)+1):it_row_n_keep));
+
+disp('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+disp('Full Transition Matrix: mt_z_trans');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+it_col_n_keep = it_z_wage_n*3;
+it_row_n_keep = it_z_wage_n*3;
+[it_row_n, it_col_n] = size(mt_z_trans);
+[ar_it_cols, ar_it_rows] = fft_row_col_subset(it_col_n, it_col_n_keep, it_row_n, it_row_n_keep);
+cl_st_full_rowscols = cellstr([num2str(ar_z_r_borr_mesh_wage_w1r2', 'r%3.2f;'), ...
+                               num2str(ar_z_wage_mesh_r_borr_w1r2', 'w%3.2f')]);
+tb_mt_z_trans = array2table(round(mt_z_trans(ar_it_rows, ar_it_cols),6));
+cl_col_names = strcat('i', num2str(ar_it_cols'), ':', cl_st_full_rowscols(ar_it_cols));
+cl_row_names = strcat('i', num2str(ar_it_rows'), ':', cl_st_full_rowscols(ar_it_rows));
+tb_mt_z_trans.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
+tb_mt_z_trans.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+
+disp(size(tb_mt_z_trans));
+disp(tb_mt_z_trans);
+disp(tb_ev_condi_z_max_kp(1:round(it_row_n_keep/2)));
+disp(tb_ev_condi_z_max_kp((round(it_row_n_keep/2)+1):it_row_n_keep));
+
+%% Sequence Name Subsetting
+
+disp('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+disp('Full Transition Matrix: mt_z_trans');
+disp('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+
+[it_row_n, it_col_n] = size(mt_z_trans);
+[ar_it_cols, ar_it_rows] = fft_row_col_subset(it_col_n, it_col_n_keep, it_row_n, it_row_n_keep);
+cl_st_full_rowscols = cellstr([num2str(ar_z_r_borr_mesh_wage', 'zr=%3.2f;'), ...
+                               num2str(ar_z_wage_mesh_r_borr', 'zw=%3.2f')]);
+tb_mt_z_trans = array2table(round(mt_z_trans(ar_it_rows, ar_it_cols),6));
+cl_col_names = strcat('zi=', num2str(ar_it_cols'), ':', cl_st_full_rowscols(ar_it_cols));
+cl_row_names = strcat('zi=', num2str(ar_it_rows'), ':', cl_st_full_rowscols(ar_it_cols));
+tb_mt_z_trans.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
+tb_mt_z_trans.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+
+disp(size(tb_mt_z_trans));
+disp(tb_mt_z_trans);
+
+##### SOURCE END #####
+--></body></html>

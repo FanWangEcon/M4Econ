@@ -1,0 +1,239 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Table: Combining Tables Together, and Matrixs Together with Tables</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-01"><meta name="DC.source" content="fs_tables_combine.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Table: Combining Tables Together, and Matrixs Together with Tables</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab Codes</a> Table of Content.</b></p><pre class="codeoutput error">Error using dbstatus
+Error: File: C:\Users\fan\M4Econ\table\fs_tables_combine.m Line: 66 Column: 39
+Invalid expression. Check for missing or extra characters.
+</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generate Some Tables and Matrixes for Combination</a></li><li><a href="#2">Combine Tables Together Stack Columns</a></li><li><a href="#3">Combine Tables Together Stack Rows</a></li><li><a href="#4">Combine Tables Together Stack Rows</a></li></ul></div><h2 id="1">Generate Some Tables and Matrixes for Combination</h2><pre class="codeinput">close <span class="string">all</span>;
+
+<span class="comment">% Generate Table 1</span>
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
+ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
+number1 = <span class="string">'123'</span>;
+number2 = <span class="string">'456'</span>;
+mt_data_a = [ar_fl_abc1' ar_fl_abc2'];
+
+tb_test_a = array2table(mt_data_a);
+cl_col_names_a = {[<span class="string">'col'</span> num2str(number1)], [<span class="string">'col'</span> num2str(number2)]};
+cl_row_names_a = strcat(<span class="string">'rowA='</span>, string((1:size(mt_data_a,1))));
+
+tb_test_a.Properties.VariableNames = cl_col_names_a;
+tb_test_a.Properties.RowNames = cl_row_names_a;
+disp(tb_test_a);
+
+<span class="comment">% Generate Table 2</span>
+rng(123);
+ar_fl_abc3 = rand(size(ar_fl_abc1));
+ar_fl_abc4 = rand(size(ar_fl_abc1));
+ar_fl_abc5 = rand(size(ar_fl_abc1));
+
+mt_data_b = [ar_fl_abc3' ar_fl_abc4' ar_fl_abc5'];
+
+tb_test_b = array2table(mt_data_b);
+cl_col_names_b = {[<span class="string">'col'</span> num2str(33)], [<span class="string">'col'</span> num2str(44)], [<span class="string">'col'</span> num2str(55)]};
+cl_row_names_b = strcat(<span class="string">'rowB='</span>, string((1:size(mt_data_a,1))));
+
+tb_test_b.Properties.VariableNames = cl_col_names_b;
+tb_test_b.Properties.RowNames = cl_row_names_b;
+disp(tb_test_b);
+</pre><h2 id="2">Combine Tables Together Stack Columns</h2><p>Tables with the same number of rows, add more columns with named variables</p><pre class="codeinput"><span class="comment">% a and b must have the same row names</span>
+tb_test_b_withArownames = tb_test_b;
+tb_test_b_withArownames.Properties.RowNames = tb_test_a.Properties.RowNames;
+tb_ab_col_stacked = [tb_test_a tb_test_b_withArownames];
+
+display(tb_ab_col_stacked);
+</pre><h2 id="3">Combine Tables Together Stack Rows</h2><p>Tables with the same number of columns, dd more rows variables</p><pre class="codeinput"><span class="comment">% Select only 2 columns to match table a column count</span>
+tb_test_b_subset = tb_test_b(:,1:2);
+
+<span class="comment">% Make Column Names consistent</span>
+tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
+
+<span class="comment">% Reset Row Names, can not have identical row names</span>
+tb_test_a.Properties.RowNames = strcat(<span class="string">'row='</span>, string((1:size(mt_data_a,1))));
+tb_test_b_subset.Properties.RowNames = <span class="keyword">...</span>
+    strcat(<span class="string">'row='</span>, string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
+tb_test_b_subset.Properties.RowNames =
+
+<span class="comment">% Stack Rows</span>
+tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
+
+display(tb_ab_row_stacked);
+</pre><h2 id="4">Combine Tables Together Stack Rows</h2><p>Tables with the same number of columns, dd more rows variables</p><pre class="codeinput"><span class="comment">% Select only 2 columns to match table a column count</span>
+tb_test_b_subset = tb_test_b(:,1:2);
+
+<span class="comment">% Make Column Names consistent</span>
+tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
+
+<span class="comment">% Reset Row Names, can not have identical row names</span>
+tb_test_a.Properties.RowNames = strcat(<span class="string">'row='</span>, string((1:size(mt_data_a,1))));
+tb_test_b_subset.Properties.RowNames = <span class="keyword">...</span>
+    strcat(<span class="string">'row='</span>, string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
+tb_test_b_subset.Properties.RowNames =
+
+<span class="comment">% Stack Rows</span>
+tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
+
+display(tb_ab_row_stacked);
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Table: Combining Tables Together, and Matrixs Together with Tables
+% *back to <https://fanwangecon.github.io Fan>'s
+% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
+% Table of Content.*
+
+%% Generate Some Tables and Matrixes for Combination
+
+close all;
+
+% Generate Table 1
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
+ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
+number1 = '123';
+number2 = '456';
+mt_data_a = [ar_fl_abc1' ar_fl_abc2'];
+
+tb_test_a = array2table(mt_data_a);
+cl_col_names_a = {['col' num2str(number1)], ['col' num2str(number2)]};
+cl_row_names_a = strcat('rowA=', string((1:size(mt_data_a,1))));
+
+tb_test_a.Properties.VariableNames = cl_col_names_a;
+tb_test_a.Properties.RowNames = cl_row_names_a;
+disp(tb_test_a);
+
+% Generate Table 2
+rng(123);
+ar_fl_abc3 = rand(size(ar_fl_abc1));
+ar_fl_abc4 = rand(size(ar_fl_abc1));
+ar_fl_abc5 = rand(size(ar_fl_abc1));
+
+mt_data_b = [ar_fl_abc3' ar_fl_abc4' ar_fl_abc5'];
+
+tb_test_b = array2table(mt_data_b);
+cl_col_names_b = {['col' num2str(33)], ['col' num2str(44)], ['col' num2str(55)]};
+cl_row_names_b = strcat('rowB=', string((1:size(mt_data_a,1))));
+
+tb_test_b.Properties.VariableNames = cl_col_names_b;
+tb_test_b.Properties.RowNames = cl_row_names_b;
+disp(tb_test_b);
+
+%% Combine Tables Together Stack Columns
+% Tables with the same number of rows, add more columns with named
+% variables
+
+% a and b must have the same row names
+tb_test_b_withArownames = tb_test_b;
+tb_test_b_withArownames.Properties.RowNames = tb_test_a.Properties.RowNames;
+tb_ab_col_stacked = [tb_test_a tb_test_b_withArownames];
+
+display(tb_ab_col_stacked);
+
+%% Combine Tables Together Stack Rows
+% Tables with the same number of columns, dd more rows
+% variables
+
+% Select only 2 columns to match table a column count
+tb_test_b_subset = tb_test_b(:,1:2);
+
+% Make Column Names consistent
+tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
+
+% Reset Row Names, can not have identical row names
+tb_test_a.Properties.RowNames = strcat('row=', string((1:size(mt_data_a,1))));
+tb_test_b_subset.Properties.RowNames = ...
+    strcat('row=', string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
+tb_test_b_subset.Properties.RowNames =
+
+% Stack Rows
+tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
+
+display(tb_ab_row_stacked);
+
+
+%% Combine Tables Together Stack Rows
+% Tables with the same number of columns, dd more rows
+% variables
+
+% Select only 2 columns to match table a column count
+tb_test_b_subset = tb_test_b(:,1:2);
+
+% Make Column Names consistent
+tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
+
+% Reset Row Names, can not have identical row names
+tb_test_a.Properties.RowNames = strcat('row=', string((1:size(mt_data_a,1))));
+tb_test_b_subset.Properties.RowNames = ...
+    strcat('row=', string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
+tb_test_b_subset.Properties.RowNames =
+
+% Stack Rows
+tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
+
+display(tb_ab_row_stacked);
+
+##### SOURCE END #####
+--></body></html>

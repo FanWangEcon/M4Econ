@@ -1,0 +1,220 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Graph: Color Usage non-Spectrum</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-07-15"><meta name="DC.source" content="fs_color.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Graph: Color Usage non-Spectrum</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab Codes</a> Table of Content.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Good Colors to Use Darker</a></li><li><a href="#2">Good Colors to Use Lighter</a></li><li><a href="#3">Matlab has a graphical tool for picking color</a></li></ul></div><h2 id="1">Good Colors to Use Darker</h2><p>Nice darker light colors to use in matlab.</p><pre class="codeinput">close <span class="string">all</span>
+
+blue = [57 106 177]./255;
+red = [204 37 41]./255;
+black = [83 81 84]./255;
+green = [62 150 81]./255;
+brown = [146 36 40]./255;
+purple = [107 76 154]./255;
+cl_colors = {blue, red, black, <span class="keyword">...</span>
+             green, brown, purple};
+cl_str_clr_names = [<span class="string">"blue"</span>, <span class="string">"red"</span>, <span class="string">"black"</span>, <span class="string">"green"</span>, <span class="string">"brown"</span>, <span class="string">"purple"</span>];
+
+<span class="keyword">for</span> it_color=1:length(cl_colors)
+
+    figure();
+    x = [0 1 1 0];
+    y = [0 0 1 1];
+    fill(x, y, cl_colors{it_color});
+    st_text = [cl_str_clr_names(it_color) num2str(round(cl_colors{it_color}*255))];
+    hText = text(.10,.55, st_text);
+    hText.Color = <span class="string">'white'</span>;
+    hText.FontSize = 30;
+    snapnow;
+
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="fs_color_01.png" alt=""> <img vspace="5" hspace="5" src="fs_color_02.png" alt=""> <img vspace="5" hspace="5" src="fs_color_03.png" alt=""> <img vspace="5" hspace="5" src="fs_color_04.png" alt=""> <img vspace="5" hspace="5" src="fs_color_05.png" alt=""> <img vspace="5" hspace="5" src="fs_color_06.png" alt=""> <h2 id="2">Good Colors to Use Lighter</h2><p>Nice ligher colors to use in matlab.</p><pre class="codeinput">close <span class="string">all</span>
+
+blue = [114 147 203]./255;
+red = [211 94 96]./255;
+black = [128 133 133]./255;
+green = [132 186 91]./255;
+brown = [171 104 87]./255;
+purple = [144 103 167]./255;
+cl_colors = {blue, red, black, <span class="keyword">...</span>
+             green, brown, purple};
+cl_str_clr_names = [<span class="string">"blue"</span>, <span class="string">"red"</span>, <span class="string">"black"</span>, <span class="string">"green"</span>, <span class="string">"brown"</span>, <span class="string">"purple"</span>];
+
+<span class="keyword">for</span> it_color=1:length(cl_colors)
+
+    figure();
+    x = [0 1 1 0];
+    y = [0 0 1 1];
+    fill(x, y, cl_colors{it_color});
+
+    st_text = [cl_str_clr_names(it_color) num2str(round(cl_colors{it_color}*255))];
+    hText = text(.10,.55, st_text);
+    hText.Color = <span class="string">'white'</span>;
+    hText.FontSize = 30;
+    snapnow;
+
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="fs_color_07.png" alt=""> <img vspace="5" hspace="5" src="fs_color_08.png" alt=""> <img vspace="5" hspace="5" src="fs_color_09.png" alt=""> <img vspace="5" hspace="5" src="fs_color_10.png" alt=""> <img vspace="5" hspace="5" src="fs_color_11.png" alt=""> <img vspace="5" hspace="5" src="fs_color_12.png" alt=""> <h2 id="3">Matlab has a graphical tool for picking color</h2><p>https://www.mathworks.com/help/matlab/ref/uisetcolor.html enter uisetcolor pick color from new window and color values will appear uisetcolor</p><pre class="codeinput">figure();
+hold <span class="string">on</span>;
+
+x = rand([10,1]);
+y = rand([10,1]);
+
+<span class="comment">% Then can use for plot</span>
+plot(x,y,<span class="string">'Color'</span>,[.61 .51 .74])
+
+<span class="comment">% Can use for Scatter</span>
+scatter(x, y, 10, <span class="keyword">...</span>
+    <span class="string">'MarkerEdgeColor'</span>, [.61 .51 .74], <span class="string">'MarkerFaceAlpha'</span>, 0.1, <span class="keyword">...</span>
+    <span class="string">'MarkerFaceColor'</span>, [.61 .51 .74], <span class="string">'MarkerEdgeAlpha'</span>, 0.1);
+</pre><img vspace="5" hspace="5" src="fs_color_13.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Graph: Color Usage non-Spectrum
+% *back to <https://fanwangecon.github.io Fan>'s
+% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
+% Table of Content.*
+
+%% Good Colors to Use Darker
+% Nice darker light colors to use in matlab.
+
+close all
+
+blue = [57 106 177]./255;
+red = [204 37 41]./255;
+black = [83 81 84]./255;
+green = [62 150 81]./255;
+brown = [146 36 40]./255;
+purple = [107 76 154]./255;
+cl_colors = {blue, red, black, ...
+             green, brown, purple};
+cl_str_clr_names = ["blue", "red", "black", "green", "brown", "purple"];
+
+for it_color=1:length(cl_colors)
+    
+    figure();
+    x = [0 1 1 0];
+    y = [0 0 1 1];
+    fill(x, y, cl_colors{it_color});
+    st_text = [cl_str_clr_names(it_color) num2str(round(cl_colors{it_color}*255))];
+    hText = text(.10,.55, st_text);
+    hText.Color = 'white';
+    hText.FontSize = 30; 
+    snapnow;
+    
+end
+
+%% Good Colors to Use Lighter
+% Nice ligher colors to use in matlab.
+
+close all
+
+blue = [114 147 203]./255;
+red = [211 94 96]./255;
+black = [128 133 133]./255;
+green = [132 186 91]./255;
+brown = [171 104 87]./255;
+purple = [144 103 167]./255;
+cl_colors = {blue, red, black, ...
+             green, brown, purple};
+cl_str_clr_names = ["blue", "red", "black", "green", "brown", "purple"];
+
+for it_color=1:length(cl_colors)
+    
+    figure();
+    x = [0 1 1 0];
+    y = [0 0 1 1];
+    fill(x, y, cl_colors{it_color});
+    
+    st_text = [cl_str_clr_names(it_color) num2str(round(cl_colors{it_color}*255))];
+    hText = text(.10,.55, st_text);
+    hText.Color = 'white';
+    hText.FontSize = 30; 
+    snapnow;
+    
+end
+
+%% Matlab has a graphical tool for picking color
+% https://www.mathworks.com/help/matlab/ref/uisetcolor.html
+% enter uisetcolor
+% pick color from new window and color values will appear
+% uisetcolor
+
+figure();
+hold on;
+
+x = rand([10,1]);
+y = rand([10,1]);
+
+% Then can use for plot
+plot(x,y,'Color',[.61 .51 .74])
+
+% Can use for Scatter
+scatter(x, y, 10, ...
+    'MarkerEdgeColor', [.61 .51 .74], 'MarkerFaceAlpha', 0.1, ...
+    'MarkerFaceColor', [.61 .51 .74], 'MarkerEdgeAlpha', 0.1);
+
+##### SOURCE END #####
+--></body></html>

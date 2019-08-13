@@ -1,0 +1,170 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ff_sup_save_prep</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-01"><meta name="DC.source" content="ff_sup_save_prep.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">Catch Error</a></li><li><a href="#4">Default Folder Parameters</a></li><li><a href="#5">Parse Parameters</a></li><li><a href="#6">Save</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> [st_fil_path_name_full] = ff_sup_save_prep(varargin)
+</pre><pre class="codeinput"><span class="comment">% ff_sup_save_prep(st_path_folder, st_file_name, bl_exp_csv, mt_data, ar_st_colnames)</span>
+</pre><h2 id="3">Catch Error</h2><pre class="codeinput">optional_params_len = length(varargin);
+<span class="keyword">if</span> optional_params_len &gt; 5
+    error(<span class="string">'ff_sup_savemat_prep:TooManyOptionalParameters'</span>, <span class="keyword">...</span>
+          <span class="string">'allows at most 5 optional parameters'</span>);
+<span class="keyword">end</span>
+</pre><h2 id="4">Default Folder Parameters</h2><p>by default all go to Sandbox folder with sub folders by dates</p><pre class="codeinput">st_path_folder_default = <span class="string">"_data/table_test/"</span>;
+st_file_name_default = <span class="string">"ff_sup_save_prep"</span>;
+<span class="comment">% Save file to csv. If false, save all workspace results to .mat</span>
+bl_exp_csv_default = false;
+mt_data_default = rand(3,4);
+<span class="comment">% This does not need to be specified, column names will be expanded later if not sufficient</span>
+ar_st_colnames_default = [<span class="string">"col1"</span>, <span class="string">"col2"</span>, <span class="string">"col3"</span>, <span class="string">"col4"</span>];
+
+optional_params = {st_path_folder_default st_file_name_default <span class="keyword">...</span>
+                   bl_exp_csv_default mt_data_default ar_st_colnames_default};
+</pre><h2 id="5">Parse Parameters</h2><p>numvarargs is the number of varagin inputted</p><pre class="codeinput">[optional_params{1:optional_params_len}] = varargin{:};
+st_path_folder = optional_params{1};
+st_file_name = optional_params{2};
+bl_exp_csv = optional_params{3};
+mt_data = cell2mat(optional_params(4));
+ar_st_colnames = optional_params{5};
+</pre><h2 id="6">Save</h2><p>Directory if does not exist</p><pre class="codeinput">mkdir(st_path_folder)
+
+<span class="comment">% Save Results to Mat</span>
+<span class="keyword">if</span> (bl_exp_csv)
+    <span class="comment">% Save All Results in Workspace to mat</span>
+    tb_mt_data = ff_mat2tab(mt_data, ar_st_colnames);
+    <span class="comment">% Genreate Path</span>
+    st_fil_path_name_full = strcat(st_path_folder, st_file_name, <span class="string">'.csv'</span>);
+    <span class="comment">% Save to CSV</span>
+    writetable(tb_mt_data, st_fil_path_name_full)
+<span class="keyword">else</span>
+    <span class="comment">% Genreate Path</span>
+    st_fil_path_name_full = strcat(st_path_folder, st_file_name);
+    <span class="comment">% Save All Results in Workspace to mat</span>
+    save(st_fil_path_name_full);
+<span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><pre class="codeoutput">
+ans = 
+
+    "_data/table_test/ff_sup_save_prep"
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function [st_fil_path_name_full] = ff_sup_save_prep(varargin)
+% ff_sup_save_prep(st_path_folder, st_file_name, bl_exp_csv, mt_data, ar_st_colnames)
+
+%% Catch Error
+optional_params_len = length(varargin);
+if optional_params_len > 5
+    error('ff_sup_savemat_prep:TooManyOptionalParameters', ...
+          'allows at most 5 optional parameters');
+end
+
+%% Default Folder Parameters
+% by default all go to Sandbox folder with sub folders by dates
+st_path_folder_default = "_data/table_test/";
+st_file_name_default = "ff_sup_save_prep";
+% Save file to csv. If false, save all workspace results to .mat
+bl_exp_csv_default = false;
+mt_data_default = rand(3,4);
+% This does not need to be specified, column names will be expanded later if not sufficient
+ar_st_colnames_default = ["col1", "col2", "col3", "col4"];
+
+optional_params = {st_path_folder_default st_file_name_default ...
+                   bl_exp_csv_default mt_data_default ar_st_colnames_default};
+
+%% Parse Parameters
+% numvarargs is the number of varagin inputted
+[optional_params{1:optional_params_len}] = varargin{:};
+st_path_folder = optional_params{1};
+st_file_name = optional_params{2};
+bl_exp_csv = optional_params{3};
+mt_data = cell2mat(optional_params(4));
+ar_st_colnames = optional_params{5};
+
+%% Save
+% Directory if does not exist
+mkdir(st_path_folder)
+
+% Save Results to Mat
+if (bl_exp_csv)
+    % Save All Results in Workspace to mat
+    tb_mt_data = ff_mat2tab(mt_data, ar_st_colnames);
+    % Genreate Path
+    st_fil_path_name_full = strcat(st_path_folder, st_file_name, '.csv');
+    % Save to CSV
+    writetable(tb_mt_data, st_fil_path_name_full)
+else
+    % Genreate Path
+    st_fil_path_name_full = strcat(st_path_folder, st_file_name);
+    % Save All Results in Workspace to mat
+    save(st_fil_path_name_full);
+end
+
+end
+
+##### SOURCE END #####
+--></body></html>

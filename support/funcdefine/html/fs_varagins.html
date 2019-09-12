@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Table: Add Row and Column names to Table and Strings in Table based on Arrays</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-04"><meta name="DC.source" content="fs_table_rowcol_strings.m"><style type="text/css">
+      --><title>fs_varagins</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-04"><meta name="DC.source" content="fs_varagins.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,80 +66,34 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Table: Add Row and Column names to Table and Strings in Table based on Arrays</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab Codes</a> Table of Content.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generate Table with Row and Column Names based on Multiple Numeric Array</a></li><li><a href="#2">Include Row Names as a Variable</a></li></ul></div><h2 id="1">Generate Table with Row and Column Names based on Multiple Numeric Array</h2><p>Two numeric arrays describe the column names, combine numeric arrays together to form string array which becomes table variable/column names.</p><pre class="codeinput">close <span class="string">all</span>;
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Default</a></li><li><a href="#2">Parse Parameters</a></li></ul></div><h2 id="1">Default</h2><pre class="codeinput">[fl_crra, fl_c_min] = deal(1, 0.001);
+[fl_r_fbr, fl_r_fsv, fl_w] = deal(0.035, 0.025, 1.28);
+bl_display_setfunc = false;
+bl_b_is_principle = false;
+default_params = {fl_crra fl_c_min fl_r_fbr fl_r_fsv fl_w bl_display_setfunc};
+</pre><h2 id="2">Parse Parameters</h2><pre class="codeinput"><span class="comment">% numvarargs is the number of varagin inputted</span>
+[default_params{1:length(varargin)}] = varargin{:};
+[fl_crra, fl_c_min, fl_r_fbr, fl_r_fsv, fl_w, bl_display_setfunc] = default_params{:};
+</pre><pre class="codeoutput error">Attempt to execute SCRIPT varargin as a function:
+C:\Program Files\MATLAB\R2019a\toolbox\matlab\lang\varargin.m
 
-<span class="comment">% Generate Table 1</span>
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
-number1 = <span class="string">'123'</span>;
-number2 = <span class="string">'456'</span>;
-mt_data_a = [ar_fl_abc1' ar_fl_abc2'];
-
-tb_test_a = array2table(mt_data_a);
-cl_col_names_a = {[<span class="string">'col'</span> num2str(number1)], [<span class="string">'col'</span> num2str(number2)]};
-cl_row_names_a = strcat(<span class="string">'rowA='</span>, string((1:size(mt_data_a,1))));
-
-tb_test_a.Properties.VariableNames = cl_col_names_a;
-tb_test_a.Properties.RowNames = cl_row_names_a;
-disp(tb_test_a);
-</pre><pre class="codeoutput">              col123    col456
-              ______    ______
-
-    rowA=1      0.4      0.4  
-    rowA=2      0.1      0.1  
-    rowA=3     0.25      0.2  
-    rowA=4      0.3      0.3  
-    rowA=5      0.4      0.4  
-
-</pre><h2 id="2">Include Row Names as a Variable</h2><pre class="codeinput"><span class="comment">% a and b must have the same row names</span>
-varrownames = tb_test_a.Properties.RowNames;
-tb_test_a = addvars(tb_test_a, varrownames, <span class="string">'Before'</span>, 1);
-
-disp(tb_test_a);
-</pre><pre class="codeoutput">              varrownames    col123    col456
-              ___________    ______    ______
-
-    rowA=1     'rowA=1'        0.4      0.4  
-    rowA=2     'rowA=2'        0.1      0.1  
-    rowA=3     'rowA=3'       0.25      0.2  
-    rowA=4     'rowA=4'        0.3      0.3  
-    rowA=5     'rowA=5'        0.4      0.4  
-
+Error in fs_varagins (line 12)
+[default_params{1:length(varargin)}] = varargin{:};
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% Table: Add Row and Column names to Table and Strings in Table based on Arrays
-% *back to <https://fanwangecon.github.io Fan>'s
-% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
-% Table of Content.*
+%% Default
 
-%% Generate Table with Row and Column Names based on Multiple Numeric Array
-% Two numeric arrays describe the column names, combine numeric arrays
-% together to form string array which becomes table variable/column names.
+[fl_crra, fl_c_min] = deal(1, 0.001);
+[fl_r_fbr, fl_r_fsv, fl_w] = deal(0.035, 0.025, 1.28);
+bl_display_setfunc = false;
+bl_b_is_principle = false;
+default_params = {fl_crra fl_c_min fl_r_fbr fl_r_fsv fl_w bl_display_setfunc};
 
-close all;
+%% Parse Parameters
 
-% Generate Table 1
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
-number1 = '123';
-number2 = '456';
-mt_data_a = [ar_fl_abc1' ar_fl_abc2'];
-
-tb_test_a = array2table(mt_data_a);
-cl_col_names_a = {['col' num2str(number1)], ['col' num2str(number2)]};
-cl_row_names_a = strcat('rowA=', string((1:size(mt_data_a,1))));
-
-tb_test_a.Properties.VariableNames = cl_col_names_a;
-tb_test_a.Properties.RowNames = cl_row_names_a;
-disp(tb_test_a);
-
-%% Include Row Names as a Variable
-
-% a and b must have the same row names
-varrownames = tb_test_a.Properties.RowNames;
-tb_test_a = addvars(tb_test_a, varrownames, 'Before', 1);
-
-disp(tb_test_a);
+% numvarargs is the number of varagin inputted
+[default_params{1:length(varargin)}] = varargin{:};
+[fl_crra, fl_c_min, fl_r_fbr, fl_r_fsv, fl_w, bl_display_setfunc] = default_params{:};
 
 ##### SOURCE END #####
 --></body></html>

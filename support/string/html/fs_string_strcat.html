@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>String: Concatenate Strings Arrays with Numbers and Number Arrays with Strings</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-01"><meta name="DC.source" content="fs_string_strcat.m"><style type="text/css">
+      --><title>String: Concatenate Strings Arrays with Numbers and Number Arrays with Strings</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-04"><meta name="DC.source" content="fs_string_strcat.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -80,36 +80,36 @@ disp(ar_z_r_borr_mesh_wage)
 disp(ar_z_wage_mesh_r_borr)
 disp(cl_st_full_rowscols)
 disp(cl_col_names)
-</pre><pre class="codeoutput">    0.6965    0.2861    0.2269    0.5513    0.7195
+</pre><pre class="codeoutput">    0.4262    0.3877    0.5636    0.2568    0.2369
 
-    0.4231    0.9808    0.6848    0.4809    0.3921
+    0.9941    0.1906    0.8771    0.0739    0.3472
 
-    'zr=0.70;zw=0.42'
-    'zr=0.29;zw=0.98'
-    'zr=0.23;zw=0.68'
-    'zr=0.55;zw=0.48'
-    'zr=0.72;zw=0.39'
+    'zr=0.43;zw=0.99'
+    'zr=0.39;zw=0.19'
+    'zr=0.56;zw=0.88'
+    'zr=0.26;zw=0.07'
+    'zr=0.24;zw=0.35'
 
-    'zi=3:zr=0.70;zw=0.42'
-    'zi=4:zr=0.23;zw=0.68'
-    'zi=4:zr=0.72;zw=0.39'
+    'zi=3:zr=0.43;zw=0.99'
+    'zi=5:zr=0.56;zw=0.88'
+    'zi=9:zr=0.24;zw=0.35'
 
 </pre><h2 id="2">Combine Number with String Cell Array</h2><p>We have a string cell array we created from the previous section, now append numbers to it</p><pre class="codeinput"><span class="comment">% Append Common Numbers</span>
 cl_col_names_append = strcat(cl_col_names, <span class="string">'-String-Cell-With-Numeric-'</span>, num2str(123));
 
 disp(cl_col_names_append)
-</pre><pre class="codeoutput">    'zi=3:zr=0.70;zw=0.42-String-Cell-With-Numeric-123'
-    'zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-123'
-    'zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-123'
+</pre><pre class="codeoutput">    'zi=3:zr=0.43;zw=0.99-String-Cell-With-Numeric-123'
+    'zi=5:zr=0.56;zw=0.88-String-Cell-With-Numeric-123'
+    'zi=9:zr=0.24;zw=0.35-String-Cell-With-Numeric-123'
 
 </pre><h2 id="3">Combine Numeric Array with String Cell Array</h2><p>Append an array of numeric values</p><pre class="codeinput"><span class="comment">% Append Common Numbers</span>
 cl_col_names_append = strcat(cl_col_names, <span class="string">'-String-Cell-With-Numeric-Array-'</span>, <span class="keyword">...</span>
     num2str(transpose(1:length(cl_col_names))));
 
 disp(cl_col_names_append)
-</pre><pre class="codeoutput">    'zi=3:zr=0.70;zw=0.42-String-Cell-With-Numeric-Array-1'
-    'zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-Array-2'
-    'zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-Array-3'
+</pre><pre class="codeoutput">    'zi=3:zr=0.43;zw=0.99-String-Cell-With-Numeric-Array-1'
+    'zi=5:zr=0.56;zw=0.88-String-Cell-With-Numeric-Array-2'
+    'zi=9:zr=0.24;zw=0.35-String-Cell-With-Numeric-Array-3'
 
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
 ##### SOURCE BEGIN #####

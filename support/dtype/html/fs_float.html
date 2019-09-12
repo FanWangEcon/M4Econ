@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Table: Add Row and Column names to Table and Strings in Table based on Arrays</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-04"><meta name="DC.source" content="fs_table_rowcol_strings.m"><style type="text/css">
+      --><title>fs_float</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-04"><meta name="DC.source" content="fs_float.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,80 +66,104 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Table: Add Row and Column names to Table and Strings in Table based on Arrays</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab Codes</a> Table of Content.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generate Table with Row and Column Names based on Multiple Numeric Array</a></li><li><a href="#2">Include Row Names as a Variable</a></li></ul></div><h2 id="1">Generate Table with Row and Column Names based on Multiple Numeric Array</h2><p>Two numeric arrays describe the column names, combine numeric arrays together to form string array which becomes table variable/column names.</p><pre class="codeinput">close <span class="string">all</span>;
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% is number in list</span>
+ar_fl_list = [1,2,3,4,5];
+fl_index = 1.1;
+fprintf(<span class="string">'fl_index %.2f is not in [%s]\n'</span>, fl_index, num2str(ar_fl_list));
+<span class="keyword">if</span> (ismember(fl_index, ar_fl_list))
+    fprintf(<span class="string">'fl_index %.2f is in [%s]\n'</span>, fl_index, num2str(ar_fl_list));
+<span class="keyword">else</span>
+    fprintf(<span class="string">'fl_index %.2f is not in [%s]\n'</span>, fl_index, num2str(ar_fl_list));
+<span class="keyword">end</span>
 
-<span class="comment">% Generate Table 1</span>
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
-number1 = <span class="string">'123'</span>;
-number2 = <span class="string">'456'</span>;
-mt_data_a = [ar_fl_abc1' ar_fl_abc2'];
+<span class="comment">% cumulative sum</span>
+a = [1 2 3]
+cumsum(a)
 
-tb_test_a = array2table(mt_data_a);
-cl_col_names_a = {[<span class="string">'col'</span> num2str(number1)], [<span class="string">'col'</span> num2str(number2)]};
-cl_row_names_a = strcat(<span class="string">'rowA='</span>, string((1:size(mt_data_a,1))));
+ar_rand = rand([20,1]);
+cumsum(sort(ar_rand))/sum(ar_rand)
+ar_seq = rand([20,1]);
+cumsum(sort(ar_rand))/sum(ar_rand)
+</pre><pre class="codeoutput">fl_index 1.10 is not in [1  2  3  4  5]
+fl_index 1.10 is not in [1  2  3  4  5]
 
-tb_test_a.Properties.VariableNames = cl_col_names_a;
-tb_test_a.Properties.RowNames = cl_row_names_a;
-disp(tb_test_a);
-</pre><pre class="codeoutput">              col123    col456
-              ______    ______
+a =
 
-    rowA=1      0.4      0.4  
-    rowA=2      0.1      0.1  
-    rowA=3     0.25      0.2  
-    rowA=4      0.3      0.3  
-    rowA=5      0.4      0.4  
+     1     2     3
 
-</pre><h2 id="2">Include Row Names as a Variable</h2><pre class="codeinput"><span class="comment">% a and b must have the same row names</span>
-varrownames = tb_test_a.Properties.RowNames;
-tb_test_a = addvars(tb_test_a, varrownames, <span class="string">'Before'</span>, 1);
 
-disp(tb_test_a);
-</pre><pre class="codeoutput">              varrownames    col123    col456
-              ___________    ______    ______
+ans =
 
-    rowA=1     'rowA=1'        0.4      0.4  
-    rowA=2     'rowA=2'        0.1      0.1  
-    rowA=3     'rowA=3'       0.25      0.2  
-    rowA=4     'rowA=4'        0.3      0.3  
-    rowA=5     'rowA=5'        0.4      0.4  
+     1     3     6
+
+
+ans =
+
+    0.0007
+    0.0183
+    0.0433
+    0.0732
+    0.1033
+    0.1364
+    0.1705
+    0.2082
+    0.2462
+    0.2903
+    0.3390
+    0.3918
+    0.4468
+    0.5023
+    0.5756
+    0.6523
+    0.7347
+    0.8217
+    0.9088
+    1.0000
+
+
+ans =
+
+    0.0007
+    0.0183
+    0.0433
+    0.0732
+    0.1033
+    0.1364
+    0.1705
+    0.2082
+    0.2462
+    0.2903
+    0.3390
+    0.3918
+    0.4468
+    0.5023
+    0.5756
+    0.6523
+    0.7347
+    0.8217
+    0.9088
+    1.0000
 
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% Table: Add Row and Column names to Table and Strings in Table based on Arrays
-% *back to <https://fanwangecon.github.io Fan>'s
-% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
-% Table of Content.*
+% is number in list
+ar_fl_list = [1,2,3,4,5];
+fl_index = 1.1;
+fprintf('fl_index %.2f is not in [%s]\n', fl_index, num2str(ar_fl_list));
+if (ismember(fl_index, ar_fl_list))
+    fprintf('fl_index %.2f is in [%s]\n', fl_index, num2str(ar_fl_list));
+else
+    fprintf('fl_index %.2f is not in [%s]\n', fl_index, num2str(ar_fl_list));
+end
 
-%% Generate Table with Row and Column Names based on Multiple Numeric Array
-% Two numeric arrays describe the column names, combine numeric arrays
-% together to form string array which becomes table variable/column names.
+% cumulative sum
+a = [1 2 3]
+cumsum(a)
 
-close all;
-
-% Generate Table 1
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
-number1 = '123';
-number2 = '456';
-mt_data_a = [ar_fl_abc1' ar_fl_abc2'];
-
-tb_test_a = array2table(mt_data_a);
-cl_col_names_a = {['col' num2str(number1)], ['col' num2str(number2)]};
-cl_row_names_a = strcat('rowA=', string((1:size(mt_data_a,1))));
-
-tb_test_a.Properties.VariableNames = cl_col_names_a;
-tb_test_a.Properties.RowNames = cl_row_names_a;
-disp(tb_test_a);
-
-%% Include Row Names as a Variable
-
-% a and b must have the same row names
-varrownames = tb_test_a.Properties.RowNames;
-tb_test_a = addvars(tb_test_a, varrownames, 'Before', 1);
-
-disp(tb_test_a);
+ar_rand = rand([20,1]);
+cumsum(sort(ar_rand))/sum(ar_rand)
+ar_seq = rand([20,1]);
+cumsum(sort(ar_rand))/sum(ar_rand)
 
 ##### SOURCE END #####
 --></body></html>

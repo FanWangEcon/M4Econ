@@ -27,6 +27,7 @@ cl_params = {st_proj_folder cl_st_subfolder st_file_search_name ...
 %% Parse Parameters
 
 [cl_params{1:length(varargin)}] = varargin{:};
+
 st_proj_folder = cl_params{1};
 cl_st_subfolder = cl_params{2};
 st_file_search_name = cl_params{3};
@@ -48,7 +49,9 @@ cl_st_folder_names = [];
 it_file_ctr = 0;
 
 for st_subfolder = cl_st_subfolder
-    file_wildcard = fullfile(root, user, project, st_subfolder{1}, st_file_search_name);
+    file_wildcard = fullfile(st_proj_folder, st_subfolder{1}, st_file_search_name);
+    disp(file_wildcard);
+    
     sc_files = dir(file_wildcard);
     
     for it_ctr = 1:length(sc_files)
@@ -56,6 +59,8 @@ for st_subfolder = cl_st_subfolder
         
         st_file_name = sc_files(it_ctr).name;
         st_folder_name = sc_files(it_ctr).folder;        
+        disp(st_file_name);
+        disp(st_folder_name);
         
         cl_st_file_names{it_file_ctr} = st_file_name;
         cl_st_folder_names{it_file_ctr} = st_folder_name;

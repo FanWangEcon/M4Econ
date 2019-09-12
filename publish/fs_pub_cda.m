@@ -28,7 +28,7 @@ cl_st_subfolder_test = {'m_az/test/ff_az_ds_vecsv/*/',...
                     
 cl_st_subfolder_test = {'m_fibs/test/ff_ipwkbzr_ds_vecsv/*/'};
                     
-st_file_search_name = '*grid.m';
+st_file_search_name = '*cross.m';
 
 cl_batch_func_inputs =  {st_proj_folder, cl_st_subfolder_test, st_file_search_name};
 
@@ -42,6 +42,17 @@ cl_batch_func_inputs =  {st_proj_folder, cl_st_subfolder_test, st_file_search_na
 
 cl_st_subfolder_test = {'m_abz/test/ff_az_ds_vecsv/test_borr/'};
 st_file_search_name = '*grid.m';
+cl_batch_func_inputs =  {st_proj_folder, cl_st_subfolder_test, st_file_search_name};
+
+%% Publish Specific Files from UW
+
+root = 'c:';
+user = 'Users/fan';
+project = 'TradeHeterSave';
+st_proj_folder = fullfile(root, user, project);
+
+cl_st_subfolder_test = {'matlab/simulation/pe_a_supply/'};
+st_file_search_name = 'supply_curve_*.m';
 cl_batch_func_inputs =  {st_proj_folder, cl_st_subfolder_test, st_file_search_name};
 
 %% Publish Specific Files A

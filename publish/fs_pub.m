@@ -40,9 +40,11 @@ project = 'M4Econ';
 
 subfolder = 'support/string';
 subfolder = 'table';
+subfolder = 'support/*/';
 
 % set up file name
 file_name = '*.m';
+% file_name = '\*\*.m';
 % '\*\*.m';
 
 % add folder to path
@@ -54,7 +56,9 @@ file_wildcard = fullfile(root, user, project, subfolder, file_name);
 sc_files = dir(file_wildcard);
 
 % generate html for each file
-for it_ctr = 1:length(sc_files)
+% must use parfor, otherwise some functions clear all so will have bug,
+% lose it_ctr, lose other after run publish
+parfor it_ctr = 1:length(sc_files)
     
     % get file name and path
     file_name = sc_files(it_ctr).name;

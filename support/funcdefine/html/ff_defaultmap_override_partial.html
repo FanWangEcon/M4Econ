@@ -1,0 +1,188 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ff_defaultmap_override_partial</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-04"><meta name="DC.source" content="ff_defaultmap_override_partial.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">ff_vf_az solves the one asset one shock asset problem</a></li><li><a href="#2">Check Error</a></li><li><a href="#3">Parameters  Defaults</a></li><li><a href="#4">Override</a></li><li><a href="#5">Profiling start</a></li><li><a href="#6">Timing Starts</a></li><li><a href="#7">Loop Solution</a></li><li><a href="#8">Timing Ends</a></li><li><a href="#9">Profiling</a></li><li><a href="#10">Graphing Final</a></li><li><a href="#11">Save Workspace in Mat File</a></li></ul></div><h2 id="1">ff_vf_az solves the one asset one shock asset problem</h2><pre class="codeinput"><span class="keyword">function</span> [mt_val, mt_pol, flag] = ff_az_vf(varargin)
+</pre><h2 id="2">Check Error</h2><pre class="codeinput">params_len = length(varargin);
+<span class="keyword">if</span> params_len &gt; 4
+    error(<span class="string">'ff_az_vf:Can only have 4 container map parameters'</span>);
+<span class="keyword">end</span>
+</pre><h2 id="3">Parameters  Defaults</h2><pre class="codeinput">it_param_set = 1;
+[param_map, support_map] = ffs_az_set_default_param(it_param_set);
+[armt_map, func_map] = ffs_az_get_funcgrid(param_map, support_map, 1); <span class="comment">% 1 for override</span>
+default_params = {param_map support_map armt_map};
+</pre><h2 id="4">Override</h2><p>if varargin only has param_map and support_map,</p><pre class="codeinput">[default_maps{1:params_len}] = varargin{:};
+param_map = [param_map; default_maps{1}];
+support_map = [support_map; default_maps{2}];
+<span class="keyword">if</span> params_len &gt;= 1 &amp;&amp; params_len &lt;= 2
+    <span class="comment">% If override param_map, re-generate armt and func if they are not</span>
+    <span class="comment">% provided</span>
+    [armt_map, func_map] = ffs_az_get_funcgrid(param_map, support_map, 1);
+<span class="keyword">else</span>
+    <span class="comment">% Override all</span>
+    armt_map = [armt_map; default_params{3}];
+    func_map = [func_map; default_params{4}];
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Index exceeds the number of array elements (0).
+
+Error in ff_defaultmap_override_partial (line 19)
+param_map = [param_map; default_maps{1}];
+</pre><h2 id="5">Profiling start</h2><pre class="codeinput">bl_profile = true;
+<span class="keyword">if</span> (bl_profile)
+    close <span class="string">all</span>;
+    profile <span class="string">off</span>;
+    profile <span class="string">on</span>;
+<span class="keyword">end</span>
+</pre><h2 id="6">Timing Starts</h2><pre class="codeinput"><span class="keyword">if</span> (bl_time_vf_okz); tic; <span class="keyword">end</span>
+</pre><h2 id="7">Loop Solution</h2><h2 id="8">Timing Ends</h2><pre class="codeinput"><span class="keyword">if</span> (bl_time_vf_okz); toc; <span class="keyword">end</span>
+</pre><h2 id="9">Profiling</h2><pre class="codeinput"><span class="keyword">if</span> (bl_profile)
+    profile <span class="string">off</span>
+    profile <span class="string">viewer</span>
+    st_profile_file = [<span class="string">'C:/Users/fan/ThaiForInfLuuRobFan/matlab/inf_okz/solve/_profile/vf_okz_interp_p'</span> num2str(it_cm)];
+    profsave(profile(<span class="string">'info'</span>), st_profile_file);
+<span class="keyword">end</span>
+</pre><h2 id="10">Graphing Final</h2><pre class="codeinput"><span class="keyword">if</span> (bl_graph_vf_okz)
+    vf_okz_grh(param_map, support_map, armt_map, mt_val, mt_pol_wkb, mt_pol_kap)
+<span class="keyword">end</span>
+</pre><h2 id="11">Save Workspace in Mat File</h2><pre class="codeinput"><span class="keyword">if</span> (support_map(<span class="string">'bl_save_mat_vfi'</span>))
+    st_file_name = [<span class="string">'vf_'</span> support_map(<span class="string">'st_file_name'</span>)];
+    save(ff_sup_save_prep(support_map(<span class="string">'st_path_folder'</span>), st_file_name));
+<span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ff_vf_az solves the one asset one shock asset problem
+function [mt_val, mt_pol, flag] = ff_az_vf(varargin)
+
+%% Check Error
+params_len = length(varargin);
+if params_len > 4
+    error('ff_az_vf:Can only have 4 container map parameters');
+end
+
+%% Parameters  Defaults
+it_param_set = 1;
+[param_map, support_map] = ffs_az_set_default_param(it_param_set);
+[armt_map, func_map] = ffs_az_get_funcgrid(param_map, support_map, 1); % 1 for override
+default_params = {param_map support_map armt_map};
+
+%% Override
+% if varargin only has param_map and support_map,
+[default_maps{1:params_len}] = varargin{:};
+param_map = [param_map; default_maps{1}];
+support_map = [support_map; default_maps{2}];
+if params_len >= 1 && params_len <= 2
+    % If override param_map, re-generate armt and func if they are not
+    % provided
+    [armt_map, func_map] = ffs_az_get_funcgrid(param_map, support_map, 1);
+else
+    % Override all
+    armt_map = [armt_map; default_params{3}];
+    func_map = [func_map; default_params{4}];
+end
+
+%% Profiling start
+bl_profile = true;
+if (bl_profile)
+    close all;
+    profile off;
+    profile on;
+end
+
+
+%% Timing Starts
+if (bl_time_vf_okz); tic; end
+%% Loop Solution
+
+
+%% Timing Ends
+if (bl_time_vf_okz); toc; end
+
+%% Profiling
+if (bl_profile)
+    profile off
+    profile viewer
+    st_profile_file = ['C:/Users/fan/ThaiForInfLuuRobFan/matlab/inf_okz/solve/_profile/vf_okz_interp_p' num2str(it_cm)];
+    profsave(profile('info'), st_profile_file);
+end
+
+%% Graphing Final
+if (bl_graph_vf_okz)
+    vf_okz_grh(param_map, support_map, armt_map, mt_val, mt_pol_wkb, mt_pol_kap)
+end
+
+%% Save Workspace in Mat File
+if (support_map('bl_save_mat_vfi'))
+    st_file_name = ['vf_' support_map('st_file_name')];
+    save(ff_sup_save_prep(support_map('st_path_folder'), st_file_name));
+end
+
+
+end
+
+##### SOURCE END #####
+--></body></html>

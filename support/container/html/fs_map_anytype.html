@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Container Map: Basics of Container Map</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-07-16"><meta name="DC.source" content="fs_map_anytype.m"><style type="text/css">
+      --><title>Container Map: Genereate Container Maps</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-04"><meta name="DC.source" content="fs_map_anytype.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,7 +66,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Container Map: Basics of Container Map</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab Codes</a> Table of Content.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generate a Container map with any time of data</a></li><li><a href="#2">Access Multiple Values of a container map</a></li></ul></div><h2 id="1">Generate a Container map with any time of data</h2><p>Create a container map with float, int, string, and matrix</p><pre class="codeinput">close <span class="string">all</span>;
+  </style></head><body><div class="content"><h1>Container Map: Genereate Container Maps</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/M4Econ/">Reusable Matlab Codes</a> Table of Content.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generate a Container map with any time of data</a></li><li><a href="#2">Access Multiple Values of a container map</a></li></ul></div><h2 id="1">Generate a Container map with any time of data</h2><p>Create a container map with float, int, string, and matrix</p><pre class="codeinput">close <span class="string">all</span>;
 clear <span class="string">all</span>;
 
 <span class="comment">% Create A Map with String Keys and any values</span>
@@ -80,16 +80,16 @@ param_map.values
 </pre><pre class="codeoutput">
 ans =
 
-  1&times;4 cell array
+  1x4 cell array
 
     {'equi_P_j'}    {'equi_r_j'}    {'equi_w_j'}    {'share_unbanked_j'}
 
 
 ans =
 
-  1&times;4 cell array
+  1x4 cell array
 
-    {2&times;3 double}    {[2]}    {'abc'}    {[12]}
+    {2x3 double}    {[2]}    {'abc'}    {[12]}
 
 </pre><h2 id="2">Access Multiple Values of a container map</h2><p>Values been accessed need to be of the same type</p><pre class="codeinput"><span class="comment">% Parameter Dealing from Map</span>
 params_group = values(param_map, {<span class="string">'share_unbanked_j'</span>, <span class="string">'equi_r_j'</span>});
@@ -114,7 +114,7 @@ ans =
 
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% Container Map: Basics of Container Map
+%% Container Map: Genereate Container Maps
 % *back to <https://fanwangecon.github.io Fan>'s
 % <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
 % Table of Content.*

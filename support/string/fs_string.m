@@ -47,6 +47,13 @@ st_var_name = [char(st_var_name) ' percentile values']
 st_var_name = 'abc'
 st_var_name = [char(st_var_name) ' percentile values']
 
+%% String Join dash
+% using char() is safe
+
+st_var_name = "abc"
+st_var_name = [st_var_name 'efg']
+strjoin(st_var_name, "_")
+
 %% Numeric Array to String without Space
 % String replace
 

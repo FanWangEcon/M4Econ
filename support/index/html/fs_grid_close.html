@@ -1,0 +1,268 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>fs_grid_close</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-04"><meta name="DC.source" content="fs_grid_close.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Find Value just below or above each element of ar_a from ar_grid.</a></li><li><a href="#2">Step by Step</a></li><li><a href="#3">Single Lin</a></li></ul></div><h2 id="1">Find Value just below or above each element of ar_a from ar_grid.</h2><p>a vector of grid points, find for each element of ar_a the element of ar_grid that is just above or just below.</p><div><ol><li><b>ar_a</b> should be a sorted negative array</li><li><b>ar_grid</b> sorts from lowest to highest, negative array of grid points</li></ol></div><pre class="codeinput"><span class="comment">% a sorted array of say asset</span>
+ar_a = -sort(rand([10,1])*13)
+<span class="comment">% each point on ar_a, what is element of ar_grid that is just below and above</span>
+ar_grid = [-10, -7, -5, -4, -3, -2, -1, -0]
+</pre><pre class="codeoutput">
+ar_a =
+
+   -1.2831
+   -4.1901
+   -5.5860
+   -7.5404
+   -7.7528
+  -11.1264
+  -11.9849
+  -12.6821
+  -12.8740
+  -12.8962
+
+
+ar_grid =
+
+   -10    -7    -5    -4    -3    -2    -1     0
+
+</pre><h2 id="2">Step by Step</h2><p>all combination division</p><pre class="codeinput">mt_a_dvd_grid = (ar_a./ar_grid)
+
+<span class="comment">% ceiling for each</span>
+(mt_a_dvd_grid &gt;= 1)
+
+<span class="comment">% If ceiling exists and cloest ceiling index</span>
+<span class="comment">% min_{j}( ar_grid[j] - ar_a[i] | ar_grid[j] &gt; ar_a[i])</span>
+[~, ar_max_a_on_grid_idx] = max((mt_a_dvd_grid &gt;= 1),[], 2)
+
+<span class="comment">% ar_grid[argmin_{j}( ar_grid[j] - ar_a[i] | ar_grid[j] &gt; ar_a[i])]</span>
+ar_a_grid_ceil = ar_grid(ar_max_a_on_grid_idx)
+<span class="comment">% ar_a_grid_ceil(ar_max_a_on_grid_idx == 1) = ar_grid(0)</span>
+
+<span class="comment">% now floor, just one index less</span>
+ar_a_grid_floor = ar_grid(max(ar_max_a_on_grid_idx - 1, 1))
+<span class="comment">% ar_a_grid_floor(ar_max_a_on_grid_idx == 1) =</span>
+
+<span class="comment">% ar_a along with points from formal grid that is just higher or just lower</span>
+[ar_a ar_a_grid_floor' ar_a_grid_ceil']
+</pre><pre class="codeoutput">
+mt_a_dvd_grid =
+
+  Columns 1 through 7
+
+    0.1283    0.1833    0.2566    0.3208    0.4277    0.6416    1.2831
+    0.4190    0.5986    0.8380    1.0475    1.3967    2.0950    4.1901
+    0.5586    0.7980    1.1172    1.3965    1.8620    2.7930    5.5860
+    0.7540    1.0772    1.5081    1.8851    2.5135    3.7702    7.5404
+    0.7753    1.1075    1.5506    1.9382    2.5843    3.8764    7.7528
+    1.1126    1.5895    2.2253    2.7816    3.7088    5.5632   11.1264
+    1.1985    1.7121    2.3970    2.9962    3.9950    5.9925   11.9849
+    1.2682    1.8117    2.5364    3.1705    4.2274    6.3410   12.6821
+    1.2874    1.8391    2.5748    3.2185    4.2913    6.4370   12.8740
+    1.2896    1.8423    2.5792    3.2240    4.2987    6.4481   12.8962
+
+  Column 8
+
+       Inf
+       Inf
+       Inf
+       Inf
+       Inf
+       Inf
+       Inf
+       Inf
+       Inf
+       Inf
+
+
+ans =
+
+  10x8 logical array
+
+   0   0   0   0   0   0   1   1
+   0   0   0   1   1   1   1   1
+   0   0   1   1   1   1   1   1
+   0   1   1   1   1   1   1   1
+   0   1   1   1   1   1   1   1
+   1   1   1   1   1   1   1   1
+   1   1   1   1   1   1   1   1
+   1   1   1   1   1   1   1   1
+   1   1   1   1   1   1   1   1
+   1   1   1   1   1   1   1   1
+
+
+ar_max_a_on_grid_idx =
+
+     7
+     4
+     3
+     2
+     2
+     1
+     1
+     1
+     1
+     1
+
+
+ar_a_grid_ceil =
+
+    -1    -4    -5    -7    -7   -10   -10   -10   -10   -10
+
+
+ar_a_grid_floor =
+
+    -2    -5    -7   -10   -10   -10   -10   -10   -10   -10
+
+
+ans =
+
+   -1.2831   -2.0000   -1.0000
+   -4.1901   -5.0000   -4.0000
+   -5.5860   -7.0000   -5.0000
+   -7.5404  -10.0000   -7.0000
+   -7.7528  -10.0000   -7.0000
+  -11.1264  -10.0000  -10.0000
+  -11.9849  -10.0000  -10.0000
+  -12.6821  -10.0000  -10.0000
+  -12.8740  -10.0000  -10.0000
+  -12.8962  -10.0000  -10.0000
+
+</pre><h2 id="3">Single Lin</h2><pre class="codeinput"><span class="comment">% Get Index</span>
+[~, ar_max_a_on_grid_idx] = max(((ar_a./ar_grid) &gt;= 1),[], 2);
+
+<span class="comment">% Get value</span>
+ar_a_grid_ceil = ar_grid(ar_max_a_on_grid_idx);
+ar_a_grid_floor = ar_grid(max(ar_max_a_on_grid_idx - 1, 1));
+
+<span class="comment">% Display</span>
+[ar_a ar_a_grid_floor' ar_a_grid_ceil']
+</pre><pre class="codeoutput">
+ans =
+
+   -1.2831   -2.0000   -1.0000
+   -4.1901   -5.0000   -4.0000
+   -5.5860   -7.0000   -5.0000
+   -7.5404  -10.0000   -7.0000
+   -7.7528  -10.0000   -7.0000
+  -11.1264  -10.0000  -10.0000
+  -11.9849  -10.0000  -10.0000
+  -12.6821  -10.0000  -10.0000
+  -12.8740  -10.0000  -10.0000
+  -12.8962  -10.0000  -10.0000
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Find Value just below or above each element of ar_a from ar_grid.
+% a vector of grid points, find for each element of ar_a the element of
+% ar_grid that is just above or just below.
+%
+% # *ar_a* should be a sorted negative array
+% # *ar_grid* sorts from lowest to highest, negative array of grid points
+%
+
+% a sorted array of say asset
+ar_a = -sort(rand([10,1])*13)
+% each point on ar_a, what is element of ar_grid that is just below and above
+ar_grid = [-10, -7, -5, -4, -3, -2, -1, -0]
+
+
+%% Step by Step
+% all combination division
+mt_a_dvd_grid = (ar_a./ar_grid)
+
+% ceiling for each
+(mt_a_dvd_grid >= 1)
+
+% If ceiling exists and cloest ceiling index
+% min_{j}( ar_grid[j] - ar_a[i] | ar_grid[j] > ar_a[i])
+[~, ar_max_a_on_grid_idx] = max((mt_a_dvd_grid >= 1),[], 2)
+
+% ar_grid[argmin_{j}( ar_grid[j] - ar_a[i] | ar_grid[j] > ar_a[i])]
+ar_a_grid_ceil = ar_grid(ar_max_a_on_grid_idx)
+% ar_a_grid_ceil(ar_max_a_on_grid_idx == 1) = ar_grid(0)
+
+% now floor, just one index less
+ar_a_grid_floor = ar_grid(max(ar_max_a_on_grid_idx - 1, 1))
+% ar_a_grid_floor(ar_max_a_on_grid_idx == 1) =
+
+% ar_a along with points from formal grid that is just higher or just lower
+[ar_a ar_a_grid_floor' ar_a_grid_ceil']
+
+%% Single Lin
+
+% Get Index
+[~, ar_max_a_on_grid_idx] = max(((ar_a./ar_grid) >= 1),[], 2);
+
+% Get value
+ar_a_grid_ceil = ar_grid(ar_max_a_on_grid_idx);
+ar_a_grid_floor = ar_grid(max(ar_max_a_on_grid_idx - 1, 1));
+
+% Display
+[ar_a ar_a_grid_floor' ar_a_grid_ceil']
+
+##### SOURCE END #####
+--></body></html>

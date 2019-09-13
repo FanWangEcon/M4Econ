@@ -3,9 +3,9 @@ This is a work-in-progress [website](https://fanwangecon.github.io/M4Econ/) of s
 Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
 <!-- 1. [Linspace + Logspace Asset Grid](asset/grid/ff_grid_loglin.html): [**mlx**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.mlx) \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.m) \|  [**html**](asset/grid/ff_grid_loglin.html) \| [**pdf**](asset/grid/ff_grid_loglin.pdf) -->
 
-# 2. Matlab Programming Practices
+# 1. Matlab Programming Practices
 
-## 2.1 Default Parameters
+## 1.1 Default Parameters
 
 Default parameters allow for maintaining code testability. The varargin structure could lead to excessive code lines. Container Map works well.
 
@@ -16,7 +16,7 @@ Default parameters allow for maintaining code testability. The varargin structur
     - core model functions with potentially many parameters, preferred
     - *function [out_put] = func_name(varargin); cm_defaults = {cm_a, cm_b}; [cm_defaults{1:optional_params_len}] = varargin{:}; cm_c = [cm_a;cm_b]*
 
-## 2.2 Container Maps
+## 1.2 Container Maps
 
 Use this structure for carrying parameters and input arrays. By using container maps, if parameters are added to model, code editing is limited to actual location where parameter is used and initial location of definition.
 
@@ -27,21 +27,21 @@ Use this structure for carrying parameters and input arrays. By using container 
     - container b overrides container a if keys exist in both
     - *cm_c = [cm_a;cm_b]*
 
-# 3. Graphs and Tables
+# 2. Graphs and Tables
 
-## 3.1 Basic Graphing
+## 2.1 Basic Graphing
 
 1. [3 Var Line Color, 2D-X 2D-Y and 1D-Color](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html): [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.ipynb) \| mlx \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html) \| pdf
     - 2d matrix for x and y, column vector value for color spectrum
     - *plot(2d, 2d) + jet + set(chart(m), 'Color', clr)*
 
-## 3.2 Main Graphing
+## 2.2 Main Graphing
 
 1. [Z(X,Y): Z = y-axis, X = x-axis, Y = color](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/fsi_graph_grid.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html) \| pdf
     - 3 dimensional graph on 2D with, scatter and line joint
     - *scatter + plot + (HandleVisibility, linspecer Color)*
 
-## 3.3 Basic Tables
+## 2.3 Basic Tables
 
 1. [Add Columns to Table](https://fanwangecon.github.io/M4Econ/table/ff_mat2tab.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/table/ff_mat2tab.m) \|  html \| pdf
     + *call*: ff_mat2tab(mt_data, ar_st_colnames)
@@ -50,9 +50,9 @@ Use this structure for carrying parameters and input arrays. By using container 
     + *call*: ff_sup_save_prep(st_path_folder, st_file_name, bl_exp_csv, mt_data, ar_st_colnames); *dependency*: ff_mat2tab
     + **core**: *mkdir, csvwrite, save*
 
-# 1 Speed Improvements
+# 3 Speed Improvements
 
-## 1.1 Interpolation
+## 3.1 Interpolation
 
 1. [Rational Exponent: Interpolation over Utility of Consumption](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_main.html): u(c) where u evaluation involves rational exponentiation, pre-calculate and interpolate
     - Interpolate function testing: [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_main.ipynb) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_main.html)
@@ -60,7 +60,7 @@ Use this structure for carrying parameters and input arrays. By using container 
     - Direct evaluation and interpolate speed comparison:  [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.m) \| [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.ipynb) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_test.html)
         + **core**: *interp1, griddedInterpolant, nearest vs linear vs spline*
 
-## 1.2 Matrix and Index
+## 3.2 Matrix and Index
 
 1. [Cell Array Store u(c) to Avoid Duplicate Computation over Iteration](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html): u(c) across iterations often shares many common values
     - Cell matrix part update function testing: [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/fs_u_c_partrepeat_main.ipynb) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html)

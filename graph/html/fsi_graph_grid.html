@@ -1,0 +1,332 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Grid based Graph, x-axis one param, color another param, over outcomes</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-13"><meta name="DC.source" content="fsi_graph_grid.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Grid based Graph, x-axis one param, color another param, over outcomes</h1><!--introduction--><p><b>back to <a href="https://fanwangecon.github.io">Fan</a>'s <a href="https://fanwangecon.github.io/CodeDynaAsset/">Dynamic Assets Repository</a> Table of Content.</b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">FSI_GRAPH_GRID genereate 4 graphs</a></li><li><a href="#3">Default</a></li><li><a href="#4">Default Map</a></li><li><a href="#5">Override</a></li><li><a href="#6">Parse</a></li><li><a href="#7">Generaet Graph</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> fsi_graph_grid(varargin)
+</pre><h2 id="2">FSI_GRAPH_GRID genereate 4 graphs</h2><p>Generates graph where the x-axis is some parameter, y some outcome, and color another parameter</p><p>@param ar_color_grid array 1 by N, corresponding to the different colors, this could be fixed cost, one color a different fixed costs</p><p>@param ar_x_grid array 1 by M, corresponding to the different colors, this could be fixed cost, one color a different fixed costs</p><p>@param mt_outcome matrix N by M matrix, each row is a different color, each column matches up to the x-axis vector. Each column could be a different amin and each row a different fixed cost.</p><h2 id="3">Default</h2><pre class="codeinput"><span class="keyword">if</span> (~isempty(varargin))
+
+    <span class="comment">% if invoked from outside overrid fully</span>
+    [ar_color_grid, ar_x_grid, mt_outcome, grh_sup_map] = varargin{:};
+
+<span class="keyword">else</span>
+    clear <span class="string">all</span>;
+    close <span class="string">all</span>;
+
+    <span class="comment">% internal invoke for testing</span>
+    ar_color_grid = linspace(1,10,6);
+    ar_x_grid = linspace(-4,11,10);
+    rng(123);
+    mt_outcome = rand([length(ar_color_grid), length(ar_x_grid)]);
+
+    grh_sup_map = containers.Map(<span class="string">'KeyType'</span>,<span class="string">'char'</span>, <span class="string">'ValueType'</span>,<span class="string">'any'</span>);
+
+<span class="keyword">end</span>
+</pre><h2 id="4">Default Map</h2><pre class="codeinput">crra = 1;
+ar1_z = 0.90;
+stderr_z = 0.40;
+sunkc = 0.40;
+amin = 0.10;
+st_savefric_param = <span class="string">'fixed costs'</span>;
+st_pref_shock = [<span class="string">'crra = '</span> num2str(crra, <span class="string">'%3.2f'</span>) <span class="string">', shock persistence = '</span> num2str(ar1_z, <span class="string">'%3.2f'</span>)  <span class="string">', shock s.d. = '</span> num2str(stderr_z, <span class="string">'%3.2f'</span>)];
+st_costs = [<span class="string">'other savings frictions: sunk-cost = '</span> num2str(sunkc, <span class="string">'%4.3f'</span>) <span class="string">', amin = '</span> num2str(amin, <span class="string">'%4.3f'</span>)];
+st_graph_title = {[<span class="string">'Supply Curve of Credit With Varying '</span> st_savefric_param] <span class="keyword">...</span>
+                  [st_pref_shock] <span class="keyword">...</span>
+                  [st_costs]};
+
+st_ytitle = <span class="string">'Aggregate Supply of Savings'</span>;
+st_xtitle = <span class="string">'Savings Interest Rate'</span>;
+
+grh_sup_map_default = containers.Map(<span class="string">'KeyType'</span>,<span class="string">'char'</span>, <span class="string">'ValueType'</span>,<span class="string">'any'</span>);
+grh_sup_map_default(<span class="string">'st_ytitle'</span>) = st_ytitle;
+grh_sup_map_default(<span class="string">'st_xtitle'</span>) = st_xtitle;
+grh_sup_map_default(<span class="string">'st_graph_title'</span>) = st_graph_title;
+grh_sup_map_default(<span class="string">'st_legend_loc'</span>) = <span class="string">'southeast'</span>;
+grh_sup_map_default(<span class="string">'bl_graph_logy'</span>) = true;
+</pre><h2 id="5">Override</h2><pre class="codeinput">grh_sup_map = [grh_sup_map_default ; grh_sup_map];
+</pre><h2 id="6">Parse</h2><pre class="codeinput">params_group = values(grh_sup_map, {<span class="string">'st_legend_loc'</span>, <span class="string">'bl_graph_logy'</span>});
+[st_legend_loc, bl_graph_logy] = params_group{:};
+</pre><h2 id="7">Generaet Graph</h2><pre class="codeinput"><span class="keyword">if</span> (bl_graph_logy)
+    ar_it_plot = [1,2];
+<span class="keyword">else</span>
+    ar_it_plot = [1];
+<span class="keyword">end</span>
+
+<span class="keyword">for</span> it_plot = ar_it_plot
+
+    figure(<span class="string">'PaperPosition'</span>, [0 0 7 4]);
+    hold <span class="string">on</span>;
+
+    it_graph_counter = 0;
+    cl_legend_mesh = [];
+    cl_scatter_shapes = {<span class="string">'s'</span>,<span class="string">'x'</span>,<span class="string">'o'</span>,<span class="string">'d'</span>,<span class="string">'p'</span>,<span class="string">'*'</span>};
+<span class="comment">%             ar_fl_clr = jet(length(param_grid));</span>
+    ar_fl_clr = linspecer(length(ar_color_grid), <span class="string">'sequential'</span>);
+    <span class="keyword">for</span> it_color = 1:length(ar_color_grid)
+
+        fl_savefric_param = ar_color_grid(it_color);
+        fl_fc = ar_color_grid(it_color);
+
+        it_graph_counter = it_graph_counter + 1;
+        ar_color = ar_fl_clr(it_color,:);
+
+        <span class="comment">% Access Y Values</span>
+        ar_y = mt_outcome(it_color,:);
+        <span class="keyword">if</span> (it_plot == 1)
+            ar_y = ar_y;
+        <span class="keyword">elseif</span> (it_plot == 2)
+            ar_y = log(ar_y+1);
+        <span class="keyword">end</span>
+
+        <span class="comment">% Access X Values</span>
+        it_csize = 100;
+        <span class="keyword">if</span> (it_color &lt;= length(cl_scatter_shapes))
+            st_shape = cl_scatter_shapes{it_color};
+        <span class="keyword">else</span>
+            st_shape = <span class="string">'x'</span>;
+        <span class="keyword">end</span>
+
+        scatter(ar_x_grid', ar_y', it_csize, ar_color, st_shape, <span class="string">'MarkerFaceAlpha'</span>, 1.0, <span class="string">'MarkerEdgeAlpha'</span>, 1.0);
+
+        line = plot(ar_x_grid, ar_y);
+        line.HandleVisibility = <span class="string">'off'</span>;
+        line.Color = ar_color;
+        line.LineStyle = <span class="string">'-'</span>;
+        line.HandleVisibility = <span class="string">'off'</span>;
+        line.LineWidth = 2;
+
+        cl_legend_mesh{it_graph_counter} = [st_savefric_param,<span class="string">':'</span>, num2str(fl_savefric_param)];
+
+    <span class="keyword">end</span>
+
+    <span class="comment">% Titling and Legends</span>
+    title(st_graph_title);
+    <span class="keyword">if</span> (it_plot == 1)
+        ylabel([st_ytitle]);
+    <span class="keyword">else</span>
+        ylabel([<span class="string">'LOG('</span> st_ytitle <span class="string">' +1)'</span>]);
+    <span class="keyword">end</span>
+    xlabel(st_xtitle);
+    legend(cl_legend_mesh, <span class="string">'Location'</span>, st_legend_loc);
+    grid <span class="string">on</span>;
+    grid <span class="string">minor</span>;
+
+    snapnow;
+
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="fsi_graph_grid_01.png" alt=""> <img vspace="5" hspace="5" src="fsi_graph_grid_02.png" alt=""> <pre class="codeinput"><span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Grid based Graph, x-axis one param, color another param, over outcomes
+% *back to <https://fanwangecon.github.io Fan>'s
+% <https://fanwangecon.github.io/CodeDynaAsset/ Dynamic Assets Repository>
+% Table of Content.*
+
+%%
+function fsi_graph_grid(varargin)
+%% FSI_GRAPH_GRID genereate 4 graphs
+% Generates graph where the x-axis is some parameter, y some outcome, and
+% color another parameter
+%
+% @param ar_color_grid array 1 by N, corresponding to the different colors,
+% this could be fixed cost, one color a different fixed costs
+%
+% @param ar_x_grid array 1 by M, corresponding to the different colors,
+% this could be fixed cost, one color a different fixed costs
+%
+% @param mt_outcome matrix N by M matrix, each row is a different color,
+% each column matches up to the x-axis vector. Each column could be a
+% different amin and each row a different fixed cost. 
+%
+
+%% Default
+
+if (~isempty(varargin))
+    
+    % if invoked from outside overrid fully
+    [ar_color_grid, ar_x_grid, mt_outcome, grh_sup_map] = varargin{:};
+    
+else
+    clear all;
+    close all;
+
+    % internal invoke for testing
+    ar_color_grid = linspace(1,10,6);
+    ar_x_grid = linspace(-4,11,10);
+    rng(123);
+    mt_outcome = rand([length(ar_color_grid), length(ar_x_grid)]);
+   
+    grh_sup_map = containers.Map('KeyType','char', 'ValueType','any');
+    
+end
+
+%% Default Map
+
+crra = 1;
+ar1_z = 0.90;
+stderr_z = 0.40;
+sunkc = 0.40;
+amin = 0.10;
+st_savefric_param = 'fixed costs';
+st_pref_shock = ['crra = ' num2str(crra, '%3.2f') ', shock persistence = ' num2str(ar1_z, '%3.2f')  ', shock s.d. = ' num2str(stderr_z, '%3.2f')];
+st_costs = ['other savings frictions: sunk-cost = ' num2str(sunkc, '%4.3f') ', amin = ' num2str(amin, '%4.3f')];
+st_graph_title = {['Supply Curve of Credit With Varying ' st_savefric_param] ...
+                  [st_pref_shock] ...
+                  [st_costs]};
+
+st_ytitle = 'Aggregate Supply of Savings';
+st_xtitle = 'Savings Interest Rate';
+
+grh_sup_map_default = containers.Map('KeyType','char', 'ValueType','any');
+grh_sup_map_default('st_ytitle') = st_ytitle;
+grh_sup_map_default('st_xtitle') = st_xtitle;
+grh_sup_map_default('st_graph_title') = st_graph_title;
+grh_sup_map_default('st_legend_loc') = 'southeast';
+grh_sup_map_default('bl_graph_logy') = true;
+
+%% Override
+
+grh_sup_map = [grh_sup_map_default ; grh_sup_map];
+
+%% Parse
+
+params_group = values(grh_sup_map, {'st_legend_loc', 'bl_graph_logy'});
+[st_legend_loc, bl_graph_logy] = params_group{:};
+
+%% Generaet Graph
+
+if (bl_graph_logy)
+    ar_it_plot = [1,2];
+else
+    ar_it_plot = [1];
+end
+   
+for it_plot = ar_it_plot
+
+    figure('PaperPosition', [0 0 7 4]);
+    hold on;
+
+    it_graph_counter = 0;
+    cl_legend_mesh = [];
+    cl_scatter_shapes = {'s','x','o','d','p','*'};            
+%             ar_fl_clr = jet(length(param_grid));
+    ar_fl_clr = linspecer(length(ar_color_grid), 'sequential');
+    for it_color = 1:length(ar_color_grid)
+
+        fl_savefric_param = ar_color_grid(it_color);
+        fl_fc = ar_color_grid(it_color);
+
+        it_graph_counter = it_graph_counter + 1;
+        ar_color = ar_fl_clr(it_color,:);
+
+        % Access Y Values
+        ar_y = mt_outcome(it_color,:);
+        if (it_plot == 1)
+            ar_y = ar_y;
+        elseif (it_plot == 2)
+            ar_y = log(ar_y+1);
+        end
+
+        % Access X Values
+        it_csize = 100;
+        if (it_color <= length(cl_scatter_shapes))
+            st_shape = cl_scatter_shapes{it_color};
+        else
+            st_shape = 'x';
+        end
+
+        scatter(ar_x_grid', ar_y', it_csize, ar_color, st_shape, 'MarkerFaceAlpha', 1.0, 'MarkerEdgeAlpha', 1.0);
+
+        line = plot(ar_x_grid, ar_y);
+        line.HandleVisibility = 'off';
+        line.Color = ar_color;
+        line.LineStyle = '-';
+        line.HandleVisibility = 'off';
+        line.LineWidth = 2;
+
+        cl_legend_mesh{it_graph_counter} = [st_savefric_param,':', num2str(fl_savefric_param)];
+
+    end
+
+    % Titling and Legends
+    title(st_graph_title);
+    if (it_plot == 1)            
+        ylabel([st_ytitle]);
+    else
+        ylabel(['LOG(' st_ytitle ' +1)']);
+    end
+    xlabel(st_xtitle);
+    legend(cl_legend_mesh, 'Location', st_legend_loc);            
+    grid on;
+    grid minor;
+
+    snapnow;
+    
+end
+
+end
+##### SOURCE END #####
+--></body></html>

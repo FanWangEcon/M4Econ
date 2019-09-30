@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019a"><title>Container Map Example Overriding</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Container Map Example Overriding</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to</span><span style=' font-weight: bold;'> </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s</span><span style=' font-weight: bold;'> </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Reusable Matlab</span></a><span style=' font-weight: bold;'> Repository or</span><span style=' font-weight: bold;'> </span><a href = "https://fanwangecon.github.io/CodeDynaAsset/"><span style=' font-weight: bold;'>Dynamic Asset</span></a><span style=' font-weight: bold;'> Repository.</span></div><h2  class = 'S2'><span>Update Container Map</span></h2><div  class = 'S1'><span>There is one map with values, Container Map A. There is another container Map, Container Map B. Container Maps A and B share keys. For keys that exist in B and A, B Key value supercede values for the same keys in A. For new keys in B, they superced keys in A. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>param_map_a = containers.Map(</span><span style="color: rgb(160, 32, 240);">'KeyType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'char'</span><span>, </span><span style="color: rgb(160, 32, 240);">'ValueType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_a(</span><span style="color: rgb(160, 32, 240);">'fl_b_bd'</span><span>) = -3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_a(</span><span style="color: rgb(160, 32, 240);">'fl_w_max'</span><span>) = 50;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_a(</span><span style="color: rgb(160, 32, 240);">'fl_kp_min'</span><span>) = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_a(</span><span style="color: rgb(160, 32, 240);">'it_w_i'</span><span>) = 100;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_b = containers.Map(</span><span style="color: rgb(160, 32, 240);">'KeyType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'char'</span><span>, </span><span style="color: rgb(160, 32, 240);">'ValueType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_b(</span><span style="color: rgb(160, 32, 240);">'fl_w_max'</span><span>) = 77;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_b(</span><span style="color: rgb(160, 32, 240);">'fl_kp_min'</span><span>) = -231;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_b(</span><span style="color: rgb(160, 32, 240);">'it_z_n'</span><span>) = 5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_b(</span><span style="color: rgb(160, 32, 240);">'fl_z_mu'</span><span>) = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_c = [param_map_a; param_map_b];</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>param_map_c.keys</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement scrollableOutput" uid="AEEB8E72" data-testid="output_0" data-width="430" data-height="35" data-hashorizontaloverflow="true" style="width: 460px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">1×6 cell array</span></span></div><div>    {'fl_b_bd'}    {'fl_kp_min'}    {'fl_w_max'}    {'fl_z_mu'}    {'it_w_i'}    {'it_z_n'}
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>param_map_c.values</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="6914A20C" data-testid="output_1" data-width="430" data-height="35" data-hashorizontaloverflow="false" style="width: 460px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">1×6 cell array</span></span></div><div>    {[-3]}    {[-231]}    {[77]}    {[0]}    {[100]}    {[5]}
+</div></div></div></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Container Map Example Overriding
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/ 
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/ 
+% *Dynamic Asset*>* Repository.*
+%% Update Container Map
+% There is one map with values, Container Map A. There is another container 
+% Map, Container Map B. Container Maps A and B share keys. For keys that exist 
+% in B and A, B Key value supercede values for the same keys in A. For new keys 
+% in B, they superced keys in A. 
+
+param_map_a = containers.Map('KeyType','char', 'ValueType','any');
+param_map_a('fl_b_bd') = -3;
+param_map_a('fl_w_max') = 50;
+param_map_a('fl_kp_min') = 0;
+param_map_a('it_w_i') = 100;
+
+param_map_b = containers.Map('KeyType','char', 'ValueType','any');
+param_map_b('fl_w_max') = 77;
+param_map_b('fl_kp_min') = -231;
+param_map_b('it_z_n') = 5;
+param_map_b('fl_z_mu') = 0;
+
+param_map_c = [param_map_a; param_map_b];
+param_map_c.keys
+param_map_c.values
+##### SOURCE END #####
+--></body></html>

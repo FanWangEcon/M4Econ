@@ -3,3 +3,4 @@ title: Project Reusable Matlab Codes
 google_analytics: UA-92953468-6
 plugins:
   - jekyll-sitemap
+  - jekyll-seo-tag

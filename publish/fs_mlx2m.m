@@ -15,10 +15,14 @@ matlab.internal.liveeditor.openAndConvert(st_mlx_file, st_m_file)
 root = 'c:';
 user = 'Users/fan';
 project = 'Math4Econ';
+project = 'M4Econ';
 st_proj_folder = fullfile(root, user, project);
 
 cl_st_subfolder = {'calconevar/', 'derivative/', 'derivative_application/'};
-cl_st_subfolder = {'derivative_application/'};
+cl_st_subfolder = {'matrix_basics/'};
+cl_st_subfolder = {'graph/export/'};
+cl_st_subfolder = {'support/array/', 'support/string/', 'support/cells/', 'support/container/'};
+cl_st_subfolder = {'support/container/'};
 
 st_file_name_mlx = '*.mlx';
 st_pub_format = 'html';

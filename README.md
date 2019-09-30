@@ -3,6 +3,37 @@ This is a work-in-progress [website](https://fanwangecon.github.io/M4Econ/) of s
 Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
 <!-- 1. [Linspace + Logspace Asset Grid](asset/grid/ff_grid_loglin.html): [**mlx**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.mlx) \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.m) \|  [**html**](asset/grid/ff_grid_loglin.html) \| [**pdf**](asset/grid/ff_grid_loglin.pdf) -->
 
+# 1. Matlab Basics
+
+## 1.1 Numeric Array Manipulations
+
+1. [Accumarray Examples](https://fanwangecon.github.io/M4Econ/support/array/fs_accumarray.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_accumarray_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_accumarray.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_accumarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_accumarray.html)
+    - eps graphs are essential for clear images in pdf
+    - eps = vector graphics, avoid bitmap (jpg, png), use vector graphics
+    - **m**: *unique, reshape, accumarray*
+2. [Array Broadcasting Examples](https://fanwangecon.github.io/M4Econ/support/array/fs_broadcast_expand.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_broadcast_expand.html)
+    - broadcast means: array + array' + matrix = matrix
+3. [Array Permutation](https://fanwangecon.github.io/M4Econ/support/array/fs_combi_permu.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_combi_permu.html)
+    - all permutations of arrays
+    - **m**: *ndgrid, cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))*
+4. [Imaginary Elements of Array](https://fanwangecon.github.io/M4Econ/support/array/fs_img.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_img_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_img.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_img.html)
+    - find imaginary elements of array
+    - **m**: *imag*
+5. [Array Reshaping](https://fanwangecon.github.io/M4Econ/support/array/fs_reshape.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_reshape.html)
+    - reshape and flatten arrays
+    - **m**: *reshape*
+6. [Array Subset Slicing](https://fanwangecon.github.io/M4Econ/support/array/fs_slicing.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_slicing.html)
+    - anonymous function to slice array subsets
+    - **m**: *f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1)) times (it_ar_n-1)+1));*
+
+
+
+## 1.2 Cell Array Manipulations
+
+## 1.3 String Array Manipulations
+
+
+
 # 1. Matlab Programming Practices
 
 ## 1.1 Default Parameters
@@ -11,10 +42,10 @@ Default parameters allow for maintaining code testability. The varargin structur
 
 1. [Multi-type Varargin Structure](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_varargin.m)
     - use for functions with limited parameters
-    - *function [out_put] = func_name(varargin), cell2mat*
+    - **m**: *function [out_put] = func_name(varargin), cell2mat*
 2. [Container Map Structure](https://fanwangecon.github.io/M4Econ/support/funcdefine/ff_defaultmap_test.html): ipynb \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/funcdefine/ff_defaultmap_test.html) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/funcdefine/ff_defaultmap_test.pdf)
     - core model functions with potentially many parameters, preferred
-    - *function [out_put] = func_name(varargin); cm_defaults = {cm_a, cm_b}; [cm_defaults{1:optional_params_len}] = varargin{:}; cm_c = [cm_a;cm_b]*
+    - **m**: *function [out_put] = func_name(varargin); cm_defaults = {cm_a, cm_b}; [cm_defaults{1:optional_params_len}] = varargin{:}; cm_c = [cm_a;cm_b]*
 
 ## 1.2 Container Maps
 
@@ -22,26 +53,30 @@ Use this structure for carrying parameters and input arrays. By using container 
 
 1. [Any Type Container Maps](support/dtype/map_anytype.m):
     - cells, arrays, floats in the same map
-    - *containers.Map('KeyType','char', 'ValueType','any')*
+    - **m**: *containers.Map('KeyType','char', 'ValueType','any')*
 2. [Combining Container Maps](support/dtype/map_override.m)
     - container b overrides container a if keys exist in both
-    - *cm_c = [cm_a;cm_b]*
+    - **m**: *cm_c = [cm_a;cm_b]*
 
 # 2. Graphs and Tables
 
-## 2.1 Basic Graphing
+## 2.1 Basics
+
+1. [Save Images as EPS](https://fanwangecon.github.io/M4Econ/graph/export/fs_eps.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps_m.m) \| [**mlx**](https://github.com/FanWangEcon/Math4Econ/blob/master/calconevar/fs_eps.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/export/html/fs_eps.html)
+    - eps graphs are essential for clear images in pdf
+    - eps = vector graphics, avoid bitmap (jpg, png), use vector graphics
+    - **m**: *figure('Renderer', 'Painters')*
+
+## 2.2 Graphs
 
 1. [3 Var Line Color, 2D-X 2D-Y and 1D-Color](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html): [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.ipynb) \| mlx \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html) \| pdf
     - 2d matrix for x and y, column vector value for color spectrum
-    - *plot(2d, 2d) + jet + set(chart(m), 'Color', clr)*
-
-## 2.2 Main Graphing
-
-1. [Z(X,Y): Z = y-axis, X = x-axis, Y = color](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/fsi_graph_grid.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html) \| pdf
+    - **m**: *plot(2d, 2d) + jet + set(chart(m), 'Color', clr)*
+2. [Z(X,Y): Z = y-axis, X = x-axis, Y = color](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/fsi_graph_grid.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html) \| pdf
     - 3 dimensional graph on 2D with, scatter and line joint
-    - *scatter + plot + (HandleVisibility, linspecer Color)*
+    - **m**: *scatter + plot + (HandleVisibility, linspecer Color)*
 
-## 2.3 Basic Tables
+## 2.3 Tables
 
 1. [Add Columns to Table](https://fanwangecon.github.io/M4Econ/table/ff_mat2tab.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/table/ff_mat2tab.m) \|  html \| pdf
     + *call*: ff_mat2tab(mt_data, ar_st_colnames)

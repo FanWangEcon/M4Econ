@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019a"><title>Container Map: Display Container Map Keys and Values</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Container Map: Display Container Map Keys and Values</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to</span><span style=' font-weight: bold;'> </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s</span><span style=' font-weight: bold;'> </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Reusable Matlab</span></a><span style=' font-weight: bold;'> Repository or</span><span style=' font-weight: bold;'> </span><a href = "https://fanwangecon.github.io/CodeDynaAsset/"><span style=' font-weight: bold;'>Dynamic Asset</span></a><span style=' font-weight: bold;'> Repository.</span></div><h2  class = 'S2'><span>Print Keys and Values</span></h2><div  class = 'S1'><span>Define container</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(34, 139, 34);">% Define Container</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map = containers.Map(</span><span style="color: rgb(160, 32, 240);">'KeyType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'char'</span><span>, </span><span style="color: rgb(160, 32, 240);">'ValueType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map(</span><span style="color: rgb(160, 32, 240);">'share_unbanked_j'</span><span>) = 12;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map(</span><span style="color: rgb(160, 32, 240);">'equi_r_j'</span><span>) = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map(</span><span style="color: rgb(160, 32, 240);">'equi_w_j'</span><span>) = </span><span style="color: rgb(160, 32, 240);">'abc'</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map(</span><span style="color: rgb(160, 32, 240);">'equi_P_j'</span><span>) = 1.2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div></div><div  class = 'S6'><span>Print</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>param_map_keys = keys(param_map);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_map_vals = values(param_map);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">for </span><span>i = 1:length(param_map)</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    st_display = strjoin([</span><span style="color: rgb(160, 32, 240);">'pos =' </span><span>num2str(i) </span><span style="color: rgb(160, 32, 240);">'; key =' </span><span>string(param_map_keys{i}) </span><span style="color: rgb(160, 32, 240);">'; val =' </span><span>string(param_map_vals{i})]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    disp(st_display);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="ADAEF294" data-testid="output_0" data-width="430" data-height="62" data-hashorizontaloverflow="false" style="width: 460px; max-height: 261px;"><div class="textElement">pos = 1 ; key = equi_P_j ; val = 1.2
+pos = 2 ; key = equi_r_j ; val = 2
+pos = 3 ; key = equi_w_j ; val = abc
+pos = 4 ; key = share_unbanked_j ; val = 12</div></div></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Container Map: Display Container Map Keys and Values
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/ 
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/ 
+% *Dynamic Asset*>* Repository.*
+%% Print Keys and Values
+% Define container
+
+% Define Container
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+param_map('share_unbanked_j') = 12;
+param_map('equi_r_j') = 2;
+param_map('equi_w_j') = 'abc';
+param_map('equi_P_j') = 1.2;
+
+%% 
+% Print
+
+param_map_keys = keys(param_map);
+param_map_vals = values(param_map);
+for i = 1:length(param_map)
+    st_display = strjoin(['pos =' num2str(i) '; key =' string(param_map_keys{i}) '; val =' string(param_map_vals{i})]);
+    disp(st_display);
+end
+##### SOURCE END #####
+--></body></html>

@@ -79,4 +79,4 @@ cl_batch_func_inputs =  {st_proj_folder, cl_st_subfolder, st_file_search_name};
 
 %% Batch Run
 
-batch('ff_pub_batch', 0, cl_batch_func_inputs, 'Pool', 11);
+batch('ff_pub_batch', 0, cl_batch_func_inputs, 'Pool', 3);

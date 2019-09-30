@@ -3,7 +3,7 @@ This is a work-in-progress [website](https://fanwangecon.github.io/M4Econ/) of s
 Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
 <!-- 1. [Linspace + Logspace Asset Grid](asset/grid/ff_grid_loglin.html): [**mlx**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.mlx) \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.m) \|  [**html**](asset/grid/ff_grid_loglin.html) \| [**pdf**](asset/grid/ff_grid_loglin.pdf) -->
 
-# 1. Matlab Arrays, Cells and Maps Manipulations
+# 1. Arrays, Cells and Maps
 
 ## 1.1 Numeric Array Manipulations
 

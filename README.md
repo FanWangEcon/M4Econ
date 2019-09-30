@@ -3,7 +3,7 @@ This is a work-in-progress [website](https://fanwangecon.github.io/M4Econ/) of s
 Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
 <!-- 1. [Linspace + Logspace Asset Grid](asset/grid/ff_grid_loglin.html): [**mlx**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.mlx) \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.m) \|  [**html**](asset/grid/ff_grid_loglin.html) \| [**pdf**](asset/grid/ff_grid_loglin.pdf) -->
 
-# 1. Matlab Basics
+# 1. Matlab Arrays, Cells and Maps Manipulations
 
 ## 1.1 Numeric Array Manipulations
 
@@ -26,17 +26,57 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
     - anonymous function to slice array subsets
     - **m**: *f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1)) times (it_ar_n-1)+1));*
 
-
-
 ## 1.2 Cell Array Manipulations
+
+1. [List Comprehension with Cells](https://fanwangecon.github.io/M4Econ/support/cells/fs_cellfuns.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellfuns_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellfuns.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellfuns.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/cells/fs_cellfuns.html)
+    - cell2mat, cellfun, anonymous function list comprehension over cells
+    - find min and max of all arrays in cells; find length of all arrays in cells; find index of elements of one array in another cell array
+    - **m**: *cell2mat, cellfun, cell2mat(cellfun(@(m) find(strcmp(ls_st_param_key, m)), cl_st_param_keys, 'UniformOutput', false))*
+2. [Permutate Cells](https://fanwangecon.github.io/M4Econ/support/cells/fs_cellscombinations.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellscombinations_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellscombinations.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellscombinations.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/cells/fs_cellscombinations.html)
+    - generate all possible combinations of various arrays contained in cell array
+    - **m**: *ndgrid, cell2mat, array2table, cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))*
+3. [Combine Cells](https://fanwangecon.github.io/M4Econ/support/cells/fs_cellscombine.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellscombine_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellscombine.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellscombine.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/cells/fs_cellscombine.html)
+    - combine string cell arrays and string
+    - **m**: *[{st_param}, ls_st_param_key, cl_st_param_keys]*
+4. [Cells Nested in Cells](https://fanwangecon.github.io/M4Econ/support/cells/fs_cellsnested.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellsnested_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellsnested.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/cells/fs_cellsnested.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/cells/fs_cellsnested.html)
+    - Cell of cells with inner cell having multiple types
+    - **m**: *cell([4,1]); clns_parm_tstar{1} = {'fl_crra', 'CRRA', linspace(1, 2, it_simu_vec_len)}; disp(clns_parm_tstar(1)); disp(clns_parm_tstar{1}{1});*
 
 ## 1.3 String Array Manipulations
 
+1. [String Basics](https://fanwangecon.github.io/M4Econ/support/string/fs_string.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/string/fs_string.html)
+    - cut string suffix and append new suffix
+    - **m**: *str_sub = split(string, "."); str_sub = strcat(str_sub{1}, '_m.m')*
+2. [String Arrays](https://fanwangecon.github.io/M4Econ/support/string/fs_string_array.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string_array_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string_array.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string_array.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/string/fs_string_array.html)
+    - concatenate string arrays, string with string,
+    - string with numeric arrays, numeric arrays together as strings, combine numeric arrays and append string
+    - find string in string cell array
+    - print display numerics as strings
+    - **m**: *repmat, num2str, strcat, strjoin, fprintf, strcmp, strrep, cel2mat(cellfun(@(m) find(strcmp())))*
+3. [String Concatenations](https://fanwangecon.github.io/M4Econ/support/string/fs_string_strcat.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string_strcat_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string_strcat.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/string/fs_string_strcat.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/string/fs_string_strcat.html)
+    - concatenate multiple numeric arrays together with strings and format
+    - **m**: *cellstr, strcat*
 
+## 1.4 Container Map Management
 
-# 1. Matlab Programming Practices
+1. [List Comprehension with Cells](https://fanwangecon.github.io/M4Econ/support/container/fs_container.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_container_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_container.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_container.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/container/fs_container.html)
+    - numeric container map
+    - dynamically filled container map
+    - **m**: *isKey, containers.Map('KeyType', 'char', 'ValueType','any'), strjoin*
+2. [Print Container Map Keys and Values](https://fanwangecon.github.io/M4Econ/support/container/fs_containermap.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_containermap_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_containermap.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_containermap.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/container/fs_containermap.html)
+    - loop over map, display keys and values
+    - **m**: *strjoin, keys(map), values(map)*
+3. [Container Map Varied Value Types](https://fanwangecon.github.io/M4Econ/support/container/fs_map_anytype.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_map_anytype_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_map_anytype.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_map_anytype.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/container/fs_map_anytype.html)
+    - numeric scalar, string, matrix as values for map container
+    - get values for multiple keys in map
+    - **m**: *map.keys, map.values, params_group = values(param_map, {'share_unbanked_j', 'equi_r_j'})*
+4. [Cell Override](https://fanwangecon.github.io/M4Econ/support/container/fs_map_override.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_map_override_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_map_override.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/container/fs_map_override.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/container/fs_map_override.html)
+    - Override default map with externally fed map, update existing and add new keys
+    - **m**: *param_map_updated = [param_map_old; param_map_updates_new]*
 
-## 1.1 Default Parameters
+# 2. Matlab Programming Practices
+
+## 2.1 Default Parameters
 
 Default parameters allow for maintaining code testability. The varargin structure could lead to excessive code lines. Container Map works well.
 
@@ -47,27 +87,16 @@ Default parameters allow for maintaining code testability. The varargin structur
     - core model functions with potentially many parameters, preferred
     - **m**: *function [out_put] = func_name(varargin); cm_defaults = {cm_a, cm_b}; [cm_defaults{1:optional_params_len}] = varargin{:}; cm_c = [cm_a;cm_b]*
 
-## 1.2 Container Maps
+# 3. Graphs and Tables
 
-Use this structure for carrying parameters and input arrays. By using container maps, if parameters are added to model, code editing is limited to actual location where parameter is used and initial location of definition.
+## 3.1 Basics
 
-1. [Any Type Container Maps](support/dtype/map_anytype.m):
-    - cells, arrays, floats in the same map
-    - **m**: *containers.Map('KeyType','char', 'ValueType','any')*
-2. [Combining Container Maps](support/dtype/map_override.m)
-    - container b overrides container a if keys exist in both
-    - **m**: *cm_c = [cm_a;cm_b]*
-
-# 2. Graphs and Tables
-
-## 2.1 Basics
-
-1. [Save Images as EPS](https://fanwangecon.github.io/M4Econ/graph/export/fs_eps.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps_m.m) \| [**mlx**](https://github.com/FanWangEcon/Math4Econ/blob/master/calconevar/fs_eps.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/export/html/fs_eps.html)
+1. [Save Images as EPS](https://fanwangecon.github.io/M4Econ/graph/export/fs_eps.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/export/html/fs_eps.html)
     - eps graphs are essential for clear images in pdf
     - eps = vector graphics, avoid bitmap (jpg, png), use vector graphics
     - **m**: *figure('Renderer', 'Painters')*
 
-## 2.2 Graphs
+## 3.2 Graphs
 
 1. [3 Var Line Color, 2D-X 2D-Y and 1D-Color](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html): [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.ipynb) \| mlx \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html) \| pdf
     - 2d matrix for x and y, column vector value for color spectrum
@@ -76,7 +105,7 @@ Use this structure for carrying parameters and input arrays. By using container 
     - 3 dimensional graph on 2D with, scatter and line joint
     - **m**: *scatter + plot + (HandleVisibility, linspecer Color)*
 
-## 2.3 Tables
+## 3.3 Tables
 
 1. [Add Columns to Table](https://fanwangecon.github.io/M4Econ/table/ff_mat2tab.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/table/ff_mat2tab.m) \|  html \| pdf
     + *call*: ff_mat2tab(mt_data, ar_st_colnames)
@@ -85,9 +114,9 @@ Use this structure for carrying parameters and input arrays. By using container 
     + *call*: ff_sup_save_prep(st_path_folder, st_file_name, bl_exp_csv, mt_data, ar_st_colnames); *dependency*: ff_mat2tab
     + **core**: *mkdir, csvwrite, save*
 
-# 3 Speed Improvements
+# 4 Speed Improvements
 
-## 3.1 Interpolation
+## 4.1 Interpolation
 
 1. [Rational Exponent: Interpolation over Utility of Consumption](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_main.html): u(c) where u evaluation involves rational exponentiation, pre-calculate and interpolate
     - Interpolate function testing: [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_main.ipynb) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_main.html)
@@ -95,7 +124,7 @@ Use this structure for carrying parameters and input arrays. By using container 
     - Direct evaluation and interpolate speed comparison:  [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.m) \| [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/exponentiation/fs_rational_exp_interp_test.ipynb) \|  [**html**](https://fanwangecon.github.io/M4Econ/support/speed/exponentiation/fs_rational_exp_interp_test.html)
         + **core**: *interp1, griddedInterpolant, nearest vs linear vs spline*
 
-## 3.2 Matrix and Index
+## 4.2 Matrix and Index
 
 1. [Cell Array Store u(c) to Avoid Duplicate Computation over Iteration](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html): u(c) across iterations often shares many common values
     - Cell matrix part update function testing: [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/partupdate/fs_u_c_partrepeat_main.ipynb) \| [**html**](https://fanwangecon.github.io/M4Econ/support/speed/partupdate/fs_u_c_partrepeat_main.html)
@@ -106,11 +135,3 @@ Use this structure for carrying parameters and input arrays. By using container 
     - u(c) when c < 0, quickly replace matrix values by index
     - *functions*: [standard index replace](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/index/ff_subscript_mat_replace.m), [fast index replace](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/index/ff_subscript_fan_replace.m)
     - *interp1, griddedInterpolant, nearest vs linear vs spline*
-
-# 4. Additional Programs
-
-## 4.1 Discretization
-
-1. [Linspace + Logspace Asset Grid](https://fanwangecon.github.io/M4Econ/asset/grid/ff_grid_loglin.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/asset/grid/ff_grid_loglin.m) \|  html \| pdf
-    + *call*: ff_grid_loglin(it_a_vec_n, fl_amax, fl_amin, fl_loglin_threshold)
-    + **core**: *while + logspace + start:gap:fin + unique*

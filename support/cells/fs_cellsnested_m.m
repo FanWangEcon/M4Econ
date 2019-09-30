@@ -1,6 +1,6 @@
 %% Cells: Nested Cells
-% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/ 
-% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/ 
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/
 % *Dynamic Asset*>* Repository.*
 %% Nested Cells and access
 

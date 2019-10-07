@@ -1,6 +1,11 @@
+[![HitCount](http://hits.dwyl.io/fanwangecon/M4Econ.svg)](https://github.com/FanWangEcon/M4Econ)  [![Star](https://img.shields.io/github/stars/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/stargazers) [![Fork](https://img.shields.io/github/forks/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/network/members) [![Star](https://img.shields.io/github/watchers/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/watchers)
+
 This is a work-in-progress [website](https://fanwangecon.github.io/M4Econ/) of support files for using matlab, produced by [Fan](https://fanwangecon.github.io/). Materials gathered from various [projects](https://fanwangecon.github.io/research) in which matlab codes are used. Matlab files are linked below by section with livescript files. Tested with [Matlab 2019a](https://www.mathworks.com/company/newsroom/mathworks-announces-release-2019a-of-matlab-and-simulink.html).
 
 Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
+
+[![](https://img.shields.io/github/last-commit/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/commits/master) [![](https://img.shields.io/github/commit-activity/m/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/graphs/commit-activity) [![](https://img.shields.io/github/issues/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/issues) [![](https://img.shields.io/github/issues-pr/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/pulls)
+
 <!-- 1. [Linspace + Logspace Asset Grid](asset/grid/ff_grid_loglin.html): [**mlx**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.mlx) \| [**M**](https://github.com/FanWangEcon/R4Econ/blob/master/asset/grid/ff_grid_loglin.m) \|  [**html**](asset/grid/ff_grid_loglin.html) \| [**pdf**](asset/grid/ff_grid_loglin.pdf) -->
 
 # 1. Arrays, Cells and Maps
@@ -140,4 +145,8 @@ Default parameters allow for maintaining code testability. The varargin structur
 ----
 Files are from [Fan](https://fanwangecon.github.io)'s [M4Econ](https://github.com/FanWangEcon/M4Econ) repository. Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
 
-[![HitCount](http://hits.dwyl.io/FanWangEcon/M4Econ.svg)](http://hits.dwyl.io/FanWangEcon/M4Econ)
+![RepoSize](https://img.shields.io/github/repo-size/fanwangecon/M4Econ)
+![CodeSize](https://img.shields.io/github/languages/code-size/fanwangecon/M4Econ)
+![Language](https://img.shields.io/github/languages/top/fanwangecon/M4Econ)
+![Release](https://img.shields.io/github/downloads/fanwangecon/M4Econ/total)
+![License](https://img.shields.io/github/license/fanwangecon/M4Econ)

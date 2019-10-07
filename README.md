@@ -135,3 +135,9 @@ Default parameters allow for maintaining code testability. The varargin structur
     - u(c) when c < 0, quickly replace matrix values by index
     - *functions*: [standard index replace](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/index/ff_subscript_mat_replace.m), [fast index replace](https://github.com/FanWangEcon/M4Econ/blob/master/support/speed/index/ff_subscript_fan_replace.m)
     - *interp1, griddedInterpolant, nearest vs linear vs spline*
+
+
+----
+Files are from [Fan](https://fanwangecon.github.io)'s [M4Econ](https://github.com/FanWangEcon/M4Econ) repository. Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
+
+[![HitCount](http://hits.dwyl.io/FanWangEcon/M4Econ.svg)](http://hits.dwyl.io/FanWangEcon/M4Econ)

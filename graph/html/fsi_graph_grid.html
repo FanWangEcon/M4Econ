@@ -107,7 +107,10 @@ grh_sup_map_default(<span class="string">'st_graph_title'</span>) = st_graph_tit
 grh_sup_map_default(<span class="string">'st_legend_loc'</span>) = <span class="string">'southeast'</span>;
 grh_sup_map_default(<span class="string">'bl_graph_logy'</span>) = true;
 </pre><h2 id="5">Override</h2><pre class="codeinput">grh_sup_map = [grh_sup_map_default ; grh_sup_map];
-</pre><h2 id="6">Parse</h2><pre class="codeinput">params_group = values(grh_sup_map, {<span class="string">'st_legend_loc'</span>, <span class="string">'bl_graph_logy'</span>});
+</pre><h2 id="6">Parse</h2><pre class="codeinput">params_group = values(grh_sup_map, {<span class="string">'st_ytitle'</span>, <span class="string">'st_xtitle'</span>, <span class="string">'st_graph_title'</span>});
+[st_ytitle, st_xtitle, st_graph_title] = params_group{:};
+
+params_group = values(grh_sup_map, {<span class="string">'st_legend_loc'</span>, <span class="string">'bl_graph_logy'</span>});
 [st_legend_loc, bl_graph_logy] = params_group{:};
 </pre><h2 id="7">Generaet Graph</h2><pre class="codeinput"><span class="keyword">if</span> (bl_graph_logy)
     ar_it_plot = [1,2];
@@ -199,16 +202,16 @@ function fsi_graph_grid(varargin)
 %
 % @param mt_outcome matrix N by M matrix, each row is a different color,
 % each column matches up to the x-axis vector. Each column could be a
-% different amin and each row a different fixed cost. 
+% different amin and each row a different fixed cost.
 %
 
 %% Default
 
 if (~isempty(varargin))
-    
+
     % if invoked from outside overrid fully
     [ar_color_grid, ar_x_grid, mt_outcome, grh_sup_map] = varargin{:};
-    
+
 else
     clear all;
     close all;
@@ -218,9 +221,9 @@ else
     ar_x_grid = linspace(-4,11,10);
     rng(123);
     mt_outcome = rand([length(ar_color_grid), length(ar_x_grid)]);
-   
+
     grh_sup_map = containers.Map('KeyType','char', 'ValueType','any');
-    
+
 end
 
 %% Default Map
@@ -252,6 +255,8 @@ grh_sup_map_default('bl_graph_logy') = true;
 grh_sup_map = [grh_sup_map_default ; grh_sup_map];
 
 %% Parse
+params_group = values(grh_sup_map, {'st_ytitle', 'st_xtitle', 'st_graph_title'});
+[st_ytitle, st_xtitle, st_graph_title] = params_group{:};
 
 params_group = values(grh_sup_map, {'st_legend_loc', 'bl_graph_logy'});
 [st_legend_loc, bl_graph_logy] = params_group{:};
@@ -263,7 +268,7 @@ if (bl_graph_logy)
 else
     ar_it_plot = [1];
 end
-   
+
 for it_plot = ar_it_plot
 
     figure('PaperPosition', [0 0 7 4]);
@@ -271,7 +276,7 @@ for it_plot = ar_it_plot
 
     it_graph_counter = 0;
     cl_legend_mesh = [];
-    cl_scatter_shapes = {'s','x','o','d','p','*'};            
+    cl_scatter_shapes = {'s','x','o','d','p','*'};
 %             ar_fl_clr = jet(length(param_grid));
     ar_fl_clr = linspecer(length(ar_color_grid), 'sequential');
     for it_color = 1:length(ar_color_grid)
@@ -313,20 +318,21 @@ for it_plot = ar_it_plot
 
     % Titling and Legends
     title(st_graph_title);
-    if (it_plot == 1)            
+    if (it_plot == 1)
         ylabel([st_ytitle]);
     else
         ylabel(['LOG(' st_ytitle ' +1)']);
     end
     xlabel(st_xtitle);
-    legend(cl_legend_mesh, 'Location', st_legend_loc);            
+    legend(cl_legend_mesh, 'Location', st_legend_loc);
     grid on;
     grid minor;
 
     snapnow;
-    
+
 end
 
 end
+
 ##### SOURCE END #####
 --></body></html>

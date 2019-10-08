@@ -17,16 +17,16 @@ function fsi_graph_grid(varargin)
 %
 % @param mt_outcome matrix N by M matrix, each row is a different color,
 % each column matches up to the x-axis vector. Each column could be a
-% different amin and each row a different fixed cost. 
+% different amin and each row a different fixed cost.
 %
 
 %% Default
 
 if (~isempty(varargin))
-    
+
     % if invoked from outside overrid fully
     [ar_color_grid, ar_x_grid, mt_outcome, grh_sup_map] = varargin{:};
-    
+
 else
     clear all;
     close all;
@@ -36,9 +36,9 @@ else
     ar_x_grid = linspace(-4,11,10);
     rng(123);
     mt_outcome = rand([length(ar_color_grid), length(ar_x_grid)]);
-   
+
     grh_sup_map = containers.Map('KeyType','char', 'ValueType','any');
-    
+
 end
 
 %% Default Map
@@ -48,10 +48,10 @@ ar1_z = 0.90;
 stderr_z = 0.40;
 sunkc = 0.40;
 amin = 0.10;
-st_savefric_param = 'fixed costs';
+st_graph_var_name = 'fixed costs';
 st_pref_shock = ['crra = ' num2str(crra, '%3.2f') ', shock persistence = ' num2str(ar1_z, '%3.2f')  ', shock s.d. = ' num2str(stderr_z, '%3.2f')];
 st_costs = ['other savings frictions: sunk-cost = ' num2str(sunkc, '%4.3f') ', amin = ' num2str(amin, '%4.3f')];
-st_graph_title = {['Supply Curve of Credit With Varying ' st_savefric_param] ...
+st_graph_title = {['Supply Curve of Credit With Varying ' st_graph_var_name] ...
                   [st_pref_shock] ...
                   [st_costs]};
 
@@ -61,6 +61,7 @@ st_xtitle = 'Savings Interest Rate';
 grh_sup_map_default = containers.Map('KeyType','char', 'ValueType','any');
 grh_sup_map_default('st_ytitle') = st_ytitle;
 grh_sup_map_default('st_xtitle') = st_xtitle;
+grh_sup_map_default('st_graph_var_name') = st_graph_var_name;
 grh_sup_map_default('st_graph_title') = st_graph_title;
 grh_sup_map_default('st_legend_loc') = 'southeast';
 grh_sup_map_default('bl_graph_logy') = true;
@@ -70,6 +71,8 @@ grh_sup_map_default('bl_graph_logy') = true;
 grh_sup_map = [grh_sup_map_default ; grh_sup_map];
 
 %% Parse
+params_group = values(grh_sup_map, {'st_ytitle', 'st_xtitle', 'st_graph_title', 'st_graph_var_name'});
+[st_ytitle, st_xtitle, st_graph_title, st_graph_var_name] = params_group{:};
 
 params_group = values(grh_sup_map, {'st_legend_loc', 'bl_graph_logy'});
 [st_legend_loc, bl_graph_logy] = params_group{:};
@@ -81,7 +84,7 @@ if (bl_graph_logy)
 else
     ar_it_plot = [1];
 end
-   
+
 for it_plot = ar_it_plot
 
     figure('PaperPosition', [0 0 7 4]);
@@ -89,7 +92,7 @@ for it_plot = ar_it_plot
 
     it_graph_counter = 0;
     cl_legend_mesh = [];
-    cl_scatter_shapes = {'s','x','o','d','p','*'};            
+    cl_scatter_shapes = {'s','x','o','d','p','*'};
 %             ar_fl_clr = jet(length(param_grid));
     ar_fl_clr = linspecer(length(ar_color_grid), 'sequential');
     for it_color = 1:length(ar_color_grid)
@@ -125,24 +128,24 @@ for it_plot = ar_it_plot
         line.HandleVisibility = 'off';
         line.LineWidth = 2;
 
-        cl_legend_mesh{it_graph_counter} = [st_savefric_param,':', num2str(fl_savefric_param)];
+        cl_legend_mesh{it_graph_counter} = [st_graph_var_name,':', num2str(fl_savefric_param)];
 
     end
 
     % Titling and Legends
     title(st_graph_title);
-    if (it_plot == 1)            
+    if (it_plot == 1)
         ylabel([st_ytitle]);
     else
         ylabel(['LOG(' st_ytitle ' +1)']);
     end
     xlabel(st_xtitle);
-    legend(cl_legend_mesh, 'Location', st_legend_loc);            
+    legend(cl_legend_mesh, 'Location', st_legend_loc);
     grid on;
     grid minor;
 
     snapnow;
-    
+
 end
 
 end

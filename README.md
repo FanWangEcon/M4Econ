@@ -143,7 +143,7 @@ Default parameters allow for maintaining code testability. The varargin structur
 
 
 ----
-Files are from [Fan](https://fanwangecon.github.io)'s [M4Econ](https://github.com/FanWangEcon/M4Econ) repository. Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
+Please contact [![](https://img.shields.io/github/followers/fanwangecon?label=FanWangEcon&style=social)](https://github.com/FanWangEcon) [![](https://img.shields.io/twitter/follow/fanwangecon?label=%20&style=social)](https://twitter.com/fanwangecon) for issues or problems.
 
 ![RepoSize](https://img.shields.io/github/repo-size/fanwangecon/M4Econ)
 ![CodeSize](https://img.shields.io/github/languages/code-size/fanwangecon/M4Econ)

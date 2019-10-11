@@ -6,6 +6,48 @@
 % Matrix broadcasting was added to matlab's recent editions. This is an important 
 % step for vectorizing codes. Proper usage of broadcasting reduces memory allocation 
 % requirements for matrix matrix operations.
+%% Broadcasting with A Row and a Column
+% Below we add together a 1 by 3 and 4 by 1 array, that should not work. With 
+% broadcasting, it is assumed that we will mesh the arrays and then sum up the 
+% meshed matrixes. 
+
+clear all
+ar_A = [1,2,3];
+ar_B = [4,3,2,1]';
+disp(size(ar_A));
+disp(size(ar_B));
+mt_A_B_broadcast = ar_A + ar_B;
+disp(mt_A_B_broadcast);
+mt_A_B_broadcast_product = ar_A.*ar_B;
+disp(mt_A_B_broadcast_product);
+%% Broadcasting with One Row and One Matrix
+% Below we add together a 1 by 3 and 4 by 3 matrix, that should not work. With 
+% broadcasting, it is assumed that we will repeat the array four times, duplicating 
+% the single row four times, so the matrix dimensions match up.
+
+clear all
+ar_A = [1,2,3];
+mt_B = [4,3,2,1;5,4,3,2;6,5,4,3]';
+disp(size(ar_A));
+disp(size(mt_B));
+mt_A_B_broadcast = ar_A + mt_B;
+disp(mt_A_B_broadcast);
+mt_A_B_broadcast_product = ar_A.*mt_B;
+disp(mt_A_B_broadcast_product);
+%% Broadcasting with One Column and One Matrix
+% Below we add together a 4 by 1 and 4 by 3 matrix, that should not work. With 
+% broadcasting, it is assumed that we will repeat the column three times, duplicating 
+% the single column three times, so the matrix dimensions match up.
+
+clear all
+ar_A = [4,3,2,1]';
+mt_B = [4,3,2,1;5,4,3,2;6,5,4,3]';
+disp(size(ar_A));
+disp(size(mt_B));
+mt_A_B_broadcast = ar_A + mt_B;
+disp(mt_A_B_broadcast);
+mt_A_B_broadcast_product = ar_A.*mt_B;
+disp(mt_A_B_broadcast_product);
 %% Expand with Broadcast, Percentage Choice grids
 
 clear all

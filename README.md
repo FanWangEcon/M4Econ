@@ -101,7 +101,7 @@ Default parameters allow for maintaining code testability. The varargin structur
     - eps = vector graphics, avoid bitmap (jpg, png), use vector graphics
     - **m**: *figure('Renderer', 'Painters')*
 
-## 3.2 Graphs
+## 3.2 Graph Examples
 
 1. [3 Var Line Color, 2D-X 2D-Y and 1D-Color](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html): [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.ipynb) \| mlx \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html) \| pdf
     - 2d matrix for x and y, column vector value for color spectrum
@@ -110,7 +110,16 @@ Default parameters allow for maintaining code testability. The varargin structur
     - 3 dimensional graph on 2D with, scatter and line joint
     - **m**: *scatter + plot + (HandleVisibility, linspecer Color)*
 
-## 3.3 Tables
+## 3.3 Graph Programs
+
+1. [3 Var Line Color, 2D-X 2D-Y and 1D-Color](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html): [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.ipynb) \| mlx \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html) \| pdf
+    - 2d matrix for x and y, column vector value for color spectrum
+    - **m**: *plot(2d, 2d) + jet + set(chart(m), 'Color', clr)*
+2. [Z(X,Y): Z = y-axis, X = x-axis, Y = color](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/fsi_graph_grid.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html) \| pdf
+    - 3 dimensional graph on 2D with, scatter and line joint
+    - **m**: *scatter + plot + (HandleVisibility, linspecer Color)*
+
+## 3.4 Tables
 
 1. [Add Columns to Table](https://fanwangecon.github.io/M4Econ/table/ff_mat2tab.m): ipynb \| mlx \| [**M**](https://github.com/FanWangEcon/M4Econ/blob/master/table/ff_mat2tab.m) \|  html \| pdf
     + *call*: ff_mat2tab(mt_data, ar_st_colnames)

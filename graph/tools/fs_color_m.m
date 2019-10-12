@@ -1,8 +1,7 @@
-%% Graph: Color Usage non-Spectrum
-% *back to <https://fanwangecon.github.io Fan>'s
-% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
-% Table of Content.*
-
+%% Matlab Graph Safe Colors for Web, Presentation and Publications Examples
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/ 
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/ 
+% *Dynamic Asset*>* Repository.*
 %% Good Colors to Use Darker
 % Nice darker light colors to use in matlab.
 
@@ -31,7 +30,6 @@ for it_color=1:length(cl_colors)
     snapnow;
     
 end
-
 %% Good Colors to Use Lighter
 % Nice ligher colors to use in matlab.
 
@@ -61,12 +59,13 @@ for it_color=1:length(cl_colors)
     snapnow;
     
 end
-
 %% Matlab has a graphical tool for picking color
-% https://www.mathworks.com/help/matlab/ref/uisetcolor.html
-% enter uisetcolor
-% pick color from new window and color values will appear
+% Enter uisetcolor pick color from new window and color values will appear uisetcolor
+
+% Color Pickers
 % uisetcolor
+%% 
+% Picked Color use
 
 figure();
 hold on;

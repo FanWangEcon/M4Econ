@@ -1,12 +1,12 @@
-%% Graph: Line and Related Plots
-% *back to <https://fanwangecon.github.io Fan>'s
-% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
-% Table of Content.*
-
+%% Matlab Graph Line Scatter Plot, Multiple Lines, Axies Lines, 45 Degree Line Examples
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/ 
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/ 
+% *Dynamic Asset*>* Repository.*
 %% Six lines Plot
-% colors from
-% <http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/
-% optimal colors>.
+% Colors from <http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/ 
+% optimal colors>. Generate A line plot with multiple lines using safe colors, 
+% with differening shapes. Figures include lines as well as scatter overlayed 
+% jointly. 
 
 close all
 figure();
@@ -79,15 +79,16 @@ title('Optimal Savings');
 ylabel('Savings Levels');
 xlabel('Cash-on-Hand Today');
 grid on;
-
 snapnow;
-
 %% Horizontal and Vertical Lines and 45 Degree
+% Draw x and y axis, and draw a 45 degree line.
 
 figure();
 
 xline0 = xline(0);
 xline0.HandleVisibility = 'off';
+xline0.Color = red;
+xline0.LineStyle = '--';
 yline0 = yline(0);
 yline0.HandleVisibility = 'off';
 yline0.LineWidth = 1;
@@ -97,6 +98,6 @@ hline.Color = 'k';
 hline.LineStyle = ':';
 hline.HandleVisibility = 'off';
 
-snapnow
-
-close all
+snapnow;
+grid on;
+grid minor;

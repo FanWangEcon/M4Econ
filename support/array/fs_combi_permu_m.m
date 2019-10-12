@@ -1,6 +1,6 @@
-%% Array: All Possible Combinations or Permuations
-% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/
-% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/
+%% Matlab Array: All Possible Combinations or Permuations
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/ 
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/ 
 % *Dynamic Asset*>* Repository.*
 %% Given integer arrays, all possible combinations
 % given any sizes arrays, N of them, create all possible combinations

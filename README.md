@@ -96,19 +96,31 @@ Default parameters allow for maintaining code testability. The varargin structur
 
 ## 3.1 Basics
 
-1. [Save Images as EPS](https://fanwangecon.github.io/M4Econ/graph/export/fs_eps.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/export/html/fs_eps.html)
+1. [Save Images as EPS](https://fanwangecon.github.io/M4Econ/graph/export/fs_eps.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/export/fs_eps.html)
     - eps graphs are essential for clear images in pdf
     - eps = vector graphics, avoid bitmap (jpg, png), use vector graphics
     - **m**: *figure('Renderer', 'Painters')*
+2. [Image Pick Colors](https://fanwangecon.github.io/M4Econ/graph/tools/fs_color.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_color_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_color.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_color.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/tools/fs_color.html)
+    - display safe colors
+    - **m**: *blue = [57 106 177]./255, fill(x, y, cl_colors{it_color});*
+3. [Figure Titling and Legend](https://fanwangecon.github.io/M4Econ/graph/tools/fs_titling.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_titling_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_titling.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_titling.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/tools/fs_titling.html)
+    - multi-line titles, add legend lines
+    - add to legend, select legend to show
+    - **m**: *title({'Cash-on-Hand' '$\alpha + \beta = \zeta$'},'Interpreter','latex'); legend([g1, g2, g3], {'near','linear','spline'}, 'Location','best', 'NumColumns',1,'FontSize',12,'TextColor','black');*
+4. [Graph Many Lines Legend for Subset](https://fanwangecon.github.io/M4Econ/graph/tools/fs_titling.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_titling_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_titling.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_titling.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/tools/fs_titling.html)
+    - state-space plots with color spectrum
+    - can not show all states in legend, show subset
+    - add additional line to plot and legend
+    - **m**: *clr = jet(numel(chart)), set(chart(m),'Color',clr(m,:)); legend2plot = fliplr([1 round(numel(chart)/3) round((2*numel(chart))/4)  numel(chart)]);*
 
 ## 3.2 Graph Examples
 
-1. [3 Var Line Color, 2D-X 2D-Y and 1D-Color](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html): [**ipynb**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.ipynb) \| mlx \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/basic/plot2dcolorlines.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/basic/plot2dcolorlines.html) \| pdf
-    - 2d matrix for x and y, column vector value for color spectrum
-    - **m**: *plot(2d, 2d) + jet + set(chart(m), 'Color', clr)*
-2. [Z(X,Y): Z = y-axis, X = x-axis, Y = color](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/fsi_graph_grid.m) \|  [**html**](https://fanwangecon.github.io/M4Econ/graph/html/fsi_graph_grid.html) \| pdf
-    - 3 dimensional graph on 2D with, scatter and line joint
-    - **m**: *scatter + plot + (HandleVisibility, linspecer Color)*
+1. [Scatter Plot](https://fanwangecon.github.io/M4Econ/graph/main/fs_scatter.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/fs_scatter_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/fs_scatter.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/fs_scatter.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/main/fs_scatter.html)
+    - scatter multiple lines different colors, shapes and sizes
+    - **m**: *scatter, Marker, MarkerEdgeColor, MarkerEdgeAlpha, MarkerFaceColor, MarkerFaceAlpha; scatter(x, y, size)*
+2. [Line + Line Plot](https://fanwangecon.github.io/M4Econ/graph/main/fs_lines.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/fs_lines_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/fs_lines.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/fs_lines.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/main/fs_lines.html)
+    - scatter and lines multiple lines different colors, shapes and sizes
+    - **m**: *xline(0), yline(0), refline([1 0]); plot(x,y), HandleVisibility, Color, LineStyle, LineWidth*
 
 ## 3.3 Graph Programs
 

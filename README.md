@@ -2,6 +2,8 @@
 
 This is a work-in-progress [website](https://fanwangecon.github.io/M4Econ/) of support files for using matlab, produced by [Fan](https://fanwangecon.github.io/). Materials gathered from various [projects](https://fanwangecon.github.io/research) in which matlab codes are used. Matlab files are linked below by section with livescript files. Tested with [Matlab 2019a](https://www.mathworks.com/company/newsroom/mathworks-announces-release-2019a-of-matlab-and-simulink.html).
 
+From [Fan](https://fanwangecon.github.io/)'s other repositories: For dynamic borrowing and savings problems, see [Dynamic Asset Repository](https://fanwangecon.github.io/CodeDynaAsset/); For data analysis, see [R Panel Data Code](https://fanwangecon.github.io/R4Econ/) and [Stata Example Code](https://fanwangecon.github.io/Stata4Econ/); For intro econ with Matlab, see [Intro Mathematics for Economists](https://fanwangecon.github.io/Math4Econ/), and for intro stat with R, see [Intro Statistics for Undergraduates](https://fanwangecon.github.io/Stat4Econ/). See [here](https://github.com/FanWangEcon) for all of [Fan](https://fanwangecon.github.io/)'s public repositories.
+
 Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or problems.
 
 [![](https://img.shields.io/github/last-commit/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/commits/master) [![](https://img.shields.io/github/commit-activity/m/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/graphs/commit-activity) [![](https://img.shields.io/github/issues/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/issues) [![](https://img.shields.io/github/issues-pr/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/pulls)
@@ -107,7 +109,8 @@ Default parameters allow for maintaining code testability. The varargin structur
     - multi-line titles, add legend lines
     - add to legend, select legend to show
     - **m**: *title({'Cash-on-Hand' '$\alpha + \beta = \zeta$'},'Interpreter','latex'); legend([g1, g2, g3], {'near','linear','spline'}, 'Location','best', 'NumColumns',1,'FontSize',12,'TextColor','black');*
-4. [Graph Many Lines Legend for Subset](https://fanwangecon.github.io/M4Econ/graph/tools/fs_legendsubset.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_legendsubset_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_legendsubset.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_legendsubset.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/tools/fs_legendsubset.html)    - state-space plots with color spectrum
+4. [Graph Many Lines Legend for Subset](https://fanwangecon.github.io/M4Econ/graph/tools/fs_legendsubset.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_legendsubset_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_legendsubset.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_legendsubset.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/tools/fs_legendsubset.html)
+    - state-space plots with color spectrum
     - can not show all states in legend, show subset
     - add additional line to plot and legend
     - **m**: *clr = jet(numel(chart)), set(chart(m),'Color',clr(m,:)); legend2plot = fliplr([1 round(numel(chart)/3) round((2*numel(chart))/4)  numel(chart)]);*

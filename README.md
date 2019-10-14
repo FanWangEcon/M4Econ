@@ -20,18 +20,21 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
     - **m**: *unique, reshape, accumarray*
 2. [Array Broadcasting Examples](https://fanwangecon.github.io/M4Econ/support/array/fs_broadcast_expand.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_broadcast_expand.html)
     - broadcast means: array + array' + matrix = matrix
-3. [Array Permutation](https://fanwangecon.github.io/M4Econ/support/array/fs_combi_permu.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_combi_permu.html)
-    - all permutations of arrays
+3. [Array Random Draws and Permutation](https://fanwangecon.github.io/M4Econ/support/array/fs_combi_permu.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_combi_permu.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_combi_permu.html)
+    - draw randomly from array, permutate arrays
     - **m**: *ndgrid, cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))*
 4. [Imaginary Elements of Array](https://fanwangecon.github.io/M4Econ/support/array/fs_img.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_img_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_img.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_img.html)
     - find imaginary elements of array
     - **m**: *imag*
-5. [Array Reshaping](https://fanwangecon.github.io/M4Econ/support/array/fs_reshape.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_reshape.html)
+5. [Array Reshape, Repeat and Expand](https://fanwangecon.github.io/M4Econ/support/array/fs_reshape.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_reshape.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_reshape.html)
     - reshape and flatten arrays
     - **m**: *reshape*
-6. [Array Subset Slicing](https://fanwangecon.github.io/M4Econ/support/array/fs_slicing.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_slicing.html)
+6. [Array Index Slicing and Subsetting to Replace and Expand](https://fanwangecon.github.io/M4Econ/support/array/fs_slicing.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_slicing.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_slicing.html)
+    - index based column and row expansions
     - anonymous function to slice array subsets
-    - **m**: *f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1)) times (it_ar_n-1)+1));*
+    - **m**: *sub2ind; f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1)) times (it_ar_n-1)+1));*
+7. [Grid States, Choices and Optimal Choices Example](https://fanwangecon.github.io/M4Econ/support/array/fs_stateschoicesopti.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_stateschoicesopti_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_stateschoicesopti.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_stateschoicesopti.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_stateschoicesopti.html)
+    - states, choices, and find max
 
 ## 1.2 Cell Array Manipulations
 

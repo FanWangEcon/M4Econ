@@ -23,7 +23,6 @@ a3 = [1,2,3,3]
 a = [a1;a2;a3]'/2
 
 prob_a = zeros(size(a)) + 1/12
-
 [ar_idx_full, ~, ar_idx_of_unique] = unique(a)
 mt_idx_of_unique = reshape(ar_idx_of_unique, size(a))
 

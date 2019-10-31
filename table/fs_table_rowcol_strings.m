@@ -1,7 +1,7 @@
 %% Table: Add Row and Column names to Table and Strings in Table based on Arrays
-% *back to <https://fanwangecon.github.io Fan>'s
-% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab Codes>
-% Table of Content.*
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/
+% *Dynamic Asset*>* Repository.*
 
 %% Generate Table with Row and Column Names based on Multiple Numeric Array
 % Two numeric arrays describe the column names, combine numeric arrays

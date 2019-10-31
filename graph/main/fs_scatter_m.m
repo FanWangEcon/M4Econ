@@ -1,7 +1,7 @@
 %% Matlab Graph Scatter Plot Examples
 % *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/ 
 % *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/ 
-% *Dynamic Asset*>* Repository.*
+% *Dynamic Asset*>* Repository*
 %% Scatter Plot Example
 % The plot below as square scatter points, each one with think border. Can set 
 % transparency of border/edge and inside separately.

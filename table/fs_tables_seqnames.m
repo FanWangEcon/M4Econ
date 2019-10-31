@@ -1,7 +1,7 @@
 %% Matlab Tables Sort and Order
-% *back to <https://fanwangecon.github.io Fan>'s
-% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab>
-% Repository or <https://fanwangecon.github.io/CodeDynaAsset/ Dynamic Asset> Repository.*
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/
+% *Dynamic Asset*>* Repository.*
 
 %% Named Columns, Shock Rows
 

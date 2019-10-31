@@ -1,7 +1,7 @@
 %% Generate Matlab Sample Example Tables
-% *back to <https://fanwangecon.github.io Fan>'s
-% <https://fanwangecon.github.io/M4Econ/ Reusable Matlab>
-% Repository or <https://fanwangecon.github.io/CodeDynaAsset/ Dynamic Asset> Repository.*
+% *back to *<https://fanwangecon.github.io *Fan*>*'s *<https://fanwangecon.github.io/M4Econ/
+% *Reusable Matlab*>* Repository or *<https://fanwangecon.github.io/CodeDynaAsset/
+% *Dynamic Asset*>* Repository.*
 
 %% Generate A Table with Two Variables
 ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];

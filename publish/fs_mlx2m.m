@@ -15,14 +15,16 @@ matlab.internal.liveeditor.openAndConvert(st_mlx_file, st_m_file)
 root = 'c:';
 user = 'Users/fan';
 project = 'Math4Econ';
-project = 'M4Econ';
+% project = 'M4Econ';
 st_proj_folder = fullfile(root, user, project);
 
-cl_st_subfolder = {'calconevar/', 'derivative/', 'derivative_application/', 'matrix_basics/'};
+cl_st_subfolder = {'calconevar/', 'derivative/', 'derivative_application/', 'matrix_basics/', ...
+                   'opti_firm_constrained/', ...
+                   'opti_hh_constrained_brsv/', 'opti_hh_constrained_brsv_inequality'};
 cl_st_subfolder = {'support/array/', 'support/string/', 'support/cells/', 'support/container/', ...
                    'graph/export/', 'graph/main/', 'graph/tools/'};
 
-cl_st_subfolder = {'support/array/'};
+cl_st_subfolder = {'opti_hh_constrained_brsv_inequality/'};
 
 st_file_name_mlx = '*.mlx';
 st_pub_format = 'html';

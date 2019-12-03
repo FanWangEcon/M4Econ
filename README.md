@@ -15,8 +15,7 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 ## 1.1 Numeric Array Manipulations
 
 1. [Accumarray Examples](https://fanwangecon.github.io/M4Econ/support/array/fs_accumarray.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_accumarray_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_accumarray.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_accumarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_accumarray.html)
-    - eps graphs are essential for clear images in pdf
-    - eps = vector graphics, avoid bitmap (jpg, png), use vector graphics
+    - accumarray to sum up probabilities/values for discrete elements of arrays
     - **m**: *unique, reshape, accumarray*
 2. [Array Broadcasting Examples](https://fanwangecon.github.io/M4Econ/support/array/fs_broadcast_expand.html): [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand_m.m) \| [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand.mlx) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/support/array/fs_broadcast_expand.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/support/array/fs_broadcast_expand.html)
     - broadcast means: array + array' + matrix = matrix

@@ -1815,7 +1815,7 @@ div.tocify {
 <div id="combining-tables-and-matrixs-together" class="section level1" number="1">
 <h1 number="1"><span class="header-section-number">1</span> Combining Tables and Matrixs Together</h1>
 <blockquote>
-<p>Go to the <a href="https://github.com/FanWangEcon//M4Econ/blob/master/amto/container//fs_map_override.mlx"><strong>MLX</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/amto/container//htmlpdfm/fs_map_override.m"><strong>M</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/amto/container//htmlpdfm/fs_map_override.pdf"><strong>PDF</strong></a>, or <a href="https://fanwangecon.github.io//M4Econ/amto/container//htmlpdfm/fs_map_override.html"><strong>HTML</strong></a> version of this file. Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go to the <a href="https://github.com/FanWangEcon//M4Econ/blob/master/table/join//fs_tab_stack.mlx"><strong>MLX</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/table/join//htmlpdfm/fs_tab_stack.m"><strong>M</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/table/join//htmlpdfm/fs_tab_stack.pdf"><strong>PDF</strong></a>, or <a href="https://fanwangecon.github.io//M4Econ/table/join//htmlpdfm/fs_tab_stack.html"><strong>HTML</strong></a> version of this file. Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="generate-some-tables-and-matrixes-for-combination" class="section level2" number="1.1">
 <h2 number="1.1"><span class="header-section-number">1.1</span> Generate Some Tables and Matrixes for Combination</h2>
@@ -1878,12 +1878,16 @@ disp(tb_test_b);
 tb_test_b_withArownames = tb_test_b;
 tb_test_b_withArownames.Properties.RowNames = tb_test_a.Properties.RowNames;
 tb_ab_col_stacked = [tb_test_a tb_test_b_withArownames];
+disp(tb_ab_col_stacked);
 
-display(tb_ab_col_stacked);
+              col123    col456     col33      col44      col55  
+              ______    ______    _______    _______    ________
 
-  ` `       `col123`   `col456`   `col33`    `col44`    `col55`</code></pre>
-<hr />
-<p><code>1 rowA=1</code> <code>0.4000</code> <code>0.4000</code> <code>0.6965</code> <code>0.4231</code> <code>0.3432</code> <code>2 rowA=2</code> <code>0.1000</code> <code>0.1000</code> <code>0.2861</code> <code>0.9808</code> <code>0.7290</code> <code>3 rowA=3</code> <code>0.2500</code> <code>0.2000</code> <code>0.2269</code> <code>0.6848</code> <code>0.4386</code> <code>4 rowA=4</code> <code>0.3000</code> <code>0.3000</code> <code>0.5513</code> <code>0.4809</code> <code>0.0597</code> <code>5 rowA=5</code> <code>0.4000</code> <code>0.4000</code> <code>0.7195</code> <code>0.3921</code> <code>0.3980</code></p>
+    rowA=1      0.4      0.4      0.69647    0.42311     0.34318
+    rowA=2      0.1      0.1      0.28614    0.98076     0.72905
+    rowA=3     0.25      0.2      0.22685    0.68483     0.43857
+    rowA=4      0.3      0.3      0.55131    0.48093    0.059678
+    rowA=5      0.4      0.4      0.71947    0.39212     0.39804</code></pre>
 </div>
 <div id="combine-tables-together-stack-rows" class="section level2" number="1.3">
 <h2 number="1.3"><span class="header-section-number">1.3</span> Combine Tables Together Stack Rows</h2>
@@ -1902,74 +1906,54 @@ tb_test_b_subset.Properties.RowNames = ...
 
 % Stack Rows
 tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
+disp(tb_ab_row_stacked);
 
-display(tb_ab_row_stacked);
+              col123     col456 
+              _______    _______
 
-   ` `       `col123`   `col456`</code></pre>
-<table style="width:50%;">
-<colgroup>
-<col width="19%"></col>
-<col width="15%"></col>
-<col width="15%"></col>
-</colgroup>
-<tbody>
-<tr class="odd">
-<td align="center"><code>1 row=1</code> <code>2 row=2</code> <code>3 row=3</code> <code>4 row=4</code> <code>5 row=5</code> <code>6 row=6</code> <code>7 row=7</code> <code>8 row=8</code> <code>9 row=9</code> <code>10 row=10</code></td>
-<td align="center"><code>0.4000</code> <code>0.1000</code> <code>0.2500</code> <code>0.3000</code> <code>0.4000</code> <code>0.6965</code> <code>0.2861</code> <code>0.2269</code> <code>0.5513</code> <code>0.7195</code></td>
-<td align="center"><code>0.4000</code> <code>0.1000</code> <code>0.2000</code> <code>0.3000</code> <code>0.4000</code> <code>0.4231</code> <code>0.9808</code> <code>0.6848</code> <code>0.4809</code> <code>0.3921</code></td>
-</tr>
-<tr class="even">
-<td align="center">Combine Table</td>
-<td align="center">s Together</td>
-<td align="center">Stack Rows</td>
-</tr>
-<tr class="odd">
-<td align="center">bles with the</td>
-<td align="center">same number</td>
-<td align="center">of columns, dd more rows variables</td>
-</tr>
-<tr class="even">
-<td align="center">% Select onl tb_test_b_su</td>
-<td align="center">y 2 columns bset = tb_t</td>
-<td align="center">to match table a column count est_b(:,1:2);</td>
-</tr>
-<tr class="odd">
-<td align="center">% Make Colum tb_test_b_su</td>
-<td align="center">n Names con bset.Proper</td>
-<td align="center">sistent ties.VariableNames = cl_col_names_a;</td>
-</tr>
-<tr class="even">
-<td align="center">% Reset Row tb_test_a.Pr tb_test_b_su strcat(’ % tb_test_b_</td>
-<td align="center">Names, can operties.Ro bset.Proper row=’, stri subset.Prop</td>
-<td align="center">not have identical row names wNames = strcat(‘row=’, string((1:size(mt_data_a,1)))); ties.RowNames = … ng(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1))))); erties.RowNames =</td>
-</tr>
-<tr class="odd">
-<td align="center">% Stack Rows tb_ab_row_st</td>
-<td align="center">acked = [tb</td>
-<td align="center">_test_a; tb_test_b_subset];</td>
-</tr>
-<tr class="even">
-<td align="center">display(tb_a</td>
-<td align="center">b_row_stack</td>
-<td align="center">ed);</td>
-</tr>
-<tr class="odd">
-<td align="center"><code></code></td>
-<td align="center"><code>col123</code></td>
-<td align="center"><code>col456</code></td>
-</tr>
-</tbody>
-</table>
-<pre><code>`1 row=1`    `0.4000`   `0.4000`
-`2 row=2`    `0.1000`   `0.1000`
-`3 row=3`    `0.2500`   `0.2000`
-`4 row=4`    `0.3000`   `0.3000`
-`5 row=5`    `0.4000`   `0.4000`
-`6 row=6`    `0.6965`   `0.4231`
-`7 row=7`    `0.2861`   `0.9808`
-`8 row=8`    `0.2269`   `0.6848`
-`9 row=9`    `0.5513`   `0.4809`</code></pre>
-<p><code>10 row=10</code> <code>0.7195</code> <code>0.3921</code></p>
+    row=1         0.4        0.4
+    row=2         0.1        0.1
+    row=3        0.25        0.2
+    row=4         0.3        0.3
+    row=5         0.4        0.4
+    row=6     0.69647    0.42311
+    row=7     0.28614    0.98076
+    row=8     0.22685    0.68483
+    row=9     0.55131    0.48093
+    row=10    0.71947    0.39212</code></pre>
+</div>
+<div id="combine-tables-together-stack-rows-1" class="section level2" number="1.4">
+<h2 number="1.4"><span class="header-section-number">1.4</span> Combine Tables Together Stack Rows</h2>
+<p>Tables with the same number of columns, dd more rows variables</p>
+<pre><code>% Select only 2 columns to match table a column count
+tb_test_b_subset = tb_test_b(:,1:2);
+
+% Make Column Names consistent
+tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
+
+% Reset Row Names, can not have identical row names
+tb_test_a.Properties.RowNames = strcat(&#39;row=&#39;, string((1:size(mt_data_a,1))));
+tb_test_b_subset.Properties.RowNames = ...
+    strcat(&#39;row=&#39;, string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
+% tb_test_b_subset.Properties.RowNames =
+
+% Stack Rows
+tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
+disp(tb_ab_row_stacked);
+
+              col123     col456 
+              _______    _______
+
+    row=1         0.4        0.4
+    row=2         0.1        0.1
+    row=3        0.25        0.2
+    row=4         0.3        0.3
+    row=5         0.4        0.4
+    row=6     0.69647    0.42311
+    row=7     0.28614    0.98076
+    row=8     0.22685    0.68483
+    row=9     0.55131    0.48093
+    row=10    0.71947    0.39212</code></pre>
 </div>
 </div>
 

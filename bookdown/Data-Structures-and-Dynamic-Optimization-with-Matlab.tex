@@ -2882,6 +2882,8 @@ grid minor;
 
 \includegraphics[width=5.20833in,height=\textheight]{img/fs_scatter_images/figure_1.png}
 
+\vspace{1em}
+
 \hypertarget{matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines}{%
 \subsection{Matlab Line and Scatter Plot with Multiple Lines and Axis Lines}\label{matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines}}
 
@@ -3305,7 +3307,7 @@ disp(tb_test_a);
     rowA=2    {'rowA=2'}       0.1      0.1  
     rowA=3    {'rowA=3'}      0.25      0.2  
     rowA=4    {'rowA=4'}       0.3      0.3  
-    rowA=5    {'rowA=5'}       0.4      0.4  
+    rowA=5    {'rowA=5'}       0.4      0.4
 \end{verbatim}
 
 \hypertarget{table-joining}{%
@@ -3386,19 +3388,17 @@ variables
 tb_test_b_withArownames = tb_test_b;
 tb_test_b_withArownames.Properties.RowNames = tb_test_a.Properties.RowNames;
 tb_ab_col_stacked = [tb_test_a tb_test_b_withArownames];
+disp(tb_ab_col_stacked);
 
-display(tb_ab_col_stacked);
+              col123    col456     col33      col44      col55  
+              ______    ______    _______    _______    ________
 
-  ` `       `col123`   `col456`   `col33`    `col44`    `col55`
+    rowA=1      0.4      0.4      0.69647    0.42311     0.34318
+    rowA=2      0.1      0.1      0.28614    0.98076     0.72905
+    rowA=3     0.25      0.2      0.22685    0.68483     0.43857
+    rowA=4      0.3      0.3      0.55131    0.48093    0.059678
+    rowA=5      0.4      0.4      0.71947    0.39212     0.39804
 \end{verbatim}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\texttt{1\ rowA=1} \texttt{0.4000} \texttt{0.4000} \texttt{0.6965} \texttt{0.4231} \texttt{0.3432}
-\texttt{2\ rowA=2} \texttt{0.1000} \texttt{0.1000} \texttt{0.2861} \texttt{0.9808} \texttt{0.7290}
-\texttt{3\ rowA=3} \texttt{0.2500} \texttt{0.2000} \texttt{0.2269} \texttt{0.6848} \texttt{0.4386}
-\texttt{4\ rowA=4} \texttt{0.3000} \texttt{0.3000} \texttt{0.5513} \texttt{0.4809} \texttt{0.0597}
-\texttt{5\ rowA=5} \texttt{0.4000} \texttt{0.4000} \texttt{0.7195} \texttt{0.3921} \texttt{0.3980}
 
 \hypertarget{combine-tables-together-stack-rows}{%
 \subsubsection{Combine Tables Together Stack Rows}\label{combine-tables-together-stack-rows}}
@@ -3420,140 +3420,59 @@ tb_test_b_subset.Properties.RowNames = ...
 
 % Stack Rows
 tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
+disp(tb_ab_row_stacked);
 
-display(tb_ab_row_stacked);
+              col123     col456 
+              _______    _______
 
-   ` `       `col123`   `col456`
+    row=1         0.4        0.4
+    row=2         0.1        0.1
+    row=3        0.25        0.2
+    row=4         0.3        0.3
+    row=5         0.4        0.4
+    row=6     0.69647    0.42311
+    row=7     0.28614    0.98076
+    row=8     0.22685    0.68483
+    row=9     0.55131    0.48093
+    row=10    0.71947    0.39212
 \end{verbatim}
 
-\begin{longtable}[]{@{}ccc@{}}
-\toprule
-\endhead
-\begin{minipage}[t]{0.18\columnwidth}\centering
-\texttt{1\ row=1}
-\texttt{2\ row=2}
-\texttt{3\ row=3}
-\texttt{4\ row=4}
-\texttt{5\ row=5}
-\texttt{6\ row=6}
-\texttt{7\ row=7}
-\texttt{8\ row=8}
-\texttt{9\ row=9}
-\texttt{10\ row=10}\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-\texttt{0.4000}
-\texttt{0.1000}
-\texttt{0.2500}
-\texttt{0.3000}
-\texttt{0.4000}
-\texttt{0.6965}
-\texttt{0.2861}
-\texttt{0.2269}
-\texttt{0.5513}
-\texttt{0.7195}\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-\texttt{0.4000}
-\texttt{0.1000}
-\texttt{0.2000}
-\texttt{0.3000}
-\texttt{0.4000}
-\texttt{0.4231}
-\texttt{0.9808}
-\texttt{0.6848}
-\texttt{0.4809}
-\texttt{0.3921}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering
-\#\# Combine Tab\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-les Togethe\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-r Stack Rows\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering
-bles with the\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-same number\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-of columns, dd more rows variables\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering
-\% Select onl
-tb\_test\_b\_su\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-y 2 columns
-bset = tb\_t\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-to match table a column count
-est\_b(:,1:2);\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering
-\% Make Colum
-tb\_test\_b\_su\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-n Names con
-bset.Proper\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-sistent
-ties.VariableNames = cl\_col\_names\_a;\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering
-\% Reset Row
-tb\_test\_a.Pr
-tb\_test\_b\_su
-strcat('
-\% tb\_test\_b\_\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-Names, can
-operties.Ro
-bset.Proper
-row=', stri
-subset.Prop\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-not have identical row names
-wNames = strcat(`row=', string((1:size(mt\_data\_a,1))));
-ties.RowNames = \ldots{}
-ng(((size(mt\_data\_a,1)+1):(size(mt\_data\_a,1)+size(tb\_test\_b\_subset,1)))));
-erties.RowNames =\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering
-\% Stack Rows
-tb\_ab\_row\_st\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-acked = {[}tb\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-\_test\_a; tb\_test\_b\_subset{]};\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering
-display(tb\_a\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-b\_row\_stack\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-ed);\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering
-\texttt{}\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-\texttt{col123}\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering
-\texttt{col456}\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\hypertarget{combine-tables-together-stack-rows-1}{%
+\subsubsection{Combine Tables Together Stack Rows}\label{combine-tables-together-stack-rows-1}}
+
+Tables with the same number of columns, dd more rows variables
 
 \begin{verbatim}
-`1 row=1`    `0.4000`   `0.4000`
-`2 row=2`    `0.1000`   `0.1000`
-`3 row=3`    `0.2500`   `0.2000`
-`4 row=4`    `0.3000`   `0.3000`
-`5 row=5`    `0.4000`   `0.4000`
-`6 row=6`    `0.6965`   `0.4231`
-`7 row=7`    `0.2861`   `0.9808`
-`8 row=8`    `0.2269`   `0.6848`
-`9 row=9`    `0.5513`   `0.4809`
-\end{verbatim}
+% Select only 2 columns to match table a column count
+tb_test_b_subset = tb_test_b(:,1:2);
 
-\texttt{10\ row=10} \texttt{0.7195} \texttt{0.3921}
+% Make Column Names consistent
+tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
+
+% Reset Row Names, can not have identical row names
+tb_test_a.Properties.RowNames = strcat('row=', string((1:size(mt_data_a,1))));
+tb_test_b_subset.Properties.RowNames = ...
+    strcat('row=', string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
+% tb_test_b_subset.Properties.RowNames =
+
+% Stack Rows
+tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
+disp(tb_ab_row_stacked);
+
+              col123     col456 
+              _______    _______
+
+    row=1         0.4        0.4
+    row=2         0.1        0.1
+    row=3        0.25        0.2
+    row=4         0.3        0.3
+    row=5         0.4        0.4
+    row=6     0.69647    0.42311
+    row=7     0.28614    0.98076
+    row=8     0.22685    0.68483
+    row=9     0.55131    0.48093
+    row=10    0.71947    0.39212
+\end{verbatim}
 
 \hypertarget{appendix-appendix}{%
 \appendix}

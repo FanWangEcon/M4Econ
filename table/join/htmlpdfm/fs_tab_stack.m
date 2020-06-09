@@ -43,8 +43,7 @@ disp(tb_test_b);
 tb_test_b_withArownames = tb_test_b;
 tb_test_b_withArownames.Properties.RowNames = tb_test_a.Properties.RowNames;
 tb_ab_col_stacked = [tb_test_a tb_test_b_withArownames];
-
-display(tb_ab_col_stacked);
+disp(tb_ab_col_stacked);
 %% Combine Tables Together Stack Rows
 % Tables with the same number of columns, dd more rows variables
 
@@ -62,8 +61,7 @@ tb_test_b_subset.Properties.RowNames = ...
 
 % Stack Rows
 tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
-
-display(tb_ab_row_stacked);
+disp(tb_ab_row_stacked);
 %% Combine Tables Together Stack Rows
 % Tables with the same number of columns, dd more rows variables
 
@@ -81,5 +79,4 @@ tb_test_b_subset.Properties.RowNames = ...
 
 % Stack Rows
 tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
-
-display(tb_ab_row_stacked);
+disp(tb_ab_row_stacked);

@@ -45,6 +45,10 @@ addpath(genpath(st_proj_folder));
 [cl_st_file_names, cl_st_folder_names] = ...
     ff_find_files(st_proj_folder, cl_st_subfolder, st_file_name_mlx);
 
+%% Test Single Conversion 
+cd C:\Users\fan\Math4Econ\matrix_application
+matlab.internal.liveeditor.openAndConvert('KL_borrowhire_firm.mlx', 'KL_borrowhire_firm.tex')
+          
 %% Publish Files
 
 % generate html for each file
@@ -59,23 +63,28 @@ for it_file_ctr = 1:length(cl_st_file_names)
     st_file_name_m = strcat(at_st_split_file_name{1}, '_m.m');
     st_file_name_html = strcat(at_st_split_file_name{1}, '.html');
     st_file_name_pdf = strcat(at_st_split_file_name{1}, '.pdf');
+    st_file_name_tex = strcat(at_st_split_file_name{1}, '.tex');
     
     % get full path to .m and .mlx
     st_file_full_mlx = fullfile(file_folder, st_file_name_mlx);
     st_file_full_m = fullfile(file_folder, st_file_name_m);
     st_file_full_html = fullfile(file_folder, st_file_name_html); 
     st_file_full_pdf = fullfile(file_folder, st_file_name_pdf); 
+    st_file_full_tex = fullfile(file_folder, st_file_name_tex); 
     disp(st_file_name_mlx);
     disp(st_file_name_m);
     disp(st_file_full_html);
     disp(st_file_full_pdf);
+    disp(st_file_full_tex);
     
-    % convert from .mlx to .m
-    matlab.internal.liveeditor.openAndConvert(st_file_full_mlx, st_file_full_m)    
-    % convert from .mlx to .html
-    matlab.internal.liveeditor.openAndConvert(st_file_full_mlx, st_file_full_html)
-    % convert from .mlx to .pdf
-    matlab.internal.liveeditor.openAndConvert(st_file_full_mlx, st_file_full_pdf)
+%     % convert from .mlx to .m
+%     matlab.internal.liveeditor.openAndConvert(st_file_full_mlx, st_file_full_m)    
+%     % convert from .mlx to .html
+%     matlab.internal.liveeditor.openAndConvert(st_file_full_mlx, st_file_full_html)
+%     % convert from .mlx to .pdf
+%     matlab.internal.liveeditor.openAndConvert(st_file_full_mlx, st_file_full_pdf)
+    % convert from .mlx to .tex
+    matlab.internal.liveeditor.openAndConvert(st_file_full_mlx, st_file_full_tex)
     
     % generate documentation, convert .m to .m publish html
     if (bl_publish)

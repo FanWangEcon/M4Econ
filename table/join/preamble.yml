@@ -1,0 +1,26 @@
+- file: fs_tab_stack
+  title: "Matlab Table Stack and Combine Rows and Columns"
+  titleshort: "Stack Matlab Tables"
+  description: |
+    Append columns to existing table. Stack tables vertically and horizontally.
+  core :
+    - package: m
+      code: |
+        array2table()
+        [tb_a tb_b]
+        [tb_a; tb_b]
+        tb.Properties.VariableNames
+        tb.Properties.RowNames
+  date: 2020-06-08
+  date_start: 2020-06-08
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

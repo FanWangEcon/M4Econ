@@ -1,0 +1,78 @@
+- file: fs_string
+  title: "Matlab Single String Element Manipulation"
+  titleshort: "String Basics"
+  description: |
+    Cut string suffix and append new suffix.
+  core :
+    - package: m
+      code: |
+        str_sub = split(string, ".")
+        strcat(str_sub{1}, '_m.m')
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_string_array
+  title: "Matlab String Manipulations Matlab with Arrays"
+  titleshort: "String Arrays"
+  description: |
+    Concatenate string arrays, find string in string cell array, print display numerics as strings.
+    String with numeric arrays, numeric arrays together as strings, combine numeric arrays and append string.
+  core :
+    - package: m
+      code: |
+        repmat()
+        num2str()
+        strcat()
+        strjoin()
+        fprintf()
+        strcmp()
+        strrep()
+        cel2mat(cellfun(@(m) find(strcmp())))
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_string_strcat
+  title: "Matlab String Concatenate Strings Arrays with Numbers and Number Arrays with Strings"
+  titleshort: "String Concatenations"
+  description: |
+    Concatenate multiple numeric arrays together with strings and format.
+  core :
+    - package: m
+      code: |
+        cellstr()
+        strcat()
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

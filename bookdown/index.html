@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Data Structures and Dynamic Optimization with Matlab</title>
+  <meta name="description" content="Append columns to existing table. Stack tables vertically and horizontally." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Data Structures and Dynamic Optimization with Matlab" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Append columns to existing table. Stack tables vertically and horizontally." />
+  <meta name="github-repo" content="fanwangecon/M4Econ" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Structures and Dynamic Optimization with Matlab" />
+  
+  <meta name="twitter:description" content="Append columns to existing table. Stack tables vertically and horizontally." />
+  
+
+<meta name="author" content="Fan Wang" />
+
+
+<meta name="date" content="2020-06-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="data-structures.html"/>
+<script src="libs/header-attrs-2.2/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92953468-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-92953468-6');
+</script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Structures and Dynamic Optimization with Matlab</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>1</b> Data Structures</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-structures.html"><a href="data-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>1.1</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.1</b> Accumarray Examples</a></li>
+<li class="chapter" data-level="1.1.2" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.2</b> Array Broadcast and Expansion Examples</a></li>
+<li class="chapter" data-level="1.1.3" data-path="data-structures.html"><a href="data-structures.html#array-draw-random-index-and-find-combinations-or-permuations"><i class="fa fa-check"></i><b>1.1.3</b> Array Draw Random Index and Find Combinations or Permuations</a></li>
+<li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#check-imaginary-numbers"><i class="fa fa-check"></i><b>1.1.4</b> Check Imaginary Numbers</a></li>
+<li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#array-reshape-repeat-and-expand-examples"><i class="fa fa-check"></i><b>1.1.5</b> Array Reshape, Repeat and Expand Examples</a></li>
+<li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#array-index-slicing-and-subsetting-to-replace-and-expand"><i class="fa fa-check"></i><b>1.1.6</b> Array Index Slicing and Subsetting to Replace and Expand</a></li>
+<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.7</b> Grid States, Choices and Optimal Choices Example</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.2</b> Cells</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.2.1</b> List Comprehension with Cells</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.2.2</b> All Possible Combinations of Multiple Arrays</a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-structures.html"><a href="data-structures.html#combine-cells-together"><i class="fa fa-check"></i><b>1.2.3</b> Combine Cells Together</a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-structures.html"><a href="data-structures.html#nested-cells"><i class="fa fa-check"></i><b>1.2.4</b> Nested Cells</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.3</b> Characters and Strings</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#single-string-element-manipulation"><i class="fa fa-check"></i><b>1.3.1</b> Single String Element Manipulation</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#string-manipulations-with-arrays"><i class="fa fa-check"></i><b>1.3.2</b> String Manipulations with Arrays</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings"><i class="fa fa-check"></i><b>1.3.3</b> Concatenate Strings Arrays with Numbers and Number Arrays with Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.4</b> Map Containers</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#container-map-basics"><i class="fa fa-check"></i><b>1.4.1</b> Container Map Basics</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#container-map-display-map-keys-and-values"><i class="fa fa-check"></i><b>1.4.2</b> Container Map Display Map Keys and Values</a></li>
+<li class="chapter" data-level="1.4.3" data-path="data-structures.html"><a href="data-structures.html#genereate-container-maps"><i class="fa fa-check"></i><b>1.4.3</b> Genereate Container Maps</a></li>
+<li class="chapter" data-level="1.4.4" data-path="data-structures.html"><a href="data-structures.html#container-map-example-overriding"><i class="fa fa-check"></i><b>1.4.4</b> Container Map Example Overriding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.1</b> varargin Default Parameters</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
+<li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>3</b> Graphs</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>3.1</b> Figure Components</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>3.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
+<li class="chapter" data-level="3.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>3.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
+<li class="chapter" data-level="3.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>3.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>3.2</b> Basic Figure Types</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>3.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>3.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>3.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>3.3</b> Write and Read Plots</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>3.3.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>4</b> Tables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>4.1</b> Basic Table Generation</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>4.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="4.1.2" data-path="tables.html"><a href="tables.html#tables-order-columns-and-sort"><i class="fa fa-check"></i><b>4.1.2</b> Tables Order Columns and Sort</a></li>
+<li class="chapter" data-level="4.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>4.1.3</b> Row and Column names for Table based on Arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>4.2</b> Table Joining</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="tables.html"><a href="tables.html#combining-tables-and-matrixs-together"><i class="fa fa-check"></i><b>4.2.1</b> Combining Tables and Matrixs Together</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="index-and-code-links.html"><a href="index-and-code-links.html"><i class="fa fa-check"></i><b>A</b> Index and Code Links</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#data-structures-links"><i class="fa fa-check"></i><b>A.1</b> Data Structures links</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.1-matrices-and-arraysmatrices-and-arrays-links"><i class="fa fa-check"></i><b>A.1.1</b> <span>Section 1.1 Matrices and Arrays</span> links</a></li>
+<li class="chapter" data-level="A.1.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.2-cellscells-links"><i class="fa fa-check"></i><b>A.1.2</b> <span>Section 1.2 Cells</span> links</a></li>
+<li class="chapter" data-level="A.1.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.3-characters-and-stringscharacters-and-strings-links"><i class="fa fa-check"></i><b>A.1.3</b> <span>Section 1.3 Characters and Strings</span> links</a></li>
+<li class="chapter" data-level="A.1.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.4-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.4</b> <span>Section 1.4 Map Containers</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.3</b> Graphs links</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-3.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.3.1</b> <span>Section 3.1 Figure Components</span> links</a></li>
+<li class="chapter" data-level="A.3.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-3.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.3.2</b> <span>Section 3.2 Basic Figure Types</span> links</a></li>
+<li class="chapter" data-level="A.3.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-3.3-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.3.3</b> <span>Section 3.3 Write and Read Plots</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.4</b> Tables links</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-4.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.4.1</b> <span>Section 4.1 Basic Table Generation</span> links</a></li>
+<li class="chapter" data-level="A.4.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-4.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.4.2</b> <span>Section 4.2 Table Joining</span> links</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://fanwangecon.github.io/M4Econ/bookdown/index.html" target="blank">M4Econ Bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Structures and Dynamic Optimization with Matlab</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Data Structures and Dynamic Optimization with Matlab</h1>
+<p class="author"><em>Fan Wang</em></p>
+<p class="date"><em>2020-06-08</em></p>
+</div>
+<div id="preface" class="section level1 unnumbered" number="">
+<h1>Preface</h1>
+<p><a href="https://github.com/FanWangEcon/M4Econ"><img src="http://hits.dwyl.io/fanwangecon/M4Econ.svg" alt="HitCount" /></a> <a href="https://github.com/FanWangEcon/M4Econ/stargazers"><img src="https://img.shields.io/github/stars/fanwangecon/M4Econ?style=social" alt="Star" /></a> <a href="https://github.com/FanWangEcon/M4Econ/network/members"><img src="https://img.shields.io/github/forks/fanwangecon/M4Econ?style=social" alt="Fork" /></a> <a href="https://github.com/FanWangEcon/M4Econ/watchers"><img src="https://img.shields.io/github/watchers/fanwangecon/M4Econ?style=social" alt="Star" /></a></p>
+<p>This is a work-in-progress <a href="https://fanwangecon.github.io/M4Econ/">website</a> of support files for using matlab. Materials gathered from various <a href="https://fanwangecon.github.io/research">projects</a> in which matlab is used. Matlab files are linked below by section with livescript files. Tested with <a href="https://www.mathworks.com/products/matlab.html">Matlab</a> 2019a <span class="citation">(The MathWorks Inc <a href="#ref-matlab" role="doc-biblioref">2019</a>)</span>. This is not a Matlab package, but a list of examples in PDF/HTML/Mlx formats. <a href="https://github.com/FanWangEcon/MEconTools">MEconTools</a> is a package that can be installed with tools used in projects involving matlab code.</p>
+<p>Bullet points in the Appendix show which matlab functions/commands are used to achieve various objectives. The goal of this repository is to make it easier to find/re-use codes produced for various projects. Some functions also rely on or correspond to functions from <a href="https://github.com/FanWangEcon/MEconTools">MEconTools</a> <span class="citation">(Wang <a href="#ref-M-MEconTools" role="doc-biblioref">2020</a>)</span>.</p>
+<p>From other repositories: For dynamic borrowing and savings problems, see <a href="https://fanwangecon.github.io/CodeDynaAsset/">Dynamic Asset Repository</a>; For code examples, see also <a href="https://fanwangecon.github.io/R4Econ/">R Example Code</a>, and <a href="https://fanwangecon.github.io/Stata4Econ/">Stata Example Code</a>; For intro stat with R, see <a href="https://fanwangecon.github.io/Stat4Econ/">Intro Statistics for Undergraduates</a>, and intro Math with Matlab, see <a href="https://fanwangecon.github.io/Math4Econ/">Intro Mathematics for Economists</a>. See <a href="https://github.com/FanWangEcon">here</a> for all of <a href="https://fanwangecon.github.io/">Fan</a>’s public repositories.</p>
+<p>The site is built using <a href="https://bookdown.org/">Bookdown</a> <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>.</p>
+<p>Please contact <a href="https://fanwangecon.github.io/">FanWangEcon</a> for issues or problems.</p>
+<p><a href="https://github.com/FanWangEcon/M4Econ/commits/master"><img src="https://img.shields.io/github/last-commit/fanwangecon/M4Econ" /></a> <a href="https://github.com/FanWangEcon/M4Econ/graphs/commit-activity"><img src="https://img.shields.io/github/commit-activity/m/fanwangecon/M4Econ" /></a> <a href="https://github.com/FanWangEcon/M4Econ/issues"><img src="https://img.shields.io/github/issues/fanwangecon/M4Econ" /></a> <a href="https://github.com/FanWangEcon/M4Econ/pulls"><img src="https://img.shields.io/github/issues-pr/fanwangecon/M4Econ" /></a></p>
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-matlab">
+<p>The MathWorks Inc. 2019. <em>MATLAB</em>. <a href="https://www.mathworks.com/products/matlab.html">https://www.mathworks.com/products/matlab.html</a>.</p>
+</div>
+<div id="ref-M-MEconTools">
+<p>Wang, Fan. 2020. <em>MEconTools: Tools for Analyzing Matlab Data Structures and Dynamic Programming</em>. <a href="https://fanwangecon.github.io/MEconTools/">https://fanwangecon.github.io/MEconTools/</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="data-structures.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["Data-Structures-and-Dynamic-Optimization-with-Matlab.pdf", "PDF"]],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019b"><title>Map Based Default Parameter Structure with varargin</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px 4px 0px 0px; padding: 6px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 16.996px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Map Based Default Parameter Structure with varargin</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/CodeDynaAsset/"><span style=' font-weight: bold;'>Dynamic Asset</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span>Call Function with Default Parameters</span></h2><div  class = 'S1'><span>Call function below without overriding</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>ff_defaultmap()</span></span></div><div  class = 'S4'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement scrollableOutput" uid="A864D84C" data-testid="output_0" data-width="428" data-height="73" data-hashorizontaloverflow="true" style="width: 458px; max-height: 261px;"><div class="textElement">    'c_gap'    'c_max'    'c_min'    'c_min_for_util'    'fl_crra'    'it_rown'    'st_single_double'
+
+    [1.0000e-03]    [60]    [1.0000e-03]    [1.0000e-03]    [1.5000]    [100]    'double'
+
+Elapsed time is 0.000896 seconds.</div></div></div></div></div><h2  class = 'S2'><span>Call Function overriding some Parameters</span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>param_map = containers.Map(</span><span style="color: rgb(160, 32, 240);">'KeyType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'char'</span><span>, </span><span style="color: rgb(160, 32, 240);">'ValueType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>param_map(</span><span style="color: rgb(160, 32, 240);">'fl_w_max'</span><span>) = 1.11;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>param_map(</span><span style="color: rgb(160, 32, 240);">'it_w_i'</span><span>) = 2.22;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>support_map = containers.Map(</span><span style="color: rgb(160, 32, 240);">'KeyType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'char'</span><span>, </span><span style="color: rgb(160, 32, 240);">'ValueType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>support_map(</span><span style="color: rgb(160, 32, 240);">'bl_display'</span><span>) = true;</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>ff_defaultmap(param_map, support_map)</span></span></div><div  class = 'S4'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement scrollableOutput" uid="4194011A" data-testid="output_1" data-width="428" data-height="73" data-hashorizontaloverflow="true" style="width: 458px; max-height: 261px;"><div class="textElement">    'c_gap'    'c_max'    'c_min'    'c_min_for_util'    'fl_crra'    'fl_w_max'    'it_rown'    'it_w_i'    'st_single_double'
+
+    [1.0000e-03]    [60]    [1.0000e-03]    [1.0000e-03]    [1.5000]    [1.1100]    [100]    [2.2200]    'double'
+
+Elapsed time is 0.000667 seconds.</div></div></div></div></div><h2  class = 'S2'><span>Function with Map Defaults and Overriding</span></h2><div  class = 'S1'><span>This default parameter style is fairly succinct, allows for program testability, and easy adjustments/addition of additional parameters to models. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">function </span><span>ff_defaultmap(varargin)</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% Parameters</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>params_len = length(varargin);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">if </span><span>params_len &gt; 3</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    error(</span><span style="color: rgb(160, 32, 240);">'ff_defaultmap:Can only have 3 container map parameters'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>bl_input_override = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">if </span><span>(params_len == 3)</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    bl_input_override = varargin{3};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% Defaults</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">if </span><span>(bl_input_override)</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span><span style="color: rgb(60, 118, 61);">% this relies on externally generated parameters, defaults do not have to be generated</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span><span style="color: rgb(60, 118, 61);">% if this file has to be invoked many times, then this saves time by avoiding</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span><span style="color: rgb(60, 118, 61);">% regenerating defaults over and over again</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    [param_map, support_map, ~] = varargin{:};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">else</span><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    param_map = containers.Map(</span><span style="color: rgb(160, 32, 240);">'KeyType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'char'</span><span>, </span><span style="color: rgb(160, 32, 240);">'ValueType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    param_map(</span><span style="color: rgb(160, 32, 240);">'fl_crra'</span><span>) = 1.5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    param_map(</span><span style="color: rgb(160, 32, 240);">'c_min'</span><span>) = 0.001;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    param_map(</span><span style="color: rgb(160, 32, 240);">'c_min_for_util'</span><span>) = 0.001;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    param_map(</span><span style="color: rgb(160, 32, 240);">'c_gap'</span><span>) = 10^-3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    param_map(</span><span style="color: rgb(160, 32, 240);">'c_max'</span><span>) = 60;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    param_map(</span><span style="color: rgb(160, 32, 240);">'it_rown'</span><span>) = 100;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    param_map(</span><span style="color: rgb(160, 32, 240);">'st_single_double'</span><span>) = </span><span style="color: rgb(160, 32, 240);">'double'</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    support_map = containers.Map(</span><span style="color: rgb(160, 32, 240);">'KeyType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'char'</span><span>, </span><span style="color: rgb(160, 32, 240);">'ValueType'</span><span>,</span><span style="color: rgb(160, 32, 240);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    support_map(</span><span style="color: rgb(160, 32, 240);">'bl_display'</span><span>) = true;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    support_map(</span><span style="color: rgb(160, 32, 240);">'bl_graph'</span><span>) = true;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    support_map(</span><span style="color: rgb(160, 32, 240);">'bl_graph_onebyones'</span><span>) = true;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    support_map(</span><span style="color: rgb(160, 32, 240);">'bl_time'</span><span>) = true;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    support_map(</span><span style="color: rgb(160, 32, 240);">'bl_profile'</span><span>) = false;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    support_map(</span><span style="color: rgb(160, 32, 240);">'st_profile_path'</span><span>) = [pwd </span><span style="color: rgb(160, 32, 240);">'/profile'</span><span>];</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    default_maps = {param_map, support_map};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% Parse Parameters</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% see: C:\Users\fan\M4Econ\support\dtype\map_override.m</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>[default_maps{1:params_len}] = varargin{:};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>param_map = [param_map; default_maps{1}];</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>support_map = [support_map; default_maps{2}];</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>params_group = values(param_map, {</span><span style="color: rgb(160, 32, 240);">'fl_crra'</span><span>, </span><span style="color: rgb(160, 32, 240);">'c_min'</span><span>, </span><span style="color: rgb(160, 32, 240);">'c_min_for_util'</span><span>, </span><span style="color: rgb(160, 32, 240);">'c_gap'</span><span>, </span><span style="color: rgb(160, 32, 240);">'c_max'</span><span>});</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>[fl_crra, c_min, c_min_for_util, c_gap, c_max] = params_group{:};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>params_group = values(param_map, {</span><span style="color: rgb(160, 32, 240);">'it_rown'</span><span>});</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>[it_rown] = params_group{:};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>params_group = values(param_map, {</span><span style="color: rgb(160, 32, 240);">'st_single_double'</span><span>});</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>[st_single_double] = params_group{:};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% support</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>params_group = values(support_map, {</span><span style="color: rgb(160, 32, 240);">'bl_display'</span><span>, </span><span style="color: rgb(160, 32, 240);">'bl_graph'</span><span>, </span><span style="color: rgb(160, 32, 240);">'bl_graph_onebyones'</span><span>});</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>[bl_display, bl_graph, bl_graph_onebyones] = params_group{:};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>params_group = values(support_map, {</span><span style="color: rgb(160, 32, 240);">'bl_time'</span><span>, </span><span style="color: rgb(160, 32, 240);">'bl_profile'</span><span>, </span><span style="color: rgb(160, 32, 240);">'st_profile_path'</span><span>});</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>[bl_time, bl_profile, st_profile_path] = params_group{:};</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% Tic toc starts</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">if </span><span>(bl_time); tic; </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% Print Parameters</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">if </span><span>(bl_display)</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    disp(param_map.keys);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    disp(param_map.values);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% Profile On</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">if </span><span>(bl_profile)</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    close </span><span style="color: rgb(160, 32, 240);">all</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    profile </span><span style="color: rgb(160, 32, 240);">off</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    profile </span><span style="color: rgb(160, 32, 240);">on</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">%% Profiling</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">if </span><span>(bl_profile)</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    profile </span><span style="color: rgb(160, 32, 240);">off</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    profile </span><span style="color: rgb(160, 32, 240);">viewer</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    profsave(profile(</span><span style="color: rgb(160, 32, 240);">'info'</span><span>), st_profile_path);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">if </span><span>(bl_time); toc; </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Map Based Default Parameter Structure with varargin
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+%% Call Function with Default Parameters
+% Call function below without overriding
+
+ff_defaultmap()
+%% Call Function overriding some Parameters
+
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+param_map('fl_w_max') = 1.11;
+param_map('it_w_i') = 2.22;
+
+support_map = containers.Map('KeyType','char', 'ValueType','any');
+support_map('bl_display') = true;
+ff_defaultmap(param_map, support_map)
+%% Function with Map Defaults and Overriding
+% This default parameter style is fairly succinct, allows for program testability, 
+% and easy adjustments/addition of additional parameters to models. 
+
+function ff_defaultmap(varargin)
+
+% Parameters
+params_len = length(varargin);
+if params_len > 3
+    error('ff_defaultmap:Can only have 3 container map parameters');
+end
+bl_input_override = 0;
+if (params_len == 3)
+    bl_input_override = varargin{3};
+end
+
+% Defaults
+if (bl_input_override)
+    % this relies on externally generated parameters, defaults do not have to be generated
+    % if this file has to be invoked many times, then this saves time by avoiding
+    % regenerating defaults over and over again
+    [param_map, support_map, ~] = varargin{:};
+else    
+    param_map = containers.Map('KeyType','char', 'ValueType','any');
+    param_map('fl_crra') = 1.5;
+    param_map('c_min') = 0.001;
+    param_map('c_min_for_util') = 0.001;
+    param_map('c_gap') = 10^-3;
+    param_map('c_max') = 60;
+    param_map('it_rown') = 100;
+    param_map('st_single_double') = 'double';
+    
+    support_map = containers.Map('KeyType','char', 'ValueType','any');
+    support_map('bl_display') = true;
+    support_map('bl_graph') = true;
+    support_map('bl_graph_onebyones') = true;
+    support_map('bl_time') = true;
+    support_map('bl_profile') = false;
+    support_map('st_profile_path') = [pwd '/profile'];
+    default_maps = {param_map, support_map};
+end
+
+% Parse Parameters
+% see: C:\Users\fan\M4Econ\support\dtype\map_override.m
+[default_maps{1:params_len}] = varargin{:};
+param_map = [param_map; default_maps{1}];
+support_map = [support_map; default_maps{2}];
+
+params_group = values(param_map, {'fl_crra', 'c_min', 'c_min_for_util', 'c_gap', 'c_max'});
+[fl_crra, c_min, c_min_for_util, c_gap, c_max] = params_group{:};
+params_group = values(param_map, {'it_rown'});
+[it_rown] = params_group{:};
+params_group = values(param_map, {'st_single_double'});
+[st_single_double] = params_group{:};
+
+% support
+params_group = values(support_map, {'bl_display', 'bl_graph', 'bl_graph_onebyones'});
+[bl_display, bl_graph, bl_graph_onebyones] = params_group{:};
+params_group = values(support_map, {'bl_time', 'bl_profile', 'st_profile_path'});
+[bl_time, bl_profile, st_profile_path] = params_group{:};
+
+% Tic toc starts
+if (bl_time); tic; end
+
+% Print Parameters
+if (bl_display)
+    disp(param_map.keys);
+    disp(param_map.values);
+end
+
+% Profile On
+if (bl_profile)
+    close all;
+    profile off;
+    profile on;
+end
+
+%% Profiling
+if (bl_profile)
+    profile off
+    profile viewer
+    profsave(profile('info'), st_profile_path);
+end
+
+if (bl_time); toc; end
+
+end
+##### SOURCE END #####
+--></body></html>

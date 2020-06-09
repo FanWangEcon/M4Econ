@@ -13,7 +13,8 @@ matlab.internal.liveeditor.openAndConvert(st_mlx_file, st_m_file)
 %% Save Results for Math4Econ
 
 root = 'c:';
-user = 'Users/fan';
+user = 'Users/fan/Documents/Dropbox (UH-ECON)/repos/';
+user = 'Users/fan/';
 project = 'Math4Econ';
 % project = 'M4Econ';
 st_proj_folder = fullfile(root, user, project);
@@ -24,7 +25,7 @@ cl_st_subfolder = {'calconevar/', 'derivative/', 'derivative_application/', 'mat
 cl_st_subfolder = {'support/array/', 'support/string/', 'support/cells/', 'support/container/', ...
                    'graph/export/', 'graph/main/', 'graph/tools/'};
 
-cl_st_subfolder = {'opti_hh_constrained_brsv_inequality/'};
+cl_st_subfolder = {'onevarcalc/'};
 
 st_file_name_mlx = '*.mlx';
 st_pub_format = 'html';
@@ -32,3 +33,4 @@ bl_show_browser = true;
 bl_publish = false;
 ff_mlx2m_batch(st_proj_folder, cl_st_subfolder, st_file_name_mlx, ...
                 st_pub_format, bl_show_browser, bl_publish)
+            

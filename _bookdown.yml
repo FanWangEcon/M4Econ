@@ -1,0 +1,75 @@
+book_filename: "Data Structures and Dynamic Optimization with Matlab"
+output_dir: "bookdown"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+rmd_files:
+  - index.Rmd
+
+
+  - amto/main.Rmd
+
+  - amto/array/main.Rmd
+  - amto/array/fs_accumarray.Rmd
+  - amto/array/fs_broadcast_expand.Rmd
+  - amto/array/fs_combi_permu.Rmd
+  - amto/array/fs_img.Rmd
+  - amto/array/fs_reshape.Rmd
+  - amto/array/fs_slicing.Rmd
+  - amto/array/fs_stateschoicesopti.Rmd
+
+  - amto/cell/main.Rmd
+  - amto/cell/fs_cellfuns.Rmd
+  - amto/cell/fs_cellscombinations.Rmd
+  - amto/cell/fs_cellscombine.Rmd
+  - amto/cell/fs_cellsnested.Rmd
+
+  - amto/string/main.Rmd
+  - amto/string/fs_string.Rmd
+  - amto/string/fs_string_array.Rmd
+  - amto/string/fs_string_strcat.Rmd
+
+  - amto/container/main.Rmd
+  - amto/container/fs_container.Rmd
+  - amto/container/fs_containermap.Rmd
+  - amto/container/fs_map_anytype.Rmd
+  - amto/container/fs_map_override.Rmd
+
+
+  - function/main.Rmd
+
+  - function/defaultparam/main.Rmd
+  - function/defaultparam/fs_varargin.Rmd
+  - function/defaultparam/fs_defaultmap.Rmd
+
+
+  - graph/main.Rmd
+
+  - graph/tools/main.Rmd
+  - graph/tools/fs_color.Rmd
+  - graph/tools/fs_titling.Rmd
+  - graph/tools/fs_legendsubset.Rmd
+
+  - graph/main/main.Rmd
+  - graph/main/fs_scatter.Rmd
+  - graph/main/fs_lines.Rmd
+  - graph/main/fs_specline.Rmd
+
+  - graph/export/main.Rmd
+  - graph/export/fs_eps.Rmd
+
+
+  - table/main.Rmd
+
+  - table/main/main.Rmd
+  - table/main/fs_tab_gensample.Rmd
+  - table/main/fs_tab_ordersort.Rmd
+  - table/main/fs_tab_rowcolstrs.Rmd
+
+  - table/join/main.Rmd
+  - table/join/fs_tab_stack.Rmd
+
+
+  - README_appendix.md
+  - title.Rmd

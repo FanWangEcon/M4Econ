@@ -1,0 +1,157 @@
+- file: fs_accumarray
+  title: "Matlab Accumarray Examples"
+  titleshort: "Accumarray Examples"
+  description: |
+    Accumarray to sum up probabilities/values for discrete elements of arrays.
+  core :
+    - package: m
+      code: |
+        unique()
+        reshape()
+        accumarray()
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_broadcast_expand
+  title: "Matlab Array Broadcast and Expansion Examples"
+  titleshort: "Array Broadcasting Examples"
+  description: |
+    broadcast means: array + array’ + matrix = matrix.
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_combi_permu
+  title: "Matlab Array Draw Random Index and Find Combinations or Permuations"
+  titleshort: "Array Random Draws and Permutation"
+  description: |
+    Draw randomly from array, permutate arrays.
+  core :
+    - package: m
+      code: |
+        ndgrid()
+        cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_img
+  title: "Matlab Check Imaginary Numbers"
+  titleshort: "Imaginary Elements of Array"
+  description: |
+    Find imaginary elements of array.
+  core :
+    - package: m
+      code: |
+        imag()
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_reshape
+  title: "Matlab Array Reshape, Repeat and Expand Examples"
+  titleshort: "Array Reshape, Repeat and Expand"
+  description: |
+    Reshape and flatten arrays.
+  core :
+    - package: m
+      code: |
+        reshape()
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_slicing
+  title: "Matlab Array Index Slicing and Subsetting to Replace and Expand"
+  titleshort: "Array Index Slicing and Subsetting to Replace and Expand"
+  description: |
+    Index based column and row expansions.
+    Anonymous function to slice array subsets.
+  core :
+    - package: m
+      code: |
+        sub2ind()
+        @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1)) times (it_ar_n-1)+1))
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_stateschoicesopti
+  title: "Matlab Grid States, Choices and Optimal Choices Example"
+  titleshort: "Grid States, Choices and Optimal Choices Example"
+  description: |
+    States, choices, and find max.
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

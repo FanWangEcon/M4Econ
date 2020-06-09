@@ -1,0 +1,5 @@
+---
+title: "Data Structures and Dynamic Optimization with Matlab"
+author: "Fan Wang"
+date: '`r format(Sys.Date(), "%Y-%m-%d")`'
+---

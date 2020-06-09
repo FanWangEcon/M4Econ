@@ -1,0 +1,22 @@
+- file: fs_eps
+  title: "Matlab Graph Generate EPS Postscript Figures"
+  titleshort: "Graph Generate EPS Postscript Figures"
+  description: |
+    EPS vector graphics, avoid bitmap (jpg, png), use vector graphics.
+  core :
+    - package: m
+      code: |
+        figure('Renderer', 'Painters')
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

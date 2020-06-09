@@ -1,0 +1,53 @@
+- file: fs_varargin
+  title: "Matlab varargin as a Function Parameter"
+  titleshort: "Use varargin as a Function Parameter"
+  description: |
+    Default parameters allow for maintaining code testability.
+    Use varargin for functions with limited parameters.
+  core :
+    - package: m
+      code: |
+        varargin
+        cell2mat()
+        function [out_put] = func_name(varargin)
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_defaultmap
+  title: "Matlab varargin as a Function Parameter"
+  titleshort: "Use varargin as a Function Parameter"
+  description: |
+    The varargin structure could lead to excessive code lines. Container Map works well with large parameter structure.
+    Core model functions with potentially many parameters, possibly override default generation to save time.
+  core :
+    - package: m
+      code: |
+        varargin
+        function [out_put] = func_name(varargin)
+        cm_defaults = {cm_a, cm_b}
+        [cm_defaults{1:optional_params_len}] = varargin{:}
+        cm_c = [cm_a;cm_b]
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Graphs | Data Structures and Dynamic Optimization with Matlab</title>
+  <meta name="description" content="Append columns to existing table. Stack tables vertically and horizontally." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Graphs | Data Structures and Dynamic Optimization with Matlab" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Append columns to existing table. Stack tables vertically and horizontally." />
+  <meta name="github-repo" content="fanwangecon/M4Econ" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Graphs | Data Structures and Dynamic Optimization with Matlab" />
+  
+  <meta name="twitter:description" content="Append columns to existing table. Stack tables vertically and horizontally." />
+  
+
+<meta name="author" content="Fan Wang" />
+
+
+<meta name="date" content="2020-06-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="functions.html"/>
+<link rel="next" href="tables.html"/>
+<script src="libs/header-attrs-2.2/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92953468-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-92953468-6');
+</script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Structures and Dynamic Optimization with Matlab</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>1</b> Data Structures</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-structures.html"><a href="data-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>1.1</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.1</b> Accumarray Examples</a></li>
+<li class="chapter" data-level="1.1.2" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.2</b> Array Broadcast and Expansion Examples</a></li>
+<li class="chapter" data-level="1.1.3" data-path="data-structures.html"><a href="data-structures.html#array-draw-random-index-and-find-combinations-or-permuations"><i class="fa fa-check"></i><b>1.1.3</b> Array Draw Random Index and Find Combinations or Permuations</a></li>
+<li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#check-imaginary-numbers"><i class="fa fa-check"></i><b>1.1.4</b> Check Imaginary Numbers</a></li>
+<li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#array-reshape-repeat-and-expand-examples"><i class="fa fa-check"></i><b>1.1.5</b> Array Reshape, Repeat and Expand Examples</a></li>
+<li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#array-index-slicing-and-subsetting-to-replace-and-expand"><i class="fa fa-check"></i><b>1.1.6</b> Array Index Slicing and Subsetting to Replace and Expand</a></li>
+<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.7</b> Grid States, Choices and Optimal Choices Example</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.2</b> Cells</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.2.1</b> List Comprehension with Cells</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.2.2</b> All Possible Combinations of Multiple Arrays</a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-structures.html"><a href="data-structures.html#combine-cells-together"><i class="fa fa-check"></i><b>1.2.3</b> Combine Cells Together</a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-structures.html"><a href="data-structures.html#nested-cells"><i class="fa fa-check"></i><b>1.2.4</b> Nested Cells</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.3</b> Characters and Strings</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#single-string-element-manipulation"><i class="fa fa-check"></i><b>1.3.1</b> Single String Element Manipulation</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#string-manipulations-with-arrays"><i class="fa fa-check"></i><b>1.3.2</b> String Manipulations with Arrays</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings"><i class="fa fa-check"></i><b>1.3.3</b> Concatenate Strings Arrays with Numbers and Number Arrays with Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.4</b> Map Containers</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#container-map-basics"><i class="fa fa-check"></i><b>1.4.1</b> Container Map Basics</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#container-map-display-map-keys-and-values"><i class="fa fa-check"></i><b>1.4.2</b> Container Map Display Map Keys and Values</a></li>
+<li class="chapter" data-level="1.4.3" data-path="data-structures.html"><a href="data-structures.html#genereate-container-maps"><i class="fa fa-check"></i><b>1.4.3</b> Genereate Container Maps</a></li>
+<li class="chapter" data-level="1.4.4" data-path="data-structures.html"><a href="data-structures.html#container-map-example-overriding"><i class="fa fa-check"></i><b>1.4.4</b> Container Map Example Overriding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.1</b> varargin Default Parameters</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
+<li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>3</b> Graphs</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>3.1</b> Figure Components</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>3.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
+<li class="chapter" data-level="3.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>3.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
+<li class="chapter" data-level="3.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>3.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>3.2</b> Basic Figure Types</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>3.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>3.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>3.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>3.3</b> Write and Read Plots</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>3.3.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>4</b> Tables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>4.1</b> Basic Table Generation</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>4.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="4.1.2" data-path="tables.html"><a href="tables.html#tables-order-columns-and-sort"><i class="fa fa-check"></i><b>4.1.2</b> Tables Order Columns and Sort</a></li>
+<li class="chapter" data-level="4.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>4.1.3</b> Row and Column names for Table based on Arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>4.2</b> Table Joining</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="tables.html"><a href="tables.html#combining-tables-and-matrixs-together"><i class="fa fa-check"></i><b>4.2.1</b> Combining Tables and Matrixs Together</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="index-and-code-links.html"><a href="index-and-code-links.html"><i class="fa fa-check"></i><b>A</b> Index and Code Links</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#data-structures-links"><i class="fa fa-check"></i><b>A.1</b> Data Structures links</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.1-matrices-and-arraysmatrices-and-arrays-links"><i class="fa fa-check"></i><b>A.1.1</b> <span>Section 1.1 Matrices and Arrays</span> links</a></li>
+<li class="chapter" data-level="A.1.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.2-cellscells-links"><i class="fa fa-check"></i><b>A.1.2</b> <span>Section 1.2 Cells</span> links</a></li>
+<li class="chapter" data-level="A.1.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.3-characters-and-stringscharacters-and-strings-links"><i class="fa fa-check"></i><b>A.1.3</b> <span>Section 1.3 Characters and Strings</span> links</a></li>
+<li class="chapter" data-level="A.1.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.4-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.4</b> <span>Section 1.4 Map Containers</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.3</b> Graphs links</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-3.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.3.1</b> <span>Section 3.1 Figure Components</span> links</a></li>
+<li class="chapter" data-level="A.3.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-3.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.3.2</b> <span>Section 3.2 Basic Figure Types</span> links</a></li>
+<li class="chapter" data-level="A.3.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-3.3-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.3.3</b> <span>Section 3.3 Write and Read Plots</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.4</b> Tables links</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-4.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.4.1</b> <span>Section 4.1 Basic Table Generation</span> links</a></li>
+<li class="chapter" data-level="A.4.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-4.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.4.2</b> <span>Section 4.2 Table Joining</span> links</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://fanwangecon.github.io/M4Econ/bookdown/index.html" target="blank">M4Econ Bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Structures and Dynamic Optimization with Matlab</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphs" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Graphs</h1>
+
+<div id="figure-components" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Figure Components</h2>
+
+<div id="matlab-graph-safe-colors-for-web-presentation-and-publications-examples" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="good-colors-to-use-darker" class="section level4" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Good Colors to Use Darker</h4>
+<p>Nice darker light colors to use in matlab.</p>
+<pre><code>close all
+
+blue = [57 106 177]./255;
+red = [204 37 41]./255;
+black = [83 81 84]./255;
+green = [62 150 81]./255;
+brown = [146 36 40]./255;
+purple = [107 76 154]./255;
+cl_colors = {blue, red, black, ...
+             green, brown, purple};
+cl_str_clr_names = [&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;, &quot;green&quot;, &quot;brown&quot;, &quot;purple&quot;];
+
+for it_color=1:length(cl_colors)
+    
+    figure();
+    x = [0 1 1 0];
+    y = [0 0 1 1];
+    fill(x, y, cl_colors{it_color});
+    st_text = [cl_str_clr_names(it_color) num2str(round(cl_colors{it_color}*255))];
+    hText = text(.10,.55, st_text);
+    hText.Color = &#39;white&#39;;
+    hText.FontSize = 30; 
+    snapnow;
+    
+end</code></pre>
+<p><img src="img/fs_color_images/figure_0.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_1.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_2.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_3.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_4.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_5.png" width="500" /></p>
+</div>
+<div id="good-colors-to-use-lighter" class="section level4" number="3.1.1.2">
+<h4><span class="header-section-number">3.1.1.2</span> Good Colors to Use Lighter</h4>
+<p>Nice ligher colors to use in matlab.</p>
+<pre><code>close all
+
+blue = [114 147 203]./255;
+red = [211 94 96]./255;
+black = [128 133 133]./255;
+green = [132 186 91]./255;
+brown = [171 104 87]./255;
+purple = [144 103 167]./255;
+cl_colors = {blue, red, black, ...
+             green, brown, purple};
+cl_str_clr_names = [&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;, &quot;green&quot;, &quot;brown&quot;, &quot;purple&quot;];
+
+for it_color=1:length(cl_colors)
+    
+    figure();
+    x = [0 1 1 0];
+    y = [0 0 1 1];
+    fill(x, y, cl_colors{it_color});
+    
+    st_text = [cl_str_clr_names(it_color) num2str(round(cl_colors{it_color}*255))];
+    hText = text(.10,.55, st_text);
+    hText.Color = &#39;white&#39;;
+    hText.FontSize = 30; 
+    snapnow;
+    
+end</code></pre>
+<p><img src="img/fs_color_images/figure_6.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_7.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_8.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_9.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_10.png" width="500" /></p>
+<p><img src="img/fs_color_images/figure_11.png" width="500" /></p>
+</div>
+<div id="matlab-has-a-graphical-tool-for-picking-color" class="section level4" number="3.1.1.3">
+<h4><span class="header-section-number">3.1.1.3</span> Matlab has a graphical tool for picking color</h4>
+<p>Enter uisetcolor pick color from new window and color values will appear
+uisetcolor</p>
+<pre><code>% Color Pickers
+% uisetcolor</code></pre>
+<p>Picked Color use</p>
+<pre><code>figure();
+hold on;
+
+x = rand([10,1]);
+y = rand([10,1]);
+
+% Then can use for plot
+plot(x,y,&#39;Color&#39;,[.61 .51 .74]);
+
+% Can use for Scatter
+scatter(x, y, 10, ...
+    &#39;MarkerEdgeColor&#39;, [.61 .51 .74], &#39;MarkerFaceAlpha&#39;, 0.1, ...
+    &#39;MarkerFaceColor&#39;, [.61 .51 .74], &#39;MarkerEdgeAlpha&#39;, 0.1);</code></pre>
+<p><img src="img/fs_color_images/figure_12.png" width="500" /></p>
+
+</div>
+</div>
+<div id="matlab-graph-titling-labels-and-legends-examples" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Matlab Graph Titling, Labels and Legends Examples</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="draw-a-figure-label-title-x-and-y-axises-with-latex-equations" class="section level4" number="3.1.2.1">
+<h4><span class="header-section-number">3.1.2.1</span> <strong>Draw A figure Label Title, X and Y Axises with Latex Equations</strong></h4>
+<pre><code>clear all;
+close all;
+figure();
+
+% draw some lines
+xline0 = xline(0);
+xline0.HandleVisibility = &#39;off&#39;;
+yline0 = yline(0);
+yline0.HandleVisibility = &#39;off&#39;;
+hline = refline([1 0]);
+hline.Color = &#39;k&#39;;
+hline.LineStyle = &#39;:&#39;;
+hline.HandleVisibility = &#39;off&#39;;
+
+% Titling with multiple lines
+title({&#39;Cash-on-Hand given w(k+b),k,z&#39; &#39;$\alpha + \beta = \zeta$&#39;},&#39;Interpreter&#39;,&#39;latex&#39;);
+ylabel({&#39;Cash-on-Hand&#39; &#39;line 2 $\frac{1}{2}$&#39;},&#39;Interpreter&#39;,&#39;latex&#39;);
+xlabel({&#39;Index of Cash-on-Hand Discrete Point&#39;...
+        &#39; $\frac{1}{2} + \alpha + \max + \sum_1^{B}$ Each Segment is a w=k+b; within segment increasing k&#39;...
+        &#39;For each w and z, coh maximizing k is different&#39;},&#39;Interpreter&#39;,&#39;latex&#39;);
+grid on;
+grid minor;</code></pre>
+<p><img src="img/fs_titling_images/figure_0.png" width="500" /></p>
+</div>
+<div id="matlab-graph-specify-legends-manually" class="section level4" number="3.1.2.2">
+<h4><span class="header-section-number">3.1.2.2</span> Matlab Graph Specify Legends Manually</h4>
+<p>Specify labels manually, note we can use HandleVisibility to control
+what part of figure show up in legends.</p>
+<pre><code>% Generate Random Data
+rng(123);
+it_x_n = 10;
+it_x_groups_n = 3;
+mat_y = rand([it_x_n, it_x_groups_n]);
+mat_y = mat_y + sqrt(1:it_x_groups_n);
+mat_y = mat_y + log(1:it_x_n)&#39;;
+ar_x = 1:1:it_x_n;
+
+% Start Figure
+figure(&#39;PaperPosition&#39;, [0 0 10 10]);
+
+hold on;
+
+g1 = scatter(ar_x,  mat_y(:,1), 30, &#39;filled&#39;);
+g2 = scatter(ar_x,  mat_y(:,2), 30, &#39;filled&#39;);
+g3 = scatter(ar_x,  mat_y(:,3), 30, &#39;filled&#39;);
+
+legend([g1, g2, g3], {&#39;near&#39;,&#39;linear&#39;,&#39;spline&#39;}, &#39;Location&#39;,&#39;best&#39;,...
+        &#39;NumColumns&#39;,1,&#39;FontSize&#39;,12,&#39;TextColor&#39;,&#39;black&#39;);
+
+% PLot this line, but this line will not show up in legend
+hline = refline([1 0]);
+hline.Color = &#39;k&#39;;
+hline.LineStyle = &#39;:&#39;;
+% not to show up in legend
+hline.HandleVisibility = &#39;off&#39;;
+grid on;
+grid minor;
+
+title(sprintf(&#39;griddedInterpolant comparison, crra utility approximation, interp grid n=%d&#39;, it_x_n))
+ylabel(&#39;Actual Utility Evaluated at c&#39;)
+xlabel(&#39;Approximated Util based on  Interpolation&#39;)</code></pre>
+<p><img src="img/fs_titling_images/figure_1.png" width="500" /></p>
+<pre><code>snapnow;</code></pre>
+</div>
+<div id="given-graph-graph-subset-of-lines-and-add-extra-line-with-legend" class="section level4" number="3.1.2.3">
+<h4><span class="header-section-number">3.1.2.3</span> Given Graph, Graph Subset of Lines and Add Extra Line with Legend</h4>
+<p>Same plot as before, except we plot only 2 of the three lines and add
+another line with associated legend entry.</p>
+<pre><code>legendCell = cellstr(num2str(ar_x&#39;, &#39;shock=%3.2f&#39;));
+xlinemax = xline(min(mat_y, [], &#39;all&#39;));
+xlinemax.Color = &#39;b&#39;;
+xlinemax.LineWidth = 1.5;
+
+legendCell{length(legendCell) + 1} = &#39;max-agg-save&#39;;
+legend([g1, g3, xlinemax], legendCell([1,3,length(legendCell)]), &#39;Location&#39;, &#39;best&#39;);</code></pre>
+<p><img src="img/fs_titling_images/figure_2.png" width="500" /></p>
+<pre><code>snapnow;</code></pre>
+
+</div>
+</div>
+<div id="matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="plot-a-subset-of-data-matrix-with-appropriate-legends" class="section level4" number="3.1.3.1">
+<h4><span class="header-section-number">3.1.3.1</span> Plot a Subset of Data Matrix with Appropriate Legends</h4>
+<p>Sometimes we solve a model across many states, but we can only plot at a
+subset of states, or perhaps we plot at all states, but only show
+legends/labels for a subset.</p>
+<p>In the example below, many lines are plotted, however, only a subset of
+lines are labeled in the legend.</p>
+<pre><code>clear all;
+close all;
+
+% Generate Random Data
+rng(123);
+it_x_n = 10;
+it_y_groups_n = 100;
+ar_y = linspace(1,2,it_y_groups_n);
+mat_y = rand([it_x_n, it_y_groups_n]);
+mat_y = mat_y + sqrt(1:it_y_groups_n);
+mat_y = mat_y + log(1:it_x_n)&#39; + ar_y;
+ar_x = 1:1:it_x_n;
+
+% Jet color Graph All
+figure(&#39;PaperPosition&#39;, [0 0 7 4]);
+chart = plot(mat_y);
+clr = jet(numel(chart));
+for m = 1:numel(chart)
+    set(chart(m),&#39;Color&#39;,clr(m,:))
+end
+
+% zero lines
+xline(0);
+yline(0);
+
+% invalid points separating lines
+yline_borrbound = yline(3);
+yline_borrbound.HandleVisibility = &#39;on&#39;;
+yline_borrbound.LineStyle = &#39;:&#39;;
+yline_borrbound.Color = &#39;black&#39;;
+yline_borrbound.LineWidth = 3;
+
+% Titling
+title(&#39;Cash-on-Hand given w(k+b),k,z&#39;);
+ylabel(&#39;Cash-on-Hand&#39;);
+xlabel({&#39;Index of Cash-on-Hand Discrete Point&#39;...
+    &#39;Each Segment is a w=k+b; within segment increasing k&#39;...
+    &#39;For each w and z, coh maximizing k is different&#39;});
+
+% Xlim controls
+xlim([min(ar_x), max(ar_x)]);
+
+% Grid ons
+grid on;
+grid minor;
+% Legends
+legend2plot = fliplr([1 round(numel(chart)/3) round((2*numel(chart))/4)  numel(chart)]);
+legendCell = cellstr(num2str(ar_y&#39;, &#39;shock=%3.2f&#39;));
+
+legendCell{length(legendCell) + 1} = &#39;borrow-constraint&#39;;
+chart(length(chart)+1) = yline_borrbound;
+legend(chart([legend2plot length(legendCell)]), ...
+       legendCell([legend2plot length(legendCell)]), ...
+       &#39;Location&#39;, &#39;best&#39;);</code></pre>
+<p><img src="img/fs_legendsubset_images/figure_0.png" width="500" /></p>
+
+</div>
+</div>
+</div>
+<div id="basic-figure-types" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Basic Figure Types</h2>
+
+<div id="matlab-graph-scatter-plot-examples" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Matlab Graph Scatter Plot Examples</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="scatter-plot-example" class="section level4" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> Scatter Plot Example</h4>
+<p>The plot below as square scatter points, each one with think border. Can
+set transparency of border/edge and inside separately.</p>
+<pre><code>close all;
+figure();
+size = 100;
+s = scatter(1:10,1:10,size);
+
+s.Marker = &#39;s&#39;;
+% color picked by using: uisetcolor
+s.MarkerEdgeColor = [0    0.4471    0.7412];
+s.MarkerEdgeAlpha = 0.5;
+s.MarkerFaceColor = [.61 .51 .74];
+s.MarkerFaceAlpha = 1.0;
+s.LineWidth = 10;
+grid on;
+grid minor;</code></pre>
+<p><img src="img/fs_scatter_images/figure_0.png" width="500" /></p>
+<pre><code>% &#39;o&#39;   Circle
+% &#39;+&#39;   Plus sign
+% &#39;*&#39;   Asterisk
+% &#39;.&#39;   Point
+% &#39;x&#39;   Cross
+% &#39;square&#39; or &#39;s&#39;   Square
+% &#39;diamond&#39; or &#39;d&#39;  Diamond
+% &#39;^&#39;   Upward-pointing triangle
+% &#39;v&#39;   Downward-pointing triangle
+% &#39;&gt;&#39;   Right-pointing triangle
+% &#39;&lt;&#39;   Left-pointing triangle
+% &#39;pentagram&#39; or &#39;p&#39;    Five-pointed star (pentagram)
+% &#39;hexagram&#39; or &#39;h&#39; Six-pointed star (hexagram)
+% &#39;none&#39;    No markers</code></pre>
+</div>
+<div id="scatter-with-edge-and-face-color-and-transparency" class="section level4" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> Scatter with Edge and Face Color and Transparency</h4>
+<p>Here is another way to Set Scatter Edge and Fac Colors and
+Transparencies.</p>
+<pre><code>% Generate Data
+rng(123);
+it_x_n = 10;
+it_x_groups_n = 3;
+mat_y = rand([it_x_n, it_x_groups_n]);
+mat_y = mat_y + sqrt(1:it_x_groups_n);
+mat_y = mat_y + log(1:it_x_n)&#39;;
+ar_x = 1:1:it_x_n;
+
+% Colors
+blue = [57 106 177]./255;
+red = [204 37 41]./255;
+black = [83 81 84]./255;
+green = [62 150 81]./255;
+brown = [146 36 40]./255;
+purple = [107 76 154]./255;
+cl_colors = {blue, red, black, ...
+             green, brown, purple};
+
+% Scatter Shapes
+cl_scatter_shapes = {&#39;s&#39;,&#39;x&#39;,&#39;o&#39;,&#39;d&#39;,&#39;p&#39;,&#39;*&#39;};
+% Scatter Sizes
+cl_scatter_sizes = {100,100,50,50,50,50};
+% Legend Keys
+cl_legend = {&#39;For Borr&#39;, &#39;Inf Borr&#39;, &#39;For+Inf Br&#39;};
+
+% Plot
+figure();
+hold on;
+for it_m = 1:it_x_groups_n
+    scatter(ar_x, mat_y(:,it_m), cl_scatter_sizes{it_m}, ...
+        &#39;Marker&#39;, cl_scatter_shapes{it_m}, ...
+        &#39;MarkerEdgeColor&#39;, cl_colors{it_m}, &#39;MarkerFaceAlpha&#39;, 0.8, ...
+        &#39;MarkerFaceColor&#39;, cl_colors{it_m}, &#39;MarkerEdgeAlpha&#39;, 0.8);
+    cl_legend{it_m} = cl_legend{it_m};
+end
+legend(cl_legend, &#39;Location&#39;, &#39;best&#39;);
+grid on; 
+grid minor;</code></pre>
+<p><img src="img/fs_scatter_images/figure_1.png" width="500" /></p>
+
+</div>
+</div>
+<div id="matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="six-lines-plot" class="section level4" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> Six lines Plot</h4>
+<p>Colors from <a href="http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/">optimal
+colors</a>.
+Generate A line plot with multiple lines using safe colors, with
+differening shapes. Figures include lines as well as scatter overlayed
+jointly.</p>
+<pre><code>close all
+figure();
+hold on;
+
+blue = [57 106 177]./255;
+red = [204 37 41]./255;
+black = [83 81 84]./255;
+green = [62 150 81]./255;
+brown = [146 36 40]./255;
+purple = [107 76 154]./255;
+cl_colors = {blue, red, black, ...
+             green, brown, purple};
+cl_legend = {&#39;For Borr&#39;, &#39;Inf Borr&#39;, &#39;For+Inf Br&#39;, &#39;For+Br+Save&#39;, &#39;Bridge Loan&#39;, &#39;For Save&#39;};
+cl_scatter_shapes = {&#39;s&#39;,&#39;x&#39;,&#39;o&#39;,&#39;d&#39;,&#39;p&#39;,&#39;*&#39;};
+cl_linestyle = {&#39;--&#39;,&#39;-&#39;,&#39;:&#39;,&#39;-.&#39;,&#39;--&#39;,&#39;-&#39;};
+it_sca_bs = 20;
+cl_scatter_csizes = {10*it_sca_bs, 20*it_sca_bs, 10*it_sca_bs, 10*it_sca_bs, 5*it_sca_bs, 8*it_sca_bs};
+it_line_bs = 2;
+cl_line_csizes = {1*it_line_bs, 2*it_line_bs, 1*it_line_bs, 1*it_line_bs, 1*it_line_bs, 2*it_line_bs};
+
+it_x_groups_n = length(cl_scatter_csizes);
+it_x_n = 10;
+
+% Generate Random Data
+rng(123);
+mat_y = rand([it_x_n, it_x_groups_n]);
+mat_y = mat_y + sqrt(1:it_x_groups_n);
+mat_y = mat_y + log(1:it_x_n)&#39;;
+ar_x = 1:1:it_x_n;
+
+ar_it_graphs_run = 1:6;
+it_graph_counter = 0;
+ls_chart = [];
+for it_fig = ar_it_graphs_run
+
+    % Counter
+    it_graph_counter = it_graph_counter + 1;
+
+    % Y Outcome
+    ar_y = mat_y(:, it_fig)&#39;;
+
+    % Color and Size etc
+    it_csize = cl_scatter_csizes{it_fig};
+    ar_color = cl_colors{it_fig};
+    st_shape = cl_scatter_shapes{it_fig};
+    st_lnsty = cl_linestyle{it_fig};
+    st_lnwth = cl_line_csizes{it_fig};
+    
+    % plot scatter and include in legend
+    ls_chart(it_graph_counter) = scatter(ar_x, ar_y, it_csize, ar_color, st_shape);
+
+    % plot line do not include in legend
+    line = plot(ar_x, ar_y);
+    line.HandleVisibility = &#39;off&#39;;
+    line.Color = ar_color;
+    line.LineStyle = st_lnsty;
+    line.HandleVisibility = &#39;off&#39;;
+    line.LineWidth = st_lnwth;
+
+    % Legend to include
+    cl_legend{it_graph_counter} = cl_legend{it_fig};
+end
+
+% Legend
+legend(ls_chart, cl_legend, &#39;Location&#39;, &#39;southeast&#39;);
+
+% labeling
+title(&#39;Optimal Savings&#39;);
+ylabel(&#39;Savings Levels&#39;);
+xlabel(&#39;Cash-on-Hand Today&#39;);
+grid on;</code></pre>
+<p><img src="img/fs_lines_images/figure_0.png" width="500" /></p>
+<pre><code>snapnow;</code></pre>
+</div>
+<div id="horizontal-and-vertical-lines-and-45-degree" class="section level4" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> Horizontal and Vertical Lines and 45 Degree</h4>
+<p>Draw x and y axis, and draw a 45 degree line.</p>
+<pre><code>figure();
+
+xline0 = xline(0);
+xline0.HandleVisibility = &#39;off&#39;;
+xline0.Color = red;
+xline0.LineStyle = &#39;--&#39;;
+yline0 = yline(0);
+yline0.HandleVisibility = &#39;off&#39;;
+yline0.LineWidth = 1;
+
+hline = refline([1 0]);
+hline.Color = &#39;k&#39;;
+hline.LineStyle = &#39;:&#39;;
+hline.HandleVisibility = &#39;off&#39;;
+
+snapnow;
+grid on;
+grid minor;</code></pre>
+<p><img src="img/fs_lines_images/figure_1.png" width="500" /></p>
+
+</div>
+</div>
+<div id="matlab-graph-scatter-and-line-spectrum-with-three-variables" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Matlab Graph Scatter and Line Spectrum with Three Variables</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<p>Generate k + b = w, color for each w, vectors of k and b such that k + b
+= w for each w</p>
+<p>There are two N by M matrix, A anb B.</p>
+<p>Values in Matrix A correspond to the x-axis, values in Matrix B
+correspond to the y-axis.</p>
+<p>The rows and columns in matrix A and B have some other meanings. In this
+case, we will give color to the columns.</p>
+<p>The columns is represented by vector C, which is another variable.</p>
+<ol style="list-style-type: decimal">
+<li><p>Each line a different color representing variable 3</p></li>
+<li><p>Legend labeling a subset of colors</p></li>
+<li><p>X and Y could be asset choices, color could be utility, consumption
+etc.</p></li>
+</ol>
+<div id="setting-up-data" class="section level4" number="3.2.3.1">
+<h4><span class="header-section-number">3.2.3.1</span> Setting Up Data</h4>
+<pre><code>close all
+clear all
+
+% Bounds
+fl_b_bd = -10;
+% Max and Mins
+fl_w_max = 50;
+fl_w_min = fl_b_bd;
+fl_kp_max = fl_w_max - fl_b_bd;
+fl_kp_min = 0;
+
+% Grid Point Counts
+it_w_i = 30;
+it_kb_j = 30;
+
+% Grids
+ar_w = linspace(fl_w_min, fl_w_max, it_w_i);
+ar_kp = linspace(fl_kp_min, fl_kp_max, it_kb_j);
+mt_bp = ar_w - ar_kp&#39;;
+mt_kp = ar_w - mt_bp;
+mt_bl_constrained = (mt_bp &lt; fl_b_bd);
+mt_bp_wth_na = mt_bp;
+mt_kp_wth_na = mt_kp;
+mt_bp_wth_na(mt_bl_constrained) = nan;
+mt_kp_wth_na(mt_bl_constrained) = nan;
+
+% Flatten
+ar_bp_mw_wth_na = mt_bp_wth_na(:);
+ar_kp_mw_wth_na = mt_kp_wth_na(:);
+ar_bp_mw = ar_bp_mw_wth_na(~isnan(ar_bp_mw_wth_na));
+ar_kp_mw = ar_kp_mw_wth_na(~isnan(ar_kp_mw_wth_na));</code></pre>
+</div>
+<div id="graphing" class="section level4" number="3.2.3.2">
+<h4><span class="header-section-number">3.2.3.2</span> Graphing</h4>
+<pre><code>figure(&#39;PaperPosition&#39;, [0 0 7 4]);
+hold on;
+
+chart = plot(mt_bp_wth_na, mt_kp_wth_na, &#39;blue&#39;);
+
+clr = jet(numel(chart));
+for m = 1:numel(chart)
+   set(chart(m),&#39;Color&#39;,clr(m,:))
+end
+if (length(ar_w) &lt;= 50) 
+    scatter(ar_bp_mw, ar_kp_mw, 5, &#39;filled&#39;);
+end
+xline(0);
+yline(0);
+
+title(&#39;Choice Grids Conditional on kp+bp=w&#39;)
+ylabel(&#39;Capital Choice&#39;)
+xlabel({&#39;Borrowing or Saving&#39;})
+legend2plot = fliplr([1 round(numel(chart)/3) round((2*numel(chart))/4)  numel(chart)]);
+legendCell = cellstr(num2str(ar_w&#39;, &#39;kp+bp=%3.2f&#39;));
+legend(chart(legend2plot), legendCell(legend2plot), &#39;Location&#39;,&#39;northeast&#39;);
+
+grid on;</code></pre>
+<p><img src="img/fs_specline_images/figure_0.png" width="500" /></p>
+
+</div>
+</div>
+</div>
+<div id="write-and-read-plots" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Write and Read Plots</h2>
+
+<div id="matlab-graph-generate-eps-postscript-figures-in-matlab" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Matlab Graph Generate EPS postscript figures in matlab</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="properly-save-eps-with-scatter-and-other-graphing-methods-renderer-painters" class="section level4" number="3.3.1.1">
+<h4><span class="header-section-number">3.3.1.1</span> Properly Save EPS with Scatter and Other Graphing Methods: Renderer = Painters</h4>
+<p>scatter plot saving as eps seems to only work when Renderer is set to
+Painters</p>
+<pre><code>fl_fig_wdt = 3;
+fl_fig_hgt = 2.65;
+
+figure(&#39;PaperPosition&#39;, [0 0 fl_fig_wdt fl_fig_hgt], &#39;Renderer&#39;, &#39;Painters&#39;);
+x = rand([10,1]);
+y = rand([10,1]);
+scatter(x, y, &#39;filled&#39;);
+grid on;
+grid minor;
+
+st_img_path = &#39;C:/Users/fan/M4Econ/graph/export/_img/&#39;;
+st_file_name = &#39;fs_eps_scatter_test&#39;;
+
+% eps figure save with tiff preview
+print(strcat(st_img_path, st_file_name), &#39;-depsc&#39;, &#39;-tiff&#39;);</code></pre>
+<p><img src="img/fs_eps_images/figure_0.png" width="500" /></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["Data-Structures-and-Dynamic-Optimization-with-Matlab.pdf", "PDF"]],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

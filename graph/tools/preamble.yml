@@ -1,0 +1,74 @@
+- file: fs_color
+  title: "Matlab Graph Safe Colors for Web, Presentation and Publications Examples"
+  titleshort: "Image Pick Safe Colors"
+  description: |
+    Display safe colors.
+  core :
+    - package: m
+      code: |
+        blue = [57 106 177]./255
+        fill(x, y, cl_colors{it_color})
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_titling
+  title: "Matlab Graph Titling, Labels and Legends Examples"
+  titleshort: "Figure Titling and Legend"
+  description: |
+    Multi-line titles, add legend lines.
+    Add to legend, select legend to show.
+  core :
+    - package: m
+      code: |
+        title({'Cash-on-Hand' '$\alpha + \beta = \zeta$'},'Interpreter','latex')
+        legend([g1, g2, g3], {'near','linear','spline'}, 'Location', 'best', 'NumColumns', 1, 'FontSize', 12, 'TextColor', 'black');
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_legendsubset
+  title: "Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples"
+  titleshort: "Graph Many Lines Legend for Subset"
+  description: |
+    State-space plots with color spectrum: can not show all states in legend, show subset, add additional line to plot and legend.
+  core :
+    - package: m
+      code: |
+        jet()
+        numel()
+        fliplr()
+        jet(numel(chart)), set(chart(m), 'Color', clr(m,:))
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

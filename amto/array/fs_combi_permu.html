@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2019b"><title>Array Draw Random Index and Find Combinations or Permuations</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 16.996px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 6px 45px 0px 13px; line-height: 16.996px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Array Draw Random Index and Find Combinations or Permuations</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/CodeDynaAsset/"><span style=' font-weight: bold;'>Dynamic Asset</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span style=' font-weight: bold;'>Matlab Draw Random with and without Replacement</span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">%Generate a matrix named foo, with limited numbers</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>rng(1234);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>foo = unique((round((randn(5,1)+1)*100)));</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(foo);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="22ABC2F1" data-testid="output_0" data-width="428" data-height="73" data-hashorizontaloverflow="false" style="width: 458px; max-height: 261px;"><div class="textElement">     5
+    78
+   154
+   219
+   232</div></div></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% draw 10 random samples without replacement</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>index = randsample(1:length(foo), 4);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>bar_rand_noreplace = foo(index,:);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% draw 1000 random samples with replacement</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>index = randsample(1:length(foo), 4, true);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>bar_rand_replace = foo(index,:);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% Display</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(table(bar_rand_noreplace, bar_rand_replace));</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="0D1D392A" data-testid="output_1" data-width="428" data-height="101" data-hashorizontaloverflow="false" style="width: 458px; max-height: 261px;"><div class="textElement">    <strong>bar_rand_noreplace</strong>    <strong>bar_rand_replace</strong>
+    <strong>__________________</strong>    <strong>________________</strong>
+
+             5                   78       
+            78                  154       
+           154                  219       
+           232                  219       </div></div></div></div></div><h2  class = 'S2'><span>Matrix Meshgrid to Loop Permutated Vectors</span></h2><div  class = 'S1'><span>Meshgrid to generate all permutations of arrays.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>k = linspace(1,10,10);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>kp = linspace(1,10,10);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>z = linspace(0,1,10);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span> </span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>[kM kpM zM] = meshgrid(k,kp,z);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>kMVec = kM(:);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>kMpVec = kpM(:);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>zMVec = zM(:);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span> </span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>outputVec = zeros(size(zMVec));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">for </span><span>a=1:length(zMVec)</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>     outputVec(a) = kMVec(a)+kMpVec(a)+zMVec(a);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span> </span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>outputTens = reshape(outputVec,size(kM));</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(outputTens);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement scrollableOutput" uid="1AA24615" data-testid="output_2" data-width="428" data-height="1935" data-hashorizontaloverflow="true" style="width: 458px; max-height: 261px;"><div class="textElement">(:,:,1) =
+
+     2     3     4     5     6     7     8     9    10    11
+     3     4     5     6     7     8     9    10    11    12
+     4     5     6     7     8     9    10    11    12    13
+     5     6     7     8     9    10    11    12    13    14
+     6     7     8     9    10    11    12    13    14    15
+     7     8     9    10    11    12    13    14    15    16
+     8     9    10    11    12    13    14    15    16    17
+     9    10    11    12    13    14    15    16    17    18
+    10    11    12    13    14    15    16    17    18    19
+    11    12    13    14    15    16    17    18    19    20
+
+
+(:,:,2) =
+
+    2.1111    3.1111    4.1111    5.1111    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111
+    3.1111    4.1111    5.1111    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111
+    4.1111    5.1111    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111
+    5.1111    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111
+    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111
+    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111
+    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111   17.1111
+    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111   17.1111   18.1111
+   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111   17.1111   18.1111   19.1111
+   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111   17.1111   18.1111   19.1111   20.1111
+
+
+(:,:,3) =
+
+    2.2222    3.2222    4.2222    5.2222    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222
+    3.2222    4.2222    5.2222    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222
+    4.2222    5.2222    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222
+    5.2222    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222
+    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222
+    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222
+    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222   17.2222
+    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222   17.2222   18.2222
+   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222   17.2222   18.2222   19.2222
+   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222   17.2222   18.2222   19.2222   20.2222
+
+
+(:,:,4) =
+
+    2.3333    3.3333    4.3333    5.3333    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333
+    3.3333    4.3333    5.3333    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333
+    4.3333    5.3333    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333
+    5.3333    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333
+    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333
+    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333
+    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333   17.3333
+    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333   17.3333   18.3333
+   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333   17.3333   18.3333   19.3333
+   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333   17.3333   18.3333   19.3333   20.3333
+
+
+(:,:,5) =
+
+    2.4444    3.4444    4.4444    5.4444    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444
+    3.4444    4.4444    5.4444    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444
+    4.4444    5.4444    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444
+    5.4444    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444
+    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444
+    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444
+    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444   17.4444
+    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444   17.4444   18.4444
+   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444   17.4444   18.4444   19.4444
+   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444   17.4444   18.4444   19.4444   20.4444
+
+
+(:,:,6) =
+
+    2.5556    3.5556    4.5556    5.5556    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556
+    3.5556    4.5556    5.5556    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556
+    4.5556    5.5556    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556
+    5.5556    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556
+    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556
+    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556
+    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556   17.5556
+    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556   17.5556   18.5556
+   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556   17.5556   18.5556   19.5556
+   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556   17.5556   18.5556   19.5556   20.5556
+
+
+(:,:,7) =
+
+    2.6667    3.6667    4.6667    5.6667    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667
+    3.6667    4.6667    5.6667    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667
+    4.6667    5.6667    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667
+    5.6667    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667
+    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667
+    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667
+    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667   17.6667
+    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667   17.6667   18.6667
+   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667   17.6667   18.6667   19.6667
+   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667   17.6667   18.6667   19.6667   20.6667
+
+
+(:,:,8) =
+
+    2.7778    3.7778    4.7778    5.7778    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778
+    3.7778    4.7778    5.7778    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778
+    4.7778    5.7778    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778
+    5.7778    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778
+    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778
+    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778
+    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778   17.7778
+    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778   17.7778   18.7778
+   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778   17.7778   18.7778   19.7778
+   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778   17.7778   18.7778   19.7778   20.7778
+
+
+(:,:,9) =
+
+    2.8889    3.8889    4.8889    5.8889    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889
+    3.8889    4.8889    5.8889    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889
+    4.8889    5.8889    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889
+    5.8889    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889
+    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889
+    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889
+    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889   17.8889
+    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889   17.8889   18.8889
+   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889   17.8889   18.8889   19.8889
+   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889   17.8889   18.8889   19.8889   20.8889
+
+
+(:,:,10) =
+
+     3     4     5     6     7     8     9    10    11    12
+     4     5     6     7     8     9    10    11    12    13
+     5     6     7     8     9    10    11    12    13    14
+     6     7     8     9    10    11    12    13    14    15
+     7     8     9    10    11    12    13    14    15    16
+     8     9    10    11    12    13    14    15    16    17
+     9    10    11    12    13    14    15    16    17    18
+    10    11    12    13    14    15    16    17    18    19
+    11    12    13    14    15    16    17    18    19    20
+    12    13    14    15    16    17    18    19    20    21</div></div></div></div></div><h2  class = 'S2'><span>Given integer arrays, all possible combinations</span></h2><div  class = 'S1'><span>given any sizes arrays, N of them, create all possible combinations</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>ar_it_a = 1:3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_it_b = 1:2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_it_c = 2:4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_it_d = -1:-1:-2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_it_e = 0.1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>cl_ar_all = {ar_it_a, ar_it_b, ar_it_c, ar_it_d, ar_it_e};</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>cl_mt_all = cl_ar_all;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>[cl_mt_all{:}] = ndgrid(cl_ar_all{:});</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mt_it_allcombo = cell2mat(cellfun(@(m) m(:), cl_mt_all, </span><span style="color: rgb(160, 32, 240);">'uni'</span><span>, 0));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(mt_it_allcombo)</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement scrollableOutput" uid="4D2DC208" data-testid="output_3" data-width="428" data-height="507" data-hashorizontaloverflow="false" style="width: 458px; max-height: 261px;"><div class="textElement">    1.0000    1.0000    2.0000   -1.0000    0.1000
+    2.0000    1.0000    2.0000   -1.0000    0.1000
+    3.0000    1.0000    2.0000   -1.0000    0.1000
+    1.0000    2.0000    2.0000   -1.0000    0.1000
+    2.0000    2.0000    2.0000   -1.0000    0.1000
+    3.0000    2.0000    2.0000   -1.0000    0.1000
+    1.0000    1.0000    3.0000   -1.0000    0.1000
+    2.0000    1.0000    3.0000   -1.0000    0.1000
+    3.0000    1.0000    3.0000   -1.0000    0.1000
+    1.0000    2.0000    3.0000   -1.0000    0.1000
+    2.0000    2.0000    3.0000   -1.0000    0.1000
+    3.0000    2.0000    3.0000   -1.0000    0.1000
+    1.0000    1.0000    4.0000   -1.0000    0.1000
+    2.0000    1.0000    4.0000   -1.0000    0.1000
+    3.0000    1.0000    4.0000   -1.0000    0.1000
+    1.0000    2.0000    4.0000   -1.0000    0.1000
+    2.0000    2.0000    4.0000   -1.0000    0.1000
+    3.0000    2.0000    4.0000   -1.0000    0.1000
+    1.0000    1.0000    2.0000   -2.0000    0.1000
+    2.0000    1.0000    2.0000   -2.0000    0.1000
+    3.0000    1.0000    2.0000   -2.0000    0.1000
+    1.0000    2.0000    2.0000   -2.0000    0.1000
+    2.0000    2.0000    2.0000   -2.0000    0.1000
+    3.0000    2.0000    2.0000   -2.0000    0.1000
+    1.0000    1.0000    3.0000   -2.0000    0.1000
+    2.0000    1.0000    3.0000   -2.0000    0.1000
+    3.0000    1.0000    3.0000   -2.0000    0.1000
+    1.0000    2.0000    3.0000   -2.0000    0.1000
+    2.0000    2.0000    3.0000   -2.0000    0.1000
+    3.0000    2.0000    3.0000   -2.0000    0.1000
+    1.0000    1.0000    4.0000   -2.0000    0.1000
+    2.0000    1.0000    4.0000   -2.0000    0.1000
+    3.0000    1.0000    4.0000   -2.0000    0.1000
+    1.0000    2.0000    4.0000   -2.0000    0.1000
+    2.0000    2.0000    4.0000   -2.0000    0.1000
+    3.0000    2.0000    4.0000   -2.0000    0.1000</div></div></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Array Draw Random Index and Find Combinations or Permuations
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+%% *Matlab Draw Random with and without Replacement*
+
+%Generate a matrix named foo, with limited numbers
+rng(1234);
+foo = unique((round((randn(5,1)+1)*100)));
+disp(foo);
+
+% draw 10 random samples without replacement
+index = randsample(1:length(foo), 4);
+bar_rand_noreplace = foo(index,:);
+
+% draw 1000 random samples with replacement
+index = randsample(1:length(foo), 4, true);
+bar_rand_replace = foo(index,:);
+
+% Display
+disp(table(bar_rand_noreplace, bar_rand_replace));
+%% Matrix Meshgrid to Loop Permutated Vectors
+% Meshgrid to generate all permutations of arrays.
+
+k = linspace(1,10,10);
+kp = linspace(1,10,10);
+z = linspace(0,1,10);
+ 
+[kM kpM zM] = meshgrid(k,kp,z);
+kMVec = kM(:);
+kMpVec = kpM(:);
+zMVec = zM(:);
+ 
+outputVec = zeros(size(zMVec));
+for a=1:length(zMVec)
+     outputVec(a) = kMVec(a)+kMpVec(a)+zMVec(a);
+end
+ 
+outputTens = reshape(outputVec,size(kM));
+disp(outputTens);
+%% Given integer arrays, all possible combinations
+% given any sizes arrays, N of them, create all possible combinations
+
+ar_it_a = 1:3;
+ar_it_b = 1:2;
+ar_it_c = 2:4;
+ar_it_d = -1:-1:-2;
+ar_it_e = 0.1;
+
+cl_ar_all = {ar_it_a, ar_it_b, ar_it_c, ar_it_d, ar_it_e};
+cl_mt_all = cl_ar_all;
+[cl_mt_all{:}] = ndgrid(cl_ar_all{:});
+mt_it_allcombo = cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0));
+
+disp(mt_it_allcombo)
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,98 @@
+- file: fs_container
+  title: "Matlab Container Map Basics"
+  titleshort: "Container Map Basics"
+  description: |
+    Numeric container map, dynamically filled container map.
+  core :
+    - package: m
+      code: |
+        isKey()
+        strjoin()
+        containers.Map('KeyType', 'char', 'ValueType', 'any')
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_containermap
+  title: "Matlab Display Container Map Keys and Values"
+  titleshort: "Display Container Map Keys and Values"
+  description: |
+    Loop over map, display keys and values.
+  core :
+    - package: m
+      code: |
+        strjoin()
+        keys(map)
+        values(map)
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_map_anytype
+  title: "Matlab Container Map Varied Value Type"
+  titleshort: "Container Map Varied Value Type"
+  description: |
+    Numeric scalar, string, matrix as values for map container.
+    Get values for multiple keys in map.
+  core :
+    - package: m
+      code: |
+        map.keys()
+        map.values()
+        values(param_map, {'share_unbanked_j', 'equi_r_j'})
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_map_override
+  title: "Matlab Container Map Example Overriding"
+  titleshort: "Cell Override"
+  description: |
+    Override default map with externally fed map, update existing and add new keys.
+  core :
+    - package: m
+      code: |
+        param_map_updated = [param_map_old; param_map_updates_new]
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

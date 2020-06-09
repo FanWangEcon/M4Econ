@@ -1,0 +1,83 @@
+- file: fs_scatter
+  title: "Matlab Graph Scatter Plot Examples"
+  titleshort: "Scatter Plot Examples"
+  description: |
+    Scatter multiple lines different colors, shapes and sizes.
+  core :
+    - package: m
+      code: |
+        scatter(x, y, size)
+        Marker
+        MarkerEdgeColor
+        MarkerEdgeAlpha
+        MarkerFaceColor
+        MarkerFaceAlpha
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_lines
+  title: "Matlab Line Scatter Plot, Multiple Lines, Axis Lines, 45 Degree Line Examples"
+  titleshort: "Scatter Plot Examples"
+  description: |
+    Scatter and lines multiple lines different colors, shapes and sizes.
+    X axis, Y axis, and 45 degree line.
+  core :
+    - package: m
+      code: |
+        xline(0)
+        yline(0)
+        refline([1 0])
+        plot(x,y)
+        HandleVisibility
+        Color
+        LineStyle
+        LineWidth
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_specline
+  title: "Matlab Graph Scatter and Line Spectrum with Three Variables"
+  titleshort: "Three variables Scatter and Lines with Color Spectrum"
+  description: |
+    Two dimensional matrix for x and y, a third variable with color spectrum set via loop.
+  core :
+    - package: m
+      code: |
+        plot(2d, 2d)
+        jet
+        set(chart(m), 'Color', clr)
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

@@ -1,0 +1,104 @@
+- file: fs_cellfuns
+  title: "Matlab List Comprehension with Cells"
+  titleshort: "List Comprehension with Cells"
+  description: |
+    Cell2mat, cellfun, anonymous function list comprehension over cells.
+    Find min and max of all arrays in cells.
+    Find length of all arrays in cells; find index of elements of one array in another cell array.
+  core :
+    - package: m
+      code: |
+        cell2mat()
+        cellfun()
+        strcmp()
+        find()
+        cell2mat(cellfun(@(m) find(strcmp(ls_st_param_key, m)), cl_st_param_keys, ‘UniformOutput’, false))
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_cellscombinations
+  title: "Matlab Cells All Possible Combinations of Multiple Arrays"
+  titleshort: "Permutate Cells"
+  description: |
+    Generate all possible combinations of various arrays contained in cell array.
+  core :
+    - package: m
+      code: |
+        ndgrid()
+        cell2mat()
+        array2table()
+        cell2mat(cellfun(@(m) m(:), cl_mt_all, ‘uni’, 0))
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_cellscombine
+  title: "Mablab Combine Cells Together"
+  titleshort: "Combine Cells"
+  description: |
+    Combine string cell arrays and string.
+  core :
+    - package: m
+      code: |
+        [{st_param}, ls_st_param_key, cl_st_param_keys]
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_cellsnested
+  title: "Matlab Nested Cells"
+  titleshort: "Nested Cells"
+  description: |
+    Cell of cells with inner cell having multiple types.
+  core :
+    - package: m
+      code: |
+        linspace()
+        cell([4,1])
+        clns_parm_tstar{1} = {‘fl_crra’, ‘CRRA’, linspace(1, 2, it_simu_vec_len)}
+        disp(clns_parm_tstar(1))
+        disp(clns_parm_tstar{1}{1})
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

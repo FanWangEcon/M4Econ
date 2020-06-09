@@ -1,0 +1,80 @@
+- file: fs_tab_gensample
+  title: "Matlab Table with Random Data and Labels"
+  titleshort: "Named Tables with Random Data"
+  description: |
+    Convert a random matrix to a table with column and row names defined with arrays.
+  core :
+    - package: m
+      code: |
+        array2table()
+        strcat()
+        addvars()
+        matlab.lang.makeValidName()
+  date: 2020-06-08
+  date_start: 2020-06-08
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_tab_ordersort
+  title: "Matlab Table Order Columns and Sort"
+  titleshort: "Order and Sort Columns"
+  description: |
+    Convert a matrix to table with mean and sd columns. Rearrange columns.
+  core :
+    - package: m
+      code: |
+        array2table()
+        rng()
+        movevars()
+        matlab.lang.makeValidName()
+        tb.Properties.VariableNames
+        tb.Properties.RowNames
+  date: 2020-06-08
+  date_start: 2020-06-08
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_tab_rowcolstrs
+  title: "Matlab Table Row and Column names for Table based on Arrays"
+  titleshort: "Array Based Row and Column Names"
+  description: |
+    Generate a column and row named table. Convert row names to a column.
+  core :
+    - package: m
+      code: |
+        array2table()
+        strcat('rowA=', string((1:size(mt, 1))))
+        tb_test_a.Properties.VariableNames
+        tb_test_a.Properties.RowNames
+        addvars(tb, rownames, 'Before', 1)
+  date: 2020-06-08
+  date_start: 2020-06-08
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

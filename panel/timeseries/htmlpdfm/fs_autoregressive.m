@@ -2,7 +2,7 @@
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
-%% AR(1) Autoregressive Process Mean and Standard Deviation
+%% Mean and Standard Deviation for AR(1) Autoregressive Process 
 % A first-order autoregressive process can be written as:
 %% 
 % * AR1: $X_t = \text{constant} + \text{persistence}\cdot x_{t-1} + \epsilon$

@@ -104,7 +104,7 @@
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-06-08}
+\date{2020-06-14}
 
 \begin{document}
 \maketitle
@@ -1690,13 +1690,31 @@ disp(clns_parm_tstar{1}{3});
 \hypertarget{characters-and-strings}{%
 \section{Characters and Strings}\label{characters-and-strings}}
 
-\hypertarget{single-string-element-manipulation}{%
-\subsection{Single String Element Manipulation}\label{single-string-element-manipulation}}
+\hypertarget{basic-string-operations}{%
+\subsection{Basic String Operations}\label{basic-string-operations}}
 
-\textbf{back to} \href{https://fanwangecon.github.io}{\textbf{Fan}}\textbf{'s} \href{https://fanwangecon.github.io/M4Econ/}{\textbf{Reusable
-Matlab}} \textbf{Repository or}
-\href{https://fanwangecon.github.io/CodeDynaAsset/}{\textbf{Dynamic Asset}}
-\textbf{Repository.}
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{combine-char-with-numeric-value}{%
+\subsubsection{Combine Char with Numeric Value}\label{combine-char-with-numeric-value}}
+
+Compose a string with words and numerical values
+
+\begin{verbatim}
+st_title = strcat("Figure Title ", ...
+    "(", ...
+    "threedeci=%.3f,", ...
+    "twodeci=%.2f,", ...
+    "int=%.0f", ...
+    ")");
+ar_params = 123.4567 + zeros(1,3);
+st_combo = compose(st_title, ar_params);
+disp(st_combo);
+
+Figure Title (threedeci=123.457,twodeci=123.46,int=123)
+\end{verbatim}
 
 \hypertarget{change-file-name-mlx-to-m}{%
 \subsubsection{Change File Name MLX to M}\label{change-file-name-mlx-to-m}}
@@ -1713,10 +1731,43 @@ continuous_differentiable_m.m
 \hypertarget{string-manipulations-with-arrays}{%
 \subsection{String Manipulations with Arrays}\label{string-manipulations-with-arrays}}
 
-\textbf{back to} \href{https://fanwangecon.github.io}{\textbf{Fan}}\textbf{'s} \href{https://fanwangecon.github.io/M4Econ/}{\textbf{Reusable
-Matlab}} \textbf{Repository or}
-\href{https://fanwangecon.github.io/CodeDynaAsset/}{\textbf{Dynamic Asset}}
-\textbf{Repository.}
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{string-array}{%
+\subsubsection{String Array}\label{string-array}}
+
+Three title lines, with double quotes:
+
+\begin{verbatim}
+ar_st_titles = ["Title1","Title2","Title3"]';
+disp(ar_st_titles);
+
+    "Title1"
+    "Title2"
+    "Title3"
+\end{verbatim}
+
+Three words, joined together, now single quotes, this creates one
+string, rather than a string array:
+
+\begin{verbatim}
+st_titles = ['Title1','Title2','Title3'];
+disp(st_titles);
+
+Title1Title2Title3
+\end{verbatim}
+
+\hypertarget{string-cell-array}{%
+\subsubsection{String Cell Array}\label{string-cell-array}}
+
+\begin{verbatim}
+ar_st_titles = {'Title1','Title2','Title3'};
+disp(ar_st_titles);
+
+    'Title1'    'Title2'    'Title3'
+\end{verbatim}
 
 \hypertarget{duplicate-string}{%
 \subsubsection{Duplicate String}\label{duplicate-string}}
@@ -1726,63 +1777,6 @@ it_duplicate_n = 10;
 disp(repmat({'String'}, [1, it_duplicate_n]));
 
     'String'    'String'    'String'    'String'    'String'    'String'    'String'    'String'    'String'    'String'
-\end{verbatim}
-
-\hypertarget{combine-two-numeric-arrays-to-a-single-string-array}{%
-\subsubsection{Combine Two Numeric Arrays to a Single String Array}\label{combine-two-numeric-arrays-to-a-single-string-array}}
-
-\begin{verbatim}
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-disp([num2str(ar_fl_abc1', 'zw=%3.2f;'), num2str(ar_fl_abc1', 'zr=%3.2f')]);
-
-zw=0.40;zr=0.40
-zw=0.10;zr=0.10
-zw=0.25;zr=0.25
-zw=0.30;zr=0.30
-zw=0.40;zr=0.40
-\end{verbatim}
-
-\hypertarget{convert-numeric-array-to-string-apeend-prefix-to-all-elements.}{%
-\subsubsection{Convert Numeric Array to String, Apeend Prefix to all elements.}\label{convert-numeric-array-to-string-apeend-prefix-to-all-elements.}}
-
-\begin{verbatim}
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_st_wth_prefix = strcat('row=', string(ar_fl_abc1));
-disp(ar_st_wth_prefix);
-
-    "row=0.4"    "row=0.1"    "row=0.25"    "row=0.3"    "row=0.4"
-
-
-% Does Array Exist in Longer Array as Subset
-ar_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_abc2 = [0.4 0.1 0.2 0.3 0.4];
-ar_efg = [0.1 0.2 0.3 0.4 0.1 0.2 0.3 0.4 0.1 0.2 0.3 0.4 0.1 0.2 0.3 0.4];
-st_abc1 = strjoin(string(num2str(ar_abc1)));
-st_abc2 = strjoin(string(num2str(ar_abc2)));
-st_efg = strjoin(string(num2str(ar_efg)));
-contains(st_efg, st_abc1)
-
-ans = 
-   0
-
-contains(st_efg, st_abc2)
-
-ans = 
-   1
-
-
-% Display Convert to String
-fprintf('Display string [%s]', num2str([1,2,3]));
-
-Display string [1  2  3]
-
-fprintf('Display string [%s]', num2str(1.1));
-
-Display string [1.1]
-
-fprintf('Display string [%s]', 'abc');
-
-Display string [abc]
 \end{verbatim}
 
 \hypertarget{string-join-to-form-single-element}{%
@@ -1797,8 +1791,8 @@ st_var_name = "abc"
 
 st_var_name = [st_var_name ' percentile values']
 
-st_var_name = 
-    "abc"    " percentile values"
+st_var_name = 1x2 string array    
+"abc"        " percentile values"    
 
 strjoin(st_var_name)
 
@@ -1823,24 +1817,26 @@ st_var_name = [char(st_var_name) ' percentile values']
 st_var_name = 'abc percentile values'
 \end{verbatim}
 
-\hypertarget{string-join-dash}{%
-\subsubsection{String Join dash}\label{string-join-dash}}
+\hypertarget{string-join-dash-paste}{%
+\subsubsection{String Join dash (Paste)}\label{string-join-dash-paste}}
 
-using char() is safe
+This is similar to R's paste function:
 
 \begin{verbatim}
-st_var_name = "abc"
+st_var_name = "abc";
 
 st_var_name = "abc"
 
-st_var_name = [st_var_name 'efg']
+st_var_name = [st_var_name, 'efg', 'mqo'];
 
-st_var_name = 
-    "abc"    "efg"
+st_var_name = 1x3 string array    
+"abc"        "efg"        "mqo"        
 
-strjoin(st_var_name, "_")
+disp(strjoin(st_var_name, "_"));
 
-ans = "abc_efg"
+ans = "abc_efg_mqo"
+
+disp(strjoin(st_var_name, ","));
 \end{verbatim}
 
 \hypertarget{numeric-array-to-string-without-space}{%
@@ -1861,6 +1857,9 @@ ans = '3_8_9'
 \begin{verbatim}
 ar_st_cells = {'shock=0.35','shock=0.40','shock=0.46'};
 ar_st_updated_cells = strrep(ar_st_cells, 'shock', '$\epsilon$');
+disp(ar_st_updated_cells);
+
+    '$\epsilon$=0.35'    '$\epsilon$=0.40'    '$\epsilon$=0.46'
 \end{verbatim}
 
 \hypertarget{find-position-of-string-in-string-cell}{%
@@ -1911,13 +1910,67 @@ fl\_crra-fl\_beta
 \hypertarget{concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}{%
 \subsection{Concatenate Strings Arrays with Numbers and Number Arrays with Strings}\label{concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}}
 
-\textbf{back to} \href{https://fanwangecon.github.io}{\textbf{Fan}}\textbf{'s} \href{https://fanwangecon.github.io/M4Econ/}{\textbf{Reusable
-Matlab}} \textbf{Repository or}
-\href{https://fanwangecon.github.io/CodeDynaAsset/}{\textbf{Dynamic Asset}}
-\textbf{Repository.}
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{combine-a-string-array-with-a-numeric-array-using-compose}{%
+\subsubsection{Combine A String Array with A Numeric Array using Compose}\label{combine-a-string-array-with-a-numeric-array-using-compose}}
+
+String array and numeric array, combine together using the compose
+function, and test different formatting functions. Formating with
+leading empty spaces, leading zeros, and convert to integer or not.
+
+\begin{verbatim}
+st_titles = ["%.3f",   "%.1f",   "%.0f";...
+             "%6.3f",  "%6.1f",  "%6.0f";...
+             "%06.3f", "%06.1f", "%06.0f"];
+ar_params = 123.4567890 + zeros(3,3);
+st_combo = compose(st_titles, ar_params);
+disp(st_combo);
+
+    "123.457"    "123.5"     "123"   
+    "123.457"    " 123.5"    "   123"
+    "123.457"    "0123.5"    "000123"
+\end{verbatim}
+
+\hypertarget{title-from-an-array-of-values}{%
+\subsubsection{Title from an Array of Values}\label{title-from-an-array-of-values}}
+
+There is a vector of parameter values and a vector of names for these
+parameter values, I want to include these in the title of a figure with
+the same decimal formating.
+
+\begin{verbatim}
+% Inputs
+rng(123);
+ar_params = rand(1,3);
+ar_st_parms_names = ["param1", "param2", "param3"];
+st_rounding = '.2f';
+st_title_main = "this is the figure title";
+% Rounding and combining
+ar_st_params = strcat(ar_st_parms_names, compose(strcat("=%", st_rounding), ar_params));
+% Generate a Single String that is comma separated:
+st_param_pasted = strjoin(ar_st_params, ', ');
+% Generate title with parameters
+st_title_wth_params = strcat(st_title_main, ' (', st_param_pasted, ')');
+% Display:
+disp(st_title_wth_params);
+
+this is the figure title (param1=0.70, param2=0.29, param3=0.23)
+\end{verbatim}
 
 \hypertarget{combine-string-with-numeric-array}{%
 \subsubsection{Combine String with Numeric Array}\label{combine-string-with-numeric-array}}
+
+Example 1:
+
+\begin{verbatim}
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
+disp([num2str(ar_fl_abc1', 'zw=%3.2f;'), num2str(ar_fl_abc1', 'zr=%3.2f')]);
+\end{verbatim}
+
+Example 2:
 
 \begin{verbatim}
 close all;
@@ -1929,16 +1982,15 @@ ar_it_rows = round(rand([1,5])*10);
 cl_st_full_rowscols = cellstr([num2str(ar_z_r_borr_mesh_wage', 'zr=%3.2f;'), ...
                                num2str(ar_z_wage_mesh_r_borr', 'zw=%3.2f')]);
 cl_col_names = strcat('zi=', num2str(ar_it_rows([1,3,5])'), ':', cl_st_full_rowscols([1,3,5]));
-
-disp(ar_z_r_borr_mesh_wage)
+disp(ar_z_r_borr_mesh_wage);
 
     0.6965    0.2861    0.2269    0.5513    0.7195
 
-disp(ar_z_wage_mesh_r_borr)
+disp(ar_z_wage_mesh_r_borr);
 
     0.4231    0.9808    0.6848    0.4809    0.3921
 
-disp(cl_st_full_rowscols)
+disp(cl_st_full_rowscols);
 
     'zr=0.70;zw=0.42'
     'zr=0.29;zw=0.98'
@@ -1946,7 +1998,7 @@ disp(cl_st_full_rowscols)
     'zr=0.55;zw=0.48'
     'zr=0.72;zw=0.39'
 
-disp(cl_col_names)
+disp(cl_col_names);
 
     'zi=3:zr=0.70;zw=0.42'
     'zi=4:zr=0.23;zw=0.68'
@@ -1962,8 +2014,7 @@ append numbers to it
 \begin{verbatim}
 % Append Common Numbers
 cl_col_names_append = strcat(cl_col_names, '-String-Cell-With-Numeric-', num2str(123));
-
-disp(cl_col_names_append)
+disp(cl_col_names_append);
 
     'zi=3:zr=0.70;zw=0.42-String-Cell-With-Numeric-123'
     'zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-123'
@@ -1979,12 +2030,35 @@ Append an array of numeric values
 % Append Common Numbers
 cl_col_names_append = strcat(cl_col_names, '-String-Cell-With-Numeric-Array-', ...
     num2str(transpose(1:length(cl_col_names))));
-
-disp(cl_col_names_append)
+disp(cl_col_names_append);
 
     'zi=3:zr=0.70;zw=0.42-String-Cell-With-Numeric-Array-1'
     'zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-Array-2'
     'zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-Array-3'
+\end{verbatim}
+
+\hypertarget{convert-numeric-array-to-string-apeend-prefix-to-all-elements.}{%
+\subsubsection{Convert Numeric Array to String, Apeend Prefix to all elements.}\label{convert-numeric-array-to-string-apeend-prefix-to-all-elements.}}
+
+\begin{verbatim}
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
+ar_st_wth_prefix = strcat('row=', string(ar_fl_abc1));
+disp(ar_st_wth_prefix);
+
+% Does Array Exist in Longer Array as Subset
+ar_abc1 = [0.4 0.1 0.25 0.3 0.4];
+ar_abc2 = [0.4 0.1 0.2 0.3 0.4];
+ar_efg = [0.1 0.2 0.3 0.4 0.1 0.2 0.3 0.4 0.1 0.2 0.3 0.4 0.1 0.2 0.3 0.4];
+st_abc1 = strjoin(string(num2str(ar_abc1)));
+st_abc2 = strjoin(string(num2str(ar_abc2)));
+st_efg = strjoin(string(num2str(ar_efg)));
+contains(st_efg, st_abc1)
+contains(st_efg, st_abc2)
+
+% Display Convert to String
+fprintf('Display string [%s]', num2str([1,2,3]));
+fprintf('Display string [%s]', num2str(1.1));
+fprintf('Display string [%s]', 'abc');
 \end{verbatim}
 
 \hypertarget{map-containers}{%
@@ -3474,6 +3548,194 @@ disp(tb_ab_row_stacked);
     row=10    0.71947    0.39212
 \end{verbatim}
 
+\hypertarget{panel}{%
+\chapter{Panel}\label{panel}}
+
+\hypertarget{time-series}{%
+\section{Time Series}\label{time-series}}
+
+\hypertarget{simulate-ar1-autoregressive-processes}{%
+\subsection{Simulate AR(1) Autoregressive Processes}\label{simulate-ar1-autoregressive-processes}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{ar1-autoregressive-process-mean-and-standard-deviation}{%
+\subsubsection{AR(1) Autoregressive Process Mean and Standard Deviation}\label{ar1-autoregressive-process-mean-and-standard-deviation}}
+
+A first-order autoregressive process can be written as:
+
+\begin{itemize}
+\item
+  AR1:
+  \(X_t =\textrm{constant}+\textrm{persistence}\cdot x_{t-1} +\epsilon\)
+\item
+  AR1: \(X_t =C+\rho \cdot x_{t-1} +\epsilon\)
+\end{itemize}
+
+Assume that \(\epsilon\) is mean zero
+
+Note that, we know the mean of \(X\):
+
+\begin{itemize}
+\item
+  \(\displaystyle \mu_X =C+\rho \cdot \mu_X +0\)
+\item
+  \(\displaystyle \mu_x =\frac{C}{1-\rho }\)
+\end{itemize}
+
+Note that, we also know the standard deviation of \(X\):
+
+\begin{itemize}
+\item
+  \(\displaystyle \textrm{var}\left(X\right)=\rho^2 \cdot \textrm{var}\left(X\right)+\textrm{var}\left(\epsilon \right)\)
+\item
+  \(\displaystyle \sigma_x =\sqrt{\frac{\sigma_{\epsilon }^2 }{1-\rho^2 }}\)
+\end{itemize}
+
+We will let the initial point of the time series follow the stationary
+distribution of the AR(1) process, then we simulate the time series over
+100 periods, in the example below, we use a highly persistent shock
+process with \(\rho =0.98\), \(\sigma_{\epsilon } =0.02\), \(C=0.02\). Note
+that for this process:
+
+\begin{itemize}
+\item
+  \(\displaystyle \mu_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\frac{0.02}{1-0.98}=1\)
+\item
+  \(\displaystyle \sigma_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\sqrt{\frac{0.02^2 }{1-0.98^2 }}\approx 0.10\)
+\end{itemize}
+
+\hypertarget{simulated-one-first-order-autoregressive-time-series}{%
+\subsubsection{Simulated one First-Order Autoregressive Time-Series}\label{simulated-one-first-order-autoregressive-time-series}}
+
+In the Example below, we simulate an individual for 1000 periods, given
+\(\rho =0.98\), \(\sigma_{\epsilon } =0.02\), \(C=0.02\). Given that the
+process is highly persistent, the individual stays rich or poor for
+dozens of periods at a time. If each period is a year, look at the
+results below, and suppose the simulated time series is income, what is
+the process saying about this person's income rise and fall. Note that
+we have the same person through all 1000 periods, but if you only look
+at 50 periods (years), you might this this person during one span is
+really successful, anothe segment of 50 years, doing really bad, but
+actually there is nothing changing in the person's type, all that is
+changing is the person's luck.
+
+First Set Parameters:
+
+\begin{verbatim}
+% Number of Time Periods
+it_T = 1000;
+% Mean and SD of the Shock Process
+fl_constant = 0.02;
+fl_normal_sd = 0.02;
+% Persistence
+fl_persistence = 0.98;
+% Bounds on Shocks
+fl_shk_bnds = 3;
+% Initialize with exo fed point or not, if false initialize at Random Point
+% from the stationary distribution
+bl_init = true;
+fl_init = fl_constant/(1 - fl_persistence);
+\end{verbatim}
+
+Second, generate a vector of normal shocks:
+
+\begin{verbatim}
+% Generate a normal shock vector (the first draw will be ignored)
+it_draws = it_T;
+rng(789);
+ar_fl_shocks = normrnd(0, fl_normal_sd, 1, it_draws);
+disp(ar_fl_shocks(1:20));
+
+  Columns 1 through 13
+
+   -0.0060   -0.0047    0.0168    0.0118    0.0380    0.0062   -0.0616   -0.0485   -0.0192    0.0023   -0.0197    0.0040    0.0156
+
+  Columns 14 through 20
+
+   -0.0089    0.0160    0.0099   -0.0200   -0.0206   -0.0090   -0.0069
+\end{verbatim}
+
+Third, replace any values exceeding bounds:
+
+\begin{verbatim}
+% out of bounds indicators
+fl_shk_bds_lower = 0 - fl_normal_sd*fl_shk_bnds;
+fl_shk_bds_upper = 0 + fl_normal_sd*fl_shk_bnds;
+ar_bl_outofbounds = (ar_fl_shocks <= fl_shk_bds_lower | ar_fl_shocks >= fl_shk_bds_upper);
+% count out of bounds
+disp(strcat('lower:', num2str(fl_shk_bds_lower), ', upper:', num2str(fl_shk_bds_upper)));
+
+lower:-0.06, upper:0.06
+
+disp(sum(ar_bl_outofbounds));
+
+     4
+
+ar_fl_shocks(ar_fl_shocks <= fl_shk_bds_lower) = fl_shk_bds_lower;
+ar_fl_shocks(ar_fl_shocks >= fl_shk_bds_upper) = fl_shk_bds_upper;
+\end{verbatim}
+
+Fourth, generate the AR(1) time series:
+
+\begin{verbatim}
+% Initialize Output Array
+ar_fl_time_series = zeros(size(ar_fl_shocks));
+% Loop over time
+for it_t=1:1:length(ar_fl_shocks)
+    if (it_t == 1)
+        % initialize using the ean of the process
+        ar_fl_time_series(1) = fl_constant/(1 - fl_persistence);
+        if (bl_init)
+            ar_fl_time_series(1) = fl_init;            
+        end
+    else
+        fl_ts_t = fl_constant + ar_fl_time_series(it_t-1)*fl_persistence + ar_fl_shocks(it_t);
+        ar_fl_time_series(it_t) = fl_ts_t;
+    end
+end
+\end{verbatim}
+
+Fifth, show the mean and sd of the process (these are very close to the
+analytical results):
+
+\begin{verbatim}
+disp(mean(ar_fl_time_series));
+
+    1.0104
+
+disp(std(ar_fl_time_series));
+
+    0.1000
+\end{verbatim}
+
+Sixth, plot the results:
+
+\begin{verbatim}
+figure();
+% x-axis
+ar_it_time = 1:1:length(ar_fl_shocks);
+% plot
+plot(ar_it_time, ar_fl_time_series);
+% Generate Title
+ar_fl_params_values = [fl_constant, fl_normal_sd, fl_persistence, fl_shk_bnds];
+ar_st_parms_names = ["C", "sd", "persistence", "sd-bounds"];
+st_rounding = '.2f';
+st_title_main = "AR(1) ";
+ar_st_params = strcat(ar_st_parms_names, compose(strcat("=%", st_rounding), ar_fl_params_values));
+st_param_pasted = strjoin(ar_st_params, ', ');
+st_title_wth_params = strcat(st_title_main, ' (', st_param_pasted, ')');
+title({st_title_wth_params, 'Simulate One Individual for 1000 Periods'});
+% X and Y labels
+ylabel({'Time Series Values'});
+xlabel('Time Periods');
+grid on;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_autoregressive_images/figure_0.png}
+
 \hypertarget{appendix-appendix}{%
 \appendix}
 
@@ -3624,31 +3886,39 @@ disp(tb_ab_row_stacked);
   \begin{itemize}
   \tightlist
   \item
+    Compose string and rounded numeric array.
+  \item
     Cut string suffix and append new suffix.
   \item
-    \textbf{m}: *str\_sub = split(string, ``.'') + strcat(str\_sub\{1\}, '\_m.m')*
+    \textbf{m}: *compose() + str\_sub = split(string, ``.'') + strcat(str\_sub\{1\}, '\_m.m')*
   \end{itemize}
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html}{String Arrays}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_array.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html}{\textbf{html}}
+  \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html}{String Arrays Operations}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_array.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html}{\textbf{html}}
 
   \begin{itemize}
   \tightlist
   \item
-    Concatenate string arrays, find string in string cell array, print display numerics as strings.
+    String arrays and cell strings.
   \item
-    String with numeric arrays, numeric arrays together as strings, combine numeric arrays and append string.
+    Duplicate strings, concatenate string, and paste strings jointly with separator.
+  \item
+    Find string element positions, replace substrings.
   \item
     \textbf{m}: \emph{repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp())))}
   \end{itemize}
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{String Concatenations}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{\textbf{html}}
+  \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{String and Numeric Array Concatenations}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{\textbf{html}}
 
   \begin{itemize}
   \tightlist
   \item
+    Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.
+  \item
+    Create a title string by joining rounded parameter and parameter names.
+  \item
     Concatenate multiple numeric arrays together with strings and format.
   \item
-    \textbf{m}: \emph{cellstr() + strcat()}
+    \textbf{m}: \emph{compose() + cellstr() + strcat() + strjoin() + \%.2f}
   \end{itemize}
 \end{enumerate}
 
@@ -3894,6 +4164,29 @@ disp(tb_ab_row_stacked);
     Append columns to existing table. Stack tables vertically and horizontally.
   \item
     \textbf{m}: \emph{array2table() + {[}tb\_a tb\_b{]} + {[}tb\_a; tb\_b{]} + tb.Properties.VariableNames + tb.Properties.RowNames}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{panel-links}{%
+\section{Panel links}\label{panel-links}}
+
+\hypertarget{section-5.1-time-seriestime-series-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{time-series}{Section 5.1 Time Series} links}{Section 5.1 Time Series links}}\label{section-5.1-time-seriestime-series-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html}{Autoregressive Process AR(1)}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_autoregressive.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The Mean and standard deviation of an AR(1) process.
+  \item
+    Simulate and graph an AR(1) persistent process.
+  \item
+    \textbf{m}: \emph{normrnd() + for it\_t=1:1:length(ar\_shk) + plot(ar\_t, ar\_y)}
   \end{itemize}
 \end{enumerate}
 

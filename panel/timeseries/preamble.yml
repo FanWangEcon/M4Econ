@@ -1,0 +1,25 @@
+- file: fs_autoregressive
+  title: "Matlab Autoregressive Process, Simulate AR(1) Persistent Shock Over Many Periods"
+  titleshort: "Autoregressive Process AR(1)"
+  description: |
+    The Mean and standard deviation of an AR(1) process.
+    Simulate and graph an AR(1) persistent process.
+  core :
+    - package: m
+      code: |
+        normrnd()
+        for it_t=1:1:length(ar_shk)
+        plot(ar_t, ar_y)
+  date: 2020-06-14
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

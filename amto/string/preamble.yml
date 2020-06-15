@@ -1,14 +1,16 @@
 - file: fs_string
-  title: "Matlab Single String Element Manipulation"
+  title: "Matlab Single String Manipulation, Combine and Split"
   titleshort: "String Basics"
   description: |
+    Compose string and rounded numeric array.
     Cut string suffix and append new suffix.
   core :
     - package: m
       code: |
+        compose()
         str_sub = split(string, ".")
         strcat(str_sub{1}, '_m.m')
-  date: 2020-06-07
+  date: 2020-06-14
   date_start: 2020-06-07
   output:
     pdf_document:
@@ -23,11 +25,12 @@
   urlcolor: blue
 
 - file: fs_string_array
-  title: "Matlab String Manipulations Matlab with Arrays"
-  titleshort: "String Arrays"
+  title: "Matlab String Array "
+  titleshort: "String Arrays Operations"
   description: |
-    Concatenate string arrays, find string in string cell array, print display numerics as strings.
-    String with numeric arrays, numeric arrays together as strings, combine numeric arrays and append string.
+    String arrays and cell strings.
+    Duplicate strings, concatenate string, and paste strings jointly with separator.
+    Find string element positions, replace substrings.
   core :
     - package: m
       code: |
@@ -39,7 +42,7 @@
         strcmp()
         strrep()
         cel2mat(cellfun(@(m) find(strcmp())))
-  date: 2020-06-07
+  date: 2020-06-14
   date_start: 2020-06-07
   output:
     pdf_document:
@@ -54,16 +57,21 @@
   urlcolor: blue
 
 - file: fs_string_strcat
-  title: "Matlab String Concatenate Strings Arrays with Numbers and Number Arrays with Strings"
-  titleshort: "String Concatenations"
+  title: "Matlab Concatenate Numeric and String Arrays"
+  titleshort: "String and Numeric Array Concatenations"
   description: |
+    Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.
+    Create a title string by joining rounded parameter and parameter names.
     Concatenate multiple numeric arrays together with strings and format.
   core :
     - package: m
       code: |
+        compose()
         cellstr()
         strcat()
-  date: 2020-06-07
+        strjoin()
+        %.2f
+  date: 2020-06-14
   date_start: 2020-06-07
   output:
     pdf_document:

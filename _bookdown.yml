@@ -71,5 +71,11 @@ rmd_files:
   - table/join/fs_tab_stack.Rmd
 
 
+  - panel/main.Rmd
+
+  - panel/timeseries/main.Rmd
+  - panel/timeseries/fs_autoregressive.Rmd
+
+
   - README_appendix.md
   - title.Rmd

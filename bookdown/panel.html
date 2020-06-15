@@ -4,12 +4,12 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Tables | Data Structures and Dynamic Optimization with Matlab</title>
+  <title>Chapter 5 Panel | Data Structures and Dynamic Optimization with Matlab</title>
   <meta name="description" content="<p>The Mean and standard deviation of an AR(1) process.
 Simulate and graph an AR(1) persistent process.</p>" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Tables | Data Structures and Dynamic Optimization with Matlab" />
+  <meta property="og:title" content="Chapter 5 Panel | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
@@ -18,7 +18,7 @@ Simulate and graph an AR(1) persistent process.</p>" />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Tables | Data Structures and Dynamic Optimization with Matlab" />
+  <meta name="twitter:title" content="Chapter 5 Panel | Data Structures and Dynamic Optimization with Matlab" />
   
   <meta name="twitter:description" content="<p>The Mean and standard deviation of an AR(1) process.
 Simulate and graph an AR(1) persistent process.</p>" />
@@ -34,8 +34,8 @@ Simulate and graph an AR(1) persistent process.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphs.html"/>
-<link rel="next" href="panel.html"/>
+<link rel="prev" href="tables.html"/>
+<link rel="next" href="index-and-code-links.html"/>
 <script src="libs/header-attrs-2.2/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,318 +212,163 @@ Simulate and graph an AR(1) persistent process.</p>" />
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tables" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Tables</h1>
+<div id="panel" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Panel</h1>
 
-<div id="basic-table-generation" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Basic Table Generation</h2>
+<div id="time-series" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Time Series</h2>
 
-<div id="named-tables-with-random-data" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Named Tables with Random Data</h3>
+<div id="simulate-ar1-autoregressive-processes" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Simulate AR(1) Autoregressive Processes</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-a-table-with-m-variables" class="section level4" number="4.1.1.1">
-<h4><span class="header-section-number">4.1.1.1</span> Generate A Table with M Variables</h4>
-<p>Generate a numeric table with random varlues and a string column</p>
-<pre><code>% Numeric Matrix
-it_num_cols = 4;
-it_num_rows = 5;
-mt_data = rand([it_num_rows, it_num_cols]);
-
-% Generate Table
-tb_test = array2table(mt_data);
-
-% Generate Row and Column Names
-cl_col_names = strcat(&#39;col_&#39;, string((1:it_num_cols)));
-cl_row_names = strcat(&#39;row_&#39;, string((1:it_num_rows)));
-
-tb_test.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
-tb_test.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
-
-% Generate two string variable
-rng(456);
-cl_st_var1 = strcat(&#39;data=&#39;, string(rand([it_num_rows,1])));
-cl_st_var2 = strcat(&#39;data=&#39;, string(rand([it_num_rows,1])));
-tb_test = addvars(tb_test, cl_st_var1, cl_st_var2);
-
-% Display Table
-disp(tb_test);
-
-              col_1      col_2       col_3       col_4       cl_st_var1        cl_st_var2  
-             _______    _______    _________    _______    ______________    ______________
-
-    row_1    0.43568     0.4688      0.18092    0.14604    &quot;data=0.24876&quot;    &quot;data=0.60411&quot;
-    row_2    0.38527       0.57      0.11816    0.54272    &quot;data=0.16307&quot;    &quot;data=0.8857&quot; 
-    row_3    0.57571     0.6457      0.24273     0.8571    &quot;data=0.78364&quot;    &quot;data=0.75912&quot;
-    row_4    0.14609    0.72334    0.0081834    0.20021    &quot;data=0.80852&quot;    &quot;data=0.18111&quot;
-    row_5    0.68659    0.68067      0.36007    0.13463    &quot;data=0.62563&quot;    &quot;data=0.15017&quot;</code></pre>
-
+<div id="ar1-autoregressive-process-mean-and-standard-deviation" class="section level4" number="5.1.1.1">
+<h4><span class="header-section-number">5.1.1.1</span> AR(1) Autoregressive Process Mean and Standard Deviation</h4>
+<p>A first-order autoregressive process can be written as:</p>
+<ul>
+<li><p>AR1:
+<span class="math inline">\(X_t =\textrm{constant}+\textrm{persistence}\cdot x_{t-1} +\epsilon\)</span></p></li>
+<li><p>AR1: <span class="math inline">\(X_t =C+\rho \cdot x_{t-1} +\epsilon\)</span></p></li>
+</ul>
+<p>Assume that <span class="math inline">\(\epsilon\)</span> is mean zero</p>
+<p>Note that, we know the mean of <span class="math inline">\(X\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \mu_X =C+\rho \cdot \mu_X +0\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle \mu_x =\frac{C}{1-\rho }\)</span></p></li>
+</ul>
+<p>Note that, we also know the standard deviation of <span class="math inline">\(X\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \textrm{var}\left(X\right)=\rho^2 \cdot \textrm{var}\left(X\right)+\textrm{var}\left(\epsilon \right)\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle \sigma_x =\sqrt{\frac{\sigma_{\epsilon }^2 }{1-\rho^2 }}\)</span></p></li>
+</ul>
+<p>We will let the initial point of the time series follow the stationary
+distribution of the AR(1) process, then we simulate the time series over
+100 periods, in the example below, we use a highly persistent shock
+process with <span class="math inline">\(\rho =0.98\)</span>, <span class="math inline">\(\sigma_{\epsilon } =0.02\)</span>, <span class="math inline">\(C=0.02\)</span>. Note
+that for this process:</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \mu_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\frac{0.02}{1-0.98}=1\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle \sigma_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\sqrt{\frac{0.02^2 }{1-0.98^2 }}\approx 0.10\)</span></p></li>
+</ul>
 </div>
-</div>
-<div id="tables-order-columns-and-sort" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Tables Order Columns and Sort</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="given-table-show-some-columns-first" class="section level4" number="4.1.2.1">
-<h4><span class="header-section-number">4.1.2.1</span> Given Table, Show Some Columns First</h4>
-<pre><code>% Generate Table
-it_num_cols = 4;
-it_num_rows = 5;
-mt_data = rand([it_num_rows, it_num_cols]);
-tb_test = array2table(mt_data);
-cl_col_names = strcat(&#39;col_&#39;, string((1:it_num_cols)));
-cl_row_names = strcat(&#39;row_&#39;, string((1:it_num_rows)));
-tb_test.Properties.VariableNames = matlab.lang.makeValidName(cl_col_names);
-tb_test.Properties.RowNames = matlab.lang.makeValidName(cl_row_names);
+<div id="simulated-one-first-order-autoregressive-time-series" class="section level4" number="5.1.1.2">
+<h4><span class="header-section-number">5.1.1.2</span> Simulated one First-Order Autoregressive Time-Series</h4>
+<p>In the Example below, we simulate an individual for 1000 periods, given
+<span class="math inline">\(\rho =0.98\)</span>, <span class="math inline">\(\sigma_{\epsilon } =0.02\)</span>, <span class="math inline">\(C=0.02\)</span>. Given that the
+process is highly persistent, the individual stays rich or poor for
+dozens of periods at a time. If each period is a year, look at the
+results below, and suppose the simulated time series is income, what is
+the process saying about this person’s income rise and fall. Note that
+we have the same person through all 1000 periods, but if you only look
+at 50 periods (years), you might this this person during one span is
+really successful, anothe segment of 50 years, doing really bad, but
+actually there is nothing changing in the person’s type, all that is
+changing is the person’s luck.</p>
+<p>First Set Parameters:</p>
+<pre><code>% Number of Time Periods
+it_T = 1000;
+% Mean and SD of the Shock Process
+fl_constant = 0.02;
+fl_normal_sd = 0.02;
+% Persistence
+fl_persistence = 0.98;
+% Bounds on Shocks
+fl_shk_bnds = 3;
+% Initialize with exo fed point or not, if false initialize at Random Point
+% from the stationary distribution
+bl_init = true;
+fl_init = fl_constant/(1 - fl_persistence);</code></pre>
+<p>Second, generate a vector of normal shocks:</p>
+<pre><code>% Generate a normal shock vector (the first draw will be ignored)
+it_draws = it_T;
+rng(789);
+ar_fl_shocks = normrnd(0, fl_normal_sd, 1, it_draws);
+disp(ar_fl_shocks(1:20));
 
-rng(123);
-mean = strcat(&#39;data=&#39;, string(rand([it_num_rows,1])));
-sd = strcat(&#39;data=&#39;, string(rand([it_num_rows,1])));
-tb_test_ori = addvars(tb_test, mean, sd);
+  Columns 1 through 13
 
-% Move Variable
-tb_test_varmove = movevars(tb_test_ori, {&#39;mean&#39;, &#39;sd&#39;}, &#39;Before&#39;, &#39;col_1&#39;);
+   -0.0060   -0.0047    0.0168    0.0118    0.0380    0.0062   -0.0616   -0.0485   -0.0192    0.0023   -0.0197    0.0040    0.0156
 
-% Display
-disp(tb_test_ori);
+  Columns 14 through 20
 
-              col_1       col_2      col_3      col_4          mean               sd      
-             ________    _______    _______    _______    ______________    ______________
+   -0.0089    0.0160    0.0099   -0.0200   -0.0206   -0.0090   -0.0069</code></pre>
+<p>Third, replace any values exceeding bounds:</p>
+<pre><code>% out of bounds indicators
+fl_shk_bds_lower = 0 - fl_normal_sd*fl_shk_bnds;
+fl_shk_bds_upper = 0 + fl_normal_sd*fl_shk_bnds;
+ar_bl_outofbounds = (ar_fl_shocks &lt;= fl_shk_bds_lower | ar_fl_shocks &gt;= fl_shk_bds_upper);
+% count out of bounds
+disp(strcat(&#39;lower:&#39;, num2str(fl_shk_bds_lower), &#39;, upper:&#39;, num2str(fl_shk_bds_upper)));
 
-    row_1     0.34318      0.738     0.6344    0.32296    &quot;data=0.69647&quot;    &quot;data=0.42311&quot;
-    row_2     0.72905    0.18249    0.84943    0.36179    &quot;data=0.28614&quot;    &quot;data=0.98076&quot;
-    row_3     0.43857    0.17545    0.72446    0.22826    &quot;data=0.22685&quot;    &quot;data=0.68483&quot;
-    row_4    0.059678    0.53155    0.61102    0.29371    &quot;data=0.55131&quot;    &quot;data=0.48093&quot;
-    row_5     0.39804    0.53183    0.72244    0.63098    &quot;data=0.71947&quot;    &quot;data=0.39212&quot;
+lower:-0.06, upper:0.06
 
-disp(tb_test_varmove);
+disp(sum(ar_bl_outofbounds));
 
-                  mean               sd           col_1       col_2      col_3      col_4 
-             ______________    ______________    ________    _______    _______    _______
+     4
 
-    row_1    &quot;data=0.69647&quot;    &quot;data=0.42311&quot;     0.34318      0.738     0.6344    0.32296
-    row_2    &quot;data=0.28614&quot;    &quot;data=0.98076&quot;     0.72905    0.18249    0.84943    0.36179
-    row_3    &quot;data=0.22685&quot;    &quot;data=0.68483&quot;     0.43857    0.17545    0.72446    0.22826
-    row_4    &quot;data=0.55131&quot;    &quot;data=0.48093&quot;    0.059678    0.53155    0.61102    0.29371
-    row_5    &quot;data=0.71947&quot;    &quot;data=0.39212&quot;     0.39804    0.53183    0.72244    0.63098</code></pre>
+ar_fl_shocks(ar_fl_shocks &lt;= fl_shk_bds_lower) = fl_shk_bds_lower;
+ar_fl_shocks(ar_fl_shocks &gt;= fl_shk_bds_upper) = fl_shk_bds_upper;</code></pre>
+<p>Fourth, generate the AR(1) time series:</p>
+<pre><code>% Initialize Output Array
+ar_fl_time_series = zeros(size(ar_fl_shocks));
+% Loop over time
+for it_t=1:1:length(ar_fl_shocks)
+    if (it_t == 1)
+        % initialize using the ean of the process
+        ar_fl_time_series(1) = fl_constant/(1 - fl_persistence);
+        if (bl_init)
+            ar_fl_time_series(1) = fl_init;            
+        end
+    else
+        fl_ts_t = fl_constant + ar_fl_time_series(it_t-1)*fl_persistence + ar_fl_shocks(it_t);
+        ar_fl_time_series(it_t) = fl_ts_t;
+    end
+end</code></pre>
+<p>Fifth, show the mean and sd of the process (these are very close to the
+analytical results):</p>
+<pre><code>disp(mean(ar_fl_time_series));
 
-</div>
-</div>
-<div id="row-and-column-names-for-table-based-on-arrays" class="section level3" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Row and Column names for Table based on Arrays</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="generate-table-with-row-and-column-names-based-on-multiple-numeric-array" class="section level4" number="4.1.3.1">
-<h4><span class="header-section-number">4.1.3.1</span> Generate Table with Row and Column Names based on Multiple Numeric Array</h4>
-<p>Two numeric arrays describe the column names, combine numeric arrays
-together to form string array which becomes table variable/column names.</p>
-<pre><code>close all;
+    1.0104
 
-% Generate Table 1
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
-number1 = &#39;123&#39;;
-number2 = &#39;456&#39;;
-mt_data_a = [ar_fl_abc1&#39; ar_fl_abc2&#39;];
+disp(std(ar_fl_time_series));
 
-tb_test_a = array2table(mt_data_a);
-cl_col_names_a = {[&#39;col&#39; num2str(number1)], [&#39;col&#39; num2str(number2)]};
-cl_row_names_a = strcat(&#39;rowA=&#39;, string((1:size(mt_data_a,1))));
-
-tb_test_a.Properties.VariableNames = cl_col_names_a;
-tb_test_a.Properties.RowNames = cl_row_names_a;
-disp(tb_test_a);
-
-              col123    col456
-              ______    ______
-
-    rowA=1      0.4      0.4  
-    rowA=2      0.1      0.1  
-    rowA=3     0.25      0.2  
-    rowA=4      0.3      0.3  
-    rowA=5      0.4      0.4  </code></pre>
-</div>
-<div id="include-row-names-as-a-variable" class="section level4" number="4.1.3.2">
-<h4><span class="header-section-number">4.1.3.2</span> Include Row Names as a Variable</h4>
-<pre><code>% a and b must have the same row names
-varrownames = tb_test_a.Properties.RowNames;
-tb_test_a = addvars(tb_test_a, varrownames, &#39;Before&#39;, 1);
-
-disp(tb_test_a);
-
-              varrownames    col123    col456
-              ___________    ______    ______
-
-    rowA=1    {&#39;rowA=1&#39;}       0.4      0.4  
-    rowA=2    {&#39;rowA=2&#39;}       0.1      0.1  
-    rowA=3    {&#39;rowA=3&#39;}      0.25      0.2  
-    rowA=4    {&#39;rowA=4&#39;}       0.3      0.3  
-    rowA=5    {&#39;rowA=5&#39;}       0.4      0.4</code></pre>
-
-</div>
-</div>
-</div>
-<div id="table-joining" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Table Joining</h2>
-
-<div id="combining-tables-and-matrixs-together" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Combining Tables and Matrixs Together</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="generate-some-tables-and-matrixes-for-combination" class="section level4" number="4.2.1.1">
-<h4><span class="header-section-number">4.2.1.1</span> Generate Some Tables and Matrixes for Combination</h4>
-<pre><code>close all;
-
-% Generate Table 1
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
-number1 = &#39;123&#39;;
-number2 = &#39;456&#39;;
-mt_data_a = [ar_fl_abc1&#39; ar_fl_abc2&#39;];
-
-tb_test_a = array2table(mt_data_a);
-cl_col_names_a = {[&#39;col&#39; num2str(number1)], [&#39;col&#39; num2str(number2)]};
-cl_row_names_a = strcat(&#39;rowA=&#39;, string((1:size(mt_data_a,1))));
-
-tb_test_a.Properties.VariableNames = cl_col_names_a;
-tb_test_a.Properties.RowNames = cl_row_names_a;
-disp(tb_test_a);
-
-              col123    col456
-              ______    ______
-
-    rowA=1      0.4      0.4  
-    rowA=2      0.1      0.1  
-    rowA=3     0.25      0.2  
-    rowA=4      0.3      0.3  
-    rowA=5      0.4      0.4  
-
-
-% Generate Table 2
-rng(123);
-ar_fl_abc3 = rand(size(ar_fl_abc1));
-ar_fl_abc4 = rand(size(ar_fl_abc1));
-ar_fl_abc5 = rand(size(ar_fl_abc1));
-
-mt_data_b = [ar_fl_abc3&#39; ar_fl_abc4&#39; ar_fl_abc5&#39;];
-
-tb_test_b = array2table(mt_data_b);
-cl_col_names_b = {[&#39;col&#39; num2str(33)], [&#39;col&#39; num2str(44)], [&#39;col&#39; num2str(55)]};
-cl_row_names_b = strcat(&#39;rowB=&#39;, string((1:size(mt_data_a,1))));
-
-tb_test_b.Properties.VariableNames = cl_col_names_b;
-tb_test_b.Properties.RowNames = cl_row_names_b;
-disp(tb_test_b);
-
-               col33      col44      col55  
-              _______    _______    ________
-
-    rowB=1    0.69647    0.42311     0.34318
-    rowB=2    0.28614    0.98076     0.72905
-    rowB=3    0.22685    0.68483     0.43857
-    rowB=4    0.55131    0.48093    0.059678
-    rowB=5    0.71947    0.39212     0.39804</code></pre>
-</div>
-<div id="combine-tables-together-stack-columns" class="section level4" number="4.2.1.2">
-<h4><span class="header-section-number">4.2.1.2</span> Combine Tables Together Stack Columns</h4>
-<p>Tables with the same number of rows, add more columns with named
-variables</p>
-<pre><code>% a and b must have the same row names
-tb_test_b_withArownames = tb_test_b;
-tb_test_b_withArownames.Properties.RowNames = tb_test_a.Properties.RowNames;
-tb_ab_col_stacked = [tb_test_a tb_test_b_withArownames];
-disp(tb_ab_col_stacked);
-
-              col123    col456     col33      col44      col55  
-              ______    ______    _______    _______    ________
-
-    rowA=1      0.4      0.4      0.69647    0.42311     0.34318
-    rowA=2      0.1      0.1      0.28614    0.98076     0.72905
-    rowA=3     0.25      0.2      0.22685    0.68483     0.43857
-    rowA=4      0.3      0.3      0.55131    0.48093    0.059678
-    rowA=5      0.4      0.4      0.71947    0.39212     0.39804</code></pre>
-</div>
-<div id="combine-tables-together-stack-rows" class="section level4" number="4.2.1.3">
-<h4><span class="header-section-number">4.2.1.3</span> Combine Tables Together Stack Rows</h4>
-<p>Tables with the same number of columns, dd more rows variables</p>
-<pre><code>% Select only 2 columns to match table a column count
-tb_test_b_subset = tb_test_b(:,1:2);
-
-% Make Column Names consistent
-tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
-
-% Reset Row Names, can not have identical row names
-tb_test_a.Properties.RowNames = strcat(&#39;row=&#39;, string((1:size(mt_data_a,1))));
-tb_test_b_subset.Properties.RowNames = ...
-    strcat(&#39;row=&#39;, string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
-% tb_test_b_subset.Properties.RowNames =
-
-% Stack Rows
-tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
-disp(tb_ab_row_stacked);
-
-              col123     col456 
-              _______    _______
-
-    row=1         0.4        0.4
-    row=2         0.1        0.1
-    row=3        0.25        0.2
-    row=4         0.3        0.3
-    row=5         0.4        0.4
-    row=6     0.69647    0.42311
-    row=7     0.28614    0.98076
-    row=8     0.22685    0.68483
-    row=9     0.55131    0.48093
-    row=10    0.71947    0.39212</code></pre>
-</div>
-<div id="combine-tables-together-stack-rows-1" class="section level4" number="4.2.1.4">
-<h4><span class="header-section-number">4.2.1.4</span> Combine Tables Together Stack Rows</h4>
-<p>Tables with the same number of columns, dd more rows variables</p>
-<pre><code>% Select only 2 columns to match table a column count
-tb_test_b_subset = tb_test_b(:,1:2);
-
-% Make Column Names consistent
-tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
-
-% Reset Row Names, can not have identical row names
-tb_test_a.Properties.RowNames = strcat(&#39;row=&#39;, string((1:size(mt_data_a,1))));
-tb_test_b_subset.Properties.RowNames = ...
-    strcat(&#39;row=&#39;, string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
-% tb_test_b_subset.Properties.RowNames =
-
-% Stack Rows
-tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
-disp(tb_ab_row_stacked);
-
-              col123     col456 
-              _______    _______
-
-    row=1         0.4        0.4
-    row=2         0.1        0.1
-    row=3        0.25        0.2
-    row=4         0.3        0.3
-    row=5         0.4        0.4
-    row=6     0.69647    0.42311
-    row=7     0.28614    0.98076
-    row=8     0.22685    0.68483
-    row=9     0.55131    0.48093
-    row=10    0.71947    0.39212</code></pre>
+    0.1000</code></pre>
+<p>Sixth, plot the results:</p>
+<pre><code>figure();
+% x-axis
+ar_it_time = 1:1:length(ar_fl_shocks);
+% plot
+plot(ar_it_time, ar_fl_time_series);
+% Generate Title
+ar_fl_params_values = [fl_constant, fl_normal_sd, fl_persistence, fl_shk_bnds];
+ar_st_parms_names = [&quot;C&quot;, &quot;sd&quot;, &quot;persistence&quot;, &quot;sd-bounds&quot;];
+st_rounding = &#39;.2f&#39;;
+st_title_main = &quot;AR(1) &quot;;
+ar_st_params = strcat(ar_st_parms_names, compose(strcat(&quot;=%&quot;, st_rounding), ar_fl_params_values));
+st_param_pasted = strjoin(ar_st_params, &#39;, &#39;);
+st_title_wth_params = strcat(st_title_main, &#39; (&#39;, st_param_pasted, &#39;)&#39;);
+title({st_title_wth_params, &#39;Simulate One Individual for 1000 Periods&#39;});
+% X and Y labels
+ylabel({&#39;Time Series Values&#39;});
+xlabel(&#39;Time Periods&#39;);
+grid on;</code></pre>
+<p><img src="img/fs_autoregressive_images/figure_0.png" width="500" /></p>
 
 </div>
 </div>
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="panel.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="index-and-code-links.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

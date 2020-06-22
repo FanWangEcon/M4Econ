@@ -8,26 +8,30 @@
 ][Matrices and Arrays
 ] links
 
-1. [Accumarray Examples](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_accumarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html)
-	+ Accumarray to sum up probabilities/values for discrete elements of arrays.
-	+ **m**: *unique() + reshape() + accumarray()*
-2. [Array Broadcasting Examples](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_broadcast_expand.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html)
-	+ broadcast means: array + array’ + matrix = matrix.
-3. [Array Random Draws and Permutation](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_combi_permu.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html)
-	+ Draw randomly from array, permutate arrays.
-	+ **m**: *ndgrid() + cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))*
-4. [Imaginary Elements of Array](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
-	+ Find imaginary elements of array.
-	+ **m**: *imag()*
-5. [Array Reshape, Repeat and Expand](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_reshape.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_reshape.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_reshape.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_reshape.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_reshape.html)
+1. [Array Reshape, Repeat and Expand](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_reshape.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_reshape.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_reshape.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_reshape.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_reshape.html)
 	+ Reshape and flatten arrays.
 	+ **m**: *reshape()*
-6. [Array Index Slicing and Subsetting to Replace and Expand](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_slicing.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_slicing.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_slicing.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_slicing.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_slicing.html)
+2. [Array Index Slicing and Subsetting to Replace and Expand](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_slicing.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_slicing.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_slicing.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_slicing.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_slicing.html)
 	+ Index based column and row expansions.
 	+ Anonymous function to slice array subsets.
 	+ **m**: *sub2ind() + @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1)) times (it_ar_n-1)+1))*
-7. [Grid States, Choices and Optimal Choices Example](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_stateschoicesopti.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_stateschoicesopti.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_stateschoicesopti.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_stateschoicesopti.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_stateschoicesopti.html)
+3. [3D, 4D, N4 Arrays Reshape and Summarize](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_3d4dndarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html)
+	+ Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
+	+ Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
+	+ **m**: *permute(mn, [3,1,2,4]) + squeeze(num2cell(mn, [1,2])) + celldisp() + ndgrid()*
+4. [Array Broadcasting Examples](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_broadcast_expand.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html)
+	+ broadcast means: array + array’ + matrix = matrix.
+5. [Grid States, Choices and Optimal Choices Example](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_stateschoicesopti.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_stateschoicesopti.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_stateschoicesopti.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_stateschoicesopti.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_stateschoicesopti.html)
 	+ States, choices, and find max.
+6. [Accumarray Examples](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_accumarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html)
+	+ Accumarray to sum up probabilities/values for discrete elements of arrays.
+	+ **m**: *unique() + reshape() + accumarray()*
+7. [Array Random Draws and Permutation](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_combi_permu.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html)
+	+ Draw randomly from array, permutate arrays.
+	+ **m**: *ndgrid() + cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))*
+8. [Imaginary Elements of Array](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
+	+ Find imaginary elements of array.
+	+ **m**: *imag()*
 
 ### [Section 1.2  Cells
 ][Cells

@@ -2,5 +2,9 @@
 *.mlx linguist-vendored
 *.pdf linguist-vendored
 *.ipynb linguist-vendored
+
 *.tex linguist-vendored
 *.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+*.Rprofile linguist-vendored

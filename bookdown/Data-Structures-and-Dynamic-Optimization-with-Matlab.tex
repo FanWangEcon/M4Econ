@@ -104,7 +104,7 @@
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-06-14}
+\date{2020-06-21}
 
 \begin{document}
 \maketitle
@@ -134,126 +134,811 @@ Please contact \href{https://fanwangecon.github.io/}{FanWangEcon} for issues or 
 \hypertarget{matrices-and-arrays}{%
 \section{Matrices and Arrays}\label{matrices-and-arrays}}
 
-\hypertarget{accumarray-examples}{%
-\subsubsection{Accumarray Examples}\label{accumarray-examples}}
+\hypertarget{array-reshape-repeat-and-expand-examples}{%
+\subsection{Array Reshape, Repeat and Expand Examples}\label{array-reshape-repeat-and-expand-examples}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
-\hypertarget{accumarry-basic-example}{%
-\paragraph{Accumarry Basic Example}\label{accumarry-basic-example}}
-
-There are three unique values in ar\_a, sum up the probabilities for
-each of the unique states. This is equivalent to sorting a matrix with a
-and prob, and computing sum for each.
+\hypertarget{basic-examples-of-reshape}{%
+\subsubsection{Basic Examples of Reshape}\label{basic-examples-of-reshape}}
 
 \begin{verbatim}
-ar_a = [3,2,1,3]';
-ar_prob = [0.1,0.2,0.31,0.39]';
-ar_sumprob = accumarray(ar_a, ar_prob);
-tb_summed_prob = table(sort(unique(ar_a)), ar_sumprob);
-disp(tb_summed_prob);
+a = [1,2,3,4,5,6]';
+b = reshape(a, [3,2])
 
-    Var1    ar_sumprob
-    ____    __________
+b = 3x2    
+     1     4
+     2     5
+     3     6
 
-     1         0.31   
-     2          0.2   
-     3         0.49   
+b(:)
+
+ans = 6x1    
+     1
+     2
+     3
+     4
+     5
+     6
+
+a = [1,2,3;4,5,6;7,8,9;10,11,12]'
+
+a = 3x4    
+     1     4     7    10
+     2     5     8    11
+     3     6     9    12
+
+b = reshape(a, [6,2])
+
+b = 6x2    
+     1     7
+     2     8
+     3     9
+     4    10
+     5    11
+     6    12
 \end{verbatim}
 
-\hypertarget{accumarry-for-discrete-random-variable}{%
-\paragraph{Accumarry For Discrete Random Variable}\label{accumarry-for-discrete-random-variable}}
-
-Upon solving a model, if we look for the mass at certain choices or
-states, accumarray could help aggregate up probabilities
+\hypertarget{stack-two-matrix-of-equal-column-count-together}{%
+\subsubsection{\texorpdfstring{\textbf{Stack Two Matrix of Equal Column Count Together}}{Stack Two Matrix of Equal Column Count Together}}\label{stack-two-matrix-of-equal-column-count-together}}
 
 \begin{verbatim}
-a1 = [1,1,2,2]
+a = [1,2;3,4];
+a_stacked = [a;a;a];
+disp(a_stacked);
 
-a1 = 1x4    
-     1     1     2     2
+     1     2
+     3     4
+     1     2
+     3     4
+     1     2
+     3     4
+\end{verbatim}
 
-a2 = [3,2,1,3]
+\hypertarget{repeatduplicate-matrix-downwards}{%
+\subsubsection{\texorpdfstring{\textbf{Repeat/Duplicate Matrix Downwards}}{Repeat/Duplicate Matrix Downwards}}\label{repeatduplicate-matrix-downwards}}
 
-a2 = 1x4    
-     3     2     1     3
+There is a 2 by 3 matrix, to be repeated 4 times, downwards. This is
+useful for replicating data matrix for say counterfactual purposes.
 
-a3 = [1,2,3,3]
+Below, we have two ways of repeating a matrix downwards. Copy as whole,
+or copy row by row.
 
-a3 = 1x4    
-     1     2     3     3
+\begin{verbatim}
+row_count = 2;
+col_count = 3;
+repeat_mat_count = 2;
+
+data_vec = 1:(row_count*col_count);
+searchMatrix = reshape(data_vec,row_count,col_count);
+
+% To repeat matrix downwards
+rep_rows_idx = [1:row_count]'*ones(1,repeat_mat_count);
+rep_rows_idx = rep_rows_idx(:);
+
+rep_cols_idx = [1:col_count];
+rep_cols_idx = rep_cols_idx(:);
+
+searchMatrixRep_stack = searchMatrix(rep_rows_idx, rep_cols_idx);
+
+% To insert repeated rows following original rows
+rep_rows_idx = ([1:row_count]'*ones(1,repeat_mat_count))';
+rep_rows_idx = rep_rows_idx(:);
+
+searchMatrixRep_dup = searchMatrix(rep_rows_idx, rep_cols_idx);
+
+disp(searchMatrix)
+
+     1     3     5
+     2     4     6
+
+disp(searchMatrixRep_stack)
+
+     1     3     5
+     2     4     6
+     1     3     5
+     2     4     6
+
+disp(searchMatrixRep_dup)
+
+     1     3     5
+     1     3     5
+     2     4     6
+     2     4     6
+\end{verbatim}
+
+\hypertarget{index-dimension-transform}{%
+\subsubsection{Index Dimension Transform}\label{index-dimension-transform}}
+
+it\_inner\_fin = 5; it\_outter\_fin = 3;
+
+it\_inner\_cur = it\_outter\_fin it\_outter\_cur = it\_inner\_fin
+
+ar\_it\_cols\_idx = 1:1:(it\_inner\_fin*it\_outter\_fin)
+ar\_it\_cols\_inner\_dim = repmat(1:it\_inner\_cur, \[it\_outter\_cur,
+1\]) ar\_it\_cols\_inner\_dim(:)'
+
+mt\_it\_cols\_idx = reshape(ar\_it\_cols\_idx, \[it\_inner\_cur,
+it\_outter\_cur\])' mt\_it\_cols\_idx(:)'
+
+\begin{verbatim}
+it_inner_fin = 5;
+it_outter_fin = 3;
+
+ar_it_cols_idx = 1:1:(it_inner_fin*it_outter_fin)
+
+ar_it_cols_idx = 1x15    
+     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15
+
+mt_it_cols_idx = reshape(ar_it_cols_idx, [it_outter_fin, it_inner_fin])'
+
+mt_it_cols_idx = 5x3    
+     1     2     3
+     4     5     6
+     7     8     9
+    10    11    12
+    13    14    15
+
+mt_it_cols_idx(:)'
+
+ans = 1x15    
+     1     4     7    10    13     2     5     8    11    14     3     6     9    12    15
+\end{verbatim}
+
+\hypertarget{array-index-slicing-and-subsetting-to-replace-and-expand}{%
+\subsection{Array Index Slicing and Subsetting to Replace and Expand}\label{array-index-slicing-and-subsetting-to-replace-and-expand}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{matlab-index-based-replacement-of-subset-of-matrix-values}{%
+\subsubsection{Matlab Index based Replacement of Subset of Matrix Values}\label{matlab-index-based-replacement-of-subset-of-matrix-values}}
+
+\begin{verbatim}
+clear all;
+close all;
+rng(123);
+randMatZ = rand(3,6)+1
+
+randMatZ = 3x6    
+    1.6965    1.5513    1.9808    1.3921    1.4386    1.7380
+    1.2861    1.7195    1.6848    1.3432    1.0597    1.1825
+    1.2269    1.4231    1.4809    1.7290    1.3980    1.1755
+
+randMat = rand(3,6)-0.5
+
+randMat = 3x6    
+    0.0316    0.3494    0.2224   -0.2717   -0.4079   -0.0063
+    0.0318    0.2245   -0.1770   -0.2063   -0.0663   -0.0742
+    0.1344    0.1110   -0.1382    0.1310   -0.0691   -0.1877
 
 
-a = [a1;a2;a3]'/2
+output = max(-randMat,0)
 
-a = 4x3    
-    0.5000    1.5000    0.5000
-    0.5000    1.0000    1.0000
-    1.0000    0.5000    1.5000
-    1.0000    1.5000    1.5000
+output = 3x6    
+         0         0         0    0.2717    0.4079    0.0063
+         0         0    0.1770    0.2063    0.0663    0.0742
+         0         0    0.1382         0    0.0691    0.1877
 
+randMatZ(output==0) = 999
 
-prob_a = zeros(size(a)) + 1/12
+randMatZ = 3x6    
+  999.0000  999.0000  999.0000    1.3921    1.4386    1.7380
+  999.0000  999.0000    1.6848    1.3432    1.0597    1.1825
+  999.0000  999.0000    1.4809  999.0000    1.3980    1.1755
 
-prob_a = 4x3    
-    0.0833    0.0833    0.0833
-    0.0833    0.0833    0.0833
-    0.0833    0.0833    0.0833
-    0.0833    0.0833    0.0833
-
-[ar_idx_full, ~, ar_idx_of_unique] = unique(a)
-
-ar_idx_full = 3x1    
-    0.5000
-    1.0000
-    1.5000
-
-ar_idx_of_unique = 12x1    
-     1
-     1
-     2
-     2
-     3
-     2
-     1
-     3
-     1
-     2
-
-mt_idx_of_unique = reshape(ar_idx_of_unique, size(a))
-
-mt_idx_of_unique = 4x3    
-     1     3     1
-     1     2     2
-     2     1     3
-     2     3     3
-
-
-accumarray(mt_idx_of_unique(:,1), prob_a(:,1))
-
-ans = 2x1    
-    0.1667
-    0.1667
-
-accumarray(mt_idx_of_unique(:,2), prob_a(:,2))
+min(randMatZ,[],2)
 
 ans = 3x1    
-    0.0833
-    0.0833
-    0.1667
+    1.3921
+    1.0597
+    1.1755
 
-accumarray(mt_idx_of_unique(:,3), prob_a(:,3))
+
+randMatZ((max(-randMat,0))==0) = 999
+
+randMatZ = 3x6    
+  999.0000  999.0000  999.0000    1.3921    1.4386    1.7380
+  999.0000  999.0000    1.6848    1.3432    1.0597    1.1825
+  999.0000  999.0000    1.4809  999.0000    1.3980    1.1755
+
+min(randMatZ,[],2)
 
 ans = 3x1    
-    0.0833
-    0.0833
-    0.1667
+    1.3921
+    1.0597
+    1.1755
+\end{verbatim}
+
+\hypertarget{matlab-matrix-index-based-matrix-expansion-manual}{%
+\subsubsection{Matlab Matrix Index Based Matrix Expansion (Manual)}\label{matlab-matrix-index-based-matrix-expansion-manual}}
+
+In the example below, we start with a 4 by 2 matrix, than we expand
+specific rows and columns of the matrix. Specifically, we expand the
+matrix such that the result matrix repeats the 1st, 2nd, 1st, 2nd, then
+3rd, than 1st, 1st, and 1st rows. And repeats column 1, then 2nd, then
+2nd, then 2nd, and finally the first column.
+
+\begin{verbatim}
+% Original Matrix
+Z = 2;
+N = 2;
+Q = 2;
+base_mat = reshape(1:(Z*N*Q),Z*N,Q);
+disp(base_mat);
+
+     1     5
+     2     6
+     3     7
+     4     8
+
+% Expanded Matrix
+base_expand = base_mat([1,2,1,2,3,1,1,1],[1,2,2,2,1]);
+disp(base_expand);
+
+     1     5     5     5     1
+     2     6     6     6     2
+     1     5     5     5     1
+     2     6     6     6     2
+     3     7     7     7     3
+     1     5     5     5     1
+     1     5     5     5     1
+     1     5     5     5     1
+\end{verbatim}
+
+\hypertarget{duplicate-matrix-downwards-n-times-using-index}{%
+\subsubsection{Duplicate Matrix Downwards N times Using Index}\label{duplicate-matrix-downwards-n-times-using-index}}
+
+The example here has the same idea, but we do the operations above in a
+more automated way. This could be done using alternative methods.
+
+\begin{verbatim}
+% Original Matrix
+Z = 2;
+N = 2;
+Q = 2;
+base_mat = reshape(1:(Z*N*Q),Z*N,Q);
+disp(base_mat);
+
+     1     5
+     2     6
+     3     7
+     4     8
+
+% Generate row Index many times automatically depending on how many times
+% to replicate
+vmat_repeat_count = 3;
+vmat_reindex_rows_repeat = [1:(Z*N)]'* ones(1,vmat_repeat_count);
+vmat_reindex_rows_repeat = vmat_reindex_rows_repeat(:);
+disp(vmat_reindex_rows_repeat');
+
+     1     2     3     4     1     2     3     4     1     2     3     4
+
+% Duplicate Matrix by the Rows specified above, and using the same number
+% of columns.
+mat_repdown = base_mat(vmat_reindex_rows_repeat(:), 1:Q);
+disp(mat_repdown');
+
+     1     2     3     4     1     2     3     4     1     2     3     4
+     5     6     7     8     5     6     7     8     5     6     7     8
+\end{verbatim}
+
+\hypertarget{max-of-matrix-column-by-column-linear-to-2d-index}{%
+\subsubsection{Max of Matrix column by Column Linear to 2d Index}\label{max-of-matrix-column-by-column-linear-to-2d-index}}
+
+Finding max of matrix column by column, then obtain the linear index
+associated with the max values.
+
+\begin{verbatim}
+randMat = rand(5,3);
+disp(randMat);
+
+    0.4264    0.1156    0.4830
+    0.8934    0.3173    0.9856
+    0.9442    0.4148    0.5195
+    0.5018    0.8663    0.6129
+    0.6240    0.2505    0.1206
+
+[maxVal maxIndex] = max(randMat);
+linearIndex = sub2ind(size(randMat),maxIndex,(1:1:size(randMat,2)))
+
+linearIndex = 1x3    
+     3     9    12
+
+randMat(linearIndex)
+
+ans = 1x3    
+    0.9442    0.8663    0.9856
+
+t_pV = [1,2;3,4;5,6];
+t_pV_Ind = [1,1;0,0;1,1];
+[maxVal maxIndex] = max(t_pV(t_pV_Ind==1))
+
+maxVal = 6
+maxIndex = 4
+\end{verbatim}
+
+\hypertarget{given-array-of-size-m-select-n-somewhat-equi-distance-elements}{%
+\subsubsection{Given Array of size M, Select N somewhat equi-distance elements}\label{given-array-of-size-m-select-n-somewhat-equi-distance-elements}}
+
+\begin{verbatim}
+% Subset count
+it_n = 5;
+
+% Example 1, long array
+ar_fl_a = 1:1.1:100;
+ar_it_subset_idx = unique(round(((0:1:(it_n-1))/(it_n-1))*(length(ar_fl_a)-1)+1));
+ar_fl_a_subset = ar_fl_a(ar_it_subset_idx);
+disp(ar_fl_a_subset);
+
+    1.0000   26.3000   50.5000   75.8000  100.0000
+
+
+% Example 2, Short Array
+ar_fl_a = 1:1.1:3;
+ar_it_subset_idx = unique(round(((0:1:(it_n-1))/(it_n-1))*(length(ar_fl_a)-1)+1));
+ar_fl_a_subset = ar_fl_a(ar_it_subset_idx);
+disp(ar_fl_a_subset);
+
+    1.0000    2.1000
+
+
+% Write As function
+f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1))*(it_ar_n-1)+1));
+
+% Select 5 out of 10
+disp(f_subset(5, 10));
+
+     1     3     6     8    10
+
+
+% Select 10 out of 5
+disp(f_subset(10, 5));
+
+     1     2     3     4     5
+
+
+% Select 5 out of 5
+disp(f_subset(5, 5));
+
+     1     2     3     4     5
+\end{verbatim}
+
+\hypertarget{d-4d-n4-arrays-reshape-and-rearrange-dimensions}{%
+\subsection{3D, 4D, N4 Arrays Reshape and Rearrange Dimensions}\label{d-4d-n4-arrays-reshape-and-rearrange-dimensions}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{d-array-to-cell-array-of-matrix-split-by-last-dimension}{%
+\subsubsection{3D Array to Cell Array of Matrix Split by Last Dimension}\label{d-array-to-cell-array-of-matrix-split-by-last-dimension}}
+
+Convert Multi-dimensional arrays to a cell array consistent of two
+dimensional arrays. In this example, we split by the 3rd dimension, so
+the number of output matrixes is equal to the length of the 3rd
+dimension.
+
+First create a three dimensional array, two matrixes that are 4 by 3
+each:
+
+\begin{verbatim}
+% Create a 3D Array
+rng(123);
+mn_rand = rand(4,3,2);
+disp(mn_rand);
+
+(:,:,1) =
+
+    0.6965    0.7195    0.4809
+    0.2861    0.4231    0.3921
+    0.2269    0.9808    0.3432
+    0.5513    0.6848    0.7290
+
+
+(:,:,2) =
+
+    0.4386    0.1825    0.6344
+    0.0597    0.1755    0.8494
+    0.3980    0.5316    0.7245
+    0.7380    0.5318    0.6110
+\end{verbatim}
+
+Now convert the 3 dimensional array to a 2 by 1 cell array that contains
+matrixes in each cell:
+
+\begin{verbatim}
+% Squeece 3D array to a Cell array of matrixes
+cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1} =
+ 
+    0.6965    0.7195    0.4809
+    0.2861    0.4231    0.3921
+    0.2269    0.9808    0.3432
+    0.5513    0.6848    0.7290
+
+
+
+cl_mn_rand{2} =
+ 
+    0.4386    0.1825    0.6344
+    0.0597    0.1755    0.8494
+    0.3980    0.5316    0.7245
+    0.7380    0.5318    0.6110
+\end{verbatim}
+
+\hypertarget{d-array-to-cell-array-of-matrix-split-by-last-two-dimensions}{%
+\subsubsection{4D Array to Cell Array of Matrix Split by Last Two Dimensions}\label{d-array-to-cell-array-of-matrix-split-by-last-two-dimensions}}
+
+Convert 4D Multi-dimensional arrays to a cell array consistent of two
+dimensional arrays. In this example, the first two dimensions determine
+the resulting matrix size, the the 3rd and the 4th dimensions are
+categorical.
+
+First create a four dimensional array, four matrixes stored each matrix
+is 2 by 2:
+
+\begin{verbatim}
+% Create a 3D Array
+rng(123);
+mn_rand = rand(2,2,2,2);
+disp(mn_rand);
+
+(:,:,1,1) =
+
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+(:,:,2,1) =
+
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+(:,:,1,2) =
+
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+(:,:,2,2) =
+
+    0.4386    0.3980
+    0.0597    0.7380
+\end{verbatim}
+
+Now convert the 4 dimensional array to a 2 by 2 cell array that contains
+matrixes in each cell:
+
+\begin{verbatim}
+% Squeece 3D array to a Cell array of matrixes
+cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1,1} =
+ 
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+
+cl_mn_rand{2,1} =
+ 
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+
+cl_mn_rand{1,2} =
+ 
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+
+cl_mn_rand{2,2} =
+ 
+    0.4386    0.3980
+    0.0597    0.7380
+\end{verbatim}
+
+\hypertarget{d-array-to-cell-array-of-matrix-split-by-first-and-fourth-dimensions-rearrange-dimensions}{%
+\subsubsection{4D Array to Cell Array of Matrix Split by First and Fourth Dimensions Rearrange Dimensions}\label{d-array-to-cell-array-of-matrix-split-by-first-and-fourth-dimensions-rearrange-dimensions}}
+
+Suppose we store policy and value function given four state variables.
+The first one is age, the second one is asset, the third one is shock,
+and the fourth one is the number of kids. We start out with a four
+dimensional matrix. The objective is to create a two dimensional cell
+array as output where indexed by the 1st and 4th dimension of the
+underlying numeric array, and the elements of the 2D cell array are
+matrixes.
+
+This is achieved by the
+\href{https://www.mathworks.com/help/matlab/ref/permute.html}{permute}
+function. We first rearrange the matrix, so that the 2nd and 3rd
+dimensions become the 1st and 2nd, then we use the technique used above
+to squeeze out the first two dimensions as matrixes with the last two as
+categories.
+
+First, generate the 2 by 2 by 2 by 2, (Age, A, Z, Kids Count), matrix:
+
+\begin{verbatim}
+% Create a 3D Array
+rng(123);
+% (Age, A, Z, Kids Count)
+mn_rand = rand(2,2,2,2);
+\end{verbatim}
+
+Second, loop out the (A,Z) matrix by Age and Kids Count, this shows us
+what we want to achieve. Note that each row is Age, each column is A,
+each submatrix is z, and each super-matrix is kid-count. So from
+slicing, each column printed out are different value of A, the two
+submatrixes printed out are for each z. For the output structure where
+we want a (A,Z) matrix, the columns need to become rows, and the
+submatrix need to become columns.
+
+\begin{verbatim}
+% Show Matrix by Age and Kids
+for it_age = 1:size(mn_rand,1)
+    for it_kids = 1:size(mn_rand,4)
+        disp(strcat(['it_age:' num2str(it_age) ', it_kids:' num2str(it_kids)]))
+        disp(mn_rand(it_age,:,:,it_kids));
+    end
+end
+
+it_age:1, it_kids:1
+(:,:,1) =
+
+    0.6965    0.2269
+
+
+(:,:,2) =
+
+    0.7195    0.9808
+it_age:1, it_kids:2
+(:,:,1) =
+
+    0.4809    0.3432
+
+
+(:,:,2) =
+
+    0.4386    0.3980
+it_age:2, it_kids:1
+(:,:,1) =
+
+    0.2861    0.5513
+
+
+(:,:,2) =
+
+    0.4231    0.6848
+it_age:2, it_kids:2
+(:,:,1) =
+
+    0.3921    0.7290
+
+
+(:,:,2) =
+
+    0.0597    0.7380
+\end{verbatim}
+
+Third, we permutate the matrix and squeeze to arrive at the 2 by 2 cell,
+note that step two is just to show via loop what we should get:
+
+\begin{verbatim}
+% Rearrange dimensions
+mn_rand_2314 = permute(mn_rand, [2,3,1,4]);
+% Squeeze the first two dimensiosn as before
+cl_mn_rand = squeeze(num2cell(mn_rand_2314, [1,2]));
+% show
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1,1} =
+ 
+    0.6965    0.7195
+    0.2269    0.9808
+
+
+
+cl_mn_rand{2,1} =
+ 
+    0.2861    0.4231
+    0.5513    0.6848
+
+
+
+cl_mn_rand{1,2} =
+ 
+    0.4809    0.4386
+    0.3432    0.3980
+
+
+
+cl_mn_rand{2,2} =
+ 
+    0.3921    0.0597
+    0.7290    0.7380
+\end{verbatim}
+
+\hypertarget{nd-array-summarize-in-table}{%
+\subsubsection{ND Array Summarize in Table}\label{nd-array-summarize-in-table}}
+
+Given an ND dataframe, summarize the first two dimensions. For each
+possible combination of the 3rd and 4th dimension, generate mean, sd,
+min and max over the matrix of the first two dimensions. This is similar
+to a tabulation function.
+
+First, we generate several array of information:
+
+\begin{verbatim}
+% Initialize and Squeeze
+rng(123);
+mn_rand = rand(2,2,2,2);
+cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
+cl_mt_rand = cln_mt_rand(:);
+celldisp(cl_mt_rand);
+
+
+cl_mt_rand{1} =
+ 
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+
+cl_mt_rand{2} =
+ 
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+
+cl_mt_rand{3} =
+ 
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+
+cl_mt_rand{4} =
+ 
+    0.4386    0.3980
+    0.0597    0.7380
+\end{verbatim}
+
+Second, create two arrays that tracks for each element of cl\_mt\_rand,
+which one of the 3rd and 4th dimensions they correspond to:
+
+\begin{verbatim}
+ar_dim_3 = [31,32]';
+ar_dim_4 = [41,42]';
+[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3, ar_dim_4);
+ar_dim_3 = mt_dim_3(:);
+ar_dim_4 = mt_dim_4(:);
+\end{verbatim}
+
+Third, summarize each matrix:
+
+\begin{verbatim}
+% Over of matrix and summarize
+ar_mean = zeros(size(cl_mt_rand));
+ar_std = zeros(size(cl_mt_rand));
+for it_mt=1:length(cl_mt_rand)
+    mt_cur = cl_mt_rand{it_mt};
+    ar_mean(it_mt) = mean(mt_cur, 'all');
+    ar_std(it_mt) = std(mt_cur, [], 'all');
+end
+\end{verbatim}
+
+Fourth Construct a Table
+
+\begin{verbatim}
+% Constructe Table
+tb_rowcols_tab = array2table([(1:length(cl_mt_rand))', ...
+    ar_dim_3, ar_dim_4, ar_mean, ar_std]);
+tb_rowcols_tab.Properties.VariableNames = ...
+    matlab.lang.makeValidName(["i", "dim3", "dim4",  "mean", "std"]);
+disp(tb_rowcols_tab);
+
+    i    dim3    dim4     mean        std  
+    _    ____    ____    _______    _______
+
+    1     31      41     0.44019    0.22156
+    2     32      41     0.70204     0.2281
+    3     31      42     0.48632    0.17157
+    4     32      42     0.40857    0.27764
+\end{verbatim}
+
+\hypertarget{nd-array-two-way-summarize-in-table}{%
+\subsubsection{ND Array Two-Way Summarize in Table}\label{nd-array-two-way-summarize-in-table}}
+
+Given dataframe as above, but we now want to add to the resulting
+summary table additional columns, rather than taking the means of the
+entire matrix in the first two dimensions, we only take average with
+respect to the rows, the first dimension, the second dimension show up
+as coumn statistics names, still multiple stats.
+
+First, we generate several array of information:
+
+\begin{verbatim}
+% dimension names
+st_title = 'Summarize values over a conditional on z (columns) and kids and marriage (rows)';
+st_dim_1 = 'a';
+st_dim_2 = 'z';
+st_dim_3 = 'kid';
+st_dim_4 = 'marriage';
+% 3rd and fourth dimension values
+ar_dim_2 = [-3, -1, 1, 3];
+ar_dim_3 = [1,2,3];
+ar_dim_4 = [0,1];
+% Initialize and Squeeze
+rng(123);
+mn_rand = rand(10,4,3,2);
+cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
+cl_mt_rand = cln_mt_rand(:);
+\end{verbatim}
+
+Second, create two arrays that tracks for each element of cl\_mt\_rand,
+which one of the 3rd and 4th dimensions they correspond to:
+
+\begin{verbatim}
+[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3', ar_dim_4');
+ar_dim_3 = mt_dim_3(:);
+ar_dim_4 = mt_dim_4(:);
+\end{verbatim}
+
+Third, summarize each matrix:
+
+\begin{verbatim}
+% Over of matrix and summarize
+mt_mean = zeros(length(cl_mt_rand), size(mn_rand,2));
+mt_std = zeros(length(cl_mt_rand), size(mn_rand,2));
+for it_mt=1:length(cl_mt_rand)
+    mt_cur = cl_mt_rand{it_mt};
+    mt_mean(it_mt,:) = mean(mt_cur, 1);
+    mt_std(it_mt,:) = std(mt_cur, [], 1);
+end
+\end{verbatim}
+
+Fourth Construct a Table
+
+\begin{verbatim}
+% Constructe Table
+tb_rowcols_tab = array2table([(1:length(cl_mt_rand))', ...
+    ar_dim_3, ar_dim_4, mt_mean, mt_std]);
+% Column Names
+cl_col_names_cate_dims = [string(st_dim_3), string(st_dim_4)];
+cl_col_names_mn = strcat('mean_', st_dim_2, string(ar_dim_2));
+cl_col_names_sd = strcat('sd_', st_dim_2, string(ar_dim_2));
+tb_rowcols_tab.Properties.VariableNames = ...
+    matlab.lang.makeValidName(["group", cl_col_names_cate_dims, cl_col_names_mn, cl_col_names_sd]);
+% disp(['xxx ' st_title ' xxxxxxxxxxxxxxxxxxxxxxxxxxx']);
+disp(tb_rowcols_tab);
+
+    group    kid    marriage    mean_z_3    mean_z_1    mean_z1    mean_z3    sd_z_3     sd_z_1      sd_z1      sd_z3 
+    _____    ___    ________    ________    ________    _______    _______    _______    _______    _______    _______
+
+      1       1        0         0.5442     0.41278     0.53795    0.49542    0.22935    0.22945    0.21653    0.25245
+      2       2        0        0.51894     0.52262     0.52544    0.45066    0.26787    0.23615    0.25833    0.31178
+      3       3        0        0.48248      0.5238     0.50392    0.46534    0.27009    0.26676    0.26644    0.29449
+      4       1        1        0.58343     0.50529     0.54361     0.5006    0.29578    0.30182    0.30952    0.27317
+      5       2        1        0.58408     0.45941     0.50466    0.40081    0.25026    0.34704    0.31039    0.28693
+      6       3        1        0.51148     0.49531     0.48963    0.47698     0.3271    0.24336    0.34498    0.34004
 \end{verbatim}
 
 \hypertarget{array-broadcast-and-expansion-examples}{%
-\subsubsection{Array Broadcast and Expansion Examples}\label{array-broadcast-and-expansion-examples}}
+\subsection{Array Broadcast and Expansion Examples}\label{array-broadcast-and-expansion-examples}}
 
 \textbf{back to} \href{https://fanwangecon.github.io}{\textbf{Fan}}\textbf{'s} \href{https://fanwangecon.github.io/M4Econ/}{\textbf{Reusable
 Matlab}} \textbf{Repository or}
@@ -265,7 +950,7 @@ important step for vectorizing codes. Proper usage of broadcasting
 reduces memory allocation requirements for matrix matrix operations.
 
 \hypertarget{broadcasting-with-a-row-and-a-column}{%
-\paragraph{Broadcasting with A Row and a Column}\label{broadcasting-with-a-row-and-a-column}}
+\subsubsection{Broadcasting with A Row and a Column}\label{broadcasting-with-a-row-and-a-column}}
 
 Below we add together a 1 by 3 and 4 by 1 array, that should not work.
 With broadcasting, it is assumed that we will mesh the arrays and then
@@ -301,7 +986,7 @@ disp(mt_A_B_broadcast_product);
 \end{verbatim}
 
 \hypertarget{broadcasting-with-one-row-and-one-matrix}{%
-\paragraph{Broadcasting with One Row and One Matrix}\label{broadcasting-with-one-row-and-one-matrix}}
+\subsubsection{Broadcasting with One Row and One Matrix}\label{broadcasting-with-one-row-and-one-matrix}}
 
 Below we add together a 1 by 3 and 4 by 3 matrix, that should not work.
 With broadcasting, it is assumed that we will repeat the array four
@@ -338,7 +1023,7 @@ disp(mt_A_B_broadcast_product);
 \end{verbatim}
 
 \hypertarget{broadcasting-with-one-column-and-one-matrix}{%
-\paragraph{Broadcasting with One Column and One Matrix}\label{broadcasting-with-one-column-and-one-matrix}}
+\subsubsection{Broadcasting with One Column and One Matrix}\label{broadcasting-with-one-column-and-one-matrix}}
 
 Below we add together a 4 by 1 and 4 by 3 matrix, that should not work.
 With broadcasting, it is assumed that we will repeat the column three
@@ -375,7 +1060,7 @@ disp(mt_A_B_broadcast_product);
 \end{verbatim}
 
 \hypertarget{expand-with-broadcast-percentage-choice-grids}{%
-\paragraph{Expand with Broadcast, Percentage Choice grids}\label{expand-with-broadcast-percentage-choice-grids}}
+\subsubsection{Expand with Broadcast, Percentage Choice grids}\label{expand-with-broadcast-percentage-choice-grids}}
 
 \begin{verbatim}
 clear all
@@ -421,7 +1106,7 @@ mt_a = 4x3
 \end{verbatim}
 
 \hypertarget{expand-matrix-twice}{%
-\paragraph{Expand Matrix Twice}\label{expand-matrix-twice}}
+\subsubsection{Expand Matrix Twice}\label{expand-matrix-twice}}
 
 \begin{verbatim}
 clear all
@@ -527,15 +1212,351 @@ mt_a_nobridge = 6x9
    -3.9980   -3.9970   -3.9961   -2.9980   -3.4970   -3.9461   -2.0000   -2.9980   -3.8962
 \end{verbatim}
 
+\hypertarget{grid-states-choices-and-optimal-choices-example}{%
+\subsection{Grid States, Choices and Optimal Choices Example}\label{grid-states-choices-and-optimal-choices-example}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{generate-state-grid}{%
+\subsubsection{\texorpdfstring{\textbf{Generate State Grid}}{Generate State Grid}}\label{generate-state-grid}}
+
+There many multiple individuals, each individual's value for each state
+space variable is different. We duplicate that by shockCount and
+choicecount:
+
+\begin{verbatim}
+stateCount = 2;
+shockCount = 3;
+choiceCount = 4;
+
+state1 = rand(1,stateCount)
+
+state1 = 1x2    
+    0.0571    0.6694
+
+states1ShkDup = state1(ones(shockCount*choiceCount,1),:)
+
+states1ShkDup = 12x2    
+    0.0571    0.6694
+    0.0571    0.6694
+    0.0571    0.6694
+    0.0571    0.6694
+    0.0571    0.6694
+    0.0571    0.6694
+    0.0571    0.6694
+    0.0571    0.6694
+    0.0571    0.6694
+    0.0571    0.6694
+
+states1ShkDup(:)
+
+ans = 24x1    
+    0.0571
+    0.0571
+    0.0571
+    0.0571
+    0.0571
+    0.0571
+    0.0571
+    0.0571
+    0.0571
+    0.0571
+\end{verbatim}
+
+\hypertarget{generate-choices}{%
+\subsubsection{\texorpdfstring{\textbf{Generate Choices}}{Generate Choices}}\label{generate-choices}}
+
+Generate Choice Grid, Example: Each individual has minimal protein and
+maximal protein they can get Generate a evenly set grid of choices for
+each individual from min to max. Individual min and max choice is a
+function of some component of their state-space, such as wealth/income
+level, and choice is the quantity of good to purchase.
+
+\begin{verbatim}
+stateCount = 2;
+shockCount = 3;
+choiceCount = 4;
+
+% 1. Min and Max Choices for each state
+minprot_n = floor(rand(1,stateCount)*10)
+
+minprot_n = 1x2    
+     7     7
+
+maxprot_n = minprot_n + floor(rand(1,stateCount)*10)
+
+maxprot_n = 1x2    
+    14    12
+
+% 2. Choice Ratios, ratios of max-min difference
+protChoiceGrid = linspace(0,1,choiceCount)
+
+protChoiceGrid = 1x4    
+         0    0.3333    0.6667    1.0000
+
+% 3. Each column is a different state.
+searchMatrix = (protChoiceGrid'*(maxprot_n-minprot_n)+minprot_n(ones(choiceCount,1),:))
+
+searchMatrix = 4x2    
+    7.0000    7.0000
+    9.3333    8.6667
+   11.6667   10.3333
+   14.0000   12.0000
+
+% 4. Each column is a different state, each set of rows is a different shock% for the state. In this structure, shocks (to preference for example), do% not change choice grid for a given state
+searchMatrix = searchMatrix([1:choiceCount]'* ones(1,shockCount), [1:stateCount]' * ones(1,1))
+
+searchMatrix = 12x2    
+    7.0000    7.0000
+    9.3333    8.6667
+   11.6667   10.3333
+   14.0000   12.0000
+    7.0000    7.0000
+    9.3333    8.6667
+   11.6667   10.3333
+   14.0000   12.0000
+    7.0000    7.0000
+    9.3333    8.6667
+
+searchMatrix(:)
+
+ans = 24x1    
+    7.0000
+    9.3333
+   11.6667
+   14.0000
+    7.0000
+    9.3333
+   11.6667
+   14.0000
+    7.0000
+    9.3333
+\end{verbatim}
+
+\hypertarget{average-utility-over-shocks}{%
+\subsubsection{\texorpdfstring{\textbf{Average Utility over Shocks}}{Average Utility over Shocks}}\label{average-utility-over-shocks}}
+
+Average of Shocks, E(value) For each STATE and CHOICE, x number of
+shocks. Need to average over shocks; The raw value output is: STATES *
+SHOCKS * CHOICES; Code below turn into various things, see MATLAB CODE
+STRUCTURE in oneNOTE GCC working notes
+
+\begin{verbatim}
+shockCount = 2;
+choiceCount = 3;
+stateCount = 4;
+
+% 1. VALUE vector (STATES * SHOCKS * CHOICES by 1), this is generated by utility% evaluation function that takes as input STATES, SHOCKS, and CHOICES
+valuesOri = sort(rand(choiceCount*shockCount*stateCount,1))
+
+valuesOri = 24x1    
+    0.0296
+    0.1141
+    0.1472
+    0.1514
+    0.1826
+    0.1936
+    0.2526
+    0.2911
+    0.3257
+    0.3352
+
+% 2. CHOICES by STATES * SHOCKS (ST1 SK1, ST1 SK2; ST2 SK1, etc), each% column are values for different choices given the same state and shock.
+values = reshape(valuesOri,[choiceCount,shockCount*stateCount])
+
+values = 3x8    
+    0.0296    0.1514    0.2526    0.3352    0.5939    0.7065    0.8791    0.9204
+    0.1141    0.1826    0.2911    0.3480    0.5992    0.7267    0.9001    0.9508
+    0.1472    0.1936    0.3257    0.4578    0.6576    0.7792    0.9018    0.9658
+
+% 3. SHOCKS by CHOICES * STATES (CH1 ST1, CH1 ST2; CH2 ST1, etc), each% column are two shocks for each state given the same choice. Note this% assumes that for different shocks of the same state choice vector is the% same.
+values = reshape(values',[shockCount, choiceCount*stateCount])
+
+values = 2x12    
+    0.0296    0.2526    0.5939    0.8791    0.1141    0.2911    0.5992    0.9001    0.1472    0.3257    0.6576    0.9018
+    0.1514    0.3352    0.7065    0.9204    0.1826    0.3480    0.7267    0.9508    0.1936    0.4578    0.7792    0.9658
+
+% 4. AVG: 1 by CHOICES * STATES (CH1 ST1, CH1 ST2; CH2 ST1, etc), take% average over shocks for each state and choice combo
+valuesMn = mean(values,1)
+
+valuesMn = 1x12    
+    0.0905    0.2939    0.6502    0.8997    0.1483    0.3196    0.6629    0.9254    0.1704    0.3918    0.7184    0.9338
+
+% 5. AVG: CHOICES * STATES. From this matrix, one can now pick maximum% utility, and match that to the index on choice vector
+valuesMn = reshape(valuesMn, [stateCount, choiceCount])'
+
+valuesMn = 3x4    
+    0.0905    0.2939    0.6502    0.8997
+    0.1483    0.3196    0.6629    0.9254
+    0.1704    0.3918    0.7184    0.9338
+\end{verbatim}
+
+\hypertarget{pick-optimal-choice}{%
+\subsubsection{\texorpdfstring{\textbf{Pick Optimal Choice}}{Pick Optimal Choice}}\label{pick-optimal-choice}}
+
+\begin{verbatim}
+choiceCount = 3;
+stateCount = 4;
+
+% 1. Matrix, each column is a state, each row is a choice
+randMat = rand(choiceCount,stateCount)
+
+randMat = 3x4    
+    0.0733    0.5905    0.1731    0.1795
+    0.0550    0.8539    0.1340    0.3175
+    0.3232    0.2871    0.9947    0.5683
+
+% 2. Maximum Value and Maximum Index
+[maxVal maxIndex] = max(randMat)
+
+maxVal = 1x4    
+    0.3232    0.8539    0.9947    0.5683
+
+maxIndex = 1x4    
+     3     2     3     3
+
+% 3. Linear index
+linearIdx = maxIndex + ((1:stateCount)-1)*choiceCount
+
+linearIdx = 1x4    
+     3     5     9    12
+
+% 4. Optimal Choices
+randMat(linearIdx)
+
+ans = 1x4    
+    0.3232    0.8539    0.9947    0.5683
+\end{verbatim}
+
+\hypertarget{accumarray-examples}{%
+\subsection{Accumarray Examples}\label{accumarray-examples}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{accumarry-basic-example}{%
+\subsubsection{Accumarry Basic Example}\label{accumarry-basic-example}}
+
+There are three unique values in ar\_a, sum up the probabilities for
+each of the unique states. This is equivalent to sorting a matrix with a
+and prob, and computing sum for each.
+
+\begin{verbatim}
+ar_a = [3,2,1,3]';
+ar_prob = [0.1,0.2,0.31,0.39]';
+ar_sumprob = accumarray(ar_a, ar_prob);
+tb_summed_prob = table(sort(unique(ar_a)), ar_sumprob);
+disp(tb_summed_prob);
+
+    Var1    ar_sumprob
+    ____    __________
+
+     1         0.31   
+     2          0.2   
+     3         0.49   
+\end{verbatim}
+
+\hypertarget{accumarry-for-discrete-random-variable}{%
+\subsubsection{Accumarry For Discrete Random Variable}\label{accumarry-for-discrete-random-variable}}
+
+Upon solving a model, if we look for the mass at certain choices or
+states, accumarray could help aggregate up probabilities
+
+\begin{verbatim}
+a1 = [1,1,2,2]
+
+a1 = 1x4    
+     1     1     2     2
+
+a2 = [3,2,1,3]
+
+a2 = 1x4    
+     3     2     1     3
+
+a3 = [1,2,3,3]
+
+a3 = 1x4    
+     1     2     3     3
+
+
+a = [a1;a2;a3]'/2
+
+a = 4x3    
+    0.5000    1.5000    0.5000
+    0.5000    1.0000    1.0000
+    1.0000    0.5000    1.5000
+    1.0000    1.5000    1.5000
+
+
+prob_a = zeros(size(a)) + 1/12
+
+prob_a = 4x3    
+    0.0833    0.0833    0.0833
+    0.0833    0.0833    0.0833
+    0.0833    0.0833    0.0833
+    0.0833    0.0833    0.0833
+
+[ar_idx_full, ~, ar_idx_of_unique] = unique(a)
+
+ar_idx_full = 3x1    
+    0.5000
+    1.0000
+    1.5000
+
+ar_idx_of_unique = 12x1    
+     1
+     1
+     2
+     2
+     3
+     2
+     1
+     3
+     1
+     2
+
+mt_idx_of_unique = reshape(ar_idx_of_unique, size(a))
+
+mt_idx_of_unique = 4x3    
+     1     3     1
+     1     2     2
+     2     1     3
+     2     3     3
+
+
+accumarray(mt_idx_of_unique(:,1), prob_a(:,1))
+
+ans = 2x1    
+    0.1667
+    0.1667
+
+accumarray(mt_idx_of_unique(:,2), prob_a(:,2))
+
+ans = 3x1    
+    0.0833
+    0.0833
+    0.1667
+
+accumarray(mt_idx_of_unique(:,3), prob_a(:,3))
+
+ans = 3x1    
+    0.0833
+    0.0833
+    0.1667
+\end{verbatim}
+
 \hypertarget{array-draw-random-index-and-find-combinations-or-permuations}{%
-\subsubsection{Array Draw Random Index and Find Combinations or Permuations}\label{array-draw-random-index-and-find-combinations-or-permuations}}
+\subsection{Array Draw Random Index and Find Combinations or Permuations}\label{array-draw-random-index-and-find-combinations-or-permuations}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{matlab-draw-random-with-and-without-replacement}{%
-\paragraph{\texorpdfstring{\textbf{Matlab Draw Random with and without Replacement}}{Matlab Draw Random with and without Replacement}}\label{matlab-draw-random-with-and-without-replacement}}
+\subsubsection{\texorpdfstring{\textbf{Matlab Draw Random with and without Replacement}}{Matlab Draw Random with and without Replacement}}\label{matlab-draw-random-with-and-without-replacement}}
 
 \begin{verbatim}
 %Generate a matrix named foo, with limited numbers
@@ -571,7 +1592,7 @@ disp(table(bar_rand_noreplace, bar_rand_replace));
 \end{verbatim}
 
 \hypertarget{matrix-meshgrid-to-loop-permutated-vectors}{%
-\paragraph{Matrix Meshgrid to Loop Permutated Vectors}\label{matrix-meshgrid-to-loop-permutated-vectors}}
+\subsubsection{Matrix Meshgrid to Loop Permutated Vectors}\label{matrix-meshgrid-to-loop-permutated-vectors}}
 
 Meshgrid to generate all permutations of arrays.
 
@@ -734,7 +1755,7 @@ disp(outputTens);
 \end{verbatim}
 
 \hypertarget{given-integer-arrays-all-possible-combinations}{%
-\paragraph{Given integer arrays, all possible combinations}\label{given-integer-arrays-all-possible-combinations}}
+\subsubsection{Given integer arrays, all possible combinations}\label{given-integer-arrays-all-possible-combinations}}
 
 given any sizes arrays, N of them, create all possible combinations
 
@@ -791,7 +1812,7 @@ disp(mt_it_allcombo)
 \end{verbatim}
 
 \hypertarget{check-imaginary-numbers}{%
-\subsubsection{Check Imaginary Numbers}\label{check-imaginary-numbers}}
+\subsection{Check Imaginary Numbers}\label{check-imaginary-numbers}}
 
 \textbf{back to} \href{https://fanwangecon.github.io}{\textbf{Fan}}\textbf{'s} \href{https://fanwangecon.github.io/M4Econ/}{\textbf{Reusable
 Matlab}} \textbf{Repository or}
@@ -799,7 +1820,7 @@ Matlab}} \textbf{Repository or}
 \textbf{Repository.}
 
 \hypertarget{basic-examples}{%
-\paragraph{Basic Examples}\label{basic-examples}}
+\subsubsection{Basic Examples}\label{basic-examples}}
 
 \begin{verbatim}
 rng(123);
@@ -844,609 +1865,18 @@ disp(ar_full(imag(ar_full) ~= 0));
    0.2861 + 0.4809i   0.6965 + 0.6848i   0.2269 + 0.3921i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5513 + 0.3432i   0.7195 + 0.7290i
 \end{verbatim}
 
-\hypertarget{array-reshape-repeat-and-expand-examples}{%
-\subsubsection{Array Reshape, Repeat and Expand Examples}\label{array-reshape-repeat-and-expand-examples}}
-
-\begin{quote}
-Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
-\end{quote}
-
-\hypertarget{basic-examples-of-reshape}{%
-\paragraph{Basic Examples of Reshape}\label{basic-examples-of-reshape}}
-
-\begin{verbatim}
-a = [1,2,3,4,5,6]';
-b = reshape(a, [3,2])
-
-b = 3x2    
-     1     4
-     2     5
-     3     6
-
-b(:)
-
-ans = 6x1    
-     1
-     2
-     3
-     4
-     5
-     6
-
-a = [1,2,3;4,5,6;7,8,9;10,11,12]'
-
-a = 3x4    
-     1     4     7    10
-     2     5     8    11
-     3     6     9    12
-
-b = reshape(a, [6,2])
-
-b = 6x2    
-     1     7
-     2     8
-     3     9
-     4    10
-     5    11
-     6    12
-\end{verbatim}
-
-\hypertarget{stack-two-matrix-of-equal-column-count-together}{%
-\paragraph{\texorpdfstring{\textbf{Stack Two Matrix of Equal Column Count Together}}{Stack Two Matrix of Equal Column Count Together}}\label{stack-two-matrix-of-equal-column-count-together}}
-
-\begin{verbatim}
-a = [1,2;3,4];
-a_stacked = [a;a;a];
-disp(a_stacked);
-
-     1     2
-     3     4
-     1     2
-     3     4
-     1     2
-     3     4
-\end{verbatim}
-
-\hypertarget{repeatduplicate-matrix-downwards}{%
-\paragraph{\texorpdfstring{\textbf{Repeat/Duplicate Matrix Downwards}}{Repeat/Duplicate Matrix Downwards}}\label{repeatduplicate-matrix-downwards}}
-
-There is a 2 by 3 matrix, to be repeated 4 times, downwards. This is
-useful for replicating data matrix for say counterfactual purposes.
-
-Below, we have two ways of repeating a matrix downwards. Copy as whole,
-or copy row by row.
-
-\begin{verbatim}
-row_count = 2;
-col_count = 3;
-repeat_mat_count = 2;
-
-data_vec = 1:(row_count*col_count);
-searchMatrix = reshape(data_vec,row_count,col_count);
-
-% To repeat matrix downwards
-rep_rows_idx = [1:row_count]'*ones(1,repeat_mat_count);
-rep_rows_idx = rep_rows_idx(:);
-
-rep_cols_idx = [1:col_count];
-rep_cols_idx = rep_cols_idx(:);
-
-searchMatrixRep_stack = searchMatrix(rep_rows_idx, rep_cols_idx);
-
-% To insert repeated rows following original rows
-rep_rows_idx = ([1:row_count]'*ones(1,repeat_mat_count))';
-rep_rows_idx = rep_rows_idx(:);
-
-searchMatrixRep_dup = searchMatrix(rep_rows_idx, rep_cols_idx);
-
-disp(searchMatrix)
-
-     1     3     5
-     2     4     6
-
-disp(searchMatrixRep_stack)
-
-     1     3     5
-     2     4     6
-     1     3     5
-     2     4     6
-
-disp(searchMatrixRep_dup)
-
-     1     3     5
-     1     3     5
-     2     4     6
-     2     4     6
-\end{verbatim}
-
-\hypertarget{index-dimension-transform}{%
-\paragraph{Index Dimension Transform}\label{index-dimension-transform}}
-
-it\_inner\_fin = 5; it\_outter\_fin = 3;
-
-it\_inner\_cur = it\_outter\_fin it\_outter\_cur = it\_inner\_fin
-
-ar\_it\_cols\_idx = 1:1:(it\_inner\_fin*it\_outter\_fin)
-ar\_it\_cols\_inner\_dim = repmat(1:it\_inner\_cur, \[it\_outter\_cur,
-1\]) ar\_it\_cols\_inner\_dim(:)'
-
-mt\_it\_cols\_idx = reshape(ar\_it\_cols\_idx, \[it\_inner\_cur,
-it\_outter\_cur\])' mt\_it\_cols\_idx(:)'
-
-\begin{verbatim}
-it_inner_fin = 5;
-it_outter_fin = 3;
-
-ar_it_cols_idx = 1:1:(it_inner_fin*it_outter_fin)
-
-ar_it_cols_idx = 1x15    
-     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15
-
-mt_it_cols_idx = reshape(ar_it_cols_idx, [it_outter_fin, it_inner_fin])'
-
-mt_it_cols_idx = 5x3    
-     1     2     3
-     4     5     6
-     7     8     9
-    10    11    12
-    13    14    15
-
-mt_it_cols_idx(:)'
-
-ans = 1x15    
-     1     4     7    10    13     2     5     8    11    14     3     6     9    12    15
-\end{verbatim}
-
-\hypertarget{array-index-slicing-and-subsetting-to-replace-and-expand}{%
-\subsubsection{Array Index Slicing and Subsetting to Replace and Expand}\label{array-index-slicing-and-subsetting-to-replace-and-expand}}
-
-\begin{quote}
-Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
-\end{quote}
-
-\hypertarget{matlab-index-based-replacement-of-subset-of-matrix-values}{%
-\paragraph{Matlab Index based Replacement of Subset of Matrix Values}\label{matlab-index-based-replacement-of-subset-of-matrix-values}}
-
-\begin{verbatim}
-clear all;
-close all;
-rng(123);
-randMatZ = rand(3,6)+1
-
-randMatZ = 3x6    
-    1.6965    1.5513    1.9808    1.3921    1.4386    1.7380
-    1.2861    1.7195    1.6848    1.3432    1.0597    1.1825
-    1.2269    1.4231    1.4809    1.7290    1.3980    1.1755
-
-randMat = rand(3,6)-0.5
-
-randMat = 3x6    
-    0.0316    0.3494    0.2224   -0.2717   -0.4079   -0.0063
-    0.0318    0.2245   -0.1770   -0.2063   -0.0663   -0.0742
-    0.1344    0.1110   -0.1382    0.1310   -0.0691   -0.1877
-
-
-output = max(-randMat,0)
-
-output = 3x6    
-         0         0         0    0.2717    0.4079    0.0063
-         0         0    0.1770    0.2063    0.0663    0.0742
-         0         0    0.1382         0    0.0691    0.1877
-
-randMatZ(output==0) = 999
-
-randMatZ = 3x6    
-  999.0000  999.0000  999.0000    1.3921    1.4386    1.7380
-  999.0000  999.0000    1.6848    1.3432    1.0597    1.1825
-  999.0000  999.0000    1.4809  999.0000    1.3980    1.1755
-
-min(randMatZ,[],2)
-
-ans = 3x1    
-    1.3921
-    1.0597
-    1.1755
-
-
-randMatZ((max(-randMat,0))==0) = 999
-
-randMatZ = 3x6    
-  999.0000  999.0000  999.0000    1.3921    1.4386    1.7380
-  999.0000  999.0000    1.6848    1.3432    1.0597    1.1825
-  999.0000  999.0000    1.4809  999.0000    1.3980    1.1755
-
-min(randMatZ,[],2)
-
-ans = 3x1    
-    1.3921
-    1.0597
-    1.1755
-\end{verbatim}
-
-\hypertarget{matlab-matrix-index-based-matrix-expansion-manual}{%
-\paragraph{Matlab Matrix Index Based Matrix Expansion (Manual)}\label{matlab-matrix-index-based-matrix-expansion-manual}}
-
-In the example below, we start with a 4 by 2 matrix, than we expand
-specific rows and columns of the matrix. Specifically, we expand the
-matrix such that the result matrix repeats the 1st, 2nd, 1st, 2nd, then
-3rd, than 1st, 1st, and 1st rows. And repeats column 1, then 2nd, then
-2nd, then 2nd, and finally the first column.
-
-\begin{verbatim}
-% Original Matrix
-Z = 2;
-N = 2;
-Q = 2;
-base_mat = reshape(1:(Z*N*Q),Z*N,Q);
-disp(base_mat);
-
-     1     5
-     2     6
-     3     7
-     4     8
-
-% Expanded Matrix
-base_expand = base_mat([1,2,1,2,3,1,1,1],[1,2,2,2,1]);
-disp(base_expand);
-
-     1     5     5     5     1
-     2     6     6     6     2
-     1     5     5     5     1
-     2     6     6     6     2
-     3     7     7     7     3
-     1     5     5     5     1
-     1     5     5     5     1
-     1     5     5     5     1
-\end{verbatim}
-
-\hypertarget{duplicate-matrix-downwards-n-times-using-index}{%
-\paragraph{Duplicate Matrix Downwards N times Using Index}\label{duplicate-matrix-downwards-n-times-using-index}}
-
-The example here has the same idea, but we do the operations above in a
-more automated way. This could be done using alternative methods.
-
-\begin{verbatim}
-% Original Matrix
-Z = 2;
-N = 2;
-Q = 2;
-base_mat = reshape(1:(Z*N*Q),Z*N,Q);
-disp(base_mat);
-
-     1     5
-     2     6
-     3     7
-     4     8
-
-% Generate row Index many times automatically depending on how many times
-% to replicate
-vmat_repeat_count = 3;
-vmat_reindex_rows_repeat = [1:(Z*N)]'* ones(1,vmat_repeat_count);
-vmat_reindex_rows_repeat = vmat_reindex_rows_repeat(:);
-disp(vmat_reindex_rows_repeat');
-
-     1     2     3     4     1     2     3     4     1     2     3     4
-
-% Duplicate Matrix by the Rows specified above, and using the same number
-% of columns.
-mat_repdown = base_mat(vmat_reindex_rows_repeat(:), 1:Q);
-disp(mat_repdown');
-
-     1     2     3     4     1     2     3     4     1     2     3     4
-     5     6     7     8     5     6     7     8     5     6     7     8
-\end{verbatim}
-
-\hypertarget{max-of-matrix-column-by-column-linear-to-2d-index}{%
-\paragraph{Max of Matrix column by Column Linear to 2d Index}\label{max-of-matrix-column-by-column-linear-to-2d-index}}
-
-Finding max of matrix column by column, then obtain the linear index
-associated with the max values.
-
-\begin{verbatim}
-randMat = rand(5,3);
-disp(randMat);
-
-    0.4264    0.1156    0.4830
-    0.8934    0.3173    0.9856
-    0.9442    0.4148    0.5195
-    0.5018    0.8663    0.6129
-    0.6240    0.2505    0.1206
-
-[maxVal maxIndex] = max(randMat);
-linearIndex = sub2ind(size(randMat),maxIndex,(1:1:size(randMat,2)))
-
-linearIndex = 1x3    
-     3     9    12
-
-randMat(linearIndex)
-
-ans = 1x3    
-    0.9442    0.8663    0.9856
-
-t_pV = [1,2;3,4;5,6];
-t_pV_Ind = [1,1;0,0;1,1];
-[maxVal maxIndex] = max(t_pV(t_pV_Ind==1))
-
-maxVal = 6
-maxIndex = 4
-\end{verbatim}
-
-\hypertarget{given-array-of-size-m-select-n-somewhat-equi-distance-elements}{%
-\paragraph{Given Array of size M, Select N somewhat equi-distance elements}\label{given-array-of-size-m-select-n-somewhat-equi-distance-elements}}
-
-\begin{verbatim}
-% Subset count
-it_n = 5;
-
-% Example 1, long array
-ar_fl_a = 1:1.1:100;
-ar_it_subset_idx = unique(round(((0:1:(it_n-1))/(it_n-1))*(length(ar_fl_a)-1)+1));
-ar_fl_a_subset = ar_fl_a(ar_it_subset_idx);
-disp(ar_fl_a_subset);
-
-    1.0000   26.3000   50.5000   75.8000  100.0000
-
-
-% Example 2, Short Array
-ar_fl_a = 1:1.1:3;
-ar_it_subset_idx = unique(round(((0:1:(it_n-1))/(it_n-1))*(length(ar_fl_a)-1)+1));
-ar_fl_a_subset = ar_fl_a(ar_it_subset_idx);
-disp(ar_fl_a_subset);
-
-    1.0000    2.1000
-
-
-% Write As function
-f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1))*(it_ar_n-1)+1));
-
-% Select 5 out of 10
-disp(f_subset(5, 10));
-
-     1     3     6     8    10
-
-
-% Select 10 out of 5
-disp(f_subset(10, 5));
-
-     1     2     3     4     5
-
-
-% Select 5 out of 5
-disp(f_subset(5, 5));
-
-     1     2     3     4     5
-\end{verbatim}
-
-\hypertarget{grid-states-choices-and-optimal-choices-example}{%
-\subsubsection{Grid States, Choices and Optimal Choices Example}\label{grid-states-choices-and-optimal-choices-example}}
-
-\begin{quote}
-Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
-\end{quote}
-
-\hypertarget{generate-state-grid}{%
-\paragraph{\texorpdfstring{\textbf{Generate State Grid}}{Generate State Grid}}\label{generate-state-grid}}
-
-There many multiple individuals, each individual's value for each state
-space variable is different. We duplicate that by shockCount and
-choicecount:
-
-\begin{verbatim}
-stateCount = 2;
-shockCount = 3;
-choiceCount = 4;
-
-state1 = rand(1,stateCount)
-
-state1 = 1x2    
-    0.0571    0.6694
-
-states1ShkDup = state1(ones(shockCount*choiceCount,1),:)
-
-states1ShkDup = 12x2    
-    0.0571    0.6694
-    0.0571    0.6694
-    0.0571    0.6694
-    0.0571    0.6694
-    0.0571    0.6694
-    0.0571    0.6694
-    0.0571    0.6694
-    0.0571    0.6694
-    0.0571    0.6694
-    0.0571    0.6694
-
-states1ShkDup(:)
-
-ans = 24x1    
-    0.0571
-    0.0571
-    0.0571
-    0.0571
-    0.0571
-    0.0571
-    0.0571
-    0.0571
-    0.0571
-    0.0571
-\end{verbatim}
-
-\hypertarget{generate-choices}{%
-\paragraph{\texorpdfstring{\textbf{Generate Choices}}{Generate Choices}}\label{generate-choices}}
-
-Generate Choice Grid, Example: Each individual has minimal protein and
-maximal protein they can get Generate a evenly set grid of choices for
-each individual from min to max. Individual min and max choice is a
-function of some component of their state-space, such as wealth/income
-level, and choice is the quantity of good to purchase.
-
-\begin{verbatim}
-stateCount = 2;
-shockCount = 3;
-choiceCount = 4;
-
-% 1. Min and Max Choices for each state
-minprot_n = floor(rand(1,stateCount)*10)
-
-minprot_n = 1x2    
-     7     7
-
-maxprot_n = minprot_n + floor(rand(1,stateCount)*10)
-
-maxprot_n = 1x2    
-    14    12
-
-% 2. Choice Ratios, ratios of max-min difference
-protChoiceGrid = linspace(0,1,choiceCount)
-
-protChoiceGrid = 1x4    
-         0    0.3333    0.6667    1.0000
-
-% 3. Each column is a different state.
-searchMatrix = (protChoiceGrid'*(maxprot_n-minprot_n)+minprot_n(ones(choiceCount,1),:))
-
-searchMatrix = 4x2    
-    7.0000    7.0000
-    9.3333    8.6667
-   11.6667   10.3333
-   14.0000   12.0000
-
-% 4. Each column is a different state, each set of rows is a different shock% for the state. In this structure, shocks (to preference for example), do% not change choice grid for a given state
-searchMatrix = searchMatrix([1:choiceCount]'* ones(1,shockCount), [1:stateCount]' * ones(1,1))
-
-searchMatrix = 12x2    
-    7.0000    7.0000
-    9.3333    8.6667
-   11.6667   10.3333
-   14.0000   12.0000
-    7.0000    7.0000
-    9.3333    8.6667
-   11.6667   10.3333
-   14.0000   12.0000
-    7.0000    7.0000
-    9.3333    8.6667
-
-searchMatrix(:)
-
-ans = 24x1    
-    7.0000
-    9.3333
-   11.6667
-   14.0000
-    7.0000
-    9.3333
-   11.6667
-   14.0000
-    7.0000
-    9.3333
-\end{verbatim}
-
-\hypertarget{average-utility-over-shocks}{%
-\paragraph{\texorpdfstring{\textbf{Average Utility over Shocks}}{Average Utility over Shocks}}\label{average-utility-over-shocks}}
-
-Average of Shocks, E(value) For each STATE and CHOICE, x number of
-shocks. Need to average over shocks; The raw value output is: STATES *
-SHOCKS * CHOICES; Code below turn into various things, see MATLAB CODE
-STRUCTURE in oneNOTE GCC working notes
-
-\begin{verbatim}
-shockCount = 2;
-choiceCount = 3;
-stateCount = 4;
-
-% 1. VALUE vector (STATES * SHOCKS * CHOICES by 1), this is generated by utility% evaluation function that takes as input STATES, SHOCKS, and CHOICES
-valuesOri = sort(rand(choiceCount*shockCount*stateCount,1))
-
-valuesOri = 24x1    
-    0.0296
-    0.1141
-    0.1472
-    0.1514
-    0.1826
-    0.1936
-    0.2526
-    0.2911
-    0.3257
-    0.3352
-
-% 2. CHOICES by STATES * SHOCKS (ST1 SK1, ST1 SK2; ST2 SK1, etc), each% column are values for different choices given the same state and shock.
-values = reshape(valuesOri,[choiceCount,shockCount*stateCount])
-
-values = 3x8    
-    0.0296    0.1514    0.2526    0.3352    0.5939    0.7065    0.8791    0.9204
-    0.1141    0.1826    0.2911    0.3480    0.5992    0.7267    0.9001    0.9508
-    0.1472    0.1936    0.3257    0.4578    0.6576    0.7792    0.9018    0.9658
-
-% 3. SHOCKS by CHOICES * STATES (CH1 ST1, CH1 ST2; CH2 ST1, etc), each% column are two shocks for each state given the same choice. Note this% assumes that for different shocks of the same state choice vector is the% same.
-values = reshape(values',[shockCount, choiceCount*stateCount])
-
-values = 2x12    
-    0.0296    0.2526    0.5939    0.8791    0.1141    0.2911    0.5992    0.9001    0.1472    0.3257    0.6576    0.9018
-    0.1514    0.3352    0.7065    0.9204    0.1826    0.3480    0.7267    0.9508    0.1936    0.4578    0.7792    0.9658
-
-% 4. AVG: 1 by CHOICES * STATES (CH1 ST1, CH1 ST2; CH2 ST1, etc), take% average over shocks for each state and choice combo
-valuesMn = mean(values,1)
-
-valuesMn = 1x12    
-    0.0905    0.2939    0.6502    0.8997    0.1483    0.3196    0.6629    0.9254    0.1704    0.3918    0.7184    0.9338
-
-% 5. AVG: CHOICES * STATES. From this matrix, one can now pick maximum% utility, and match that to the index on choice vector
-valuesMn = reshape(valuesMn, [stateCount, choiceCount])'
-
-valuesMn = 3x4    
-    0.0905    0.2939    0.6502    0.8997
-    0.1483    0.3196    0.6629    0.9254
-    0.1704    0.3918    0.7184    0.9338
-\end{verbatim}
-
-\hypertarget{pick-optimal-choice}{%
-\paragraph{\texorpdfstring{\textbf{Pick Optimal Choice}}{Pick Optimal Choice}}\label{pick-optimal-choice}}
-
-\begin{verbatim}
-choiceCount = 3;
-stateCount = 4;
-
-% 1. Matrix, each column is a state, each row is a choice
-randMat = rand(choiceCount,stateCount)
-
-randMat = 3x4    
-    0.0733    0.5905    0.1731    0.1795
-    0.0550    0.8539    0.1340    0.3175
-    0.3232    0.2871    0.9947    0.5683
-
-% 2. Maximum Value and Maximum Index
-[maxVal maxIndex] = max(randMat)
-
-maxVal = 1x4    
-    0.3232    0.8539    0.9947    0.5683
-
-maxIndex = 1x4    
-     3     2     3     3
-
-% 3. Linear index
-linearIdx = maxIndex + ((1:stateCount)-1)*choiceCount
-
-linearIdx = 1x4    
-     3     5     9    12
-
-% 4. Optimal Choices
-randMat(linearIdx)
-
-ans = 1x4    
-    0.3232    0.8539    0.9947    0.5683
-\end{verbatim}
-
 \hypertarget{cells}{%
 \section{Cells}\label{cells}}
 
 \hypertarget{list-comprehension-with-cells}{%
-\subsubsection{List Comprehension with Cells}\label{list-comprehension-with-cells}}
+\subsection{List Comprehension with Cells}\label{list-comprehension-with-cells}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{find-index-of-elements-of-string-cells-in-a-larger-string-cells}{%
-\paragraph{Find Index of Elements of String Cells in a larger String Cells}\label{find-index-of-elements-of-string-cells-in-a-larger-string-cells}}
+\subsubsection{Find Index of Elements of String Cells in a larger String Cells}\label{find-index-of-elements-of-string-cells-in-a-larger-string-cells}}
 
 the function below returns the position of cl\_st\_param\_keys in
 ls\_st\_param\_key should only include in cl\_st\_param\_keys strings
@@ -1467,7 +1897,7 @@ ans = 1x3
 \end{verbatim}
 
 \hypertarget{given-container-of-arrays-find-total-length-of-all-arrays-for-selected-keys}{%
-\paragraph{Given Container of Arrays, Find Total Length of All Arrays for Selected Keys}\label{given-container-of-arrays-find-total-length-of-all-arrays-for-selected-keys}}
+\subsubsection{Given Container of Arrays, Find Total Length of All Arrays for Selected Keys}\label{given-container-of-arrays-find-total-length-of-all-arrays-for-selected-keys}}
 
 \begin{verbatim}
 cl_st_param_keys = {'fl_crra', 'fl_beta'};
@@ -1494,7 +1924,7 @@ it_total_length: 15
 \end{verbatim}
 
 \hypertarget{given-container-of-arrays-find-min-and-max-of-each-and-draw-random-n-sets}{%
-\paragraph{Given Container of Arrays, Find Min and Max of Each and Draw Random N sets}\label{given-container-of-arrays-find-min-and-max-of-each-and-draw-random-n-sets}}
+\subsubsection{Given Container of Arrays, Find Min and Max of Each and Draw Random N sets}\label{given-container-of-arrays-find-min-and-max-of-each-and-draw-random-n-sets}}
 
 \begin{verbatim}
 cl_st_param_keys = {'fl_crra', 'fl_beta'};
@@ -1544,14 +1974,14 @@ disp(tb_rand_draws);
 \end{verbatim}
 
 \hypertarget{all-possible-combinations-of-multiple-arrays}{%
-\subsubsection{All Possible Combinations of Multiple Arrays}\label{all-possible-combinations-of-multiple-arrays}}
+\subsection{All Possible Combinations of Multiple Arrays}\label{all-possible-combinations-of-multiple-arrays}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{given-several-arrays-of-possibly-different-length-in-container-all-possible-combinations}{%
-\paragraph{Given Several Arrays of Possibly different Length in Container, all Possible combinations}\label{given-several-arrays-of-possibly-different-length-in-container-all-possible-combinations}}
+\subsubsection{Given Several Arrays of Possibly different Length in Container, all Possible combinations}\label{given-several-arrays-of-possibly-different-length-in-container-all-possible-combinations}}
 
 \begin{verbatim}
 param_tstar_map = containers.Map('KeyType','char', 'ValueType','any');
@@ -1626,14 +2056,14 @@ disp(tb_all_combi);
 \end{verbatim}
 
 \hypertarget{combine-cells-together}{%
-\subsubsection{Combine Cells Together}\label{combine-cells-together}}
+\subsection{Combine Cells Together}\label{combine-cells-together}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{string-combine-with-string-cell}{%
-\paragraph{String Combine with string cell}\label{string-combine-with-string-cell}}
+\subsubsection{String Combine with string cell}\label{string-combine-with-string-cell}}
 
 \begin{verbatim}
 ls_st_param_key = {'fl_crra', 'fl_beta', ...
@@ -1651,14 +2081,14 @@ ans =
 \end{verbatim}
 
 \hypertarget{nested-cells}{%
-\subsubsection{Nested Cells}\label{nested-cells}}
+\subsection{Nested Cells}\label{nested-cells}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{nested-cells-and-access}{%
-\paragraph{Nested Cells and access}\label{nested-cells-and-access}}
+\subsubsection{Nested Cells and access}\label{nested-cells-and-access}}
 
 \begin{verbatim}
 cl_st_param_keys = {'fl_crra', 'fl_beta'};
@@ -1691,14 +2121,27 @@ disp(clns_parm_tstar{1}{3});
 \section{Characters and Strings}\label{characters-and-strings}}
 
 \hypertarget{basic-string-operations}{%
-\subsubsection{Basic String Operations}\label{basic-string-operations}}
+\subsection{Basic String Operations}\label{basic-string-operations}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
+\hypertarget{paste-join-strings-together-with-separator}{%
+\subsubsection{Paste Join Strings Together with Separator}\label{paste-join-strings-together-with-separator}}
+
+Join strings together with separator, this is similar to the paste0
+function in R.
+
+\begin{verbatim}
+ar_st = ["abc", "efg", "opq"];
+disp(strjoin(ar_st, '-'));
+
+abc-efg-opq
+\end{verbatim}
+
 \hypertarget{combine-char-with-numeric-value}{%
-\paragraph{Combine Char with Numeric Value}\label{combine-char-with-numeric-value}}
+\subsubsection{Combine Char with Numeric Value}\label{combine-char-with-numeric-value}}
 
 Compose a string with words and numerical values
 
@@ -1717,7 +2160,7 @@ Figure Title (threedeci=123.457,twodeci=123.46,int=123)
 \end{verbatim}
 
 \hypertarget{change-file-name-mlx-to-m}{%
-\paragraph{Change File Name MLX to M}\label{change-file-name-mlx-to-m}}
+\subsubsection{Change File Name MLX to M}\label{change-file-name-mlx-to-m}}
 
 \begin{verbatim}
 st_file_name_mlx = 'continuous_differentiable.mlx';
@@ -1729,14 +2172,14 @@ continuous_differentiable_m.m
 \end{verbatim}
 
 \hypertarget{string-manipulations-with-arrays}{%
-\subsubsection{String Manipulations with Arrays}\label{string-manipulations-with-arrays}}
+\subsection{String Manipulations with Arrays}\label{string-manipulations-with-arrays}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{string-array}{%
-\paragraph{String Array}\label{string-array}}
+\subsubsection{String Array}\label{string-array}}
 
 Three title lines, with double quotes:
 
@@ -1760,17 +2203,47 @@ Title1Title2Title3
 \end{verbatim}
 
 \hypertarget{string-cell-array}{%
-\paragraph{String Cell Array}\label{string-cell-array}}
+\subsubsection{String Cell Array}\label{string-cell-array}}
+
+Create a string array:
 
 \begin{verbatim}
+ar_st_title_one = {'Title One Line'};
 ar_st_titles = {'Title1','Title2','Title3'};
+disp(ar_st_title_one);
+
+    'Title One Line'
+
 disp(ar_st_titles);
 
     'Title1'    'Title2'    'Title3'
 \end{verbatim}
 
+Add to a string array:
+
+\begin{verbatim}
+ar_st_titles{4} = 'Title4';
+disp(ar_st_titles);
+
+    'Title1'    'Title2'    'Title3'    'Title4'
+\end{verbatim}
+
+Update one of the strings:
+
+\begin{verbatim}
+ar_st_title_one{1} = strcat('log(', ar_st_title_one{1},')');
+ar_st_titles{1} = strcat('log(', ar_st_titles{1},')');
+disp(ar_st_title_one);
+
+    'log(Title One Line)'
+
+disp(ar_st_titles);
+
+    'log(Title1)'    'Title2'    'Title3'    'Title4'
+\end{verbatim}
+
 \hypertarget{duplicate-string}{%
-\paragraph{Duplicate String}\label{duplicate-string}}
+\subsubsection{Duplicate String}\label{duplicate-string}}
 
 \begin{verbatim}
 it_duplicate_n = 10;
@@ -1780,7 +2253,7 @@ disp(repmat({'String'}, [1, it_duplicate_n]));
 \end{verbatim}
 
 \hypertarget{string-join-to-form-single-element}{%
-\paragraph{String Join to form Single Element}\label{string-join-to-form-single-element}}
+\subsubsection{String Join to form Single Element}\label{string-join-to-form-single-element}}
 
 using char() is safe
 
@@ -1818,7 +2291,7 @@ st_var_name = 'abc percentile values'
 \end{verbatim}
 
 \hypertarget{string-join-dash-paste}{%
-\paragraph{String Join dash (Paste)}\label{string-join-dash-paste}}
+\subsubsection{String Join dash (Paste)}\label{string-join-dash-paste}}
 
 This is similar to R's paste function:
 
@@ -1840,7 +2313,7 @@ disp(strjoin(st_var_name, ","));
 \end{verbatim}
 
 \hypertarget{numeric-array-to-string-without-space}{%
-\paragraph{Numeric Array to String without Space}\label{numeric-array-to-string-without-space}}
+\subsubsection{Numeric Array to String without Space}\label{numeric-array-to-string-without-space}}
 
 String replace
 
@@ -1852,7 +2325,7 @@ ans = '3_8_9'
 \end{verbatim}
 
 \hypertarget{substring-replace-in-cell-array}{%
-\paragraph{Substring replace in Cell Array}\label{substring-replace-in-cell-array}}
+\subsubsection{Substring replace in Cell Array}\label{substring-replace-in-cell-array}}
 
 \begin{verbatim}
 ar_st_cells = {'shock=0.35','shock=0.40','shock=0.46'};
@@ -1863,7 +2336,7 @@ disp(ar_st_updated_cells);
 \end{verbatim}
 
 \hypertarget{find-position-of-string-in-string-cell}{%
-\paragraph{Find position of String in String Cell}\label{find-position-of-string-in-string-cell}}
+\subsubsection{Find position of String in String Cell}\label{find-position-of-string-in-string-cell}}
 
 \begin{verbatim}
 ls_st_param_key = {'fl_crra', 'fl_beta', ...
@@ -1876,7 +2349,7 @@ ans = 5
 \end{verbatim}
 
 \hypertarget{find-the-positions-of-string-cells-in-full-string-cells}{%
-\paragraph{Find the positions of String Cells in Full String Cells}\label{find-the-positions-of-string-cells-in-full-string-cells}}
+\subsubsection{Find the positions of String Cells in Full String Cells}\label{find-the-positions-of-string-cells-in-full-string-cells}}
 
 \begin{verbatim}
 ls_st_param_key = {'fl_crra', 'fl_beta', ...
@@ -1898,7 +2371,7 @@ ans = 5
 \end{verbatim}
 
 \hypertarget{cell-to-string-paste-and-replace-dash}{%
-\paragraph{Cell to string Paste and Replace dash}\label{cell-to-string-paste-and-replace-dash}}
+\subsubsection{Cell to string Paste and Replace dash}\label{cell-to-string-paste-and-replace-dash}}
 
 \begin{verbatim}
 cl_st_param_keys = {'fl_crra', 'fl_beta'};
@@ -1908,14 +2381,14 @@ fl\_crra-fl\_beta
 \end{verbatim}
 
 \hypertarget{concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}{%
-\subsubsection{Concatenate Strings Arrays with Numbers and Number Arrays with Strings}\label{concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}}
+\subsection{Concatenate Strings Arrays with Numbers and Number Arrays with Strings}\label{concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{combine-a-string-array-with-a-numeric-array-using-compose}{%
-\paragraph{Combine A String Array with A Numeric Array using Compose}\label{combine-a-string-array-with-a-numeric-array-using-compose}}
+\subsubsection{Combine A String Array with A Numeric Array using Compose}\label{combine-a-string-array-with-a-numeric-array-using-compose}}
 
 String array and numeric array, combine together using the compose
 function, and test different formatting functions. Formating with
@@ -1935,7 +2408,7 @@ disp(st_combo);
 \end{verbatim}
 
 \hypertarget{title-from-an-array-of-values}{%
-\paragraph{Title from an Array of Values}\label{title-from-an-array-of-values}}
+\subsubsection{Title from an Array of Values}\label{title-from-an-array-of-values}}
 
 There is a vector of parameter values and a vector of names for these
 parameter values, I want to include these in the title of a figure with
@@ -1961,7 +2434,7 @@ this is the figure title (param1=0.70, param2=0.29, param3=0.23)
 \end{verbatim}
 
 \hypertarget{combine-string-with-numeric-array}{%
-\paragraph{Combine String with Numeric Array}\label{combine-string-with-numeric-array}}
+\subsubsection{Combine String with Numeric Array}\label{combine-string-with-numeric-array}}
 
 Example 1:
 
@@ -2006,7 +2479,7 @@ disp(cl_col_names);
 \end{verbatim}
 
 \hypertarget{combine-number-with-string-cell-array}{%
-\paragraph{Combine Number with String Cell Array}\label{combine-number-with-string-cell-array}}
+\subsubsection{Combine Number with String Cell Array}\label{combine-number-with-string-cell-array}}
 
 We have a string cell array we created from the previous section, now
 append numbers to it
@@ -2022,7 +2495,7 @@ disp(cl_col_names_append);
 \end{verbatim}
 
 \hypertarget{combine-numeric-array-with-string-cell-array}{%
-\paragraph{Combine Numeric Array with String Cell Array}\label{combine-numeric-array-with-string-cell-array}}
+\subsubsection{Combine Numeric Array with String Cell Array}\label{combine-numeric-array-with-string-cell-array}}
 
 Append an array of numeric values
 
@@ -2038,7 +2511,7 @@ disp(cl_col_names_append);
 \end{verbatim}
 
 \hypertarget{convert-numeric-array-to-string-apeend-prefix-to-all-elements.}{%
-\paragraph{Convert Numeric Array to String, Apeend Prefix to all elements.}\label{convert-numeric-array-to-string-apeend-prefix-to-all-elements.}}
+\subsubsection{Convert Numeric Array to String, Apeend Prefix to all elements.}\label{convert-numeric-array-to-string-apeend-prefix-to-all-elements.}}
 
 \begin{verbatim}
 ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
@@ -2065,14 +2538,40 @@ fprintf('Display string [%s]', 'abc');
 \section{Map Containers}\label{map-containers}}
 
 \hypertarget{container-map-basics}{%
-\subsubsection{Container Map Basics}\label{container-map-basics}}
+\subsection{Container Map Basics}\label{container-map-basics}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
-\hypertarget{if-key-is-in-container}{%
-\paragraph{If key is in container}\label{if-key-is-in-container}}
+\hypertarget{container-integer-keys}{%
+\subsubsection{Container Integer Keys}\label{container-integer-keys}}
+
+Given some matrix, I want to store matrix column names as well as labels
+for what each row and column correspond to. Achieve this using a cell
+array of container maps. Cell dimensions correspond to the first,
+second, etc dimensions, any dimension specific information can be stored
+in this fashion.
+
+Can access information asssociated with the label value of the row
+values:
+
+\begin{verbatim}
+% Define Matrix Row and Column and additional dimension information
+cl_mp_datasetdesc = {};
+cl_mp_datasetdesc{1} = containers.Map({'dim', 'name', 'labval'}, {1, 'kids', [0,1,2,3]});
+cl_mp_datasetdesc{2} = containers.Map({'dim', 'name', 'labval'}, {2, 'age', [18,19,20]});
+% get variable labels for the first dimension (rows)
+disp([...
+    string(['dim 1 var name:' cl_mp_datasetdesc{1}('name') ]), ...
+    string(['dim 2 var name:' cl_mp_datasetdesc{2}('name') ])...
+    ]);
+
+    "dim 1 var name:kids"    "dim 2 var name:age"
+\end{verbatim}
+
+\hypertarget{is-key-in-container}{%
+\subsubsection{Is Key In Container}\label{is-key-in-container}}
 
 \begin{verbatim}
 param_map_a = containers.Map('KeyType','char', 'ValueType','any');
@@ -2081,17 +2580,16 @@ param_map_a('fl_w_max') = 50;
 param_map_a('fl_kp_min') = 0;
 param_map_a('it_w_i') = 100;
 
-disp(isKey(param_map_a, 'it_w_i'));
+disp([...
+    string(['has it_w_i as key? ' num2str(isKey(param_map_a, 'it_w_i'))]), ...
+    string(['has it_w_i1 as key? ' num2str(isKey(param_map_a, 'it_w_i1'))]) ...
+    ]);
 
-   1
-
-disp(isKey(param_map_a, 'it_w_i1'));
-
-   0
+    "has it_w_i as key? 1"    "has it_w_i1 as key? 0"
 \end{verbatim}
 
 \hypertarget{container-key-loop}{%
-\paragraph{Container Key Loop}\label{container-key-loop}}
+\subsubsection{Container Key Loop}\label{container-key-loop}}
 
 Generate new container key within loop dynamically
 
@@ -2123,24 +2621,29 @@ for st_cur = ["abc", "efg", "qqq"]
 
 end
 
-disp(param_map_a.keys);
+disp([...
+    string(['param_map_a.keys:' param_map_a.keys]), ...
+    string(['param_map_a.values:' string(param_map_a.values)]) ...
+    ]);
 
-    'abc_sh_0p1pc_j'    'abc_sh_5pc_j'    'efg_sh_0p1pc_j'    'efg_sh_5pc_j'    'qqq_sh_0p1pc_j'    'qqq_sh_5pc_j'
+  Columns 1 through 7
 
-disp(param_map_a.values);
+    "param_map_a.keys:"    "abc_sh_0p1pc_j"    "abc_sh_5pc_j"    "efg_sh_0p1pc_j"    "efg_sh_5pc_j"    "qqq_sh_0p1pc_j"    "qqq_sh_5pc_j"
 
-    [2.3929]    [-0.6518]    [247.2460]    [60.5615]    [-245]    [-62.5000]
+  Columns 8 through 14
+
+    "param_map_a.values:"    "2.3929"    "-0.65177"    "247.246"    "60.5615"    "-245"    "-62.5"
 \end{verbatim}
 
 \hypertarget{container-map-display-map-keys-and-values}{%
-\subsubsection{Container Map Display Map Keys and Values}\label{container-map-display-map-keys-and-values}}
+\subsection{Container Map Display Map Keys and Values}\label{container-map-display-map-keys-and-values}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{print-keys-and-values}{%
-\paragraph{Print Keys and Values}\label{print-keys-and-values}}
+\subsubsection{Print Keys and Values}\label{print-keys-and-values}}
 
 Define container
 
@@ -2170,14 +2673,14 @@ pos = 4 ; key = share_unbanked_j ; val = 12
 \end{verbatim}
 
 \hypertarget{genereate-container-maps}{%
-\subsubsection{Genereate Container Maps}\label{genereate-container-maps}}
+\subsection{Genereate Container Maps}\label{genereate-container-maps}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{generate-a-container-map-with-any-time-of-data}{%
-\paragraph{Generate a Container map with any time of data}\label{generate-a-container-map-with-any-time-of-data}}
+\subsubsection{Generate a Container map with any time of data}\label{generate-a-container-map-with-any-time-of-data}}
 
 Create a container map with float, int, string, and matrix
 
@@ -2203,7 +2706,7 @@ ans =
 \end{verbatim}
 
 \hypertarget{access-multiple-values-of-a-container-map}{%
-\paragraph{Access Multiple Values of a container map}\label{access-multiple-values-of-a-container-map}}
+\subsubsection{Access Multiple Values of a container map}\label{access-multiple-values-of-a-container-map}}
 
 Values been accessed need to be of the same type
 
@@ -2224,14 +2727,14 @@ ans = 1x2
 \end{verbatim}
 
 \hypertarget{container-map-example-overriding}{%
-\subsubsection{Container Map Example Overriding}\label{container-map-example-overriding}}
+\subsection{Container Map Example Overriding}\label{container-map-example-overriding}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{update-container-map}{%
-\paragraph{Update Container Map}\label{update-container-map}}
+\subsubsection{Update Container Map}\label{update-container-map}}
 
 There is one map with values, Container Map A. There is another
 container Map, Container Map B. Container Maps A and B share keys. For
@@ -2270,14 +2773,14 @@ ans =
 \section{varargin Default Parameters}\label{varargin-default-parameters}}
 
 \hypertarget{varargin-as-a-function-parameter}{%
-\subsubsection{varargin as a Function Parameter}\label{varargin-as-a-function-parameter}}
+\subsection{varargin as a Function Parameter}\label{varargin-as-a-function-parameter}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{call-function-with-two-parameters-and-defaults}{%
-\paragraph{Call Function with Two Parameters and Defaults}\label{call-function-with-two-parameters-and-defaults}}
+\subsubsection{Call Function with Two Parameters and Defaults}\label{call-function-with-two-parameters-and-defaults}}
 
 Call function below without overriding
 
@@ -2302,7 +2805,7 @@ it_table_ctr = 1021
 \end{verbatim}
 
 \hypertarget{override-subset-of-varargin}{%
-\paragraph{Override Subset of Varargin}\label{override-subset-of-varargin}}
+\subsubsection{Override Subset of Varargin}\label{override-subset-of-varargin}}
 
 \begin{verbatim}
 rng(789);
@@ -2343,7 +2846,7 @@ it_table_ctr = 1021
 \end{verbatim}
 
 \hypertarget{function-with-varargin-as-inputs}{%
-\paragraph{Function with varargin as Inputs}\label{function-with-varargin-as-inputs}}
+\subsubsection{Function with varargin as Inputs}\label{function-with-varargin-as-inputs}}
 
 Basic default structure with varargin.
 
@@ -2403,14 +2906,14 @@ end
 \end{verbatim}
 
 \hypertarget{map-based-default-parameter-structure-with-varargin}{%
-\subsubsection{Map Based Default Parameter Structure with varargin}\label{map-based-default-parameter-structure-with-varargin}}
+\subsection{Map Based Default Parameter Structure with varargin}\label{map-based-default-parameter-structure-with-varargin}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{call-function-with-default-parameters}{%
-\paragraph{Call Function with Default Parameters}\label{call-function-with-default-parameters}}
+\subsubsection{Call Function with Default Parameters}\label{call-function-with-default-parameters}}
 
 Call function below without overriding
 
@@ -2425,7 +2928,7 @@ Elapsed time is 0.000896 seconds.
 \end{verbatim}
 
 \hypertarget{call-function-overriding-some-parameters}{%
-\paragraph{Call Function overriding some Parameters}\label{call-function-overriding-some-parameters}}
+\subsubsection{Call Function overriding some Parameters}\label{call-function-overriding-some-parameters}}
 
 \begin{verbatim}
 param_map = containers.Map('KeyType','char', 'ValueType','any');
@@ -2444,7 +2947,7 @@ Elapsed time is 0.000667 seconds.
 \end{verbatim}
 
 \hypertarget{function-with-map-defaults-and-overriding}{%
-\paragraph{Function with Map Defaults and Overriding}\label{function-with-map-defaults-and-overriding}}
+\subsubsection{Function with Map Defaults and Overriding}\label{function-with-map-defaults-and-overriding}}
 
 This default parameter style is fairly succinct, allows for program
 testability, and easy adjustments/addition of additional parameters to
@@ -2543,14 +3046,14 @@ end
 \section{Figure Components}\label{figure-components}}
 
 \hypertarget{matlab-graph-safe-colors-for-web-presentation-and-publications-examples}{%
-\subsubsection{Matlab Graph Safe Colors for Web, Presentation and Publications Examples}\label{matlab-graph-safe-colors-for-web-presentation-and-publications-examples}}
+\subsection{Matlab Graph Safe Colors for Web, Presentation and Publications Examples}\label{matlab-graph-safe-colors-for-web-presentation-and-publications-examples}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{good-colors-to-use-darker}{%
-\paragraph{Good Colors to Use Darker}\label{good-colors-to-use-darker}}
+\subsubsection{Good Colors to Use Darker}\label{good-colors-to-use-darker}}
 
 Nice darker light colors to use in matlab.
 
@@ -2595,7 +3098,7 @@ end
 \includegraphics[width=5.20833in,height=\textheight]{img/fs_color_images/figure_5.png}
 
 \hypertarget{good-colors-to-use-lighter}{%
-\paragraph{Good Colors to Use Lighter}\label{good-colors-to-use-lighter}}
+\subsubsection{Good Colors to Use Lighter}\label{good-colors-to-use-lighter}}
 
 Nice ligher colors to use in matlab.
 
@@ -2641,7 +3144,7 @@ end
 \includegraphics[width=5.20833in,height=\textheight]{img/fs_color_images/figure_11.png}
 
 \hypertarget{matlab-has-a-graphical-tool-for-picking-color}{%
-\paragraph{Matlab has a graphical tool for picking color}\label{matlab-has-a-graphical-tool-for-picking-color}}
+\subsubsection{Matlab has a graphical tool for picking color}\label{matlab-has-a-graphical-tool-for-picking-color}}
 
 Enter uisetcolor pick color from new window and color values will appear
 uisetcolor
@@ -2672,14 +3175,14 @@ scatter(x, y, 10, ...
 \includegraphics[width=5.20833in,height=\textheight]{img/fs_color_images/figure_12.png}
 
 \hypertarget{matlab-graph-titling-labels-and-legends-examples}{%
-\subsubsection{Matlab Graph Titling, Labels and Legends Examples}\label{matlab-graph-titling-labels-and-legends-examples}}
+\subsection{Matlab Graph Titling, Labels and Legends Examples}\label{matlab-graph-titling-labels-and-legends-examples}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{draw-a-figure-label-title-x-and-y-axises-with-latex-equations}{%
-\paragraph{\texorpdfstring{\textbf{Draw A figure Label Title, X and Y Axises with Latex Equations}}{Draw A figure Label Title, X and Y Axises with Latex Equations}}\label{draw-a-figure-label-title-x-and-y-axises-with-latex-equations}}
+\subsubsection{\texorpdfstring{\textbf{Draw A figure Label Title, X and Y Axises with Latex Equations}}{Draw A figure Label Title, X and Y Axises with Latex Equations}}\label{draw-a-figure-label-title-x-and-y-axises-with-latex-equations}}
 
 \begin{verbatim}
 clear all;
@@ -2709,7 +3212,7 @@ grid minor;
 \includegraphics[width=5.20833in,height=\textheight]{img/fs_titling_images/figure_0.png}
 
 \hypertarget{matlab-graph-specify-legends-manually}{%
-\paragraph{Matlab Graph Specify Legends Manually}\label{matlab-graph-specify-legends-manually}}
+\subsubsection{Matlab Graph Specify Legends Manually}\label{matlab-graph-specify-legends-manually}}
 
 Specify labels manually, note we can use HandleVisibility to control
 what part of figure show up in legends.
@@ -2757,7 +3260,7 @@ snapnow;
 \end{verbatim}
 
 \hypertarget{given-graph-graph-subset-of-lines-and-add-extra-line-with-legend}{%
-\paragraph{Given Graph, Graph Subset of Lines and Add Extra Line with Legend}\label{given-graph-graph-subset-of-lines-and-add-extra-line-with-legend}}
+\subsubsection{Given Graph, Graph Subset of Lines and Add Extra Line with Legend}\label{given-graph-graph-subset-of-lines-and-add-extra-line-with-legend}}
 
 Same plot as before, except we plot only 2 of the three lines and add
 another line with associated legend entry.
@@ -2779,14 +3282,14 @@ snapnow;
 \end{verbatim}
 
 \hypertarget{matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples}{%
-\subsubsection{Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples}\label{matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples}}
+\subsection{Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples}\label{matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{plot-a-subset-of-data-matrix-with-appropriate-legends}{%
-\paragraph{Plot a Subset of Data Matrix with Appropriate Legends}\label{plot-a-subset-of-data-matrix-with-appropriate-legends}}
+\subsubsection{Plot a Subset of Data Matrix with Appropriate Legends}\label{plot-a-subset-of-data-matrix-with-appropriate-legends}}
 
 Sometimes we solve a model across many states, but we can only plot at a
 subset of states, or perhaps we plot at all states, but only show
@@ -2858,14 +3361,14 @@ legend(chart([legend2plot length(legendCell)]), ...
 \section{Basic Figure Types}\label{basic-figure-types}}
 
 \hypertarget{matlab-graph-scatter-plot-examples}{%
-\subsubsection{Matlab Graph Scatter Plot Examples}\label{matlab-graph-scatter-plot-examples}}
+\subsection{Matlab Graph Scatter Plot Examples}\label{matlab-graph-scatter-plot-examples}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{scatter-plot-example}{%
-\paragraph{Scatter Plot Example}\label{scatter-plot-example}}
+\subsubsection{Scatter Plot Example}\label{scatter-plot-example}}
 
 The plot below as square scatter points, each one with think border. Can
 set transparency of border/edge and inside separately.
@@ -2907,7 +3410,7 @@ grid minor;
 \end{verbatim}
 
 \hypertarget{scatter-with-edge-and-face-color-and-transparency}{%
-\paragraph{Scatter with Edge and Face Color and Transparency}\label{scatter-with-edge-and-face-color-and-transparency}}
+\subsubsection{Scatter with Edge and Face Color and Transparency}\label{scatter-with-edge-and-face-color-and-transparency}}
 
 Here is another way to Set Scatter Edge and Fac Colors and
 Transparencies.
@@ -2959,14 +3462,14 @@ grid minor;
 \vspace{1em}
 
 \hypertarget{matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines}{%
-\subsubsection{Matlab Line and Scatter Plot with Multiple Lines and Axis Lines}\label{matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines}}
+\subsection{Matlab Line and Scatter Plot with Multiple Lines and Axis Lines}\label{matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{six-lines-plot}{%
-\paragraph{Six lines Plot}\label{six-lines-plot}}
+\subsubsection{Six lines Plot}\label{six-lines-plot}}
 
 Colors from \href{http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/}{optimal
 colors}.
@@ -3055,7 +3558,7 @@ snapnow;
 \end{verbatim}
 
 \hypertarget{horizontal-and-vertical-lines-and-45-degree}{%
-\paragraph{Horizontal and Vertical Lines and 45 Degree}\label{horizontal-and-vertical-lines-and-45-degree}}
+\subsubsection{Horizontal and Vertical Lines and 45 Degree}\label{horizontal-and-vertical-lines-and-45-degree}}
 
 Draw x and y axis, and draw a 45 degree line.
 
@@ -3083,7 +3586,7 @@ grid minor;
 \includegraphics[width=5.20833in,height=\textheight]{img/fs_lines_images/figure_1.png}
 
 \hypertarget{matlab-graph-scatter-and-line-spectrum-with-three-variables}{%
-\subsubsection{Matlab Graph Scatter and Line Spectrum with Three Variables}\label{matlab-graph-scatter-and-line-spectrum-with-three-variables}}
+\subsection{Matlab Graph Scatter and Line Spectrum with Three Variables}\label{matlab-graph-scatter-and-line-spectrum-with-three-variables}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
@@ -3114,7 +3617,7 @@ The columns is represented by vector C, which is another variable.
 \end{enumerate}
 
 \hypertarget{setting-up-data}{%
-\paragraph{Setting Up Data}\label{setting-up-data}}
+\subsubsection{Setting Up Data}\label{setting-up-data}}
 
 \begin{verbatim}
 close all
@@ -3151,7 +3654,7 @@ ar_kp_mw = ar_kp_mw_wth_na(~isnan(ar_kp_mw_wth_na));
 \end{verbatim}
 
 \hypertarget{graphing}{%
-\paragraph{Graphing}\label{graphing}}
+\subsubsection{Graphing}\label{graphing}}
 
 \begin{verbatim}
 figure('PaperPosition', [0 0 7 4]);
@@ -3185,14 +3688,14 @@ grid on;
 \section{Write and Read Plots}\label{write-and-read-plots}}
 
 \hypertarget{matlab-graph-generate-eps-postscript-figures-in-matlab}{%
-\subsubsection{Matlab Graph Generate EPS postscript figures in matlab}\label{matlab-graph-generate-eps-postscript-figures-in-matlab}}
+\subsection{Matlab Graph Generate EPS postscript figures in matlab}\label{matlab-graph-generate-eps-postscript-figures-in-matlab}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{properly-save-eps-with-scatter-and-other-graphing-methods-renderer-painters}{%
-\paragraph{Properly Save EPS with Scatter and Other Graphing Methods: Renderer = Painters}\label{properly-save-eps-with-scatter-and-other-graphing-methods-renderer-painters}}
+\subsubsection{Properly Save EPS with Scatter and Other Graphing Methods: Renderer = Painters}\label{properly-save-eps-with-scatter-and-other-graphing-methods-renderer-painters}}
 
 scatter plot saving as eps seems to only work when Renderer is set to
 Painters
@@ -3224,14 +3727,14 @@ print(strcat(st_img_path, st_file_name), '-depsc', '-tiff');
 \section{Basic Table Generation}\label{basic-table-generation}}
 
 \hypertarget{named-tables-with-random-data}{%
-\subsubsection{Named Tables with Random Data}\label{named-tables-with-random-data}}
+\subsection{Named Tables with Random Data}\label{named-tables-with-random-data}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{generate-a-table-with-m-variables}{%
-\paragraph{Generate A Table with M Variables}\label{generate-a-table-with-m-variables}}
+\subsubsection{Generate A Table with M Variables}\label{generate-a-table-with-m-variables}}
 
 Generate a numeric table with random varlues and a string column
 
@@ -3271,14 +3774,14 @@ disp(tb_test);
 \end{verbatim}
 
 \hypertarget{tables-order-columns-and-sort}{%
-\subsubsection{Tables Order Columns and Sort}\label{tables-order-columns-and-sort}}
+\subsection{Tables Order Columns and Sort}\label{tables-order-columns-and-sort}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{given-table-show-some-columns-first}{%
-\paragraph{Given Table, Show Some Columns First}\label{given-table-show-some-columns-first}}
+\subsubsection{Given Table, Show Some Columns First}\label{given-table-show-some-columns-first}}
 
 \begin{verbatim}
 % Generate Table
@@ -3324,14 +3827,14 @@ disp(tb_test_varmove);
 \end{verbatim}
 
 \hypertarget{row-and-column-names-for-table-based-on-arrays}{%
-\subsubsection{Row and Column names for Table based on Arrays}\label{row-and-column-names-for-table-based-on-arrays}}
+\subsection{Row and Column names for Table based on Arrays}\label{row-and-column-names-for-table-based-on-arrays}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{generate-table-with-row-and-column-names-based-on-multiple-numeric-array}{%
-\paragraph{Generate Table with Row and Column Names based on Multiple Numeric Array}\label{generate-table-with-row-and-column-names-based-on-multiple-numeric-array}}
+\subsubsection{Generate Table with Row and Column Names based on Multiple Numeric Array}\label{generate-table-with-row-and-column-names-based-on-multiple-numeric-array}}
 
 Two numeric arrays describe the column names, combine numeric arrays
 together to form string array which becomes table variable/column names.
@@ -3365,7 +3868,7 @@ disp(tb_test_a);
 \end{verbatim}
 
 \hypertarget{include-row-names-as-a-variable}{%
-\paragraph{Include Row Names as a Variable}\label{include-row-names-as-a-variable}}
+\subsubsection{Include Row Names as a Variable}\label{include-row-names-as-a-variable}}
 
 \begin{verbatim}
 % a and b must have the same row names
@@ -3388,14 +3891,14 @@ disp(tb_test_a);
 \section{Table Joining}\label{table-joining}}
 
 \hypertarget{combining-tables-and-matrixs-together}{%
-\subsubsection{Combining Tables and Matrixs Together}\label{combining-tables-and-matrixs-together}}
+\subsection{Combining Tables and Matrixs Together}\label{combining-tables-and-matrixs-together}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
 \hypertarget{generate-some-tables-and-matrixes-for-combination}{%
-\paragraph{Generate Some Tables and Matrixes for Combination}\label{generate-some-tables-and-matrixes-for-combination}}
+\subsubsection{Generate Some Tables and Matrixes for Combination}\label{generate-some-tables-and-matrixes-for-combination}}
 
 \begin{verbatim}
 close all;
@@ -3452,7 +3955,7 @@ disp(tb_test_b);
 \end{verbatim}
 
 \hypertarget{combine-tables-together-stack-columns}{%
-\paragraph{Combine Tables Together Stack Columns}\label{combine-tables-together-stack-columns}}
+\subsubsection{Combine Tables Together Stack Columns}\label{combine-tables-together-stack-columns}}
 
 Tables with the same number of rows, add more columns with named
 variables
@@ -3475,7 +3978,7 @@ disp(tb_ab_col_stacked);
 \end{verbatim}
 
 \hypertarget{combine-tables-together-stack-rows}{%
-\paragraph{Combine Tables Together Stack Rows}\label{combine-tables-together-stack-rows}}
+\subsubsection{Combine Tables Together Stack Rows}\label{combine-tables-together-stack-rows}}
 
 Tables with the same number of columns, dd more rows variables
 
@@ -3512,7 +4015,7 @@ disp(tb_ab_row_stacked);
 \end{verbatim}
 
 \hypertarget{combine-tables-together-stack-rows-1}{%
-\paragraph{Combine Tables Together Stack Rows}\label{combine-tables-together-stack-rows-1}}
+\subsubsection{Combine Tables Together Stack Rows}\label{combine-tables-together-stack-rows-1}}
 
 Tables with the same number of columns, dd more rows variables
 
@@ -3753,44 +4256,6 @@ grid on;
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html}{Accumarray Examples}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_accumarray.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html}{\textbf{html}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Accumarray to sum up probabilities/values for discrete elements of arrays.
-  \item
-    \textbf{m}: \emph{unique() + reshape() + accumarray()}
-  \end{itemize}
-\item
-  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html}{Array Broadcasting Examples}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_broadcast_expand.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html}{\textbf{html}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    broadcast means: array + array' + matrix = matrix.
-  \end{itemize}
-\item
-  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html}{Array Random Draws and Permutation}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_combi_permu.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html}{\textbf{html}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Draw randomly from array, permutate arrays.
-  \item
-    \textbf{m}: \emph{ndgrid() + cell2mat(cellfun(@(m) m(:), cl\_mt\_all, `uni', 0))}
-  \end{itemize}
-\item
-  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html}{Imaginary Elements of Array}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html}{\textbf{html}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Find imaginary elements of array.
-  \item
-    \textbf{m}: \emph{imag()}
-  \end{itemize}
-\item
   \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_reshape.html}{Array Reshape, Repeat and Expand}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_reshape.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_reshape.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_reshape.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_reshape.html}{\textbf{html}}
 
   \begin{itemize}
@@ -3813,12 +4278,62 @@ grid on;
     \textbf{m}: \emph{sub2ind() + @(it\_subset\_n, it\_ar\_n) unique(round(((0:1:(it\_subset\_n-1))/(it\_subset\_n-1)) times (it\_ar\_n-1)+1))}
   \end{itemize}
 \item
+  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html}{3D, 4D, N4 Arrays Reshape and Summarize}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_3d4dndarray.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
+  \item
+    Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
+  \item
+    \textbf{m}: \emph{permute(mn, {[}3,1,2,4{]}) + squeeze(num2cell(mn, {[}1,2{]})) + celldisp() + ndgrid()}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html}{Array Broadcasting Examples}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_broadcast_expand.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    broadcast means: array + array' + matrix = matrix.
+  \end{itemize}
+\item
   \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_stateschoicesopti.html}{Grid States, Choices and Optimal Choices Example}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_stateschoicesopti.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_stateschoicesopti.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_stateschoicesopti.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_stateschoicesopti.html}{\textbf{html}}
 
   \begin{itemize}
   \tightlist
   \item
     States, choices, and find max.
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html}{Accumarray Examples}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_accumarray.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Accumarray to sum up probabilities/values for discrete elements of arrays.
+  \item
+    \textbf{m}: \emph{unique() + reshape() + accumarray()}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html}{Array Random Draws and Permutation}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_combi_permu.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Draw randomly from array, permutate arrays.
+  \item
+    \textbf{m}: \emph{ndgrid() + cell2mat(cellfun(@(m) m(:), cl\_mt\_all, `uni', 0))}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html}{Imaginary Elements of Array}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Find imaginary elements of array.
+  \item
+    \textbf{m}: \emph{imag()}
   \end{itemize}
 \end{enumerate}
 

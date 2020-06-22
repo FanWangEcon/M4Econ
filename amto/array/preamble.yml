@@ -43,7 +43,7 @@
   urlcolor: blue
 
 - file: fs_combi_permu
-  title: "Matlab Array Draw Random Index and Find Combinations or Permuations"
+  title: "Matlab Array Random, Combinations, and Permuations"
   titleshort: "Array Random Draws and Permutation"
   description: |
     Draw randomly from array, permutate arrays.
@@ -67,7 +67,7 @@
   urlcolor: blue
 
 - file: fs_img
-  title: "Matlab Check Imaginary Numbers"
+  title: "Matlab Imaginary Numbers"
   titleshort: "Imaginary Elements of Array"
   description: |
     Find imaginary elements of array.
@@ -144,6 +144,33 @@
     States, choices, and find max.
   date: 2020-06-07
   date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_3d4dndarray
+  title: "Matlab Group by Summarize Arrays (3D, 4D, ND) Reshape and Slice 2D"
+  titleshort: "3D, 4D, N4 Arrays Reshape and Summarize"
+  description: |
+    Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
+    Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
+  core :
+    - package: m
+      code: |
+        permute(mn, [3,1,2,4])
+        squeeze(num2cell(mn, [1,2]))
+        celldisp()
+        ndgrid()
+  date: 2020-06-21
+  date_start: 2020-06-21
   output:
     pdf_document:
       pandoc_args: '../../_output_kniti_pdf.yaml'

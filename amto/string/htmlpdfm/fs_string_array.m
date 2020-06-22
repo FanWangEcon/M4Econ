@@ -14,8 +14,23 @@ disp(ar_st_titles);
 st_titles = ['Title1','Title2','Title3'];
 disp(st_titles);
 %% String Cell Array
+% Create a string array:
 
+ar_st_title_one = {'Title One Line'};
 ar_st_titles = {'Title1','Title2','Title3'};
+disp(ar_st_title_one);
+disp(ar_st_titles);
+%% 
+% Add to a string array:
+
+ar_st_titles{4} = 'Title4';
+disp(ar_st_titles);
+%% 
+% Update one of the strings:
+
+ar_st_title_one{1} = strcat('log(', ar_st_title_one{1},')');
+ar_st_titles{1} = strcat('log(', ar_st_titles{1},')');
+disp(ar_st_title_one);
 disp(ar_st_titles);
 %% Duplicate String
 

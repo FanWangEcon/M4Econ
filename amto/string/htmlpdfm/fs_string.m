@@ -2,6 +2,12 @@
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+%% Paste Join Strings Together with Separator
+% Join strings together with separator, this is similar to the paste0 function 
+% in R.
+
+ar_st = ["abc", "efg", "opq"];
+disp(strjoin(ar_st, '-'));
 %% Combine Char with Numeric Value
 % Compose a string with words and numerical values
 

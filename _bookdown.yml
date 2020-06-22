@@ -11,13 +11,14 @@ rmd_files:
   - amto/main.Rmd
 
   - amto/array/main.Rmd
-  - amto/array/fs_accumarray.Rmd
-  - amto/array/fs_broadcast_expand.Rmd
-  - amto/array/fs_combi_permu.Rmd
-  - amto/array/fs_img.Rmd
   - amto/array/fs_reshape.Rmd
   - amto/array/fs_slicing.Rmd
+  - amto/array/fs_3d4dndarray.Rmd
+  - amto/array/fs_broadcast_expand.Rmd
   - amto/array/fs_stateschoicesopti.Rmd
+  - amto/array/fs_accumarray.Rmd
+  - amto/array/fs_combi_permu.Rmd
+  - amto/array/fs_img.Rmd
 
   - amto/cell/main.Rmd
   - amto/cell/fs_cellfuns.Rmd

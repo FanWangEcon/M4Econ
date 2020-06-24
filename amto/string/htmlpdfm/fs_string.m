@@ -2,6 +2,41 @@
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+%% Combine String, Numeric values etc, Single and Double Quotes
+% Convert a string array into a single string, note the double quotes, and the 
+% auto space between:
+
+st_a = "another string";
+ar_st = ["abc", num2str(2), "opq", st_a];
+disp(strjoin(ar_st));
+%% 
+% If we do not want to have spaces between words, the second parameter for strjoin 
+% allows for string connectors:
+
+st_a = "another string";
+ar_st = ["abc", num2str(2), "opq", st_a];
+disp(strjoin(ar_st, ""));
+%% 
+% With single quotes, the str element is not an array, so does not need strjoin, 
+% but not need to have spaces:
+
+st_a = 'another string';
+str = ['abc ', num2str(2), ' opq ', st_a];
+disp((str));
+%% Construct String Array and String Elements of String Array
+% In the example below, we have a number of strings we want to put inside a 
+% string array, then join with strjoin, but two of the strings need to be constructed 
+% as strings first. Note below that double quoates are own strings, single quotes 
+% in brackets constructing additional strings. 
+
+st_a = "another string";
+ar_st = strjoin(...
+    ["Completed SNW_DS_MAIN", ...
+     ['SNW_MP_PARAM=' num2str(123.345)], ...
+     ['SNW_MP_CONTROL=' num2str(678.90)], ...
+     st_a...
+    ], ";");
+disp(ar_st);
 %% Paste Join Strings Together with Separator
 % Join strings together with separator, this is similar to the paste0 function 
 % in R.

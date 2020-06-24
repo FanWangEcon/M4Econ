@@ -8,6 +8,7 @@
     - package: m
       code: |
         compose()
+        strjoin()
         str_sub = split(string, ".")
         strcat(str_sub{1}, '_m.m')
   date: 2020-06-14

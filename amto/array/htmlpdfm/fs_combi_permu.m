@@ -38,7 +38,7 @@ end
  
 outputTens = reshape(outputVec,size(kM));
 disp(outputTens);
-%% Given integer arrays, all possible combinations
+%% Given Integer Arrays, All Possible Combinations
 % given any sizes arrays, N of them, create all possible combinations
 
 ar_it_a = 1:3;

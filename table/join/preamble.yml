@@ -3,6 +3,7 @@
   titleshort: "Stack Matlab Tables"
   description: |
     Append columns to existing table. Stack tables vertically and horizontally.
+    Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
   core :
     - package: m
       code: |

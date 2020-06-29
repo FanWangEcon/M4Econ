@@ -56,11 +56,12 @@
   title: "Matlab Table Row and Column names for Table based on Arrays"
   titleshort: "Array Based Row and Column Names"
   description: |
-    Generate a column and row named table. Convert row names to a column.
+    Generate a column and row named table. Convert row names to a column as strings.
   core :
     - package: m
       code: |
         array2table()
+        string()        
         strcat('rowA=', string((1:size(mt, 1))))
         tb_test_a.Properties.VariableNames
         tb_test_a.Properties.RowNames

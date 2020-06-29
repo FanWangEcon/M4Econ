@@ -1,4 +1,4 @@
-%% Row and Column names for Table based on Arrays
+%% Row and Column Names for Table based on Arrays
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
@@ -22,10 +22,17 @@ cl_row_names_a = strcat('rowA=', string((1:size(mt_data_a,1))));
 tb_test_a.Properties.VariableNames = cl_col_names_a;
 tb_test_a.Properties.RowNames = cl_row_names_a;
 disp(tb_test_a);
-%% Include Row Names as a Variable
+%% Include Row Names as a a String Cell Variable
 
 % a and b must have the same row names
-varrownames = tb_test_a.Properties.RowNames;
-tb_test_a = addvars(tb_test_a, varrownames, 'Before', 1);
+cl_st_varrownames = tb_test_a.Properties.RowNames;
+tb_test_a = addvars(tb_test_a, cl_st_varrownames, 'Before', 1);
+
+disp(tb_test_a);
+%% Include Row Names as a String Variable
+
+% a and b must have the same row names
+st_varrownames = string(cl_st_varrownames);
+tb_test_a = addvars(tb_test_a, st_varrownames, 'Before', 1);
 
 disp(tb_test_a);

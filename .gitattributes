@@ -1,7 +1,9 @@
 *.html linguist-vendored
-*.mlx linguist-vendored
 *.pdf linguist-vendored
 *.ipynb linguist-vendored
+*.xml linguist-vendored
+*.yml linguist-vendored
+*.mlx linguist-vendored
 
 *.tex linguist-vendored
 *.css linguist-vendored

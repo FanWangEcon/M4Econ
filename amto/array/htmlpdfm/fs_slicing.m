@@ -2,20 +2,67 @@
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+%% Index Select Rows and Columns of a 2D matrix
+% In the example below, select by entire rows and columns:
+
+% There is a 2D Matrix
+rng(123);
+randMatZ = rand(3,6);
+disp(randMatZ);
+% Duplicate Select Row sand Columns of Elements
+disp(randMatZ([1,2,3,3,3,2], [1,1,2,2,2,1]))
+%% Index Select Set of Elements from 2D matrix
+% Rather than selecting entire rows and columns, suppose we want to select only 
+% one element at row 1 col 2, the element at row 2 col 4, element at row 5 col 
+% 1, etc.
+
+% Select Subset of Elements
+it_row_idx = [1,2,3,1,3,2];
+it_col_idx = [1,1,5,4,2,3];
+% Select sub2idx
+ar_lin_idx = sub2ind(size(randMatZ), it_row_idx, it_col_idx);
+ar_sel_val = randMatZ(ar_lin_idx);
+disp(ar_sel_val');
+%% Find Closest Element of Array to Each Element of Another Array
+% Given scalar value, find the cloest value in array:
+
+fl_a = 3.4;
+ar_bb = [1,2,3,4];
+[fl_min, it_min_idx] = min(abs(ar_bb-fl_a));
+disp(it_min_idx);
+%% 
+% Given a scalar value and an array, find the closest smaller value in the array 
+% to the scalar value:
+
+fl_a = 2.1;
+ar_bb = [1,2,3,4];
+disp(sum(ar_bb<fl_a));
+%% 
+% Array A is between 0  and 1, on some grid. Array B is also between 0 and 1, 
+% but scattered. Find for each element of B the index of the cloest value on A 
+% that is smaller than the element in B.
+
+rng(1234);
+ar_a = linspace(0,10,5);
+ar_b = rand([5,1])*10;
+mt_a_less_b = ar_a<ar_b;
+mt_a_less_b_idx = sum(ar_a<ar_b, 2);
+disp(ar_a);
+disp(ar_b);
+disp(mt_a_less_b);
+disp(mt_a_less_b_idx);
 %% Matlab Index based Replacement of Subset of Matrix Values
 
-clear all;
-close all;
 rng(123);
-randMatZ = rand(3,6)+1
-randMat = rand(3,6)-0.5
+randMatZ = rand(3,6)+1;
+randMat = rand(3,6)-0.5;
  
-output = max(-randMat,0)
-randMatZ(output==0) = 999
-min(randMatZ,[],2)
- 
-randMatZ((max(-randMat,0))==0) = 999
-min(randMatZ,[],2)
+output = max(-randMat,0);
+randMatZ(output==0) = 999;
+min(randMatZ,[],2);
+ randMatZ((max(-randMat,0))==0) = 999;
+disp(randMatZ);
+disp(min(randMatZ,[],2));
 %% Matlab Matrix Index Based Matrix Expansion (Manual)
 % In the example below, we start with a 4 by 2 matrix, than we expand specific 
 % rows and columns of the matrix. Specifically, we expand the matrix such that 

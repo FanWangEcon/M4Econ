@@ -55,7 +55,7 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -104,14 +104,14 @@
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-06-21}
+\date{2020-07-02}
 
 \begin{document}
 \maketitle
 
 {
 \hypersetup{linkcolor=}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 \hypertarget{preface}{%
@@ -294,60 +294,140 @@ ans = 1x15
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
+\hypertarget{index-select-rows-and-columns-of-a-2d-matrix}{%
+\subsubsection{Index Select Rows and Columns of a 2D matrix}\label{index-select-rows-and-columns-of-a-2d-matrix}}
+
+In the example below, select by entire rows and columns:
+
+\begin{verbatim}
+% There is a 2D Matrix
+rng(123);
+randMatZ = rand(3,6);
+disp(randMatZ);
+
+    0.6965    0.5513    0.9808    0.3921    0.4386    0.7380
+    0.2861    0.7195    0.6848    0.3432    0.0597    0.1825
+    0.2269    0.4231    0.4809    0.7290    0.3980    0.1755
+
+% Duplicate Select Row sand Columns of Elements
+disp(randMatZ([1,2,3,3,3,2], [1,1,2,2,2,1]))
+
+    0.6965    0.6965    0.5513    0.5513    0.5513    0.6965
+    0.2861    0.2861    0.7195    0.7195    0.7195    0.2861
+    0.2269    0.2269    0.4231    0.4231    0.4231    0.2269
+    0.2269    0.2269    0.4231    0.4231    0.4231    0.2269
+    0.2269    0.2269    0.4231    0.4231    0.4231    0.2269
+    0.2861    0.2861    0.7195    0.7195    0.7195    0.2861
+\end{verbatim}
+
+\hypertarget{index-select-set-of-elements-from-2d-matrix}{%
+\subsubsection{Index Select Set of Elements from 2D matrix}\label{index-select-set-of-elements-from-2d-matrix}}
+
+Rather than selecting entire rows and columns, suppose we want to select
+only one element at row 1 col 2, the element at row 2 col 4, element at
+row 5 col 1, etc.
+
+\begin{verbatim}
+% Select Subset of Elements
+it_row_idx = [1,2,3,1,3,2];
+it_col_idx = [1,1,5,4,2,3];
+% Select sub2idx
+ar_lin_idx = sub2ind(size(randMatZ), it_row_idx, it_col_idx);
+ar_sel_val = randMatZ(ar_lin_idx);
+disp(ar_sel_val');
+
+    0.6965
+    0.2861
+    0.3980
+    0.3921
+    0.4231
+    0.6848
+\end{verbatim}
+
+\hypertarget{find-closest-element-of-array-to-each-element-of-another-array}{%
+\subsubsection{Find Closest Element of Array to Each Element of Another Array}\label{find-closest-element-of-array-to-each-element-of-another-array}}
+
+Given scalar value, find the cloest value in array:
+
+\begin{verbatim}
+fl_a = 3.4;
+ar_bb = [1,2,3,4];
+[fl_min, it_min_idx] = min(abs(ar_bb-fl_a));
+disp(it_min_idx);
+
+     3
+\end{verbatim}
+
+Given a scalar value and an array, find the closest smaller value in the
+array to the scalar value:
+
+\begin{verbatim}
+fl_a = 2.1;
+ar_bb = [1,2,3,4];
+disp(sum(ar_bb<fl_a));
+
+     2
+\end{verbatim}
+
+Array A is between 0 and 1, on some grid. Array B is also between 0 and
+1, but scattered. Find for each element of B the index of the cloest
+value on A that is smaller than the element in B.
+
+\begin{verbatim}
+rng(1234);
+ar_a = linspace(0,10,5);
+ar_b = rand([5,1])*10;
+mt_a_less_b = ar_a<ar_b;
+mt_a_less_b_idx = sum(ar_a<ar_b, 2);
+disp(ar_a);
+
+         0    2.5000    5.0000    7.5000   10.0000
+
+disp(ar_b);
+
+    1.9152
+    6.2211
+    4.3773
+    7.8536
+    7.7998
+
+disp(mt_a_less_b);
+
+   1   0   0   0   0
+   1   1   1   0   0
+   1   1   0   0   0
+   1   1   1   1   0
+   1   1   1   1   0
+
+disp(mt_a_less_b_idx);
+
+     1
+     3
+     2
+     4
+     4
+\end{verbatim}
+
 \hypertarget{matlab-index-based-replacement-of-subset-of-matrix-values}{%
 \subsubsection{Matlab Index based Replacement of Subset of Matrix Values}\label{matlab-index-based-replacement-of-subset-of-matrix-values}}
 
 \begin{verbatim}
-clear all;
-close all;
 rng(123);
-randMatZ = rand(3,6)+1
+randMatZ = rand(3,6)+1;
+randMat = rand(3,6)-0.5;
+ 
+output = max(-randMat,0);
+randMatZ(output==0) = 999;
+min(randMatZ,[],2);
+ randMatZ((max(-randMat,0))==0) = 999;
+disp(randMatZ);
 
-randMatZ = 3x6    
-    1.6965    1.5513    1.9808    1.3921    1.4386    1.7380
-    1.2861    1.7195    1.6848    1.3432    1.0597    1.1825
-    1.2269    1.4231    1.4809    1.7290    1.3980    1.1755
-
-randMat = rand(3,6)-0.5
-
-randMat = 3x6    
-    0.0316    0.3494    0.2224   -0.2717   -0.4079   -0.0063
-    0.0318    0.2245   -0.1770   -0.2063   -0.0663   -0.0742
-    0.1344    0.1110   -0.1382    0.1310   -0.0691   -0.1877
-
-
-output = max(-randMat,0)
-
-output = 3x6    
-         0         0         0    0.2717    0.4079    0.0063
-         0         0    0.1770    0.2063    0.0663    0.0742
-         0         0    0.1382         0    0.0691    0.1877
-
-randMatZ(output==0) = 999
-
-randMatZ = 3x6    
   999.0000  999.0000  999.0000    1.3921    1.4386    1.7380
   999.0000  999.0000    1.6848    1.3432    1.0597    1.1825
   999.0000  999.0000    1.4809  999.0000    1.3980    1.1755
 
-min(randMatZ,[],2)
+disp(min(randMatZ,[],2));
 
-ans = 3x1    
-    1.3921
-    1.0597
-    1.1755
-
-
-randMatZ((max(-randMat,0))==0) = 999
-
-randMatZ = 3x6    
-  999.0000  999.0000  999.0000    1.3921    1.4386    1.7380
-  999.0000  999.0000    1.6848    1.3432    1.0597    1.1825
-  999.0000  999.0000    1.4809  999.0000    1.3980    1.1755
-
-min(randMatZ,[],2)
-
-ans = 3x1    
     1.3921
     1.0597
     1.1755
@@ -507,8 +587,8 @@ disp(f_subset(5, 5));
      1     2     3     4     5
 \end{verbatim}
 
-\hypertarget{d-4d-n4-arrays-reshape-and-rearrange-dimensions}{%
-\subsection{3D, 4D, N4 Arrays Reshape and Rearrange Dimensions}\label{d-4d-n4-arrays-reshape-and-rearrange-dimensions}}
+\hypertarget{d-4d-nd-arrays-reshape-and-rearrange-dimensions}{%
+\subsection{3D, 4D, ND Arrays Reshape and Rearrange Dimensions}\label{d-4d-nd-arrays-reshape-and-rearrange-dimensions}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
@@ -1755,7 +1835,7 @@ disp(outputTens);
 \end{verbatim}
 
 \hypertarget{given-integer-arrays-all-possible-combinations}{%
-\subsubsection{Given integer arrays, all possible combinations}\label{given-integer-arrays-all-possible-combinations}}
+\subsubsection{Given Integer Arrays, All Possible Combinations}\label{given-integer-arrays-all-possible-combinations}}
 
 given any sizes arrays, N of them, create all possible combinations
 
@@ -2126,6 +2206,63 @@ disp(clns_parm_tstar{1}{3});
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
+
+\hypertarget{combine-string-numeric-values-etc-single-and-double-quotes}{%
+\subsubsection{Combine String, Numeric values etc, Single and Double Quotes}\label{combine-string-numeric-values-etc-single-and-double-quotes}}
+
+Convert a string array into a single string, note the double quotes, and
+the auto space between:
+
+\begin{verbatim}
+st_a = "another string";
+ar_st = ["abc", num2str(2), "opq", st_a];
+disp(strjoin(ar_st));
+
+abc 2 opq another string
+\end{verbatim}
+
+If we do not want to have spaces between words, the second parameter for
+strjoin allows for string connectors:
+
+\begin{verbatim}
+st_a = "another string";
+ar_st = ["abc", num2str(2), "opq", st_a];
+disp(strjoin(ar_st, ""));
+
+abc2opqanother string
+\end{verbatim}
+
+With single quotes, the str element is not an array, so does not need
+strjoin, but not need to have spaces:
+
+\begin{verbatim}
+st_a = 'another string';
+str = ['abc ', num2str(2), ' opq ', st_a];
+disp((str));
+
+abc 2 opq another string
+\end{verbatim}
+
+\hypertarget{construct-string-array-and-string-elements-of-string-array}{%
+\subsubsection{Construct String Array and String Elements of String Array}\label{construct-string-array-and-string-elements-of-string-array}}
+
+In the example below, we have a number of strings we want to put inside
+a string array, then join with strjoin, but two of the strings need to
+be constructed as strings first. Note below that double quoates are own
+strings, single quotes in brackets constructing additional strings.
+
+\begin{verbatim}
+st_a = "another string";
+ar_st = strjoin(...
+    ["Completed SNW_DS_MAIN", ...
+     ['SNW_MP_PARAM=' num2str(123.345)], ...
+     ['SNW_MP_CONTROL=' num2str(678.90)], ...
+     st_a...
+    ], ";");
+disp(ar_st);
+
+Completed SNW_DS_MAIN;SNW_MP_PARAM=123.345;SNW_MP_CONTROL=678.9;another string
+\end{verbatim}
 
 \hypertarget{paste-join-strings-together-with-separator}{%
 \subsubsection{Paste Join Strings Together with Separator}\label{paste-join-strings-together-with-separator}}
@@ -2635,8 +2772,8 @@ disp([...
     "param_map_a.values:"    "2.3929"    "-0.65177"    "247.246"    "60.5615"    "-245"    "-62.5"
 \end{verbatim}
 
-\hypertarget{container-map-display-map-keys-and-values}{%
-\subsection{Container Map Display Map Keys and Values}\label{container-map-display-map-keys-and-values}}
+\hypertarget{container-map-display-key-and-values-and-subseting}{%
+\subsection{Container Map Display Key and Values and Subseting}\label{container-map-display-key-and-values-and-subseting}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
@@ -2645,7 +2782,7 @@ Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon
 \hypertarget{print-keys-and-values}{%
 \subsubsection{Print Keys and Values}\label{print-keys-and-values}}
 
-Define container
+Define container:
 
 \begin{verbatim}
 % Define Container
@@ -2656,13 +2793,15 @@ param_map('equi_w_j') = 'abc';
 param_map('equi_P_j') = 1.2;
 \end{verbatim}
 
-Print
+Print the key and values of the container:
 
 \begin{verbatim}
 param_map_keys = keys(param_map);
 param_map_vals = values(param_map);
 for i = 1:length(param_map)
-    st_display = strjoin(['pos =' num2str(i) '; key =' string(param_map_keys{i}) '; val =' string(param_map_vals{i})]);
+    st_key = param_map_keys{i};
+    ob_val = param_map_vals{i};
+    st_display = strjoin(['pos =' num2str(i) '; key =' string(st_key) '; val =' string(ob_val)]);
     disp(st_display);
 end
 
@@ -2672,8 +2811,34 @@ pos = 3 ; key = equi_w_j ; val = abc
 pos = 4 ; key = share_unbanked_j ; val = 12
 \end{verbatim}
 
-\hypertarget{genereate-container-maps}{%
-\subsection{Genereate Container Maps}\label{genereate-container-maps}}
+\hypertarget{select-of-subset-of-keyvalues-from-a-container-map}{%
+\subsubsection{Select of Subset of Key/Values from a Container Map}\label{select-of-subset-of-keyvalues-from-a-container-map}}
+
+There is a larger container map, I want to create a new container map,
+that keeps a subset of the keys/values of the full container map.
+
+\begin{verbatim}
+% Original Container map
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+param_map('equi_r_j') = 0.05;
+param_map('equi_w_j') = 1.05;
+param_map('equi_P_j') = 1;
+% To select a subset of keys
+ls_st_keys_select = {'equi_w_j', 'equi_P_j'};
+% Select
+param_map_subset = containers.Map(ls_st_keys_select, values(param_map, ls_st_keys_select));
+% display
+disp(param_map_subset.keys);
+
+    'equi_P_j'    'equi_w_j'
+
+disp(param_map_subset.values);
+
+    [1]    [1.0500]
+\end{verbatim}
+
+\hypertarget{generate-container-maps}{%
+\subsection{Generate Container Maps}\label{generate-container-maps}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
@@ -2694,15 +2859,13 @@ param_map('share_unbanked_j') = 12;
 param_map('equi_r_j') = 2;
 param_map('equi_w_j') = 'abc';
 param_map('equi_P_j') = zeros(2,3);
-param_map.keys
+disp(param_map.keys);
 
-ans = 
-    {'equi_P_j'}    {'equi_r_j'}    {'equi_w_j'}    {'share_unbanked_j'}
+    'equi_P_j'    'equi_r_j'    'equi_w_j'    'share_unbanked_j'
 
-param_map.values
+disp(param_map.values);
 
-ans = 
-    {2x3 double}    {[2]}    {'abc'}    {[12]}
+    [2x3 double]    [2]    'abc'    [12]
 \end{verbatim}
 
 \hypertarget{access-multiple-values-of-a-container-map}{%
@@ -2713,17 +2876,60 @@ Values been accessed need to be of the same type
 \begin{verbatim}
 % Parameter Dealing from Map
 params_group = values(param_map, {'share_unbanked_j', 'equi_r_j'});
-[equi_P_j, equi_r_j] = params_group{:}
+[equi_P_j, equi_r_j] = params_group{:};
+disp(['equi_P_j:' num2str(equi_P_j) ', equi_r_j:' num2str(equi_r_j)]);
 
-equi_P_j = 12
-equi_r_j = 2
-
+equi_P_j:12, equi_r_j:2
 
 % Access Scalar Elements of Map and Convert the Array
-cell2mat(values(param_map, {'share_unbanked_j', 'equi_r_j'}))
+disp(cell2mat(values(param_map, {'share_unbanked_j', 'equi_r_j'})));
 
-ans = 1x2    
     12     2
+\end{verbatim}
+
+Create a container map of color values and generate a array of color
+choices:
+
+\begin{verbatim}
+% Container map with three colors
+mp_colors = containers.Map('KeyType', 'char', 'ValueType', 'any');
+mp_colors('blue')   = [57 106 177]./255;
+mp_colors('red')    = [204 37 41]./255;
+mp_colors('black')  = [83 81 84]./255;
+% An selection array
+ar_st_colors_pick = {'blue', 'blue', 'red', 'black', 'blue'};
+ar_colors = values(mp_colors, ar_st_colors_pick);
+% Print selected colors
+celldisp(ar_colors);
+
+
+ar_colors{1} =
+ 
+    0.2235    0.4157    0.6941
+
+
+
+ar_colors{2} =
+ 
+    0.2235    0.4157    0.6941
+
+
+
+ar_colors{3} =
+ 
+    0.8000    0.1451    0.1608
+
+
+
+ar_colors{4} =
+ 
+    0.3255    0.3176    0.3294
+
+
+
+ar_colors{5} =
+ 
+    0.2235    0.4157    0.6941
 \end{verbatim}
 
 \hypertarget{container-map-example-overriding}{%
@@ -3827,7 +4033,7 @@ disp(tb_test_varmove);
 \end{verbatim}
 
 \hypertarget{row-and-column-names-for-table-based-on-arrays}{%
-\subsection{Row and Column names for Table based on Arrays}\label{row-and-column-names-for-table-based-on-arrays}}
+\subsection{Row and Column Names for Table based on Arrays}\label{row-and-column-names-for-table-based-on-arrays}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
@@ -3867,31 +4073,51 @@ disp(tb_test_a);
     rowA=5      0.4      0.4  
 \end{verbatim}
 
-\hypertarget{include-row-names-as-a-variable}{%
-\subsubsection{Include Row Names as a Variable}\label{include-row-names-as-a-variable}}
+\hypertarget{include-row-names-as-a-a-string-cell-variable}{%
+\subsubsection{Include Row Names as a a String Cell Variable}\label{include-row-names-as-a-a-string-cell-variable}}
 
 \begin{verbatim}
 % a and b must have the same row names
-varrownames = tb_test_a.Properties.RowNames;
-tb_test_a = addvars(tb_test_a, varrownames, 'Before', 1);
+cl_st_varrownames = tb_test_a.Properties.RowNames;
+tb_test_a = addvars(tb_test_a, cl_st_varrownames, 'Before', 1);
 
 disp(tb_test_a);
 
-              varrownames    col123    col456
-              ___________    ______    ______
+              cl_st_varrownames    col123    col456
+              _________________    ______    ______
 
-    rowA=1    {'rowA=1'}       0.4      0.4  
-    rowA=2    {'rowA=2'}       0.1      0.1  
-    rowA=3    {'rowA=3'}      0.25      0.2  
-    rowA=4    {'rowA=4'}       0.3      0.3  
-    rowA=5    {'rowA=5'}       0.4      0.4
+    rowA=1       {'rowA=1'}          0.4      0.4  
+    rowA=2       {'rowA=2'}          0.1      0.1  
+    rowA=3       {'rowA=3'}         0.25      0.2  
+    rowA=4       {'rowA=4'}          0.3      0.3  
+    rowA=5       {'rowA=5'}          0.4      0.4  
+\end{verbatim}
+
+\hypertarget{include-row-names-as-a-string-variable}{%
+\subsubsection{Include Row Names as a String Variable}\label{include-row-names-as-a-string-variable}}
+
+\begin{verbatim}
+% a and b must have the same row names
+st_varrownames = string(cl_st_varrownames);
+tb_test_a = addvars(tb_test_a, st_varrownames, 'Before', 1);
+
+disp(tb_test_a);
+
+              st_varrownames    cl_st_varrownames    col123    col456
+              ______________    _________________    ______    ______
+
+    rowA=1       "rowA=1"          {'rowA=1'}          0.4      0.4  
+    rowA=2       "rowA=2"          {'rowA=2'}          0.1      0.1  
+    rowA=3       "rowA=3"          {'rowA=3'}         0.25      0.2  
+    rowA=4       "rowA=4"          {'rowA=4'}          0.3      0.3  
+    rowA=5       "rowA=5"          {'rowA=5'}          0.4      0.4
 \end{verbatim}
 
 \hypertarget{table-joining}{%
 \section{Table Joining}\label{table-joining}}
 
-\hypertarget{combining-tables-and-matrixs-together}{%
-\subsection{Combining Tables and Matrixs Together}\label{combining-tables-and-matrixs-together}}
+\hypertarget{row-and-column-combine-stack-tables-and-matrices}{%
+\subsection{Row and Column Combine Stack Tables and Matrices}\label{row-and-column-combine-stack-tables-and-matrices}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/CodeDynaAsset/}{CodeDynaAsset} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
@@ -3926,7 +4152,6 @@ disp(tb_test_a);
     rowA=3     0.25      0.2  
     rowA=4      0.3      0.3  
     rowA=5      0.4      0.4  
-
 
 % Generate Table 2
 rng(123);
@@ -4014,41 +4239,128 @@ disp(tb_ab_row_stacked);
     row=10    0.71947    0.39212
 \end{verbatim}
 
-\hypertarget{combine-tables-together-stack-rows-1}{%
-\subsubsection{Combine Tables Together Stack Rows}\label{combine-tables-together-stack-rows-1}}
+\hypertarget{nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables}{%
+\subsubsection{ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables}\label{nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables}}
 
-Tables with the same number of columns, dd more rows variables
+Now we will first column combine matrixes, model parameters and model
+outcomes, and then row combine matrixes from different simulations.
+
+A model takes a N parameters, solve the model over M sets of parameters.
+Each time when the model is solved, a P by Q table of results is
+generated. Each column is a different statistics (mean, std, etc.), and
+each row is a different outcome variable (consumption, asset choices,
+etc.). Stack these P by Q Tables together, and add in information about
+the N parameters, each of the tables been stacked initially had the same
+column and row names.
+
+The resulting table should have P times M rows, for M sets of model
+simulations each with P rows of results. And there should be N + Q
+columns, storing the N parameters as well as the Q columns of different
+outcomes.
 
 \begin{verbatim}
-% Select only 2 columns to match table a column count
-tb_test_b_subset = tb_test_b(:,1:2);
+rng(123);
+% Generate A P by Q matrix of random parameter Values
+it_param_groups_m = 5; 
+it_params_n = 2;
+it_outcomes_p = 3;
+it_stats_q = 3;
 
-% Make Column Names consistent
-tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
+% Parameter Matrix and Names
+ar_param_names = strcat('param_', string(1:it_params_n));
+mt_param_m_by_n = round(rand([it_param_groups_m, it_params_n])*5, 2);
 
-% Reset Row Names, can not have identical row names
-tb_test_a.Properties.RowNames = strcat('row=', string((1:size(mt_data_a,1))));
-tb_test_b_subset.Properties.RowNames = ...
-    strcat('row=', string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
-% tb_test_b_subset.Properties.RowNames =
+% Loop over the parameters
+for it_cur_param_group=1:1:it_param_groups_m
+    
+    % Current Parameters
+    ar_param = mt_param_m_by_n(it_cur_param_group,:);
+    
+    % Some Model is simulated
+    mt_model_simu = normrnd(mean(ar_param), std(ar_param), [it_outcomes_p, it_stats_q]);
+    
+    % Model Results are Saved As Table With Column and Row Information
+    tb_model_simu = array2table(mt_model_simu);
+    cl_col_names = strcat('stats_', string((1:size(mt_model_simu,2))));
+    cl_row_names = strcat('outvar_', string((1:size(mt_model_simu,1))));
+    tb_model_simu.Properties.VariableNames = cl_col_names;
+    tb_model_simu.Properties.RowNames = cl_row_names;    
+        
+    % Convert Row Variable Names to a Column String
+    outvar = string(tb_model_simu.Properties.RowNames);
+    tb_model_simu = addvars(tb_model_simu, outvar, 'Before', 1);
+    
+    % Parameter Information Table that Shares Row Names as Simu Results
+    mt_param_info = zeros([it_outcomes_p,it_params_n]) + ar_param;
+    tb_param_info = array2table(mt_param_info);
+    tb_param_info.Properties.VariableNames = ar_param_names;
+    tb_param_info.Properties.RowNames = cl_row_names;
+    
+    % Combine Parameter Information and Simulation Contents
+    tb_model_simu_w_info = [tb_param_info tb_model_simu];
+    % Update Row Names based on total row available
+    ar_rows_allsimu = (1:it_stats_q)' + (it_cur_param_group-1)*it_stats_q;
+    tb_model_simu_w_info.Properties.RowNames = strcat('row=', string(ar_rows_allsimu));
+    
+    % Show One Example Table before Stacking
+    if (it_cur_param_group == round(it_param_groups_m/2))
+        disp(tb_model_simu);
+        disp(tb_param_info);
+        disp(tb_model_simu_w_info);
+    end
+    
+    % Stack all results
+    if(it_cur_param_group == 1)
+        tb_model_allsimu_w_info = tb_model_simu_w_info;
+    else
+        tb_model_allsimu_w_info = [tb_model_allsimu_w_info; tb_model_simu_w_info];
+    end
+    
+end
 
-% Stack Rows
-tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
-disp(tb_ab_row_stacked);
+                  outvar      stats_1     stats_2    stats_3
+                __________    ________    _______    _______
 
-              col123     col456 
-              _______    _______
+    outvar_1    "outvar_1"    0.056853    2.1703     2.1098 
+    outvar_2    "outvar_2"      3.1545    2.0634     0.7798 
+    outvar_3    "outvar_3"    -0.49033    2.2566     1.7896 
+                param_1    param_2
+                _______    _______
 
-    row=1         0.4        0.4
-    row=2         0.1        0.1
-    row=3        0.25        0.2
-    row=4         0.3        0.3
-    row=5         0.4        0.4
-    row=6     0.69647    0.42311
-    row=7     0.28614    0.98076
-    row=8     0.22685    0.68483
-    row=9     0.55131    0.48093
-    row=10    0.71947    0.39212
+    outvar_1     1.13       3.42  
+    outvar_2     1.13       3.42  
+    outvar_3     1.13       3.42  
+             param_1    param_2      outvar      stats_1     stats_2    stats_3
+             _______    _______    __________    ________    _______    _______
+
+    row=7     1.13       3.42      "outvar_1"    0.056853    2.1703     2.1098 
+    row=8     1.13       3.42      "outvar_2"      3.1545    2.0634     0.7798 
+    row=9     1.13       3.42      "outvar_3"    -0.49033    2.2566     1.7896 
+\end{verbatim}
+
+Show all Simulation Joint Table Outputs:
+
+\begin{verbatim}
+disp(tb_model_allsimu_w_info);
+
+              param_1    param_2      outvar      stats_1     stats_2    stats_3
+              _______    _______    __________    ________    _______    _______
+
+    row=1      3.48       2.12      "outvar_1"      2.2665    1.1885      1.924 
+    row=2      3.48       2.12      "outvar_2"      3.3427    2.4647     2.3548 
+    row=3      3.48       2.12      "outvar_3"      2.6714    3.6132      2.918 
+    row=4      1.43        4.9      "outvar_1"      3.3859    5.3759     1.5816 
+    row=5      1.43        4.9      "outvar_2"      3.9499    3.8698     2.2693 
+    row=6      1.43        4.9      "outvar_3"      5.7745    4.6871     1.7334 
+    row=7      1.13       3.42      "outvar_1"    0.056853    2.1703     2.1098 
+    row=8      1.13       3.42      "outvar_2"      3.1545    2.0634     0.7798 
+    row=9      1.13       3.42      "outvar_3"    -0.49033    2.2566     1.7896 
+    row=10     2.76        2.4      "outvar_1"      2.9611    2.6847     2.4986 
+    row=11     2.76        2.4      "outvar_2"      2.9333    2.3457     3.0629 
+    row=12     2.76        2.4      "outvar_3"      2.5814    2.4372     2.4806 
+    row=13      3.6       1.96      "outvar_1"      2.7199    3.3129     3.0577 
+    row=14      3.6       1.96      "outvar_2"      3.9804    1.4529     2.9285 
+    row=15      3.6       1.96      "outvar_3"      2.8445    4.4117     2.6576
 \end{verbatim}
 
 \hypertarget{panel}{%
@@ -4405,7 +4717,7 @@ grid on;
   \item
     Cut string suffix and append new suffix.
   \item
-    \textbf{m}: *compose() + str\_sub = split(string, ``.'') + strcat(str\_sub\{1\}, '\_m.m')*
+    \textbf{m}: *compose() + strjoin() + str\_sub = split(string, ``.'') + strcat(str\_sub\{1\}, '\_m.m')*
   \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html}{String Arrays Operations}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_array.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html}{\textbf{html}}
@@ -4454,14 +4766,16 @@ grid on;
     \textbf{m}: \emph{isKey() + strjoin() + containers.Map(`KeyType', `char', `ValueType', `any')}
   \end{itemize}
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html}{Display Container Map Keys and Values}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html}{\textbf{html}}
+  \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html}{Display Container Map Keys, Values and Subseting}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html}{\textbf{html}}
 
   \begin{itemize}
   \tightlist
   \item
     Loop over map, display keys and values.
   \item
-    \textbf{m}: \emph{strjoin() + keys(map) + values(map)}
+    Select Container map subset by keys.
+  \item
+    \textbf{m}: \emph{strjoin() + keys(map) + values(map) + containers.Map(keys, values)}
   \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_anytype.html}{Container Map Varied Value Type}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_map_anytype.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_anytype.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_anytype.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_anytype.html}{\textbf{html}}
@@ -4658,9 +4972,9 @@ grid on;
   \begin{itemize}
   \tightlist
   \item
-    Generate a column and row named table. Convert row names to a column.
+    Generate a column and row named table. Convert row names to a column as strings.
   \item
-    \textbf{m}: \emph{array2table() + strcat(`rowA=', string((1:size(mt, 1)))) + tb\_test\_a.Properties.VariableNames + tb\_test\_a.Properties.RowNames + addvars(tb, rownames, `Before', 1)}
+    \textbf{m}: \emph{array2table() + string() + strcat(`rowA=', string((1:size(mt, 1)))) + tb\_test\_a.Properties.VariableNames + tb\_test\_a.Properties.RowNames + addvars(tb, rownames, `Before', 1)}
   \end{itemize}
 \end{enumerate}
 
@@ -4677,6 +4991,8 @@ grid on;
   \tightlist
   \item
     Append columns to existing table. Stack tables vertically and horizontally.
+  \item
+    Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
   \item
     \textbf{m}: \emph{array2table() + {[}tb\_a tb\_b{]} + {[}tb\_a; tb\_b{]} + tb.Properties.VariableNames + tb.Properties.RowNames}
   \end{itemize}

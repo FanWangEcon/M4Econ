@@ -24,17 +24,19 @@
   urlcolor: blue
 
 - file: fs_containermap
-  title: "Matlab Display Container Map Keys and Values"
-  titleshort: "Display Container Map Keys and Values"
+  title: "Matlab Display Container Map Key and Values and Subseting"
+  titleshort: "Display Container Map Keys, Values and Subseting"
   description: |
     Loop over map, display keys and values.
+    Select Container map subset by keys.
   core :
     - package: m
       code: |
         strjoin()
         keys(map)
         values(map)
-  date: 2020-06-07
+        containers.Map(keys, values)
+  date: 2020-06-30
   date_start: 2020-06-07
   output:
     pdf_document:

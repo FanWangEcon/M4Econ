@@ -99,6 +99,29 @@ disp(vmat_reindex_rows_repeat');
 % of columns.
 mat_repdown = base_mat(vmat_reindex_rows_repeat(:), 1:Q);
 disp(mat_repdown');
+%% Given ND Array, Get Row and Column (and other dimension) Index With Value Conditioning
+% There is a matrix where some values are equal to 1 (based on some prior selection), 
+% get the row and column index of the matrix. 
+
+% Some matrix with 1s
+rng(123);
+mt_some_ones = rand(3,3);
+disp(mt_some_ones);
+% find the location of the ones
+[r_idx, c_idx] = find(mt_some_ones<0.5);
+% the set of locations
+disp([r_idx,c_idx]);
+%% 
+% Now do the same three with a three dimensional array:
+
+% Some matrix with 1s
+rng(123);
+mn3_some_ones = rand(3,3,3);
+disp(mn3_some_ones);
+% find the location of the ones
+[d1_idx, d2_idx, d3_idx] = ind2sub(size(mn3_some_ones), find(mn3_some_ones<0.5));
+% the set of locations
+disp([d1_idx, d2_idx, d3_idx]);
 %% Max of Matrix column by Column Linear to 2d Index
 % Finding max of matrix column by column, then obtain the linear index associated 
 % with the max values.

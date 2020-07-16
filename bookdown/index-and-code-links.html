@@ -24,7 +24,7 @@
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-07-02" />
+<meta name="date" content="2020-07-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -87,7 +87,7 @@
 <li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.5</b> Grid States, Choices and Optimal Choices Example</a></li>
 <li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.6</b> Accumarray Examples</a></li>
 <li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#array-draw-random-index-and-find-combinations-or-permuations"><i class="fa fa-check"></i><b>1.1.7</b> Array Draw Random Index and Find Combinations or Permuations</a></li>
-<li class="chapter" data-level="1.1.8" data-path="data-structures.html"><a href="data-structures.html#check-imaginary-numbers"><i class="fa fa-check"></i><b>1.1.8</b> Check Imaginary Numbers</a></li>
+<li class="chapter" data-level="1.1.8" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.8</b> Matlab Array Basics and Miscellaneous</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.2</b> Cells</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.2.1</b> List Comprehension with Cells</a></li>
@@ -205,7 +205,7 @@
 <li>Anonymous function to slice array subsets.</li>
 <li><strong>m</strong>: <em>sub2ind() + @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1)) times (it_ar_n-1)+1))</em></li>
 </ul></li>
-<li><a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html">3D, 4D, N4 Arrays Reshape and Summarize</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_3d4dndarray.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html">3D, 4D, ND Arrays Reshape and Summarize</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_3d4dndarray.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html"><strong>html</strong></a>
 <ul>
 <li>Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.</li>
 <li>Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.</li>
@@ -229,8 +229,9 @@
 <li>Draw randomly from array, permutate arrays.</li>
 <li><strong>m</strong>: <em>ndgrid() + cell2mat(cellfun(@(m) m(:), cl_mt_all, ‘uni’, 0))</em></li>
 </ul></li>
-<li><a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html">Imaginary Elements of Array</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html">Matlab Array Miscellaneous</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html"><strong>html</strong></a>
 <ul>
+<li>Compare approximately similar values.</li>
 <li>Find imaginary elements of array.</li>
 <li><strong>m</strong>: <em>imag()</em></li>
 </ul></li>

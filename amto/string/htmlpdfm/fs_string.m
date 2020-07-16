@@ -55,6 +55,16 @@ st_title = strcat("Figure Title ", ...
 ar_params = 123.4567 + zeros(1,3);
 st_combo = compose(st_title, ar_params);
 disp(st_combo);
+%% Search if String Contains Substring
+% Does string contain substring?
+
+st_long1 = 'simu_dense';
+st_long2 = 'simu_denser';
+st_long3 = 'simuverydense';
+st_long4 = 'simu_medium';
+st_long5 = 'simuverysmall';
+disp([contains(st_long1, 'dense'), contains(st_long2, 'dense'), contains(st_long3, 'dense'), ...
+    contains(st_long4, 'dense'), contains(st_long5, 'dense')]);
 %% Change File Name MLX to M
 
 st_file_name_mlx = 'continuous_differentiable.mlx';

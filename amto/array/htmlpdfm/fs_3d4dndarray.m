@@ -130,7 +130,9 @@ disp(tb_rowcols_tab);
 % table additional columns, rather than taking the means of the entire matrix 
 % in the first two dimensions, we only take average with respect to the rows, 
 % the first dimension, the second dimension show up as coumn statistics names, 
-% still multiple stats. 
+% still multiple stats. The results worked out here are embedded in the <https://fanwangecon.github.io/MEconTools/MEconTools/doc/summ/htmlpdfm/fx_summ_nd_array.html 
+% fx_summ_nd_array> function of the <https://fanwangecon.github.io/MEconTools/ 
+% MEconTools> Package. 
 % 
 % First, we generate several array of information:
 

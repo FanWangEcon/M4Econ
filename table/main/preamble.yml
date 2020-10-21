@@ -25,16 +25,18 @@
   urlcolor: blue
 
 - file: fs_tab_ordersort
-  title: "Matlab Table Order Columns and Sort"
-  titleshort: "Order and Sort Columns"
+  title: "Matlab Table Order, Sort and Rename Columns"
+  titleshort: "Order, Sort and Rename Columns"
   description: |
-    Convert a matrix to table with mean and sd columns. Rearrange columns.
+    Convert a matrix to table with mean and sd columns. Rearrange and rename columns.
   core :
     - package: m
       code: |
         array2table()
         rng()
+        addvars()
         movevars()
+        removevars()
         matlab.lang.makeValidName()
         tb.Properties.VariableNames
         tb.Properties.RowNames
@@ -56,18 +58,42 @@
   title: "Matlab Table Row and Column names for Table based on Arrays"
   titleshort: "Array Based Row and Column Names"
   description: |
-    Generate a column and row named table. Convert row names to a column as strings.
+    Generate a column and row named table. Convert row names to a column as strings. Remove Row Names.
   core :
     - package: m
       code: |
         array2table()
-        string()        
+        string()
         strcat('rowA=', string((1:size(mt, 1))))
         tb_test_a.Properties.VariableNames
         tb_test_a.Properties.RowNames
         addvars(tb, rownames, 'Before', 1)
   date: 2020-06-08
   date_start: 2020-06-08
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_tab_select_rows_cols
+  title: "Matlab Table Select Subset of Rows and Columns"
+  titleshort: "Select Subset of Rows and Columns"
+  description: |
+    Conditional selection based on cell values and column and row names.
+  core :
+    - package: m
+      code: |
+        tb(strcmp(tb.v1, "b"),:)
+        tb(tb.va==0.4,:)
+  date: 2020-10-11
+  date_start: 2020-10-11
   output:
     pdf_document:
       pandoc_args: '../../_output_kniti_pdf.yaml'

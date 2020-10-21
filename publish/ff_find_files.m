@@ -17,7 +17,10 @@ st_proj_folder = fullfile(root, user, project);
 cl_st_subfolder = {'m_az/solve/', 'm_abz/solve/', 'm_ipwkz/solve/', 'm_ipwkbzr/solve/'};
 st_file_search_name = '*vecsv.m';
 
-cl_params = {st_proj_folder cl_st_subfolder st_file_search_name};
+% print found folders
+bl_verbose = false;
+
+cl_params = {st_proj_folder cl_st_subfolder st_file_search_name bl_verbose};
 
 %% Parse Parameters
 
@@ -26,6 +29,7 @@ cl_params = {st_proj_folder cl_st_subfolder st_file_search_name};
 st_proj_folder = cl_params{1};
 cl_st_subfolder = cl_params{2};
 st_file_search_name = cl_params{3};
+bl_verbose = cl_params{4};
 
 %% Add Path
 % set up path components
@@ -51,8 +55,11 @@ for st_subfolder = cl_st_subfolder
         
         st_file_name = sc_files(it_ctr).name;
         st_folder_name = sc_files(it_ctr).folder;        
-        disp(st_file_name);
-        disp(st_folder_name);
+        
+        if(bl_verbose)
+            disp(st_file_name);
+            disp(st_folder_name);
+        end
         
         cl_st_file_names{it_file_ctr} = st_file_name;
         cl_st_folder_names{it_file_ctr} = st_folder_name;

@@ -8,6 +8,8 @@ library(formatR)
 
 # RMD Options
 options(knitr.duplicate.label = "allow")
+options(bookdown.render.file_scope = FALSE)
+
 knitr::opts_chunk$set(fig.width=7, fig.height=4, fig.align="center")
 # knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60), tidy=TRUE)
 knitr::opts_chunk$set(warning=FALSE, message=FALSE, cache=FALSE)
@@ -107,9 +109,9 @@ if(!is.null(spt_file_current)) {
   # Common Shared Text and Strings
   total_area <- (800 * 7) / 2
   if (st_file_wno_suffix == 'Data-Structures-and-Dynamic-Optimization-with-Matlab') {
-    text_shared_preamble_one <- paste0("> Go back to [fan](http://fanwangecon.github.io/)'s [CodeDynaAsset](https://fanwangecon.github.io/CodeDynaAsset/) Package, [Matlab Code Examples](https://fanwangecon.github.io/M4Econ/) Repository ([bookdown site](https://fanwangecon.github.io/M4Econ/bookdown)), or [Math for Econ with Matlab](https://fanwangecon.github.io/Math4Econ/) Repository ([bookdown site](https://fanwangecon.github.io/Math4Econ/bookdown)).")
+    text_shared_preamble_one <- paste0("> Go back to [fan](http://fanwangecon.github.io/)'s [MEconTools](https://fanwangecon.github.io/MEconTools/) Package, [Matlab Code Examples](https://fanwangecon.github.io/M4Econ/) Repository ([bookdown site](https://fanwangecon.github.io/M4Econ/bookdown)), or [Math for Econ with Matlab](https://fanwangecon.github.io/Math4Econ/) Repository ([bookdown site](https://fanwangecon.github.io/Math4Econ/bookdown)).")
   } else {
-    text_shared_preamble_one <- paste0(st_head_link, " Go back to [fan](http://fanwangecon.github.io/)'s [CodeDynaAsset](https://fanwangecon.github.io/CodeDynaAsset/) Package, [Matlab Code Examples](https://fanwangecon.github.io/M4Econ/) Repository ([bookdown site](https://fanwangecon.github.io/M4Econ/bookdown)), or [Math for Econ with Matlab](https://fanwangecon.github.io/Math4Econ/) Repository ([bookdown site](https://fanwangecon.github.io/Math4Econ/bookdown)).")
+    text_shared_preamble_one <- paste0(st_head_link, " Go back to [fan](http://fanwangecon.github.io/)'s [MEconTools](https://fanwangecon.github.io/MEconTools/) Package, [Matlab Code Examples](https://fanwangecon.github.io/M4Econ/) Repository ([bookdown site](https://fanwangecon.github.io/M4Econ/bookdown)), or [Math for Econ with Matlab](https://fanwangecon.github.io/Math4Econ/) Repository ([bookdown site](https://fanwangecon.github.io/Math4Econ/bookdown)).")
   }
 }
 
@@ -120,6 +122,6 @@ if (knitr::is_latex_output()) {
     text_top_count <- ""
     text_end_count <- ""
 } else {
-    text_top_count <- "[![HitCount](http://hits.dwyl.io/fanwangecon/M4Econ.svg)](https://github.com/FanWangEcon/M4Econ)  [![Star](https://img.shields.io/github/stars/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/stargazers) [![Fork](https://img.shields.io/github/forks/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/network/members) [![Star](https://img.shields.io/github/watchers/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/watchers)"
+    text_top_count <- "[![HitCount](http://hits.dwyl.com/fanwangecon/M4Econ.svg)](https://github.com/FanWangEcon/M4Econ)  [![Star](https://img.shields.io/github/stars/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/stargazers) [![Fork](https://img.shields.io/github/forks/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/network/members) [![Star](https://img.shields.io/github/watchers/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/watchers)"
     text_end_count <- "[![](https://img.shields.io/github/last-commit/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/commits/master) [![](https://img.shields.io/github/commit-activity/m/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/graphs/commit-activity) [![](https://img.shields.io/github/issues/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/issues) [![](https://img.shields.io/github/issues-pr/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/pulls)"
 }

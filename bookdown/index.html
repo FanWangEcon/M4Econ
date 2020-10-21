@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Data Structures and Dynamic Optimization with Matlab</title>
   <meta name="description" content="Data Structures and Dynamic Optimization with Matlab" />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-07-15" />
+<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92953468-6"></script>
 <script>
@@ -131,8 +132,9 @@
 <li class="chapter" data-level="4" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>4</b> Tables</a><ul>
 <li class="chapter" data-level="4.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>4.1</b> Basic Table Generation</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>4.1.1</b> Named Tables with Random Data</a></li>
-<li class="chapter" data-level="4.1.2" data-path="tables.html"><a href="tables.html#tables-order-columns-and-sort"><i class="fa fa-check"></i><b>4.1.2</b> Tables Order Columns and Sort</a></li>
+<li class="chapter" data-level="4.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>4.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
 <li class="chapter" data-level="4.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>4.1.3</b> Row and Column Names for Table based on Arrays</a></li>
+<li class="chapter" data-level="4.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>4.1.4</b> Select Subset of Rows and Columns</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>4.2</b> Table Joining</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>4.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
@@ -190,11 +192,11 @@
 <div id="header">
 <h1 class="title">Data Structures and Dynamic Optimization with Matlab</h1>
 <p class="author"><em>Fan Wang</em></p>
-<p class="date"><em>2020-07-15</em></p>
+<p class="date"><em>2020-10-21</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
-<p><a href="https://github.com/FanWangEcon/M4Econ"><img src="http://hits.dwyl.io/fanwangecon/M4Econ.svg" alt="HitCount" /></a> <a href="https://github.com/FanWangEcon/M4Econ/stargazers"><img src="https://img.shields.io/github/stars/fanwangecon/M4Econ?style=social" alt="Star" /></a> <a href="https://github.com/FanWangEcon/M4Econ/network/members"><img src="https://img.shields.io/github/forks/fanwangecon/M4Econ?style=social" alt="Fork" /></a> <a href="https://github.com/FanWangEcon/M4Econ/watchers"><img src="https://img.shields.io/github/watchers/fanwangecon/M4Econ?style=social" alt="Star" /></a></p>
+<p><a href="https://github.com/FanWangEcon/M4Econ"><img src="http://hits.dwyl.com/fanwangecon/M4Econ.svg" alt="HitCount" /></a> <a href="https://github.com/FanWangEcon/M4Econ/stargazers"><img src="https://img.shields.io/github/stars/fanwangecon/M4Econ?style=social" alt="Star" /></a> <a href="https://github.com/FanWangEcon/M4Econ/network/members"><img src="https://img.shields.io/github/forks/fanwangecon/M4Econ?style=social" alt="Fork" /></a> <a href="https://github.com/FanWangEcon/M4Econ/watchers"><img src="https://img.shields.io/github/watchers/fanwangecon/M4Econ?style=social" alt="Star" /></a></p>
 <p>This is a work-in-progress <a href="https://fanwangecon.github.io/M4Econ/">website</a> of support files for using matlab. Materials gathered from various <a href="https://fanwangecon.github.io/research">projects</a> in which matlab is used. Matlab files are linked below by section with livescript files. Tested with <a href="https://www.mathworks.com/products/matlab.html">Matlab</a> 2019a <span class="citation">(The MathWorks Inc <a href="#ref-matlab" role="doc-biblioref">2019</a>)</span>. This is not a Matlab package, but a list of examples in PDF/HTML/Mlx formats. <a href="https://github.com/FanWangEcon/MEconTools">MEconTools</a> is a package that can be installed with tools used in projects involving matlab code.</p>
 <p>Bullet points in the Appendix show which matlab functions/commands are used to achieve various objectives. The goal of this repository is to make it easier to find/re-use codes produced for various projects. Some functions also rely on or correspond to functions from <a href="https://github.com/FanWangEcon/MEconTools">MEconTools</a> <span class="citation">(Wang <a href="#ref-M-MEconTools" role="doc-biblioref">2020</a>)</span>.</p>
 <p>From other repositories: For dynamic borrowing and savings problems, see <a href="https://fanwangecon.github.io/CodeDynaAsset/">Dynamic Asset Repository</a>; For code examples, see also <a href="https://fanwangecon.github.io/R4Econ/">R Example Code</a>, and <a href="https://fanwangecon.github.io/Stata4Econ/">Stata Example Code</a>; For intro stat with R, see <a href="https://fanwangecon.github.io/Stat4Econ/">Intro Statistics for Undergraduates</a>, and intro Math with Matlab, see <a href="https://fanwangecon.github.io/Math4Econ/">Intro Mathematics for Economists</a>. See <a href="https://github.com/FanWangEcon">here</a> for all of <a href="https://fanwangecon.github.io/">Fan</a>’s public repositories.</p>

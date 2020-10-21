@@ -1,4 +1,4 @@
-%% Tables Order Columns and Sort
+%% Tables Order, Sort, Add, Rename and Drop Columns
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
@@ -25,3 +25,17 @@ tb_test_varmove = movevars(tb_test_ori, {'mean', 'sd'}, 'Before', 'col_1');
 % Display
 disp(tb_test_ori);
 disp(tb_test_varmove);
+%% Rename Table Columns
+% Rename the first Column, rename the 'sd' column, then rename the 3rd and 4th 
+% Columns. Note for multiple column renaming, use parenthesis, but for single 
+% column renaming, use bracket.
+
+tb_test_varmove.Properties.VariableNames{1} = 'RenameMean';
+tb_test_varmove.Properties.VariableNames{'sd'} = 'RenameSDCol';
+tb_test_varmove.Properties.VariableNames([3 4]) = {'3rd' '4th'};
+disp(tb_test_varmove);
+%% |Remove Table Column|
+% |Remove columns from the Table|
+
+tb_test_varmove_drop = removevars(tb_test_varmove, {'3rd', 'col_3'});
+disp(tb_test_varmove_drop);

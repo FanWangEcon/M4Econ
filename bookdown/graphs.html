@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Graphs | Data Structures and Dynamic Optimization with Matlab</title>
   <meta name="description" content="Chapter 3 Graphs | Data Structures and Dynamic Optimization with Matlab" />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Graphs | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-07-15" />
+<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92953468-6"></script>
 <script>
@@ -131,8 +132,9 @@
 <li class="chapter" data-level="4" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>4</b> Tables</a><ul>
 <li class="chapter" data-level="4.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>4.1</b> Basic Table Generation</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>4.1.1</b> Named Tables with Random Data</a></li>
-<li class="chapter" data-level="4.1.2" data-path="tables.html"><a href="tables.html#tables-order-columns-and-sort"><i class="fa fa-check"></i><b>4.1.2</b> Tables Order Columns and Sort</a></li>
+<li class="chapter" data-level="4.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>4.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
 <li class="chapter" data-level="4.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>4.1.3</b> Row and Column Names for Table based on Arrays</a></li>
+<li class="chapter" data-level="4.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>4.1.4</b> Select Subset of Rows and Columns</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>4.2</b> Table Joining</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>4.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
@@ -196,7 +198,7 @@
 <div id="matlab-graph-safe-colors-for-web-presentation-and-publications-examples" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="good-colors-to-use-darker" class="section level4">
 <h4><span class="header-section-number">3.1.1.1</span> Good Colors to Use Darker</h4>
@@ -296,7 +298,7 @@ scatter(x, y, 10, ...
 <div id="matlab-graph-titling-labels-and-legends-examples" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Matlab Graph Titling, Labels and Legends Examples</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="draw-a-figure-label-title-x-and-y-axises-with-latex-equations" class="section level4">
 <h4><span class="header-section-number">3.1.2.1</span> <strong>Draw A figure Label Title, X and Y Axises with Latex Equations</strong></h4>
@@ -383,7 +385,7 @@ legend([g1, g3, xlinemax], legendCell([1,3,length(legendCell)]), &#39;Location&#
 <div id="matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples" class="section level3">
 <h3><span class="header-section-number">3.1.3</span> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="plot-a-subset-of-data-matrix-with-appropriate-legends" class="section level4">
 <h4><span class="header-section-number">3.1.3.1</span> Plot a Subset of Data Matrix with Appropriate Legends</h4>
@@ -457,7 +459,7 @@ legend(chart([legend2plot length(legendCell)]), ...
 <div id="matlab-graph-scatter-plot-examples" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Matlab Graph Scatter Plot Examples</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="scatter-plot-example" class="section level4">
 <h4><span class="header-section-number">3.2.1.1</span> Scatter Plot Example</h4>
@@ -544,7 +546,7 @@ grid minor;</code></pre>
 <div id="matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="six-lines-plot" class="section level4">
 <h4><span class="header-section-number">3.2.2.1</span> Six lines Plot</h4>
@@ -655,7 +657,7 @@ grid minor;</code></pre>
 <div id="matlab-graph-scatter-and-line-spectrum-with-three-variables" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Matlab Graph Scatter and Line Spectrum with Three Variables</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <p>Generate k + b = w, color for each w, vectors of k and b such that k + b
 = w for each w</p>
@@ -741,7 +743,7 @@ grid on;</code></pre>
 <div id="matlab-graph-generate-eps-postscript-figures-in-matlab" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Matlab Graph Generate EPS postscript figures in matlab</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="properly-save-eps-with-scatter-and-other-graphing-methods-renderer-painters" class="section level4">
 <h4><span class="header-section-number">3.3.1.1</span> Properly Save EPS with Scatter and Other Graphing Methods: Renderer = Painters</h4>

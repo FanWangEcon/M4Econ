@@ -34,5 +34,9 @@ disp(tb_test_a);
 % a and b must have the same row names
 st_varrownames = string(cl_st_varrownames);
 tb_test_a = addvars(tb_test_a, st_varrownames, 'Before', 1);
+disp(tb_test_a);
+%% Remove Row Names
+% Remove row names
 
+tb_test_a.Properties.RowNames = {};
 disp(tb_test_a);

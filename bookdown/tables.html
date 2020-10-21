@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Tables | Data Structures and Dynamic Optimization with Matlab</title>
   <meta name="description" content="Chapter 4 Tables | Data Structures and Dynamic Optimization with Matlab" />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Tables | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-07-15" />
+<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92953468-6"></script>
 <script>
@@ -131,8 +132,9 @@
 <li class="chapter" data-level="4" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>4</b> Tables</a><ul>
 <li class="chapter" data-level="4.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>4.1</b> Basic Table Generation</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>4.1.1</b> Named Tables with Random Data</a></li>
-<li class="chapter" data-level="4.1.2" data-path="tables.html"><a href="tables.html#tables-order-columns-and-sort"><i class="fa fa-check"></i><b>4.1.2</b> Tables Order Columns and Sort</a></li>
+<li class="chapter" data-level="4.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>4.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
 <li class="chapter" data-level="4.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>4.1.3</b> Row and Column Names for Table based on Arrays</a></li>
+<li class="chapter" data-level="4.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>4.1.4</b> Select Subset of Rows and Columns</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>4.2</b> Table Joining</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>4.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
@@ -196,7 +198,7 @@
 <div id="named-tables-with-random-data" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Named Tables with Random Data</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="generate-a-table-with-m-variables" class="section level4">
 <h4><span class="header-section-number">4.1.1.1</span> Generate A Table with M Variables</h4>
@@ -236,10 +238,10 @@ disp(tb_test);
 
 </div>
 </div>
-<div id="tables-order-columns-and-sort" class="section level3">
-<h3><span class="header-section-number">4.1.2</span> Tables Order Columns and Sort</h3>
+<div id="tables-order-sort-add-rename-and-drop-columns" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Tables Order, Sort, Add, Rename and Drop Columns</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="given-table-show-some-columns-first" class="section level4">
 <h4><span class="header-section-number">4.1.2.1</span> Given Table, Show Some Columns First</h4>
@@ -283,13 +285,47 @@ disp(tb_test_varmove);
     row_3    &quot;data=0.22685&quot;    &quot;data=0.68483&quot;     0.43857    0.17545    0.72446    0.22826
     row_4    &quot;data=0.55131&quot;    &quot;data=0.48093&quot;    0.059678    0.53155    0.61102    0.29371
     row_5    &quot;data=0.71947&quot;    &quot;data=0.39212&quot;     0.39804    0.53183    0.72244    0.63098</code></pre>
+</div>
+<div id="rename-table-columns" class="section level4">
+<h4><span class="header-section-number">4.1.2.2</span> Rename Table Columns</h4>
+<p>Rename the first Column, rename the ‘sd’ column, then rename the 3rd and
+4th Columns. Note for multiple column renaming, use parenthesis, but for
+single column renaming, use bracket.</p>
+<pre><code>tb_test_varmove.Properties.VariableNames{1} = &#39;RenameMean&#39;;
+tb_test_varmove.Properties.VariableNames{&#39;sd&#39;} = &#39;RenameSDCol&#39;;
+tb_test_varmove.Properties.VariableNames([3 4]) = {&#39;3rd&#39; &#39;4th&#39;};
+disp(tb_test_varmove);
+
+               RenameMean       RenameSDCol        3rd         4th       col_3      col_4 
+             ______________    ______________    ________    _______    _______    _______
+
+    row_1    &quot;data=0.69647&quot;    &quot;data=0.42311&quot;     0.34318      0.738     0.6344    0.32296
+    row_2    &quot;data=0.28614&quot;    &quot;data=0.98076&quot;     0.72905    0.18249    0.84943    0.36179
+    row_3    &quot;data=0.22685&quot;    &quot;data=0.68483&quot;     0.43857    0.17545    0.72446    0.22826
+    row_4    &quot;data=0.55131&quot;    &quot;data=0.48093&quot;    0.059678    0.53155    0.61102    0.29371
+    row_5    &quot;data=0.71947&quot;    &quot;data=0.39212&quot;     0.39804    0.53183    0.72244    0.63098</code></pre>
+</div>
+<div id="remove-table-column" class="section level4">
+<h4><span class="header-section-number">4.1.2.3</span> <code>Remove Table Column</code></h4>
+<p><code>Remove columns from the Table</code></p>
+<pre><code>tb_test_varmove_drop = removevars(tb_test_varmove, {&#39;3rd&#39;, &#39;col_3&#39;});
+disp(tb_test_varmove_drop);
+
+               RenameMean       RenameSDCol        4th       col_4 
+             ______________    ______________    _______    _______
+
+    row_1    &quot;data=0.69647&quot;    &quot;data=0.42311&quot;      0.738    0.32296
+    row_2    &quot;data=0.28614&quot;    &quot;data=0.98076&quot;    0.18249    0.36179
+    row_3    &quot;data=0.22685&quot;    &quot;data=0.68483&quot;    0.17545    0.22826
+    row_4    &quot;data=0.55131&quot;    &quot;data=0.48093&quot;    0.53155    0.29371
+    row_5    &quot;data=0.71947&quot;    &quot;data=0.39212&quot;    0.53183    0.63098</code></pre>
 
 </div>
 </div>
 <div id="row-and-column-names-for-table-based-on-arrays" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Row and Column Names for Table based on Arrays</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="generate-table-with-row-and-column-names-based-on-multiple-numeric-array" class="section level4">
 <h4><span class="header-section-number">4.1.3.1</span> Generate Table with Row and Column Names based on Multiple Numeric Array</h4>
@@ -343,7 +379,6 @@ disp(tb_test_a);
 <pre><code>% a and b must have the same row names
 st_varrownames = string(cl_st_varrownames);
 tb_test_a = addvars(tb_test_a, st_varrownames, &#39;Before&#39;, 1);
-
 disp(tb_test_a);
 
               st_varrownames    cl_st_varrownames    col123    col456
@@ -353,7 +388,82 @@ disp(tb_test_a);
     rowA=2       &quot;rowA=2&quot;          {&#39;rowA=2&#39;}          0.1      0.1  
     rowA=3       &quot;rowA=3&quot;          {&#39;rowA=3&#39;}         0.25      0.2  
     rowA=4       &quot;rowA=4&quot;          {&#39;rowA=4&#39;}          0.3      0.3  
-    rowA=5       &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4</code></pre>
+    rowA=5       &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4  </code></pre>
+</div>
+<div id="remove-row-names" class="section level4">
+<h4><span class="header-section-number">4.1.3.4</span> Remove Row Names</h4>
+<p>Remove row names</p>
+<pre><code>tb_test_a.Properties.RowNames = {};
+disp(tb_test_a);
+
+    st_varrownames    cl_st_varrownames    col123    col456
+    ______________    _________________    ______    ______
+
+       &quot;rowA=1&quot;          {&#39;rowA=1&#39;}          0.4      0.4  
+       &quot;rowA=2&quot;          {&#39;rowA=2&#39;}          0.1      0.1  
+       &quot;rowA=3&quot;          {&#39;rowA=3&#39;}         0.25      0.2  
+       &quot;rowA=4&quot;          {&#39;rowA=4&#39;}          0.3      0.3  
+       &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4</code></pre>
+
+</div>
+</div>
+<div id="select-subset-of-rows-and-columns" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> Select Subset of Rows and Columns</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="generate-a-table" class="section level4">
+<h4><span class="header-section-number">4.1.4.1</span> Generate a Table</h4>
+<pre><code>close all;
+% Generate Table 1
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
+ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
+number1 = &#39;123&#39;;
+number2 = &#39;456&#39;;
+mt_data_a = [ar_fl_abc1&#39; ar_fl_abc2&#39;];
+tb_test_a = array2table(mt_data_a);
+cl_col_names_a = {[&#39;col&#39; num2str(number1)], [&#39;col&#39; num2str(number2)]};
+cl_row_names_a = strcat(&#39;rowA=&#39;, string((1:size(mt_data_a,1))));
+tb_test_a.Properties.VariableNames = cl_col_names_a;
+tb_test_a.Properties.RowNames = cl_row_names_a;
+% a and b must have the same row names
+cl_st_varrownames = tb_test_a.Properties.RowNames;
+tb_test_a = addvars(tb_test_a, cl_st_varrownames, &#39;Before&#39;, 1);
+% a and b must have the same row names
+st_varrownames = string(cl_st_varrownames);
+tb_test_a = addvars(tb_test_a, st_varrownames, &#39;Before&#39;, 1);
+tb_test_a = addvars(tb_test_a, [&quot;a&quot;, &quot;b&quot;, &quot;cc&quot;, &quot;aa&quot;, &quot;b&quot;]&#39;, &#39;Before&#39;, 1);
+disp(tb_test_a);
+
+              Var1    st_varrownames    cl_st_varrownames    col123    col456
+              ____    ______________    _________________    ______    ______
+
+    rowA=1    &quot;a&quot;        &quot;rowA=1&quot;          {&#39;rowA=1&#39;}          0.4      0.4  
+    rowA=2    &quot;b&quot;        &quot;rowA=2&quot;          {&#39;rowA=2&#39;}          0.1      0.1  
+    rowA=3    &quot;cc&quot;       &quot;rowA=3&quot;          {&#39;rowA=3&#39;}         0.25      0.2  
+    rowA=4    &quot;aa&quot;       &quot;rowA=4&quot;          {&#39;rowA=4&#39;}          0.3      0.3  
+    rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4  </code></pre>
+</div>
+<div id="select-rows-if-colx-is-equal-to-something" class="section level4">
+<h4><span class="header-section-number">4.1.4.2</span> Select Rows if ColX is Equal to Something</h4>
+<p>Select a subset of rows based on the variable value in one column</p>
+<pre><code>% select the rows where Var1=&quot;b&quot;
+disp(tb_test_a(strcmp(tb_test_a.Var1, &quot;b&quot;),:));
+
+              Var1    st_varrownames    cl_st_varrownames    col123    col456
+              ____    ______________    _________________    ______    ______
+
+    rowA=2    &quot;b&quot;        &quot;rowA=2&quot;          {&#39;rowA=2&#39;}         0.1       0.1  
+    rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}         0.4       0.4  
+
+% select the rows where col123=0.4
+disp(tb_test_a(tb_test_a.col123==0.4,:));
+
+              Var1    st_varrownames    cl_st_varrownames    col123    col456
+              ____    ______________    _________________    ______    ______
+
+    rowA=1    &quot;a&quot;        &quot;rowA=1&quot;          {&#39;rowA=1&#39;}         0.4       0.4  
+    rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}         0.4       0.4</code></pre>
 
 </div>
 </div>
@@ -364,7 +474,7 @@ disp(tb_test_a);
 <div id="row-and-column-combine-stack-tables-and-matrices" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Row and Column Combine Stack Tables and Matrices</h3>
 <blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/CodeDynaAsset/">CodeDynaAsset</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
 <div id="generate-some-tables-and-matrixes-for-combination" class="section level4">
 <h4><span class="header-section-number">4.2.1.1</span> Generate Some Tables and Matrixes for Combination</h4>

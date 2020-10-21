@@ -67,6 +67,7 @@ rmd_files:
   - table/main/fs_tab_gensample.Rmd
   - table/main/fs_tab_ordersort.Rmd
   - table/main/fs_tab_rowcolstrs.Rmd
+  - table/main/fs_tab_select_rows_cols.Rmd
 
   - table/join/main.Rmd
   - table/join/fs_tab_stack.Rmd

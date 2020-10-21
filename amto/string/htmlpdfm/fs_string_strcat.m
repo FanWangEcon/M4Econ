@@ -13,6 +13,13 @@ st_titles = ["%.3f",   "%.1f",   "%.0f";...
 ar_params = 123.4567890 + zeros(3,3);
 st_combo = compose(st_titles, ar_params);
 disp(st_combo);
+%% 
+% A string array and a numeric array combined
+
+ls_st_param_esti = {'ar_mu_pos_1', 'ar_COEF_U_gamma'};
+ar_params = [1213,456];
+st_combo = strcat(ls_st_param_esti', '=', num2str(ar_params'));
+disp(st_combo);
 %% Title from an Array of Values
 % There is a vector of parameter values and a vector of names for these parameter 
 % values, I want to include these in the title of a figure with the same decimal 

@@ -32,6 +32,10 @@ ar_st_title_one{1} = strcat('log(', ar_st_title_one{1},')');
 ar_st_titles{1} = strcat('log(', ar_st_titles{1},')');
 disp(ar_st_title_one);
 disp(ar_st_titles);
+%% Joint String Cell Array with Suffix
+
+ar_st_titles = {'Title1','Title2','Title3'};
+disp(strcat(ar_st_titles, '_init'));
 %% Duplicate String
 
 it_duplicate_n = 10;
@@ -73,6 +77,9 @@ ls_st_param_key = {'fl_crra', 'fl_beta', ...
 st_param_key = 'fl_a_max';
 find(strcmp(ls_st_param_key, st_param_key))
 %% Find the positions of String Cells in Full String Cells
+% Find the positions of fl_w, fl_beta, and it_z_n in ls_st_param_key. Then just 
+% find the position of fl_crra. When looking for the position of something that 
+% does not exist, generate an find outcome array of length 0.
 
 ls_st_param_key = {'fl_crra', 'fl_beta', ...
                    'fl_w', 'fl_r_save', ...
@@ -82,8 +89,9 @@ cl_st_param_keys = {'fl_w', 'fl_beta', 'it_z_n'};
 
 cell2mat(cellfun(@(m) find(strcmp(ls_st_param_key, m)), ...
                  cl_st_param_keys, 'UniformOutput', false))
-
-find(strcmp(ls_st_param_key, st_param_key))
+find(strcmp(ls_st_param_key, 'fl_crra'))
+length(find(strcmp(ls_st_param_key, 'fl_crra_not_exist')))
+~sum(strcmp(ls_st_param_key, 'fl_crra_not_exist'))
 %% Cell to string Paste and Replace dash
 
 cl_st_param_keys = {'fl_crra', 'fl_beta'};

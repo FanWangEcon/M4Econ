@@ -104,7 +104,7 @@
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-10-21}
+\date{2020-10-23}
 
 \begin{document}
 \maketitle
@@ -3407,6 +3407,858 @@ if (bl_time); toc; end
 end
 \end{verbatim}
 
+\hypertarget{panel}{%
+\chapter{Panel}\label{panel}}
+
+\hypertarget{time-series}{%
+\section{Time Series}\label{time-series}}
+
+\hypertarget{simulate-ar1-autoregressive-processes}{%
+\subsection{Simulate AR(1) Autoregressive Processes}\label{simulate-ar1-autoregressive-processes}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{mean-and-standard-deviation-for-ar1-autoregressive-process}{%
+\subsubsection{Mean and Standard Deviation for AR(1) Autoregressive Process}\label{mean-and-standard-deviation-for-ar1-autoregressive-process}}
+
+A first-order autoregressive process can be written as:
+
+\begin{itemize}
+\item
+  AR1:
+  \(X_t =\textrm{constant}+\textrm{persistence}\cdot x_{t-1} +\epsilon\)
+\item
+  AR1: \(X_t =C+\rho \cdot x_{t-1} +\epsilon\)
+\end{itemize}
+
+Assume that \(\epsilon\) is mean zero
+
+Note that, we know the mean of \(X\):
+
+\begin{itemize}
+\item
+  \(\displaystyle \mu_X =C+\rho \cdot \mu_X +0\)
+\item
+  \(\displaystyle \mu_x =\frac{C}{1-\rho }\)
+\end{itemize}
+
+Note that, we also know the standard deviation of \(X\):
+
+\begin{itemize}
+\item
+  \(\displaystyle \textrm{var}\left(X\right)=\rho^2 \cdot \textrm{var}\left(X\right)+\textrm{var}\left(\epsilon \right)\)
+\item
+  \(\displaystyle \sigma_x =\sqrt{\frac{\sigma_{\epsilon }^2 }{1-\rho^2 }}\)
+\end{itemize}
+
+We will let the initial point of the time series follow the stationary
+distribution of the AR(1) process, then we simulate the time series over
+100 periods, in the example below, we use a highly persistent shock
+process with \(\rho =0.98\), \(\sigma_{\epsilon } =0.02\), \(C=0.02\). Note
+that for this process:
+
+\begin{itemize}
+\item
+  \(\displaystyle \mu_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\frac{0.02}{1-0.98}=1\)
+\item
+  \(\displaystyle \sigma_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\sqrt{\frac{0.02^2 }{1-0.98^2 }}\approx 0.10\)
+\end{itemize}
+
+\hypertarget{simulated-one-first-order-autoregressive-time-series}{%
+\subsubsection{Simulated one First-Order Autoregressive Time-Series}\label{simulated-one-first-order-autoregressive-time-series}}
+
+In the Example below, we simulate an individual for 1000 periods, given
+\(\rho =0.98\), \(\sigma_{\epsilon } =0.02\), \(C=0.02\). Given that the
+process is highly persistent, the individual stays rich or poor for
+dozens of periods at a time. If each period is a year, look at the
+results below, and suppose the simulated time series is income, what is
+the process saying about this person's income rise and fall. Note that
+we have the same person through all 1000 periods, but if you only look
+at 50 periods (years), you might this this person during one span is
+really successful, anothe segment of 50 years, doing really bad, but
+actually there is nothing changing in the person's type, all that is
+changing is the person's luck.
+
+First Set Parameters:
+
+\begin{verbatim}
+% Number of Time Periods
+it_T = 1000;
+% Mean and SD of the Shock Process
+fl_constant = 0.02;
+fl_normal_sd = 0.02;
+% Persistence
+fl_persistence = 0.98;
+% Bounds on Shocks
+fl_shk_bnds = 3;
+% Initialize with exo fed point or not, if false initialize at Random Point
+% from the stationary distribution
+bl_init = true;
+fl_init = fl_constant/(1 - fl_persistence);
+\end{verbatim}
+
+Second, generate a vector of normal shocks:
+
+\begin{verbatim}
+% Generate a normal shock vector (the first draw will be ignored)
+it_draws = it_T;
+rng(789);
+ar_fl_shocks = normrnd(0, fl_normal_sd, 1, it_draws);
+disp(ar_fl_shocks(1:20));
+
+  Columns 1 through 13
+
+   -0.0060   -0.0047    0.0168    0.0118    0.0380    0.0062   -0.0616   -0.0485   -0.0192    0.0023   -0.0197    0.0040    0.0156
+
+  Columns 14 through 20
+
+   -0.0089    0.0160    0.0099   -0.0200   -0.0206   -0.0090   -0.0069
+\end{verbatim}
+
+Third, replace any values exceeding bounds:
+
+\begin{verbatim}
+% out of bounds indicators
+fl_shk_bds_lower = 0 - fl_normal_sd*fl_shk_bnds;
+fl_shk_bds_upper = 0 + fl_normal_sd*fl_shk_bnds;
+ar_bl_outofbounds = (ar_fl_shocks <= fl_shk_bds_lower | ar_fl_shocks >= fl_shk_bds_upper);
+% count out of bounds
+disp(strcat('lower:', num2str(fl_shk_bds_lower), ', upper:', num2str(fl_shk_bds_upper)));
+
+lower:-0.06, upper:0.06
+
+disp(sum(ar_bl_outofbounds));
+
+     4
+
+ar_fl_shocks(ar_fl_shocks <= fl_shk_bds_lower) = fl_shk_bds_lower;
+ar_fl_shocks(ar_fl_shocks >= fl_shk_bds_upper) = fl_shk_bds_upper;
+\end{verbatim}
+
+Fourth, generate the AR(1) time series:
+
+\begin{verbatim}
+% Initialize Output Array
+ar_fl_time_series = zeros(size(ar_fl_shocks));
+% Loop over time
+for it_t=1:1:length(ar_fl_shocks)
+    if (it_t == 1)
+        % initialize using the ean of the process
+        ar_fl_time_series(1) = fl_constant/(1 - fl_persistence);
+        if (bl_init)
+            ar_fl_time_series(1) = fl_init;            
+        end
+    else
+        fl_ts_t = fl_constant + ar_fl_time_series(it_t-1)*fl_persistence + ar_fl_shocks(it_t);
+        ar_fl_time_series(it_t) = fl_ts_t;
+    end
+end
+\end{verbatim}
+
+Fifth, show the mean and sd of the process (these are very close to the
+analytical results):
+
+\begin{verbatim}
+disp(mean(ar_fl_time_series));
+
+    1.0104
+
+disp(std(ar_fl_time_series));
+
+    0.1000
+\end{verbatim}
+
+Sixth, plot the results:
+
+\begin{verbatim}
+figure();
+% x-axis
+ar_it_time = 1:1:length(ar_fl_shocks);
+% plot
+plot(ar_it_time, ar_fl_time_series);
+% Generate Title
+ar_fl_params_values = [fl_constant, fl_normal_sd, fl_persistence, fl_shk_bnds];
+ar_st_parms_names = ["C", "sd", "persistence", "sd-bounds"];
+st_rounding = '.2f';
+st_title_main = "AR(1) ";
+ar_st_params = strcat(ar_st_parms_names, compose(strcat("=%", st_rounding), ar_fl_params_values));
+st_param_pasted = strjoin(ar_st_params, ', ');
+st_title_wth_params = strcat(st_title_main, ' (', st_param_pasted, ')');
+title({st_title_wth_params, 'Simulate One Individual for 1000 Periods'});
+% X and Y labels
+ylabel({'Time Series Values'});
+xlabel('Time Periods');
+grid on;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_autoregressive_images/figure_0.png}
+
+\hypertarget{simulation}{%
+\chapter{Simulation}\label{simulation}}
+
+\hypertarget{normal-distribution}{%
+\section{Normal Distribution}\label{normal-distribution}}
+
+\hypertarget{compute-cdf-for-normal-and-bivariate-normal-distributions}{%
+\subsection{Compute CDF for Normal and Bivariate Normal Distributions}\label{compute-cdf-for-normal-and-bivariate-normal-distributions}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+CDF for normal random variable through simulation and with NORMCDF
+function. CDF for bivariate normal random variables through simulation
+and with NORMCDF function.
+
+\begin{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html}{fs\_cholesky\_decomposition}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html}{fs\_cholesky\_decomposition\_d5}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html}{fs\_bivariate\_normal}
+\end{itemize}
+
+\hypertarget{simulate-normal-distribution-probability-with-uniform-draws}{%
+\subsubsection{Simulate Normal Distribution Probability with Uniform Draws}\label{simulate-normal-distribution-probability-with-uniform-draws}}
+
+Mean score is 0, standard deviation is 1, we want to know what is the
+chance that children score less than -2, -1, 0, 1, and 2 respectively.
+We have a solution to the normal CDF cumulative distribution problem, it
+is:
+
+\begin{verbatim}
+mu = 0;
+sigma = 1;
+ar_x = [-2,-1,0,1,2];
+for x=ar_x
+    cdf_x = normcdf(x, mu, sigma);
+    disp([strjoin(...
+        ["CDF with normcdf", ...
+        ['x=' num2str(x)] ...
+        ['cdf_x=' num2str(cdf_x)] ...
+        ], ";")]);
+end
+
+CDF with normcdf;x=-2;cdf_x=0.02275
+CDF with normcdf;x=-1;cdf_x=0.15866
+CDF with normcdf;x=0;cdf_x=0.5
+CDF with normcdf;x=1;cdf_x=0.84134
+CDF with normcdf;x=2;cdf_x=0.97725
+\end{verbatim}
+
+We can also approximate the probabilities above, by drawing many points
+from a unifom:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Draw from uniform distribution 0 to 1, N times.
+\item
+  Invert these using invnorm. This means our uniform draws are now
+  effectively drawn from the normal distribution.
+\item
+  Check if each draw inverted is below the x threshold or above, count
+  fractions.
+\end{enumerate}
+
+We should get very similar results as in the example above (especially
+if N is large)
+
+\begin{verbatim}
+% set seed
+rng(123);
+% generate random numbers
+N = 10000;
+ar_unif_draws = rand(1,N);
+% invert
+ar_normal_draws = norminv(ar_unif_draws);
+% loop over different x values
+for x=ar_x
+    % index if draws below x
+    ar_it_idx_below_x = (ar_normal_draws < x);
+    fl_frac_below_x = (sum(ar_it_idx_below_x))/N;
+    disp([strjoin(...
+        ["CDF with normcdf", ...
+        ['x=' num2str(x)] ...
+        ['fl_frac_below_x=' num2str(fl_frac_below_x)] ...
+        ], ";")]);
+end
+
+CDF with normcdf;x=-2;fl_frac_below_x=0.023
+CDF with normcdf;x=-1;fl_frac_below_x=0.1612
+CDF with normcdf;x=0;fl_frac_below_x=0.4965
+CDF with normcdf;x=1;fl_frac_below_x=0.847
+CDF with normcdf;x=2;fl_frac_below_x=0.9789
+\end{verbatim}
+
+\hypertarget{simulate-bivariate-normal-distribution-probability-with-uniform-draws}{%
+\subsubsection{Simulate Bivariate-Normal Distribution Probability with Uniform Draws}\label{simulate-bivariate-normal-distribution-probability-with-uniform-draws}}
+
+There are two tests now, a math test and an English test. Student test
+scores are correlated with correlation 0.5 from the two tests, mean and
+standard deviations are 0 and 1 for both tests. What is the chance that
+a student scores below -2 and -2 for both, below -2 and 0 for math and
+English, below 2 and 1 for math and English, etc?
+
+\begin{verbatim}
+% timer
+tm_start_mvncdf = tic;
+% mean, and varcov
+ar_mu = [0,0];
+mt_varcov = [1,0.5;0.5,1];
+ar_x = linspace(-3,3,101);
+% initialize storage
+mt_prob_math_eng = zeros([length(ar_x), length(ar_x)]);
+% loop over math and english score thresholds
+it_math = 0;
+for math=ar_x
+    it_math = it_math + 1;
+    it_eng = 0;
+    for eng=ar_x
+        it_eng = it_eng + 1;
+        % points below which to compute probability 
+        ar_scores = [math, eng];
+        % volumn of a mountain to the southwest of north-south and east-west cuts
+        cdf_x = mvncdf(ar_scores, ar_mu, mt_varcov);
+        mt_prob_math_eng(it_math, it_eng) = cdf_x;
+    end
+end
+% end timer
+tm_end_mvncdf = toc(tm_start_mvncdf);
+st_complete = strjoin(...
+    ["MVNCDF Completed CDF computes", ...
+     ['number of points=' num2str(numel(mt_prob_math_eng))] ...
+     ['time=' num2str(tm_end_mvncdf)] ...
+    ], ";");
+disp(st_complete);
+
+MVNCDF Completed CDF computes;number of points=10201;time=1.1957
+
+% show results
+tb_prob_math_eng = array2table(round(mt_prob_math_eng, 4));
+cl_col_names_a = strcat('english <=', string(ar_x'));
+cl_row_names_a = strcat('math <=', string(ar_x'));
+tb_prob_math_eng.Properties.VariableNames = cl_col_names_a;
+tb_prob_math_eng.Properties.RowNames = cl_row_names_a;
+% subsetting function
+% https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_slicing.html#19_Given_Array_of_size_M,_Select_N_somewhat_equi-distance_elements
+f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1))*(it_ar_n-1)+1));
+disp(tb_prob_math_eng(f_subset(7, length(ar_x)), f_subset(7, length(ar_x))));
+
+                    english <=-3    english <=-1.98    english <=-1.02    english <=0    english <=1.02    english <=1.98    english <=3
+                    ____________    _______________    _______________    ___________    ______________    ______________    ___________
+
+    math <=-3          0.0001           0.0005              0.001           0.0013           0.0013            0.0013          0.0013   
+    math <=-1.98       0.0005           0.0043             0.0136           0.0217           0.0237            0.0238          0.0239   
+    math <=-1.02        0.001           0.0136             0.0598           0.1239           0.1505            0.1537          0.1539   
+    math <=0           0.0013           0.0217             0.1239           0.3333           0.4701            0.4978             0.5   
+    math <=1.02        0.0013           0.0237             0.1505           0.4701           0.7521            0.8359          0.8458   
+    math <=1.98        0.0013           0.0238             0.1537           0.4978           0.8359            0.9566          0.9753   
+    math <=3           0.0013           0.0239             0.1539              0.5           0.8458            0.9753          0.9974   
+\end{verbatim}
+
+We can also approximate the probabilities above, by drawing many points
+from two iid uniforms, and translating them to correlated normal using
+cholesky decomposition:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Draw from two random uniform distribution 0 to 1, N times each
+\item
+  Invert these using invnorm for both iid vectors from unifom draws to
+  normal draws
+\item
+  Choleskey decompose and multiplication
+\end{enumerate}
+
+This method below is faster than the method above when the number of
+points where we have to evaluat probabilities is large.
+
+Generate randomly drawn scores:
+
+\begin{verbatim}
+% timer
+tm_start_chol = tic;
+% Draws uniform and invert to standard normal draws
+N = 10000;
+rng(123);
+ar_unif_draws = rand(1,N*2);
+ar_normal_draws = norminv(ar_unif_draws);
+ar_draws_eta_1 = ar_normal_draws(1:N);
+ar_draws_eta_2 = ar_normal_draws((N+1):N*2);
+
+% Choesley decompose the variance covariance matrix
+mt_varcov_chol = chol(mt_varcov, 'lower');
+
+% Generate correlated random normals
+mt_scores_chol = ar_mu' + mt_varcov_chol*([ar_draws_eta_1; ar_draws_eta_2]);
+ar_math_scores = mt_scores_chol(1,:)';
+ar_eng_scores = mt_scores_chol(2,:)';
+\end{verbatim}
+
+Approximate probabilities from randomly drawn scores:
+
+\begin{verbatim}
+% initialize storage
+mt_prob_math_eng_approx = zeros([length(ar_x), length(ar_x)]);
+% loop over math and english score thresholds
+it_math = 0;
+for math=ar_x
+    it_math = it_math + 1;
+    it_eng = 0;
+    for eng=ar_x
+        it_eng = it_eng + 1;
+        
+        % points below which to compute probability 
+        % index if draws below x
+        ar_it_idx_below_x_math = (ar_math_scores < math);
+        ar_it_idx_below_x_eng = (ar_eng_scores < eng);
+        ar_it_idx_below_x_joint = ar_it_idx_below_x_math.*ar_it_idx_below_x_eng;
+        fl_frac_below_x_approx = (sum(ar_it_idx_below_x_joint))/N;
+        
+        % volumn of a mountain to the southwest of north-south and east-west cuts
+        mt_prob_math_eng_approx(it_math, it_eng) = fl_frac_below_x_approx;
+    end
+end
+% end timer
+tm_end_chol = toc(tm_start_chol);
+st_complete = strjoin(...
+    ["UNIF+CHOL Completed CDF computes", ...
+     ['number of points=' num2str(numel(mt_prob_math_eng_approx))] ...
+     ['time=' num2str(tm_end_chol)] ...
+    ], ";");
+disp(st_complete);
+
+UNIF+CHOL Completed CDF computes;number of points=10201;time=0.28661
+
+% show results
+tb_prob_math_eng_approx = array2table(round(mt_prob_math_eng_approx, 4));
+cl_col_names_a = strcat('english <=', string(ar_x'));
+cl_row_names_a = strcat('math <=', string(ar_x'));
+tb_prob_math_eng_approx.Properties.VariableNames = cl_col_names_a;
+tb_prob_math_eng_approx.Properties.RowNames = cl_row_names_a;
+disp(tb_prob_math_eng_approx(f_subset(7, length(ar_x)), f_subset(7, length(ar_x))));
+
+                    english <=-3    english <=-1.98    english <=-1.02    english <=0    english <=1.02    english <=1.98    english <=3
+                    ____________    _______________    _______________    ___________    ______________    ______________    ___________
+
+    math <=-3          0.0001           0.0005              0.001           0.0016           0.0016            0.0016          0.0016   
+    math <=-1.98       0.0003            0.004             0.0132           0.0218           0.0237            0.0239          0.0239   
+    math <=-1.02       0.0008           0.0131              0.061           0.1272           0.1529             0.157          0.1571   
+    math <=0           0.0009           0.0202             0.1236            0.334           0.4661            0.4946          0.4965   
+    math <=1.02        0.0009           0.0215             0.1493           0.4724            0.754            0.8411          0.8511   
+    math <=1.98        0.0009           0.0217             0.1526           0.4989           0.8344            0.9591           0.977   
+    math <=3           0.0009           0.0217             0.1526           0.5007           0.8425            0.9768          0.9976
+\end{verbatim}
+
+\hypertarget{cholesky-decomposition-correlated-bivariate-normal-from-iid-random-draws}{%
+\subsection{Cholesky Decomposition Correlated Bivariate Normal from IID Random Draws}\label{cholesky-decomposition-correlated-bivariate-normal-from-iid-random-draws}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+Draw two correlated normal shocks using the MVNRND function. Draw two
+correlated normal shocks from uniform random variables using Cholesky
+Decomposition.
+
+\begin{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html}{fs\_cholesky\_decomposition}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html}{fs\_cholesky\_decomposition\_d5}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html}{fs\_bivariate\_normal}
+\end{itemize}
+
+\hypertarget{positively-correlated-scores-mvnrnd}{%
+\subsubsection{Positively Correlated Scores MVNRND}\label{positively-correlated-scores-mvnrnd}}
+
+We have English and Math scores, and we draw from a bivariate normal
+distribution, assuming the two scores are positively correlatd. These
+are \(x_1\) and \(x_2\).
+
+\begin{verbatim}
+% mean, and varcov
+ar_mu = [70,80];
+mt_varcov = [8,5;5,5];
+% Generate Scores
+rng(123);
+N = 10000;
+mt_scores = mvnrnd(ar_mu, mt_varcov, N);
+% graph
+figure();
+scatter(mt_scores(:,1), mt_scores(:,2));
+ylabel('English Scores');
+xlabel('Math Scores')
+grid on;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_cholesky_decomposition_images/figure_0.png}
+
+What are the covariance and correlation statistics?
+
+\begin{verbatim}
+disp([num2str(cov(mt_scores(:,1), mt_scores(:,2)))]);
+
+8.0557      5.0738
+5.0738      5.0638
+
+disp([num2str(corrcoef(mt_scores(:,1), mt_scores(:,2)))]);
+
+      1     0.79441
+0.79441           1
+\end{verbatim}
+
+\hypertarget{bivariate-normal-from-uncorrelated-draws-via-cholesky-decomposition}{%
+\subsubsection{Bivariate Normal from Uncorrelated Draws via Cholesky Decomposition}\label{bivariate-normal-from-uncorrelated-draws-via-cholesky-decomposition}}
+
+We can get the same results as above, without having to explicitly draw
+from a multivariate distribution by (For more details see \href{https://eml.berkeley.edu/~train/distant.html}{Train
+(2009)}):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Draw 2 uniform random iid vectors.
+\item
+  Convert to normal iid vectors.
+\item
+  Generate the test scores as a function of the two random variables,
+  using Cholesky matrix.
+\end{enumerate}
+
+, draw two uncorrelated normal random variables, with mean 0, sd 1,
+\(\eta_1\) and \(\eta_2\).
+
+\begin{verbatim}
+% Draw Two Uncorrelated Normal Random Variables
+% use the same N as above
+rng(123);
+% uniform draws, uncorrelated
+ar_unif_draws = rand(1,N*2);
+% normal draws, english and math are uncorreated
+% ar_draws_eta_1 and ar_draws_eta_2 are uncorrelated by construction
+ar_normal_draws = norminv(ar_unif_draws);
+ar_draws_eta_1 = ar_normal_draws(1:N);
+ar_draws_eta_2 = ar_normal_draws((N+1):N*2);
+% graph
+figure();
+scatter(ar_draws_eta_1, ar_draws_eta_2);
+ylabel('iid eta 1 draws');
+xlabel('iid eta 2 draws')
+grid on;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_cholesky_decomposition_images/figure_1.png}
+
+\begin{verbatim}
+% Show Mean 1, cov = 0
+disp([num2str(cov(ar_draws_eta_1, ar_draws_eta_2))]);
+
+  0.99075   0.0056929
+0.0056929     0.98517
+
+disp([num2str(corrcoef(ar_draws_eta_1, ar_draws_eta_2))]);
+
+        1   0.0057623
+0.0057623           1
+\end{verbatim}
+
+, now using the variance-covariance we already have, decompose it, we
+will have:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\displaystyle \begin{array}{l} c_{aa} \,,\,\,0\\ c_{ab} \,,\,\,c_{bb} \end{array}\)
+\end{itemize}
+
+\begin{verbatim}
+% Choesley decompose the variance covariance matrix
+mt_varcov_chol = chol(mt_varcov, 'lower');
+disp([num2str(mt_varcov_chol)]);
+
+2.8284           0
+1.7678      1.3693
+
+% The cholesky decomposed matrix factorizes the original varcov matrix
+disp([num2str(mt_varcov_chol*mt_varcov_chol')]);
+
+8           5
+5           5
+\end{verbatim}
+
+, We can get back to the original \(x_1\) and \(x_2\) variables:
+
+\begin{itemize}
+\item
+  \(\displaystyle x_1 =\mu_1 +c_{aa} *\eta_1\)
+\item
+  \(\displaystyle x_2 =\mu_2 +c_{ab} *\eta_1 +c_{bb} *\eta_2\)
+\end{itemize}
+
+\begin{verbatim}
+% multiple the cholesky matrix by the eta draws
+mt_scores_chol = ar_mu' + mt_varcov_chol*([ar_draws_eta_1; ar_draws_eta_2]);
+mt_scores_chol = mt_scores_chol';
+% graph
+figure();
+scatter(mt_scores_chol(:,1), mt_scores_chol(:,2));
+ylabel('English Scores Chol from iid Draws = m1 + c\_aa*eta\_1');
+xlabel('Math Scores Chol from iid Draws = m2 + c\_ab*eta\_1 + c\_bb*eta\_2')
+grid on;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_cholesky_decomposition_images/figure_2.png}
+
+\begin{verbatim}
+disp([num2str(cov(mt_scores_chol(:,1), mt_scores_chol(:,2)))]);
+
+ 7.926      4.9758
+4.9758      4.9708
+
+disp([num2str(corrcoef(mt_scores_chol(:,1), mt_scores_chol(:,2)))]);
+
+      1     0.79272
+0.79272           1
+\end{verbatim}
+
+\hypertarget{cholesky-decomposition-correlated-five-dimensional-multivariate-normal-shock}{%
+\subsection{Cholesky Decomposition Correlated Five Dimensional Multivariate Normal Shock}\label{cholesky-decomposition-correlated-five-dimensional-multivariate-normal-shock}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+Generate variance-covariance matrix from correlation and standard
+deviation. Draw five correlated normal shocks using the MVNRND function.
+Draw five correlated normal shocks from uniform random variables using
+Cholesky Decomposition.
+
+\begin{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html}{fs\_cholesky\_decomposition}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html}{fs\_cholesky\_decomposition\_d5}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html}{fs\_bivariate\_normal}
+\end{itemize}
+
+\hypertarget{correlation-and-standard-deviations-to-variance-covariance-matrix}{%
+\subsubsection{Correlation and Standard Deviations to Variance Covariance Matrix}\label{correlation-and-standard-deviations-to-variance-covariance-matrix}}
+
+Given correlations and standard deviations, what is the variance and
+covariance matrix? Assume mean 0. The first three variables are
+correlated, the final two are iid.
+
+First the ingredients:
+
+\begin{verbatim}
+% mean array
+ar_mu = [0,0,0,0,0];
+% standard deviations
+ar_sd = [0.3301, 0.3329, 0.3308, 2312, 13394];
+% correlations 
+mt_cor = ...
+    [1,0.1226,0.0182,0,0;...
+     0.1226,1,0.4727,0,0;...
+     0.0182,0.4727,1,0,0;...
+     0,0,0,1,0;...
+     0,0,0,0,1];
+% show
+disp(mt_cor);
+
+    1.0000    0.1226    0.0182         0         0
+    0.1226    1.0000    0.4727         0         0
+    0.0182    0.4727    1.0000         0         0
+         0         0         0    1.0000         0
+         0         0         0         0    1.0000
+\end{verbatim}
+
+Second, we know that variance is the square of standard deviation. And
+we know the formula for covariance, which is variance divided by two
+standard deviations. So for the example here, we have:
+
+\begin{verbatim}
+% initialize
+mt_varcov = zeros([5,5]);
+% variance
+mt_varcov(eye(5)==1) = ar_sd.^2;
+% covariance
+mt_varcov(1,2) = mt_cor(1,2)*ar_sd(1)*ar_sd(2);
+mt_varcov(2,1) = mt_varcov(1,2);
+mt_varcov(1,3) = mt_cor(1,3)*ar_sd(1)*ar_sd(3);
+mt_varcov(3,1) = mt_varcov(1,3);
+mt_varcov(2,3) = mt_cor(2,3)*ar_sd(2)*ar_sd(3);
+mt_varcov(3,2) = mt_varcov(2,3);
+% show
+disp(mt_varcov(1:3,1:3));
+
+    0.1090    0.0135    0.0020
+    0.0135    0.1108    0.0521
+    0.0020    0.0521    0.1094
+
+disp(mt_varcov(4:5,4:5));
+
+     5345344           0
+           0   179399236
+\end{verbatim}
+
+\hypertarget{draw-five-correlated-shocks-using-mvnrnd}{%
+\subsubsection{Draw Five Correlated Shocks Using MVNRND}\label{draw-five-correlated-shocks-using-mvnrnd}}
+
+Generate N5 correlated shock structure
+
+\begin{verbatim}
+% Generate Scores
+rng(123);
+N = 50000;
+mt_kw97_eps = mvnrnd(ar_mu, mt_varcov, N);
+% graph
+figure();
+% subfigure 1
+subplot(2,2,1);
+scatter(mt_kw97_eps(:,1), mt_kw97_eps(:,2));
+ylabel('White Collar Wage Shock');
+xlabel('Blue Collar Wage Shock')
+grid on;
+% subfigure 2
+subplot(2,2,2);
+scatter(mt_kw97_eps(:,1), mt_kw97_eps(:,3));
+ylabel('White Collar Wage Shock');
+xlabel('Military Wage Shock')
+grid on;
+% subfigure 3
+subplot(2,2,3);
+scatter(mt_kw97_eps(:,3), mt_kw97_eps(:,2));
+ylabel('Military Wage Shock');
+xlabel('Blue Collar Wage Shock')
+grid on;
+% subfigure 4
+subplot(2,2,4);
+scatter(mt_kw97_eps(:,1), mt_kw97_eps(:,4));
+ylabel('White Collar Wage Shock');
+xlabel('School Shock')
+grid on;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_cholesky_decomposition_d5_images/figure_0.png}
+
+What are the covariance and correlation statistics?
+
+\begin{verbatim}
+disp([num2str(round(corrcoef(mt_kw97_eps),3))]);
+
+     1       0.119       0.016       0.002      -0.003
+ 0.119           1       0.468      -0.003       0.004
+ 0.016       0.468           1      -0.003       0.001
+ 0.002      -0.003      -0.003           1      -0.005
+-0.003       0.004       0.001      -0.005           1
+
+disp([num2str(round(corrcoef(mt_kw97_eps),2))]);
+
+   1        0.12        0.02           0           0
+0.12           1        0.47           0           0
+0.02        0.47           1           0           0
+   0           0           0           1       -0.01
+   0           0           0       -0.01           1
+\end{verbatim}
+
+\hypertarget{draw-five-correlated-shocks-using-cholesky-decomposition}{%
+\subsubsection{Draw Five Correlated Shocks Using Cholesky Decomposition}\label{draw-five-correlated-shocks-using-cholesky-decomposition}}
+
+Following what we did for bivariate normal distribution, we can now do
+the same for five different shocks at the same time (For more details
+see \href{https://eml.berkeley.edu/~train/distant.html}{Train (2009)}):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Draw 5 normal random variables that are uncorrelated
+\item
+  Generate 5 correlated shocks
+\end{enumerate}
+
+Draw the shocks
+
+\begin{verbatim}
+% Draws uniform and invert to standard normal draws
+rng(123);
+ar_unif_draws = rand(1,N*5);
+ar_normal_draws = norminv(ar_unif_draws);
+ar_draws_eta_1 = ar_normal_draws((N*0+1):N*1);
+ar_draws_eta_2 = ar_normal_draws((N*1+1):N*2);
+ar_draws_eta_3 = ar_normal_draws((N*2+1):N*3);
+ar_draws_eta_4 = ar_normal_draws((N*3+1):N*4);
+ar_draws_eta_5 = ar_normal_draws((N*4+1):N*5);
+
+% Choesley decompose the variance covariance matrix
+mt_varcov_chol = chol(mt_varcov, 'lower');
+
+% Generate correlated random normals
+mt_kp97_eps_chol = ar_mu' + mt_varcov_chol*([...
+    ar_draws_eta_1; ar_draws_eta_2; ar_draws_eta_3; ar_draws_eta_4; ar_draws_eta_5]);
+mt_kp97_eps_chol = mt_kp97_eps_chol';
+\end{verbatim}
+
+Graph:
+
+\begin{verbatim}
+% graph
+figure();
+% subfigure 1
+subplot(2,2,1);
+scatter(mt_kp97_eps_chol(:,1), mt_kp97_eps_chol(:,2));
+ylabel('CHOL White Collar Wage Shock');
+xlabel('CHOL Blue Collar Wage Shock')
+grid on;
+% subfigure 2
+subplot(2,2,2);
+scatter(mt_kp97_eps_chol(:,1), mt_kp97_eps_chol(:,3));
+ylabel('CHOL White Collar Wage Shock');
+xlabel('CHOL Military Wage Shock')
+grid on;
+% subfigure 3
+subplot(2,2,3);
+scatter(mt_kp97_eps_chol(:,3), mt_kp97_eps_chol(:,2));
+ylabel('CHOL Military Wage Shock');
+xlabel('CHOL Blue Collar Wage Shock')
+grid on;
+% subfigure 4
+subplot(2,2,4);
+scatter(mt_kp97_eps_chol(:,1), mt_kp97_eps_chol(:,4));
+ylabel('CHOL White Collar Wage Shock');
+xlabel('CHOL School Shock')
+grid on;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_cholesky_decomposition_d5_images/figure_1.png}
+
+What are the covariance and correlation statistics?
+
+\begin{verbatim}
+disp([num2str(round(corrcoef(mt_kp97_eps_chol),3))]);
+
+     1       0.119       0.021       0.008      -0.003
+ 0.119           1       0.479       0.008      -0.003
+ 0.021       0.479           1       0.002           0
+ 0.008       0.008       0.002           1      -0.004
+-0.003      -0.003           0      -0.004           1
+
+disp([num2str(round(corrcoef(mt_kp97_eps_chol),2))]);
+
+   1        0.12        0.02        0.01           0
+0.12           1        0.48        0.01           0
+0.02        0.48           1           0           0
+0.01        0.01           0           1           0
+   0           0           0           0           1
+\end{verbatim}
+
 \hypertarget{graphs}{%
 \chapter{Graphs}\label{graphs}}
 
@@ -4652,194 +5504,6 @@ disp(tb_model_allsimu_w_info);
     row=15      3.6       1.96      "outvar_3"      2.8445    4.4117     2.6576
 \end{verbatim}
 
-\hypertarget{panel}{%
-\chapter{Panel}\label{panel}}
-
-\hypertarget{time-series}{%
-\section{Time Series}\label{time-series}}
-
-\hypertarget{simulate-ar1-autoregressive-processes}{%
-\subsection{Simulate AR(1) Autoregressive Processes}\label{simulate-ar1-autoregressive-processes}}
-
-\begin{quote}
-Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
-\end{quote}
-
-\hypertarget{mean-and-standard-deviation-for-ar1-autoregressive-process}{%
-\subsubsection{Mean and Standard Deviation for AR(1) Autoregressive Process}\label{mean-and-standard-deviation-for-ar1-autoregressive-process}}
-
-A first-order autoregressive process can be written as:
-
-\begin{itemize}
-\item
-  AR1:
-  \(X_t =\textrm{constant}+\textrm{persistence}\cdot x_{t-1} +\epsilon\)
-\item
-  AR1: \(X_t =C+\rho \cdot x_{t-1} +\epsilon\)
-\end{itemize}
-
-Assume that \(\epsilon\) is mean zero
-
-Note that, we know the mean of \(X\):
-
-\begin{itemize}
-\item
-  \(\displaystyle \mu_X =C+\rho \cdot \mu_X +0\)
-\item
-  \(\displaystyle \mu_x =\frac{C}{1-\rho }\)
-\end{itemize}
-
-Note that, we also know the standard deviation of \(X\):
-
-\begin{itemize}
-\item
-  \(\displaystyle \textrm{var}\left(X\right)=\rho^2 \cdot \textrm{var}\left(X\right)+\textrm{var}\left(\epsilon \right)\)
-\item
-  \(\displaystyle \sigma_x =\sqrt{\frac{\sigma_{\epsilon }^2 }{1-\rho^2 }}\)
-\end{itemize}
-
-We will let the initial point of the time series follow the stationary
-distribution of the AR(1) process, then we simulate the time series over
-100 periods, in the example below, we use a highly persistent shock
-process with \(\rho =0.98\), \(\sigma_{\epsilon } =0.02\), \(C=0.02\). Note
-that for this process:
-
-\begin{itemize}
-\item
-  \(\displaystyle \mu_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\frac{0.02}{1-0.98}=1\)
-\item
-  \(\displaystyle \sigma_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\sqrt{\frac{0.02^2 }{1-0.98^2 }}\approx 0.10\)
-\end{itemize}
-
-\hypertarget{simulated-one-first-order-autoregressive-time-series}{%
-\subsubsection{Simulated one First-Order Autoregressive Time-Series}\label{simulated-one-first-order-autoregressive-time-series}}
-
-In the Example below, we simulate an individual for 1000 periods, given
-\(\rho =0.98\), \(\sigma_{\epsilon } =0.02\), \(C=0.02\). Given that the
-process is highly persistent, the individual stays rich or poor for
-dozens of periods at a time. If each period is a year, look at the
-results below, and suppose the simulated time series is income, what is
-the process saying about this person's income rise and fall. Note that
-we have the same person through all 1000 periods, but if you only look
-at 50 periods (years), you might this this person during one span is
-really successful, anothe segment of 50 years, doing really bad, but
-actually there is nothing changing in the person's type, all that is
-changing is the person's luck.
-
-First Set Parameters:
-
-\begin{verbatim}
-% Number of Time Periods
-it_T = 1000;
-% Mean and SD of the Shock Process
-fl_constant = 0.02;
-fl_normal_sd = 0.02;
-% Persistence
-fl_persistence = 0.98;
-% Bounds on Shocks
-fl_shk_bnds = 3;
-% Initialize with exo fed point or not, if false initialize at Random Point
-% from the stationary distribution
-bl_init = true;
-fl_init = fl_constant/(1 - fl_persistence);
-\end{verbatim}
-
-Second, generate a vector of normal shocks:
-
-\begin{verbatim}
-% Generate a normal shock vector (the first draw will be ignored)
-it_draws = it_T;
-rng(789);
-ar_fl_shocks = normrnd(0, fl_normal_sd, 1, it_draws);
-disp(ar_fl_shocks(1:20));
-
-  Columns 1 through 13
-
-   -0.0060   -0.0047    0.0168    0.0118    0.0380    0.0062   -0.0616   -0.0485   -0.0192    0.0023   -0.0197    0.0040    0.0156
-
-  Columns 14 through 20
-
-   -0.0089    0.0160    0.0099   -0.0200   -0.0206   -0.0090   -0.0069
-\end{verbatim}
-
-Third, replace any values exceeding bounds:
-
-\begin{verbatim}
-% out of bounds indicators
-fl_shk_bds_lower = 0 - fl_normal_sd*fl_shk_bnds;
-fl_shk_bds_upper = 0 + fl_normal_sd*fl_shk_bnds;
-ar_bl_outofbounds = (ar_fl_shocks <= fl_shk_bds_lower | ar_fl_shocks >= fl_shk_bds_upper);
-% count out of bounds
-disp(strcat('lower:', num2str(fl_shk_bds_lower), ', upper:', num2str(fl_shk_bds_upper)));
-
-lower:-0.06, upper:0.06
-
-disp(sum(ar_bl_outofbounds));
-
-     4
-
-ar_fl_shocks(ar_fl_shocks <= fl_shk_bds_lower) = fl_shk_bds_lower;
-ar_fl_shocks(ar_fl_shocks >= fl_shk_bds_upper) = fl_shk_bds_upper;
-\end{verbatim}
-
-Fourth, generate the AR(1) time series:
-
-\begin{verbatim}
-% Initialize Output Array
-ar_fl_time_series = zeros(size(ar_fl_shocks));
-% Loop over time
-for it_t=1:1:length(ar_fl_shocks)
-    if (it_t == 1)
-        % initialize using the ean of the process
-        ar_fl_time_series(1) = fl_constant/(1 - fl_persistence);
-        if (bl_init)
-            ar_fl_time_series(1) = fl_init;            
-        end
-    else
-        fl_ts_t = fl_constant + ar_fl_time_series(it_t-1)*fl_persistence + ar_fl_shocks(it_t);
-        ar_fl_time_series(it_t) = fl_ts_t;
-    end
-end
-\end{verbatim}
-
-Fifth, show the mean and sd of the process (these are very close to the
-analytical results):
-
-\begin{verbatim}
-disp(mean(ar_fl_time_series));
-
-    1.0104
-
-disp(std(ar_fl_time_series));
-
-    0.1000
-\end{verbatim}
-
-Sixth, plot the results:
-
-\begin{verbatim}
-figure();
-% x-axis
-ar_it_time = 1:1:length(ar_fl_shocks);
-% plot
-plot(ar_it_time, ar_fl_time_series);
-% Generate Title
-ar_fl_params_values = [fl_constant, fl_normal_sd, fl_persistence, fl_shk_bnds];
-ar_st_parms_names = ["C", "sd", "persistence", "sd-bounds"];
-st_rounding = '.2f';
-st_title_main = "AR(1) ";
-ar_st_params = strcat(ar_st_parms_names, compose(strcat("=%", st_rounding), ar_fl_params_values));
-st_param_pasted = strjoin(ar_st_params, ', ');
-st_title_wth_params = strcat(st_title_main, ' (', st_param_pasted, ')');
-title({st_title_wth_params, 'Simulate One Individual for 1000 Periods'});
-% X and Y labels
-ylabel({'Time Series Values'});
-xlabel('Time Periods');
-grid on;
-\end{verbatim}
-
-\includegraphics[width=5.20833in,height=\textheight]{img/fs_autoregressive_images/figure_0.png}
-
 \hypertarget{appendix-appendix}{%
 \appendix}
 
@@ -5127,11 +5791,83 @@ grid on;
   \end{itemize}
 \end{enumerate}
 
+\hypertarget{panel-links}{%
+\section{Panel links}\label{panel-links}}
+
+\hypertarget{section-3.1-time-seriestime-series-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{time-series}{Section 3.1 Time Series} links}{Section 3.1 Time Series links}}\label{section-3.1-time-seriestime-series-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html}{Autoregressive Process AR(1)}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_autoregressive.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The Mean and standard deviation of an AR(1) process.
+  \item
+    Simulate and graph an AR(1) persistent process.
+  \item
+    \textbf{m}: \emph{normrnd() + for it\_t=1:1:length(ar\_shk) + plot(ar\_t, ar\_y)}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{simulation-links}{%
+\section{Simulation links}\label{simulation-links}}
+
+\hypertarget{section-4.1-normal-distributionnormal-distribution-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{normal-distribution}{Section 4.1 Normal Distribution} links}{Section 4.1 Normal Distribution links}}\label{section-4.1-normal-distributionnormal-distribution-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html}{Compute CDF for Normal and Bivariate Normal Distributions}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/fs_bivariate_normal.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_bivariate_normal.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_bivariate_normal.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    CDF for normal random variable through simulation and with NORMCDF function.
+  \item
+    CDF for bivariate normal random variables through simulation and with NORMCDF function, using cholesky deomposition to model correlation from uniform random draws.
+  \item
+    \textbf{m}: \emph{mvncdf + norminv}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html}{Cholesky Decomposition Correlated Two Dimensional Normal Shock}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/fs_cholesky_decomposition.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_cholesky_decomposition.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_cholesky_decomposition.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Draw two correlated normal shocks using the MVNRND function.
+  \item
+    Draw two correlated normal shocks from uniform random variables using Cholesky Decomposition.
+  \item
+    \textbf{m}: \emph{mvnrnd + corrcoef + norminv}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html}{Cholesky Decomposition Correlated Five Dimensional Normal Shock}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/fs_cholesky_decomposition_d5.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Generate variance-covariance matrix from correlation and standard deviation.
+  \item
+    Draw five correlated normal shocks using the MVNRND function.
+  \item
+    Draw five correlated normal shocks from uniform random variables using Cholesky Decomposition.
+  \item
+    \textbf{m}: \emph{mvnrnd + corrcoef + norminv + subplot}
+  \end{itemize}
+\end{enumerate}
+
 \hypertarget{graphs-links}{%
 \section{Graphs links}\label{graphs-links}}
 
-\hypertarget{section-3.1-figure-componentsfigure-components-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{figure-components}{Section 3.1 Figure Components} links}{Section 3.1 Figure Components links}}\label{section-3.1-figure-componentsfigure-components-links}}
+\hypertarget{section-5.1-figure-componentsfigure-components-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{figure-components}{Section 5.1 Figure Components} links}{Section 5.1 Figure Components links}}\label{section-5.1-figure-componentsfigure-components-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5170,8 +5906,8 @@ grid on;
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-3.2-basic-figure-typesbasic-figure-types-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{basic-figure-types}{Section 3.2 Basic Figure Types} links}{Section 3.2 Basic Figure Types links}}\label{section-3.2-basic-figure-typesbasic-figure-types-links}}
+\hypertarget{section-5.2-basic-figure-typesbasic-figure-types-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{basic-figure-types}{Section 5.2 Basic Figure Types} links}{Section 5.2 Basic Figure Types links}}\label{section-5.2-basic-figure-typesbasic-figure-types-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5210,8 +5946,8 @@ grid on;
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-3.3-write-and-read-plotswrite-and-read-plots-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{write-and-read-plots}{Section 3.3 Write and Read Plots} links}{Section 3.3 Write and Read Plots links}}\label{section-3.3-write-and-read-plotswrite-and-read-plots-links}}
+\hypertarget{section-5.3-write-and-read-plotswrite-and-read-plots-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{write-and-read-plots}{Section 5.3 Write and Read Plots} links}{Section 5.3 Write and Read Plots links}}\label{section-5.3-write-and-read-plotswrite-and-read-plots-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5231,8 +5967,8 @@ grid on;
 \hypertarget{tables-links}{%
 \section{Tables links}\label{tables-links}}
 
-\hypertarget{section-4.1-basic-table-generationbasic-table-generation-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{basic-table-generation}{Section 4.1 Basic Table Generation} links}{Section 4.1 Basic Table Generation links}}\label{section-4.1-basic-table-generationbasic-table-generation-links}}
+\hypertarget{section-6.1-basic-table-generationbasic-table-generation-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{basic-table-generation}{Section 6.1 Basic Table Generation} links}{Section 6.1 Basic Table Generation links}}\label{section-6.1-basic-table-generationbasic-table-generation-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5279,8 +6015,8 @@ grid on;
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-4.2-table-joiningtable-joining-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{table-joining}{Section 4.2 Table Joining} links}{Section 4.2 Table Joining links}}\label{section-4.2-table-joiningtable-joining-links}}
+\hypertarget{section-6.2-table-joiningtable-joining-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{table-joining}{Section 6.2 Table Joining} links}{Section 6.2 Table Joining links}}\label{section-6.2-table-joiningtable-joining-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5296,29 +6032,6 @@ grid on;
     Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
   \item
     \textbf{m}: \emph{array2table() + {[}tb\_a tb\_b{]} + {[}tb\_a; tb\_b{]} + tb.Properties.VariableNames + tb.Properties.RowNames}
-  \end{itemize}
-\end{enumerate}
-
-\hypertarget{panel-links}{%
-\section{Panel links}\label{panel-links}}
-
-\hypertarget{section-5.1-time-seriestime-series-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{time-series}{Section 5.1 Time Series} links}{Section 5.1 Time Series links}}\label{section-5.1-time-seriestime-series-links}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \href{https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html}{Autoregressive Process AR(1)}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_autoregressive.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html}{\textbf{html}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    The Mean and standard deviation of an AR(1) process.
-  \item
-    Simulate and graph an AR(1) persistent process.
-  \item
-    \textbf{m}: \emph{normrnd() + for it\_t=1:1:length(ar\_shk) + plot(ar\_t, ar\_y)}
   \end{itemize}
 \end{enumerate}
 

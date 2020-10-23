@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Compute CDF for Normal and Bivariate Normal Distributions</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S3 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S4 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S9 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S10 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S11 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Compute CDF for Normal and Bivariate Normal Distributions</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/CodeDynaAsset/"><span style=' font-weight: bold;'>Dynamic Asset</span></a><span style=' font-weight: bold;'> Repositories</span></div><div  class = 'S1'><span>CDF for normal random variable through simulation and with NORMCDF function. CDF for bivariate normal random variables through simulation and with NORMCDF function.</span></div><ul  class = 'S2'><li  class = 'S3'><a href = "https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html"><span>fs_cholesky_decomposition</span></a></li><li  class = 'S3'><a href = "https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html"><span>fs_cholesky_decomposition_d5</span></a></li><li  class = 'S3'><a href = "https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html"><span>fs_bivariate_normal</span></a></li></ul><h2  class = 'S4'><span>Simulate Normal Distribution Probability with Uniform Draws</span></h2><div  class = 'S1'><span>Mean score is 0, standard deviation is 1, we want to know what is the chance that children score less than -2, -1, 0, 1, and 2 respectively. We have a solution to the normal CDF cumulative distribution problem, it is:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>mu = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>sigma = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_x = [-2,-1,0,1,2];</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">for </span><span>x=ar_x</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    cdf_x = normcdf(x, mu, sigma);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    disp(</span><span class="warning_squiggle_rte1889057031">[</span><span>strjoin(</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        [</span><span style="color: rgb(170, 4, 249);">"CDF with normcdf"</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        [</span><span style="color: rgb(170, 4, 249);">'x=' </span><span>num2str(x)] </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        [</span><span style="color: rgb(170, 4, 249);">'cdf_x=' </span><span>num2str(cdf_x)] </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        ], </span><span style="color: rgb(170, 4, 249);">";"</span><span>)]);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">end</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="640B3F59" data-testid="output_0" data-width="1120" data-height="73" data-hashorizontaloverflow="false" style="width: 1150px; max-height: 261px;"><div class="textElement">CDF with normcdf;x=-2;cdf_x=0.02275
+CDF with normcdf;x=-1;cdf_x=0.15866
+CDF with normcdf;x=0;cdf_x=0.5
+CDF with normcdf;x=1;cdf_x=0.84134
+CDF with normcdf;x=2;cdf_x=0.97725</div></div></div></div></div><div  class = 'S1'><span>We can also approximate the probabilities above, by drawing many points from a unifom:</span></div><ol  class = 'S2'><li  class = 'S3'><span>Draw from uniform distribution 0 to 1, N times.</span></li><li  class = 'S3'><span>Invert these using invnorm. This means our uniform draws are now effectively drawn from the normal distribution.</span></li><li  class = 'S3'><span>Check if each draw inverted is below the x threshold or above, count fractions.</span></li></ol><div  class = 'S1'><span>We should get very similar results as in the example above (especially if N is large)</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% set seed</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>rng(123);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% generate random numbers</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>N = 10000;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_unif_draws = rand(1,N);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% invert</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_normal_draws = norminv(ar_unif_draws);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% loop over different x values</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">for </span><span>x=ar_x</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span><span style="color: rgb(2, 128, 9);">% index if draws below x</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    ar_it_idx_below_x = (ar_normal_draws &lt; x);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    fl_frac_below_x = (sum(ar_it_idx_below_x))/N;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    disp(</span><span class="warning_squiggle_rte1889057031">[</span><span>strjoin(</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        [</span><span style="color: rgb(170, 4, 249);">"CDF with normcdf"</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        [</span><span style="color: rgb(170, 4, 249);">'x=' </span><span>num2str(x)] </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        [</span><span style="color: rgb(170, 4, 249);">'fl_frac_below_x=' </span><span>num2str(fl_frac_below_x)] </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        ], </span><span style="color: rgb(170, 4, 249);">";"</span><span>)]);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">end</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="407FAE50" data-testid="output_1" data-width="1120" data-height="73" data-hashorizontaloverflow="false" style="width: 1150px; max-height: 261px;"><div class="textElement">CDF with normcdf;x=-2;fl_frac_below_x=0.023
+CDF with normcdf;x=-1;fl_frac_below_x=0.1612
+CDF with normcdf;x=0;fl_frac_below_x=0.4965
+CDF with normcdf;x=1;fl_frac_below_x=0.847
+CDF with normcdf;x=2;fl_frac_below_x=0.9789</div></div></div></div></div><h2  class = 'S4'><span>Simulate Bivariate-Normal Distribution Probability with Uniform Draws</span></h2><div  class = 'S1'><span>There are two tests now, a math test and an English test. Student test scores are correlated with correlation 0.5 from the two tests, mean and standard deviations are 0 and 1 for both tests. What is the chance that a student scores below -2 and -2 for both, below -2 and 0 for math and English, below 2 and 1 for math and English, etc?</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% timer</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tm_start_mvncdf = tic;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% mean, and varcov</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_mu = [0,0];</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>mt_varcov = [1,0.5;0.5,1];</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_x = linspace(-3,3,101);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% initialize storage</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>mt_prob_math_eng = zeros([length(ar_x), length(ar_x)]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% loop over math and english score thresholds</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>it_math = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">for </span><span>math=ar_x</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    it_math = it_math + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    it_eng = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span><span style="color: rgb(14, 0, 255);">for </span><span>eng=ar_x</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        it_eng = it_eng + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        </span><span style="color: rgb(2, 128, 9);">% points below which to compute probability </span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        ar_scores = [math, eng];</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        </span><span style="color: rgb(2, 128, 9);">% volumn of a mountain to the southwest of north-south and east-west cuts</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        cdf_x = mvncdf(ar_scores, ar_mu, mt_varcov);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        mt_prob_math_eng(it_math, it_eng) = cdf_x;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% end timer</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tm_end_mvncdf = toc(tm_start_mvncdf);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>st_complete = strjoin(</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    [</span><span style="color: rgb(170, 4, 249);">"MVNCDF Completed CDF computes"</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>     [</span><span style="color: rgb(170, 4, 249);">'number of points=' </span><span>num2str(numel(mt_prob_math_eng))] </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>     [</span><span style="color: rgb(170, 4, 249);">'time=' </span><span>num2str(tm_end_mvncdf)] </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    ], </span><span style="color: rgb(170, 4, 249);">";"</span><span>);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>disp(st_complete);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="D38CB416" data-testid="output_2" data-width="1120" data-height="18" data-hashorizontaloverflow="false" style="width: 1150px; max-height: 261px;"><div class="textElement">MVNCDF Completed CDF computes;number of points=10201;time=1.1957</div></div></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% show results</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tb_prob_math_eng = array2table(round(mt_prob_math_eng, 4));</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>cl_col_names_a = strcat(</span><span style="color: rgb(170, 4, 249);">'english &lt;='</span><span>, string(ar_x'));</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>cl_row_names_a = strcat(</span><span style="color: rgb(170, 4, 249);">'math &lt;='</span><span>, string(ar_x'));</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tb_prob_math_eng.Properties.VariableNames = cl_col_names_a;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tb_prob_math_eng.Properties.RowNames = cl_row_names_a;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% subsetting function</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_slicing.html#19_Given_Array_of_size_M,_Select_N_somewhat_equi-distance_elements</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1))*(it_ar_n-1)+1));</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>disp(tb_prob_math_eng(f_subset(7, length(ar_x)), f_subset(7, length(ar_x))));</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="7E4AA3AB" data-testid="output_3" data-width="1120" data-height="143" data-hashorizontaloverflow="false" style="width: 1150px; max-height: 261px;"><div class="textElement">                    <strong>english &lt;=-3</strong>    <strong>english &lt;=-1.98</strong>    <strong>english &lt;=-1.02</strong>    <strong>english &lt;=0</strong>    <strong>english &lt;=1.02</strong>    <strong>english &lt;=1.98</strong>    <strong>english &lt;=3</strong>
+                    <strong>____________</strong>    <strong>_______________</strong>    <strong>_______________</strong>    <strong>___________</strong>    <strong>______________</strong>    <strong>______________</strong>    <strong>___________</strong>
+
+    <strong>math &lt;=-3   </strong>       0.0001           0.0005              0.001           0.0013           0.0013            0.0013          0.0013   
+    <strong>math &lt;=-1.98</strong>       0.0005           0.0043             0.0136           0.0217           0.0237            0.0238          0.0239   
+    <strong>math &lt;=-1.02</strong>        0.001           0.0136             0.0598           0.1239           0.1505            0.1537          0.1539   
+    <strong>math &lt;=0    </strong>       0.0013           0.0217             0.1239           0.3333           0.4701            0.4978             0.5   
+    <strong>math &lt;=1.02 </strong>       0.0013           0.0237             0.1505           0.4701           0.7521            0.8359          0.8458   
+    <strong>math &lt;=1.98 </strong>       0.0013           0.0238             0.1537           0.4978           0.8359            0.9566          0.9753   
+    <strong>math &lt;=3    </strong>       0.0013           0.0239             0.1539              0.5           0.8458            0.9753          0.9974   </div></div></div></div></div><div  class = 'S1'><span>We can also approximate the probabilities above, by drawing many points from two iid uniforms, and translating them to correlated normal using cholesky decomposition:</span></div><ol  class = 'S2'><li  class = 'S3'><span>Draw from two random uniform distribution 0 to 1, N times each</span></li><li  class = 'S3'><span>Invert these using invnorm for both iid vectors from unifom draws to normal draws</span></li><li  class = 'S3'><span>Choleskey decompose and multiplication</span></li></ol><div  class = 'S1'><span>This method below is faster than the method above when the number of points where we have to evaluat probabilities is large.</span></div><div  class = 'S1'><span>Generate randomly drawn scores:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% timer</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tm_start_chol = tic;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Draws uniform and invert to standard normal draws</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>N = 10000;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>rng(123);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_unif_draws = rand(1,N*2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_normal_draws = norminv(ar_unif_draws);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_draws_eta_1 = ar_normal_draws(1:N);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_draws_eta_2 = ar_normal_draws((N+1):N*2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Choesley decompose the variance covariance matrix</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>mt_varcov_chol = chol(mt_varcov, </span><span style="color: rgb(170, 4, 249);">'lower'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Generate correlated random normals</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>mt_scores_chol = ar_mu' + mt_varcov_chol*([ar_draws_eta_1; ar_draws_eta_2]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>ar_math_scores = mt_scores_chol(1,:)';</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre;"><span>ar_eng_scores = mt_scores_chol(2,:)';</span></span></div></div></div><div  class = 'S11'><span>Approximate probabilities from randomly drawn scores:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% initialize storage</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>mt_prob_math_eng_approx = zeros([length(ar_x), length(ar_x)]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% loop over math and english score thresholds</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>it_math = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">for </span><span>math=ar_x</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    it_math = it_math + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    it_eng = 0;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span><span style="color: rgb(14, 0, 255);">for </span><span>eng=ar_x</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        it_eng = it_eng + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        </span><span style="color: rgb(2, 128, 9);">% points below which to compute probability </span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        </span><span style="color: rgb(2, 128, 9);">% index if draws below x</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        ar_it_idx_below_x_math = (ar_math_scores &lt; math);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        ar_it_idx_below_x_eng = (ar_eng_scores &lt; eng);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        ar_it_idx_below_x_joint = ar_it_idx_below_x_math.*ar_it_idx_below_x_eng;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        fl_frac_below_x_approx = (sum(ar_it_idx_below_x_joint))/N;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        </span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        </span><span style="color: rgb(2, 128, 9);">% volumn of a mountain to the southwest of north-south and east-west cuts</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>        mt_prob_math_eng_approx(it_math, it_eng) = fl_frac_below_x_approx;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    </span><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% end timer</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tm_end_chol = toc(tm_start_chol);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>st_complete = strjoin(</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    [</span><span style="color: rgb(170, 4, 249);">"UNIF+CHOL Completed CDF computes"</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>     [</span><span style="color: rgb(170, 4, 249);">'number of points=' </span><span>num2str(numel(mt_prob_math_eng_approx))] </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>     [</span><span style="color: rgb(170, 4, 249);">'time=' </span><span>num2str(tm_end_chol)] </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>    ], </span><span style="color: rgb(170, 4, 249);">";"</span><span>);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>disp(st_complete);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="9AA90A7A" data-testid="output_4" data-width="1120" data-height="18" data-hashorizontaloverflow="false" style="width: 1150px; max-height: 261px;"><div class="textElement">UNIF+CHOL Completed CDF computes;number of points=10201;time=0.28661</div></div></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% show results</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tb_prob_math_eng_approx = array2table(round(mt_prob_math_eng_approx, 4));</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>cl_col_names_a = strcat(</span><span style="color: rgb(170, 4, 249);">'english &lt;='</span><span>, string(ar_x'));</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>cl_row_names_a = strcat(</span><span style="color: rgb(170, 4, 249);">'math &lt;='</span><span>, string(ar_x'));</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tb_prob_math_eng_approx.Properties.VariableNames = cl_col_names_a;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span>tb_prob_math_eng_approx.Properties.RowNames = cl_row_names_a;</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>disp(tb_prob_math_eng_approx(f_subset(7, length(ar_x)), f_subset(7, length(ar_x))));</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="5C3C6669" data-testid="output_5" data-width="1120" data-height="143" data-hashorizontaloverflow="false" style="width: 1150px; max-height: 261px;"><div class="textElement">                    <strong>english &lt;=-3</strong>    <strong>english &lt;=-1.98</strong>    <strong>english &lt;=-1.02</strong>    <strong>english &lt;=0</strong>    <strong>english &lt;=1.02</strong>    <strong>english &lt;=1.98</strong>    <strong>english &lt;=3</strong>
+                    <strong>____________</strong>    <strong>_______________</strong>    <strong>_______________</strong>    <strong>___________</strong>    <strong>______________</strong>    <strong>______________</strong>    <strong>___________</strong>
+
+    <strong>math &lt;=-3   </strong>       0.0001           0.0005              0.001           0.0016           0.0016            0.0016          0.0016   
+    <strong>math &lt;=-1.98</strong>       0.0003            0.004             0.0132           0.0218           0.0237            0.0239          0.0239   
+    <strong>math &lt;=-1.02</strong>       0.0008           0.0131              0.061           0.1272           0.1529             0.157          0.1571   
+    <strong>math &lt;=0    </strong>       0.0009           0.0202             0.1236            0.334           0.4661            0.4946          0.4965   
+    <strong>math &lt;=1.02 </strong>       0.0009           0.0215             0.1493           0.4724            0.754            0.8411          0.8511   
+    <strong>math &lt;=1.98 </strong>       0.0009           0.0217             0.1526           0.4989           0.8344            0.9591           0.977   
+    <strong>math &lt;=3    </strong>       0.0009           0.0217             0.1526           0.5007           0.8425            0.9768          0.9976   </div></div></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Compute CDF for Normal and Bivariate Normal Distributions
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% 
+% CDF for normal random variable through simulation and with NORMCDF function. 
+% CDF for bivariate normal random variables through simulation and with NORMCDF 
+% function.
+%% 
+% * <https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html 
+% fs_cholesky_decomposition>
+% * <https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html 
+% fs_cholesky_decomposition_d5>
+% * <https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html 
+% fs_bivariate_normal>
+%% Simulate Normal Distribution Probability with Uniform Draws
+% Mean score is 0, standard deviation is 1, we want to know what is the chance 
+% that children score less than -2, -1, 0, 1, and 2 respectively. We have a solution 
+% to the normal CDF cumulative distribution problem, it is:
+
+mu = 0;
+sigma = 1;
+ar_x = [-2,-1,0,1,2];
+for x=ar_x
+    cdf_x = normcdf(x, mu, sigma);
+    disp([strjoin(...
+        ["CDF with normcdf", ...
+        ['x=' num2str(x)] ...
+        ['cdf_x=' num2str(cdf_x)] ...
+        ], ";")]);
+end
+%% 
+% We can also approximate the probabilities above, by drawing many points from 
+% a unifom:
+%% 
+% # Draw from uniform distribution 0 to 1, N times.
+% # Invert these using invnorm. This means our uniform draws are now effectively 
+% drawn from the normal distribution.
+% # Check if each draw inverted is below the x threshold or above, count fractions.
+%% 
+% We should get very similar results as in the example above (especially if 
+% N is large)
+
+% set seed
+rng(123);
+% generate random numbers
+N = 10000;
+ar_unif_draws = rand(1,N);
+% invert
+ar_normal_draws = norminv(ar_unif_draws);
+% loop over different x values
+for x=ar_x
+    % index if draws below x
+    ar_it_idx_below_x = (ar_normal_draws < x);
+    fl_frac_below_x = (sum(ar_it_idx_below_x))/N;
+    disp([strjoin(...
+        ["CDF with normcdf", ...
+        ['x=' num2str(x)] ...
+        ['fl_frac_below_x=' num2str(fl_frac_below_x)] ...
+        ], ";")]);
+end
+%% Simulate Bivariate-Normal Distribution Probability with Uniform Draws
+% There are two tests now, a math test and an English test. Student test scores 
+% are correlated with correlation 0.5 from the two tests, mean and standard deviations 
+% are 0 and 1 for both tests. What is the chance that a student scores below -2 
+% and -2 for both, below -2 and 0 for math and English, below 2 and 1 for math 
+% and English, etc?
+
+% timer
+tm_start_mvncdf = tic;
+% mean, and varcov
+ar_mu = [0,0];
+mt_varcov = [1,0.5;0.5,1];
+ar_x = linspace(-3,3,101);
+% initialize storage
+mt_prob_math_eng = zeros([length(ar_x), length(ar_x)]);
+% loop over math and english score thresholds
+it_math = 0;
+for math=ar_x
+    it_math = it_math + 1;
+    it_eng = 0;
+    for eng=ar_x
+        it_eng = it_eng + 1;
+        % points below which to compute probability 
+        ar_scores = [math, eng];
+        % volumn of a mountain to the southwest of north-south and east-west cuts
+        cdf_x = mvncdf(ar_scores, ar_mu, mt_varcov);
+        mt_prob_math_eng(it_math, it_eng) = cdf_x;
+    end
+end
+% end timer
+tm_end_mvncdf = toc(tm_start_mvncdf);
+st_complete = strjoin(...
+    ["MVNCDF Completed CDF computes", ...
+     ['number of points=' num2str(numel(mt_prob_math_eng))] ...
+     ['time=' num2str(tm_end_mvncdf)] ...
+    ], ";");
+disp(st_complete);
+% show results
+tb_prob_math_eng = array2table(round(mt_prob_math_eng, 4));
+cl_col_names_a = strcat('english <=', string(ar_x'));
+cl_row_names_a = strcat('math <=', string(ar_x'));
+tb_prob_math_eng.Properties.VariableNames = cl_col_names_a;
+tb_prob_math_eng.Properties.RowNames = cl_row_names_a;
+% subsetting function
+% https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_slicing.html#19_Given_Array_of_size_M,_Select_N_somewhat_equi-distance_elements
+f_subset = @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1))*(it_ar_n-1)+1));
+disp(tb_prob_math_eng(f_subset(7, length(ar_x)), f_subset(7, length(ar_x))));
+%% 
+% We can also approximate the probabilities above, by drawing many points from 
+% two iid uniforms, and translating them to correlated normal using cholesky decomposition:
+%% 
+% # Draw from two random uniform distribution 0 to 1, N times each
+% # Invert these using invnorm for both iid vectors from unifom draws to normal 
+% draws
+% # Choleskey decompose and multiplication
+%% 
+% This method below is faster than the method above when the number of points 
+% where we have to evaluat probabilities is large.
+% 
+% Generate randomly drawn scores:
+
+% timer
+tm_start_chol = tic;
+% Draws uniform and invert to standard normal draws
+N = 10000;
+rng(123);
+ar_unif_draws = rand(1,N*2);
+ar_normal_draws = norminv(ar_unif_draws);
+ar_draws_eta_1 = ar_normal_draws(1:N);
+ar_draws_eta_2 = ar_normal_draws((N+1):N*2);
+
+% Choesley decompose the variance covariance matrix
+mt_varcov_chol = chol(mt_varcov, 'lower');
+
+% Generate correlated random normals
+mt_scores_chol = ar_mu' + mt_varcov_chol*([ar_draws_eta_1; ar_draws_eta_2]);
+ar_math_scores = mt_scores_chol(1,:)';
+ar_eng_scores = mt_scores_chol(2,:)';
+%% 
+% Approximate probabilities from randomly drawn scores:
+
+% initialize storage
+mt_prob_math_eng_approx = zeros([length(ar_x), length(ar_x)]);
+% loop over math and english score thresholds
+it_math = 0;
+for math=ar_x
+    it_math = it_math + 1;
+    it_eng = 0;
+    for eng=ar_x
+        it_eng = it_eng + 1;
+        
+        % points below which to compute probability 
+        % index if draws below x
+        ar_it_idx_below_x_math = (ar_math_scores < math);
+        ar_it_idx_below_x_eng = (ar_eng_scores < eng);
+        ar_it_idx_below_x_joint = ar_it_idx_below_x_math.*ar_it_idx_below_x_eng;
+        fl_frac_below_x_approx = (sum(ar_it_idx_below_x_joint))/N;
+        
+        % volumn of a mountain to the southwest of north-south and east-west cuts
+        mt_prob_math_eng_approx(it_math, it_eng) = fl_frac_below_x_approx;
+    end
+end
+% end timer
+tm_end_chol = toc(tm_start_chol);
+st_complete = strjoin(...
+    ["UNIF+CHOL Completed CDF computes", ...
+     ['number of points=' num2str(numel(mt_prob_math_eng_approx))] ...
+     ['time=' num2str(tm_end_chol)] ...
+    ], ";");
+disp(st_complete);
+% show results
+tb_prob_math_eng_approx = array2table(round(mt_prob_math_eng_approx, 4));
+cl_col_names_a = strcat('english <=', string(ar_x'));
+cl_row_names_a = strcat('math <=', string(ar_x'));
+tb_prob_math_eng_approx.Properties.VariableNames = cl_col_names_a;
+tb_prob_math_eng_approx.Properties.RowNames = cl_row_names_a;
+disp(tb_prob_math_eng_approx(f_subset(7, length(ar_x)), f_subset(7, length(ar_x))));
+##### SOURCE END #####
+--></body></html>

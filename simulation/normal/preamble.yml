@@ -1,0 +1,78 @@
+- file: fs_cholesky_decomposition
+  title: "Matlab Cholesky Decomposition Variance-Covariance Two Dimensional Normal Shocks"
+  titleshort: "Cholesky Decomposition Correlated Two Dimensional Normal Shock"
+  description: |
+    Draw two correlated normal shocks using the MVNRND function.
+    Draw two correlated normal shocks from uniform random variables using Cholesky Decomposition.
+  core :
+    - package: m
+      code: |
+        mvnrnd
+        corrcoef
+        norminv
+  date: 2020-10-23
+  date_start: 2020-10-23
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_cholesky_decomposition_d5
+  title: "Matlab Cholesky Decomposition Variance-Covariance Five Dimensional Normal Shocks"
+  titleshort: "Cholesky Decomposition Correlated Five Dimensional Normal Shock"
+  description: |
+    Generate variance-covariance matrix from correlation and standard deviation.
+    Draw five correlated normal shocks using the MVNRND function.
+    Draw five correlated normal shocks from uniform random variables using Cholesky Decomposition.
+  core :
+    - package: m
+      code: |
+        mvnrnd
+        corrcoef
+        norminv
+        subplot
+  date: 2020-10-23
+  date_start: 2020-10-23
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_bivariate_normal
+  title: "Matlab Compute CDF for Normal and Bivariate Normal Distributions"
+  titleshort: "Compute CDF for Normal and Bivariate Normal Distributions"
+  description: |
+    CDF for normal random variable through simulation and with NORMCDF function.
+    CDF for bivariate normal random variables through simulation and with NORMCDF function, using cholesky deomposition to model correlation from uniform random draws.
+  core :
+    - package: m
+      code: |
+        mvncdf
+        norminv
+  date: 2020-10-23
+  date_start: 2020-10-23
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

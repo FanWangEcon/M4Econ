@@ -106,9 +106,40 @@
 	+ Core model functions with potentially many parameters, possibly override default generation to save time.
 	+ **m**: *varargin + function [out_put] = func_name(varargin) + cm_defaults = {cm_a, cm_b} + [cm_defaults{1:optional_params_len}] = varargin{:} + cm_c = [cm_a;cm_b]*
 
+## Panel links
+
+### [Section 3.1  Time Series
+][Time Series
+] links
+
+1. [Autoregressive Process AR(1)](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_autoregressive.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html)
+	+ The Mean and standard deviation of an AR(1) process.
+	+ Simulate and graph an AR(1) persistent process.
+	+ **m**: *normrnd() + for it_t=1:1:length(ar_shk) + plot(ar_t, ar_y)*
+
+## Simulation links
+
+### [Section 4.1  Normal Distribution
+][Normal Distribution
+] links
+
+1. [Compute CDF for Normal and Bivariate Normal Distributions](https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/fs_bivariate_normal.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_bivariate_normal.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_bivariate_normal.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_bivariate_normal.html)
+	+ CDF for normal random variable through simulation and with NORMCDF function.
+	+ CDF for bivariate normal random variables through simulation and with NORMCDF function, using cholesky deomposition to model correlation from uniform random draws.
+	+ **m**: *mvncdf + norminv*
+2. [Cholesky Decomposition Correlated Two Dimensional Normal Shock](https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/fs_cholesky_decomposition.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_cholesky_decomposition.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_cholesky_decomposition.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition.html)
+	+ Draw two correlated normal shocks using the MVNRND function.
+	+ Draw two correlated normal shocks from uniform random variables using Cholesky Decomposition.
+	+ **m**: *mvnrnd + corrcoef + norminv*
+3. [Cholesky Decomposition Correlated Five Dimensional Normal Shock](https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/fs_cholesky_decomposition_d5.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/simulation/normal/htmlpdfm/fs_cholesky_decomposition_d5.html)
+	+ Generate variance-covariance matrix from correlation and standard deviation.
+	+ Draw five correlated normal shocks using the MVNRND function.
+	+ Draw five correlated normal shocks from uniform random variables using Cholesky Decomposition.
+	+ **m**: *mvnrnd + corrcoef + norminv + subplot*
+
 ## Graphs links
 
-### [Section 3.1  Figure Components
+### [Section 5.1  Figure Components
 ][Figure Components
 ] links
 
@@ -123,7 +154,7 @@
 	+ State-space plots with color spectrum: can not show all states in legend, show subset, add additional line to plot and legend.
 	+ **m**: *jet() + numel() + fliplr() + jet(numel(chart)), set(chart(m), 'Color', clr(m,:))*
 
-### [Section 3.2  Basic Figure Types
+### [Section 5.2  Basic Figure Types
 ][Basic Figure Types
 ] links
 
@@ -138,7 +169,7 @@
 	+ Two dimensional matrix for x and y, a third variable with color spectrum set via loop.
 	+ **m**: *plot(2d, 2d) + jet + set(chart(m), 'Color', clr)*
 
-### [Section 3.3  Write and Read Plots
+### [Section 5.3  Write and Read Plots
 ][Write and Read Plots
 ] links
 
@@ -148,7 +179,7 @@
 
 ## Tables links
 
-### [Section 4.1  Basic Table Generation
+### [Section 6.1  Basic Table Generation
 ][Basic Table Generation
 ] links
 
@@ -165,7 +196,7 @@
 	+ Conditional selection based on cell values and column and row names.
 	+ **m**: *tb(strcmp(tb.v1, "b"),:) + tb(tb.va==0.4,:)*
 
-### [Section 4.2  Table Joining
+### [Section 6.2  Table Joining
 ][Table Joining
 ] links
 
@@ -173,14 +204,3 @@
 	+ Append columns to existing table. Stack tables vertically and horizontally.
 	+ Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
 	+ **m**: *array2table() + [tb_a tb_b] + [tb_a; tb_b] + tb.Properties.VariableNames + tb.Properties.RowNames*
-
-## Panel links
-
-### [Section 5.1  Time Series
-][Time Series
-] links
-
-1. [Autoregressive Process AR(1)](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_autoregressive.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html)
-	+ The Mean and standard deviation of an AR(1) process.
-	+ Simulate and graph an AR(1) persistent process.
-	+ **m**: *normrnd() + for it_t=1:1:length(ar_shk) + plot(ar_t, ar_y)*

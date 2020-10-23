@@ -39,10 +39,21 @@ rmd_files:
 
 
   - function/main.Rmd
-
   - function/defaultparam/main.Rmd
   - function/defaultparam/fs_varargin.Rmd
   - function/defaultparam/fs_defaultmap.Rmd
+
+
+  - panel/main.Rmd
+  - panel/timeseries/main.Rmd
+  - panel/timeseries/fs_autoregressive.Rmd
+
+
+  - simulation/main.Rmd
+  - simulation/normal/main.Rmd
+  - simulation/normal/fs_bivariate_normal.Rmd
+  - simulation/normal/fs_cholesky_decomposition.Rmd
+  - simulation/normal/fs_cholesky_decomposition_d5.Rmd
 
 
   - graph/main.Rmd
@@ -71,12 +82,6 @@ rmd_files:
 
   - table/join/main.Rmd
   - table/join/fs_tab_stack.Rmd
-
-
-  - panel/main.Rmd
-
-  - panel/timeseries/main.Rmd
-  - panel/timeseries/fs_autoregressive.Rmd
 
 
   - README_appendix.md

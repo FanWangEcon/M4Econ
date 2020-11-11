@@ -1,7 +1,7 @@
 %% Cholesky Decomposition Correlated Five Dimensional Multivariate Normal Shock
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 % 
 % Generate variance-covariance matrix from correlation and standard deviation. 
 % Draw five correlated normal shocks using the MVNRND function. Draw five correlated 

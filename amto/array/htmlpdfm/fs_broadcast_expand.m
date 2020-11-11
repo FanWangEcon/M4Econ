@@ -1,7 +1,7 @@
 %% Array Broadcast and Expansion Examples
-% *back to <https://fanwangecon.github.io *Fan*>*'s <https://fanwangecon.github.io/M4Econ/ 
-% *Reusable Matlab*> *Repository or <https://fanwangecon.github.io/CodeDynaAsset/ 
-% *Dynamic Asset*> *Repository.*
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 % 
 % Matrix broadcasting was added to matlab's recent editions. This is an important 
 % step for vectorizing codes. Proper usage of broadcasting reduces memory allocation 

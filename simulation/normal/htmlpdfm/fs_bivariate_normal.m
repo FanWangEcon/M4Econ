@@ -1,7 +1,7 @@
 %% Compute CDF for Normal and Bivariate Normal Distributions
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 % 
 % CDF for normal random variable through simulation and with NORMCDF function. 
 % CDF for bivariate normal random variables through simulation and with NORMCDF 

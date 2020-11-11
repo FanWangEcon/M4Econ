@@ -1,7 +1,7 @@
 %% Matlab Graph Scatter and Line Spectrum with Three Variables
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% 
 % Generate k + b = w, color for each w, vectors of k and b such that k + b = 
 % w for each w

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Maximum of Matrix Columns, Sort Matrix Columns</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S9 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Maximum of Matrix Columns, Sort Matrix Columns</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/MEconTools/"><span style=' font-weight: bold;'>MEconTools</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span>Max Value from a Matrix</span></h2><div  class = 'S1'><span>Given a matrix of values, what is the maximum element, what are the row and column indexes of this max element of the matrix. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>rng(123);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>N = 3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>M = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mt_rand = rand(M,N);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(mt_rand);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="7E864CE2" data-testid="output_0" data-width="1128" data-height="59" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    0.6965    0.7195    0.4809
+    0.2861    0.4231    0.3921
+    0.2269    0.9808    0.3432
+    0.5513    0.6848    0.7290</div></div></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>[max_val, max_idx] = max(mt_rand(:));</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>[max_row, max_col] = ind2sub(size(mt_rand), max_idx)</span></span></div><div  class = 'S6'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>max_row = 3</div><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>max_col = 2</div></div></div></div><h2  class = 'S2'><span>MAX Value from Each Column</span></h2><div  class = 'S1'><span>There is a matrix with N columns, and M rows, with numerical values. Generate a table of sorted index, indicating in each column which row was the highest in value, second highest, etc. (1) sort each column. (2) show the row number from descending or ascending sort for each column as a matrix. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Create a 2D Array</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>rng(123);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>N = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>M = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mt_rand = rand(M,N);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(mt_rand);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="3A6A0344" data-testid="output_3" data-width="1128" data-height="59" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    0.6965    0.7195
+    0.2861    0.4231
+    0.2269    0.9808
+    0.5513    0.6848</div></div></div></div></div><div  class = 'S8'><span>Use the maxk function to generate sorted index:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% maxk function</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>[val, idx] = max(mt_rand);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(val);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="726281A0" data-testid="output_4" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    0.6965    0.9808</div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S9'><span style="white-space: pre;"><span>disp(idx);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="7C1BE457" data-testid="output_5" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">     1     3</div></div></div></div></div><h2  class = 'S2'><span>MAXK Sorted Sorted Index for Each Column of Matrix </span></h2><div  class = 'S1'><span>There is a matrix with N columns, and M rows, with numerical values. Generate a table of sorted index, indicating in each column which row was the highest in value, second highest, etc. (1) sort each column. (2) show the row number from descending or ascending sort for each column as a matrix. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Create a 2D Array</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>rng(123);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>N = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>M = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mt_rand = rand(M,N);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(mt_rand);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="9335FEF3" data-testid="output_6" data-width="1128" data-height="59" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    0.6965    0.7195
+    0.2861    0.4231
+    0.2269    0.9808
+    0.5513    0.6848</div></div></div></div></div><div  class = 'S8'><span>Use the maxk function to generate sorted index:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% maxk function</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>[val, idx] = maxk(mt_rand, M);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(val);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="5125EDE7" data-testid="output_7" data-width="1128" data-height="59" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    0.6965    0.9808
+    0.5513    0.7195
+    0.2861    0.6848
+    0.2269    0.4231</div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S9'><span style="white-space: pre;"><span>disp(idx);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="A9F140AB" data-testid="output_8" data-width="1128" data-height="59" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">     1     3
+     4     1
+     2     4
+     3     2</div></div></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Maximum of Matrix Columns, Sort Matrix Columns
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Max Value from a Matrix
+% Given a matrix of values, what is the maximum element, what are the row and 
+% column indexes of this max element of the matrix. 
+
+rng(123);
+N = 3;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
+[max_val, max_idx] = max(mt_rand(:));
+[max_row, max_col] = ind2sub(size(mt_rand), max_idx)
+%% MAX Value from Each Column
+% There is a matrix with N columns, and M rows, with numerical values. Generate 
+% a table of sorted index, indicating in each column which row was the highest 
+% in value, second highest, etc. (1) sort each column. (2) show the row number 
+% from descending or ascending sort for each column as a matrix. 
+
+% Create a 2D Array
+rng(123);
+N = 2;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
+%% 
+% Use the maxk function to generate sorted index:
+
+% maxk function
+[val, idx] = max(mt_rand);
+disp(val);
+disp(idx);
+%% MAXK Sorted Sorted Index for Each Column of Matrix 
+% There is a matrix with N columns, and M rows, with numerical values. Generate 
+% a table of sorted index, indicating in each column which row was the highest 
+% in value, second highest, etc. (1) sort each column. (2) show the row number 
+% from descending or ascending sort for each column as a matrix. 
+
+% Create a 2D Array
+rng(123);
+N = 2;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
+%% 
+% Use the maxk function to generate sorted index:
+
+% maxk function
+[val, idx] = maxk(mt_rand, M);
+disp(val);
+disp(idx);
+##### SOURCE END #####
+--></body></html>

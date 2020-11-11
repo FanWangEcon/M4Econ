@@ -1,7 +1,7 @@
 %% Matlab Graph Titling, Labels and Legends Examples
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% *Draw A figure Label Title, X and Y Axises with Latex Equations*
 
 clear all;

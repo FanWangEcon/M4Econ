@@ -157,21 +157,20 @@
   always_allow_html: true
   urlcolor: blue
 
-- file: fs_3d4dndarray
-  title: "Matlab Group by Summarize Arrays (3D, 4D, ND) Reshape and Slice 2D"
-  titleshort: "3D, 4D, ND Arrays Reshape and Summarize"
+- file: fs_matrix_max
+  title: "Matlab Find the Maximum Value and Index in Matrix Over Columns and Overall"
+  titleshort: "Find the Maximum Value and Index in Matrix Over Columns and Overall"
   description: |
-    Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
-    Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
+    Given 2D array, find the maximum value and index for each column.
+    Find the maximum value in a 2D array's row and column indexes.
   core :
     - package: m
       code: |
-        permute(mn, [3,1,2,4])
-        squeeze(num2cell(mn, [1,2]))
-        celldisp()
-        ndgrid()
-  date: 2020-06-21
-  date_start: 2020-06-21
+        max()
+        ind2sub()
+        maxk()
+  date: 2020-11-07
+  date_start: 2020-11-07
   output:
     pdf_document:
       pandoc_args: '../../_output_kniti_pdf.yaml'

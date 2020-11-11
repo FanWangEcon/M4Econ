@@ -6,12 +6,13 @@
 \documentclass[
 ]{book}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
+\usepackage{amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
 \else % if luatex or xetex
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
@@ -47,6 +48,7 @@
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage{longtable,booktabs}
+\usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -55,7 +57,7 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -99,12 +101,15 @@
 }
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
-\bibliographystyle{apalike}
+\bibliographystyle{plainnat}
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-10-23}
+\date{2020-11-10}
 
 \begin{document}
 \maketitle
@@ -256,12 +261,11 @@ it\_inner\_fin = 5; it\_outter\_fin = 3;
 
 it\_inner\_cur = it\_outter\_fin it\_outter\_cur = it\_inner\_fin
 
-ar\_it\_cols\_idx = 1:1:(it\_inner\_fin*it\_outter\_fin)
-ar\_it\_cols\_inner\_dim = repmat(1:it\_inner\_cur, \[it\_outter\_cur,
-1\]) ar\_it\_cols\_inner\_dim(:)'
+ar\_it\_cols\_idx = 1:1:(it\_inner\_fin*it\_outter\_fin) ar\_it\_cols\_inner\_dim
+= repmat(1:it\_inner\_cur, \[it_outter_cur, 1\]) ar\_it\_cols\_inner\_dim(:)'
 
-mt\_it\_cols\_idx = reshape(ar\_it\_cols\_idx, \[it\_inner\_cur,
-it\_outter\_cur\])' mt\_it\_cols\_idx(:)'
+mt\_it\_cols\_idx = reshape(ar\_it\_cols\_idx, \[it_inner_cur,
+it_outter_cur\])' mt\_it\_cols\_idx(:)'
 
 \begin{verbatim}
 it_inner_fin = 5;
@@ -662,447 +666,124 @@ disp(f_subset(5, 5));
      1     2     3     4     5
 \end{verbatim}
 
-\hypertarget{d-4d-nd-arrays-reshape-and-rearrange-dimensions}{%
-\subsection{3D, 4D, ND Arrays Reshape and Rearrange Dimensions}\label{d-4d-nd-arrays-reshape-and-rearrange-dimensions}}
+\hypertarget{maximum-of-matrix-columns-sort-matrix-columns}{%
+\subsection{Maximum of Matrix Columns, Sort Matrix Columns}\label{maximum-of-matrix-columns-sort-matrix-columns}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
-\hypertarget{d-array-to-cell-array-of-matrix-split-by-last-dimension}{%
-\subsubsection{3D Array to Cell Array of Matrix Split by Last Dimension}\label{d-array-to-cell-array-of-matrix-split-by-last-dimension}}
+\hypertarget{max-value-from-a-matrix}{%
+\subsubsection{Max Value from a Matrix}\label{max-value-from-a-matrix}}
 
-Convert Multi-dimensional arrays to a cell array consistent of two
-dimensional arrays. In this example, we split by the 3rd dimension, so
-the number of output matrixes is equal to the length of the 3rd
-dimension.
-
-First create a three dimensional array, two matrixes that are 4 by 3
-each:
+Given a matrix of values, what is the maximum element, what are the row
+and column indexes of this max element of the matrix.
 
 \begin{verbatim}
-% Create a 3D Array
 rng(123);
-mn_rand = rand(4,3,2);
-disp(mn_rand);
-
-(:,:,1) =
+N = 3;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
 
     0.6965    0.7195    0.4809
     0.2861    0.4231    0.3921
     0.2269    0.9808    0.3432
     0.5513    0.6848    0.7290
 
+[max_val, max_idx] = max(mt_rand(:));
+[max_row, max_col] = ind2sub(size(mt_rand), max_idx)
 
-(:,:,2) =
-
-    0.4386    0.1825    0.6344
-    0.0597    0.1755    0.8494
-    0.3980    0.5316    0.7245
-    0.7380    0.5318    0.6110
+max_row = 3
+max_col = 2
 \end{verbatim}
 
-Now convert the 3 dimensional array to a 2 by 1 cell array that contains
-matrixes in each cell:
+\hypertarget{max-value-from-each-column}{%
+\subsubsection{MAX Value from Each Column}\label{max-value-from-each-column}}
+
+There is a matrix with N columns, and M rows, with numerical values.
+Generate a table of sorted index, indicating in each column which row
+was the highest in value, second highest, etc. (1) sort each column. (2)
+show the row number from descending or ascending sort for each column as
+a matrix.
 
 \begin{verbatim}
-% Squeece 3D array to a Cell array of matrixes
-cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
-celldisp(cl_mn_rand);
-
-
-cl_mn_rand{1} =
- 
-    0.6965    0.7195    0.4809
-    0.2861    0.4231    0.3921
-    0.2269    0.9808    0.3432
-    0.5513    0.6848    0.7290
-
-
-
-cl_mn_rand{2} =
- 
-    0.4386    0.1825    0.6344
-    0.0597    0.1755    0.8494
-    0.3980    0.5316    0.7245
-    0.7380    0.5318    0.6110
-\end{verbatim}
-
-\hypertarget{d-array-to-cell-array-of-matrix-split-by-last-two-dimensions}{%
-\subsubsection{4D Array to Cell Array of Matrix Split by Last Two Dimensions}\label{d-array-to-cell-array-of-matrix-split-by-last-two-dimensions}}
-
-Convert 4D Multi-dimensional arrays to a cell array consistent of two
-dimensional arrays. In this example, the first two dimensions determine
-the resulting matrix size, the the 3rd and the 4th dimensions are
-categorical.
-
-First create a four dimensional array, four matrixes stored each matrix
-is 2 by 2:
-
-\begin{verbatim}
-% Create a 3D Array
+% Create a 2D Array
 rng(123);
-mn_rand = rand(2,2,2,2);
-disp(mn_rand);
+N = 2;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
 
-(:,:,1,1) =
-
-    0.6965    0.2269
-    0.2861    0.5513
-
-
-(:,:,2,1) =
-
-    0.7195    0.9808
-    0.4231    0.6848
-
-
-(:,:,1,2) =
-
-    0.4809    0.3432
-    0.3921    0.7290
-
-
-(:,:,2,2) =
-
-    0.4386    0.3980
-    0.0597    0.7380
-\end{verbatim}
-
-Now convert the 4 dimensional array to a 2 by 2 cell array that contains
-matrixes in each cell:
-
-\begin{verbatim}
-% Squeece 3D array to a Cell array of matrixes
-cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
-celldisp(cl_mn_rand);
-
-
-cl_mn_rand{1,1} =
- 
-    0.6965    0.2269
-    0.2861    0.5513
-
-
-
-cl_mn_rand{2,1} =
- 
-    0.7195    0.9808
-    0.4231    0.6848
-
-
-
-cl_mn_rand{1,2} =
- 
-    0.4809    0.3432
-    0.3921    0.7290
-
-
-
-cl_mn_rand{2,2} =
- 
-    0.4386    0.3980
-    0.0597    0.7380
-\end{verbatim}
-
-\hypertarget{d-array-to-cell-array-of-matrix-split-by-first-and-fourth-dimensions-rearrange-dimensions}{%
-\subsubsection{4D Array to Cell Array of Matrix Split by First and Fourth Dimensions Rearrange Dimensions}\label{d-array-to-cell-array-of-matrix-split-by-first-and-fourth-dimensions-rearrange-dimensions}}
-
-Suppose we store policy and value function given four state variables.
-The first one is age, the second one is asset, the third one is shock,
-and the fourth one is the number of kids. We start out with a four
-dimensional matrix. The objective is to create a two dimensional cell
-array as output where indexed by the 1st and 4th dimension of the
-underlying numeric array, and the elements of the 2D cell array are
-matrixes.
-
-This is achieved by the
-\href{https://www.mathworks.com/help/matlab/ref/permute.html}{permute}
-function. We first rearrange the matrix, so that the 2nd and 3rd
-dimensions become the 1st and 2nd, then we use the technique used above
-to squeeze out the first two dimensions as matrixes with the last two as
-categories.
-
-First, generate the 2 by 2 by 2 by 2, (Age, A, Z, Kids Count), matrix:
-
-\begin{verbatim}
-% Create a 3D Array
-rng(123);
-% (Age, A, Z, Kids Count)
-mn_rand = rand(2,2,2,2);
-\end{verbatim}
-
-Second, loop out the (A,Z) matrix by Age and Kids Count, this shows us
-what we want to achieve. Note that each row is Age, each column is A,
-each submatrix is z, and each super-matrix is kid-count. So from
-slicing, each column printed out are different value of A, the two
-submatrixes printed out are for each z. For the output structure where
-we want a (A,Z) matrix, the columns need to become rows, and the
-submatrix need to become columns.
-
-\begin{verbatim}
-% Show Matrix by Age and Kids
-for it_age = 1:size(mn_rand,1)
-    for it_kids = 1:size(mn_rand,4)
-        disp(strcat(['it_age:' num2str(it_age) ', it_kids:' num2str(it_kids)]))
-        disp(mn_rand(it_age,:,:,it_kids));
-    end
-end
-
-it_age:1, it_kids:1
-(:,:,1) =
-
-    0.6965    0.2269
-
-
-(:,:,2) =
-
-    0.7195    0.9808
-it_age:1, it_kids:2
-(:,:,1) =
-
-    0.4809    0.3432
-
-
-(:,:,2) =
-
-    0.4386    0.3980
-it_age:2, it_kids:1
-(:,:,1) =
-
-    0.2861    0.5513
-
-
-(:,:,2) =
-
-    0.4231    0.6848
-it_age:2, it_kids:2
-(:,:,1) =
-
-    0.3921    0.7290
-
-
-(:,:,2) =
-
-    0.0597    0.7380
-\end{verbatim}
-
-Third, we permutate the matrix and squeeze to arrive at the 2 by 2 cell,
-note that step two is just to show via loop what we should get:
-
-\begin{verbatim}
-% Rearrange dimensions
-mn_rand_2314 = permute(mn_rand, [2,3,1,4]);
-% Squeeze the first two dimensiosn as before
-cl_mn_rand = squeeze(num2cell(mn_rand_2314, [1,2]));
-% show
-celldisp(cl_mn_rand);
-
-
-cl_mn_rand{1,1} =
- 
     0.6965    0.7195
-    0.2269    0.9808
-
-
-
-cl_mn_rand{2,1} =
- 
     0.2861    0.4231
+    0.2269    0.9808
     0.5513    0.6848
-
-
-
-cl_mn_rand{1,2} =
- 
-    0.4809    0.4386
-    0.3432    0.3980
-
-
-
-cl_mn_rand{2,2} =
- 
-    0.3921    0.0597
-    0.7290    0.7380
 \end{verbatim}
 
-\hypertarget{nd-array-summarize-in-table}{%
-\subsubsection{ND Array Summarize in Table}\label{nd-array-summarize-in-table}}
-
-Given an ND dataframe, summarize the first two dimensions. For each
-possible combination of the 3rd and 4th dimension, generate mean, sd,
-min and max over the matrix of the first two dimensions. This is similar
-to a tabulation function.
-
-First, we generate several array of information:
+Use the maxk function to generate sorted index:
 
 \begin{verbatim}
-% Initialize and Squeeze
+% maxk function
+[val, idx] = max(mt_rand);
+disp(val);
+
+    0.6965    0.9808
+
+disp(idx);
+
+     1     3
+\end{verbatim}
+
+\hypertarget{maxk-sorted-sorted-index-for-each-column-of-matrix}{%
+\subsubsection{MAXK Sorted Sorted Index for Each Column of Matrix}\label{maxk-sorted-sorted-index-for-each-column-of-matrix}}
+
+There is a matrix with N columns, and M rows, with numerical values.
+Generate a table of sorted index, indicating in each column which row
+was the highest in value, second highest, etc. (1) sort each column. (2)
+show the row number from descending or ascending sort for each column as
+a matrix.
+
+\begin{verbatim}
+% Create a 2D Array
 rng(123);
-mn_rand = rand(2,2,2,2);
-cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
-cl_mt_rand = cln_mt_rand(:);
-celldisp(cl_mt_rand);
+N = 2;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
 
-
-cl_mt_rand{1} =
- 
-    0.6965    0.2269
-    0.2861    0.5513
-
-
-
-cl_mt_rand{2} =
- 
-    0.7195    0.9808
-    0.4231    0.6848
-
-
-
-cl_mt_rand{3} =
- 
-    0.4809    0.3432
-    0.3921    0.7290
-
-
-
-cl_mt_rand{4} =
- 
-    0.4386    0.3980
-    0.0597    0.7380
+    0.6965    0.7195
+    0.2861    0.4231
+    0.2269    0.9808
+    0.5513    0.6848
 \end{verbatim}
 
-Second, create two arrays that tracks for each element of cl\_mt\_rand,
-which one of the 3rd and 4th dimensions they correspond to:
+Use the maxk function to generate sorted index:
 
 \begin{verbatim}
-ar_dim_3 = [31,32]';
-ar_dim_4 = [41,42]';
-[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3, ar_dim_4);
-ar_dim_3 = mt_dim_3(:);
-ar_dim_4 = mt_dim_4(:);
-\end{verbatim}
+% maxk function
+[val, idx] = maxk(mt_rand, M);
+disp(val);
 
-Third, summarize each matrix:
+    0.6965    0.9808
+    0.5513    0.7195
+    0.2861    0.6848
+    0.2269    0.4231
 
-\begin{verbatim}
-% Over of matrix and summarize
-ar_mean = zeros(size(cl_mt_rand));
-ar_std = zeros(size(cl_mt_rand));
-for it_mt=1:length(cl_mt_rand)
-    mt_cur = cl_mt_rand{it_mt};
-    ar_mean(it_mt) = mean(mt_cur, 'all');
-    ar_std(it_mt) = std(mt_cur, [], 'all');
-end
-\end{verbatim}
+disp(idx);
 
-Fourth Construct a Table
-
-\begin{verbatim}
-% Constructe Table
-tb_rowcols_tab = array2table([(1:length(cl_mt_rand))', ...
-    ar_dim_3, ar_dim_4, ar_mean, ar_std]);
-tb_rowcols_tab.Properties.VariableNames = ...
-    matlab.lang.makeValidName(["i", "dim3", "dim4",  "mean", "std"]);
-disp(tb_rowcols_tab);
-
-    i    dim3    dim4     mean        std  
-    _    ____    ____    _______    _______
-
-    1     31      41     0.44019    0.22156
-    2     32      41     0.70204     0.2281
-    3     31      42     0.48632    0.17157
-    4     32      42     0.40857    0.27764
-\end{verbatim}
-
-\hypertarget{nd-array-two-way-summarize-in-table}{%
-\subsubsection{ND Array Two-Way Summarize in Table}\label{nd-array-two-way-summarize-in-table}}
-
-Given dataframe as above, but we now want to add to the resulting
-summary table additional columns, rather than taking the means of the
-entire matrix in the first two dimensions, we only take average with
-respect to the rows, the first dimension, the second dimension show up
-as coumn statistics names, still multiple stats. The results worked out
-here are embedded in the
-\href{https://fanwangecon.github.io/MEconTools/MEconTools/doc/summ/htmlpdfm/fx_summ_nd_array.html}{fx\_summ\_nd\_array}
-function of the \href{https://fanwangecon.github.io/MEconTools/}{MEconTools}
-Package.
-
-First, we generate several array of information:
-
-\begin{verbatim}
-% dimension names
-st_title = 'Summarize values over a conditional on z (columns) and kids and marriage (rows)';
-st_dim_1 = 'a';
-st_dim_2 = 'z';
-st_dim_3 = 'kid';
-st_dim_4 = 'marriage';
-% 3rd and fourth dimension values
-ar_dim_2 = [-3, -1, 1, 3];
-ar_dim_3 = [1,2,3];
-ar_dim_4 = [0,1];
-% Initialize and Squeeze
-rng(123);
-mn_rand = rand(10,4,3,2);
-cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
-cl_mt_rand = cln_mt_rand(:);
-\end{verbatim}
-
-Second, create two arrays that tracks for each element of cl\_mt\_rand,
-which one of the 3rd and 4th dimensions they correspond to:
-
-\begin{verbatim}
-[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3', ar_dim_4');
-ar_dim_3 = mt_dim_3(:);
-ar_dim_4 = mt_dim_4(:);
-\end{verbatim}
-
-Third, summarize each matrix:
-
-\begin{verbatim}
-% Over of matrix and summarize
-mt_mean = zeros(length(cl_mt_rand), size(mn_rand,2));
-mt_std = zeros(length(cl_mt_rand), size(mn_rand,2));
-for it_mt=1:length(cl_mt_rand)
-    mt_cur = cl_mt_rand{it_mt};
-    mt_mean(it_mt,:) = mean(mt_cur, 1);
-    mt_std(it_mt,:) = std(mt_cur, [], 1);
-end
-\end{verbatim}
-
-Fourth Construct a Table
-
-\begin{verbatim}
-% Constructe Table
-tb_rowcols_tab = array2table([(1:length(cl_mt_rand))', ...
-    ar_dim_3, ar_dim_4, mt_mean, mt_std]);
-% Column Names
-cl_col_names_cate_dims = [string(st_dim_3), string(st_dim_4)];
-cl_col_names_mn = strcat('mean_', st_dim_2, string(ar_dim_2));
-cl_col_names_sd = strcat('sd_', st_dim_2, string(ar_dim_2));
-tb_rowcols_tab.Properties.VariableNames = ...
-    matlab.lang.makeValidName(["group", cl_col_names_cate_dims, cl_col_names_mn, cl_col_names_sd]);
-% disp(['xxx ' st_title ' xxxxxxxxxxxxxxxxxxxxxxxxxxx']);
-disp(tb_rowcols_tab);
-
-    group    kid    marriage    mean_z_3    mean_z_1    mean_z1    mean_z3    sd_z_3     sd_z_1      sd_z1      sd_z3 
-    _____    ___    ________    ________    ________    _______    _______    _______    _______    _______    _______
-
-      1       1        0         0.5442     0.41278     0.53795    0.49542    0.22935    0.22945    0.21653    0.25245
-      2       2        0        0.51894     0.52262     0.52544    0.45066    0.26787    0.23615    0.25833    0.31178
-      3       3        0        0.48248      0.5238     0.50392    0.46534    0.27009    0.26676    0.26644    0.29449
-      4       1        1        0.58343     0.50529     0.54361     0.5006    0.29578    0.30182    0.30952    0.27317
-      5       2        1        0.58408     0.45941     0.50466    0.40081    0.25026    0.34704    0.31039    0.28693
-      6       3        1        0.51148     0.49531     0.48963    0.47698     0.3271    0.24336    0.34498    0.34004
+     1     3
+     4     1
+     2     4
+     3     2
 \end{verbatim}
 
 \hypertarget{array-broadcast-and-expansion-examples}{%
 \subsection{Array Broadcast and Expansion Examples}\label{array-broadcast-and-expansion-examples}}
 
-\textbf{back to} \href{https://fanwangecon.github.io}{\textbf{Fan}}\textbf{'s} \href{https://fanwangecon.github.io/M4Econ/}{\textbf{Reusable
-Matlab}} \textbf{Repository or}
-\href{https://fanwangecon.github.io/CodeDynaAsset/}{\textbf{Dynamic Asset}}
-\textbf{Repository.}
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
 
 Matrix broadcasting was added to matlab's recent editions. This is an
 important step for vectorizing codes. Proper usage of broadcasting
@@ -1599,9 +1280,9 @@ Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon
 \hypertarget{accumarry-basic-example}{%
 \subsubsection{Accumarry Basic Example}\label{accumarry-basic-example}}
 
-There are three unique values in ar\_a, sum up the probabilities for
-each of the unique states. This is equivalent to sorting a matrix with a
-and prob, and computing sum for each.
+There are three unique values in ar\_a, sum up the probabilities for each
+of the unique states. This is equivalent to sorting a matrix with a and
+prob, and computing sum for each.
 
 \begin{verbatim}
 ar_a = [3,2,1,3]';
@@ -1973,10 +1654,9 @@ disp(mt_it_allcombo)
 \hypertarget{matlab-array-basics-and-miscellaneous}{%
 \subsection{Matlab Array Basics and Miscellaneous}\label{matlab-array-basics-and-miscellaneous}}
 
-\textbf{back to} \href{https://fanwangecon.github.io}{\textbf{Fan}}\textbf{'s} \href{https://fanwangecon.github.io/M4Econ/}{\textbf{Reusable
-Matlab}} \textbf{Repository or}
-\href{https://fanwangecon.github.io/CodeDynaAsset/}{\textbf{Dynamic Asset}}
-\textbf{Repository.}
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
 
 \hypertarget{compare-array-values-that-are-approximately-similar}{%
 \subsubsection{Compare Array Values That are Approximately Similar}\label{compare-array-values-that-are-approximately-similar}}
@@ -2054,6 +1734,683 @@ disp(ar_full(imag(ar_full) ~= 0));
    0.2861 + 0.4809i   0.6965 + 0.6848i   0.2269 + 0.3921i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5513 + 0.3432i   0.7195 + 0.7290i
 \end{verbatim}
 
+\hypertarget{nd-dimensional-arrays}{%
+\section{ND Dimensional Arrays}\label{nd-dimensional-arrays}}
+
+\hypertarget{d-4d-nd-arrays-reshape-and-rearrange-dimensions}{%
+\subsection{3D, 4D, ND Arrays Reshape and Rearrange Dimensions}\label{d-4d-nd-arrays-reshape-and-rearrange-dimensions}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{d-array-to-cell-array-of-matrix-split-by-last-dimension}{%
+\subsubsection{3D Array to Cell Array of Matrix Split by Last Dimension}\label{d-array-to-cell-array-of-matrix-split-by-last-dimension}}
+
+Convert Multi-dimensional arrays to a cell array consistent of two
+dimensional arrays. In this example, we split by the 3rd dimension, so
+the number of output matrixes is equal to the length of the 3rd
+dimension.
+
+First create a three dimensional array, two matrixes that are 4 by 3
+each:
+
+\begin{verbatim}
+% Create a 3D Array
+rng(123);
+mn_rand = rand(4,3,2);
+disp(mn_rand);
+
+(:,:,1) =
+
+    0.6965    0.7195    0.4809
+    0.2861    0.4231    0.3921
+    0.2269    0.9808    0.3432
+    0.5513    0.6848    0.7290
+
+
+(:,:,2) =
+
+    0.4386    0.1825    0.6344
+    0.0597    0.1755    0.8494
+    0.3980    0.5316    0.7245
+    0.7380    0.5318    0.6110
+\end{verbatim}
+
+Now convert the 3 dimensional array to a 2 by 1 cell array that contains
+matrixes in each cell:
+
+\begin{verbatim}
+% Squeece 3D array to a Cell array of matrixes
+cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1} =
+ 
+    0.6965    0.7195    0.4809
+    0.2861    0.4231    0.3921
+    0.2269    0.9808    0.3432
+    0.5513    0.6848    0.7290
+
+
+
+cl_mn_rand{2} =
+ 
+    0.4386    0.1825    0.6344
+    0.0597    0.1755    0.8494
+    0.3980    0.5316    0.7245
+    0.7380    0.5318    0.6110
+\end{verbatim}
+
+\hypertarget{d-array-to-cell-array-of-matrix-split-by-last-two-dimensions}{%
+\subsubsection{4D Array to Cell Array of Matrix Split by Last Two Dimensions}\label{d-array-to-cell-array-of-matrix-split-by-last-two-dimensions}}
+
+Convert 4D Multi-dimensional arrays to a cell array consistent of two
+dimensional arrays. In this example, the first two dimensions determine
+the resulting matrix size, the the 3rd and the 4th dimensions are
+categorical.
+
+First create a four dimensional array, four matrixes stored each matrix
+is 2 by 2:
+
+\begin{verbatim}
+% Create a 3D Array
+rng(123);
+mn_rand = rand(2,2,2,2);
+disp(mn_rand);
+
+(:,:,1,1) =
+
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+(:,:,2,1) =
+
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+(:,:,1,2) =
+
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+(:,:,2,2) =
+
+    0.4386    0.3980
+    0.0597    0.7380
+\end{verbatim}
+
+Now convert the 4 dimensional array to a 2 by 2 cell array that contains
+matrixes in each cell:
+
+\begin{verbatim}
+% Squeece 3D array to a Cell array of matrixes
+cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1,1} =
+ 
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+
+cl_mn_rand{2,1} =
+ 
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+
+cl_mn_rand{1,2} =
+ 
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+
+cl_mn_rand{2,2} =
+ 
+    0.4386    0.3980
+    0.0597    0.7380
+\end{verbatim}
+
+\hypertarget{d-array-to-cell-array-of-matrix-split-by-first-and-fourth-dimensions-rearrange-dimensions}{%
+\subsubsection{4D Array to Cell Array of Matrix Split by First and Fourth Dimensions Rearrange Dimensions}\label{d-array-to-cell-array-of-matrix-split-by-first-and-fourth-dimensions-rearrange-dimensions}}
+
+Suppose we store policy and value function given four state variables.
+The first one is age, the second one is asset, the third one is shock,
+and the fourth one is the number of kids. We start out with a four
+dimensional matrix. The objective is to create a two dimensional cell
+array as output where indexed by the 1st and 4th dimension of the
+underlying numeric array, and the elements of the 2D cell array are
+matrixes.
+
+This is achieved by the
+\href{https://www.mathworks.com/help/matlab/ref/permute.html}{permute}
+function. We first rearrange the matrix, so that the 2nd and 3rd
+dimensions become the 1st and 2nd, then we use the technique used above
+to squeeze out the first two dimensions as matrixes with the last two as
+categories.
+
+First, generate the 2 by 2 by 2 by 2, (Age, A, Z, Kids Count), matrix:
+
+\begin{verbatim}
+% Create a 3D Array
+rng(123);
+% (Age, A, Z, Kids Count)
+mn_rand = rand(2,2,2,2);
+\end{verbatim}
+
+Second, loop out the (A,Z) matrix by Age and Kids Count, this shows us
+what we want to achieve. Note that each row is Age, each column is A,
+each submatrix is z, and each super-matrix is kid-count. So from
+slicing, each column printed out are different value of A, the two
+submatrixes printed out are for each z. For the output structure where
+we want a (A,Z) matrix, the columns need to become rows, and the
+submatrix need to become columns.
+
+\begin{verbatim}
+% Show Matrix by Age and Kids
+for it_age = 1:size(mn_rand,1)
+    for it_kids = 1:size(mn_rand,4)
+        disp(strcat(['it_age:' num2str(it_age) ', it_kids:' num2str(it_kids)]))
+        disp(mn_rand(it_age,:,:,it_kids));
+    end
+end
+
+it_age:1, it_kids:1
+(:,:,1) =
+
+    0.6965    0.2269
+
+
+(:,:,2) =
+
+    0.7195    0.9808
+it_age:1, it_kids:2
+(:,:,1) =
+
+    0.4809    0.3432
+
+
+(:,:,2) =
+
+    0.4386    0.3980
+it_age:2, it_kids:1
+(:,:,1) =
+
+    0.2861    0.5513
+
+
+(:,:,2) =
+
+    0.4231    0.6848
+it_age:2, it_kids:2
+(:,:,1) =
+
+    0.3921    0.7290
+
+
+(:,:,2) =
+
+    0.0597    0.7380
+\end{verbatim}
+
+Third, we permutate the matrix and squeeze to arrive at the 2 by 2 cell,
+note that step two is just to show via loop what we should get:
+
+\begin{verbatim}
+% Rearrange dimensions
+mn_rand_2314 = permute(mn_rand, [2,3,1,4]);
+% Squeeze the first two dimensiosn as before
+cl_mn_rand = squeeze(num2cell(mn_rand_2314, [1,2]));
+% show
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1,1} =
+ 
+    0.6965    0.7195
+    0.2269    0.9808
+
+
+
+cl_mn_rand{2,1} =
+ 
+    0.2861    0.4231
+    0.5513    0.6848
+
+
+
+cl_mn_rand{1,2} =
+ 
+    0.4809    0.4386
+    0.3432    0.3980
+
+
+
+cl_mn_rand{2,2} =
+ 
+    0.3921    0.0597
+    0.7290    0.7380
+\end{verbatim}
+
+\hypertarget{nd-array-summarize-in-table}{%
+\subsubsection{ND Array Summarize in Table}\label{nd-array-summarize-in-table}}
+
+Given an ND dataframe, summarize the first two dimensions. For each
+possible combination of the 3rd and 4th dimension, generate mean, sd,
+min and max over the matrix of the first two dimensions. This is similar
+to a tabulation function.
+
+First, we generate several array of information:
+
+\begin{verbatim}
+% Initialize and Squeeze
+rng(123);
+mn_rand = rand(2,2,2,2);
+cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
+cl_mt_rand = cln_mt_rand(:);
+celldisp(cl_mt_rand);
+
+
+cl_mt_rand{1} =
+ 
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+
+cl_mt_rand{2} =
+ 
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+
+cl_mt_rand{3} =
+ 
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+
+cl_mt_rand{4} =
+ 
+    0.4386    0.3980
+    0.0597    0.7380
+\end{verbatim}
+
+Second, create two arrays that tracks for each element of cl\_mt\_rand,
+which one of the 3rd and 4th dimensions they correspond to:
+
+\begin{verbatim}
+ar_dim_3 = [31,32]';
+ar_dim_4 = [41,42]';
+[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3, ar_dim_4);
+ar_dim_3 = mt_dim_3(:);
+ar_dim_4 = mt_dim_4(:);
+\end{verbatim}
+
+Third, summarize each matrix:
+
+\begin{verbatim}
+% Over of matrix and summarize
+ar_mean = zeros(size(cl_mt_rand));
+ar_std = zeros(size(cl_mt_rand));
+for it_mt=1:length(cl_mt_rand)
+    mt_cur = cl_mt_rand{it_mt};
+    ar_mean(it_mt) = mean(mt_cur, 'all');
+    ar_std(it_mt) = std(mt_cur, [], 'all');
+end
+\end{verbatim}
+
+Fourth Construct a Table
+
+\begin{verbatim}
+% Constructe Table
+tb_rowcols_tab = array2table([(1:length(cl_mt_rand))', ...
+    ar_dim_3, ar_dim_4, ar_mean, ar_std]);
+tb_rowcols_tab.Properties.VariableNames = ...
+    matlab.lang.makeValidName(["i", "dim3", "dim4",  "mean", "std"]);
+disp(tb_rowcols_tab);
+
+    i    dim3    dim4     mean        std  
+    _    ____    ____    _______    _______
+
+    1     31      41     0.44019    0.22156
+    2     32      41     0.70204     0.2281
+    3     31      42     0.48632    0.17157
+    4     32      42     0.40857    0.27764
+\end{verbatim}
+
+\hypertarget{nd-array-two-way-summarize-in-table}{%
+\subsubsection{ND Array Two-Way Summarize in Table}\label{nd-array-two-way-summarize-in-table}}
+
+Given dataframe as above, but we now want to add to the resulting
+summary table additional columns, rather than taking the means of the
+entire matrix in the first two dimensions, we only take average with
+respect to the rows, the first dimension, the second dimension show up
+as coumn statistics names, still multiple stats. The results worked out
+here are embedded in the
+\href{https://fanwangecon.github.io/MEconTools/MEconTools/doc/summ/htmlpdfm/fx_summ_nd_array.html}{fx\_summ\_nd\_array}
+function of the \href{https://fanwangecon.github.io/MEconTools/}{MEconTools}
+Package.
+
+First, we generate several array of information:
+
+\begin{verbatim}
+% dimension names
+st_title = 'Summarize values over a conditional on z (columns) and kids and marriage (rows)';
+st_dim_1 = 'a';
+st_dim_2 = 'z';
+st_dim_3 = 'kid';
+st_dim_4 = 'marriage';
+% 3rd and fourth dimension values
+ar_dim_2 = [-3, -1, 1, 3];
+ar_dim_3 = [1,2,3];
+ar_dim_4 = [0,1];
+% Initialize and Squeeze
+rng(123);
+mn_rand = rand(10,4,3,2);
+cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
+cl_mt_rand = cln_mt_rand(:);
+\end{verbatim}
+
+Second, create two arrays that tracks for each element of cl\_mt\_rand,
+which one of the 3rd and 4th dimensions they correspond to:
+
+\begin{verbatim}
+[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3', ar_dim_4');
+ar_dim_3 = mt_dim_3(:);
+ar_dim_4 = mt_dim_4(:);
+\end{verbatim}
+
+Third, summarize each matrix:
+
+\begin{verbatim}
+% Over of matrix and summarize
+mt_mean = zeros(length(cl_mt_rand), size(mn_rand,2));
+mt_std = zeros(length(cl_mt_rand), size(mn_rand,2));
+for it_mt=1:length(cl_mt_rand)
+    mt_cur = cl_mt_rand{it_mt};
+    mt_mean(it_mt,:) = mean(mt_cur, 1);
+    mt_std(it_mt,:) = std(mt_cur, [], 1);
+end
+\end{verbatim}
+
+Fourth Construct a Table
+
+\begin{verbatim}
+% Constructe Table
+tb_rowcols_tab = array2table([(1:length(cl_mt_rand))', ...
+    ar_dim_3, ar_dim_4, mt_mean, mt_std]);
+% Column Names
+cl_col_names_cate_dims = [string(st_dim_3), string(st_dim_4)];
+cl_col_names_mn = strcat('mean_', st_dim_2, string(ar_dim_2));
+cl_col_names_sd = strcat('sd_', st_dim_2, string(ar_dim_2));
+tb_rowcols_tab.Properties.VariableNames = ...
+    matlab.lang.makeValidName(["group", cl_col_names_cate_dims, cl_col_names_mn, cl_col_names_sd]);
+% disp(['xxx ' st_title ' xxxxxxxxxxxxxxxxxxxxxxxxxxx']);
+disp(tb_rowcols_tab);
+
+    group    kid    marriage    mean_z_3    mean_z_1    mean_z1    mean_z3    sd_z_3     sd_z_1      sd_z1      sd_z3 
+    _____    ___    ________    ________    ________    _______    _______    _______    _______    _______    _______
+
+      1       1        0         0.5442     0.41278     0.53795    0.49542    0.22935    0.22945    0.21653    0.25245
+      2       2        0        0.51894     0.52262     0.52544    0.45066    0.26787    0.23615    0.25833    0.31178
+      3       3        0        0.48248      0.5238     0.50392    0.46534    0.27009    0.26676    0.26644    0.29449
+      4       1        1        0.58343     0.50529     0.54361     0.5006    0.29578    0.30182    0.30952    0.27317
+      5       2        1        0.58408     0.45941     0.50466    0.40081    0.25026    0.34704    0.31039    0.28693
+      6       3        1        0.51148     0.49531     0.48963    0.47698     0.3271    0.24336    0.34498    0.34004
+\end{verbatim}
+
+\hypertarget{multidimensional-nd-array-to-2d-matrix-with-nan-exclusions}{%
+\subsection{Multidimensional ND Array to 2D Matrix with Nan Exclusions}\label{multidimensional-nd-array-to-2d-matrix-with-nan-exclusions}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{a-multidimensional-nd-array-with-many-nan-values}{%
+\subsubsection{A Multidimensional ND Array with Many NaN Values}\label{a-multidimensional-nd-array-with-many-nan-values}}
+
+Create a multidimensional Array with Many NaN Values. For example, we
+could have a dynamic lifecycle model with three endogenous varaibles,
+years of education accumulated, years of experiencesin blue and white
+collar jobs. By age 22, after starting to work at age 16, there are
+different possible combinations of G (schooling), X1 (white-collar), and
+X2 (blue-collar) jobs. These are exclusive choices in each year, so at
+age 16, assume that G = 0, X1 = 0 and X2 = 0. At age 16, they can choose
+to stay at home, school, or X1, or X2, exclusively. G, X1, X2 accumulate
+over time.
+
+For each age, we can create multi-dimensional arrays with equal
+dimension for G, X1 and X2, to record consumption, value, etc at each
+element of the possible state-space. However, that matrix could have a
+lot of empty values.
+
+In the example below, also has a X3 (military category).
+
+\begin{verbatim}
+% random number
+rng(123);
+
+% Max age means number of
+MAX_YRS_POST16 = 3;
+
+% store all
+cl_EV = cell(MAX_YRS_POST16,1);
+
+% Loop 1, solve BACKWARD
+for it_yrs_post16=MAX_YRS_POST16:-1:1
+    
+    % Store some results, the matrix below includes all possible
+    % state-space elements
+    mn_ev_at_gx123 = NaN(it_yrs_post16, it_yrs_post16, it_yrs_post16, it_yrs_post16);
+    
+    % Loops 2, possibles Years attained so far as well as experiences
+    for G=0:1:(it_yrs_post16-1)
+        for X1=0:1:(it_yrs_post16-1-G)
+            for X2=0:1:(it_yrs_post16-1-G-X1)
+                for X3=0:1:(it_yrs_post16-1-G-X1-X2)
+                    
+                    % Double checkAre these combinations feasible?
+                    if (G+X1+X2+X3 <= it_yrs_post16)
+                        % just plug in a random number
+                        mn_ev_at_gx123(G+1, X1+1, X2+1, X3+1) = rand();
+                    end
+                end
+            end
+        end
+    end
+    
+    % store matrixes
+    cl_EV{it_yrs_post16} = mn_ev_at_gx123;
+    
+end
+
+% Display Results
+celldisp(cl_EV);
+
+
+cl_EV{1} =
+ 
+    0.6344
+
+
+
+cl_EV{2} =
+ 
+
+(:,:,1,1) =
+
+    0.7380    0.5316
+    0.5318       NaN
+
+
+(:,:,2,1) =
+
+    0.1755       NaN
+       NaN       NaN
+
+
+(:,:,1,2) =
+
+    0.1825       NaN
+       NaN       NaN
+
+
+(:,:,2,2) =
+
+   NaN   NaN
+   NaN   NaN
+
+
+
+cl_EV{3} =
+ 
+
+(:,:,1,1) =
+
+    0.6965    0.9808    0.3921
+    0.3432    0.0597       NaN
+    0.3980       NaN       NaN
+
+
+(:,:,2,1) =
+
+    0.5513    0.4809       NaN
+    0.4386       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,3,1) =
+
+    0.4231       NaN       NaN
+       NaN       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,1,2) =
+
+    0.2861    0.6848       NaN
+    0.7290       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,2,2) =
+
+    0.7195       NaN       NaN
+       NaN       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,3,2) =
+
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+
+
+(:,:,1,3) =
+
+    0.2269       NaN       NaN
+       NaN       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,2,3) =
+
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+
+
+(:,:,3,3) =
+
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+\end{verbatim}
+
+\hypertarget{generate-a-two-dimensional-matrix-based-on-nd-array-for-only-non-nan-cell-values}{%
+\subsubsection{Generate a Two Dimensional Matrix Based on ND Array for Only non-NaN Cell Values}\label{generate-a-two-dimensional-matrix-based-on-nd-array-for-only-non-nan-cell-values}}
+
+We can generate a 2-dimensional matrix, what we can consider as a Table,
+with the information stored in the structures earlier. In this example,
+we can drop the NaN values. This matrix will be much larger in size due
+to explicitly storing X1, X2, X3 and G values then the ND array when
+most values are not NaN. But this output matrix can be much more easily
+interpretable and readable. When there are many many NaNs in the ND
+array, this matrix could be much smaller in size.
+
+First, convert each element of the cell array above to a 2D matrix (with
+the same number of columns), then stack resulting matrixes together to
+form one big table.
+
+\begin{verbatim}
+% Create a 2D Array
+for it_yrs_post16=MAX_YRS_POST16:-1:1
+    % Get matrix at cell element
+    mn_ev_at_gx123 = cl_EV{it_yrs_post16};
+    % flaten multi-dimensional matrix
+    ar_ev_at_gx123_flat = mn_ev_at_gx123(:);
+    % find nan values
+    ar_id_isnan = isnan(ar_ev_at_gx123_flat);
+    % obtain dimension-specific index for nan positions
+    [id_G, id_X1, id_X2, id_X3] = ind2sub(size(mn_ev_at_gx123), find(~ar_id_isnan));
+    % generate 2-dimensional matrix (table)
+    mt_ev_at_gx123 = [it_yrs_post16 + zeros(size(id_G)), ...
+        (id_G-1), (id_X1-1), (id_X2-1), (id_X3-1), ...
+        ar_ev_at_gx123_flat(~ar_id_isnan)];
+    % stack results
+    if (it_yrs_post16 == MAX_YRS_POST16)
+        mt_ev_at_gx123_all = mt_ev_at_gx123;
+    else
+        mt_ev_at_gx123_all = [mt_ev_at_gx123_all; mt_ev_at_gx123];
+    end
+end
+% Sort
+mt_ev_at_gx123_all = sortrows(mt_ev_at_gx123_all, [1,2,3,4]);
+% Create Table
+tb_ev_at_gx123_all = array2table(mt_ev_at_gx123_all);
+cl_col_names_a = {'YRS_POST16', 'G', 'X1', 'X2', 'X3', 'EV'};
+tb_ev_at_gx123_all.Properties.VariableNames = cl_col_names_a;
+disp(tb_ev_at_gx123_all);
+
+    YRS_POST16    G    X1    X2    X3       EV   
+    __________    _    __    __    __    ________
+
+        1         0    0     0     0       0.6344
+        2         0    0     0     0        0.738
+        2         0    0     0     1      0.18249
+        2         0    0     1     0      0.17545
+        2         0    1     0     0      0.53155
+        2         1    0     0     0      0.53183
+        3         0    0     0     0      0.69647
+        3         0    0     0     1      0.28614
+        3         0    0     0     2      0.22685
+        3         0    0     1     0      0.55131
+        3         0    0     1     1      0.71947
+        3         0    0     2     0      0.42311
+        3         0    1     0     0      0.98076
+        3         0    1     0     1      0.68483
+        3         0    1     1     0      0.48093
+        3         0    2     0     0      0.39212
+        3         1    0     0     0      0.34318
+        3         1    0     0     1      0.72905
+        3         1    0     1     0      0.43857
+        3         1    1     0     0     0.059678
+        3         2    0     0     0      0.39804
+\end{verbatim}
+
 \hypertarget{cells}{%
 \section{Cells}\label{cells}}
 
@@ -2068,8 +2425,8 @@ Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon
 \subsubsection{Find Index of Elements of String Cells in a larger String Cells}\label{find-index-of-elements-of-string-cells-in-a-larger-string-cells}}
 
 the function below returns the position of cl\_st\_param\_keys in
-ls\_st\_param\_key should only include in cl\_st\_param\_keys strings
-that also exist in ls\_st\_param\_key.
+ls\_st\_param\_key should only include in cl\_st\_param\_keys strings that
+also exist in ls\_st\_param\_key.
 
 \begin{verbatim}
 ls_st_param_key = {'fl_crra', 'fl_beta', ...
@@ -2625,10 +2982,10 @@ ans = 5
 \hypertarget{find-the-positions-of-string-cells-in-full-string-cells}{%
 \subsubsection{Find the positions of String Cells in Full String Cells}\label{find-the-positions-of-string-cells-in-full-string-cells}}
 
-Find the positions of fl\_w, fl\_beta, and it\_z\_n in
-ls\_st\_param\_key. Then just find the position of fl\_crra. When
-looking for the position of something that does not exist, generate an
-find outcome array of length 0.
+Find the positions of fl\_w, fl\_beta, and it\_z\_n in ls\_st\_param\_key.
+Then just find the position of fl\_crra. When looking for the position of
+something that does not exist, generate an find outcome array of length
+0.
 
 \begin{verbatim}
 ls_st_param_key = {'fl_crra', 'fl_beta', ...
@@ -3852,7 +4209,7 @@ disp(tb_prob_math_eng_approx(f_subset(7, length(ar_x)), f_subset(7, length(ar_x)
     math <=0           0.0009           0.0202             0.1236            0.334           0.4661            0.4946          0.4965   
     math <=1.02        0.0009           0.0215             0.1493           0.4724            0.754            0.8411          0.8511   
     math <=1.98        0.0009           0.0217             0.1526           0.4989           0.8344            0.9591           0.977   
-    math <=3           0.0009           0.0217             0.1526           0.5007           0.8425            0.9768          0.9976
+    math <=3           0.0009           0.0217             0.1526           0.5007           0.8425            0.9768          0.9976   
 \end{verbatim}
 
 \hypertarget{cholesky-decomposition-correlated-bivariate-normal-from-iid-random-draws}{%
@@ -3932,8 +4289,8 @@ from a multivariate distribution by (For more details see \href{https://eml.berk
   using Cholesky matrix.
 \end{enumerate}
 
-, draw two uncorrelated normal random variables, with mean 0, sd 1,
-\(\eta_1\) and \(\eta_2\).
+\underline{\textbf{\emph{First}}}, draw two uncorrelated normal random variables, with
+mean 0, sd 1, \(\eta_1\) and \(\eta_2\).
 
 \begin{verbatim}
 % Draw Two Uncorrelated Normal Random Variables
@@ -3969,8 +4326,8 @@ disp([num2str(corrcoef(ar_draws_eta_1, ar_draws_eta_2))]);
 0.0057623           1
 \end{verbatim}
 
-, now using the variance-covariance we already have, decompose it, we
-will have:
+\underline{\textbf{\emph{Second}}}, now using the variance-covariance we already have,
+decompose it, we will have:
 
 \begin{itemize}
 \tightlist
@@ -3993,7 +4350,8 @@ disp([num2str(mt_varcov_chol*mt_varcov_chol')]);
 5           5
 \end{verbatim}
 
-, We can get back to the original \(x_1\) and \(x_2\) variables:
+\underline{\textbf{\emph{Third}}}, We can get back to the original \(x_1\) and \(x_2\)
+variables:
 
 \begin{itemize}
 \item
@@ -4679,8 +5037,6 @@ grid minor;
 
 \includegraphics[width=5.20833in,height=\textheight]{img/fs_scatter_images/figure_1.png}
 
-\vspace{1em}
-
 \hypertarget{matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines}{%
 \subsection{Matlab Line and Scatter Plot with Multiple Lines and Axis Lines}\label{matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines}}
 
@@ -5184,7 +5540,7 @@ disp(tb_test_a);
        "rowA=2"          {'rowA=2'}          0.1      0.1  
        "rowA=3"          {'rowA=3'}         0.25      0.2  
        "rowA=4"          {'rowA=4'}          0.3      0.3  
-       "rowA=5"          {'rowA=5'}          0.4      0.4
+       "rowA=5"          {'rowA=5'}          0.4      0.4  
 \end{verbatim}
 
 \hypertarget{select-subset-of-rows-and-columns}{%
@@ -5251,7 +5607,7 @@ disp(tb_test_a(tb_test_a.col123==0.4,:));
               ____    ______________    _________________    ______    ______
 
     rowA=1    "a"        "rowA=1"          {'rowA=1'}         0.4       0.4  
-    rowA=5    "b"        "rowA=5"          {'rowA=5'}         0.4       0.4
+    rowA=5    "b"        "rowA=5"          {'rowA=5'}         0.4       0.4  
 \end{verbatim}
 
 \hypertarget{table-joining}{%
@@ -5501,7 +5857,7 @@ disp(tb_model_allsimu_w_info);
     row=12     2.76        2.4      "outvar_3"      2.5814    2.4372     2.4806 
     row=13      3.6       1.96      "outvar_1"      2.7199    3.3129     3.0577 
     row=14      3.6       1.96      "outvar_2"      3.9804    1.4529     2.9285 
-    row=15      3.6       1.96      "outvar_3"      2.8445    4.4117     2.6576
+    row=15      3.6       1.96      "outvar_3"      2.8445    4.4117     2.6576 
 \end{verbatim}
 
 \hypertarget{appendix-appendix}{%
@@ -5543,16 +5899,16 @@ disp(tb_model_allsimu_w_info);
     \textbf{m}: \emph{sub2ind() + @(it\_subset\_n, it\_ar\_n) unique(round(((0:1:(it\_subset\_n-1))/(it\_subset\_n-1)) times (it\_ar\_n-1)+1))}
   \end{itemize}
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html}{3D, 4D, ND Arrays Reshape and Summarize}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_3d4dndarray.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html}{\textbf{html}}
+  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_matrix_max.html}{Find the Maximum Value and Index in Matrix Over Columns and Overall}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_matrix_max.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_matrix_max.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_matrix_max.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_matrix_max.html}{\textbf{html}}
 
   \begin{itemize}
   \tightlist
   \item
-    Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
+    Given 2D array, find the maximum value and index for each column.
   \item
-    Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
+    Find the maximum value in a 2D array's row and column indexes.
   \item
-    \textbf{m}: \emph{permute(mn, {[}3,1,2,4{]}) + squeeze(num2cell(mn, {[}1,2{]})) + celldisp() + ndgrid()}
+    \textbf{m}: \emph{max() + ind2sub() + maxk()}
   \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html}{Array Broadcasting Examples}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_broadcast_expand.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html}{\textbf{html}}
@@ -5604,8 +5960,40 @@ disp(tb_model_allsimu_w_info);
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-1.2-cellscells-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{cells}{Section 1.2 Cells} links}{Section 1.2 Cells links}}\label{section-1.2-cellscells-links}}
+\hypertarget{section-1.2-nd-dimensional-arraysnd-dimensional-arrays-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{nd-dimensional-arrays}{Section 1.2 ND Dimensional Arrays} links}{Section 1.2 ND Dimensional Arrays links}}\label{section-1.2-nd-dimensional-arraysnd-dimensional-arrays-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html}{3D, 4D, ND Arrays Reshape and Summarize}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
+  \item
+    Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
+  \item
+    \textbf{m}: \emph{permute(mn, {[}3,1,2,4{]}) + squeeze(num2cell(mn, {[}1,2{]})) + celldisp() + ndgrid()}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html}{ND Array Drop NaN Elements Reshape to 2D Dataframe with Variable Values}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray_nan.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    There is a ND Array where each dimension is a different attribute, generate 2D dataframe with columns for attribute values and ND Array values stored as a single column.
+  \item
+    There might be many NaN values in the ND array, drop NaN values in the ND array for 2D dataframe. Find the non-NaN values along each index dimension.
+  \item
+    \textbf{m}: \emph{cell() + NaN() + isnan() + ind2sub() + find()}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{section-1.3-cellscells-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{cells}{Section 1.3 Cells} links}{Section 1.3 Cells links}}\label{section-1.3-cellscells-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5656,8 +6044,8 @@ disp(tb_model_allsimu_w_info);
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-1.3-characters-and-stringscharacters-and-strings-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{characters-and-strings}{Section 1.3 Characters and Strings} links}{Section 1.3 Characters and Strings links}}\label{section-1.3-characters-and-stringscharacters-and-strings-links}}
+\hypertarget{section-1.4-characters-and-stringscharacters-and-strings-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{characters-and-strings}{Section 1.4 Characters and Strings} links}{Section 1.4 Characters and Strings links}}\label{section-1.4-characters-and-stringscharacters-and-strings-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5704,8 +6092,8 @@ disp(tb_model_allsimu_w_info);
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-1.4-map-containersmap-containers-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{map-containers}{Section 1.4 Map Containers} links}{Section 1.4 Map Containers links}}\label{section-1.4-map-containersmap-containers-links}}
+\hypertarget{section-1.5-map-containersmap-containers-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{map-containers}{Section 1.5 Map Containers} links}{Section 1.5 Map Containers links}}\label{section-1.5-map-containersmap-containers-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -6034,7 +6422,5 @@ disp(tb_model_allsimu_w_info);
     \textbf{m}: \emph{array2table() + {[}tb\_a tb\_b{]} + {[}tb\_a; tb\_b{]} + tb.Properties.VariableNames + tb.Properties.RowNames}
   \end{itemize}
 \end{enumerate}
-
-  \bibliography{book.bib,packages.bib}
 
 \end{document}

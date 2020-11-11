@@ -5,26 +5,29 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab" />
+  <meta name="description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab" />
+  <meta property="og:description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab" />
+  <meta name="twitter:description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   
 
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-10-23" />
+<meta name="date" content="2020-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +36,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="functions.html"/>
+<script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,7 +54,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92953468-6"></script>
 <script>
@@ -79,102 +82,133 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>1</b> Data Structures</a><ul>
-<li class="chapter" data-level="1.1" data-path="data-structures.html"><a href="data-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>1.1</b> Matrices and Arrays</a><ul>
+<li class="chapter" data-level="1" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>1</b> Data Structures</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-structures.html"><a href="data-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>1.1</b> Matrices and Arrays</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="data-structures.html"><a href="data-structures.html#array-reshape-repeat-and-expand-examples"><i class="fa fa-check"></i><b>1.1.1</b> Array Reshape, Repeat and Expand Examples</a></li>
 <li class="chapter" data-level="1.1.2" data-path="data-structures.html"><a href="data-structures.html#array-index-slicing-and-subsetting-to-replace-and-expand"><i class="fa fa-check"></i><b>1.1.2</b> Array Index Slicing and Subsetting to Replace and Expand</a></li>
-<li class="chapter" data-level="1.1.3" data-path="data-structures.html"><a href="data-structures.html#d-4d-nd-arrays-reshape-and-rearrange-dimensions"><i class="fa fa-check"></i><b>1.1.3</b> 3D, 4D, ND Arrays Reshape and Rearrange Dimensions</a></li>
+<li class="chapter" data-level="1.1.3" data-path="data-structures.html"><a href="data-structures.html#maximum-of-matrix-columns-sort-matrix-columns"><i class="fa fa-check"></i><b>1.1.3</b> Maximum of Matrix Columns, Sort Matrix Columns</a></li>
 <li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.4</b> Array Broadcast and Expansion Examples</a></li>
 <li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.5</b> Grid States, Choices and Optimal Choices Example</a></li>
 <li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.6</b> Accumarray Examples</a></li>
 <li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#array-draw-random-index-and-find-combinations-or-permuations"><i class="fa fa-check"></i><b>1.1.7</b> Array Draw Random Index and Find Combinations or Permuations</a></li>
 <li class="chapter" data-level="1.1.8" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.8</b> Matlab Array Basics and Miscellaneous</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.2</b> Cells</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.2.1</b> List Comprehension with Cells</a></li>
-<li class="chapter" data-level="1.2.2" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.2.2</b> All Possible Combinations of Multiple Arrays</a></li>
-<li class="chapter" data-level="1.2.3" data-path="data-structures.html"><a href="data-structures.html#combine-cells-together"><i class="fa fa-check"></i><b>1.2.3</b> Combine Cells Together</a></li>
-<li class="chapter" data-level="1.2.4" data-path="data-structures.html"><a href="data-structures.html#nested-cells"><i class="fa fa-check"></i><b>1.2.4</b> Nested Cells</a></li>
+<li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#nd-dimensional-arrays"><i class="fa fa-check"></i><b>1.2</b> ND Dimensional Arrays</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#d-4d-nd-arrays-reshape-and-rearrange-dimensions"><i class="fa fa-check"></i><b>1.2.1</b> 3D, 4D, ND Arrays Reshape and Rearrange Dimensions</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-structures.html"><a href="data-structures.html#multidimensional-nd-array-to-2d-matrix-with-nan-exclusions"><i class="fa fa-check"></i><b>1.2.2</b> Multidimensional ND Array to 2D Matrix with Nan Exclusions</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.3</b> Characters and Strings</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations"><i class="fa fa-check"></i><b>1.3.1</b> Basic String Operations</a></li>
-<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#string-manipulations-with-arrays"><i class="fa fa-check"></i><b>1.3.2</b> String Manipulations with Arrays</a></li>
-<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings"><i class="fa fa-check"></i><b>1.3.3</b> Concatenate Strings Arrays with Numbers and Number Arrays with Strings</a></li>
+<li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.3</b> Cells</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.3.1</b> List Comprehension with Cells</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.3.2</b> All Possible Combinations of Multiple Arrays</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#combine-cells-together"><i class="fa fa-check"></i><b>1.3.3</b> Combine Cells Together</a></li>
+<li class="chapter" data-level="1.3.4" data-path="data-structures.html"><a href="data-structures.html#nested-cells"><i class="fa fa-check"></i><b>1.3.4</b> Nested Cells</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.4</b> Map Containers</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#container-map-basics"><i class="fa fa-check"></i><b>1.4.1</b> Container Map Basics</a></li>
-<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#container-map-display-key-and-values-and-subseting"><i class="fa fa-check"></i><b>1.4.2</b> Container Map Display Key and Values and Subseting</a></li>
-<li class="chapter" data-level="1.4.3" data-path="data-structures.html"><a href="data-structures.html#generate-container-maps"><i class="fa fa-check"></i><b>1.4.3</b> Generate Container Maps</a></li>
-<li class="chapter" data-level="1.4.4" data-path="data-structures.html"><a href="data-structures.html#container-map-example-overriding"><i class="fa fa-check"></i><b>1.4.4</b> Container Map Example Overriding</a></li>
+<li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.4</b> Characters and Strings</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-manipulations-with-arrays"><i class="fa fa-check"></i><b>1.4.2</b> String Manipulations with Arrays</a></li>
+<li class="chapter" data-level="1.4.3" data-path="data-structures.html"><a href="data-structures.html#concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings"><i class="fa fa-check"></i><b>1.4.3</b> Concatenate Strings Arrays with Numbers and Number Arrays with Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.5</b> Map Containers</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="data-structures.html"><a href="data-structures.html#container-map-basics"><i class="fa fa-check"></i><b>1.5.1</b> Container Map Basics</a></li>
+<li class="chapter" data-level="1.5.2" data-path="data-structures.html"><a href="data-structures.html#container-map-display-key-and-values-and-subseting"><i class="fa fa-check"></i><b>1.5.2</b> Container Map Display Key and Values and Subseting</a></li>
+<li class="chapter" data-level="1.5.3" data-path="data-structures.html"><a href="data-structures.html#generate-container-maps"><i class="fa fa-check"></i><b>1.5.3</b> Generate Container Maps</a></li>
+<li class="chapter" data-level="1.5.4" data-path="data-structures.html"><a href="data-structures.html#container-map-example-overriding"><i class="fa fa-check"></i><b>1.5.4</b> Container Map Example Overriding</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a><ul>
-<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.1</b> varargin Default Parameters</a><ul>
+<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.1</b> varargin Default Parameters</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
 <li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="panel.html"><a href="panel.html"><i class="fa fa-check"></i><b>3</b> Panel</a><ul>
-<li class="chapter" data-level="3.1" data-path="panel.html"><a href="panel.html#time-series"><i class="fa fa-check"></i><b>3.1</b> Time Series</a><ul>
+<li class="chapter" data-level="3" data-path="panel.html"><a href="panel.html"><i class="fa fa-check"></i><b>3</b> Panel</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="panel.html"><a href="panel.html#time-series"><i class="fa fa-check"></i><b>3.1</b> Time Series</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="panel.html"><a href="panel.html#simulate-ar1-autoregressive-processes"><i class="fa fa-check"></i><b>3.1.1</b> Simulate AR(1) Autoregressive Processes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>4</b> Simulation</a><ul>
-<li class="chapter" data-level="4.1" data-path="simulation.html"><a href="simulation.html#normal-distribution"><i class="fa fa-check"></i><b>4.1</b> Normal Distribution</a><ul>
+<li class="chapter" data-level="4" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>4</b> Simulation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="simulation.html"><a href="simulation.html#normal-distribution"><i class="fa fa-check"></i><b>4.1</b> Normal Distribution</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="simulation.html"><a href="simulation.html#compute-cdf-for-normal-and-bivariate-normal-distributions"><i class="fa fa-check"></i><b>4.1.1</b> Compute CDF for Normal and Bivariate Normal Distributions</a></li>
 <li class="chapter" data-level="4.1.2" data-path="simulation.html"><a href="simulation.html#cholesky-decomposition-correlated-bivariate-normal-from-iid-random-draws"><i class="fa fa-check"></i><b>4.1.2</b> Cholesky Decomposition Correlated Bivariate Normal from IID Random Draws</a></li>
 <li class="chapter" data-level="4.1.3" data-path="simulation.html"><a href="simulation.html#cholesky-decomposition-correlated-five-dimensional-multivariate-normal-shock"><i class="fa fa-check"></i><b>4.1.3</b> Cholesky Decomposition Correlated Five Dimensional Multivariate Normal Shock</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> Graphs</a><ul>
-<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>5.1</b> Figure Components</a><ul>
+<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> Graphs</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>5.1</b> Figure Components</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>5.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
 <li class="chapter" data-level="5.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>5.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
 <li class="chapter" data-level="5.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>5.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>5.2</b> Basic Figure Types</a><ul>
+<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>5.2</b> Basic Figure Types</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>5.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
 <li class="chapter" data-level="5.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>5.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
 <li class="chapter" data-level="5.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>5.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>5.3</b> Write and Read Plots</a><ul>
+<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>5.3</b> Write and Read Plots</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>5.3.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>6</b> Tables</a><ul>
-<li class="chapter" data-level="6.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>6.1</b> Basic Table Generation</a><ul>
+<li class="chapter" data-level="6" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>6</b> Tables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>6.1</b> Basic Table Generation</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>6.1.1</b> Named Tables with Random Data</a></li>
 <li class="chapter" data-level="6.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>6.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
 <li class="chapter" data-level="6.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>6.1.3</b> Row and Column Names for Table based on Arrays</a></li>
 <li class="chapter" data-level="6.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>6.1.4</b> Select Subset of Rows and Columns</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>6.2</b> Table Joining</a><ul>
+<li class="chapter" data-level="6.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>6.2</b> Table Joining</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>6.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="index-and-code-links.html"><a href="index-and-code-links.html"><i class="fa fa-check"></i><b>A</b> Index and Code Links</a><ul>
-<li class="chapter" data-level="A.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#data-structures-links"><i class="fa fa-check"></i><b>A.1</b> Data Structures links</a><ul>
+<li class="chapter" data-level="A" data-path="index-and-code-links.html"><a href="index-and-code-links.html"><i class="fa fa-check"></i><b>A</b> Index and Code Links</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#data-structures-links"><i class="fa fa-check"></i><b>A.1</b> Data Structures links</a>
+<ul>
 <li class="chapter" data-level="A.1.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.1-matrices-and-arraysmatrices-and-arrays-links"><i class="fa fa-check"></i><b>A.1.1</b> <span>Section 1.1 Matrices and Arrays</span> links</a></li>
-<li class="chapter" data-level="A.1.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.2-cellscells-links"><i class="fa fa-check"></i><b>A.1.2</b> <span>Section 1.2 Cells</span> links</a></li>
-<li class="chapter" data-level="A.1.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.3-characters-and-stringscharacters-and-strings-links"><i class="fa fa-check"></i><b>A.1.3</b> <span>Section 1.3 Characters and Strings</span> links</a></li>
-<li class="chapter" data-level="A.1.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.4-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.4</b> <span>Section 1.4 Map Containers</span> links</a></li>
+<li class="chapter" data-level="A.1.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.2-nd-dimensional-arraysnd-dimensional-arrays-links"><i class="fa fa-check"></i><b>A.1.2</b> <span>Section 1.2 ND Dimensional Arrays</span> links</a></li>
+<li class="chapter" data-level="A.1.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.3-cellscells-links"><i class="fa fa-check"></i><b>A.1.3</b> <span>Section 1.3 Cells</span> links</a></li>
+<li class="chapter" data-level="A.1.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.4-characters-and-stringscharacters-and-strings-links"><i class="fa fa-check"></i><b>A.1.4</b> <span>Section 1.4 Characters and Strings</span> links</a></li>
+<li class="chapter" data-level="A.1.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.5-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.5</b> <span>Section 1.5 Map Containers</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a><ul>
+<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
+<ul>
 <li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#panel-links"><i class="fa fa-check"></i><b>A.3</b> Panel links</a><ul>
+<li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#panel-links"><i class="fa fa-check"></i><b>A.3</b> Panel links</a>
+<ul>
 <li class="chapter" data-level="A.3.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-3.1-time-seriestime-series-links"><i class="fa fa-check"></i><b>A.3.1</b> <span>Section 3.1 Time Series</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#simulation-links"><i class="fa fa-check"></i><b>A.4</b> Simulation links</a><ul>
+<li class="chapter" data-level="A.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#simulation-links"><i class="fa fa-check"></i><b>A.4</b> Simulation links</a>
+<ul>
 <li class="chapter" data-level="A.4.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-4.1-normal-distributionnormal-distribution-links"><i class="fa fa-check"></i><b>A.4.1</b> <span>Section 4.1 Normal Distribution</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.5</b> Graphs links</a><ul>
+<li class="chapter" data-level="A.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.5</b> Graphs links</a>
+<ul>
 <li class="chapter" data-level="A.5.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.5.1</b> <span>Section 5.1 Figure Components</span> links</a></li>
 <li class="chapter" data-level="A.5.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.5.2</b> <span>Section 5.2 Basic Figure Types</span> links</a></li>
 <li class="chapter" data-level="A.5.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.3-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.5.3</b> <span>Section 5.3 Write and Read Plots</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.6</b> Tables links</a><ul>
+<li class="chapter" data-level="A.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.6</b> Tables links</a>
+<ul>
 <li class="chapter" data-level="A.6.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.6.1</b> <span>Section 6.1 Basic Table Generation</span> links</a></li>
 <li class="chapter" data-level="A.6.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.6.2</b> <span>Section 6.2 Table Joining</span> links</a></li>
 </ul></li>
@@ -199,18 +233,18 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-structures" class="section level1">
+<div id="data-structures" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Data Structures</h1>
 
-<div id="matrices-and-arrays" class="section level2">
+<div id="matrices-and-arrays" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Matrices and Arrays</h2>
 
-<div id="array-reshape-repeat-and-expand-examples" class="section level3">
+<div id="array-reshape-repeat-and-expand-examples" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> Array Reshape, Repeat and Expand Examples</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="basic-examples-of-reshape" class="section level4">
+<div id="basic-examples-of-reshape" class="section level4" number="1.1.1.1">
 <h4><span class="header-section-number">1.1.1.1</span> Basic Examples of Reshape</h4>
 <pre><code>a = [1,2,3,4,5,6]&#39;;
 b = reshape(a, [3,2])
@@ -247,7 +281,7 @@ b = 6x2
      5    11
      6    12</code></pre>
 </div>
-<div id="stack-two-matrix-of-equal-column-count-together" class="section level4">
+<div id="stack-two-matrix-of-equal-column-count-together" class="section level4" number="1.1.1.2">
 <h4><span class="header-section-number">1.1.1.2</span> <strong>Stack Two Matrix of Equal Column Count Together</strong></h4>
 <pre><code>a = [1,2;3,4];
 a_stacked = [a;a;a];
@@ -260,7 +294,7 @@ disp(a_stacked);
      1     2
      3     4</code></pre>
 </div>
-<div id="repeatduplicate-matrix-downwards" class="section level4">
+<div id="repeatduplicate-matrix-downwards" class="section level4" number="1.1.1.3">
 <h4><span class="header-section-number">1.1.1.3</span> <strong>Repeat/Duplicate Matrix Downwards</strong></h4>
 <p>There is a 2 by 3 matrix, to be repeated 4 times, downwards. This is
 useful for replicating data matrix for say counterfactual purposes.</p>
@@ -307,15 +341,14 @@ disp(searchMatrixRep_dup)
      2     4     6
      2     4     6</code></pre>
 </div>
-<div id="index-dimension-transform" class="section level4">
+<div id="index-dimension-transform" class="section level4" number="1.1.1.4">
 <h4><span class="header-section-number">1.1.1.4</span> Index Dimension Transform</h4>
 <p>it_inner_fin = 5; it_outter_fin = 3;</p>
 <p>it_inner_cur = it_outter_fin it_outter_cur = it_inner_fin</p>
-<p>ar_it_cols_idx = 1:1:(it_inner_fin*it_outter_fin)
-ar_it_cols_inner_dim = repmat(1:it_inner_cur, <span class="math display">\[it\_outter\_cur,
-1\]</span>) ar_it_cols_inner_dim(:)’</p>
-<p>mt_it_cols_idx = reshape(ar_it_cols_idx, <span class="math display">\[it\_inner\_cur,
-it\_outter\_cur\]</span>)’ mt_it_cols_idx(:)’</p>
+<p>ar_it_cols_idx = 1:1:(it_inner_fin*it_outter_fin) ar_it_cols_inner_dim
+= repmat(1:it_inner_cur, <span class="math display">\[it_outter_cur, 1\]</span>) ar_it_cols_inner_dim(:)’</p>
+<p>mt_it_cols_idx = reshape(ar_it_cols_idx, <span class="math display">\[it_inner_cur,
+it_outter_cur\]</span>)’ mt_it_cols_idx(:)’</p>
 <pre><code>it_inner_fin = 5;
 it_outter_fin = 3;
 
@@ -340,12 +373,12 @@ ans = 1x15
 
 </div>
 </div>
-<div id="array-index-slicing-and-subsetting-to-replace-and-expand" class="section level3">
+<div id="array-index-slicing-and-subsetting-to-replace-and-expand" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> Array Index Slicing and Subsetting to Replace and Expand</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="index-select-rows-and-columns-of-a-2d-matrix" class="section level4">
+<div id="index-select-rows-and-columns-of-a-2d-matrix" class="section level4" number="1.1.2.1">
 <h4><span class="header-section-number">1.1.2.1</span> Index Select Rows and Columns of a 2D matrix</h4>
 <p>In the example below, select by entire rows and columns:</p>
 <pre><code>% There is a 2D Matrix
@@ -367,7 +400,7 @@ disp(randMatZ([1,2,3,3,3,2], [1,1,2,2,2,1]))
     0.2269    0.2269    0.4231    0.4231    0.4231    0.2269
     0.2861    0.2861    0.7195    0.7195    0.7195    0.2861</code></pre>
 </div>
-<div id="index-select-set-of-elements-from-2d-matrix" class="section level4">
+<div id="index-select-set-of-elements-from-2d-matrix" class="section level4" number="1.1.2.2">
 <h4><span class="header-section-number">1.1.2.2</span> Index Select Set of Elements from 2D matrix</h4>
 <p>Rather than selecting entire rows and columns, suppose we want to select
 only one element at row 1 col 2, the element at row 2 col 4, element at
@@ -387,7 +420,7 @@ disp(ar_sel_val&#39;);
     0.4231
     0.6848</code></pre>
 </div>
-<div id="find-closest-element-of-array-to-each-element-of-another-array" class="section level4">
+<div id="find-closest-element-of-array-to-each-element-of-another-array" class="section level4" number="1.1.2.3">
 <h4><span class="header-section-number">1.1.2.3</span> Find Closest Element of Array to Each Element of Another Array</h4>
 <p>Given scalar value, find the cloest value in array:</p>
 <pre><code>fl_a = 3.4;
@@ -439,7 +472,7 @@ disp(mt_a_less_b_idx);
      4
      4</code></pre>
 </div>
-<div id="matlab-index-based-replacement-of-subset-of-matrix-values" class="section level4">
+<div id="matlab-index-based-replacement-of-subset-of-matrix-values" class="section level4" number="1.1.2.4">
 <h4><span class="header-section-number">1.1.2.4</span> Matlab Index based Replacement of Subset of Matrix Values</h4>
 <pre><code>rng(123);
 randMatZ = rand(3,6)+1;
@@ -461,7 +494,7 @@ disp(min(randMatZ,[],2));
     1.0597
     1.1755</code></pre>
 </div>
-<div id="matlab-matrix-index-based-matrix-expansion-manual" class="section level4">
+<div id="matlab-matrix-index-based-matrix-expansion-manual" class="section level4" number="1.1.2.5">
 <h4><span class="header-section-number">1.1.2.5</span> Matlab Matrix Index Based Matrix Expansion (Manual)</h4>
 <p>In the example below, we start with a 4 by 2 matrix, than we expand
 specific rows and columns of the matrix. Specifically, we expand the
@@ -493,7 +526,7 @@ disp(base_expand);
      1     5     5     5     1
      1     5     5     5     1</code></pre>
 </div>
-<div id="duplicate-matrix-downwards-n-times-using-index" class="section level4">
+<div id="duplicate-matrix-downwards-n-times-using-index" class="section level4" number="1.1.2.6">
 <h4><span class="header-section-number">1.1.2.6</span> Duplicate Matrix Downwards N times Using Index</h4>
 <p>The example here has the same idea, but we do the operations above in a
 more automated way. This could be done using alternative methods.</p>
@@ -526,7 +559,7 @@ disp(mat_repdown&#39;);
      1     2     3     4     1     2     3     4     1     2     3     4
      5     6     7     8     5     6     7     8     5     6     7     8</code></pre>
 </div>
-<div id="given-nd-array-get-row-and-column-and-other-dimension-index-with-value-conditioning" class="section level4">
+<div id="given-nd-array-get-row-and-column-and-other-dimension-index-with-value-conditioning" class="section level4" number="1.1.2.7">
 <h4><span class="header-section-number">1.1.2.7</span> Given ND Array, Get Row and Column (and other dimension) Index With Value Conditioning</h4>
 <p>There is a matrix where some values are equal to 1 (based on some prior
 selection), get the row and column index of the matrix.</p>
@@ -593,7 +626,7 @@ disp([d1_idx, d2_idx, d3_idx]);
      2     3     3
      3     3     3</code></pre>
 </div>
-<div id="max-of-matrix-column-by-column-linear-to-2d-index" class="section level4">
+<div id="max-of-matrix-column-by-column-linear-to-2d-index" class="section level4" number="1.1.2.8">
 <h4><span class="header-section-number">1.1.2.8</span> Max of Matrix column by Column Linear to 2d Index</h4>
 <p>Finding max of matrix column by column, then obtain the linear index
 associated with the max values.</p>
@@ -624,7 +657,7 @@ t_pV_Ind = [1,1;0,0;1,1];
 maxVal = 6
 maxIndex = 4</code></pre>
 </div>
-<div id="given-array-of-size-m-select-n-somewhat-equi-distance-elements" class="section level4">
+<div id="given-array-of-size-m-select-n-somewhat-equi-distance-elements" class="section level4" number="1.1.2.9">
 <h4><span class="header-section-number">1.1.2.9</span> Given Array of size M, Select N somewhat equi-distance elements</h4>
 <pre><code>% Subset count
 it_n = 5;
@@ -669,384 +702,107 @@ disp(f_subset(5, 5));
 
 </div>
 </div>
-<div id="d-4d-nd-arrays-reshape-and-rearrange-dimensions" class="section level3">
-<h3><span class="header-section-number">1.1.3</span> 3D, 4D, ND Arrays Reshape and Rearrange Dimensions</h3>
+<div id="maximum-of-matrix-columns-sort-matrix-columns" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Maximum of Matrix Columns, Sort Matrix Columns</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="d-array-to-cell-array-of-matrix-split-by-last-dimension" class="section level4">
-<h4><span class="header-section-number">1.1.3.1</span> 3D Array to Cell Array of Matrix Split by Last Dimension</h4>
-<p>Convert Multi-dimensional arrays to a cell array consistent of two
-dimensional arrays. In this example, we split by the 3rd dimension, so
-the number of output matrixes is equal to the length of the 3rd
-dimension.</p>
-<p>First create a three dimensional array, two matrixes that are 4 by 3
-each:</p>
-<pre><code>% Create a 3D Array
-rng(123);
-mn_rand = rand(4,3,2);
-disp(mn_rand);
-
-(:,:,1) =
+<div id="max-value-from-a-matrix" class="section level4" number="1.1.3.1">
+<h4><span class="header-section-number">1.1.3.1</span> Max Value from a Matrix</h4>
+<p>Given a matrix of values, what is the maximum element, what are the row
+and column indexes of this max element of the matrix.</p>
+<pre><code>rng(123);
+N = 3;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
 
     0.6965    0.7195    0.4809
     0.2861    0.4231    0.3921
     0.2269    0.9808    0.3432
     0.5513    0.6848    0.7290
 
+[max_val, max_idx] = max(mt_rand(:));
+[max_row, max_col] = ind2sub(size(mt_rand), max_idx)
 
-(:,:,2) =
-
-    0.4386    0.1825    0.6344
-    0.0597    0.1755    0.8494
-    0.3980    0.5316    0.7245
-    0.7380    0.5318    0.6110</code></pre>
-<p>Now convert the 3 dimensional array to a 2 by 1 cell array that contains
-matrixes in each cell:</p>
-<pre><code>% Squeece 3D array to a Cell array of matrixes
-cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
-celldisp(cl_mn_rand);
-
-
-cl_mn_rand{1} =
- 
-    0.6965    0.7195    0.4809
-    0.2861    0.4231    0.3921
-    0.2269    0.9808    0.3432
-    0.5513    0.6848    0.7290
-
-
-
-cl_mn_rand{2} =
- 
-    0.4386    0.1825    0.6344
-    0.0597    0.1755    0.8494
-    0.3980    0.5316    0.7245
-    0.7380    0.5318    0.6110</code></pre>
+max_row = 3
+max_col = 2</code></pre>
 </div>
-<div id="d-array-to-cell-array-of-matrix-split-by-last-two-dimensions" class="section level4">
-<h4><span class="header-section-number">1.1.3.2</span> 4D Array to Cell Array of Matrix Split by Last Two Dimensions</h4>
-<p>Convert 4D Multi-dimensional arrays to a cell array consistent of two
-dimensional arrays. In this example, the first two dimensions determine
-the resulting matrix size, the the 3rd and the 4th dimensions are
-categorical.</p>
-<p>First create a four dimensional array, four matrixes stored each matrix
-is 2 by 2:</p>
-<pre><code>% Create a 3D Array
+<div id="max-value-from-each-column" class="section level4" number="1.1.3.2">
+<h4><span class="header-section-number">1.1.3.2</span> MAX Value from Each Column</h4>
+<p>There is a matrix with N columns, and M rows, with numerical values.
+Generate a table of sorted index, indicating in each column which row
+was the highest in value, second highest, etc. (1) sort each column. (2)
+show the row number from descending or ascending sort for each column as
+a matrix.</p>
+<pre><code>% Create a 2D Array
 rng(123);
-mn_rand = rand(2,2,2,2);
-disp(mn_rand);
+N = 2;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
 
-(:,:,1,1) =
-
-    0.6965    0.2269
-    0.2861    0.5513
-
-
-(:,:,2,1) =
-
-    0.7195    0.9808
-    0.4231    0.6848
-
-
-(:,:,1,2) =
-
-    0.4809    0.3432
-    0.3921    0.7290
-
-
-(:,:,2,2) =
-
-    0.4386    0.3980
-    0.0597    0.7380</code></pre>
-<p>Now convert the 4 dimensional array to a 2 by 2 cell array that contains
-matrixes in each cell:</p>
-<pre><code>% Squeece 3D array to a Cell array of matrixes
-cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
-celldisp(cl_mn_rand);
-
-
-cl_mn_rand{1,1} =
- 
-    0.6965    0.2269
-    0.2861    0.5513
-
-
-
-cl_mn_rand{2,1} =
- 
-    0.7195    0.9808
-    0.4231    0.6848
-
-
-
-cl_mn_rand{1,2} =
- 
-    0.4809    0.3432
-    0.3921    0.7290
-
-
-
-cl_mn_rand{2,2} =
- 
-    0.4386    0.3980
-    0.0597    0.7380</code></pre>
-</div>
-<div id="d-array-to-cell-array-of-matrix-split-by-first-and-fourth-dimensions-rearrange-dimensions" class="section level4">
-<h4><span class="header-section-number">1.1.3.3</span> 4D Array to Cell Array of Matrix Split by First and Fourth Dimensions Rearrange Dimensions</h4>
-<p>Suppose we store policy and value function given four state variables.
-The first one is age, the second one is asset, the third one is shock,
-and the fourth one is the number of kids. We start out with a four
-dimensional matrix. The objective is to create a two dimensional cell
-array as output where indexed by the 1st and 4th dimension of the
-underlying numeric array, and the elements of the 2D cell array are
-matrixes.</p>
-<p>This is achieved by the
-<a href="https://www.mathworks.com/help/matlab/ref/permute.html">permute</a>
-function. We first rearrange the matrix, so that the 2nd and 3rd
-dimensions become the 1st and 2nd, then we use the technique used above
-to squeeze out the first two dimensions as matrixes with the last two as
-categories.</p>
-<p>First, generate the 2 by 2 by 2 by 2, (Age, A, Z, Kids Count), matrix:</p>
-<pre><code>% Create a 3D Array
-rng(123);
-% (Age, A, Z, Kids Count)
-mn_rand = rand(2,2,2,2);</code></pre>
-<p>Second, loop out the (A,Z) matrix by Age and Kids Count, this shows us
-what we want to achieve. Note that each row is Age, each column is A,
-each submatrix is z, and each super-matrix is kid-count. So from
-slicing, each column printed out are different value of A, the two
-submatrixes printed out are for each z. For the output structure where
-we want a (A,Z) matrix, the columns need to become rows, and the
-submatrix need to become columns.</p>
-<pre><code>% Show Matrix by Age and Kids
-for it_age = 1:size(mn_rand,1)
-    for it_kids = 1:size(mn_rand,4)
-        disp(strcat([&#39;it_age:&#39; num2str(it_age) &#39;, it_kids:&#39; num2str(it_kids)]))
-        disp(mn_rand(it_age,:,:,it_kids));
-    end
-end
-
-it_age:1, it_kids:1
-(:,:,1) =
-
-    0.6965    0.2269
-
-
-(:,:,2) =
-
-    0.7195    0.9808
-it_age:1, it_kids:2
-(:,:,1) =
-
-    0.4809    0.3432
-
-
-(:,:,2) =
-
-    0.4386    0.3980
-it_age:2, it_kids:1
-(:,:,1) =
-
-    0.2861    0.5513
-
-
-(:,:,2) =
-
-    0.4231    0.6848
-it_age:2, it_kids:2
-(:,:,1) =
-
-    0.3921    0.7290
-
-
-(:,:,2) =
-
-    0.0597    0.7380</code></pre>
-<p>Third, we permutate the matrix and squeeze to arrive at the 2 by 2 cell,
-note that step two is just to show via loop what we should get:</p>
-<pre><code>% Rearrange dimensions
-mn_rand_2314 = permute(mn_rand, [2,3,1,4]);
-% Squeeze the first two dimensiosn as before
-cl_mn_rand = squeeze(num2cell(mn_rand_2314, [1,2]));
-% show
-celldisp(cl_mn_rand);
-
-
-cl_mn_rand{1,1} =
- 
     0.6965    0.7195
-    0.2269    0.9808
-
-
-
-cl_mn_rand{2,1} =
- 
     0.2861    0.4231
-    0.5513    0.6848
+    0.2269    0.9808
+    0.5513    0.6848</code></pre>
+<p>Use the maxk function to generate sorted index:</p>
+<pre><code>% maxk function
+[val, idx] = max(mt_rand);
+disp(val);
 
+    0.6965    0.9808
 
+disp(idx);
 
-cl_mn_rand{1,2} =
- 
-    0.4809    0.4386
-    0.3432    0.3980
-
-
-
-cl_mn_rand{2,2} =
- 
-    0.3921    0.0597
-    0.7290    0.7380</code></pre>
+     1     3</code></pre>
 </div>
-<div id="nd-array-summarize-in-table" class="section level4">
-<h4><span class="header-section-number">1.1.3.4</span> ND Array Summarize in Table</h4>
-<p>Given an ND dataframe, summarize the first two dimensions. For each
-possible combination of the 3rd and 4th dimension, generate mean, sd,
-min and max over the matrix of the first two dimensions. This is similar
-to a tabulation function.</p>
-<p>First, we generate several array of information:</p>
-<pre><code>% Initialize and Squeeze
+<div id="maxk-sorted-sorted-index-for-each-column-of-matrix" class="section level4" number="1.1.3.3">
+<h4><span class="header-section-number">1.1.3.3</span> MAXK Sorted Sorted Index for Each Column of Matrix</h4>
+<p>There is a matrix with N columns, and M rows, with numerical values.
+Generate a table of sorted index, indicating in each column which row
+was the highest in value, second highest, etc. (1) sort each column. (2)
+show the row number from descending or ascending sort for each column as
+a matrix.</p>
+<pre><code>% Create a 2D Array
 rng(123);
-mn_rand = rand(2,2,2,2);
-cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
-cl_mt_rand = cln_mt_rand(:);
-celldisp(cl_mt_rand);
+N = 2;
+M = 4;
+mt_rand = rand(M,N);
+disp(mt_rand);
 
+    0.6965    0.7195
+    0.2861    0.4231
+    0.2269    0.9808
+    0.5513    0.6848</code></pre>
+<p>Use the maxk function to generate sorted index:</p>
+<pre><code>% maxk function
+[val, idx] = maxk(mt_rand, M);
+disp(val);
 
-cl_mt_rand{1} =
- 
-    0.6965    0.2269
-    0.2861    0.5513
+    0.6965    0.9808
+    0.5513    0.7195
+    0.2861    0.6848
+    0.2269    0.4231
 
+disp(idx);
 
-
-cl_mt_rand{2} =
- 
-    0.7195    0.9808
-    0.4231    0.6848
-
-
-
-cl_mt_rand{3} =
- 
-    0.4809    0.3432
-    0.3921    0.7290
-
-
-
-cl_mt_rand{4} =
- 
-    0.4386    0.3980
-    0.0597    0.7380</code></pre>
-<p>Second, create two arrays that tracks for each element of cl_mt_rand,
-which one of the 3rd and 4th dimensions they correspond to:</p>
-<pre><code>ar_dim_3 = [31,32]&#39;;
-ar_dim_4 = [41,42]&#39;;
-[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3, ar_dim_4);
-ar_dim_3 = mt_dim_3(:);
-ar_dim_4 = mt_dim_4(:);</code></pre>
-<p>Third, summarize each matrix:</p>
-<pre><code>% Over of matrix and summarize
-ar_mean = zeros(size(cl_mt_rand));
-ar_std = zeros(size(cl_mt_rand));
-for it_mt=1:length(cl_mt_rand)
-    mt_cur = cl_mt_rand{it_mt};
-    ar_mean(it_mt) = mean(mt_cur, &#39;all&#39;);
-    ar_std(it_mt) = std(mt_cur, [], &#39;all&#39;);
-end</code></pre>
-<p>Fourth Construct a Table</p>
-<pre><code>% Constructe Table
-tb_rowcols_tab = array2table([(1:length(cl_mt_rand))&#39;, ...
-    ar_dim_3, ar_dim_4, ar_mean, ar_std]);
-tb_rowcols_tab.Properties.VariableNames = ...
-    matlab.lang.makeValidName([&quot;i&quot;, &quot;dim3&quot;, &quot;dim4&quot;,  &quot;mean&quot;, &quot;std&quot;]);
-disp(tb_rowcols_tab);
-
-    i    dim3    dim4     mean        std  
-    _    ____    ____    _______    _______
-
-    1     31      41     0.44019    0.22156
-    2     32      41     0.70204     0.2281
-    3     31      42     0.48632    0.17157
-    4     32      42     0.40857    0.27764</code></pre>
-</div>
-<div id="nd-array-two-way-summarize-in-table" class="section level4">
-<h4><span class="header-section-number">1.1.3.5</span> ND Array Two-Way Summarize in Table</h4>
-<p>Given dataframe as above, but we now want to add to the resulting
-summary table additional columns, rather than taking the means of the
-entire matrix in the first two dimensions, we only take average with
-respect to the rows, the first dimension, the second dimension show up
-as coumn statistics names, still multiple stats. The results worked out
-here are embedded in the
-<a href="https://fanwangecon.github.io/MEconTools/MEconTools/doc/summ/htmlpdfm/fx_summ_nd_array.html">fx_summ_nd_array</a>
-function of the <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a>
-Package.</p>
-<p>First, we generate several array of information:</p>
-<pre><code>% dimension names
-st_title = &#39;Summarize values over a conditional on z (columns) and kids and marriage (rows)&#39;;
-st_dim_1 = &#39;a&#39;;
-st_dim_2 = &#39;z&#39;;
-st_dim_3 = &#39;kid&#39;;
-st_dim_4 = &#39;marriage&#39;;
-% 3rd and fourth dimension values
-ar_dim_2 = [-3, -1, 1, 3];
-ar_dim_3 = [1,2,3];
-ar_dim_4 = [0,1];
-% Initialize and Squeeze
-rng(123);
-mn_rand = rand(10,4,3,2);
-cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
-cl_mt_rand = cln_mt_rand(:);</code></pre>
-<p>Second, create two arrays that tracks for each element of cl_mt_rand,
-which one of the 3rd and 4th dimensions they correspond to:</p>
-<pre><code>[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3&#39;, ar_dim_4&#39;);
-ar_dim_3 = mt_dim_3(:);
-ar_dim_4 = mt_dim_4(:);</code></pre>
-<p>Third, summarize each matrix:</p>
-<pre><code>% Over of matrix and summarize
-mt_mean = zeros(length(cl_mt_rand), size(mn_rand,2));
-mt_std = zeros(length(cl_mt_rand), size(mn_rand,2));
-for it_mt=1:length(cl_mt_rand)
-    mt_cur = cl_mt_rand{it_mt};
-    mt_mean(it_mt,:) = mean(mt_cur, 1);
-    mt_std(it_mt,:) = std(mt_cur, [], 1);
-end</code></pre>
-<p>Fourth Construct a Table</p>
-<pre><code>% Constructe Table
-tb_rowcols_tab = array2table([(1:length(cl_mt_rand))&#39;, ...
-    ar_dim_3, ar_dim_4, mt_mean, mt_std]);
-% Column Names
-cl_col_names_cate_dims = [string(st_dim_3), string(st_dim_4)];
-cl_col_names_mn = strcat(&#39;mean_&#39;, st_dim_2, string(ar_dim_2));
-cl_col_names_sd = strcat(&#39;sd_&#39;, st_dim_2, string(ar_dim_2));
-tb_rowcols_tab.Properties.VariableNames = ...
-    matlab.lang.makeValidName([&quot;group&quot;, cl_col_names_cate_dims, cl_col_names_mn, cl_col_names_sd]);
-% disp([&#39;xxx &#39; st_title &#39; xxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;]);
-disp(tb_rowcols_tab);
-
-    group    kid    marriage    mean_z_3    mean_z_1    mean_z1    mean_z3    sd_z_3     sd_z_1      sd_z1      sd_z3 
-    _____    ___    ________    ________    ________    _______    _______    _______    _______    _______    _______
-
-      1       1        0         0.5442     0.41278     0.53795    0.49542    0.22935    0.22945    0.21653    0.25245
-      2       2        0        0.51894     0.52262     0.52544    0.45066    0.26787    0.23615    0.25833    0.31178
-      3       3        0        0.48248      0.5238     0.50392    0.46534    0.27009    0.26676    0.26644    0.29449
-      4       1        1        0.58343     0.50529     0.54361     0.5006    0.29578    0.30182    0.30952    0.27317
-      5       2        1        0.58408     0.45941     0.50466    0.40081    0.25026    0.34704    0.31039    0.28693
-      6       3        1        0.51148     0.49531     0.48963    0.47698     0.3271    0.24336    0.34498    0.34004</code></pre>
+     1     3
+     4     1
+     2     4
+     3     2</code></pre>
 
 </div>
 </div>
-<div id="array-broadcast-and-expansion-examples" class="section level3">
+<div id="array-broadcast-and-expansion-examples" class="section level3" number="1.1.4">
 <h3><span class="header-section-number">1.1.4</span> Array Broadcast and Expansion Examples</h3>
-<p><strong>back to</strong> <a href="https://fanwangecon.github.io"><strong>Fan</strong></a><strong>’s</strong> <a href="https://fanwangecon.github.io/M4Econ/"><strong>Reusable
-Matlab</strong></a> <strong>Repository or</strong>
-<a href="https://fanwangecon.github.io/CodeDynaAsset/"><strong>Dynamic Asset</strong></a>
-<strong>Repository.</strong></p>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
 <p>Matrix broadcasting was added to matlab’s recent editions. This is an
 important step for vectorizing codes. Proper usage of broadcasting
 reduces memory allocation requirements for matrix matrix operations.</p>
-<div id="broadcasting-with-a-row-and-a-column" class="section level4">
+<div id="broadcasting-with-a-row-and-a-column" class="section level4" number="1.1.4.1">
 <h4><span class="header-section-number">1.1.4.1</span> Broadcasting with A Row and a Column</h4>
 <p>Below we add together a 1 by 3 and 4 by 1 array, that should not work.
 With broadcasting, it is assumed that we will mesh the arrays and then
@@ -1078,7 +834,7 @@ disp(mt_A_B_broadcast_product);
      2     4     6
      1     2     3</code></pre>
 </div>
-<div id="broadcasting-with-one-row-and-one-matrix" class="section level4">
+<div id="broadcasting-with-one-row-and-one-matrix" class="section level4" number="1.1.4.2">
 <h4><span class="header-section-number">1.1.4.2</span> Broadcasting with One Row and One Matrix</h4>
 <p>Below we add together a 1 by 3 and 4 by 3 matrix, that should not work.
 With broadcasting, it is assumed that we will repeat the array four
@@ -1111,7 +867,7 @@ disp(mt_A_B_broadcast_product);
      2     6    12
      1     4     9</code></pre>
 </div>
-<div id="broadcasting-with-one-column-and-one-matrix" class="section level4">
+<div id="broadcasting-with-one-column-and-one-matrix" class="section level4" number="1.1.4.3">
 <h4><span class="header-section-number">1.1.4.3</span> Broadcasting with One Column and One Matrix</h4>
 <p>Below we add together a 4 by 1 and 4 by 3 matrix, that should not work.
 With broadcasting, it is assumed that we will repeat the column three
@@ -1144,7 +900,7 @@ disp(mt_A_B_broadcast_product);
      4     6     8
      1     2     3</code></pre>
 </div>
-<div id="expand-with-broadcast-percentage-choice-grids" class="section level4">
+<div id="expand-with-broadcast-percentage-choice-grids" class="section level4" number="1.1.4.4">
 <h4><span class="header-section-number">1.1.4.4</span> Expand with Broadcast, Percentage Choice grids</h4>
 <pre><code>clear all
 ar_w_perc = [0.1,0.5,0.9]
@@ -1187,7 +943,7 @@ mt_a = 4x3
    -3.4000   -2.8000   -2.2000
    -3.8000   -3.6000   -3.4000</code></pre>
 </div>
-<div id="expand-matrix-twice" class="section level4">
+<div id="expand-matrix-twice" class="section level4" number="1.1.4.5">
 <h4><span class="header-section-number">1.1.4.5</span> Expand Matrix Twice</h4>
 <pre><code>clear all
 % Same as above
@@ -1293,12 +1049,12 @@ mt_a_nobridge = 6x9
 
 </div>
 </div>
-<div id="grid-states-choices-and-optimal-choices-example" class="section level3">
+<div id="grid-states-choices-and-optimal-choices-example" class="section level3" number="1.1.5">
 <h3><span class="header-section-number">1.1.5</span> Grid States, Choices and Optimal Choices Example</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-state-grid" class="section level4">
+<div id="generate-state-grid" class="section level4" number="1.1.5.1">
 <h4><span class="header-section-number">1.1.5.1</span> <strong>Generate State Grid</strong></h4>
 <p>There many multiple individuals, each individual’s value for each state
 space variable is different. We duplicate that by shockCount and
@@ -1340,7 +1096,7 @@ ans = 24x1
     0.0571
     0.0571</code></pre>
 </div>
-<div id="generate-choices" class="section level4">
+<div id="generate-choices" class="section level4" number="1.1.5.2">
 <h4><span class="header-section-number">1.1.5.2</span> <strong>Generate Choices</strong></h4>
 <p>Generate Choice Grid, Example: Each individual has minimal protein and
 maximal protein they can get Generate a evenly set grid of choices for
@@ -1406,7 +1162,7 @@ ans = 24x1
     7.0000
     9.3333</code></pre>
 </div>
-<div id="average-utility-over-shocks" class="section level4">
+<div id="average-utility-over-shocks" class="section level4" number="1.1.5.3">
 <h4><span class="header-section-number">1.1.5.3</span> <strong>Average Utility over Shocks</strong></h4>
 <p>Average of Shocks, E(value) For each STATE and CHOICE, x number of
 shocks. Need to average over shocks; The raw value output is: STATES *
@@ -1460,7 +1216,7 @@ valuesMn = 3x4
     0.1483    0.3196    0.6629    0.9254
     0.1704    0.3918    0.7184    0.9338</code></pre>
 </div>
-<div id="pick-optimal-choice" class="section level4">
+<div id="pick-optimal-choice" class="section level4" number="1.1.5.4">
 <h4><span class="header-section-number">1.1.5.4</span> <strong>Pick Optimal Choice</strong></h4>
 <pre><code>choiceCount = 3;
 stateCount = 4;
@@ -1496,16 +1252,16 @@ ans = 1x4
 
 </div>
 </div>
-<div id="accumarray-examples" class="section level3">
+<div id="accumarray-examples" class="section level3" number="1.1.6">
 <h3><span class="header-section-number">1.1.6</span> Accumarray Examples</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="accumarry-basic-example" class="section level4">
+<div id="accumarry-basic-example" class="section level4" number="1.1.6.1">
 <h4><span class="header-section-number">1.1.6.1</span> Accumarry Basic Example</h4>
-<p>There are three unique values in ar_a, sum up the probabilities for
-each of the unique states. This is equivalent to sorting a matrix with a
-and prob, and computing sum for each.</p>
+<p>There are three unique values in ar_a, sum up the probabilities for each
+of the unique states. This is equivalent to sorting a matrix with a and
+prob, and computing sum for each.</p>
 <pre><code>ar_a = [3,2,1,3]&#39;;
 ar_prob = [0.1,0.2,0.31,0.39]&#39;;
 ar_sumprob = accumarray(ar_a, ar_prob);
@@ -1519,7 +1275,7 @@ disp(tb_summed_prob);
      2          0.2   
      3         0.49   </code></pre>
 </div>
-<div id="accumarry-for-discrete-random-variable" class="section level4">
+<div id="accumarry-for-discrete-random-variable" class="section level4" number="1.1.6.2">
 <h4><span class="header-section-number">1.1.6.2</span> Accumarry For Discrete Random Variable</h4>
 <p>Upon solving a model, if we look for the mass at certain choices or
 states, accumarray could help aggregate up probabilities</p>
@@ -1606,12 +1362,12 @@ ans = 3x1
 
 </div>
 </div>
-<div id="array-draw-random-index-and-find-combinations-or-permuations" class="section level3">
+<div id="array-draw-random-index-and-find-combinations-or-permuations" class="section level3" number="1.1.7">
 <h3><span class="header-section-number">1.1.7</span> Array Draw Random Index and Find Combinations or Permuations</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="matlab-draw-random-with-and-without-replacement" class="section level4">
+<div id="matlab-draw-random-with-and-without-replacement" class="section level4" number="1.1.7.1">
 <h4><span class="header-section-number">1.1.7.1</span> <strong>Matlab Draw Random with and without Replacement</strong></h4>
 <pre><code>%Generate a matrix named foo, with limited numbers
 rng(1234);
@@ -1644,7 +1400,7 @@ disp(table(bar_rand_noreplace, bar_rand_replace));
            154                  219       
            232                  219       </code></pre>
 </div>
-<div id="matrix-meshgrid-to-loop-permutated-vectors" class="section level4">
+<div id="matrix-meshgrid-to-loop-permutated-vectors" class="section level4" number="1.1.7.2">
 <h4><span class="header-section-number">1.1.7.2</span> Matrix Meshgrid to Loop Permutated Vectors</h4>
 <p>Meshgrid to generate all permutations of arrays.</p>
 <pre><code>k = linspace(1,10,10);
@@ -1803,7 +1559,7 @@ disp(outputTens);
     11    12    13    14    15    16    17    18    19    20
     12    13    14    15    16    17    18    19    20    21</code></pre>
 </div>
-<div id="given-integer-arrays-all-possible-combinations" class="section level4">
+<div id="given-integer-arrays-all-possible-combinations" class="section level4" number="1.1.7.3">
 <h4><span class="header-section-number">1.1.7.3</span> Given Integer Arrays, All Possible Combinations</h4>
 <p>given any sizes arrays, N of them, create all possible combinations</p>
 <pre><code>ar_it_a = 1:3;
@@ -1858,13 +1614,12 @@ disp(mt_it_allcombo)
 
 </div>
 </div>
-<div id="matlab-array-basics-and-miscellaneous" class="section level3">
+<div id="matlab-array-basics-and-miscellaneous" class="section level3" number="1.1.8">
 <h3><span class="header-section-number">1.1.8</span> Matlab Array Basics and Miscellaneous</h3>
-<p><strong>back to</strong> <a href="https://fanwangecon.github.io"><strong>Fan</strong></a><strong>’s</strong> <a href="https://fanwangecon.github.io/M4Econ/"><strong>Reusable
-Matlab</strong></a> <strong>Repository or</strong>
-<a href="https://fanwangecon.github.io/CodeDynaAsset/"><strong>Dynamic Asset</strong></a>
-<strong>Repository.</strong></p>
-<div id="compare-array-values-that-are-approximately-similar" class="section level4">
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="compare-array-values-that-are-approximately-similar" class="section level4" number="1.1.8.1">
 <h4><span class="header-section-number">1.1.8.1</span> Compare Array Values That are Approximately Similar</h4>
 <p><a href="https://stackoverflow.com/a/33024979/8280804">What is the best way to compare floats for almost-equality in
 Python?</a></p>
@@ -1888,7 +1643,7 @@ disp([&#39;1+1e-9 and 1+1e-10, if_is_close:&#39; num2str(if_is_close(1+1e-9,1+1e
 
 1+1e-9 and 1+1e-10, if_is_close:1</code></pre>
 </div>
-<div id="imaginary-number-examples" class="section level4">
+<div id="imaginary-number-examples" class="section level4" number="1.1.8.2">
 <h4><span class="header-section-number">1.1.8.2</span> Imaginary Number Examples</h4>
 <pre><code>rng(123);
 
@@ -1934,19 +1689,620 @@ disp(ar_full(imag(ar_full) ~= 0));
 </div>
 </div>
 </div>
-<div id="cells" class="section level2">
-<h2><span class="header-section-number">1.2</span> Cells</h2>
+<div id="nd-dimensional-arrays" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> ND Dimensional Arrays</h2>
 
-<div id="list-comprehension-with-cells" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> List Comprehension with Cells</h3>
+<div id="d-4d-nd-arrays-reshape-and-rearrange-dimensions" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> 3D, 4D, ND Arrays Reshape and Rearrange Dimensions</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="find-index-of-elements-of-string-cells-in-a-larger-string-cells" class="section level4">
-<h4><span class="header-section-number">1.2.1.1</span> Find Index of Elements of String Cells in a larger String Cells</h4>
+<div id="d-array-to-cell-array-of-matrix-split-by-last-dimension" class="section level4" number="1.2.1.1">
+<h4><span class="header-section-number">1.2.1.1</span> 3D Array to Cell Array of Matrix Split by Last Dimension</h4>
+<p>Convert Multi-dimensional arrays to a cell array consistent of two
+dimensional arrays. In this example, we split by the 3rd dimension, so
+the number of output matrixes is equal to the length of the 3rd
+dimension.</p>
+<p>First create a three dimensional array, two matrixes that are 4 by 3
+each:</p>
+<pre><code>% Create a 3D Array
+rng(123);
+mn_rand = rand(4,3,2);
+disp(mn_rand);
+
+(:,:,1) =
+
+    0.6965    0.7195    0.4809
+    0.2861    0.4231    0.3921
+    0.2269    0.9808    0.3432
+    0.5513    0.6848    0.7290
+
+
+(:,:,2) =
+
+    0.4386    0.1825    0.6344
+    0.0597    0.1755    0.8494
+    0.3980    0.5316    0.7245
+    0.7380    0.5318    0.6110</code></pre>
+<p>Now convert the 3 dimensional array to a 2 by 1 cell array that contains
+matrixes in each cell:</p>
+<pre><code>% Squeece 3D array to a Cell array of matrixes
+cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1} =
+ 
+    0.6965    0.7195    0.4809
+    0.2861    0.4231    0.3921
+    0.2269    0.9808    0.3432
+    0.5513    0.6848    0.7290
+
+
+
+cl_mn_rand{2} =
+ 
+    0.4386    0.1825    0.6344
+    0.0597    0.1755    0.8494
+    0.3980    0.5316    0.7245
+    0.7380    0.5318    0.6110</code></pre>
+</div>
+<div id="d-array-to-cell-array-of-matrix-split-by-last-two-dimensions" class="section level4" number="1.2.1.2">
+<h4><span class="header-section-number">1.2.1.2</span> 4D Array to Cell Array of Matrix Split by Last Two Dimensions</h4>
+<p>Convert 4D Multi-dimensional arrays to a cell array consistent of two
+dimensional arrays. In this example, the first two dimensions determine
+the resulting matrix size, the the 3rd and the 4th dimensions are
+categorical.</p>
+<p>First create a four dimensional array, four matrixes stored each matrix
+is 2 by 2:</p>
+<pre><code>% Create a 3D Array
+rng(123);
+mn_rand = rand(2,2,2,2);
+disp(mn_rand);
+
+(:,:,1,1) =
+
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+(:,:,2,1) =
+
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+(:,:,1,2) =
+
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+(:,:,2,2) =
+
+    0.4386    0.3980
+    0.0597    0.7380</code></pre>
+<p>Now convert the 4 dimensional array to a 2 by 2 cell array that contains
+matrixes in each cell:</p>
+<pre><code>% Squeece 3D array to a Cell array of matrixes
+cl_mn_rand = squeeze(num2cell(mn_rand, [1,2]));
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1,1} =
+ 
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+
+cl_mn_rand{2,1} =
+ 
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+
+cl_mn_rand{1,2} =
+ 
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+
+cl_mn_rand{2,2} =
+ 
+    0.4386    0.3980
+    0.0597    0.7380</code></pre>
+</div>
+<div id="d-array-to-cell-array-of-matrix-split-by-first-and-fourth-dimensions-rearrange-dimensions" class="section level4" number="1.2.1.3">
+<h4><span class="header-section-number">1.2.1.3</span> 4D Array to Cell Array of Matrix Split by First and Fourth Dimensions Rearrange Dimensions</h4>
+<p>Suppose we store policy and value function given four state variables.
+The first one is age, the second one is asset, the third one is shock,
+and the fourth one is the number of kids. We start out with a four
+dimensional matrix. The objective is to create a two dimensional cell
+array as output where indexed by the 1st and 4th dimension of the
+underlying numeric array, and the elements of the 2D cell array are
+matrixes.</p>
+<p>This is achieved by the
+<a href="https://www.mathworks.com/help/matlab/ref/permute.html">permute</a>
+function. We first rearrange the matrix, so that the 2nd and 3rd
+dimensions become the 1st and 2nd, then we use the technique used above
+to squeeze out the first two dimensions as matrixes with the last two as
+categories.</p>
+<p>First, generate the 2 by 2 by 2 by 2, (Age, A, Z, Kids Count), matrix:</p>
+<pre><code>% Create a 3D Array
+rng(123);
+% (Age, A, Z, Kids Count)
+mn_rand = rand(2,2,2,2);</code></pre>
+<p>Second, loop out the (A,Z) matrix by Age and Kids Count, this shows us
+what we want to achieve. Note that each row is Age, each column is A,
+each submatrix is z, and each super-matrix is kid-count. So from
+slicing, each column printed out are different value of A, the two
+submatrixes printed out are for each z. For the output structure where
+we want a (A,Z) matrix, the columns need to become rows, and the
+submatrix need to become columns.</p>
+<pre><code>% Show Matrix by Age and Kids
+for it_age = 1:size(mn_rand,1)
+    for it_kids = 1:size(mn_rand,4)
+        disp(strcat([&#39;it_age:&#39; num2str(it_age) &#39;, it_kids:&#39; num2str(it_kids)]))
+        disp(mn_rand(it_age,:,:,it_kids));
+    end
+end
+
+it_age:1, it_kids:1
+(:,:,1) =
+
+    0.6965    0.2269
+
+
+(:,:,2) =
+
+    0.7195    0.9808
+it_age:1, it_kids:2
+(:,:,1) =
+
+    0.4809    0.3432
+
+
+(:,:,2) =
+
+    0.4386    0.3980
+it_age:2, it_kids:1
+(:,:,1) =
+
+    0.2861    0.5513
+
+
+(:,:,2) =
+
+    0.4231    0.6848
+it_age:2, it_kids:2
+(:,:,1) =
+
+    0.3921    0.7290
+
+
+(:,:,2) =
+
+    0.0597    0.7380</code></pre>
+<p>Third, we permutate the matrix and squeeze to arrive at the 2 by 2 cell,
+note that step two is just to show via loop what we should get:</p>
+<pre><code>% Rearrange dimensions
+mn_rand_2314 = permute(mn_rand, [2,3,1,4]);
+% Squeeze the first two dimensiosn as before
+cl_mn_rand = squeeze(num2cell(mn_rand_2314, [1,2]));
+% show
+celldisp(cl_mn_rand);
+
+
+cl_mn_rand{1,1} =
+ 
+    0.6965    0.7195
+    0.2269    0.9808
+
+
+
+cl_mn_rand{2,1} =
+ 
+    0.2861    0.4231
+    0.5513    0.6848
+
+
+
+cl_mn_rand{1,2} =
+ 
+    0.4809    0.4386
+    0.3432    0.3980
+
+
+
+cl_mn_rand{2,2} =
+ 
+    0.3921    0.0597
+    0.7290    0.7380</code></pre>
+</div>
+<div id="nd-array-summarize-in-table" class="section level4" number="1.2.1.4">
+<h4><span class="header-section-number">1.2.1.4</span> ND Array Summarize in Table</h4>
+<p>Given an ND dataframe, summarize the first two dimensions. For each
+possible combination of the 3rd and 4th dimension, generate mean, sd,
+min and max over the matrix of the first two dimensions. This is similar
+to a tabulation function.</p>
+<p>First, we generate several array of information:</p>
+<pre><code>% Initialize and Squeeze
+rng(123);
+mn_rand = rand(2,2,2,2);
+cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
+cl_mt_rand = cln_mt_rand(:);
+celldisp(cl_mt_rand);
+
+
+cl_mt_rand{1} =
+ 
+    0.6965    0.2269
+    0.2861    0.5513
+
+
+
+cl_mt_rand{2} =
+ 
+    0.7195    0.9808
+    0.4231    0.6848
+
+
+
+cl_mt_rand{3} =
+ 
+    0.4809    0.3432
+    0.3921    0.7290
+
+
+
+cl_mt_rand{4} =
+ 
+    0.4386    0.3980
+    0.0597    0.7380</code></pre>
+<p>Second, create two arrays that tracks for each element of cl_mt_rand,
+which one of the 3rd and 4th dimensions they correspond to:</p>
+<pre><code>ar_dim_3 = [31,32]&#39;;
+ar_dim_4 = [41,42]&#39;;
+[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3, ar_dim_4);
+ar_dim_3 = mt_dim_3(:);
+ar_dim_4 = mt_dim_4(:);</code></pre>
+<p>Third, summarize each matrix:</p>
+<pre><code>% Over of matrix and summarize
+ar_mean = zeros(size(cl_mt_rand));
+ar_std = zeros(size(cl_mt_rand));
+for it_mt=1:length(cl_mt_rand)
+    mt_cur = cl_mt_rand{it_mt};
+    ar_mean(it_mt) = mean(mt_cur, &#39;all&#39;);
+    ar_std(it_mt) = std(mt_cur, [], &#39;all&#39;);
+end</code></pre>
+<p>Fourth Construct a Table</p>
+<pre><code>% Constructe Table
+tb_rowcols_tab = array2table([(1:length(cl_mt_rand))&#39;, ...
+    ar_dim_3, ar_dim_4, ar_mean, ar_std]);
+tb_rowcols_tab.Properties.VariableNames = ...
+    matlab.lang.makeValidName([&quot;i&quot;, &quot;dim3&quot;, &quot;dim4&quot;,  &quot;mean&quot;, &quot;std&quot;]);
+disp(tb_rowcols_tab);
+
+    i    dim3    dim4     mean        std  
+    _    ____    ____    _______    _______
+
+    1     31      41     0.44019    0.22156
+    2     32      41     0.70204     0.2281
+    3     31      42     0.48632    0.17157
+    4     32      42     0.40857    0.27764</code></pre>
+</div>
+<div id="nd-array-two-way-summarize-in-table" class="section level4" number="1.2.1.5">
+<h4><span class="header-section-number">1.2.1.5</span> ND Array Two-Way Summarize in Table</h4>
+<p>Given dataframe as above, but we now want to add to the resulting
+summary table additional columns, rather than taking the means of the
+entire matrix in the first two dimensions, we only take average with
+respect to the rows, the first dimension, the second dimension show up
+as coumn statistics names, still multiple stats. The results worked out
+here are embedded in the
+<a href="https://fanwangecon.github.io/MEconTools/MEconTools/doc/summ/htmlpdfm/fx_summ_nd_array.html">fx_summ_nd_array</a>
+function of the <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a>
+Package.</p>
+<p>First, we generate several array of information:</p>
+<pre><code>% dimension names
+st_title = &#39;Summarize values over a conditional on z (columns) and kids and marriage (rows)&#39;;
+st_dim_1 = &#39;a&#39;;
+st_dim_2 = &#39;z&#39;;
+st_dim_3 = &#39;kid&#39;;
+st_dim_4 = &#39;marriage&#39;;
+% 3rd and fourth dimension values
+ar_dim_2 = [-3, -1, 1, 3];
+ar_dim_3 = [1,2,3];
+ar_dim_4 = [0,1];
+% Initialize and Squeeze
+rng(123);
+mn_rand = rand(10,4,3,2);
+cln_mt_rand = squeeze(num2cell(mn_rand, [1,2]));
+cl_mt_rand = cln_mt_rand(:);</code></pre>
+<p>Second, create two arrays that tracks for each element of cl_mt_rand,
+which one of the 3rd and 4th dimensions they correspond to:</p>
+<pre><code>[mt_dim_3, mt_dim_4] = ndgrid(ar_dim_3&#39;, ar_dim_4&#39;);
+ar_dim_3 = mt_dim_3(:);
+ar_dim_4 = mt_dim_4(:);</code></pre>
+<p>Third, summarize each matrix:</p>
+<pre><code>% Over of matrix and summarize
+mt_mean = zeros(length(cl_mt_rand), size(mn_rand,2));
+mt_std = zeros(length(cl_mt_rand), size(mn_rand,2));
+for it_mt=1:length(cl_mt_rand)
+    mt_cur = cl_mt_rand{it_mt};
+    mt_mean(it_mt,:) = mean(mt_cur, 1);
+    mt_std(it_mt,:) = std(mt_cur, [], 1);
+end</code></pre>
+<p>Fourth Construct a Table</p>
+<pre><code>% Constructe Table
+tb_rowcols_tab = array2table([(1:length(cl_mt_rand))&#39;, ...
+    ar_dim_3, ar_dim_4, mt_mean, mt_std]);
+% Column Names
+cl_col_names_cate_dims = [string(st_dim_3), string(st_dim_4)];
+cl_col_names_mn = strcat(&#39;mean_&#39;, st_dim_2, string(ar_dim_2));
+cl_col_names_sd = strcat(&#39;sd_&#39;, st_dim_2, string(ar_dim_2));
+tb_rowcols_tab.Properties.VariableNames = ...
+    matlab.lang.makeValidName([&quot;group&quot;, cl_col_names_cate_dims, cl_col_names_mn, cl_col_names_sd]);
+% disp([&#39;xxx &#39; st_title &#39; xxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;]);
+disp(tb_rowcols_tab);
+
+    group    kid    marriage    mean_z_3    mean_z_1    mean_z1    mean_z3    sd_z_3     sd_z_1      sd_z1      sd_z3 
+    _____    ___    ________    ________    ________    _______    _______    _______    _______    _______    _______
+
+      1       1        0         0.5442     0.41278     0.53795    0.49542    0.22935    0.22945    0.21653    0.25245
+      2       2        0        0.51894     0.52262     0.52544    0.45066    0.26787    0.23615    0.25833    0.31178
+      3       3        0        0.48248      0.5238     0.50392    0.46534    0.27009    0.26676    0.26644    0.29449
+      4       1        1        0.58343     0.50529     0.54361     0.5006    0.29578    0.30182    0.30952    0.27317
+      5       2        1        0.58408     0.45941     0.50466    0.40081    0.25026    0.34704    0.31039    0.28693
+      6       3        1        0.51148     0.49531     0.48963    0.47698     0.3271    0.24336    0.34498    0.34004</code></pre>
+
+</div>
+</div>
+<div id="multidimensional-nd-array-to-2d-matrix-with-nan-exclusions" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Multidimensional ND Array to 2D Matrix with Nan Exclusions</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="a-multidimensional-nd-array-with-many-nan-values" class="section level4" number="1.2.2.1">
+<h4><span class="header-section-number">1.2.2.1</span> A Multidimensional ND Array with Many NaN Values</h4>
+<p>Create a multidimensional Array with Many NaN Values. For example, we
+could have a dynamic lifecycle model with three endogenous varaibles,
+years of education accumulated, years of experiencesin blue and white
+collar jobs. By age 22, after starting to work at age 16, there are
+different possible combinations of G (schooling), X1 (white-collar), and
+X2 (blue-collar) jobs. These are exclusive choices in each year, so at
+age 16, assume that G = 0, X1 = 0 and X2 = 0. At age 16, they can choose
+to stay at home, school, or X1, or X2, exclusively. G, X1, X2 accumulate
+over time.</p>
+<p>For each age, we can create multi-dimensional arrays with equal
+dimension for G, X1 and X2, to record consumption, value, etc at each
+element of the possible state-space. However, that matrix could have a
+lot of empty values.</p>
+<p>In the example below, also has a X3 (military category).</p>
+<pre><code>% random number
+rng(123);
+
+% Max age means number of
+MAX_YRS_POST16 = 3;
+
+% store all
+cl_EV = cell(MAX_YRS_POST16,1);
+
+% Loop 1, solve BACKWARD
+for it_yrs_post16=MAX_YRS_POST16:-1:1
+    
+    % Store some results, the matrix below includes all possible
+    % state-space elements
+    mn_ev_at_gx123 = NaN(it_yrs_post16, it_yrs_post16, it_yrs_post16, it_yrs_post16);
+    
+    % Loops 2, possibles Years attained so far as well as experiences
+    for G=0:1:(it_yrs_post16-1)
+        for X1=0:1:(it_yrs_post16-1-G)
+            for X2=0:1:(it_yrs_post16-1-G-X1)
+                for X3=0:1:(it_yrs_post16-1-G-X1-X2)
+                    
+                    % Double checkAre these combinations feasible?
+                    if (G+X1+X2+X3 &lt;= it_yrs_post16)
+                        % just plug in a random number
+                        mn_ev_at_gx123(G+1, X1+1, X2+1, X3+1) = rand();
+                    end
+                end
+            end
+        end
+    end
+    
+    % store matrixes
+    cl_EV{it_yrs_post16} = mn_ev_at_gx123;
+    
+end
+
+% Display Results
+celldisp(cl_EV);
+
+
+cl_EV{1} =
+ 
+    0.6344
+
+
+
+cl_EV{2} =
+ 
+
+(:,:,1,1) =
+
+    0.7380    0.5316
+    0.5318       NaN
+
+
+(:,:,2,1) =
+
+    0.1755       NaN
+       NaN       NaN
+
+
+(:,:,1,2) =
+
+    0.1825       NaN
+       NaN       NaN
+
+
+(:,:,2,2) =
+
+   NaN   NaN
+   NaN   NaN
+
+
+
+cl_EV{3} =
+ 
+
+(:,:,1,1) =
+
+    0.6965    0.9808    0.3921
+    0.3432    0.0597       NaN
+    0.3980       NaN       NaN
+
+
+(:,:,2,1) =
+
+    0.5513    0.4809       NaN
+    0.4386       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,3,1) =
+
+    0.4231       NaN       NaN
+       NaN       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,1,2) =
+
+    0.2861    0.6848       NaN
+    0.7290       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,2,2) =
+
+    0.7195       NaN       NaN
+       NaN       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,3,2) =
+
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+
+
+(:,:,1,3) =
+
+    0.2269       NaN       NaN
+       NaN       NaN       NaN
+       NaN       NaN       NaN
+
+
+(:,:,2,3) =
+
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+
+
+(:,:,3,3) =
+
+   NaN   NaN   NaN
+   NaN   NaN   NaN
+   NaN   NaN   NaN</code></pre>
+</div>
+<div id="generate-a-two-dimensional-matrix-based-on-nd-array-for-only-non-nan-cell-values" class="section level4" number="1.2.2.2">
+<h4><span class="header-section-number">1.2.2.2</span> Generate a Two Dimensional Matrix Based on ND Array for Only non-NaN Cell Values</h4>
+<p>We can generate a 2-dimensional matrix, what we can consider as a Table,
+with the information stored in the structures earlier. In this example,
+we can drop the NaN values. This matrix will be much larger in size due
+to explicitly storing X1, X2, X3 and G values then the ND array when
+most values are not NaN. But this output matrix can be much more easily
+interpretable and readable. When there are many many NaNs in the ND
+array, this matrix could be much smaller in size.</p>
+<p>First, convert each element of the cell array above to a 2D matrix (with
+the same number of columns), then stack resulting matrixes together to
+form one big table.</p>
+<pre><code>% Create a 2D Array
+for it_yrs_post16=MAX_YRS_POST16:-1:1
+    % Get matrix at cell element
+    mn_ev_at_gx123 = cl_EV{it_yrs_post16};
+    % flaten multi-dimensional matrix
+    ar_ev_at_gx123_flat = mn_ev_at_gx123(:);
+    % find nan values
+    ar_id_isnan = isnan(ar_ev_at_gx123_flat);
+    % obtain dimension-specific index for nan positions
+    [id_G, id_X1, id_X2, id_X3] = ind2sub(size(mn_ev_at_gx123), find(~ar_id_isnan));
+    % generate 2-dimensional matrix (table)
+    mt_ev_at_gx123 = [it_yrs_post16 + zeros(size(id_G)), ...
+        (id_G-1), (id_X1-1), (id_X2-1), (id_X3-1), ...
+        ar_ev_at_gx123_flat(~ar_id_isnan)];
+    % stack results
+    if (it_yrs_post16 == MAX_YRS_POST16)
+        mt_ev_at_gx123_all = mt_ev_at_gx123;
+    else
+        mt_ev_at_gx123_all = [mt_ev_at_gx123_all; mt_ev_at_gx123];
+    end
+end
+% Sort
+mt_ev_at_gx123_all = sortrows(mt_ev_at_gx123_all, [1,2,3,4]);
+% Create Table
+tb_ev_at_gx123_all = array2table(mt_ev_at_gx123_all);
+cl_col_names_a = {&#39;YRS_POST16&#39;, &#39;G&#39;, &#39;X1&#39;, &#39;X2&#39;, &#39;X3&#39;, &#39;EV&#39;};
+tb_ev_at_gx123_all.Properties.VariableNames = cl_col_names_a;
+disp(tb_ev_at_gx123_all);
+
+    YRS_POST16    G    X1    X2    X3       EV   
+    __________    _    __    __    __    ________
+
+        1         0    0     0     0       0.6344
+        2         0    0     0     0        0.738
+        2         0    0     0     1      0.18249
+        2         0    0     1     0      0.17545
+        2         0    1     0     0      0.53155
+        2         1    0     0     0      0.53183
+        3         0    0     0     0      0.69647
+        3         0    0     0     1      0.28614
+        3         0    0     0     2      0.22685
+        3         0    0     1     0      0.55131
+        3         0    0     1     1      0.71947
+        3         0    0     2     0      0.42311
+        3         0    1     0     0      0.98076
+        3         0    1     0     1      0.68483
+        3         0    1     1     0      0.48093
+        3         0    2     0     0      0.39212
+        3         1    0     0     0      0.34318
+        3         1    0     0     1      0.72905
+        3         1    0     1     0      0.43857
+        3         1    1     0     0     0.059678
+        3         2    0     0     0      0.39804</code></pre>
+
+</div>
+</div>
+</div>
+<div id="cells" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Cells</h2>
+
+<div id="list-comprehension-with-cells" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> List Comprehension with Cells</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="find-index-of-elements-of-string-cells-in-a-larger-string-cells" class="section level4" number="1.3.1.1">
+<h4><span class="header-section-number">1.3.1.1</span> Find Index of Elements of String Cells in a larger String Cells</h4>
 <p>the function below returns the position of cl_st_param_keys in
-ls_st_param_key should only include in cl_st_param_keys strings
-that also exist in ls_st_param_key.</p>
+ls_st_param_key should only include in cl_st_param_keys strings that
+also exist in ls_st_param_key.</p>
 <pre><code>ls_st_param_key = {&#39;fl_crra&#39;, &#39;fl_beta&#39;, ...
                    &#39;fl_w&#39;, &#39;fl_r_save&#39;, ...
                    &#39;fl_a_max&#39;, &#39;it_z_n&#39;, &#39;it_a_n&#39;};
@@ -1959,8 +2315,8 @@ cell2mat(cellfun(@(m) find(strcmp(ls_st_param_key, m)), ...
 ans = 1x3    
      3     2     6</code></pre>
 </div>
-<div id="given-container-of-arrays-find-total-length-of-all-arrays-for-selected-keys" class="section level4">
-<h4><span class="header-section-number">1.2.1.2</span> Given Container of Arrays, Find Total Length of All Arrays for Selected Keys</h4>
+<div id="given-container-of-arrays-find-total-length-of-all-arrays-for-selected-keys" class="section level4" number="1.3.1.2">
+<h4><span class="header-section-number">1.3.1.2</span> Given Container of Arrays, Find Total Length of All Arrays for Selected Keys</h4>
 <pre><code>cl_st_param_keys = {&#39;fl_crra&#39;, &#39;fl_beta&#39;};
 
 param_tstar_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
@@ -1983,8 +2339,8 @@ disp([&#39;it_total_length: &#39; num2str(it_total_length)])
 
 it_total_length: 15</code></pre>
 </div>
-<div id="given-container-of-arrays-find-min-and-max-of-each-and-draw-random-n-sets" class="section level4">
-<h4><span class="header-section-number">1.2.1.3</span> Given Container of Arrays, Find Min and Max of Each and Draw Random N sets</h4>
+<div id="given-container-of-arrays-find-min-and-max-of-each-and-draw-random-n-sets" class="section level4" number="1.3.1.3">
+<h4><span class="header-section-number">1.3.1.3</span> Given Container of Arrays, Find Min and Max of Each and Draw Random N sets</h4>
 <pre><code>cl_st_param_keys = {&#39;fl_crra&#39;, &#39;fl_beta&#39;};
 
 param_tstar_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
@@ -2032,13 +2388,13 @@ disp(tb_rand_draws);
 
 </div>
 </div>
-<div id="all-possible-combinations-of-multiple-arrays" class="section level3">
-<h3><span class="header-section-number">1.2.2</span> All Possible Combinations of Multiple Arrays</h3>
+<div id="all-possible-combinations-of-multiple-arrays" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> All Possible Combinations of Multiple Arrays</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="given-several-arrays-of-possibly-different-length-in-container-all-possible-combinations" class="section level4">
-<h4><span class="header-section-number">1.2.2.1</span> Given Several Arrays of Possibly different Length in Container, all Possible combinations</h4>
+<div id="given-several-arrays-of-possibly-different-length-in-container-all-possible-combinations" class="section level4" number="1.3.2.1">
+<h4><span class="header-section-number">1.3.2.1</span> Given Several Arrays of Possibly different Length in Container, all Possible combinations</h4>
 <pre><code>param_tstar_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
 param_tstar_map(&#39;a&#39;) = linspace(1, 5, 5);
 param_tstar_map(&#39;b&#39;) = linspace(0.87, 0.97, 6);
@@ -2111,13 +2467,13 @@ disp(tb_all_combi);
 
 </div>
 </div>
-<div id="combine-cells-together" class="section level3">
-<h3><span class="header-section-number">1.2.3</span> Combine Cells Together</h3>
+<div id="combine-cells-together" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Combine Cells Together</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="string-combine-with-string-cell" class="section level4">
-<h4><span class="header-section-number">1.2.3.1</span> String Combine with string cell</h4>
+<div id="string-combine-with-string-cell" class="section level4" number="1.3.3.1">
+<h4><span class="header-section-number">1.3.3.1</span> String Combine with string cell</h4>
 <pre><code>ls_st_param_key = {&#39;fl_crra&#39;, &#39;fl_beta&#39;, ...
                    &#39;fl_w&#39;, &#39;fl_r_save&#39;, ...
                    &#39;fl_a_max&#39;, &#39;it_z_n&#39;, &#39;it_a_n&#39;};
@@ -2133,13 +2489,13 @@ ans =
 
 </div>
 </div>
-<div id="nested-cells" class="section level3">
-<h3><span class="header-section-number">1.2.4</span> Nested Cells</h3>
+<div id="nested-cells" class="section level3" number="1.3.4">
+<h3><span class="header-section-number">1.3.4</span> Nested Cells</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="nested-cells-and-access" class="section level4">
-<h4><span class="header-section-number">1.2.4.1</span> Nested Cells and access</h4>
+<div id="nested-cells-and-access" class="section level4" number="1.3.4.1">
+<h4><span class="header-section-number">1.3.4.1</span> Nested Cells and access</h4>
 <pre><code>cl_st_param_keys = {&#39;fl_crra&#39;, &#39;fl_beta&#39;};
 
 it_simu_vec_len = 3;
@@ -2168,16 +2524,16 @@ disp(clns_parm_tstar{1}{3});
 </div>
 </div>
 </div>
-<div id="characters-and-strings" class="section level2">
-<h2><span class="header-section-number">1.3</span> Characters and Strings</h2>
+<div id="characters-and-strings" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Characters and Strings</h2>
 
-<div id="basic-string-operations" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Basic String Operations</h3>
+<div id="basic-string-operations" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Basic String Operations</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="combine-string-numeric-values-etc-single-and-double-quotes" class="section level4">
-<h4><span class="header-section-number">1.3.1.1</span> Combine String, Numeric values etc, Single and Double Quotes</h4>
+<div id="combine-string-numeric-values-etc-single-and-double-quotes" class="section level4" number="1.4.1.1">
+<h4><span class="header-section-number">1.4.1.1</span> Combine String, Numeric values etc, Single and Double Quotes</h4>
 <p>Convert a string array into a single string, note the double quotes, and
 the auto space between:</p>
 <pre><code>st_a = &quot;another string&quot;;
@@ -2200,8 +2556,8 @@ disp((str));
 
 abc 2 opq another string</code></pre>
 </div>
-<div id="construct-string-array-and-string-elements-of-string-array" class="section level4">
-<h4><span class="header-section-number">1.3.1.2</span> Construct String Array and String Elements of String Array</h4>
+<div id="construct-string-array-and-string-elements-of-string-array" class="section level4" number="1.4.1.2">
+<h4><span class="header-section-number">1.4.1.2</span> Construct String Array and String Elements of String Array</h4>
 <p>In the example below, we have a number of strings we want to put inside
 a string array, then join with strjoin, but two of the strings need to
 be constructed as strings first. Note below that double quoates are own
@@ -2217,8 +2573,8 @@ disp(ar_st);
 
 Completed SNW_DS_MAIN;SNW_MP_PARAM=123.345;SNW_MP_CONTROL=678.9;another string</code></pre>
 </div>
-<div id="paste-join-strings-together-with-separator" class="section level4">
-<h4><span class="header-section-number">1.3.1.3</span> Paste Join Strings Together with Separator</h4>
+<div id="paste-join-strings-together-with-separator" class="section level4" number="1.4.1.3">
+<h4><span class="header-section-number">1.4.1.3</span> Paste Join Strings Together with Separator</h4>
 <p>Join strings together with separator, this is similar to the paste0
 function in R.</p>
 <pre><code>ar_st = [&quot;abc&quot;, &quot;efg&quot;, &quot;opq&quot;];
@@ -2226,8 +2582,8 @@ disp(strjoin(ar_st, &#39;-&#39;));
 
 abc-efg-opq</code></pre>
 </div>
-<div id="combine-char-with-numeric-value" class="section level4">
-<h4><span class="header-section-number">1.3.1.4</span> Combine Char with Numeric Value</h4>
+<div id="combine-char-with-numeric-value" class="section level4" number="1.4.1.4">
+<h4><span class="header-section-number">1.4.1.4</span> Combine Char with Numeric Value</h4>
 <p>Compose a string with words and numerical values</p>
 <pre><code>st_title = strcat(&quot;Figure Title &quot;, ...
     &quot;(&quot;, ...
@@ -2241,8 +2597,8 @@ disp(st_combo);
 
 Figure Title (threedeci=123.457,twodeci=123.46,int=123)</code></pre>
 </div>
-<div id="search-if-string-contains-substring" class="section level4">
-<h4><span class="header-section-number">1.3.1.5</span> Search if String Contains Substring</h4>
+<div id="search-if-string-contains-substring" class="section level4" number="1.4.1.5">
+<h4><span class="header-section-number">1.4.1.5</span> Search if String Contains Substring</h4>
 <p>Does string contain substring?</p>
 <pre><code>st_long1 = &#39;simu_dense&#39;;
 st_long2 = &#39;simu_denser&#39;;
@@ -2254,8 +2610,8 @@ disp([contains(st_long1, &#39;dense&#39;), contains(st_long2, &#39;dense&#39;), 
 
    1   1   1   0   0</code></pre>
 </div>
-<div id="change-file-name-mlx-to-m" class="section level4">
-<h4><span class="header-section-number">1.3.1.6</span> Change File Name MLX to M</h4>
+<div id="change-file-name-mlx-to-m" class="section level4" number="1.4.1.6">
+<h4><span class="header-section-number">1.4.1.6</span> Change File Name MLX to M</h4>
 <pre><code>st_file_name_mlx = &#39;continuous_differentiable.mlx&#39;;
 at_st_split_file_name = split(st_file_name_mlx, &quot;.&quot;);
 st_file_name_m = strcat(at_st_split_file_name{1}, &#39;_m.m&#39;);
@@ -2265,13 +2621,13 @@ continuous_differentiable_m.m</code></pre>
 
 </div>
 </div>
-<div id="string-manipulations-with-arrays" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> String Manipulations with Arrays</h3>
+<div id="string-manipulations-with-arrays" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> String Manipulations with Arrays</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="string-array" class="section level4">
-<h4><span class="header-section-number">1.3.2.1</span> String Array</h4>
+<div id="string-array" class="section level4" number="1.4.2.1">
+<h4><span class="header-section-number">1.4.2.1</span> String Array</h4>
 <p>Three title lines, with double quotes:</p>
 <pre><code>ar_st_titles = [&quot;Title1&quot;,&quot;Title2&quot;,&quot;Title3&quot;]&#39;;
 disp(ar_st_titles);
@@ -2286,8 +2642,8 @@ disp(st_titles);
 
 Title1Title2Title3</code></pre>
 </div>
-<div id="string-cell-array" class="section level4">
-<h4><span class="header-section-number">1.3.2.2</span> String Cell Array</h4>
+<div id="string-cell-array" class="section level4" number="1.4.2.2">
+<h4><span class="header-section-number">1.4.2.2</span> String Cell Array</h4>
 <p>Create a string array:</p>
 <pre><code>ar_st_title_one = {&#39;Title One Line&#39;};
 ar_st_titles = {&#39;Title1&#39;,&#39;Title2&#39;,&#39;Title3&#39;};
@@ -2314,15 +2670,15 @@ disp(ar_st_titles);
 
     {&#39;log(Title1)&#39;}    {&#39;Title2&#39;}    {&#39;Title3&#39;}    {&#39;Title4&#39;}</code></pre>
 </div>
-<div id="joint-string-cell-array-with-suffix" class="section level4">
-<h4><span class="header-section-number">1.3.2.3</span> Joint String Cell Array with Suffix</h4>
+<div id="joint-string-cell-array-with-suffix" class="section level4" number="1.4.2.3">
+<h4><span class="header-section-number">1.4.2.3</span> Joint String Cell Array with Suffix</h4>
 <pre><code>ar_st_titles = {&#39;Title1&#39;,&#39;Title2&#39;,&#39;Title3&#39;};
 disp(strcat(ar_st_titles, &#39;_init&#39;));
 
     {&#39;Title1_init&#39;}    {&#39;Title2_init&#39;}    {&#39;Title3_init&#39;}</code></pre>
 </div>
-<div id="duplicate-string" class="section level4">
-<h4><span class="header-section-number">1.3.2.4</span> Duplicate String</h4>
+<div id="duplicate-string" class="section level4" number="1.4.2.4">
+<h4><span class="header-section-number">1.4.2.4</span> Duplicate String</h4>
 <pre><code>it_duplicate_n = 10;
 disp(repmat({&#39;String&#39;}, [1, it_duplicate_n]));
 
@@ -2334,8 +2690,8 @@ disp(repmat({&#39;String&#39;}, [1, it_duplicate_n]));
 
     {&#39;String&#39;}</code></pre>
 </div>
-<div id="string-join-to-form-single-element" class="section level4">
-<h4><span class="header-section-number">1.3.2.5</span> String Join to form Single Element</h4>
+<div id="string-join-to-form-single-element" class="section level4" number="1.4.2.5">
+<h4><span class="header-section-number">1.4.2.5</span> String Join to form Single Element</h4>
 <p>using char() is safe</p>
 <pre><code>st_var_name = &quot;abc&quot;
 
@@ -2368,8 +2724,8 @@ st_var_name = [char(st_var_name) &#39; percentile values&#39;]
 
 st_var_name = &#39;abc percentile values&#39;</code></pre>
 </div>
-<div id="string-join-dash-paste" class="section level4">
-<h4><span class="header-section-number">1.3.2.6</span> String Join dash (Paste)</h4>
+<div id="string-join-dash-paste" class="section level4" number="1.4.2.6">
+<h4><span class="header-section-number">1.4.2.6</span> String Join dash (Paste)</h4>
 <p>This is similar to R’s paste function:</p>
 <pre><code>st_var_name = &quot;abc&quot;;
 st_var_name = [st_var_name, &#39;efg&#39;, &#39;mqo&#39;];
@@ -2381,24 +2737,24 @@ disp(strjoin(st_var_name, &quot;,&quot;));
 
 abc,efg,mqo</code></pre>
 </div>
-<div id="numeric-array-to-string-without-space" class="section level4">
-<h4><span class="header-section-number">1.3.2.7</span> Numeric Array to String without Space</h4>
+<div id="numeric-array-to-string-without-space" class="section level4" number="1.4.2.7">
+<h4><span class="header-section-number">1.4.2.7</span> Numeric Array to String without Space</h4>
 <p>String replace</p>
 <pre><code>ar_it_test_grp = [3, 8, 9];
 strrep(num2str(ar_it_test_grp), &#39;  &#39;, &#39;_&#39;)
 
 ans = &#39;3_8_9&#39;</code></pre>
 </div>
-<div id="substring-replace-in-cell-array" class="section level4">
-<h4><span class="header-section-number">1.3.2.8</span> Substring replace in Cell Array</h4>
+<div id="substring-replace-in-cell-array" class="section level4" number="1.4.2.8">
+<h4><span class="header-section-number">1.4.2.8</span> Substring replace in Cell Array</h4>
 <pre><code>ar_st_cells = {&#39;shock=0.35&#39;,&#39;shock=0.40&#39;,&#39;shock=0.46&#39;};
 ar_st_updated_cells = strrep(ar_st_cells, &#39;shock&#39;, &#39;$\epsilon$&#39;);
 disp(ar_st_updated_cells);
 
     {&#39;$\epsilon$=0.35&#39;}    {&#39;$\epsilon$=0.40&#39;}    {&#39;$\epsilon$=0.46&#39;}</code></pre>
 </div>
-<div id="find-position-of-string-in-string-cell" class="section level4">
-<h4><span class="header-section-number">1.3.2.9</span> Find position of String in String Cell</h4>
+<div id="find-position-of-string-in-string-cell" class="section level4" number="1.4.2.9">
+<h4><span class="header-section-number">1.4.2.9</span> Find position of String in String Cell</h4>
 <pre><code>ls_st_param_key = {&#39;fl_crra&#39;, &#39;fl_beta&#39;, ...
                    &#39;fl_w&#39;, &#39;fl_r_save&#39;, ...
                    &#39;fl_a_max&#39;, &#39;it_z_n&#39;, &#39;it_a_n&#39;};
@@ -2407,12 +2763,12 @@ find(strcmp(ls_st_param_key, st_param_key))
 
 ans = 5</code></pre>
 </div>
-<div id="find-the-positions-of-string-cells-in-full-string-cells" class="section level4">
-<h4><span class="header-section-number">1.3.2.10</span> Find the positions of String Cells in Full String Cells</h4>
-<p>Find the positions of fl_w, fl_beta, and it_z_n in
-ls_st_param_key. Then just find the position of fl_crra. When
-looking for the position of something that does not exist, generate an
-find outcome array of length 0.</p>
+<div id="find-the-positions-of-string-cells-in-full-string-cells" class="section level4" number="1.4.2.10">
+<h4><span class="header-section-number">1.4.2.10</span> Find the positions of String Cells in Full String Cells</h4>
+<p>Find the positions of fl_w, fl_beta, and it_z_n in ls_st_param_key.
+Then just find the position of fl_crra. When looking for the position of
+something that does not exist, generate an find outcome array of length
+0.</p>
 <pre><code>ls_st_param_key = {&#39;fl_crra&#39;, &#39;fl_beta&#39;, ...
                    &#39;fl_w&#39;, &#39;fl_r_save&#39;, ...
                    &#39;fl_a_max&#39;, &#39;it_z_n&#39;, &#39;it_a_n&#39;};
@@ -2438,8 +2794,8 @@ ans = 0
 ans = 
    1</code></pre>
 </div>
-<div id="cell-to-string-paste-and-replace-dash" class="section level4">
-<h4><span class="header-section-number">1.3.2.11</span> Cell to string Paste and Replace dash</h4>
+<div id="cell-to-string-paste-and-replace-dash" class="section level4" number="1.4.2.11">
+<h4><span class="header-section-number">1.4.2.11</span> Cell to string Paste and Replace dash</h4>
 <pre><code>cl_st_param_keys = {&#39;fl_crra&#39;, &#39;fl_beta&#39;};
 display(strrep(strjoin(cl_st_param_keys, &#39;-&#39;), &#39;_&#39;, &#39;\_&#39;));
 
@@ -2447,13 +2803,13 @@ fl\_crra-fl\_beta</code></pre>
 
 </div>
 </div>
-<div id="concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings" class="section level3">
-<h3><span class="header-section-number">1.3.3</span> Concatenate Strings Arrays with Numbers and Number Arrays with Strings</h3>
+<div id="concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings" class="section level3" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Concatenate Strings Arrays with Numbers and Number Arrays with Strings</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="combine-a-string-array-with-a-numeric-array-using-compose" class="section level4">
-<h4><span class="header-section-number">1.3.3.1</span> Combine A String Array with A Numeric Array using Compose</h4>
+<div id="combine-a-string-array-with-a-numeric-array-using-compose" class="section level4" number="1.4.3.1">
+<h4><span class="header-section-number">1.4.3.1</span> Combine A String Array with A Numeric Array using Compose</h4>
 <p>String array and numeric array, combine together using the compose
 function, and test different formatting functions. Formating with
 leading empty spaces, leading zeros, and convert to integer or not.</p>
@@ -2476,8 +2832,8 @@ disp(st_combo);
     {&#39;ar_mu_pos_1=1213&#39;    }
     {&#39;ar_COEF_U_gamma= 456&#39;}</code></pre>
 </div>
-<div id="title-from-an-array-of-values" class="section level4">
-<h4><span class="header-section-number">1.3.3.2</span> Title from an Array of Values</h4>
+<div id="title-from-an-array-of-values" class="section level4" number="1.4.3.2">
+<h4><span class="header-section-number">1.4.3.2</span> Title from an Array of Values</h4>
 <p>There is a vector of parameter values and a vector of names for these
 parameter values, I want to include these in the title of a figure with
 the same decimal formating.</p>
@@ -2498,8 +2854,8 @@ disp(st_title_wth_params);
 
 this is the figure title (param1=0.70, param2=0.29, param3=0.23)</code></pre>
 </div>
-<div id="combine-string-with-numeric-array" class="section level4">
-<h4><span class="header-section-number">1.3.3.3</span> Combine String with Numeric Array</h4>
+<div id="combine-string-with-numeric-array" class="section level4" number="1.4.3.3">
+<h4><span class="header-section-number">1.4.3.3</span> Combine String with Numeric Array</h4>
 <p>Example 1:</p>
 <pre><code>ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
 disp([num2str(ar_fl_abc1&#39;, &#39;zw=%3.2f;&#39;), num2str(ar_fl_abc1&#39;, &#39;zr=%3.2f&#39;)]);</code></pre>
@@ -2535,8 +2891,8 @@ disp(cl_col_names);
     &#39;zi=4:zr=0.23;zw=0.68&#39;
     &#39;zi=4:zr=0.72;zw=0.39&#39;</code></pre>
 </div>
-<div id="combine-number-with-string-cell-array" class="section level4">
-<h4><span class="header-section-number">1.3.3.4</span> Combine Number with String Cell Array</h4>
+<div id="combine-number-with-string-cell-array" class="section level4" number="1.4.3.4">
+<h4><span class="header-section-number">1.4.3.4</span> Combine Number with String Cell Array</h4>
 <p>We have a string cell array we created from the previous section, now
 append numbers to it</p>
 <pre><code>% Append Common Numbers
@@ -2547,8 +2903,8 @@ disp(cl_col_names_append);
     &#39;zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-123&#39;
     &#39;zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-123&#39;</code></pre>
 </div>
-<div id="combine-numeric-array-with-string-cell-array" class="section level4">
-<h4><span class="header-section-number">1.3.3.5</span> Combine Numeric Array with String Cell Array</h4>
+<div id="combine-numeric-array-with-string-cell-array" class="section level4" number="1.4.3.5">
+<h4><span class="header-section-number">1.4.3.5</span> Combine Numeric Array with String Cell Array</h4>
 <p>Append an array of numeric values</p>
 <pre><code>% Append Common Numbers
 cl_col_names_append = strcat(cl_col_names, &#39;-String-Cell-With-Numeric-Array-&#39;, ...
@@ -2559,8 +2915,8 @@ disp(cl_col_names_append);
     &#39;zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-Array-2&#39;
     &#39;zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-Array-3&#39;</code></pre>
 </div>
-<div id="convert-numeric-array-to-string-apeend-prefix-to-all-elements." class="section level4">
-<h4><span class="header-section-number">1.3.3.6</span> Convert Numeric Array to String, Apeend Prefix to all elements.</h4>
+<div id="convert-numeric-array-to-string-apeend-prefix-to-all-elements." class="section level4" number="1.4.3.6">
+<h4><span class="header-section-number">1.4.3.6</span> Convert Numeric Array to String, Apeend Prefix to all elements.</h4>
 <pre><code>ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
 ar_st_wth_prefix = strcat(&#39;row=&#39;, string(ar_fl_abc1));
 disp(ar_st_wth_prefix);
@@ -2583,16 +2939,16 @@ fprintf(&#39;Display string [%s]&#39;, &#39;abc&#39;);</code></pre>
 </div>
 </div>
 </div>
-<div id="map-containers" class="section level2">
-<h2><span class="header-section-number">1.4</span> Map Containers</h2>
+<div id="map-containers" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Map Containers</h2>
 
-<div id="container-map-basics" class="section level3">
-<h3><span class="header-section-number">1.4.1</span> Container Map Basics</h3>
+<div id="container-map-basics" class="section level3" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Container Map Basics</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="container-integer-keys" class="section level4">
-<h4><span class="header-section-number">1.4.1.1</span> Container Integer Keys</h4>
+<div id="container-integer-keys" class="section level4" number="1.5.1.1">
+<h4><span class="header-section-number">1.5.1.1</span> Container Integer Keys</h4>
 <p>Given some matrix, I want to store matrix column names as well as labels
 for what each row and column correspond to. Achieve this using a cell
 array of container maps. Cell dimensions correspond to the first,
@@ -2612,8 +2968,8 @@ disp([...
 
     &quot;dim 1 var name:kids&quot;    &quot;dim 2 var name:age&quot;</code></pre>
 </div>
-<div id="is-key-in-container" class="section level4">
-<h4><span class="header-section-number">1.4.1.2</span> Is Key In Container</h4>
+<div id="is-key-in-container" class="section level4" number="1.5.1.2">
+<h4><span class="header-section-number">1.5.1.2</span> Is Key In Container</h4>
 <pre><code>param_map_a = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
 param_map_a(&#39;fl_b_bd&#39;) = -3;
 param_map_a(&#39;fl_w_max&#39;) = 50;
@@ -2627,8 +2983,8 @@ disp([...
 
     &quot;has it_w_i as key? 1&quot;    &quot;has it_w_i1 as key? 0&quot;</code></pre>
 </div>
-<div id="container-key-loop" class="section level4">
-<h4><span class="header-section-number">1.4.1.3</span> Container Key Loop</h4>
+<div id="container-key-loop" class="section level4" number="1.5.1.3">
+<h4><span class="header-section-number">1.5.1.3</span> Container Key Loop</h4>
 <p>Generate new container key within loop dynamically</p>
 <pre><code>param_map_a = containers.Map(&#39;KeyType&#39;, &#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
 
@@ -2672,13 +3028,13 @@ disp([...
 
 </div>
 </div>
-<div id="container-map-display-key-and-values-and-subseting" class="section level3">
-<h3><span class="header-section-number">1.4.2</span> Container Map Display Key and Values and Subseting</h3>
+<div id="container-map-display-key-and-values-and-subseting" class="section level3" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Container Map Display Key and Values and Subseting</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="print-keys-and-values" class="section level4">
-<h4><span class="header-section-number">1.4.2.1</span> Print Keys and Values</h4>
+<div id="print-keys-and-values" class="section level4" number="1.5.2.1">
+<h4><span class="header-section-number">1.5.2.1</span> Print Keys and Values</h4>
 <p>Define container:</p>
 <pre><code>% Define Container
 param_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
@@ -2701,8 +3057,8 @@ pos = 2 ; key = equi_r_j ; val = 2
 pos = 3 ; key = equi_w_j ; val = abc
 pos = 4 ; key = share_unbanked_j ; val = 12</code></pre>
 </div>
-<div id="select-of-subset-of-keyvalues-from-a-container-map" class="section level4">
-<h4><span class="header-section-number">1.4.2.2</span> Select of Subset of Key/Values from a Container Map</h4>
+<div id="select-of-subset-of-keyvalues-from-a-container-map" class="section level4" number="1.5.2.2">
+<h4><span class="header-section-number">1.5.2.2</span> Select of Subset of Key/Values from a Container Map</h4>
 <p>There is a larger container map, I want to create a new container map,
 that keeps a subset of the keys/values of the full container map.</p>
 <pre><code>% Original Container map
@@ -2725,13 +3081,13 @@ disp(param_map_subset.values);
 
 </div>
 </div>
-<div id="generate-container-maps" class="section level3">
-<h3><span class="header-section-number">1.4.3</span> Generate Container Maps</h3>
+<div id="generate-container-maps" class="section level3" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Generate Container Maps</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-a-container-map-with-any-time-of-data" class="section level4">
-<h4><span class="header-section-number">1.4.3.1</span> Generate a Container map with any time of data</h4>
+<div id="generate-a-container-map-with-any-time-of-data" class="section level4" number="1.5.3.1">
+<h4><span class="header-section-number">1.5.3.1</span> Generate a Container map with any time of data</h4>
 <p>Create a container map with float, int, string, and matrix</p>
 <pre><code>close all;
 clear all;
@@ -2750,8 +3106,8 @@ disp(param_map.values);
 
     [2x3 double]    [2]    &#39;abc&#39;    [12]</code></pre>
 </div>
-<div id="access-multiple-values-of-a-container-map" class="section level4">
-<h4><span class="header-section-number">1.4.3.2</span> Access Multiple Values of a container map</h4>
+<div id="access-multiple-values-of-a-container-map" class="section level4" number="1.5.3.2">
+<h4><span class="header-section-number">1.5.3.2</span> Access Multiple Values of a container map</h4>
 <p>Values been accessed need to be of the same type</p>
 <pre><code>% Parameter Dealing from Map
 params_group = values(param_map, {&#39;share_unbanked_j&#39;, &#39;equi_r_j&#39;});
@@ -2808,13 +3164,13 @@ ar_colors{5} =
 
 </div>
 </div>
-<div id="container-map-example-overriding" class="section level3">
-<h3><span class="header-section-number">1.4.4</span> Container Map Example Overriding</h3>
+<div id="container-map-example-overriding" class="section level3" number="1.5.4">
+<h3><span class="header-section-number">1.5.4</span> Container Map Example Overriding</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="update-container-map" class="section level4">
-<h4><span class="header-section-number">1.4.4.1</span> Update Container Map</h4>
+<div id="update-container-map" class="section level4" number="1.5.4.1">
+<h4><span class="header-section-number">1.5.4.1</span> Update Container Map</h4>
 <p>There is one map with values, Container Map A. There is another
 container Map, Container Map B. Container Maps A and B share keys. For
 keys that exist in B and A, B Key value supercede values for the same

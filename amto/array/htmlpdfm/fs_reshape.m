@@ -1,7 +1,7 @@
 %% Array Reshape, Repeat and Expand Examples
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Basic Examples of Reshape
 
 a = [1,2,3,4,5,6]';

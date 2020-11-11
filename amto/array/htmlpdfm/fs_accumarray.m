@@ -1,7 +1,7 @@
 %% Accumarray Examples
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Accumarry Basic Example
 % There are three unique values in ar_a, sum up the probabilities for each of 
 % the unique states. This is equivalent to sorting a matrix with a and prob, and 

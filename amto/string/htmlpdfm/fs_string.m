@@ -1,7 +1,7 @@
 %% Basic String Operations
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Combine String, Numeric values etc, Single and Double Quotes
 % Convert a string array into a single string, note the double quotes, and the 
 % auto space between:

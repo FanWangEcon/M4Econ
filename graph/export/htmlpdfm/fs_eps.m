@@ -1,7 +1,7 @@
 %% Matlab Graph Generate EPS postscript figures in matlab
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Properly Save EPS with Scatter and Other Graphing Methods: Renderer = Painters
 % scatter plot saving as eps seems to only work when Renderer is set to Painters
 

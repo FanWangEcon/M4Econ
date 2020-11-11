@@ -1,7 +1,7 @@
 %% Matlab Array Basics and Miscellaneous
-% *back to <https://fanwangecon.github.io *Fan*>*'s <https://fanwangecon.github.io/M4Econ/ 
-% *Reusable Matlab*> *Repository or <https://fanwangecon.github.io/CodeDynaAsset/ 
-% *Dynamic Asset*> *Repository.*
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Compare Array Values That are Approximately Similar
 % <https://stackoverflow.com/a/33024979/8280804 What is the best way to compare 
 % floats for almost-equality in Python?>

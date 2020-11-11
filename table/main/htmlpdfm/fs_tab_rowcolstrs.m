@@ -1,7 +1,7 @@
 %% Row and Column Names for Table based on Arrays
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Generate Table with Row and Column Names based on Multiple Numeric Array
 % Two numeric arrays describe the column names, combine numeric arrays together 
 % to form string array which becomes table variable/column names.

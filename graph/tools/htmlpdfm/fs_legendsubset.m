@@ -1,7 +1,7 @@
 %% Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Plot a Subset of Data Matrix with Appropriate Legends
 % Sometimes we solve a model across many states, but we can only plot at a subset 
 % of states, or perhaps we plot at all states, but only show legends/labels for 

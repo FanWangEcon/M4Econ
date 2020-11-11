@@ -1,7 +1,7 @@
 %% Cholesky Decomposition Correlated Bivariate Normal from IID Random Draws
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 % 
 % Draw two correlated normal shocks using the MVNRND function. Draw two correlated 
 % normal shocks from uniform random variables using Cholesky Decomposition.

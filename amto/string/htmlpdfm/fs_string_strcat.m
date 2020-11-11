@@ -1,7 +1,7 @@
 %% Concatenate Strings Arrays with Numbers and Number Arrays with Strings
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Combine A String Array with A Numeric Array using Compose
 % String array and numeric array, combine together using the compose function, 
 % and test different formatting functions. Formating with leading empty spaces, 

@@ -1,7 +1,7 @@
 %% 3D, 4D, ND Arrays Reshape and Rearrange Dimensions
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% 3D Array to Cell Array of Matrix Split by Last Dimension
 % Convert Multi-dimensional arrays to a cell array consistent of two dimensional 
 % arrays. In this example, we split by the 3rd dimension, so the number of output 

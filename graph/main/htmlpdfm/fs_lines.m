@@ -1,7 +1,7 @@
 %% Matlab Line and Scatter Plot with Multiple Lines and Axis Lines
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Six lines Plot
 % Colors from <http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/ 
 % optimal colors>. Generate A line plot with multiple lines using safe colors, 

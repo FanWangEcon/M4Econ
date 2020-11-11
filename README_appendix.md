@@ -15,10 +15,10 @@
 	+ Index based column and row expansions.
 	+ Anonymous function to slice array subsets.
 	+ **m**: *sub2ind() + @(it_subset_n, it_ar_n) unique(round(((0:1:(it_subset_n-1))/(it_subset_n-1)) times (it_ar_n-1)+1))*
-3. [3D, 4D, ND Arrays Reshape and Summarize](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_3d4dndarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_3d4dndarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_3d4dndarray.html)
-	+ Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
-	+ Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
-	+ **m**: *permute(mn, [3,1,2,4]) + squeeze(num2cell(mn, [1,2])) + celldisp() + ndgrid()*
+3. [Find the Maximum Value and Index in Matrix Over Columns and Overall](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_matrix_max.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_matrix_max.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_matrix_max.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_matrix_max.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_matrix_max.html)
+	+ Given 2D array, find the maximum value and index for each column.
+	+ Find the maximum value in a 2D array's row and column indexes.
+	+ **m**: *max() + ind2sub() + maxk()*
 4. [Array Broadcasting Examples](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_broadcast_expand.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_broadcast_expand.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_broadcast_expand.html)
 	+ broadcast means: array + array’ + matrix = matrix.
 5. [Grid States, Choices and Optimal Choices Example](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_stateschoicesopti.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_stateschoicesopti.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_stateschoicesopti.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_stateschoicesopti.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_stateschoicesopti.html)
@@ -34,7 +34,20 @@
 	+ Find imaginary elements of array.
 	+ **m**: *imag()*
 
-### [Section 1.2  Cells
+### [Section 1.2  ND Dimensional Arrays
+][ND Dimensional Arrays
+] links
+
+1. [3D, 4D, ND Arrays Reshape and Summarize](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html)
+	+ Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
+	+ Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
+	+ **m**: *permute(mn, [3,1,2,4]) + squeeze(num2cell(mn, [1,2])) + celldisp() + ndgrid()*
+2. [ND Array Drop NaN Elements Reshape to 2D Dataframe with Variable Values](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray_nan.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html)
+	+ There is a ND Array where each dimension is a different attribute, generate 2D dataframe with columns for attribute values and ND Array values stored as a single column.
+	+ There might be many NaN values in the ND array, drop NaN values in the ND array for 2D dataframe. Find the non-NaN values along each index dimension.
+	+ **m**: *cell() + NaN() + isnan() + ind2sub() + find()*
+
+### [Section 1.3  Cells
 ][Cells
 ] links
 
@@ -53,7 +66,7 @@
 	+ Cell of cells with inner cell having multiple types.
 	+ **m**: *linspace() + cell([4,1]) + clns_parm_tstar{1} = {‘fl_crra’, ‘CRRA’, linspace(1, 2, it_simu_vec_len)} + disp(clns_parm_tstar(1)) + disp(clns_parm_tstar{1}{1})*
 
-### [Section 1.3  Characters and Strings
+### [Section 1.4  Characters and Strings
 ][Characters and Strings
 ] links
 
@@ -72,7 +85,7 @@
 	+ Concatenate multiple numeric arrays together with strings and format.
 	+ **m**: *compose() + cellstr() + strcat() + strjoin() + %.2f*
 
-### [Section 1.4  Map Containers
+### [Section 1.5  Map Containers
 ][Map Containers
 ] links
 

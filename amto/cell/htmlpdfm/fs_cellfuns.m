@@ -1,7 +1,7 @@
 %% List Comprehension with Cells
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
-% or* <https://fanwangecon.github.io/CodeDynaAsset/ *Dynamic Asset*> *Repositories*
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% Find Index of Elements of String Cells in a larger String Cells
 % the function below returns the position of cl_st_param_keys in ls_st_param_key 
 % should only include in cl_st_param_keys strings that also exist in ls_st_param_key.

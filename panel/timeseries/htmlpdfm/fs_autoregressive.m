@@ -119,3 +119,86 @@ title({st_title_wth_params, 'Simulate One Individual for 1000 Periods'});
 ylabel({'Time Series Values'});
 xlabel('Time Periods');
 grid on;
+%% Income Process for India
+% In the Example below, we simulate an individual for 1000 periods. In the example 
+% below, the parameters are from estiamting an AR(1) process for log of income 
+% in India, see Udupa and Wang (2020). We can use the <https://fanwangecon.github.io/MEconTools/MEconTools/doc/stats/htmlpdfm/fx_simu_stats.html 
+% ff_simu_stats> function from <https://fanwangecon.github.io/MEconTools/ MEconTools> 
+% to look at the distributional information from this time series, we care about 
+% income, so we will exponentiate the log of income we obtained. 
+% 
+% Note that for the distributional results, GINI, share of income held by different 
+% percentiles of households, is invariant to the choice of the $C$ constant term 
+% earlier. Try changing that number, the distributional statistics that we obtain 
+% below will be the same. Also note that the exponential of the mean of the log 
+% of income is not equal to the mean of income. 
+
+% Number of Time Periods
+it_T = 1000;
+% Mean and SD of the Shock Process
+fl_constant = 3.024467;
+fl_normal_sd = 0.45;
+% Persistence
+fl_persistence = 0.7468;
+% Bounds on Shocks
+fl_shk_bnds = 5;
+% Initialize with exo fed point or not, if false initialize at Random Point
+% from the stationary distribution
+bl_init = true;
+fl_init = fl_constant/(1 - fl_persistence);
+% Generate a normal shock vector (the first draw will be ignored)
+it_draws = it_T;
+rng(789);
+ar_fl_shocks = normrnd(0, fl_normal_sd, 1, it_draws);
+% out of bounds indicators
+fl_shk_bds_lower = 0 - fl_normal_sd*fl_shk_bnds;
+fl_shk_bds_upper = 0 + fl_normal_sd*fl_shk_bnds;
+ar_bl_outofbounds = (ar_fl_shocks <= fl_shk_bds_lower | ar_fl_shocks >= fl_shk_bds_upper);
+ar_fl_shocks(ar_fl_shocks <= fl_shk_bds_lower) = fl_shk_bds_lower;
+ar_fl_shocks(ar_fl_shocks >= fl_shk_bds_upper) = fl_shk_bds_upper;
+% Initialize Output Array
+ar_fl_time_series = zeros(size(ar_fl_shocks));
+% Loop over time
+for it_t=1:1:length(ar_fl_shocks)
+    if (it_t == 1)
+        % initialize using the ean of the process
+        ar_fl_time_series(1) = fl_constant/(1 - fl_persistence);
+        if (bl_init)
+            ar_fl_time_series(1) = fl_init;            
+        end
+    else
+        fl_ts_t = fl_constant + ar_fl_time_series(it_t-1)*fl_persistence + ar_fl_shocks(it_t);
+        ar_fl_time_series(it_t) = fl_ts_t;
+    end
+end
+ar_series = (ar_fl_time_series);
+fl_mean = mean(ar_series);
+fl_std = std(ar_series);
+figure();
+% x-axis
+ar_it_time = 1:1:length(ar_fl_shocks);
+% plot
+plot(ar_it_time, (ar_fl_time_series));
+% Generate Title
+ar_fl_params_values = [fl_constant, fl_normal_sd, fl_persistence, fl_shk_bnds];
+ar_st_parms_names = ["C", "sd", "persistence", "sd-bounds"];
+st_rounding = '.2f';
+st_title_main = "AR(1) Log of Income in India";
+ar_st_params = strcat(ar_st_parms_names, compose(strcat("=%", st_rounding), ar_fl_params_values));
+st_param_pasted = strjoin(ar_st_params, ', ');
+st_title_wth_params = strcat(st_title_main, ' (', st_param_pasted, ')');
+title({st_title_wth_params, 'Simulate One Individual for 1000 Periods'});
+% X and Y labels
+ylabel({'Log of Income (India)'});
+xlabel('Time Periods');
+grid on;
+% Set Parameters
+mp_cl_mt_xyz_of_s = containers.Map('KeyType','char', 'ValueType','any');
+mp_cl_mt_xyz_of_s('log_income') = {(ar_series), zeros(1)};
+mp_cl_mt_xyz_of_s('income') = {exp(ar_series), zeros(1)};
+mp_cl_mt_xyz_of_s('ar_st_y_name') = ["log_income", "income"];
+% Mass
+rng(123);
+mt_f_of_s = zeros(size(ar_series)) + 1/numel(ar_series);
+mt_f_of_s = mt_f_of_s/sum(mt_f_of_s, 'all');
+mp_cl_mt_xyz_of_s_out = ff_simu_stats(mt_f_of_s, mp_cl_mt_xyz_of_s);

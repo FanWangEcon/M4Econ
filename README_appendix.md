@@ -128,6 +128,7 @@
 1. [Autoregressive Process AR(1)](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_autoregressive.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_autoregressive.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_autoregressive.html)
 	+ The Mean and standard deviation of an AR(1) process.
 	+ Simulate and graph an AR(1) persistent process.
+	+ Simulate log income process with parameters estimated from Indian income data.
 	+ **m**: *normrnd() + for it_t=1:1:length(ar_shk) + plot(ar_t, ar_y)*
 
 ## Simulation links

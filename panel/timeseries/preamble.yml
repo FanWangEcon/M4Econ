@@ -4,6 +4,7 @@
   description: |
     The Mean and standard deviation of an AR(1) process.
     Simulate and graph an AR(1) persistent process.
+    Simulate log income process with parameters estimated from Indian income data.
   core :
     - package: m
       code: |

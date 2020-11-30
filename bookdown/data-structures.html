@@ -27,7 +27,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-11-11" />
+<meta name="date" content="2020-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1621,8 +1621,35 @@ disp(mt_it_allcombo)
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="compare-array-values-that-are-approximately-similar" class="section level4" number="1.1.8.1">
-<h4><span class="header-section-number">1.1.8.1</span> Compare Array Values That are Approximately Similar</h4>
+<div id="check-parameter-types" class="section level4" number="1.1.8.1">
+<h4><span class="header-section-number">1.1.8.1</span> Check Parameter Types</h4>
+<p>There parameter input can either be a cell array or an integer,
+conditional processing based on parameter input type</p>
+<pre><code>% Float and Cell
+curEstiParamA = 1;
+curEstiParamB = {146, &#39;R3&#39;};
+% test if is float
+st_test = strjoin(...
+    [&quot;&quot;, ...
+     [&#39;isfloat(curEstiParamA)=&#39; num2str(isfloat(curEstiParamA))], ...
+     [&#39;isfloat(curEstiParamB)=&#39; num2str(isfloat(curEstiParamB))], ...
+    ], &quot;;&quot;);
+disp(st_test);
+
+;isfloat(curEstiParamA)=1;isfloat(curEstiParamB)=0
+
+% test if is cell
+st_test = strjoin(...
+    [&quot;&quot;, ...
+     [&#39;iscell(curEstiParamA)=&#39; num2str(iscell(curEstiParamA))], ...
+     [&#39;iscell(curEstiParamB)=&#39; num2str(iscell(curEstiParamB))], ...
+    ], &quot;;&quot;);
+disp(st_test);
+
+;iscell(curEstiParamA)=0;iscell(curEstiParamB)=1</code></pre>
+</div>
+<div id="compare-array-values-that-are-approximately-similar" class="section level4" number="1.1.8.2">
+<h4><span class="header-section-number">1.1.8.2</span> Compare Array Values That are Approximately Similar</h4>
 <p><a href="https://stackoverflow.com/a/33024979/8280804">What is the best way to compare floats for almost-equality in
 Python?</a></p>
 <ul>
@@ -1645,8 +1672,8 @@ disp([&#39;1+1e-9 and 1+1e-10, if_is_close:&#39; num2str(if_is_close(1+1e-9,1+1e
 
 1+1e-9 and 1+1e-10, if_is_close:1</code></pre>
 </div>
-<div id="imaginary-number-examples" class="section level4" number="1.1.8.2">
-<h4><span class="header-section-number">1.1.8.2</span> Imaginary Number Examples</h4>
+<div id="imaginary-number-examples" class="section level4" number="1.1.8.3">
+<h4><span class="header-section-number">1.1.8.3</span> Imaginary Number Examples</h4>
 <pre><code>rng(123);
 
 % Imaginary array

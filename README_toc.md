@@ -24,9 +24,10 @@
 	+ Draw randomly from array, permutate arrays.
 	+ **m**: *ndgrid() + cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))*
 8. [Matlab Array Miscellaneous](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
+	+ Check data/parameter types.
 	+ Compare approximately similar values.
 	+ Find imaginary elements of array.
-	+ **m**: *imag()*
+	+ **m**: *imag() + isfloat() + iscell()*
 
 ## 1.2  ND Dimensional Arrays
 

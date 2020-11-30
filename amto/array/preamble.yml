@@ -70,14 +70,17 @@
   title: "Matlab Array Miscellaneous"
   titleshort: "Matlab Array Miscellaneous"
   description: |
+    Check data/parameter types.
     Compare approximately similar values.
     Find imaginary elements of array.
   core :
     - package: m
       code: |
         imag()
+        isfloat()
+        iscell()
   date: 2020-07-11
-  date_start: 2020-06-07
+  date_start: 2020-11-29
   output:
     pdf_document:
       pandoc_args: '../../_output_kniti_pdf.yaml'

@@ -27,7 +27,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-11-11" />
+<meta name="date" content="2020-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -279,9 +279,10 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 <li><a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html">Matlab Array Miscellaneous</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html"><strong>html</strong></a>
 <ul>
+<li>Check data/parameter types.</li>
 <li>Compare approximately similar values.</li>
 <li>Find imaginary elements of array.</li>
-<li><strong>m</strong>: <em>imag()</em></li>
+<li><strong>m</strong>: <em>imag() + isfloat() + iscell()</em></li>
 </ul></li>
 </ol>
 </div>
@@ -411,6 +412,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li>The Mean and standard deviation of an AR(1) process.</li>
 <li>Simulate and graph an AR(1) persistent process.</li>
+<li>Simulate log income process with parameters estimated from Indian income data.</li>
 <li><strong>m</strong>: <em>normrnd() + for it_t=1:1:length(ar_shk) + plot(ar_t, ar_y)</em></li>
 </ul></li>
 </ol>

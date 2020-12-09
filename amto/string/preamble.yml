@@ -26,7 +26,7 @@
   urlcolor: blue
 
 - file: fs_string_array
-  title: "Matlab String Array "
+  title: "Matlab String Array"
   titleshort: "String Arrays Operations"
   description: |
     String arrays and cell strings.
@@ -58,11 +58,11 @@
   urlcolor: blue
 
 - file: fs_string_strcat
-  title: "Matlab Concatenate Numeric and String Arrays"
-  titleshort: "String and Numeric Array Concatenations"
+  title: "Matlab Convert and Concatenate Numeric and String Arrays"
+  titleshort: "Convert and Cancatenate String and Numeric Array Concatenations"
   description: |
     Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.
-    Create a title string by joining rounded parameter and parameter names.
+    Create a title string by joining rounded parameter and parameter names, with decimal formatting.
     Concatenate multiple numeric arrays together with strings and format.
   core :
     - package: m
@@ -73,7 +73,7 @@
         strjoin()
         %.2f
   date: 2020-06-14
-  date_start: 2020-06-07
+  date_start: 2020-12-03
   output:
     pdf_document:
       pandoc_args: '../../_output_kniti_pdf.yaml'

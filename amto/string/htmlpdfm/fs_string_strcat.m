@@ -1,4 +1,4 @@
-%% Concatenate Strings Arrays with Numbers and Number Arrays with Strings
+%% Convert and Concatenate Strings Arrays with Numbers and Number Arrays with Strings
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
@@ -20,6 +20,18 @@ ls_st_param_esti = {'ar_mu_pos_1', 'ar_COEF_U_gamma'};
 ar_params = [1213,456];
 st_combo = strcat(ls_st_param_esti', '=', num2str(ar_params'));
 disp(st_combo);
+%% Numeric Array to String Array with Decimal Formatting 
+% There is a numeric array, format with a certain number of decimal points, 
+% and convert to string array.
+
+% Inputs
+rng(123);
+ar_params = [1.23324, 493.1232, 4994.1111, 123];
+st_rounding = '.3f';
+% Rounding and to string array
+ar_st_params = compose(strcat("%", st_rounding), ar_params);
+% Display:
+disp(ar_st_params);
 %% Title from an Array of Values
 % There is a vector of parameter values and a vector of names for these parameter 
 % values, I want to include these in the title of a figure with the same decimal 

@@ -26,9 +26,10 @@
   urlcolor: blue
 
 - file: fs_3d4dndarray_nan
-  title: "Matlab ND Array Drop NaN Elements Reshape to 2D Dataframe with Variable Values"
-  titleshort: "ND Array Drop NaN Elements Reshape to 2D Dataframe with Variable Values"
+  title: "Matlab ND Array Wide to Long Reshape to Table Dataframe with Variable Values for Each Dimension"
+  titleshort: "ND Array Wide to Long Reshape to Table Dataframe with Variable Values for Each Dimension"
   description: |
+    Given 2D policy function f(a,z), generate table/dataframe with a, z, and f(a,z) columns.
     There is a ND Array where each dimension is a different attribute, generate 2D dataframe with columns for attribute values and ND Array values stored as a single column.
     There might be many NaN values in the ND array, drop NaN values in the ND array for 2D dataframe. Find the non-NaN values along each index dimension.
   core :

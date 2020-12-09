@@ -43,7 +43,8 @@
 	+ Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
 	+ Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
 	+ **m**: *permute(mn, [3,1,2,4]) + squeeze(num2cell(mn, [1,2])) + celldisp() + ndgrid()*
-2. [ND Array Drop NaN Elements Reshape to 2D Dataframe with Variable Values](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray_nan.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html)
+2. [ND Array Wide to Long Reshape to Table Dataframe with Variable Values for Each Dimension](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray_nan.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html)
+	+ Given 2D policy function f(a,z), generate table/dataframe with a, z, and f(a,z) columns.
 	+ There is a ND Array where each dimension is a different attribute, generate 2D dataframe with columns for attribute values and ND Array values stored as a single column.
 	+ There might be many NaN values in the ND array, drop NaN values in the ND array for 2D dataframe. Find the non-NaN values along each index dimension.
 	+ **m**: *cell() + NaN() + isnan() + ind2sub() + find()*
@@ -80,9 +81,9 @@
 	+ Duplicate strings, concatenate string, and paste strings jointly with separator.
 	+ Find string element positions, replace substrings.
 	+ **m**: *repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp())))*
-3. [String and Numeric Array Concatenations](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html)
+3. [Convert and Cancatenate String and Numeric Array Concatenations](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html)
 	+ Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.
-	+ Create a title string by joining rounded parameter and parameter names.
+	+ Create a title string by joining rounded parameter and parameter names, with decimal formatting.
 	+ Concatenate multiple numeric arrays together with strings and format.
 	+ **m**: *compose() + cellstr() + strcat() + strjoin() + %.2f*
 
@@ -120,7 +121,15 @@
 	+ Core model functions with potentially many parameters, possibly override default generation to save time.
 	+ **m**: *varargin + function [out_put] = func_name(varargin) + cm_defaults = {cm_a, cm_b} + [cm_defaults{1:optional_params_len}] = varargin{:} + cm_c = [cm_a;cm_b]*
 
-## Panel links
+### [Section 2.2  Anonymous Functions
+][Anonymous Functions
+] links
+
+1. [Anonymous Function Examples](https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_anonymous_func.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/fs_anonymous_func.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_anonymous_func.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_anonymous_func.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_anonymous_func.html)
+	+ Define a wage equation where individuals working part time earn a fraction of the full time earnings.
+	+ **m**: *gamrnd() + f_x = @(x) x*
+
+## Distributional Processes links
 
 ### [Section 3.1  Time Series
 ][Time Series
@@ -131,6 +140,17 @@
 	+ Simulate and graph an AR(1) persistent process.
 	+ Simulate log income process with parameters estimated from Indian income data.
 	+ **m**: *normrnd() + for it_t=1:1:length(ar_shk) + plot(ar_t, ar_y)*
+
+### [Section 3.2  Cross-sectional Data
+][Cross-sectional Data
+] links
+
+1. [Mincer Wage Earnings Equation with Experience, Education and Gamma Shocks](https://fanwangecon.github.io/M4Econ/panel/crosssection/htmlpdfm/fs_wage_equation.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/crosssection/fs_wage_equation.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/crosssection/htmlpdfm/fs_wage_equation.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/crosssection/htmlpdfm/fs_wage_equation.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/panel/crosssection/htmlpdfm/fs_wage_equation.html)
+	+ Define a wage equation where individuals working part time earn a fraction of the full time earnings.
+	+ Wage at different education and experience levels.
+	+ Simluate wage with an array of gamma distribution shocks.
+	+ **m**: *gamrnd() + f_x = @(x) x + histogram()*
+	+ **MEconTools**: *ff_graph_grid + ff_simu_stats*
 
 ## Simulation links
 

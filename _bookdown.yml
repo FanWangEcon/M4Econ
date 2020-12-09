@@ -47,11 +47,15 @@ rmd_files:
   - function/defaultparam/main.Rmd
   - function/defaultparam/fs_varargin.Rmd
   - function/defaultparam/fs_defaultmap.Rmd
+  - function/anonymous/main.Rmd
+  - function/anonymous/fs_anonymous_func.Rmd
 
 
   - panel/main.Rmd
   - panel/timeseries/main.Rmd
   - panel/timeseries/fs_autoregressive.Rmd
+  - panel/crosssection/main.Rmd
+  - panel/crosssection/fs_wage_equation.Rmd
 
 
   - simulation/main.Rmd

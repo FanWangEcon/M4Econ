@@ -1,0 +1,23 @@
+- file: fs_anonymous_func
+  title: "Matlab Anonymous Function Examples"
+  titleshort: "Anonymous Function Examples"
+  description: |
+    Define a wage equation where individuals working part time earn a fraction of the full time earnings.
+  core :
+    - package: m
+      code: |
+        gamrnd()
+        f_x = @(x) x
+  date: 2020-12-08
+  date_start: 2020-12-08
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

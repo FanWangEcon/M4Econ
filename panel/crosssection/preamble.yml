@@ -1,0 +1,30 @@
+- file: fs_wage_equation
+  title: "Matlab Mincer Wage Earnings Equation with Experience, Education and Gamma Shocks"
+  titleshort: "Mincer Wage Earnings Equation with Experience, Education and Gamma Shocks"
+  description: |
+    Define a wage equation where individuals working part time earn a fraction of the full time earnings.
+    Wage at different education and experience levels.
+    Simluate wage with an array of gamma distribution shocks.
+  core :
+    - package: m
+      code: |
+        gamrnd()
+        f_x = @(x) x
+        histogram()
+    - package: MEconTools
+      code: |
+        ff_graph_grid
+        ff_simu_stats
+  date: 2020-12-08
+  date_start: 2020-12-08
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

@@ -4,12 +4,12 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Graphs | Data Structures and Dynamic Optimization with Matlab</title>
+  <title>Chapter 3 Distributional Processes | Data Structures and Dynamic Optimization with Matlab</title>
   <meta name="description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Graphs | Data Structures and Dynamic Optimization with Matlab" />
+  <meta property="og:title" content="Chapter 3 Distributional Processes | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
@@ -18,7 +18,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Graphs | Data Structures and Dynamic Optimization with Matlab" />
+  <meta name="twitter:title" content="Chapter 3 Distributional Processes | Data Structures and Dynamic Optimization with Matlab" />
   
   <meta name="twitter:description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
@@ -34,8 +34,8 @@ Simulate a model, column combine simulation parameters with multi-row simulation
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="simulation.html"/>
-<link rel="next" href="tables.html"/>
+<link rel="prev" href="functions.html"/>
+<link rel="next" href="simulation.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -245,581 +245,459 @@ Simulate a model, column combine simulation parameters with multi-row simulation
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graphs" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Graphs</h1>
+<div id="distributional-processes" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Distributional Processes</h1>
 
-<div id="figure-components" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Figure Components</h2>
+<div id="time-series" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Time Series</h2>
 
-<div id="matlab-graph-safe-colors-for-web-presentation-and-publications-examples" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</h3>
+<div id="simulate-ar1-autoregressive-processes" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Simulate AR(1) Autoregressive Processes</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="good-colors-to-use-darker" class="section level4" number="5.1.1.1">
-<h4><span class="header-section-number">5.1.1.1</span> Good Colors to Use Darker</h4>
-<p>Nice darker light colors to use in matlab.</p>
-<pre><code>close all
+<div id="mean-and-standard-deviation-for-ar1-autoregressive-process" class="section level4" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Mean and Standard Deviation for AR(1) Autoregressive Process</h4>
+<p>A first-order autoregressive process can be written as:</p>
+<ul>
+<li><p>AR1:
+<span class="math inline">\(X_t =\textrm{constant}+\textrm{persistence}\cdot x_{t-1} +\epsilon\)</span></p></li>
+<li><p>AR1: <span class="math inline">\(X_t =C+\rho \cdot x_{t-1} +\epsilon\)</span></p></li>
+</ul>
+<p>Assume that <span class="math inline">\(\epsilon\)</span> is mean zero</p>
+<p>Note that, we know the mean of <span class="math inline">\(X\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \mu_X =C+\rho \cdot \mu_X +0\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle \mu_x =\frac{C}{1-\rho }\)</span></p></li>
+</ul>
+<p>Note that, we also know the standard deviation of <span class="math inline">\(X\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \textrm{var}\left(X\right)=\rho^2 \cdot \textrm{var}\left(X\right)+\textrm{var}\left(\epsilon \right)\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle \sigma_x =\sqrt{\frac{\sigma_{\epsilon }^2 }{1-\rho^2 }}\)</span></p></li>
+</ul>
+<p>We will let the initial point of the time series follow the stationary
+distribution of the AR(1) process, then we simulate the time series over
+100 periods, in the example below, we use a highly persistent shock
+process with <span class="math inline">\(\rho =0.98\)</span>, <span class="math inline">\(\sigma_{\epsilon } =0.02\)</span>, <span class="math inline">\(C=0.02\)</span>. Note
+that for this process:</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \mu_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\frac{0.02}{1-0.98}=1\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle \sigma_x^{\rho =0.98,\sigma_{\epsilon } =0.02,C=0.02} =\sqrt{\frac{0.02^2 }{1-0.98^2 }}\approx 0.10\)</span></p></li>
+</ul>
+</div>
+<div id="simulated-one-first-order-autoregressive-time-series" class="section level4" number="3.1.1.2">
+<h4><span class="header-section-number">3.1.1.2</span> Simulated one First-Order Autoregressive Time-Series</h4>
+<p>In the Example below, we simulate an individual for 1000 periods, given
+<span class="math inline">\(\rho =0.98\)</span>, <span class="math inline">\(\sigma_{\epsilon } =0.02\)</span>, <span class="math inline">\(C=0.02\)</span>. Given that the
+process is highly persistent, the individual stays rich or poor for
+dozens of periods at a time. If each period is a year, look at the
+results below, and suppose the simulated time series is income, what is
+the process saying about this person’s income rise and fall. Note that
+we have the same person through all 1000 periods, but if you only look
+at 50 periods (years), you might this this person during one span is
+really successful, anothe segment of 50 years, doing really bad, but
+actually there is nothing changing in the person’s type, all that is
+changing is the person’s luck.</p>
+<p>First Set Parameters:</p>
+<pre><code>% Number of Time Periods
+it_T = 1000;
+% Mean and SD of the Shock Process
+fl_constant = 0.02;
+fl_normal_sd = 0.02;
+% Persistence
+fl_persistence = 0.98;
+% Bounds on Shocks
+fl_shk_bnds = 3;
+% Initialize with exo fed point or not, if false initialize at Random Point
+% from the stationary distribution
+bl_init = true;
+fl_init = fl_constant/(1 - fl_persistence);</code></pre>
+<p>Second, generate a vector of normal shocks:</p>
+<pre><code>% Generate a normal shock vector (the first draw will be ignored)
+it_draws = it_T;
+rng(789);
+ar_fl_shocks = normrnd(0, fl_normal_sd, 1, it_draws);
+disp(ar_fl_shocks(1:20));
 
-blue = [57 106 177]./255;
-red = [204 37 41]./255;
-black = [83 81 84]./255;
-green = [62 150 81]./255;
-brown = [146 36 40]./255;
-purple = [107 76 154]./255;
-cl_colors = {blue, red, black, ...
-             green, brown, purple};
-cl_str_clr_names = [&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;, &quot;green&quot;, &quot;brown&quot;, &quot;purple&quot;];
+  Columns 1 through 15
 
-for it_color=1:length(cl_colors)
-    
-    figure();
-    x = [0 1 1 0];
-    y = [0 0 1 1];
-    fill(x, y, cl_colors{it_color});
-    st_text = [cl_str_clr_names(it_color) num2str(round(cl_colors{it_color}*255))];
-    hText = text(.10,.55, st_text);
-    hText.Color = &#39;white&#39;;
-    hText.FontSize = 30; 
-    snapnow;
-    
+   -0.0060   -0.0047    0.0168    0.0118    0.0380    0.0062   -0.0616   -0.0485   -0.0192    0.0023   -0.0197    0.0040    0.0156   -0.0089    0.0160
+
+  Columns 16 through 20
+
+    0.0099   -0.0200   -0.0206   -0.0090   -0.0069</code></pre>
+<p>Third, replace any values exceeding bounds:</p>
+<pre><code>% out of bounds indicators
+fl_shk_bds_lower = 0 - fl_normal_sd*fl_shk_bnds;
+fl_shk_bds_upper = 0 + fl_normal_sd*fl_shk_bnds;
+ar_bl_outofbounds = (ar_fl_shocks &lt;= fl_shk_bds_lower | ar_fl_shocks &gt;= fl_shk_bds_upper);
+% count out of bounds
+disp(strcat(&#39;lower:&#39;, num2str(fl_shk_bds_lower), &#39;, upper:&#39;, num2str(fl_shk_bds_upper)));
+
+lower:-0.06, upper:0.06
+
+disp(sum(ar_bl_outofbounds));
+
+     4
+
+ar_fl_shocks(ar_fl_shocks &lt;= fl_shk_bds_lower) = fl_shk_bds_lower;
+ar_fl_shocks(ar_fl_shocks &gt;= fl_shk_bds_upper) = fl_shk_bds_upper;</code></pre>
+<p>Fourth, generate the AR(1) time series:</p>
+<pre><code>% Initialize Output Array
+ar_fl_time_series = zeros(size(ar_fl_shocks));
+% Loop over time
+for it_t=1:1:length(ar_fl_shocks)
+    if (it_t == 1)
+        % initialize using the ean of the process
+        ar_fl_time_series(1) = fl_constant/(1 - fl_persistence);
+        if (bl_init)
+            ar_fl_time_series(1) = fl_init;            
+        end
+    else
+        fl_ts_t = fl_constant + ar_fl_time_series(it_t-1)*fl_persistence + ar_fl_shocks(it_t);
+        ar_fl_time_series(it_t) = fl_ts_t;
+    end
 end</code></pre>
-<p><img src="img/fs_color_images/figure_0.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_1.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_2.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_3.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_4.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_5.png" width="500" /></p>
-</div>
-<div id="good-colors-to-use-lighter" class="section level4" number="5.1.1.2">
-<h4><span class="header-section-number">5.1.1.2</span> Good Colors to Use Lighter</h4>
-<p>Nice ligher colors to use in matlab.</p>
-<pre><code>close all
+<p>Fifth, show the mean and sd of the process (these are very close to the
+analytical results):</p>
+<pre><code>disp(mean(ar_fl_time_series));
 
-blue = [114 147 203]./255;
-red = [211 94 96]./255;
-black = [128 133 133]./255;
-green = [132 186 91]./255;
-brown = [171 104 87]./255;
-purple = [144 103 167]./255;
-cl_colors = {blue, red, black, ...
-             green, brown, purple};
-cl_str_clr_names = [&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;, &quot;green&quot;, &quot;brown&quot;, &quot;purple&quot;];
+    1.0104
 
-for it_color=1:length(cl_colors)
-    
-    figure();
-    x = [0 1 1 0];
-    y = [0 0 1 1];
-    fill(x, y, cl_colors{it_color});
-    
-    st_text = [cl_str_clr_names(it_color) num2str(round(cl_colors{it_color}*255))];
-    hText = text(.10,.55, st_text);
-    hText.Color = &#39;white&#39;;
-    hText.FontSize = 30; 
-    snapnow;
-    
-end</code></pre>
-<p><img src="img/fs_color_images/figure_6.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_7.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_8.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_9.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_10.png" width="500" /></p>
-<p><img src="img/fs_color_images/figure_11.png" width="500" /></p>
-</div>
-<div id="matlab-has-a-graphical-tool-for-picking-color" class="section level4" number="5.1.1.3">
-<h4><span class="header-section-number">5.1.1.3</span> Matlab has a graphical tool for picking color</h4>
-<p>Enter uisetcolor pick color from new window and color values will appear
-uisetcolor</p>
-<pre><code>% Color Pickers
-% uisetcolor</code></pre>
-<p>Picked Color use</p>
+disp(std(ar_fl_time_series));
+
+    0.1000</code></pre>
+<p>Sixth, plot the results:</p>
 <pre><code>figure();
-hold on;
-
-x = rand([10,1]);
-y = rand([10,1]);
-
-% Then can use for plot
-plot(x,y,&#39;Color&#39;,[.61 .51 .74]);
-
-% Can use for Scatter
-scatter(x, y, 10, ...
-    &#39;MarkerEdgeColor&#39;, [.61 .51 .74], &#39;MarkerFaceAlpha&#39;, 0.1, ...
-    &#39;MarkerFaceColor&#39;, [.61 .51 .74], &#39;MarkerEdgeAlpha&#39;, 0.1);</code></pre>
-<p><img src="img/fs_color_images/figure_12.png" width="500" /></p>
-
-</div>
-</div>
-<div id="matlab-graph-titling-labels-and-legends-examples" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Matlab Graph Titling, Labels and Legends Examples</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="draw-a-figure-label-title-x-and-y-axises-with-latex-equations" class="section level4" number="5.1.2.1">
-<h4><span class="header-section-number">5.1.2.1</span> <strong>Draw A figure Label Title, X and Y Axises with Latex Equations</strong></h4>
-<pre><code>clear all;
-close all;
-figure();
-
-% draw some lines
-xline0 = xline(0);
-xline0.HandleVisibility = &#39;off&#39;;
-yline0 = yline(0);
-yline0.HandleVisibility = &#39;off&#39;;
-hline = refline([1 0]);
-hline.Color = &#39;k&#39;;
-hline.LineStyle = &#39;:&#39;;
-hline.HandleVisibility = &#39;off&#39;;
-
-% Titling with multiple lines
-title({&#39;Cash-on-Hand given w(k+b),k,z&#39; &#39;$\alpha + \beta = \zeta$&#39;},&#39;Interpreter&#39;,&#39;latex&#39;);
-ylabel({&#39;Cash-on-Hand&#39; &#39;line 2 $\frac{1}{2}$&#39;},&#39;Interpreter&#39;,&#39;latex&#39;);
-xlabel({&#39;Index of Cash-on-Hand Discrete Point&#39;...
-        &#39; $\frac{1}{2} + \alpha + \max + \sum_1^{B}$ Each Segment is a w=k+b; within segment increasing k&#39;...
-        &#39;For each w and z, coh maximizing k is different&#39;},&#39;Interpreter&#39;,&#39;latex&#39;);
-grid on;
-grid minor;</code></pre>
-<p><img src="img/fs_titling_images/figure_0.png" width="500" /></p>
-</div>
-<div id="matlab-graph-specify-legends-manually" class="section level4" number="5.1.2.2">
-<h4><span class="header-section-number">5.1.2.2</span> Matlab Graph Specify Legends Manually</h4>
-<p>Specify labels manually, note we can use HandleVisibility to control
-what part of figure show up in legends.</p>
-<pre><code>% Generate Random Data
-rng(123);
-it_x_n = 10;
-it_x_groups_n = 3;
-mat_y = rand([it_x_n, it_x_groups_n]);
-mat_y = mat_y + sqrt(1:it_x_groups_n);
-mat_y = mat_y + log(1:it_x_n)&#39;;
-ar_x = 1:1:it_x_n;
-
-% Start Figure
-figure(&#39;PaperPosition&#39;, [0 0 10 10]);
-
-hold on;
-
-g1 = scatter(ar_x,  mat_y(:,1), 30, &#39;filled&#39;);
-g2 = scatter(ar_x,  mat_y(:,2), 30, &#39;filled&#39;);
-g3 = scatter(ar_x,  mat_y(:,3), 30, &#39;filled&#39;);
-
-legend([g1, g2, g3], {&#39;near&#39;,&#39;linear&#39;,&#39;spline&#39;}, &#39;Location&#39;,&#39;best&#39;,...
-        &#39;NumColumns&#39;,1,&#39;FontSize&#39;,12,&#39;TextColor&#39;,&#39;black&#39;);
-
-% PLot this line, but this line will not show up in legend
-hline = refline([1 0]);
-hline.Color = &#39;k&#39;;
-hline.LineStyle = &#39;:&#39;;
-% not to show up in legend
-hline.HandleVisibility = &#39;off&#39;;
-grid on;
-grid minor;
-
-title(sprintf(&#39;griddedInterpolant comparison, crra utility approximation, interp grid n=%d&#39;, it_x_n))
-ylabel(&#39;Actual Utility Evaluated at c&#39;)
-xlabel(&#39;Approximated Util based on  Interpolation&#39;)</code></pre>
-<p><img src="img/fs_titling_images/figure_1.png" width="500" /></p>
-<pre><code>snapnow;</code></pre>
-</div>
-<div id="given-graph-graph-subset-of-lines-and-add-extra-line-with-legend" class="section level4" number="5.1.2.3">
-<h4><span class="header-section-number">5.1.2.3</span> Given Graph, Graph Subset of Lines and Add Extra Line with Legend</h4>
-<p>Same plot as before, except we plot only 2 of the three lines and add
-another line with associated legend entry.</p>
-<pre><code>legendCell = cellstr(num2str(ar_x&#39;, &#39;shock=%3.2f&#39;));
-xlinemax = xline(min(mat_y, [], &#39;all&#39;));
-xlinemax.Color = &#39;b&#39;;
-xlinemax.LineWidth = 1.5;
-
-legendCell{length(legendCell) + 1} = &#39;max-agg-save&#39;;
-legend([g1, g3, xlinemax], legendCell([1,3,length(legendCell)]), &#39;Location&#39;, &#39;best&#39;);</code></pre>
-<p><img src="img/fs_titling_images/figure_2.png" width="500" /></p>
-<pre><code>snapnow;</code></pre>
-
-</div>
-</div>
-<div id="matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="plot-a-subset-of-data-matrix-with-appropriate-legends" class="section level4" number="5.1.3.1">
-<h4><span class="header-section-number">5.1.3.1</span> Plot a Subset of Data Matrix with Appropriate Legends</h4>
-<p>Sometimes we solve a model across many states, but we can only plot at a
-subset of states, or perhaps we plot at all states, but only show
-legends/labels for a subset.</p>
-<p>In the example below, many lines are plotted, however, only a subset of
-lines are labeled in the legend.</p>
-<pre><code>clear all;
-close all;
-
-% Generate Random Data
-rng(123);
-it_x_n = 10;
-it_y_groups_n = 100;
-ar_y = linspace(1,2,it_y_groups_n);
-mat_y = rand([it_x_n, it_y_groups_n]);
-mat_y = mat_y + sqrt(1:it_y_groups_n);
-mat_y = mat_y + log(1:it_x_n)&#39; + ar_y;
-ar_x = 1:1:it_x_n;
-
-% Jet color Graph All
-figure(&#39;PaperPosition&#39;, [0 0 7 4]);
-chart = plot(mat_y);
-clr = jet(numel(chart));
-for m = 1:numel(chart)
-    set(chart(m),&#39;Color&#39;,clr(m,:))
-end
-
-% zero lines
-xline(0);
-yline(0);
-
-% invalid points separating lines
-yline_borrbound = yline(3);
-yline_borrbound.HandleVisibility = &#39;on&#39;;
-yline_borrbound.LineStyle = &#39;:&#39;;
-yline_borrbound.Color = &#39;black&#39;;
-yline_borrbound.LineWidth = 3;
-
-% Titling
-title(&#39;Cash-on-Hand given w(k+b),k,z&#39;);
-ylabel(&#39;Cash-on-Hand&#39;);
-xlabel({&#39;Index of Cash-on-Hand Discrete Point&#39;...
-    &#39;Each Segment is a w=k+b; within segment increasing k&#39;...
-    &#39;For each w and z, coh maximizing k is different&#39;});
-
-% Xlim controls
-xlim([min(ar_x), max(ar_x)]);
-
-% Grid ons
-grid on;
-grid minor;
-% Legends
-legend2plot = fliplr([1 round(numel(chart)/3) round((2*numel(chart))/4)  numel(chart)]);
-legendCell = cellstr(num2str(ar_y&#39;, &#39;shock=%3.2f&#39;));
-
-legendCell{length(legendCell) + 1} = &#39;borrow-constraint&#39;;
-chart(length(chart)+1) = yline_borrbound;
-legend(chart([legend2plot length(legendCell)]), ...
-       legendCell([legend2plot length(legendCell)]), ...
-       &#39;Location&#39;, &#39;best&#39;);</code></pre>
-<p><img src="img/fs_legendsubset_images/figure_0.png" width="500" /></p>
-
-</div>
-</div>
-</div>
-<div id="basic-figure-types" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Basic Figure Types</h2>
-
-<div id="matlab-graph-scatter-plot-examples" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Matlab Graph Scatter Plot Examples</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="scatter-plot-example" class="section level4" number="5.2.1.1">
-<h4><span class="header-section-number">5.2.1.1</span> Scatter Plot Example</h4>
-<p>The plot below as square scatter points, each one with think border. Can
-set transparency of border/edge and inside separately.</p>
-<pre><code>close all;
-figure();
-size = 100;
-s = scatter(1:10,1:10,size);
-
-s.Marker = &#39;s&#39;;
-% color picked by using: uisetcolor
-s.MarkerEdgeColor = [0    0.4471    0.7412];
-s.MarkerEdgeAlpha = 0.5;
-s.MarkerFaceColor = [.61 .51 .74];
-s.MarkerFaceAlpha = 1.0;
-s.LineWidth = 10;
-grid on;
-grid minor;</code></pre>
-<p><img src="img/fs_scatter_images/figure_0.png" width="500" /></p>
-<pre><code>% &#39;o&#39;   Circle
-% &#39;+&#39;   Plus sign
-% &#39;*&#39;   Asterisk
-% &#39;.&#39;   Point
-% &#39;x&#39;   Cross
-% &#39;square&#39; or &#39;s&#39;   Square
-% &#39;diamond&#39; or &#39;d&#39;  Diamond
-% &#39;^&#39;   Upward-pointing triangle
-% &#39;v&#39;   Downward-pointing triangle
-% &#39;&gt;&#39;   Right-pointing triangle
-% &#39;&lt;&#39;   Left-pointing triangle
-% &#39;pentagram&#39; or &#39;p&#39;    Five-pointed star (pentagram)
-% &#39;hexagram&#39; or &#39;h&#39; Six-pointed star (hexagram)
-% &#39;none&#39;    No markers</code></pre>
-</div>
-<div id="scatter-with-edge-and-face-color-and-transparency" class="section level4" number="5.2.1.2">
-<h4><span class="header-section-number">5.2.1.2</span> Scatter with Edge and Face Color and Transparency</h4>
-<p>Here is another way to Set Scatter Edge and Fac Colors and
-Transparencies.</p>
-<pre><code>% Generate Data
-rng(123);
-it_x_n = 10;
-it_x_groups_n = 3;
-mat_y = rand([it_x_n, it_x_groups_n]);
-mat_y = mat_y + sqrt(1:it_x_groups_n);
-mat_y = mat_y + log(1:it_x_n)&#39;;
-ar_x = 1:1:it_x_n;
-
-% Colors
-blue = [57 106 177]./255;
-red = [204 37 41]./255;
-black = [83 81 84]./255;
-green = [62 150 81]./255;
-brown = [146 36 40]./255;
-purple = [107 76 154]./255;
-cl_colors = {blue, red, black, ...
-             green, brown, purple};
-
-% Scatter Shapes
-cl_scatter_shapes = {&#39;s&#39;,&#39;x&#39;,&#39;o&#39;,&#39;d&#39;,&#39;p&#39;,&#39;*&#39;};
-% Scatter Sizes
-cl_scatter_sizes = {100,100,50,50,50,50};
-% Legend Keys
-cl_legend = {&#39;For Borr&#39;, &#39;Inf Borr&#39;, &#39;For+Inf Br&#39;};
-
-% Plot
-figure();
-hold on;
-for it_m = 1:it_x_groups_n
-    scatter(ar_x, mat_y(:,it_m), cl_scatter_sizes{it_m}, ...
-        &#39;Marker&#39;, cl_scatter_shapes{it_m}, ...
-        &#39;MarkerEdgeColor&#39;, cl_colors{it_m}, &#39;MarkerFaceAlpha&#39;, 0.8, ...
-        &#39;MarkerFaceColor&#39;, cl_colors{it_m}, &#39;MarkerEdgeAlpha&#39;, 0.8);
-    cl_legend{it_m} = cl_legend{it_m};
-end
-legend(cl_legend, &#39;Location&#39;, &#39;best&#39;);
-grid on; 
-grid minor;</code></pre>
-<p><img src="img/fs_scatter_images/figure_1.png" width="500" /></p>
-
-</div>
-</div>
-<div id="matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines" class="section level3" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="six-lines-plot" class="section level4" number="5.2.2.1">
-<h4><span class="header-section-number">5.2.2.1</span> Six lines Plot</h4>
-<p>Colors from <a href="http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/">optimal
-colors</a>.
-Generate A line plot with multiple lines using safe colors, with
-differening shapes. Figures include lines as well as scatter overlayed
-jointly.</p>
-<pre><code>close all
-figure();
-hold on;
-
-blue = [57 106 177]./255;
-red = [204 37 41]./255;
-black = [83 81 84]./255;
-green = [62 150 81]./255;
-brown = [146 36 40]./255;
-purple = [107 76 154]./255;
-cl_colors = {blue, red, black, ...
-             green, brown, purple};
-cl_legend = {&#39;For Borr&#39;, &#39;Inf Borr&#39;, &#39;For+Inf Br&#39;, &#39;For+Br+Save&#39;, &#39;Bridge Loan&#39;, &#39;For Save&#39;};
-cl_scatter_shapes = {&#39;s&#39;,&#39;x&#39;,&#39;o&#39;,&#39;d&#39;,&#39;p&#39;,&#39;*&#39;};
-cl_linestyle = {&#39;--&#39;,&#39;-&#39;,&#39;:&#39;,&#39;-.&#39;,&#39;--&#39;,&#39;-&#39;};
-it_sca_bs = 20;
-cl_scatter_csizes = {10*it_sca_bs, 20*it_sca_bs, 10*it_sca_bs, 10*it_sca_bs, 5*it_sca_bs, 8*it_sca_bs};
-it_line_bs = 2;
-cl_line_csizes = {1*it_line_bs, 2*it_line_bs, 1*it_line_bs, 1*it_line_bs, 1*it_line_bs, 2*it_line_bs};
-
-it_x_groups_n = length(cl_scatter_csizes);
-it_x_n = 10;
-
-% Generate Random Data
-rng(123);
-mat_y = rand([it_x_n, it_x_groups_n]);
-mat_y = mat_y + sqrt(1:it_x_groups_n);
-mat_y = mat_y + log(1:it_x_n)&#39;;
-ar_x = 1:1:it_x_n;
-
-ar_it_graphs_run = 1:6;
-it_graph_counter = 0;
-ls_chart = [];
-for it_fig = ar_it_graphs_run
-
-    % Counter
-    it_graph_counter = it_graph_counter + 1;
-
-    % Y Outcome
-    ar_y = mat_y(:, it_fig)&#39;;
-
-    % Color and Size etc
-    it_csize = cl_scatter_csizes{it_fig};
-    ar_color = cl_colors{it_fig};
-    st_shape = cl_scatter_shapes{it_fig};
-    st_lnsty = cl_linestyle{it_fig};
-    st_lnwth = cl_line_csizes{it_fig};
-    
-    % plot scatter and include in legend
-    ls_chart(it_graph_counter) = scatter(ar_x, ar_y, it_csize, ar_color, st_shape);
-
-    % plot line do not include in legend
-    line = plot(ar_x, ar_y);
-    line.HandleVisibility = &#39;off&#39;;
-    line.Color = ar_color;
-    line.LineStyle = st_lnsty;
-    line.HandleVisibility = &#39;off&#39;;
-    line.LineWidth = st_lnwth;
-
-    % Legend to include
-    cl_legend{it_graph_counter} = cl_legend{it_fig};
-end
-
-% Legend
-legend(ls_chart, cl_legend, &#39;Location&#39;, &#39;southeast&#39;);
-
-% labeling
-title(&#39;Optimal Savings&#39;);
-ylabel(&#39;Savings Levels&#39;);
-xlabel(&#39;Cash-on-Hand Today&#39;);
+% x-axis
+ar_it_time = 1:1:length(ar_fl_shocks);
+% plot
+plot(ar_it_time, ar_fl_time_series);
+% Generate Title
+ar_fl_params_values = [fl_constant, fl_normal_sd, fl_persistence, fl_shk_bnds];
+ar_st_parms_names = [&quot;C&quot;, &quot;sd&quot;, &quot;persistence&quot;, &quot;sd-bounds&quot;];
+st_rounding = &#39;.2f&#39;;
+st_title_main = &quot;AR(1) &quot;;
+ar_st_params = strcat(ar_st_parms_names, compose(strcat(&quot;=%&quot;, st_rounding), ar_fl_params_values));
+st_param_pasted = strjoin(ar_st_params, &#39;, &#39;);
+st_title_wth_params = strcat(st_title_main, &#39; (&#39;, st_param_pasted, &#39;)&#39;);
+title({st_title_wth_params, &#39;Simulate One Individual for 1000 Periods&#39;});
+% X and Y labels
+ylabel({&#39;Time Series Values&#39;});
+xlabel(&#39;Time Periods&#39;);
 grid on;</code></pre>
-<p><img src="img/fs_lines_images/figure_0.png" width="500" /></p>
-<pre><code>snapnow;</code></pre>
+<p><img src="img/fs_autoregressive_images/figure_0.png" width="500" /></p>
 </div>
-<div id="horizontal-and-vertical-lines-and-45-degree" class="section level4" number="5.2.2.2">
-<h4><span class="header-section-number">5.2.2.2</span> Horizontal and Vertical Lines and 45 Degree</h4>
-<p>Draw x and y axis, and draw a 45 degree line.</p>
+<div id="income-process-for-india" class="section level4" number="3.1.1.3">
+<h4><span class="header-section-number">3.1.1.3</span> Income Process for India</h4>
+<p>In the Example below, we simulate an individual for 1000 periods. In the
+example below, the parameters are from estiamting an AR(1) process for
+log of income in India, see Udupa and Wang (2020). We can use the
+<a href="https://fanwangecon.github.io/MEconTools/MEconTools/doc/stats/htmlpdfm/fx_simu_stats.html">ff_simu_stats</a>
+function from <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> to
+look at the distributional information from this time series, we care
+about income, so we will exponentiate the log of income we obtained.</p>
+<p>Note that for the distributional results, GINI, share of income held by
+different percentiles of households, is invariant to the choice of the
+<span class="math inline">\(C\)</span> constant term earlier. Try changing that number, the distributional
+statistics that we obtain below will be the same. Also note that the
+exponential of the mean of the log of income is not equal to the mean of
+income.</p>
+<pre><code>% Number of Time Periods
+it_T = 1000;
+% Mean and SD of the Shock Process
+fl_constant = 3.024467;
+fl_normal_sd = 0.45;
+% Persistence
+fl_persistence = 0.7468;
+% Bounds on Shocks
+fl_shk_bnds = 5;
+% Initialize with exo fed point or not, if false initialize at Random Point
+% from the stationary distribution
+bl_init = true;
+fl_init = fl_constant/(1 - fl_persistence);
+% Generate a normal shock vector (the first draw will be ignored)
+it_draws = it_T;
+rng(789);
+ar_fl_shocks = normrnd(0, fl_normal_sd, 1, it_draws);
+% out of bounds indicators
+fl_shk_bds_lower = 0 - fl_normal_sd*fl_shk_bnds;
+fl_shk_bds_upper = 0 + fl_normal_sd*fl_shk_bnds;
+ar_bl_outofbounds = (ar_fl_shocks &lt;= fl_shk_bds_lower | ar_fl_shocks &gt;= fl_shk_bds_upper);
+ar_fl_shocks(ar_fl_shocks &lt;= fl_shk_bds_lower) = fl_shk_bds_lower;
+ar_fl_shocks(ar_fl_shocks &gt;= fl_shk_bds_upper) = fl_shk_bds_upper;
+% Initialize Output Array
+ar_fl_time_series = zeros(size(ar_fl_shocks));
+% Loop over time
+for it_t=1:1:length(ar_fl_shocks)
+    if (it_t == 1)
+        % initialize using the ean of the process
+        ar_fl_time_series(1) = fl_constant/(1 - fl_persistence);
+        if (bl_init)
+            ar_fl_time_series(1) = fl_init;            
+        end
+    else
+        fl_ts_t = fl_constant + ar_fl_time_series(it_t-1)*fl_persistence + ar_fl_shocks(it_t);
+        ar_fl_time_series(it_t) = fl_ts_t;
+    end
+end
+ar_series = (ar_fl_time_series);
+fl_mean = mean(ar_series);
+fl_std = std(ar_series);
+figure();
+% x-axis
+ar_it_time = 1:1:length(ar_fl_shocks);
+% plot
+plot(ar_it_time, (ar_fl_time_series));
+% Generate Title
+ar_fl_params_values = [fl_constant, fl_normal_sd, fl_persistence, fl_shk_bnds];
+ar_st_parms_names = [&quot;C&quot;, &quot;sd&quot;, &quot;persistence&quot;, &quot;sd-bounds&quot;];
+st_rounding = &#39;.2f&#39;;
+st_title_main = &quot;AR(1) Log of Income in India&quot;;
+ar_st_params = strcat(ar_st_parms_names, compose(strcat(&quot;=%&quot;, st_rounding), ar_fl_params_values));
+st_param_pasted = strjoin(ar_st_params, &#39;, &#39;);
+st_title_wth_params = strcat(st_title_main, &#39; (&#39;, st_param_pasted, &#39;)&#39;);
+title({st_title_wth_params, &#39;Simulate One Individual for 1000 Periods&#39;});
+% X and Y labels
+ylabel({&#39;Log of Income (India)&#39;});
+xlabel(&#39;Time Periods&#39;);
+grid on;</code></pre>
+<p><img src="img/fs_autoregressive_images/figure_1.png" width="500" /></p>
+<pre><code>% Set Parameters
+mp_cl_mt_xyz_of_s = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+mp_cl_mt_xyz_of_s(&#39;log_income&#39;) = {(ar_series), zeros(1)};
+mp_cl_mt_xyz_of_s(&#39;income&#39;) = {exp(ar_series), zeros(1)};
+mp_cl_mt_xyz_of_s(&#39;ar_st_y_name&#39;) = [&quot;log_income&quot;, &quot;income&quot;];
+% Mass
+rng(123);
+mt_f_of_s = zeros(size(ar_series)) + 1/numel(ar_series);
+mt_f_of_s = mt_f_of_s/sum(mt_f_of_s, &#39;all&#39;);
+mp_cl_mt_xyz_of_s_out = ff_simu_stats(mt_f_of_s, mp_cl_mt_xyz_of_s);
+
+xxx tb_outcomes: all stats xxx
+    OriginalVariableNames    log_income      income  
+    _____________________    __________    __________
+
+    {&#39;mean&#39;             }       11.959      1.946e+05
+    {&#39;unweighted_sum&#39;   }        11959      1.946e+08
+    {&#39;sd&#39;               }      0.67236     1.4024e+05
+    {&#39;coefofvar&#39;        }     0.056222        0.72064
+    {&#39;gini&#39;             }     0.031635        0.35645
+    {&#39;min&#39;              }       9.8742          19423
+    {&#39;max&#39;              }       13.893      1.081e+06
+    {&#39;pYis0&#39;            }            0              0
+    {&#39;pYls0&#39;            }            0              0
+    {&#39;pYgr0&#39;            }            1              1
+    {&#39;pYisMINY&#39;         }        0.001          0.001
+    {&#39;pYisMAXY&#39;         }        0.001          0.001
+    {&#39;p1&#39;               }       10.258          28498
+    {&#39;p10&#39;              }       11.087          65316
+    {&#39;p25&#39;              }       11.518     1.0049e+05
+    {&#39;p50&#39;              }       11.983        1.6e+05
+    {&#39;p75&#39;              }        12.42     2.4771e+05
+    {&#39;p90&#39;              }       12.761     3.4829e+05
+    {&#39;p99&#39;              }       13.479      7.141e+05
+    {&#39;fl_cov_log_income&#39;}      0.45207          84333
+    {&#39;fl_cor_log_income&#39;}            1        0.89439
+    {&#39;fl_cov_income&#39;    }        84333     1.9667e+10
+    {&#39;fl_cor_income&#39;    }      0.89439              1
+    {&#39;fracByP1&#39;         }    0.0093239      0.0014385
+    {&#39;fracByP10&#39;        }     0.089816       0.024687
+    {&#39;fracByP25&#39;        }       0.2317       0.088239
+    {&#39;fracByP50&#39;        }      0.47761        0.25477
+    {&#39;fracByP75&#39;        }      0.73265        0.51224
+    {&#39;fracByP90&#39;        }      0.89045        0.73747
+    {&#39;fracByP99&#39;        }      0.98852        0.95275</code></pre>
+
+</div>
+</div>
+</div>
+<div id="cross-sectional-data" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Cross-sectional Data</h2>
+
+<div id="matlab-mincer-wage-earnings-equation-with-experience-education-and-gamma-shocks" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Matlab Mincer Wage Earnings Equation with Experience, Education and Gamma Shocks</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="define-a-wage-equation-with-partial-income-for-part-time-workss-1" class="section level4" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> Define a Wage Equation with Partial Income for Part-time Workss</h4>
+<p>Individuals might work part or full time. Define a mincer wage equation
+that is a function of experienc, education and other individual
+characteristics. This is partly based on the wage equation from <a href="https://www.sciencedirect.com/science/article/abs/pii/S1094202517300029">Hai and
+Heckman
+(2017)</a>. <span class="citation">(<a href="index-and-code-links.html#ref-HaiHeckman2017" role="doc-biblioref">Hai and Heckman 2017</a>)</span></p>
+<p>First define parameters.</p>
+<pre><code>% cognitive and non-cognitive latent types
+theta_cogntv = 0.1;
+theta_noncog = 0.1;
+% parameters mapping latent types to wage
+COEF_alpha_cog_wage_hsh = 0.0529;
+COEF_alpha_cog_wage_clg = 0.0529;
+COEF_alpha_cog_wage_grd = 0.1433;
+COEF_alpha_ncg_wage_hsh = 0.0275;
+COEF_alpha_ncg_wage_clg = 0.0512;
+COEF_alpha_ncg_wage_grd = 0.0892;
+% Experience
+COEF_beta_psi_0 = 1.8884;
+COEF_beta_psi_k = 0.0767;
+COEF_beta_psi_kk = -0.2683;
+% Education
+COEF_beta_psi_e0 = 0.0465;
+COEF_beta_w_e_1 = 0.1432;
+COEF_beta_w_e_2 = 0.1435;
+COEF_beta_w_e_3 = 0.2806;
+% for part time
+COEF_beta_w_part_0 = -0.0082;
+COEF_beta_w_part_1 = -0.4863;</code></pre>
+<p>Second define the log wage equation. This wage equation is a function of
+the parameters defined above, and also Education (ED), experience (EX)
+and the wage shcok (EPS_w).</p>
+<pre><code>% Log of wage
+f_log_psi = @(ED, EX, EPS_w) ...
+    ((COEF_alpha_cog_wage_hsh.*theta_cogntv + COEF_alpha_ncg_wage_hsh.*theta_noncog).*(ED &lt; 12) ...
+    + (COEF_alpha_cog_wage_clg.*theta_cogntv + COEF_alpha_ncg_wage_clg.*theta_noncog).*(ED &gt;= 12).*(ED &lt; 16) ...
+    + (COEF_alpha_cog_wage_grd.*theta_cogntv + COEF_alpha_ncg_wage_grd.*theta_noncog).*(ED &gt;= 16) ...
+    + COEF_beta_psi_0 ...
+    + COEF_beta_psi_k.*EX ...
+    + COEF_beta_psi_kk.*(EX.^2/100) ...
+    + COEF_beta_psi_e0.*(ED - 12) ...
+    + COEF_beta_w_e_1.*(ED == 12) ...
+    + COEF_beta_w_e_2.*(ED &gt; 12).*(ED &lt; 16) ...
+    + COEF_beta_w_e_3.*(ED &gt;= 16) ...
+    + EPS_w);</code></pre>
+<p>Third, define wage, which might differ depending on work status as well
+as schooling status. D_e is schooling or not, which can take values of 0
+or 1. D_k is work status, which can take values or 0, 0.5 (part-time
+work) and 1 (full-time work).</p>
+<pre><code>% Per hour wage considering part time, part time wage differ if also schooling
+f_hr_wage = @(D_e, D_k, ED, EX, EPS_w) ...
+    exp(f_log_psi(ED, EX, EPS_w)).*exp((D_k==0.5).*(COEF_beta_w_part_0 + COEF_beta_w_part_1.*D_e));
+% Total wage
+f_wage = @(D_e, D_k, ED, EX, EPS_w) ...
+    f_hr_wage(D_e, D_k, ED, EX, EPS_w).*(2080.*(D_k == 1) + 1040.*(D_k == 0.5) + 0.*(D_k == 0));</code></pre>
+<p>Fourth, test the wage equation by calling it with different work and
+schooling choices, along with different education, experience, and shock
+levels.</p>
+<pre><code>% no experience, education, not school, not work
+disp([&#39;f_wage(0,0,0,0,0)=&#39; num2str(f_wage(0,0,0,0,0))]);
+
+f_wage(0,0,0,0,0)=0
+
+% no experience, education, part-time
+disp([&#39;f_wage(0,0.5,0,0,0)=&#39; num2str(f_wage(0,0.5,0,0,0))]);
+
+f_wage(0,0.5,0,0,0)=3933.229
+
+% no experience, education, full-time
+disp([&#39;f_wage(0,1,0,0,0)=&#39; num2str(f_wage(0,1,0,0,0))]);
+
+f_wage(0,1,0,0,0)=7931.2281</code></pre>
+<p>With the anonymous function defined, we can supply a vector of education
+values (as a column), and a vector of experience levles (as a row), and
+generate a matrix of wages for full-time workers, simulated at one
+particular shock level. Graph using
+<a href="https://fanwangecon.github.io/MEconTools/MEconTools/doc/graph/htmlpdfm/fx_graph_grid.html">FF_GRAPH_GRID</a>
+from <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a>.</p>
+<p>The graph shows that higher education corresponds to higher wages, there
+are different levels by education tiers, and there is a quadratic
+structure to experience</p>
+<pre><code>% 1 to 16 years of educations
+ar_edu = 1:1:20;
+% 1 to 20 years of experiences
+ar_exp = 1:1:20;
+% broadcast evaluate
+mt_wages = f_wage(0,1,ar_edu&#39;,ar_exp,0);
+% graph using MEconTools
+mp_support_graph = containers.Map(&#39;KeyType&#39;, &#39;char&#39;, &#39;ValueType&#39;, &#39;any&#39;);
+mp_support_graph(&#39;cl_st_graph_title&#39;) = {&#39;wages(edu, exp, shk=0), exp=x, education=color&#39;};
+mp_support_graph(&#39;cl_st_ytitle&#39;) = {&#39;wages(edu,exp)&#39;};
+mp_support_graph(&#39;cl_st_xtitle&#39;) = {&#39;experience levels&#39;};
+mp_support_graph(&#39;bl_graph_logy&#39;) = false; % do not log
+mp_support_graph(&#39;st_rowvar_name&#39;) = &#39;edu=&#39;;
+mp_support_graph(&#39;it_legend_select&#39;) = 10; % how many shock legends to show
+mp_support_graph(&#39;st_rounding&#39;) = &#39;3.0f&#39;; % format shock legend
+mp_support_graph(&#39;cl_colors&#39;) = &#39;copper&#39;; % any predefined matlab colormap
+% Call function
+ff_graph_grid(mt_wages, ar_edu, ar_exp, mp_support_graph);</code></pre>
+<p><img src="img/fs_wage_equation_images/figure_0.png" width="500" /></p>
+<p>Draw the shock term from gamma distribution, distribution of wages at a
+particular experience and education combination with many shocks.</p>
+<pre><code>% Gamma distribution parameters from Hai and Heckman
+% E(epsilon) = a*b, var(epsion) = a*b^2.
+a0 = 15.3558; % shape
+b0 = 0.1388; % scale
+% use gamrnd
+it_draws = 10000;
+ar_gamma_draws = gamrnd(a0, b0, [it_draws, 1]);
+% Evaluate with 12 years of education and 10 years of experience with
+% different shocks
+ar_wages_e16_x10 = f_wage(0,1,16,10,ar_gamma_draws);
+ar_wages_e12_x5 = f_wage(0,1,12,5,ar_gamma_draws);</code></pre>
+<p>Draw a histogram of the wage distribution. <a href="https://www.mathworks.com/help/matlab/ref/matlab.graphics.chart.primitive.histogram.html">Multiple histograms in
+matlab</a>.</p>
 <pre><code>figure();
-
-xline0 = xline(0);
-xline0.HandleVisibility = &#39;off&#39;;
-xline0.Color = red;
-xline0.LineStyle = &#39;--&#39;;
-yline0 = yline(0);
-yline0.HandleVisibility = &#39;off&#39;;
-yline0.LineWidth = 1;
-
-hline = refline([1 0]);
-hline.Color = &#39;k&#39;;
-hline.LineStyle = &#39;:&#39;;
-hline.HandleVisibility = &#39;off&#39;;
-
-snapnow;
-grid on;
-grid minor;</code></pre>
-<p><img src="img/fs_lines_images/figure_1.png" width="500" /></p>
-
-</div>
-</div>
-<div id="matlab-graph-scatter-and-line-spectrum-with-three-variables" class="section level3" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> Matlab Graph Scatter and Line Spectrum with Three Variables</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<p>Generate k + b = w, color for each w, vectors of k and b such that k + b
-= w for each w</p>
-<p>There are two N by M matrix, A anb B.</p>
-<p>Values in Matrix A correspond to the x-axis, values in Matrix B
-correspond to the y-axis.</p>
-<p>The rows and columns in matrix A and B have some other meanings. In this
-case, we will give color to the columns.</p>
-<p>The columns is represented by vector C, which is another variable.</p>
-<ol style="list-style-type: decimal">
-<li><p>Each line a different color representing variable 3</p></li>
-<li><p>Legend labeling a subset of colors</p></li>
-<li><p>X and Y could be asset choices, color could be utility, consumption
-etc.</p></li>
-</ol>
-<div id="setting-up-data" class="section level4" number="5.2.3.1">
-<h4><span class="header-section-number">5.2.3.1</span> Setting Up Data</h4>
-<pre><code>close all
-clear all
-
-% Bounds
-fl_b_bd = -10;
-% Max and Mins
-fl_w_max = 50;
-fl_w_min = fl_b_bd;
-fl_kp_max = fl_w_max - fl_b_bd;
-fl_kp_min = 0;
-
-% Grid Point Counts
-it_w_i = 30;
-it_kb_j = 30;
-
-% Grids
-ar_w = linspace(fl_w_min, fl_w_max, it_w_i);
-ar_kp = linspace(fl_kp_min, fl_kp_max, it_kb_j);
-mt_bp = ar_w - ar_kp&#39;;
-mt_kp = ar_w - mt_bp;
-mt_bl_constrained = (mt_bp &lt; fl_b_bd);
-mt_bp_wth_na = mt_bp;
-mt_kp_wth_na = mt_kp;
-mt_bp_wth_na(mt_bl_constrained) = nan;
-mt_kp_wth_na(mt_bl_constrained) = nan;
-
-% Flatten
-ar_bp_mw_wth_na = mt_bp_wth_na(:);
-ar_kp_mw_wth_na = mt_kp_wth_na(:);
-ar_bp_mw = ar_bp_mw_wth_na(~isnan(ar_bp_mw_wth_na));
-ar_kp_mw = ar_kp_mw_wth_na(~isnan(ar_kp_mw_wth_na));</code></pre>
-</div>
-<div id="graphing" class="section level4" number="5.2.3.2">
-<h4><span class="header-section-number">5.2.3.2</span> Graphing</h4>
-<pre><code>figure(&#39;PaperPosition&#39;, [0 0 7 4]);
+h1 = histogram(log(ar_wages_e16_x10), 20);
 hold on;
-
-chart = plot(mt_bp_wth_na, mt_kp_wth_na, &#39;blue&#39;);
-
-clr = jet(numel(chart));
-for m = 1:numel(chart)
-   set(chart(m),&#39;Color&#39;,clr(m,:))
-end
-if (length(ar_w) &lt;= 50) 
-    scatter(ar_bp_mw, ar_kp_mw, 5, &#39;filled&#39;);
-end
-xline(0);
-yline(0);
-
-title(&#39;Choice Grids Conditional on kp+bp=w&#39;)
-ylabel(&#39;Capital Choice&#39;)
-xlabel({&#39;Borrowing or Saving&#39;})
-legend2plot = fliplr([1 round(numel(chart)/3) round((2*numel(chart))/4)  numel(chart)]);
-legendCell = cellstr(num2str(ar_w&#39;, &#39;kp+bp=%3.2f&#39;));
-legend(chart(legend2plot), legendCell(legend2plot), &#39;Location&#39;,&#39;northeast&#39;);
-
-grid on;</code></pre>
-<p><img src="img/fs_specline_images/figure_0.png" width="500" /></p>
-
-</div>
-</div>
-</div>
-<div id="write-and-read-plots" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Write and Read Plots</h2>
-
-<div id="matlab-graph-generate-eps-postscript-figures-in-matlab" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Matlab Graph Generate EPS postscript figures in matlab</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="properly-save-eps-with-scatter-and-other-graphing-methods-renderer-painters" class="section level4" number="5.3.1.1">
-<h4><span class="header-section-number">5.3.1.1</span> Properly Save EPS with Scatter and Other Graphing Methods: Renderer = Painters</h4>
-<p>scatter plot saving as eps seems to only work when Renderer is set to
-Painters</p>
-<pre><code>fl_fig_wdt = 3;
-fl_fig_hgt = 2.65;
-
-figure(&#39;PaperPosition&#39;, [0 0 fl_fig_wdt fl_fig_hgt], &#39;Renderer&#39;, &#39;Painters&#39;);
-x = rand([10,1]);
-y = rand([10,1]);
-scatter(x, y, &#39;filled&#39;);
+h2 = histogram(log(ar_wages_e12_x5), 20);
 grid on;
-grid minor;
+h1.Normalization = &#39;probability&#39;;
+h2.Normalization = &#39;probability&#39;;
+% Put up legend.
+legend1 = sprintf(&#39;Log wage dist edu=16 and exp=10&#39;);
+legend2 = sprintf(&#39;Log wage dist edu=12 and exp=5&#39;);
+legend({legend1, legend2});</code></pre>
+<p><img src="img/fs_wage_equation_images/figure_1.png" width="500" /></p>
+<p>Generate distributional statistics using
+<a href="https://fanwangecon.github.io/MEconTools/MEconTools/doc/stats/htmlpdfm/fx_simu_stats.html">FF_SIMU_STATS</a>
+from <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a>. Given that
+the shocks are the same, the distributional statistics in terms of gini,
+and shares of wages held by different percentiles are the same. However,</p>
+<pre><code>% Set Parameters
+mp_cl_mt_xyz_of_s = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+mp_cl_mt_xyz_of_s(&#39;cl_wages_e16_x10&#39;) = {ar_wages_e16_x10, zeros(1)};
+mp_cl_mt_xyz_of_s(&#39;cl_ar_wages_e12_x5&#39;) = {ar_wages_e12_x5, zeros(1)};
+mp_cl_mt_xyz_of_s(&#39;ar_st_y_name&#39;) = [&quot;cl_wages_e16_x10&quot;, &quot;cl_ar_wages_e12_x5&quot;];
+% Mass
+rng(123);
+mt_f_of_s = 1/it_draws + zeros(size(ar_wages_e16_x10));
+% Call Function
+mp_cl_mt_xyz_of_s_out = ff_simu_stats(mt_f_of_s, mp_cl_mt_xyz_of_s);
 
-st_img_path = &#39;C:/Users/fan/M4Econ/graph/export/_img/&#39;;
-st_file_name = &#39;fs_eps_scatter_test&#39;;
+xxx tb_outcomes: all stats xxx
+        OriginalVariableNames        cl_wages_e16_x10    cl_ar_wages_e12_x5
+    _____________________________    ________________    __________________
 
-% eps figure save with tiff preview
-print(strcat(st_img_path, st_file_name), &#39;-depsc&#39;, &#39;-tiff&#39;);</code></pre>
-<p><img src="img/fs_eps_images/figure_0.png" width="500" /></p>
+    {&#39;mean&#39;                     }       3.7009e+05           2.2035e+05
+    {&#39;unweighted_sum&#39;           }       3.7009e+09           2.2035e+09
+    {&#39;sd&#39;                       }       2.5548e+05           1.5212e+05
+    {&#39;coefofvar&#39;                }          0.69034              0.69034
+    {&#39;gini&#39;                     }          0.31929              0.31929
+    {&#39;min&#39;                      }            72823                43359
+    {&#39;max&#39;                      }       4.1108e+06           2.4476e+06
+    {&#39;pYis0&#39;                    }                0                    0
+    {&#39;pYls0&#39;                    }                0                    0
+    {&#39;pYgr0&#39;                    }                1                    1
+    {&#39;pYisMINY&#39;                 }           0.0001               0.0001
+    {&#39;pYisMAXY&#39;                 }           0.0001               0.0001
+    {&#39;p1&#39;                       }       1.0651e+05                63414
+    {&#39;p10&#39;                      }       1.6176e+05                96313
+    {&#39;p25&#39;                      }       2.1211e+05           1.2629e+05
+    {&#39;p50&#39;                      }       3.0077e+05           1.7908e+05
+    {&#39;p75&#39;                      }       4.4013e+05           2.6205e+05
+    {&#39;p90&#39;                      }       6.5011e+05           3.8708e+05
+    {&#39;p99&#39;                      }       1.3542e+06           8.0632e+05
+    {&#39;fl_cov_cl_wages_e16_x10&#39;  }       6.5273e+10           3.8864e+10
+    {&#39;fl_cor_cl_wages_e16_x10&#39;  }                1                    1
+    {&#39;fl_cov_cl_ar_wages_e12_x5&#39;}       3.8864e+10            2.314e+10
+    {&#39;fl_cor_cl_ar_wages_e12_x5&#39;}                1                    1
+    {&#39;fracByP1&#39;                 }         0.002641             0.002641
+    {&#39;fracByP10&#39;                }         0.036428             0.036428
+    {&#39;fracByP25&#39;                }          0.11277              0.11277
+    {&#39;fracByP50&#39;                }          0.28486              0.28486
+    {&#39;fracByP75&#39;                }           0.5298               0.5298
+    {&#39;fracByP90&#39;                }          0.74277              0.74277
+    {&#39;fracByP99&#39;                }          0.95264              0.95264</code></pre>
 
 </div>
 </div>
@@ -830,8 +708,8 @@ print(strcat(st_img_path, st_file_name), &#39;-depsc&#39;, &#39;-tiff&#39;);</co
           </div>
         </div>
       </div>
-<a href="simulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="simulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

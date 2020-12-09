@@ -6,13 +6,12 @@
 \documentclass[
 ]{book}
 \usepackage{lmodern}
-\usepackage{amsmath}
+\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
-  \usepackage{amssymb}
 \else % if luatex or xetex
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
@@ -48,7 +47,6 @@
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage{longtable,booktabs}
-\usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -109,7 +107,7 @@
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-11-29}
+\date{2020-12-09}
 
 \begin{document}
 \maketitle
@@ -2202,15 +2200,115 @@ disp(tb_rowcols_tab);
       6       3        1        0.51148     0.49531     0.48963    0.47698     0.3271    0.24336    0.34498    0.34004
 \end{verbatim}
 
-\hypertarget{multidimensional-nd-array-to-2d-matrix-with-nan-exclusions}{%
-\subsection{Multidimensional ND Array to 2D Matrix with Nan Exclusions}\label{multidimensional-nd-array-to-2d-matrix-with-nan-exclusions}}
+\hypertarget{multidimensional-nd-array-to-2d-matrix-with-wide-to-long}{%
+\subsection{Multidimensional ND Array to 2D Matrix with Wide to Long}\label{multidimensional-nd-array-to-2d-matrix-with-wide-to-long}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
+\hypertarget{d-matrix-wide-to-long}{%
+\subsubsection{2D Matrix Wide to Long}\label{d-matrix-wide-to-long}}
+
+There is a 2D matrix, the rows and columns are state variables (savings
+levels and shocks) for storage and graphing purposes, convert the 2D
+matrix where each row is a savings level and each column is a shock
+level to a 2D table where the first column records savings state, second
+column the level of shocks, and the third column stores the optimal
+policy or value at that particular combination of savings level and
+shock level.
+
+First, generate a random 2D matrix:
+
+\begin{verbatim}
+% Create a 3D Array
+it_z_n = 3;
+it_a_n = 5;
+% shock savings and shock array
+ar_a = linspace(0.1, 50, it_a_n);
+ar_z = linspace(-3, 3, it_z_n);
+% function of a and z
+mt_f_a_z = ar_a' + exp(ar_z);
+% Display
+disp(mt_f_a_z);
+
+    0.1498    1.1000   20.1855
+   12.6248   13.5750   32.6605
+   25.0998   26.0500   45.1355
+   37.5748   38.5250   57.6105
+   50.0498   51.0000   70.0855
+\end{verbatim}
+
+Second, from linear index to row and column index:
+
+\begin{verbatim}
+% Row and Column index for each matrix value
+% Only keep non-NAN values
+ar_id_isnan = isnan(mt_f_a_z);
+[ar_a_idx, ar_z_idx] = ind2sub(size(mt_f_a_z), find(~ar_id_isnan));
+% Display
+disp([ar_a_idx, ar_a(ar_a_idx)', ar_z_idx, ar_z(ar_z_idx)']);
+
+    1.0000    0.1000    1.0000   -3.0000
+    2.0000   12.5750    1.0000   -3.0000
+    3.0000   25.0500    1.0000   -3.0000
+    4.0000   37.5250    1.0000   -3.0000
+    5.0000   50.0000    1.0000   -3.0000
+    1.0000    0.1000    2.0000         0
+    2.0000   12.5750    2.0000         0
+    3.0000   25.0500    2.0000         0
+    4.0000   37.5250    2.0000         0
+    5.0000   50.0000    2.0000         0
+    1.0000    0.1000    3.0000    3.0000
+    2.0000   12.5750    3.0000    3.0000
+    3.0000   25.0500    3.0000    3.0000
+    4.0000   37.5250    3.0000    3.0000
+    5.0000   50.0000    3.0000    3.0000
+\end{verbatim}
+
+Third, generate a 2d matrix in "table" format:
+
+\begin{verbatim}
+% Index and values
+mt_policy_long = [ar_a_idx, ar_a(ar_a_idx)', ar_z_idx, ar_z(ar_z_idx)', mt_f_a_z(~ar_id_isnan)];
+% Sort by a and z
+mt_policy_long = sortrows(mt_policy_long, [1,3]);
+\end{verbatim}
+
+Fourth, generate a Table with Column names:
+
+\begin{verbatim}
+% Create Table
+tb_policy_long = array2table(mt_policy_long);
+cl_col_names_a = {'a_idx', 'a_val', 'z_idx', 'z_val', 'pol_at_a_z'};
+tb_policy_long.Properties.VariableNames = cl_col_names_a;
+disp(tb_policy_long);
+
+    a_idx    a_val     z_idx    z_val    pol_at_a_z
+    _____    ______    _____    _____    __________
+
+      1         0.1      1       -3       0.14979  
+      1         0.1      2        0           1.1  
+      1         0.1      3        3        20.186  
+      2      12.575      1       -3        12.625  
+      2      12.575      2        0        13.575  
+      2      12.575      3        3        32.661  
+      3       25.05      1       -3          25.1  
+      3       25.05      2        0         26.05  
+      3       25.05      3        3        45.136  
+      4      37.525      1       -3        37.575  
+      4      37.525      2        0        38.525  
+      4      37.525      3        3        57.611  
+      5          50      1       -3         50.05  
+      5          50      2        0            51  
+      5          50      3        3        70.086  
+\end{verbatim}
+
 \hypertarget{a-multidimensional-nd-array-with-many-nan-values}{%
 \subsubsection{A Multidimensional ND Array with Many NaN Values}\label{a-multidimensional-nd-array-with-many-nan-values}}
+
+Continue with the previous exercise, but now we have more than 2 state
+variables.
 
 Create a multidimensional Array with Many NaN Values. For example, we
 could have a dynamic lifecycle model with three endogenous varaibles,
@@ -3055,8 +3153,8 @@ display(strrep(strjoin(cl_st_param_keys, '-'), '_', '\_'));
 fl\_crra-fl\_beta
 \end{verbatim}
 
-\hypertarget{concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}{%
-\subsection{Concatenate Strings Arrays with Numbers and Number Arrays with Strings}\label{concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}}
+\hypertarget{convert-and-concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}{%
+\subsection{Convert and Concatenate Strings Arrays with Numbers and Number Arrays with Strings}\label{convert-and-concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
@@ -3094,6 +3192,25 @@ disp(st_combo);
     {'ar_COEF_U_gamma= 456'}
 \end{verbatim}
 
+\hypertarget{numeric-array-to-string-array-with-decimal-formatting}{%
+\subsubsection{Numeric Array to String Array with Decimal Formatting}\label{numeric-array-to-string-array-with-decimal-formatting}}
+
+There is a numeric array, format with a certain number of decimal
+points, and convert to string array.
+
+\begin{verbatim}
+% Inputs
+rng(123);
+ar_params = [1.23324, 493.1232, 4994.1111, 123];
+st_rounding = '.3f';
+% Rounding and to string array
+ar_st_params = compose(strcat("%", st_rounding), ar_params);
+% Display:
+disp(ar_st_params);
+
+    "1.233"    "493.123"    "4994.111"    "123.000"
+\end{verbatim}
+
 \hypertarget{title-from-an-array-of-values}{%
 \subsubsection{Title from an Array of Values}\label{title-from-an-array-of-values}}
 
@@ -3128,6 +3245,12 @@ Example 1:
 \begin{verbatim}
 ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
 disp([num2str(ar_fl_abc1', 'zw=%3.2f;'), num2str(ar_fl_abc1', 'zr=%3.2f')]);
+
+zw=0.40;zr=0.40
+zw=0.10;zr=0.10
+zw=0.25;zr=0.25
+zw=0.30;zr=0.30
+zw=0.40;zr=0.40
 \end{verbatim}
 
 Example 2:
@@ -3152,17 +3275,17 @@ disp(ar_z_wage_mesh_r_borr);
 
 disp(cl_st_full_rowscols);
 
-    'zr=0.70;zw=0.42'
-    'zr=0.29;zw=0.98'
-    'zr=0.23;zw=0.68'
-    'zr=0.55;zw=0.48'
-    'zr=0.72;zw=0.39'
+    {'zr=0.70;zw=0.42'}
+    {'zr=0.29;zw=0.98'}
+    {'zr=0.23;zw=0.68'}
+    {'zr=0.55;zw=0.48'}
+    {'zr=0.72;zw=0.39'}
 
 disp(cl_col_names);
 
-    'zi=3:zr=0.70;zw=0.42'
-    'zi=4:zr=0.23;zw=0.68'
-    'zi=4:zr=0.72;zw=0.39'
+    {'zi=3:zr=0.70;zw=0.42'}
+    {'zi=4:zr=0.23;zw=0.68'}
+    {'zi=4:zr=0.72;zw=0.39'}
 \end{verbatim}
 
 \hypertarget{combine-number-with-string-cell-array}{%
@@ -3176,9 +3299,9 @@ append numbers to it
 cl_col_names_append = strcat(cl_col_names, '-String-Cell-With-Numeric-', num2str(123));
 disp(cl_col_names_append);
 
-    'zi=3:zr=0.70;zw=0.42-String-Cell-With-Numeric-123'
-    'zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-123'
-    'zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-123'
+    {'zi=3:zr=0.70;zw=0.42-String-Cell-With-Numeric-123'}
+    {'zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-123'}
+    {'zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-123'}
 \end{verbatim}
 
 \hypertarget{combine-numeric-array-with-string-cell-array}{%
@@ -3192,9 +3315,9 @@ cl_col_names_append = strcat(cl_col_names, '-String-Cell-With-Numeric-Array-', .
     num2str(transpose(1:length(cl_col_names))));
 disp(cl_col_names_append);
 
-    'zi=3:zr=0.70;zw=0.42-String-Cell-With-Numeric-Array-1'
-    'zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-Array-2'
-    'zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-Array-3'
+    {'zi=3:zr=0.70;zw=0.42-String-Cell-With-Numeric-Array-1'}
+    {'zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-Array-2'}
+    {'zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-Array-3'}
 \end{verbatim}
 
 \hypertarget{convert-numeric-array-to-string-apeend-prefix-to-all-elements.}{%
@@ -3205,6 +3328,9 @@ ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
 ar_st_wth_prefix = strcat('row=', string(ar_fl_abc1));
 disp(ar_st_wth_prefix);
 
+    "row=0.4"    "row=0.1"    "row=0.25"    "row=0.3"    "row=0.4"
+
+
 % Does Array Exist in Longer Array as Subset
 ar_abc1 = [0.4 0.1 0.25 0.3 0.4];
 ar_abc2 = [0.4 0.1 0.2 0.3 0.4];
@@ -3213,12 +3339,28 @@ st_abc1 = strjoin(string(num2str(ar_abc1)));
 st_abc2 = strjoin(string(num2str(ar_abc2)));
 st_efg = strjoin(string(num2str(ar_efg)));
 contains(st_efg, st_abc1)
+
+ans = 
+   0
+
 contains(st_efg, st_abc2)
+
+ans = 
+   1
+
 
 % Display Convert to String
 fprintf('Display string [%s]', num2str([1,2,3]));
+
+Display string [1  2  3]
+
 fprintf('Display string [%s]', num2str(1.1));
+
+Display string [1.1]
+
 fprintf('Display string [%s]', 'abc');
+
+Display string [abc]
 \end{verbatim}
 
 \hypertarget{map-containers}{%
@@ -3795,8 +3937,93 @@ if (bl_time); toc; end
 end
 \end{verbatim}
 
-\hypertarget{panel}{%
-\chapter{Panel}\label{panel}}
+\hypertarget{anonymous-functions}{%
+\section{Anonymous Functions}\label{anonymous-functions}}
+
+\hypertarget{anonymous-function-in-matlab}{%
+\subsection{Anonymous Function in Matlab}\label{anonymous-function-in-matlab}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{define-a-wage-equation-with-partial-income-for-part-time-workss}{%
+\subsubsection{Define a Wage Equation with Partial Income for Part-time Workss}\label{define-a-wage-equation-with-partial-income-for-part-time-workss}}
+
+Individuals might work part or full time. Define a mincer wage equation
+that is a function of experienc, education and other individual
+characteristics.
+
+First define parameters.
+
+\begin{verbatim}
+% Experience
+COEF_beta_psi_0 = 1.8884;
+COEF_beta_psi_k = 0.0767;
+COEF_beta_psi_kk = -0.2683;
+% Education
+COEF_beta_psi_e0 = 0.0465;
+COEF_beta_w_e_1 = 0.1432;
+COEF_beta_w_e_2 = 0.1435;
+COEF_beta_w_e_3 = 0.2806;
+% for part time
+COEF_beta_w_part_0 = -0.0082;
+COEF_beta_w_part_1 = -0.4863;
+\end{verbatim}
+
+Second define the log wage equation. This wage equation is a function of
+the parameters defined above, and also Education (ED), experience (EX)
+and the wage shcok (EPS\_w).
+
+\begin{verbatim}
+% Log of wage
+f_log_psi = @(ED, EX) ...
+    COEF_beta_psi_0 ...
+    + COEF_beta_psi_k.*EX ...
+    + COEF_beta_psi_kk.*(EX.^2/100) ...
+    + COEF_beta_psi_e0.*(ED - 12) ...
+    + COEF_beta_w_e_1.*(ED == 12) ...
+    + COEF_beta_w_e_2.*(ED > 12).*(ED < 16) ...
+    + COEF_beta_w_e_3.*(ED >= 16);
+\end{verbatim}
+
+Third, define wage, which might differ depending on work status as well
+as schooling status. D\_e is schooling or not, which can take values of 0
+or 1. D\_k is work status, which can take values or 0, 0.5 (part-time
+work) and 1 (full-time work).
+
+\begin{verbatim}
+% Per hour wage considering part time, part time wage differ if also schooling
+f_hr_wage = @(D_e, D_k, ED, EX) ...
+    exp(f_log_psi(ED, EX)).*exp((D_k==0.5).*(COEF_beta_w_part_0 + COEF_beta_w_part_1.*D_e));
+% Total wage
+f_wage = @(D_e, D_k, ED, EX) ...
+    f_hr_wage(D_e, D_k, ED, EX).*(2080.*(D_k == 1) + 1040.*(D_k == 0.5) + 0.*(D_k == 0));
+\end{verbatim}
+
+Fourth, test the wage equation by calling it with different work and
+schooling choices, along with different education, experience, and shock
+levels.
+
+\begin{verbatim}
+% no experience, education, not school, not work
+disp(['f_wage(0,0,0,0,0)=' num2str(f_wage(0,0,0,0))]);
+
+f_wage(0,0,0,0,0)=0
+
+% no experience, education, part-time
+disp(['f_wage(0,0.5,0,0,0)=' num2str(f_wage(0,0.5,0,0))]);
+
+f_wage(0,0.5,0,0,0)=3901.7326
+
+% no experience, education, full-time
+disp(['f_wage(0,1,0,0,0)=' num2str(f_wage(0,1,0,0))]);
+
+f_wage(0,1,0,0,0)=7867.7167
+\end{verbatim}
+
+\hypertarget{distributional-processes}{%
+\chapter{Distributional Processes}\label{distributional-processes}}
 
 \hypertarget{time-series}{%
 \section{Time Series}\label{time-series}}
@@ -4111,6 +4338,231 @@ xxx tb_outcomes: all stats xxx
     {'fracByP75'        }      0.73265        0.51224
     {'fracByP90'        }      0.89045        0.73747
     {'fracByP99'        }      0.98852        0.95275
+\end{verbatim}
+
+\hypertarget{cross-sectional-data}{%
+\section{Cross-sectional Data}\label{cross-sectional-data}}
+
+\hypertarget{matlab-mincer-wage-earnings-equation-with-experience-education-and-gamma-shocks}{%
+\subsection{Matlab Mincer Wage Earnings Equation with Experience, Education and Gamma Shocks}\label{matlab-mincer-wage-earnings-equation-with-experience-education-and-gamma-shocks}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{define-a-wage-equation-with-partial-income-for-part-time-workss-1}{%
+\subsubsection{Define a Wage Equation with Partial Income for Part-time Workss}\label{define-a-wage-equation-with-partial-income-for-part-time-workss-1}}
+
+Individuals might work part or full time. Define a mincer wage equation
+that is a function of experienc, education and other individual
+characteristics. This is partly based on the wage equation from \href{https://www.sciencedirect.com/science/article/abs/pii/S1094202517300029}{Hai and
+Heckman
+(2017)}. \citep{HaiHeckman2017}
+
+First define parameters.
+
+\begin{verbatim}
+% cognitive and non-cognitive latent types
+theta_cogntv = 0.1;
+theta_noncog = 0.1;
+% parameters mapping latent types to wage
+COEF_alpha_cog_wage_hsh = 0.0529;
+COEF_alpha_cog_wage_clg = 0.0529;
+COEF_alpha_cog_wage_grd = 0.1433;
+COEF_alpha_ncg_wage_hsh = 0.0275;
+COEF_alpha_ncg_wage_clg = 0.0512;
+COEF_alpha_ncg_wage_grd = 0.0892;
+% Experience
+COEF_beta_psi_0 = 1.8884;
+COEF_beta_psi_k = 0.0767;
+COEF_beta_psi_kk = -0.2683;
+% Education
+COEF_beta_psi_e0 = 0.0465;
+COEF_beta_w_e_1 = 0.1432;
+COEF_beta_w_e_2 = 0.1435;
+COEF_beta_w_e_3 = 0.2806;
+% for part time
+COEF_beta_w_part_0 = -0.0082;
+COEF_beta_w_part_1 = -0.4863;
+\end{verbatim}
+
+Second define the log wage equation. This wage equation is a function of
+the parameters defined above, and also Education (ED), experience (EX)
+and the wage shcok (EPS\_w).
+
+\begin{verbatim}
+% Log of wage
+f_log_psi = @(ED, EX, EPS_w) ...
+    ((COEF_alpha_cog_wage_hsh.*theta_cogntv + COEF_alpha_ncg_wage_hsh.*theta_noncog).*(ED < 12) ...
+    + (COEF_alpha_cog_wage_clg.*theta_cogntv + COEF_alpha_ncg_wage_clg.*theta_noncog).*(ED >= 12).*(ED < 16) ...
+    + (COEF_alpha_cog_wage_grd.*theta_cogntv + COEF_alpha_ncg_wage_grd.*theta_noncog).*(ED >= 16) ...
+    + COEF_beta_psi_0 ...
+    + COEF_beta_psi_k.*EX ...
+    + COEF_beta_psi_kk.*(EX.^2/100) ...
+    + COEF_beta_psi_e0.*(ED - 12) ...
+    + COEF_beta_w_e_1.*(ED == 12) ...
+    + COEF_beta_w_e_2.*(ED > 12).*(ED < 16) ...
+    + COEF_beta_w_e_3.*(ED >= 16) ...
+    + EPS_w);
+\end{verbatim}
+
+Third, define wage, which might differ depending on work status as well
+as schooling status. D\_e is schooling or not, which can take values of 0
+or 1. D\_k is work status, which can take values or 0, 0.5 (part-time
+work) and 1 (full-time work).
+
+\begin{verbatim}
+% Per hour wage considering part time, part time wage differ if also schooling
+f_hr_wage = @(D_e, D_k, ED, EX, EPS_w) ...
+    exp(f_log_psi(ED, EX, EPS_w)).*exp((D_k==0.5).*(COEF_beta_w_part_0 + COEF_beta_w_part_1.*D_e));
+% Total wage
+f_wage = @(D_e, D_k, ED, EX, EPS_w) ...
+    f_hr_wage(D_e, D_k, ED, EX, EPS_w).*(2080.*(D_k == 1) + 1040.*(D_k == 0.5) + 0.*(D_k == 0));
+\end{verbatim}
+
+Fourth, test the wage equation by calling it with different work and
+schooling choices, along with different education, experience, and shock
+levels.
+
+\begin{verbatim}
+% no experience, education, not school, not work
+disp(['f_wage(0,0,0,0,0)=' num2str(f_wage(0,0,0,0,0))]);
+
+f_wage(0,0,0,0,0)=0
+
+% no experience, education, part-time
+disp(['f_wage(0,0.5,0,0,0)=' num2str(f_wage(0,0.5,0,0,0))]);
+
+f_wage(0,0.5,0,0,0)=3933.229
+
+% no experience, education, full-time
+disp(['f_wage(0,1,0,0,0)=' num2str(f_wage(0,1,0,0,0))]);
+
+f_wage(0,1,0,0,0)=7931.2281
+\end{verbatim}
+
+With the anonymous function defined, we can supply a vector of education
+values (as a column), and a vector of experience levles (as a row), and
+generate a matrix of wages for full-time workers, simulated at one
+particular shock level. Graph using
+\href{https://fanwangecon.github.io/MEconTools/MEconTools/doc/graph/htmlpdfm/fx_graph_grid.html}{FF\_GRAPH\_GRID}
+from \href{https://fanwangecon.github.io/MEconTools/}{MEconTools}.
+
+The graph shows that higher education corresponds to higher wages, there
+are different levels by education tiers, and there is a quadratic
+structure to experience
+
+\begin{verbatim}
+% 1 to 16 years of educations
+ar_edu = 1:1:20;
+% 1 to 20 years of experiences
+ar_exp = 1:1:20;
+% broadcast evaluate
+mt_wages = f_wage(0,1,ar_edu',ar_exp,0);
+% graph using MEconTools
+mp_support_graph = containers.Map('KeyType', 'char', 'ValueType', 'any');
+mp_support_graph('cl_st_graph_title') = {'wages(edu, exp, shk=0), exp=x, education=color'};
+mp_support_graph('cl_st_ytitle') = {'wages(edu,exp)'};
+mp_support_graph('cl_st_xtitle') = {'experience levels'};
+mp_support_graph('bl_graph_logy') = false; % do not log
+mp_support_graph('st_rowvar_name') = 'edu=';
+mp_support_graph('it_legend_select') = 10; % how many shock legends to show
+mp_support_graph('st_rounding') = '3.0f'; % format shock legend
+mp_support_graph('cl_colors') = 'copper'; % any predefined matlab colormap
+% Call function
+ff_graph_grid(mt_wages, ar_edu, ar_exp, mp_support_graph);
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_wage_equation_images/figure_0.png}
+
+Draw the shock term from gamma distribution, distribution of wages at a
+particular experience and education combination with many shocks.
+
+\begin{verbatim}
+% Gamma distribution parameters from Hai and Heckman
+% E(epsilon) = a*b, var(epsion) = a*b^2.
+a0 = 15.3558; % shape
+b0 = 0.1388; % scale
+% use gamrnd
+it_draws = 10000;
+ar_gamma_draws = gamrnd(a0, b0, [it_draws, 1]);
+% Evaluate with 12 years of education and 10 years of experience with
+% different shocks
+ar_wages_e16_x10 = f_wage(0,1,16,10,ar_gamma_draws);
+ar_wages_e12_x5 = f_wage(0,1,12,5,ar_gamma_draws);
+\end{verbatim}
+
+Draw a histogram of the wage distribution. \href{https://www.mathworks.com/help/matlab/ref/matlab.graphics.chart.primitive.histogram.html}{Multiple histograms in
+matlab}.
+
+\begin{verbatim}
+figure();
+h1 = histogram(log(ar_wages_e16_x10), 20);
+hold on;
+h2 = histogram(log(ar_wages_e12_x5), 20);
+grid on;
+h1.Normalization = 'probability';
+h2.Normalization = 'probability';
+% Put up legend.
+legend1 = sprintf('Log wage dist edu=16 and exp=10');
+legend2 = sprintf('Log wage dist edu=12 and exp=5');
+legend({legend1, legend2});
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_wage_equation_images/figure_1.png}
+
+Generate distributional statistics using
+\href{https://fanwangecon.github.io/MEconTools/MEconTools/doc/stats/htmlpdfm/fx_simu_stats.html}{FF\_SIMU\_STATS}
+from \href{https://fanwangecon.github.io/MEconTools/}{MEconTools}. Given that
+the shocks are the same, the distributional statistics in terms of gini,
+and shares of wages held by different percentiles are the same. However,
+
+\begin{verbatim}
+% Set Parameters
+mp_cl_mt_xyz_of_s = containers.Map('KeyType','char', 'ValueType','any');
+mp_cl_mt_xyz_of_s('cl_wages_e16_x10') = {ar_wages_e16_x10, zeros(1)};
+mp_cl_mt_xyz_of_s('cl_ar_wages_e12_x5') = {ar_wages_e12_x5, zeros(1)};
+mp_cl_mt_xyz_of_s('ar_st_y_name') = ["cl_wages_e16_x10", "cl_ar_wages_e12_x5"];
+% Mass
+rng(123);
+mt_f_of_s = 1/it_draws + zeros(size(ar_wages_e16_x10));
+% Call Function
+mp_cl_mt_xyz_of_s_out = ff_simu_stats(mt_f_of_s, mp_cl_mt_xyz_of_s);
+
+xxx tb_outcomes: all stats xxx
+        OriginalVariableNames        cl_wages_e16_x10    cl_ar_wages_e12_x5
+    _____________________________    ________________    __________________
+
+    {'mean'                     }       3.7009e+05           2.2035e+05
+    {'unweighted_sum'           }       3.7009e+09           2.2035e+09
+    {'sd'                       }       2.5548e+05           1.5212e+05
+    {'coefofvar'                }          0.69034              0.69034
+    {'gini'                     }          0.31929              0.31929
+    {'min'                      }            72823                43359
+    {'max'                      }       4.1108e+06           2.4476e+06
+    {'pYis0'                    }                0                    0
+    {'pYls0'                    }                0                    0
+    {'pYgr0'                    }                1                    1
+    {'pYisMINY'                 }           0.0001               0.0001
+    {'pYisMAXY'                 }           0.0001               0.0001
+    {'p1'                       }       1.0651e+05                63414
+    {'p10'                      }       1.6176e+05                96313
+    {'p25'                      }       2.1211e+05           1.2629e+05
+    {'p50'                      }       3.0077e+05           1.7908e+05
+    {'p75'                      }       4.4013e+05           2.6205e+05
+    {'p90'                      }       6.5011e+05           3.8708e+05
+    {'p99'                      }       1.3542e+06           8.0632e+05
+    {'fl_cov_cl_wages_e16_x10'  }       6.5273e+10           3.8864e+10
+    {'fl_cor_cl_wages_e16_x10'  }                1                    1
+    {'fl_cov_cl_ar_wages_e12_x5'}       3.8864e+10            2.314e+10
+    {'fl_cor_cl_ar_wages_e12_x5'}                1                    1
+    {'fracByP1'                 }         0.002641             0.002641
+    {'fracByP10'                }         0.036428             0.036428
+    {'fracByP25'                }          0.11277              0.11277
+    {'fracByP50'                }          0.28486              0.28486
+    {'fracByP75'                }           0.5298               0.5298
+    {'fracByP90'                }          0.74277              0.74277
+    {'fracByP99'                }          0.95264              0.95264
 \end{verbatim}
 
 \hypertarget{simulation}{%
@@ -6142,10 +6594,12 @@ disp(tb_model_allsimu_w_info);
     \textbf{m}: \emph{permute(mn, {[}3,1,2,4{]}) + squeeze(num2cell(mn, {[}1,2{]})) + celldisp() + ndgrid()}
   \end{itemize}
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html}{ND Array Drop NaN Elements Reshape to 2D Dataframe with Variable Values}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray_nan.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html}{\textbf{html}}
+  \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html}{ND Array Wide to Long Reshape to Table Dataframe with Variable Values for Each Dimension}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray_nan.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html}{\textbf{html}}
 
   \begin{itemize}
   \tightlist
+  \item
+    Given 2D policy function f(a,z), generate table/dataframe with a, z, and f(a,z) columns.
   \item
     There is a ND Array where each dimension is a different attribute, generate 2D dataframe with columns for attribute values and ND Array values stored as a single column.
   \item
@@ -6240,14 +6694,14 @@ disp(tb_model_allsimu_w_info);
     \textbf{m}: \emph{repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp())))}
   \end{itemize}
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{String and Numeric Array Concatenations}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{\textbf{html}}
+  \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{Convert and Cancatenate String and Numeric Array Concatenations}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{\textbf{html}}
 
   \begin{itemize}
   \tightlist
   \item
     Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.
   \item
-    Create a title string by joining rounded parameter and parameter names.
+    Create a title string by joining rounded parameter and parameter names, with decimal formatting.
   \item
     Concatenate multiple numeric arrays together with strings and format.
   \item
@@ -6342,8 +6796,26 @@ disp(tb_model_allsimu_w_info);
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{panel-links}{%
-\section{Panel links}\label{panel-links}}
+\hypertarget{section-2.2-anonymous-functionsanonymous-functions-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{anonymous-functions}{Section 2.2 Anonymous Functions} links}{Section 2.2 Anonymous Functions links}}\label{section-2.2-anonymous-functionsanonymous-functions-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_anonymous_func.html}{Anonymous Function Examples}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/fs_anonymous_func.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_anonymous_func.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_anonymous_func.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_anonymous_func.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Define a wage equation where individuals working part time earn a fraction of the full time earnings.
+  \item
+    \textbf{m}: \emph{gamrnd() + f\_x = @(x) x}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{distributional-processes-links}{%
+\section{Distributional Processes links}\label{distributional-processes-links}}
 
 \hypertarget{section-3.1-time-seriestime-series-links}{%
 \subsection{\texorpdfstring{\protect\hyperlink{time-series}{Section 3.1 Time Series} links}{Section 3.1 Time Series links}}\label{section-3.1-time-seriestime-series-links}}
@@ -6364,6 +6836,30 @@ disp(tb_model_allsimu_w_info);
     Simulate log income process with parameters estimated from Indian income data.
   \item
     \textbf{m}: \emph{normrnd() + for it\_t=1:1:length(ar\_shk) + plot(ar\_t, ar\_y)}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{section-3.2-cross-sectional-datacross-sectional-data-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{cross-sectional-data}{Section 3.2 Cross-sectional Data} links}{Section 3.2 Cross-sectional Data links}}\label{section-3.2-cross-sectional-datacross-sectional-data-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/panel/crosssection/htmlpdfm/fs_wage_equation.html}{Mincer Wage Earnings Equation with Experience, Education and Gamma Shocks}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/crosssection/fs_wage_equation.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/crosssection/htmlpdfm/fs_wage_equation.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/crosssection/htmlpdfm/fs_wage_equation.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/panel/crosssection/htmlpdfm/fs_wage_equation.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Define a wage equation where individuals working part time earn a fraction of the full time earnings.
+  \item
+    Wage at different education and experience levels.
+  \item
+    Simluate wage with an array of gamma distribution shocks.
+  \item
+    \textbf{m}: \emph{gamrnd() + f\_x = @(x) x + histogram()}
+  \item
+    \textbf{MEconTools}: \emph{ff\_graph\_grid + ff\_simu\_stats}
   \end{itemize}
 \end{enumerate}
 

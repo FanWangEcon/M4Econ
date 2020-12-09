@@ -1,8 +1,54 @@
-%% Multidimensional ND Array to 2D Matrix with Nan Exclusions
+%% Multidimensional ND Array to 2D Matrix with Wide to Long
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% 2D Matrix Wide to Long
+% There is a 2D matrix, the rows and columns are state variables (savings levels 
+% and shocks) for storage and graphing purposes, convert the 2D matrix where each 
+% row is a savings level and each column is a shock level to a 2D table where 
+% the first column records savings state, second column the level of shocks, and 
+% the third column stores the optimal policy or value at that particular combination 
+% of savings level and shock level. 
+% 
+% First, generate a random 2D matrix:
+
+% Create a 3D Array
+it_z_n = 3;
+it_a_n = 5;
+% shock savings and shock array
+ar_a = linspace(0.1, 50, it_a_n);
+ar_z = linspace(-3, 3, it_z_n);
+% function of a and z
+mt_f_a_z = ar_a' + exp(ar_z);
+% Display
+disp(mt_f_a_z);
+%% 
+% Second, from linear index to row and column index:
+
+% Row and Column index for each matrix value
+% Only keep non-NAN values
+ar_id_isnan = isnan(mt_f_a_z);
+[ar_a_idx, ar_z_idx] = ind2sub(size(mt_f_a_z), find(~ar_id_isnan));
+% Display
+disp([ar_a_idx, ar_a(ar_a_idx)', ar_z_idx, ar_z(ar_z_idx)']);
+%% 
+% Third, generate a 2d matrix in "table" format:
+
+% Index and values
+mt_policy_long = [ar_a_idx, ar_a(ar_a_idx)', ar_z_idx, ar_z(ar_z_idx)', mt_f_a_z(~ar_id_isnan)];
+% Sort by a and z
+mt_policy_long = sortrows(mt_policy_long, [1,3]);
+%% 
+% Fourth, generate a Table with Column names:
+
+% Create Table
+tb_policy_long = array2table(mt_policy_long);
+cl_col_names_a = {'a_idx', 'a_val', 'z_idx', 'z_val', 'pol_at_a_z'};
+tb_policy_long.Properties.VariableNames = cl_col_names_a;
+disp(tb_policy_long);
 %% A Multidimensional ND Array with Many NaN Values
+% Continue with the previous exercise, but now we have more than 2 state variables. 
+% 
 % Create a multidimensional Array with Many NaN Values. For example, we could 
 % have a dynamic lifecycle model with three endogenous varaibles, years of education 
 % accumulated, years of experiencesin blue and white collar jobs. By age 22, after 

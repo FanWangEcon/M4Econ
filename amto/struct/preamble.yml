@@ -1,0 +1,23 @@
+- file: fs_struct_map
+  title: "Matlab Struct of Map Container for Nested Value Retrieval"
+  titleshort: "Struct of Map Container for Nested Value Retrieval"
+  description: |
+    There is a list of parameters, use several container maps to store information about parameters, and combine them in a struct.
+    Use struct to in effect make single-line nested container map calls.
+  core :
+    - package: m
+      code: |
+        struct
+  date: 2020-12-26
+  date_start: 2020-12-26
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

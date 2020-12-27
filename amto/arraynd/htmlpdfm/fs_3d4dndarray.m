@@ -183,5 +183,4 @@ tb_rowcols_tab.Properties.VariableNames = ...
     matlab.lang.makeValidName(["group", cl_col_names_cate_dims, cl_col_names_mn, cl_col_names_sd]);
 % disp(['xxx ' st_title ' xxxxxxxxxxxxxxxxxxxxxxxxxxx']);
 disp(tb_rowcols_tab);
-%% 
-%
+%%

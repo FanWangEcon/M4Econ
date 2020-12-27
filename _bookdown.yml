@@ -24,7 +24,6 @@ rmd_files:
   - amto/arraynd/fs_3d4dndarray.Rmd
   - amto/arraynd/fs_3d4dndarray_nan.Rmd
 
-
   - amto/cell/main.Rmd
   - amto/cell/fs_cellfuns.Rmd
   - amto/cell/fs_cellscombinations.Rmd
@@ -39,9 +38,10 @@ rmd_files:
   - amto/container/main.Rmd
   - amto/container/fs_container.Rmd
   - amto/container/fs_containermap.Rmd
-  - amto/container/fs_map_anytype.Rmd
   - amto/container/fs_map_override.Rmd
 
+  - amto/struct/main.Rmd
+  - amto/struct/fs_struct_map.Rmd
 
   - function/main.Rmd
   - function/defaultparam/main.Rmd

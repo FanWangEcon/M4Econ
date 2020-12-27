@@ -107,7 +107,7 @@
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-12-09}
+\date{2020-12-26}
 
 \begin{document}
 \maketitle
@@ -125,7 +125,7 @@ This is a work-in-progress \href{https://fanwangecon.github.io/M4Econ/}{website}
 
 Bullet points in the Appendix show which matlab functions/commands are used to achieve various objectives. The goal of this repository is to make it easier to find/re-use codes produced for various projects. Some functions also rely on or correspond to functions from \href{https://github.com/FanWangEcon/MEconTools}{MEconTools} \citep{M-MEconTools}.
 
-From other repositories: For dynamic borrowing and savings problems, see \href{https://fanwangecon.github.io/CodeDynaAsset/}{Dynamic Asset Repository}; For code examples, see also \href{https://fanwangecon.github.io/R4Econ/}{R Example Code}, and \href{https://fanwangecon.github.io/Stata4Econ/}{Stata Example Code}; For intro stat with R, see \href{https://fanwangecon.github.io/Stat4Econ/}{Intro Statistics for Undergraduates}, and intro Math with Matlab, see \href{https://fanwangecon.github.io/Math4Econ/}{Intro Mathematics for Economists}. See \href{https://github.com/FanWangEcon}{here} for all of \href{https://fanwangecon.github.io/}{Fan}'s public repositories.
+From other repositories: For code examples, see \href{https://fanwangecon.github.io/Py4Econ/}{Python Example Code}, \href{https://fanwangecon.github.io/R4Econ/}{R Example Code}, and \href{https://fanwangecon.github.io/Stata4Econ/}{Stata Example Code}; For intro stat with R, see \href{https://fanwangecon.github.io/Stat4Econ/}{Intro Statistics for Undergraduates}, and intro Math with Matlab, see \href{https://fanwangecon.github.io/Math4Econ/}{Intro Mathematics for Economists}. See \href{https://github.com/FanWangEcon}{here} for all of \href{https://fanwangecon.github.io/}{Fan}'s public repositories.
 
 The site is built using \href{https://bookdown.org/}{Bookdown} \citep{R-bookdown}.
 
@@ -2540,6 +2540,54 @@ disp(tb_ev_at_gx123_all);
         3         2    0     0     0      0.39804
 \end{verbatim}
 
+\hypertarget{mesh-three-vectors-together-then-generate-a-flat-table}{%
+\subsubsection{Mesh Three Vectors Together then Generate A Flat Table}\label{mesh-three-vectors-together-then-generate-a-flat-table}}
+
+There are three parameters, quadratic of preference, height preference,
+and reference points preference. Mesh three vectors together with
+ndgrid. Then generate a flat table with the index of the parameters as
+well as the values of the parameters.
+
+\begin{verbatim}
+% Generate Arrays
+[it_quadc, it_linh, it_refh] = deal(2, 2, 2);
+ar_fl_quadc = linspace(-0.01, -0.001, it_quadc);
+ar_fl_linh = linspace(0.01, 0.05, it_linh);
+ar_fl_refh = linspace(-0.01, -0.05, it_refh);
+% ndgrid mesh together
+[mn_fl_quadc, ~] = ndgrid(ar_fl_quadc, ar_fl_linh, ar_fl_refh);
+% combine
+[ar_it_quadc_idx, ar_it_linh_idx, ar_it_refh_idx] = ind2sub(size(mn_fl_quadc), find(mn_fl_quadc));
+% Index and values
+mt_paramsmesh_long = [ar_it_quadc_idx, ar_fl_quadc(ar_it_quadc_idx)', ...
+    ar_it_linh_idx, ar_fl_linh(ar_it_linh_idx)', ...
+    ar_it_refh_idx, ar_fl_refh(ar_it_refh_idx)'];
+% Sort by a and z
+mt_paramsmesh_long = sortrows(mt_paramsmesh_long, [1,3, 5]);
+\end{verbatim}
+
+Generate a table with Column names:
+
+\begin{verbatim}
+% Create Table
+tb_paramsmesh_long = array2table(mt_paramsmesh_long);
+cl_col_names_a = {'quadc_idx', 'quadc_val', 'linh_idx', 'linh_val', 'refh_idx', 'rehfh_val'};
+tb_paramsmesh_long.Properties.VariableNames = cl_col_names_a;
+disp(tb_paramsmesh_long);
+
+    quadc_idx    quadc_val    linh_idx    linh_val    refh_idx    rehfh_val
+    _________    _________    ________    ________    ________    _________
+
+        1          -0.01         1          0.01         1          -0.01  
+        1          -0.01         1          0.01         2          -0.05  
+        1          -0.01         2          0.05         1          -0.01  
+        1          -0.01         2          0.05         2          -0.05  
+        2         -0.001         1          0.01         1          -0.01  
+        2         -0.001         1          0.01         2          -0.05  
+        2         -0.001         2          0.05         1          -0.01  
+        2         -0.001         2          0.05         2          -0.05  
+\end{verbatim}
+
 \hypertarget{cells}{%
 \section{Cells}\label{cells}}
 
@@ -2929,6 +2977,20 @@ Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon
 
 \hypertarget{string-array}{%
 \subsubsection{String Array}\label{string-array}}
+
+Empty String Array:
+
+\begin{verbatim}
+ar_st_titles = strings([3,1]);
+ar_st_titles(1) = 'Title1';
+ar_st_titles(2) = 'Title2';
+ar_st_titles(3) = 'Title3';
+disp(ar_st_titles);
+
+    "Title1"
+    "Title2"
+    "Title3"
+\end{verbatim}
 
 Three title lines, with double quotes:
 
@@ -3373,171 +3435,8 @@ Display string [abc]
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
-\hypertarget{container-integer-keys}{%
-\subsubsection{Container Integer Keys}\label{container-integer-keys}}
-
-Given some matrix, I want to store matrix column names as well as labels
-for what each row and column correspond to. Achieve this using a cell
-array of container maps. Cell dimensions correspond to the first,
-second, etc dimensions, any dimension specific information can be stored
-in this fashion.
-
-Can access information asssociated with the label value of the row
-values:
-
-\begin{verbatim}
-% Define Matrix Row and Column and additional dimension information
-cl_mp_datasetdesc = {};
-cl_mp_datasetdesc{1} = containers.Map({'dim', 'name', 'labval'}, {1, 'kids', [0,1,2,3]});
-cl_mp_datasetdesc{2} = containers.Map({'dim', 'name', 'labval'}, {2, 'age', [18,19,20]});
-% get variable labels for the first dimension (rows)
-disp([...
-    string(['dim 1 var name:' cl_mp_datasetdesc{1}('name') ]), ...
-    string(['dim 2 var name:' cl_mp_datasetdesc{2}('name') ])...
-    ]);
-
-    "dim 1 var name:kids"    "dim 2 var name:age"
-\end{verbatim}
-
-\hypertarget{is-key-in-container}{%
-\subsubsection{Is Key In Container}\label{is-key-in-container}}
-
-\begin{verbatim}
-param_map_a = containers.Map('KeyType','char', 'ValueType','any');
-param_map_a('fl_b_bd') = -3;
-param_map_a('fl_w_max') = 50;
-param_map_a('fl_kp_min') = 0;
-param_map_a('it_w_i') = 100;
-
-disp([...
-    string(['has it_w_i as key? ' num2str(isKey(param_map_a, 'it_w_i'))]), ...
-    string(['has it_w_i1 as key? ' num2str(isKey(param_map_a, 'it_w_i1'))]) ...
-    ]);
-
-    "has it_w_i as key? 1"    "has it_w_i1 as key? 0"
-\end{verbatim}
-
-\hypertarget{container-key-loop}{%
-\subsubsection{Container Key Loop}\label{container-key-loop}}
-
-Generate new container key within loop dynamically
-
-\begin{verbatim}
-param_map_a = containers.Map('KeyType', 'char', 'ValueType','any');
-
-rng(123);
-for st_cur = ["abc", "efg", "qqq"]
-
-    if (strcmp(st_cur, "abc"))
-       data = rand([1,1]);
-    elseif (strcmp(st_cur, "efg"))
-       data = 123.123;
-    elseif (strcmp(st_cur, "qqq"))
-       data = -123;
-    end
-
-    % common function
-    fl_sh_0p1pc_j = data*2 + 1;
-    fl_sh_5pc_j = data/2 - 1;
-
-    % generate map keys
-    st_key_sh_0p1pc_j = strjoin([st_cur, 'sh_0p1pc_j'], "_");
-    st_key_sh_5pc_j = strjoin([st_cur, 'sh_5pc_j'], "_");
-
-    % store
-    param_map_a(st_key_sh_0p1pc_j) = fl_sh_0p1pc_j;
-    param_map_a(st_key_sh_5pc_j) = fl_sh_5pc_j;
-
-end
-
-disp([...
-    string(['param_map_a.keys:' param_map_a.keys]), ...
-    string(['param_map_a.values:' string(param_map_a.values)]) ...
-    ]);
-
-  Columns 1 through 7
-
-    "param_map_a.keys:"    "abc_sh_0p1pc_j"    "abc_sh_5pc_j"    "efg_sh_0p1pc_j"    "efg_sh_5pc_j"    "qqq_sh_0p1pc_j"    "qqq_sh_5pc_j"
-
-  Columns 8 through 14
-
-    "param_map_a.values:"    "2.3929"    "-0.65177"    "247.246"    "60.5615"    "-245"    "-62.5"
-\end{verbatim}
-
-\hypertarget{container-map-display-key-and-values-and-subseting}{%
-\subsection{Container Map Display Key and Values and Subseting}\label{container-map-display-key-and-values-and-subseting}}
-
-\begin{quote}
-Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
-\end{quote}
-
-\hypertarget{print-keys-and-values}{%
-\subsubsection{Print Keys and Values}\label{print-keys-and-values}}
-
-Define container:
-
-\begin{verbatim}
-% Define Container
-param_map = containers.Map('KeyType','char', 'ValueType','any');
-param_map('share_unbanked_j') = 12;
-param_map('equi_r_j') = 2;
-param_map('equi_w_j') = 'abc';
-param_map('equi_P_j') = 1.2;
-\end{verbatim}
-
-Print the key and values of the container:
-
-\begin{verbatim}
-param_map_keys = keys(param_map);
-param_map_vals = values(param_map);
-for i = 1:length(param_map)
-    st_key = param_map_keys{i};
-    ob_val = param_map_vals{i};
-    st_display = strjoin(['pos =' num2str(i) '; key =' string(st_key) '; val =' string(ob_val)]);
-    disp(st_display);
-end
-
-pos = 1 ; key = equi_P_j ; val = 1.2
-pos = 2 ; key = equi_r_j ; val = 2
-pos = 3 ; key = equi_w_j ; val = abc
-pos = 4 ; key = share_unbanked_j ; val = 12
-\end{verbatim}
-
-\hypertarget{select-of-subset-of-keyvalues-from-a-container-map}{%
-\subsubsection{Select of Subset of Key/Values from a Container Map}\label{select-of-subset-of-keyvalues-from-a-container-map}}
-
-There is a larger container map, I want to create a new container map,
-that keeps a subset of the keys/values of the full container map.
-
-\begin{verbatim}
-% Original Container map
-param_map = containers.Map('KeyType','char', 'ValueType','any');
-param_map('equi_r_j') = 0.05;
-param_map('equi_w_j') = 1.05;
-param_map('equi_P_j') = 1;
-% To select a subset of keys
-ls_st_keys_select = {'equi_w_j', 'equi_P_j'};
-% Select
-param_map_subset = containers.Map(ls_st_keys_select, values(param_map, ls_st_keys_select));
-% display
-disp(param_map_subset.keys);
-
-    'equi_P_j'    'equi_w_j'
-
-disp(param_map_subset.values);
-
-    [1]    [1.0500]
-\end{verbatim}
-
-\hypertarget{generate-container-maps}{%
-\subsection{Generate Container Maps}\label{generate-container-maps}}
-
-\begin{quote}
-Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
-\end{quote}
-
-\hypertarget{generate-a-container-map-with-any-time-of-data}{%
-\subsubsection{Generate a Container map with any time of data}\label{generate-a-container-map-with-any-time-of-data}}
+\hypertarget{generate-a-container-map-with-any-type-of-data}{%
+\subsubsection{Generate a Container map with any Type of data}\label{generate-a-container-map-with-any-type-of-data}}
 
 Create a container map with float, int, string, and matrix
 
@@ -3553,11 +3452,11 @@ param_map('equi_w_j') = 'abc';
 param_map('equi_P_j') = zeros(2,3);
 disp(param_map.keys);
 
-    'equi_P_j'    'equi_r_j'    'equi_w_j'    'share_unbanked_j'
+    {'equi_P_j'}    {'equi_r_j'}    {'equi_w_j'}    {'share_unbanked_j'}
 
 disp(param_map.values);
 
-    [2x3 double]    [2]    'abc'    [12]
+    {2x3 double}    {[2]}    {'abc'}    {[12]}
 \end{verbatim}
 
 \hypertarget{access-multiple-values-of-a-container-map}{%
@@ -3624,6 +3523,223 @@ ar_colors{5} =
     0.2235    0.4157    0.6941
 \end{verbatim}
 
+\hypertarget{container-integer-keys}{%
+\subsubsection{Container Integer Keys}\label{container-integer-keys}}
+
+Given some matrix, I want to store matrix column names as well as labels
+for what each row and column correspond to. Achieve this using a cell
+array of container maps. Cell dimensions correspond to the first,
+second, etc dimensions, any dimension specific information can be stored
+in this fashion.
+
+Can access information asssociated with the label value of the row
+values:
+
+\begin{verbatim}
+% Define Matrix Row and Column and additional dimension information
+cl_mp_datasetdesc = {};
+cl_mp_datasetdesc{1} = containers.Map({'dim', 'name', 'labval'}, {1, 'kids', [0,1,2,3]});
+cl_mp_datasetdesc{2} = containers.Map({'dim', 'name', 'labval'}, {2, 'age', [18,19,20]});
+% get variable labels for the first dimension (rows)
+disp([...
+    string(['dim 1 var name:' cl_mp_datasetdesc{1}('name') ]), ...
+    string(['dim 2 var name:' cl_mp_datasetdesc{2}('name') ])...
+    ]);
+
+    "dim 1 var name:kids"    "dim 2 var name:age"
+\end{verbatim}
+
+\hypertarget{is-key-in-container}{%
+\subsubsection{Is Key In Container}\label{is-key-in-container}}
+
+\begin{verbatim}
+param_map_a = containers.Map('KeyType','char', 'ValueType','any');
+param_map_a('fl_b_bd') = -3;
+param_map_a('fl_w_max') = 50;
+param_map_a('fl_kp_min') = 0;
+param_map_a('it_w_i') = 100;
+
+disp([...
+    string(['has it_w_i as key? ' num2str(isKey(param_map_a, 'it_w_i'))]), ...
+    string(['has it_w_i1 as key? ' num2str(isKey(param_map_a, 'it_w_i1'))]) ...
+    ]);
+
+    "has it_w_i as key? 1"    "has it_w_i1 as key? 0"
+\end{verbatim}
+
+\hypertarget{container-key-loop}{%
+\subsubsection{Container Key Loop}\label{container-key-loop}}
+
+Generate new container key within loop dynamically
+
+\begin{verbatim}
+param_map_a = containers.Map('KeyType', 'char', 'ValueType','any');
+rng('default');
+rng(123);
+for st_cur = ["abc", "efg", "qqq"]
+
+    if (strcmp(st_cur, "abc"))
+       data = rand([1,1]);
+    elseif (strcmp(st_cur, "efg"))
+       data = 123.123;
+    elseif (strcmp(st_cur, "qqq"))
+       data = -123;
+    end
+
+    % common function
+    fl_sh_0p1pc_j = data*2 + 1;
+    fl_sh_5pc_j = data/2 - 1;
+
+    % generate map keys
+    st_key_sh_0p1pc_j = strjoin([st_cur, 'sh_0p1pc_j'], "_");
+    st_key_sh_5pc_j = strjoin([st_cur, 'sh_5pc_j'], "_");
+
+    % store
+    param_map_a(st_key_sh_0p1pc_j) = fl_sh_0p1pc_j;
+    param_map_a(st_key_sh_5pc_j) = fl_sh_5pc_j;
+
+end
+
+disp([...
+    string(['param_map_a.keys:' param_map_a.keys]), ...
+    string(['param_map_a.values:' string(param_map_a.values)]) ...
+    ]);
+
+  Columns 1 through 7
+
+    "param_map_a.keys:"    "abc_sh_0p1pc_j"    "abc_sh_5pc_j"    "efg_sh_0p1pc_j"    "efg_sh_5pc_j"    "qqq_sh_0p1pc_j"    "qqq_sh_5pc_j"
+
+  Columns 8 through 14
+
+    "param_map_a.values:"    "2.3929"    "-0.65177"    "247.246"    "60.5615"    "-245"    "-62.5"
+\end{verbatim}
+
+\hypertarget{container-map-display-swtich-key-and-values-and-subseting}{%
+\subsection{Container Map Display Swtich Key and Values and Subseting}\label{container-map-display-swtich-key-and-values-and-subseting}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{print-keys-and-values}{%
+\subsubsection{Print Keys and Values}\label{print-keys-and-values}}
+
+Define container:
+
+\begin{verbatim}
+% Define Container
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+param_map('share_unbanked_j') = 12;
+param_map('equi_r_j') = 2;
+param_map('equi_w_j') = 'abc';
+param_map('equi_P_j') = 1.2;
+\end{verbatim}
+
+Print the key and values of the container:
+
+\begin{verbatim}
+param_map_keys = keys(param_map);
+param_map_vals = values(param_map);
+for i = 1:length(param_map)
+    st_key = param_map_keys{i};
+    ob_val = param_map_vals{i};
+    st_display = strjoin(['pos =' num2str(i) '; key =' string(st_key) '; val =' string(ob_val)]);
+    disp(st_display);
+end
+
+pos = 1 ; key = equi_P_j ; val = 1.2
+pos = 2 ; key = equi_r_j ; val = 2
+pos = 3 ; key = equi_w_j ; val = abc
+pos = 4 ; key = share_unbanked_j ; val = 12
+\end{verbatim}
+
+\hypertarget{given-map-switch-keys-and-values}{%
+\subsubsection{Given Map Switch Keys and Values}\label{given-map-switch-keys-and-values}}
+
+Given the container map below, switch so that keys become values and
+values become keys.
+
+First, this is the map that uses strings as keys and index as values:
+
+\begin{verbatim}
+mp_param_idx = containers.Map('KeyType','char', 'ValueType','any');
+mp_param_idx('parm_sk_mean') = 1;
+mp_param_idx('parm_sk_sd') = 2;
+mp_param_idx('NPquad') = 3;
+mp_param_idx('gamma') = 4;
+mp_param_idx('HAquad') = 5;
+mp_param_idx('theta') = 6;
+\end{verbatim}
+
+Second, get the keys and the values, convert the values to string:
+
+\begin{verbatim}
+param_map_paramNames = keys(mp_param_idx);
+param_map_paramIndex_int = values(mp_param_idx);
+% convert cell of int to cell of string
+param_map_paramIndex_str = cellfun(@(idx) num2str(idx(:)), param_map_paramIndex, 'uni', 0);
+\end{verbatim}
+
+Third, generate new Map:
+
+\begin{verbatim}
+mp_idx_params = containers.Map(param_map_paramIndex_str, param_map_paramNames);
+param_map_keys = keys(mp_idx_params);
+param_map_vals = values(mp_idx_params);
+for i = 1:length(mp_idx_params)
+    st_key = param_map_keys{i};
+    ob_val = param_map_vals{i};
+    st_display = strjoin(['pos =' num2str(i) '; key =' string(st_key) '; val =' string(ob_val)]);
+    disp(st_display);
+end
+
+pos = 1 ; key = 1 ; val = parm_sk_mean
+pos = 2 ; key = 2 ; val = parm_sk_sd
+pos = 3 ; key = 3 ; val = NPquad
+pos = 4 ; key = 4 ; val = gamma
+pos = 5 ; key = 5 ; val = HAquad
+pos = 6 ; key = 6 ; val = theta
+\end{verbatim}
+
+Overall, code together shorter:
+
+\begin{verbatim}
+% Single call to convert
+mp_idx_params_oneline = containers.Map(...
+    cellfun(@(idx) num2str(idx(:)), values(mp_param_idx), 'uni', 0), ...
+    keys(mp_param_idx));
+% Check equality
+disp(['mp_idx_params_oneline==mp_idx_params:' num2str(mp_idx_params_oneline==mp_idx_params) ])
+
+mp_idx_params_oneline==mp_idx_params:0
+\end{verbatim}
+
+\hypertarget{select-of-subset-of-keyvalues-from-a-container-map}{%
+\subsubsection{Select of Subset of Key/Values from a Container Map}\label{select-of-subset-of-keyvalues-from-a-container-map}}
+
+There is a larger container map, I want to create a new container map,
+that keeps a subset of the keys/values of the full container map.
+
+\begin{verbatim}
+% Original Container map
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+param_map('equi_r_j') = 0.05;
+param_map('equi_w_j') = 1.05;
+param_map('equi_P_j') = 1;
+% To select a subset of keys
+ls_st_keys_select = {'equi_w_j', 'equi_P_j'};
+% Select
+param_map_subset = containers.Map(ls_st_keys_select, values(param_map, ls_st_keys_select));
+% display
+disp(param_map_subset.keys);
+
+    {'equi_P_j'}    {'equi_w_j'}
+
+disp(param_map_subset.values);
+
+    {[1]}    {[1.0500]}
+\end{verbatim}
+
 \hypertarget{container-map-example-overriding}{%
 \subsection{Container Map Example Overriding}\label{container-map-example-overriding}}
 
@@ -3662,6 +3778,90 @@ param_map_c.values
 
 ans = 
     {[-3]}    {[-231]}    {[77]}    {[0]}    {[100]}    {[5]}
+\end{verbatim}
+
+\hypertarget{map-structure-array}{%
+\section{Map Structure Array}\label{map-structure-array}}
+
+\hypertarget{maplab-nested-container-map-with-struct}{%
+\subsection{Maplab Nested Container Map with Struct}\label{maplab-nested-container-map-with-struct}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{a-struct-of-model-parameters-with-different-information}{%
+\subsubsection{A Struct of Model Parameters with Different Information}\label{a-struct-of-model-parameters-with-different-information}}
+
+There is a list of model parameters, there are various information we
+store for each parameter. Store each type of information in a different
+container map, and then combine them together in a struct. This is more
+flexible than generating a table, and can be called with a single line.
+This is effectively a nested container, imagine if we define for each
+parameter a map with keys indicating different types of information.
+Rather than doing that, the keys are elements of the struct, each
+key/value is in a different container.
+
+\begin{verbatim}
+% index for different parameters
+mp_param_idx = containers.Map('KeyType','char', 'ValueType','any');
+mp_param_idx('NPquad') = 3;
+mp_param_idx('gamma') = 4;
+mp_param_idx('HAquad') = 5;
+mp_param_idx('theta') = 6;
+mp_param_idx('lambda') = 7;
+mp_param_idx('msrErrProtSD') = 8;
+mp_param_idx('logProt') = 9;
+mp_param_idx('freePriceFrac') = 10;
+mp_param_idx('h_exoshk_sd') = 11;
+mp_param_idx('h_endoshk_sd') = 12;
+
+% Invert key and index
+mp_idx_params = containers.Map(...
+    cellfun(@(idx) num2str(idx(:)), values(mp_param_idx), 'uni', 0), ...
+    keys(mp_param_idx));
+
+% Exponentiation Positivity Restrictions
+mp_param_explog = containers.Map('KeyType','char', 'ValueType','any');
+mp_param_explog('NPquad') = -1;
+mp_param_explog('gamma') = 1;
+mp_param_explog('lambda') = -1;
+mp_param_explog('msrErrProtSD') = 1;
+mp_param_explog('freePriceFrac') = 1;
+mp_param_explog('h_exoshk_sd') = 1;
+mp_param_explog('h_endoshk_sd') = 1;
+
+% Create Struct
+param_struct.paramindex = mp_param_idx;
+param_struct.paramstring = mp_idx_params;
+param_struct.explog = mp_param_explog;
+\end{verbatim}
+
+Given the struct contructed, can get the index for a particular
+parameter, or the explog value in a single line call:
+
+\begin{verbatim}
+% Get values in single line
+disp(['NPquad index=' num2str(param_struct.index('NPquad')) ...
+    ', explog=' num2str(param_struct.explog('NPquad'))]);
+
+NPquad index=3, explog=-1
+\end{verbatim}
+
+Furthermore, since we have both mp\_param\_idx and mp\_idx\_params, suppose
+we only know the current index, we can use to index to find the string,
+and use the string to find the expolog value:
+
+\begin{verbatim}
+% Get the explog value for a particular index
+st_param = param_struct.paramstring('11');
+it_explog = param_struct.explog(st_param);
+% Single line call
+disp(['The explog of parameter index 11 is "' ...
+    num2str(param_struct.explog(param_struct.paramstring('11'))) ...
+    '" (param index 11 is "' st_param '")']);
+
+The explog of parameter index 11 is "1" (param index 11 is "h_exoshk_sd")
 \end{verbatim}
 
 \hypertarget{functions}{%
@@ -6723,10 +6923,14 @@ disp(tb_model_allsimu_w_info);
   \item
     Numeric container map, dynamically filled container map.
   \item
-    \textbf{m}: \emph{isKey() + strjoin() + containers.Map(`KeyType', `char', `ValueType', `any')}
+    Numeric scalar, string, matrix as values for map container.
+  \item
+    Get values for multiple keys in map.
+  \item
+    \textbf{m}: \emph{isKey() + strjoin() + containers.Map(`KeyType', `char', `ValueType', `any') + map.keys() + map.values() + values(param\_map, \{`share\_unbanked\_j', `equi\_r\_j'\})}
   \end{itemize}
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html}{Display Container Map Keys, Values and Subseting}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html}{\textbf{html}}
+  \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html}{Container Map Display Swtich Key and Values and Subseting}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html}{\textbf{html}}
 
   \begin{itemize}
   \tightlist
@@ -6735,19 +6939,9 @@ disp(tb_model_allsimu_w_info);
   \item
     Select Container map subset by keys.
   \item
-    \textbf{m}: \emph{strjoin() + keys(map) + values(map) + containers.Map(keys, values)}
-  \end{itemize}
-\item
-  \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_anytype.html}{Container Map Varied Value Type}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_map_anytype.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_anytype.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_anytype.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_anytype.html}{\textbf{html}}
-
-  \begin{itemize}
-  \tightlist
+    Generate new container map by switching the values to keys and keys to values.
   \item
-    Numeric scalar, string, matrix as values for map container.
-  \item
-    Get values for multiple keys in map.
-  \item
-    \textbf{m}: \emph{map.keys() + map.values() + values(param\_map, \{`share\_unbanked\_j', `equi\_r\_j'\})}
+    \textbf{m}: \emph{strjoin() + keys(map) + values(map) + containers.Map(keys, values) + cellfun(@(x) num2str(x(:)), num\_cell, `uni', 0);}
   \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_override.html}{Cell Override}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_map_override.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_override.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_override.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_override.html}{\textbf{html}}
@@ -6758,6 +6952,26 @@ disp(tb_model_allsimu_w_info);
     Override default map with externally fed map, update existing and add new keys.
   \item
     \textbf{m}: \emph{param\_map\_updated = {[}param\_map\_old; param\_map\_updates\_new{]}}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{section-1.6-map-structure-arraymap-structure-array-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{map-structure-array}{Section 1.6 Map Structure Array} links}{Section 1.6 Map Structure Array links}}\label{section-1.6-map-structure-arraymap-structure-array-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/amto/struct/htmlpdfm/fs_struct_map.html}{Struct of Map Container for Nested Value Retrieval}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/fs_struct_map.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/htmlpdfm/fs_struct_map.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/htmlpdfm/fs_struct_map.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/struct/htmlpdfm/fs_struct_map.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    There is a list of parameters, use several container maps to store information about parameters, and combine them in a struct.
+  \item
+    Use struct to in effect make single-line nested container map calls.
+  \item
+    \textbf{m}: \emph{struct}
   \end{itemize}
 \end{enumerate}
 

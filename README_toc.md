@@ -79,18 +79,24 @@
 
 1. [Container Map Basics](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_container.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_container.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_container.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_container.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_container.html)
 	+ Numeric container map, dynamically filled container map.
-	+ **m**: *isKey() + strjoin() + containers.Map('KeyType', 'char', 'ValueType', 'any')*
-2. [Display Container Map Keys, Values and Subseting](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html)
-	+ Loop over map, display keys and values.
-	+ Select Container map subset by keys.
-	+ **m**: *strjoin() + keys(map) + values(map) + containers.Map(keys, values)*
-3. [Container Map Varied Value Type](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_anytype.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_map_anytype.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_anytype.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_anytype.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_anytype.html)
 	+ Numeric scalar, string, matrix as values for map container.
 	+ Get values for multiple keys in map.
-	+ **m**: *map.keys() + map.values() + values(param_map, {'share_unbanked_j', 'equi_r_j'})*
-4. [Cell Override](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_override.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_map_override.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_override.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_override.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_override.html)
+	+ **m**: *isKey() + strjoin() + containers.Map('KeyType', 'char', 'ValueType', 'any') + map.keys() + map.values() + values(param_map, {'share_unbanked_j', 'equi_r_j'})*
+2. [Container Map Display Swtich Key and Values and Subseting](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html)
+	+ Loop over map, display keys and values.
+	+ Select Container map subset by keys.
+	+ Generate new container map by switching the values to keys and keys to values.
+	+ **m**: *strjoin() + keys(map) + values(map) + containers.Map(keys, values) + cellfun(@(x) num2str(x(:)), num_cell, 'uni', 0);*
+3. [Cell Override](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_override.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_map_override.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_override.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_override.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_override.html)
 	+ Override default map with externally fed map, update existing and add new keys.
 	+ **m**: *param_map_updated = [param_map_old; param_map_updates_new]*
+
+## 1.6  Map Structure Array
+
+1. [Struct of Map Container for Nested Value Retrieval](https://fanwangecon.github.io/M4Econ/amto/struct/htmlpdfm/fs_struct_map.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/fs_struct_map.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/htmlpdfm/fs_struct_map.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/htmlpdfm/fs_struct_map.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/struct/htmlpdfm/fs_struct_map.html)
+	+ There is a list of parameters, use several container maps to store information about parameters, and combine them in a struct.
+	+ Use struct to in effect make single-line nested container map calls.
+	+ **m**: *struct*
 
 # 2  Functions
 

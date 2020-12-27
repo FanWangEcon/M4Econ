@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Maplab Nested Container Map with Struct</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Maplab Nested Container Map with Struct</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/MEconTools/"><span style=' font-weight: bold;'>MEconTools</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span>A Struct of Model Parameters with Different Information</span></h2><div  class = 'S1'><span>There is a list of model parameters, there are various information we store for each parameter. Store each type of information in a different container map, and then combine them together in a struct. This is more flexible than generating a table, and can be called with a single line. This is effectively a nested container, imagine if we define for each parameter a map with keys indicating different types of information. Rather than doing that, the keys are elements of the struct, each key/value is in a different container. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% index for different parameters</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx = containers.Map(</span><span style="color: rgb(170, 4, 249);">'KeyType'</span><span>,</span><span style="color: rgb(170, 4, 249);">'char'</span><span>, </span><span style="color: rgb(170, 4, 249);">'ValueType'</span><span>,</span><span style="color: rgb(170, 4, 249);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'NPquad'</span><span>) = 3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'gamma'</span><span>) = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'HAquad'</span><span>) = 5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'theta'</span><span>) = 6;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'lambda'</span><span>) = 7;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'msrErrProtSD'</span><span>) = 8;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'logProt'</span><span>) = 9;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'freePriceFrac'</span><span>) = 10;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'h_exoshk_sd'</span><span>) = 11;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_idx(</span><span style="color: rgb(170, 4, 249);">'h_endoshk_sd'</span><span>) = 12;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Invert key and index</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_idx_params = containers.Map(</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    cellfun(@(idx) num2str(idx(:)), values(mp_param_idx), </span><span style="color: rgb(170, 4, 249);">'uni'</span><span>, 0), </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    keys(mp_param_idx));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Exponentiation Positivity Restrictions</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_explog = containers.Map(</span><span style="color: rgb(170, 4, 249);">'KeyType'</span><span>,</span><span style="color: rgb(170, 4, 249);">'char'</span><span>, </span><span style="color: rgb(170, 4, 249);">'ValueType'</span><span>,</span><span style="color: rgb(170, 4, 249);">'any'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_explog(</span><span style="color: rgb(170, 4, 249);">'NPquad'</span><span>) = -1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_explog(</span><span style="color: rgb(170, 4, 249);">'gamma'</span><span>) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_explog(</span><span style="color: rgb(170, 4, 249);">'lambda'</span><span>) = -1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_explog(</span><span style="color: rgb(170, 4, 249);">'msrErrProtSD'</span><span>) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_explog(</span><span style="color: rgb(170, 4, 249);">'freePriceFrac'</span><span>) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_explog(</span><span style="color: rgb(170, 4, 249);">'h_exoshk_sd'</span><span>) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mp_param_explog(</span><span style="color: rgb(170, 4, 249);">'h_endoshk_sd'</span><span>) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Create Struct</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_struct.paramindex = mp_param_idx;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>param_struct.paramstring = mp_idx_params;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>param_struct.explog = mp_param_explog;</span></span></div></div></div><div  class = 'S6'><span>Given the struct contructed, can get the index for a particular parameter, or the explog value in a single line call:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Get values in single line</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>disp([</span><span style="color: rgb(170, 4, 249);">'NPquad index=' </span><span>num2str(param_struct.index(</span><span style="color: rgb(170, 4, 249);">'NPquad'</span><span>)) </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(170, 4, 249);">', explog=' </span><span>num2str(param_struct.explog(</span><span style="color: rgb(170, 4, 249);">'NPquad'</span><span>))]);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="A8238646" data-testid="output_0" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">NPquad index=3, explog=-1</div></div></div></div></div><div  class = 'S6'><span>Furthermore, since we have both mp_param_idx and mp_idx_params, suppose we only know the current index, we can use to index to find the string, and use the string to find the expolog value:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Get the explog value for a particular index</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>st_param = param_struct.paramstring(</span><span style="color: rgb(170, 4, 249);">'11'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>it_explog = param_struct.explog(st_param);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Single line call</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>disp([</span><span style="color: rgb(170, 4, 249);">'The explog of parameter index 11 is "' </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    num2str(param_struct.explog(param_struct.paramstring(</span><span style="color: rgb(170, 4, 249);">'11'</span><span>))) </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(170, 4, 249);">'" (param index 11 is "' </span><span>st_param </span><span style="color: rgb(170, 4, 249);">'")'</span><span>]);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="38B1A8CF" data-testid="output_1" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">The explog of parameter index 11 is "1" (param index 11 is "h_exoshk_sd")</div></div></div></div></div><h2  class = 'S2'></h2></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Maplab Nested Container Map with Struct
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% A Struct of Model Parameters with Different Information
+% There is a list of model parameters, there are various information we store 
+% for each parameter. Store each type of information in a different container 
+% map, and then combine them together in a struct. This is more flexible than 
+% generating a table, and can be called with a single line. This is effectively 
+% a nested container, imagine if we define for each parameter a map with keys 
+% indicating different types of information. Rather than doing that, the keys 
+% are elements of the struct, each key/value is in a different container. 
+
+% index for different parameters
+mp_param_idx = containers.Map('KeyType','char', 'ValueType','any');
+mp_param_idx('NPquad') = 3;
+mp_param_idx('gamma') = 4;
+mp_param_idx('HAquad') = 5;
+mp_param_idx('theta') = 6;
+mp_param_idx('lambda') = 7;
+mp_param_idx('msrErrProtSD') = 8;
+mp_param_idx('logProt') = 9;
+mp_param_idx('freePriceFrac') = 10;
+mp_param_idx('h_exoshk_sd') = 11;
+mp_param_idx('h_endoshk_sd') = 12;
+
+% Invert key and index
+mp_idx_params = containers.Map(...
+    cellfun(@(idx) num2str(idx(:)), values(mp_param_idx), 'uni', 0), ...
+    keys(mp_param_idx));
+
+% Exponentiation Positivity Restrictions
+mp_param_explog = containers.Map('KeyType','char', 'ValueType','any');
+mp_param_explog('NPquad') = -1;
+mp_param_explog('gamma') = 1;
+mp_param_explog('lambda') = -1;
+mp_param_explog('msrErrProtSD') = 1;
+mp_param_explog('freePriceFrac') = 1;
+mp_param_explog('h_exoshk_sd') = 1;
+mp_param_explog('h_endoshk_sd') = 1;
+
+% Create Struct
+param_struct.paramindex = mp_param_idx;
+param_struct.paramstring = mp_idx_params;
+param_struct.explog = mp_param_explog;
+%% 
+% Given the struct contructed, can get the index for a particular parameter, 
+% or the explog value in a single line call:
+
+% Get values in single line
+disp(['NPquad index=' num2str(param_struct.index('NPquad')) ...
+    ', explog=' num2str(param_struct.explog('NPquad'))]);
+%% 
+% Furthermore, since we have both mp_param_idx and mp_idx_params, suppose we 
+% only know the current index, we can use to index to find the string, and use 
+% the string to find the expolog value:
+
+% Get the explog value for a particular index
+st_param = param_struct.paramstring('11');
+it_explog = param_struct.explog(st_param);
+% Single line call
+disp(['The explog of parameter index 11 is "' ...
+    num2str(param_struct.explog(param_struct.paramstring('11'))) ...
+    '" (param index 11 is "' st_param '")']);
+%%
+##### SOURCE END #####
+--></body></html>

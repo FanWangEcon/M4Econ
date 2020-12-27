@@ -27,7 +27,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-12-09" />
+<meta name="date" content="2020-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -118,9 +118,12 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.5" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.5</b> Map Containers</a>
 <ul>
 <li class="chapter" data-level="1.5.1" data-path="data-structures.html"><a href="data-structures.html#container-map-basics"><i class="fa fa-check"></i><b>1.5.1</b> Container Map Basics</a></li>
-<li class="chapter" data-level="1.5.2" data-path="data-structures.html"><a href="data-structures.html#container-map-display-key-and-values-and-subseting"><i class="fa fa-check"></i><b>1.5.2</b> Container Map Display Key and Values and Subseting</a></li>
-<li class="chapter" data-level="1.5.3" data-path="data-structures.html"><a href="data-structures.html#generate-container-maps"><i class="fa fa-check"></i><b>1.5.3</b> Generate Container Maps</a></li>
-<li class="chapter" data-level="1.5.4" data-path="data-structures.html"><a href="data-structures.html#container-map-example-overriding"><i class="fa fa-check"></i><b>1.5.4</b> Container Map Example Overriding</a></li>
+<li class="chapter" data-level="1.5.2" data-path="data-structures.html"><a href="data-structures.html#container-map-display-swtich-key-and-values-and-subseting"><i class="fa fa-check"></i><b>1.5.2</b> Container Map Display Swtich Key and Values and Subseting</a></li>
+<li class="chapter" data-level="1.5.3" data-path="data-structures.html"><a href="data-structures.html#container-map-example-overriding"><i class="fa fa-check"></i><b>1.5.3</b> Container Map Example Overriding</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="data-structures.html"><a href="data-structures.html#map-structure-array"><i class="fa fa-check"></i><b>1.6</b> Map Structure Array</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="data-structures.html"><a href="data-structures.html#maplab-nested-container-map-with-struct"><i class="fa fa-check"></i><b>1.6.1</b> Maplab Nested Container Map with Struct</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
@@ -198,6 +201,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.1.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.3-cellscells-links"><i class="fa fa-check"></i><b>A.1.3</b> <span>Section 1.3 Cells</span> links</a></li>
 <li class="chapter" data-level="A.1.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.4-characters-and-stringscharacters-and-strings-links"><i class="fa fa-check"></i><b>A.1.4</b> <span>Section 1.4 Characters and Strings</span> links</a></li>
 <li class="chapter" data-level="A.1.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.5-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.5</b> <span>Section 1.5 Map Containers</span> links</a></li>
+<li class="chapter" data-level="A.1.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.6-map-structure-arraymap-structure-array-links"><i class="fa fa-check"></i><b>A.1.6</b> <span>Section 1.6 Map Structure Array</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
 <ul>
@@ -372,24 +376,32 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li><a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_container.html">Container Map Basics</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_container.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_container.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_container.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_container.html"><strong>html</strong></a>
 <ul>
 <li>Numeric container map, dynamically filled container map.</li>
-<li><strong>m</strong>: <em>isKey() + strjoin() + containers.Map(‘KeyType,’ ‘char,’ ‘ValueType,’ ‘any’)</em></li>
+<li>Numeric scalar, string, matrix as values for map container.</li>
+<li>Get values for multiple keys in map.</li>
+<li><strong>m</strong>: <em>isKey() + strjoin() + containers.Map(‘KeyType,’ ‘char,’ ‘ValueType,’ ‘any’) + map.keys() + map.values() + values(param_map, {‘share_unbanked_j,’ ‘equi_r_j’})</em></li>
 </ul></li>
-<li><a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html">Display Container Map Keys, Values and Subseting</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html">Container Map Display Swtich Key and Values and Subseting</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html"><strong>html</strong></a>
 <ul>
 <li>Loop over map, display keys and values.</li>
 <li>Select Container map subset by keys.</li>
-<li><strong>m</strong>: <em>strjoin() + keys(map) + values(map) + containers.Map(keys, values)</em></li>
-</ul></li>
-<li><a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_anytype.html">Container Map Varied Value Type</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_map_anytype.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_anytype.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_anytype.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_anytype.html"><strong>html</strong></a>
-<ul>
-<li>Numeric scalar, string, matrix as values for map container.</li>
-<li>Get values for multiple keys in map.</li>
-<li><strong>m</strong>: <em>map.keys() + map.values() + values(param_map, {‘share_unbanked_j,’ ‘equi_r_j’})</em></li>
+<li>Generate new container map by switching the values to keys and keys to values.</li>
+<li><strong>m</strong>: <em>strjoin() + keys(map) + values(map) + containers.Map(keys, values) + cellfun(@(x) num2str(x(:)), num_cell, ‘uni,’ 0);</em></li>
 </ul></li>
 <li><a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_override.html">Cell Override</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_map_override.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_override.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_map_override.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_map_override.html"><strong>html</strong></a>
 <ul>
 <li>Override default map with externally fed map, update existing and add new keys.</li>
 <li><strong>m</strong>: <em>param_map_updated = [param_map_old; param_map_updates_new]</em></li>
+</ul></li>
+</ol>
+</div>
+<div id="section-1.6-map-structure-arraymap-structure-array-links" class="section level3" number="7.1.6">
+<h3><span class="header-section-number">A.1.6</span> <a href="data-structures.html#map-structure-array">Section 1.6 Map Structure Array</a> links</h3>
+<ol style="list-style-type: decimal">
+<li><a href="https://fanwangecon.github.io/M4Econ/amto/struct/htmlpdfm/fs_struct_map.html">Struct of Map Container for Nested Value Retrieval</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/fs_struct_map.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/htmlpdfm/fs_struct_map.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/struct/htmlpdfm/fs_struct_map.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/struct/htmlpdfm/fs_struct_map.html"><strong>html</strong></a>
+<ul>
+<li>There is a list of parameters, use several container maps to store information about parameters, and combine them in a struct.</li>
+<li>Use struct to in effect make single-line nested container map calls.</li>
+<li><strong>m</strong>: <em>struct</em></li>
 </ul></li>
 </ol>
 </div>

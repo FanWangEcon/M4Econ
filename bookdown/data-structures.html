@@ -27,7 +27,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-12-09" />
+<meta name="date" content="2020-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -118,9 +118,12 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.5" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.5</b> Map Containers</a>
 <ul>
 <li class="chapter" data-level="1.5.1" data-path="data-structures.html"><a href="data-structures.html#container-map-basics"><i class="fa fa-check"></i><b>1.5.1</b> Container Map Basics</a></li>
-<li class="chapter" data-level="1.5.2" data-path="data-structures.html"><a href="data-structures.html#container-map-display-key-and-values-and-subseting"><i class="fa fa-check"></i><b>1.5.2</b> Container Map Display Key and Values and Subseting</a></li>
-<li class="chapter" data-level="1.5.3" data-path="data-structures.html"><a href="data-structures.html#generate-container-maps"><i class="fa fa-check"></i><b>1.5.3</b> Generate Container Maps</a></li>
-<li class="chapter" data-level="1.5.4" data-path="data-structures.html"><a href="data-structures.html#container-map-example-overriding"><i class="fa fa-check"></i><b>1.5.4</b> Container Map Example Overriding</a></li>
+<li class="chapter" data-level="1.5.2" data-path="data-structures.html"><a href="data-structures.html#container-map-display-swtich-key-and-values-and-subseting"><i class="fa fa-check"></i><b>1.5.2</b> Container Map Display Swtich Key and Values and Subseting</a></li>
+<li class="chapter" data-level="1.5.3" data-path="data-structures.html"><a href="data-structures.html#container-map-example-overriding"><i class="fa fa-check"></i><b>1.5.3</b> Container Map Example Overriding</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="data-structures.html"><a href="data-structures.html#map-structure-array"><i class="fa fa-check"></i><b>1.6</b> Map Structure Array</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="data-structures.html"><a href="data-structures.html#maplab-nested-container-map-with-struct"><i class="fa fa-check"></i><b>1.6.1</b> Maplab Nested Container Map with Struct</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
@@ -198,6 +201,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.1.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.3-cellscells-links"><i class="fa fa-check"></i><b>A.1.3</b> <span>Section 1.3 Cells</span> links</a></li>
 <li class="chapter" data-level="A.1.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.4-characters-and-stringscharacters-and-strings-links"><i class="fa fa-check"></i><b>A.1.4</b> <span>Section 1.4 Characters and Strings</span> links</a></li>
 <li class="chapter" data-level="A.1.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.5-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.5</b> <span>Section 1.5 Map Containers</span> links</a></li>
+<li class="chapter" data-level="A.1.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.6-map-structure-arraymap-structure-array-links"><i class="fa fa-check"></i><b>A.1.6</b> <span>Section 1.6 Map Structure Array</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
 <ul>
@@ -2407,6 +2411,46 @@ disp(tb_ev_at_gx123_all);
         3         1    0     1     0      0.43857
         3         1    1     0     0     0.059678
         3         2    0     0     0      0.39804</code></pre>
+</div>
+<div id="mesh-three-vectors-together-then-generate-a-flat-table" class="section level4" number="1.2.2.4">
+<h4><span class="header-section-number">1.2.2.4</span> Mesh Three Vectors Together then Generate A Flat Table</h4>
+<p>There are three parameters, quadratic of preference, height preference,
+and reference points preference. Mesh three vectors together with
+ndgrid. Then generate a flat table with the index of the parameters as
+well as the values of the parameters.</p>
+<pre><code>% Generate Arrays
+[it_quadc, it_linh, it_refh] = deal(2, 2, 2);
+ar_fl_quadc = linspace(-0.01, -0.001, it_quadc);
+ar_fl_linh = linspace(0.01, 0.05, it_linh);
+ar_fl_refh = linspace(-0.01, -0.05, it_refh);
+% ndgrid mesh together
+[mn_fl_quadc, ~] = ndgrid(ar_fl_quadc, ar_fl_linh, ar_fl_refh);
+% combine
+[ar_it_quadc_idx, ar_it_linh_idx, ar_it_refh_idx] = ind2sub(size(mn_fl_quadc), find(mn_fl_quadc));
+% Index and values
+mt_paramsmesh_long = [ar_it_quadc_idx, ar_fl_quadc(ar_it_quadc_idx)&#39;, ...
+    ar_it_linh_idx, ar_fl_linh(ar_it_linh_idx)&#39;, ...
+    ar_it_refh_idx, ar_fl_refh(ar_it_refh_idx)&#39;];
+% Sort by a and z
+mt_paramsmesh_long = sortrows(mt_paramsmesh_long, [1,3, 5]);</code></pre>
+<p>Generate a table with Column names:</p>
+<pre><code>% Create Table
+tb_paramsmesh_long = array2table(mt_paramsmesh_long);
+cl_col_names_a = {&#39;quadc_idx&#39;, &#39;quadc_val&#39;, &#39;linh_idx&#39;, &#39;linh_val&#39;, &#39;refh_idx&#39;, &#39;rehfh_val&#39;};
+tb_paramsmesh_long.Properties.VariableNames = cl_col_names_a;
+disp(tb_paramsmesh_long);
+
+    quadc_idx    quadc_val    linh_idx    linh_val    refh_idx    rehfh_val
+    _________    _________    ________    ________    ________    _________
+
+        1          -0.01         1          0.01         1          -0.01  
+        1          -0.01         1          0.01         2          -0.05  
+        1          -0.01         2          0.05         1          -0.01  
+        1          -0.01         2          0.05         2          -0.05  
+        2         -0.001         1          0.01         1          -0.01  
+        2         -0.001         1          0.01         2          -0.05  
+        2         -0.001         2          0.05         1          -0.01  
+        2         -0.001         2          0.05         2          -0.05  </code></pre>
 
 </div>
 </div>
@@ -2749,6 +2793,16 @@ continuous_differentiable_m.m</code></pre>
 </blockquote>
 <div id="string-array" class="section level4" number="1.4.2.1">
 <h4><span class="header-section-number">1.4.2.1</span> String Array</h4>
+<p>Empty String Array:</p>
+<pre><code>ar_st_titles = strings([3,1]);
+ar_st_titles(1) = &#39;Title1&#39;;
+ar_st_titles(2) = &#39;Title2&#39;;
+ar_st_titles(3) = &#39;Title3&#39;;
+disp(ar_st_titles);
+
+    &quot;Title1&quot;
+    &quot;Title2&quot;
+    &quot;Title3&quot;</code></pre>
 <p>Three title lines, with double quotes:</p>
 <pre><code>ar_st_titles = [&quot;Title1&quot;,&quot;Title2&quot;,&quot;Title3&quot;]&#39;;
 disp(ar_st_titles);
@@ -3108,147 +3162,8 @@ Display string [abc]</code></pre>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="container-integer-keys" class="section level4" number="1.5.1.1">
-<h4><span class="header-section-number">1.5.1.1</span> Container Integer Keys</h4>
-<p>Given some matrix, I want to store matrix column names as well as labels
-for what each row and column correspond to. Achieve this using a cell
-array of container maps. Cell dimensions correspond to the first,
-second, etc dimensions, any dimension specific information can be stored
-in this fashion.</p>
-<p>Can access information asssociated with the label value of the row
-values:</p>
-<pre><code>% Define Matrix Row and Column and additional dimension information
-cl_mp_datasetdesc = {};
-cl_mp_datasetdesc{1} = containers.Map({&#39;dim&#39;, &#39;name&#39;, &#39;labval&#39;}, {1, &#39;kids&#39;, [0,1,2,3]});
-cl_mp_datasetdesc{2} = containers.Map({&#39;dim&#39;, &#39;name&#39;, &#39;labval&#39;}, {2, &#39;age&#39;, [18,19,20]});
-% get variable labels for the first dimension (rows)
-disp([...
-    string([&#39;dim 1 var name:&#39; cl_mp_datasetdesc{1}(&#39;name&#39;) ]), ...
-    string([&#39;dim 2 var name:&#39; cl_mp_datasetdesc{2}(&#39;name&#39;) ])...
-    ]);
-
-    &quot;dim 1 var name:kids&quot;    &quot;dim 2 var name:age&quot;</code></pre>
-</div>
-<div id="is-key-in-container" class="section level4" number="1.5.1.2">
-<h4><span class="header-section-number">1.5.1.2</span> Is Key In Container</h4>
-<pre><code>param_map_a = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
-param_map_a(&#39;fl_b_bd&#39;) = -3;
-param_map_a(&#39;fl_w_max&#39;) = 50;
-param_map_a(&#39;fl_kp_min&#39;) = 0;
-param_map_a(&#39;it_w_i&#39;) = 100;
-
-disp([...
-    string([&#39;has it_w_i as key? &#39; num2str(isKey(param_map_a, &#39;it_w_i&#39;))]), ...
-    string([&#39;has it_w_i1 as key? &#39; num2str(isKey(param_map_a, &#39;it_w_i1&#39;))]) ...
-    ]);
-
-    &quot;has it_w_i as key? 1&quot;    &quot;has it_w_i1 as key? 0&quot;</code></pre>
-</div>
-<div id="container-key-loop" class="section level4" number="1.5.1.3">
-<h4><span class="header-section-number">1.5.1.3</span> Container Key Loop</h4>
-<p>Generate new container key within loop dynamically</p>
-<pre><code>param_map_a = containers.Map(&#39;KeyType&#39;, &#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
-
-rng(123);
-for st_cur = [&quot;abc&quot;, &quot;efg&quot;, &quot;qqq&quot;]
-
-    if (strcmp(st_cur, &quot;abc&quot;))
-       data = rand([1,1]);
-    elseif (strcmp(st_cur, &quot;efg&quot;))
-       data = 123.123;
-    elseif (strcmp(st_cur, &quot;qqq&quot;))
-       data = -123;
-    end
-
-    % common function
-    fl_sh_0p1pc_j = data*2 + 1;
-    fl_sh_5pc_j = data/2 - 1;
-
-    % generate map keys
-    st_key_sh_0p1pc_j = strjoin([st_cur, &#39;sh_0p1pc_j&#39;], &quot;_&quot;);
-    st_key_sh_5pc_j = strjoin([st_cur, &#39;sh_5pc_j&#39;], &quot;_&quot;);
-
-    % store
-    param_map_a(st_key_sh_0p1pc_j) = fl_sh_0p1pc_j;
-    param_map_a(st_key_sh_5pc_j) = fl_sh_5pc_j;
-
-end
-
-disp([...
-    string([&#39;param_map_a.keys:&#39; param_map_a.keys]), ...
-    string([&#39;param_map_a.values:&#39; string(param_map_a.values)]) ...
-    ]);
-
-  Columns 1 through 7
-
-    &quot;param_map_a.keys:&quot;    &quot;abc_sh_0p1pc_j&quot;    &quot;abc_sh_5pc_j&quot;    &quot;efg_sh_0p1pc_j&quot;    &quot;efg_sh_5pc_j&quot;    &quot;qqq_sh_0p1pc_j&quot;    &quot;qqq_sh_5pc_j&quot;
-
-  Columns 8 through 14
-
-    &quot;param_map_a.values:&quot;    &quot;2.3929&quot;    &quot;-0.65177&quot;    &quot;247.246&quot;    &quot;60.5615&quot;    &quot;-245&quot;    &quot;-62.5&quot;</code></pre>
-
-</div>
-</div>
-<div id="container-map-display-key-and-values-and-subseting" class="section level3" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> Container Map Display Key and Values and Subseting</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="print-keys-and-values" class="section level4" number="1.5.2.1">
-<h4><span class="header-section-number">1.5.2.1</span> Print Keys and Values</h4>
-<p>Define container:</p>
-<pre><code>% Define Container
-param_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
-param_map(&#39;share_unbanked_j&#39;) = 12;
-param_map(&#39;equi_r_j&#39;) = 2;
-param_map(&#39;equi_w_j&#39;) = &#39;abc&#39;;
-param_map(&#39;equi_P_j&#39;) = 1.2;</code></pre>
-<p>Print the key and values of the container:</p>
-<pre><code>param_map_keys = keys(param_map);
-param_map_vals = values(param_map);
-for i = 1:length(param_map)
-    st_key = param_map_keys{i};
-    ob_val = param_map_vals{i};
-    st_display = strjoin([&#39;pos =&#39; num2str(i) &#39;; key =&#39; string(st_key) &#39;; val =&#39; string(ob_val)]);
-    disp(st_display);
-end
-
-pos = 1 ; key = equi_P_j ; val = 1.2
-pos = 2 ; key = equi_r_j ; val = 2
-pos = 3 ; key = equi_w_j ; val = abc
-pos = 4 ; key = share_unbanked_j ; val = 12</code></pre>
-</div>
-<div id="select-of-subset-of-keyvalues-from-a-container-map" class="section level4" number="1.5.2.2">
-<h4><span class="header-section-number">1.5.2.2</span> Select of Subset of Key/Values from a Container Map</h4>
-<p>There is a larger container map, I want to create a new container map,
-that keeps a subset of the keys/values of the full container map.</p>
-<pre><code>% Original Container map
-param_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
-param_map(&#39;equi_r_j&#39;) = 0.05;
-param_map(&#39;equi_w_j&#39;) = 1.05;
-param_map(&#39;equi_P_j&#39;) = 1;
-% To select a subset of keys
-ls_st_keys_select = {&#39;equi_w_j&#39;, &#39;equi_P_j&#39;};
-% Select
-param_map_subset = containers.Map(ls_st_keys_select, values(param_map, ls_st_keys_select));
-% display
-disp(param_map_subset.keys);
-
-    &#39;equi_P_j&#39;    &#39;equi_w_j&#39;
-
-disp(param_map_subset.values);
-
-    [1]    [1.0500]</code></pre>
-
-</div>
-</div>
-<div id="generate-container-maps" class="section level3" number="1.5.3">
-<h3><span class="header-section-number">1.5.3</span> Generate Container Maps</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="generate-a-container-map-with-any-time-of-data" class="section level4" number="1.5.3.1">
-<h4><span class="header-section-number">1.5.3.1</span> Generate a Container map with any time of data</h4>
+<div id="generate-a-container-map-with-any-type-of-data" class="section level4" number="1.5.1.1">
+<h4><span class="header-section-number">1.5.1.1</span> Generate a Container map with any Type of data</h4>
 <p>Create a container map with float, int, string, and matrix</p>
 <pre><code>close all;
 clear all;
@@ -3261,14 +3176,14 @@ param_map(&#39;equi_w_j&#39;) = &#39;abc&#39;;
 param_map(&#39;equi_P_j&#39;) = zeros(2,3);
 disp(param_map.keys);
 
-    &#39;equi_P_j&#39;    &#39;equi_r_j&#39;    &#39;equi_w_j&#39;    &#39;share_unbanked_j&#39;
+    {&#39;equi_P_j&#39;}    {&#39;equi_r_j&#39;}    {&#39;equi_w_j&#39;}    {&#39;share_unbanked_j&#39;}
 
 disp(param_map.values);
 
-    [2x3 double]    [2]    &#39;abc&#39;    [12]</code></pre>
+    {2x3 double}    {[2]}    {&#39;abc&#39;}    {[12]}</code></pre>
 </div>
-<div id="access-multiple-values-of-a-container-map" class="section level4" number="1.5.3.2">
-<h4><span class="header-section-number">1.5.3.2</span> Access Multiple Values of a container map</h4>
+<div id="access-multiple-values-of-a-container-map" class="section level4" number="1.5.1.2">
+<h4><span class="header-section-number">1.5.1.2</span> Access Multiple Values of a container map</h4>
 <p>Values been accessed need to be of the same type</p>
 <pre><code>% Parameter Dealing from Map
 params_group = values(param_map, {&#39;share_unbanked_j&#39;, &#39;equi_r_j&#39;});
@@ -3322,16 +3237,192 @@ ar_colors{4} =
 ar_colors{5} =
  
     0.2235    0.4157    0.6941</code></pre>
+</div>
+<div id="container-integer-keys" class="section level4" number="1.5.1.3">
+<h4><span class="header-section-number">1.5.1.3</span> Container Integer Keys</h4>
+<p>Given some matrix, I want to store matrix column names as well as labels
+for what each row and column correspond to. Achieve this using a cell
+array of container maps. Cell dimensions correspond to the first,
+second, etc dimensions, any dimension specific information can be stored
+in this fashion.</p>
+<p>Can access information asssociated with the label value of the row
+values:</p>
+<pre><code>% Define Matrix Row and Column and additional dimension information
+cl_mp_datasetdesc = {};
+cl_mp_datasetdesc{1} = containers.Map({&#39;dim&#39;, &#39;name&#39;, &#39;labval&#39;}, {1, &#39;kids&#39;, [0,1,2,3]});
+cl_mp_datasetdesc{2} = containers.Map({&#39;dim&#39;, &#39;name&#39;, &#39;labval&#39;}, {2, &#39;age&#39;, [18,19,20]});
+% get variable labels for the first dimension (rows)
+disp([...
+    string([&#39;dim 1 var name:&#39; cl_mp_datasetdesc{1}(&#39;name&#39;) ]), ...
+    string([&#39;dim 2 var name:&#39; cl_mp_datasetdesc{2}(&#39;name&#39;) ])...
+    ]);
+
+    &quot;dim 1 var name:kids&quot;    &quot;dim 2 var name:age&quot;</code></pre>
+</div>
+<div id="is-key-in-container" class="section level4" number="1.5.1.4">
+<h4><span class="header-section-number">1.5.1.4</span> Is Key In Container</h4>
+<pre><code>param_map_a = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+param_map_a(&#39;fl_b_bd&#39;) = -3;
+param_map_a(&#39;fl_w_max&#39;) = 50;
+param_map_a(&#39;fl_kp_min&#39;) = 0;
+param_map_a(&#39;it_w_i&#39;) = 100;
+
+disp([...
+    string([&#39;has it_w_i as key? &#39; num2str(isKey(param_map_a, &#39;it_w_i&#39;))]), ...
+    string([&#39;has it_w_i1 as key? &#39; num2str(isKey(param_map_a, &#39;it_w_i1&#39;))]) ...
+    ]);
+
+    &quot;has it_w_i as key? 1&quot;    &quot;has it_w_i1 as key? 0&quot;</code></pre>
+</div>
+<div id="container-key-loop" class="section level4" number="1.5.1.5">
+<h4><span class="header-section-number">1.5.1.5</span> Container Key Loop</h4>
+<p>Generate new container key within loop dynamically</p>
+<pre><code>param_map_a = containers.Map(&#39;KeyType&#39;, &#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+rng(&#39;default&#39;);
+rng(123);
+for st_cur = [&quot;abc&quot;, &quot;efg&quot;, &quot;qqq&quot;]
+
+    if (strcmp(st_cur, &quot;abc&quot;))
+       data = rand([1,1]);
+    elseif (strcmp(st_cur, &quot;efg&quot;))
+       data = 123.123;
+    elseif (strcmp(st_cur, &quot;qqq&quot;))
+       data = -123;
+    end
+
+    % common function
+    fl_sh_0p1pc_j = data*2 + 1;
+    fl_sh_5pc_j = data/2 - 1;
+
+    % generate map keys
+    st_key_sh_0p1pc_j = strjoin([st_cur, &#39;sh_0p1pc_j&#39;], &quot;_&quot;);
+    st_key_sh_5pc_j = strjoin([st_cur, &#39;sh_5pc_j&#39;], &quot;_&quot;);
+
+    % store
+    param_map_a(st_key_sh_0p1pc_j) = fl_sh_0p1pc_j;
+    param_map_a(st_key_sh_5pc_j) = fl_sh_5pc_j;
+
+end
+
+disp([...
+    string([&#39;param_map_a.keys:&#39; param_map_a.keys]), ...
+    string([&#39;param_map_a.values:&#39; string(param_map_a.values)]) ...
+    ]);
+
+  Columns 1 through 7
+
+    &quot;param_map_a.keys:&quot;    &quot;abc_sh_0p1pc_j&quot;    &quot;abc_sh_5pc_j&quot;    &quot;efg_sh_0p1pc_j&quot;    &quot;efg_sh_5pc_j&quot;    &quot;qqq_sh_0p1pc_j&quot;    &quot;qqq_sh_5pc_j&quot;
+
+  Columns 8 through 14
+
+    &quot;param_map_a.values:&quot;    &quot;2.3929&quot;    &quot;-0.65177&quot;    &quot;247.246&quot;    &quot;60.5615&quot;    &quot;-245&quot;    &quot;-62.5&quot;</code></pre>
 
 </div>
 </div>
-<div id="container-map-example-overriding" class="section level3" number="1.5.4">
-<h3><span class="header-section-number">1.5.4</span> Container Map Example Overriding</h3>
+<div id="container-map-display-swtich-key-and-values-and-subseting" class="section level3" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Container Map Display Swtich Key and Values and Subseting</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="update-container-map" class="section level4" number="1.5.4.1">
-<h4><span class="header-section-number">1.5.4.1</span> Update Container Map</h4>
+<div id="print-keys-and-values" class="section level4" number="1.5.2.1">
+<h4><span class="header-section-number">1.5.2.1</span> Print Keys and Values</h4>
+<p>Define container:</p>
+<pre><code>% Define Container
+param_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+param_map(&#39;share_unbanked_j&#39;) = 12;
+param_map(&#39;equi_r_j&#39;) = 2;
+param_map(&#39;equi_w_j&#39;) = &#39;abc&#39;;
+param_map(&#39;equi_P_j&#39;) = 1.2;</code></pre>
+<p>Print the key and values of the container:</p>
+<pre><code>param_map_keys = keys(param_map);
+param_map_vals = values(param_map);
+for i = 1:length(param_map)
+    st_key = param_map_keys{i};
+    ob_val = param_map_vals{i};
+    st_display = strjoin([&#39;pos =&#39; num2str(i) &#39;; key =&#39; string(st_key) &#39;; val =&#39; string(ob_val)]);
+    disp(st_display);
+end
+
+pos = 1 ; key = equi_P_j ; val = 1.2
+pos = 2 ; key = equi_r_j ; val = 2
+pos = 3 ; key = equi_w_j ; val = abc
+pos = 4 ; key = share_unbanked_j ; val = 12</code></pre>
+</div>
+<div id="given-map-switch-keys-and-values" class="section level4" number="1.5.2.2">
+<h4><span class="header-section-number">1.5.2.2</span> Given Map Switch Keys and Values</h4>
+<p>Given the container map below, switch so that keys become values and
+values become keys.</p>
+<p>First, this is the map that uses strings as keys and index as values:</p>
+<pre><code>mp_param_idx = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+mp_param_idx(&#39;parm_sk_mean&#39;) = 1;
+mp_param_idx(&#39;parm_sk_sd&#39;) = 2;
+mp_param_idx(&#39;NPquad&#39;) = 3;
+mp_param_idx(&#39;gamma&#39;) = 4;
+mp_param_idx(&#39;HAquad&#39;) = 5;
+mp_param_idx(&#39;theta&#39;) = 6;</code></pre>
+<p>Second, get the keys and the values, convert the values to string:</p>
+<pre><code>param_map_paramNames = keys(mp_param_idx);
+param_map_paramIndex_int = values(mp_param_idx);
+% convert cell of int to cell of string
+param_map_paramIndex_str = cellfun(@(idx) num2str(idx(:)), param_map_paramIndex, &#39;uni&#39;, 0);</code></pre>
+<p>Third, generate new Map:</p>
+<pre><code>mp_idx_params = containers.Map(param_map_paramIndex_str, param_map_paramNames);
+param_map_keys = keys(mp_idx_params);
+param_map_vals = values(mp_idx_params);
+for i = 1:length(mp_idx_params)
+    st_key = param_map_keys{i};
+    ob_val = param_map_vals{i};
+    st_display = strjoin([&#39;pos =&#39; num2str(i) &#39;; key =&#39; string(st_key) &#39;; val =&#39; string(ob_val)]);
+    disp(st_display);
+end
+
+pos = 1 ; key = 1 ; val = parm_sk_mean
+pos = 2 ; key = 2 ; val = parm_sk_sd
+pos = 3 ; key = 3 ; val = NPquad
+pos = 4 ; key = 4 ; val = gamma
+pos = 5 ; key = 5 ; val = HAquad
+pos = 6 ; key = 6 ; val = theta</code></pre>
+<p>Overall, code together shorter:</p>
+<pre><code>% Single call to convert
+mp_idx_params_oneline = containers.Map(...
+    cellfun(@(idx) num2str(idx(:)), values(mp_param_idx), &#39;uni&#39;, 0), ...
+    keys(mp_param_idx));
+% Check equality
+disp([&#39;mp_idx_params_oneline==mp_idx_params:&#39; num2str(mp_idx_params_oneline==mp_idx_params) ])
+
+mp_idx_params_oneline==mp_idx_params:0</code></pre>
+</div>
+<div id="select-of-subset-of-keyvalues-from-a-container-map" class="section level4" number="1.5.2.3">
+<h4><span class="header-section-number">1.5.2.3</span> Select of Subset of Key/Values from a Container Map</h4>
+<p>There is a larger container map, I want to create a new container map,
+that keeps a subset of the keys/values of the full container map.</p>
+<pre><code>% Original Container map
+param_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+param_map(&#39;equi_r_j&#39;) = 0.05;
+param_map(&#39;equi_w_j&#39;) = 1.05;
+param_map(&#39;equi_P_j&#39;) = 1;
+% To select a subset of keys
+ls_st_keys_select = {&#39;equi_w_j&#39;, &#39;equi_P_j&#39;};
+% Select
+param_map_subset = containers.Map(ls_st_keys_select, values(param_map, ls_st_keys_select));
+% display
+disp(param_map_subset.keys);
+
+    {&#39;equi_P_j&#39;}    {&#39;equi_w_j&#39;}
+
+disp(param_map_subset.values);
+
+    {[1]}    {[1.0500]}</code></pre>
+
+</div>
+</div>
+<div id="container-map-example-overriding" class="section level3" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Container Map Example Overriding</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="update-container-map" class="section level4" number="1.5.3.1">
+<h4><span class="header-section-number">1.5.3.1</span> Update Container Map</h4>
 <p>There is one map with values, Container Map A. There is another
 container Map, Container Map B. Container Maps A and B share keys. For
 keys that exist in B and A, B Key value supercede values for the same
@@ -3358,6 +3449,79 @@ param_map_c.values
 
 ans = 
     {[-3]}    {[-231]}    {[77]}    {[0]}    {[100]}    {[5]}</code></pre>
+
+</div>
+</div>
+</div>
+<div id="map-structure-array" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Map Structure Array</h2>
+
+<div id="maplab-nested-container-map-with-struct" class="section level3" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Maplab Nested Container Map with Struct</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="a-struct-of-model-parameters-with-different-information" class="section level4" number="1.6.1.1">
+<h4><span class="header-section-number">1.6.1.1</span> A Struct of Model Parameters with Different Information</h4>
+<p>There is a list of model parameters, there are various information we
+store for each parameter. Store each type of information in a different
+container map, and then combine them together in a struct. This is more
+flexible than generating a table, and can be called with a single line.
+This is effectively a nested container, imagine if we define for each
+parameter a map with keys indicating different types of information.
+Rather than doing that, the keys are elements of the struct, each
+key/value is in a different container.</p>
+<pre><code>% index for different parameters
+mp_param_idx = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+mp_param_idx(&#39;NPquad&#39;) = 3;
+mp_param_idx(&#39;gamma&#39;) = 4;
+mp_param_idx(&#39;HAquad&#39;) = 5;
+mp_param_idx(&#39;theta&#39;) = 6;
+mp_param_idx(&#39;lambda&#39;) = 7;
+mp_param_idx(&#39;msrErrProtSD&#39;) = 8;
+mp_param_idx(&#39;logProt&#39;) = 9;
+mp_param_idx(&#39;freePriceFrac&#39;) = 10;
+mp_param_idx(&#39;h_exoshk_sd&#39;) = 11;
+mp_param_idx(&#39;h_endoshk_sd&#39;) = 12;
+
+% Invert key and index
+mp_idx_params = containers.Map(...
+    cellfun(@(idx) num2str(idx(:)), values(mp_param_idx), &#39;uni&#39;, 0), ...
+    keys(mp_param_idx));
+
+% Exponentiation Positivity Restrictions
+mp_param_explog = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+mp_param_explog(&#39;NPquad&#39;) = -1;
+mp_param_explog(&#39;gamma&#39;) = 1;
+mp_param_explog(&#39;lambda&#39;) = -1;
+mp_param_explog(&#39;msrErrProtSD&#39;) = 1;
+mp_param_explog(&#39;freePriceFrac&#39;) = 1;
+mp_param_explog(&#39;h_exoshk_sd&#39;) = 1;
+mp_param_explog(&#39;h_endoshk_sd&#39;) = 1;
+
+% Create Struct
+param_struct.paramindex = mp_param_idx;
+param_struct.paramstring = mp_idx_params;
+param_struct.explog = mp_param_explog;</code></pre>
+<p>Given the struct contructed, can get the index for a particular
+parameter, or the explog value in a single line call:</p>
+<pre><code>% Get values in single line
+disp([&#39;NPquad index=&#39; num2str(param_struct.index(&#39;NPquad&#39;)) ...
+    &#39;, explog=&#39; num2str(param_struct.explog(&#39;NPquad&#39;))]);
+
+NPquad index=3, explog=-1</code></pre>
+<p>Furthermore, since we have both mp_param_idx and mp_idx_params, suppose
+we only know the current index, we can use to index to find the string,
+and use the string to find the expolog value:</p>
+<pre><code>% Get the explog value for a particular index
+st_param = param_struct.paramstring(&#39;11&#39;);
+it_explog = param_struct.explog(st_param);
+% Single line call
+disp([&#39;The explog of parameter index 11 is &quot;&#39; ...
+    num2str(param_struct.explog(param_struct.paramstring(&#39;11&#39;))) ...
+    &#39;&quot; (param index 11 is &quot;&#39; st_param &#39;&quot;)&#39;]);
+
+The explog of parameter index 11 is &quot;1&quot; (param index 11 is &quot;h_exoshk_sd&quot;)</code></pre>
 
 </div>
 </div>

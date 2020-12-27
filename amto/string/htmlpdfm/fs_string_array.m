@@ -3,6 +3,14 @@
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
 %% String Array
+% Empty String Array:
+
+ar_st_titles = strings([3,1]);
+ar_st_titles(1) = 'Title1';
+ar_st_titles(2) = 'Title2';
+ar_st_titles(3) = 'Title3';
+disp(ar_st_titles);
+%% 
 % Three title lines, with double quotes:
 
 ar_st_titles = ["Title1","Title2","Title3"]';

@@ -3,12 +3,17 @@
   titleshort: "Container Map Basics"
   description: |
     Numeric container map, dynamically filled container map.
+    Numeric scalar, string, matrix as values for map container.
+    Get values for multiple keys in map.
   core :
     - package: m
       code: |
         isKey()
         strjoin()
         containers.Map('KeyType', 'char', 'ValueType', 'any')
+        map.keys()
+        map.values()
+        values(param_map, {'share_unbanked_j', 'equi_r_j'})
   date: 2020-06-07
   date_start: 2020-06-07
   output:
@@ -24,11 +29,12 @@
   urlcolor: blue
 
 - file: fs_containermap
-  title: "Matlab Display Container Map Key and Values and Subseting"
-  titleshort: "Display Container Map Keys, Values and Subseting"
+  title: "Matlab Container Map Display Swtich Key and Values and Subseting"
+  titleshort: "Container Map Display Swtich Key and Values and Subseting"
   description: |
     Loop over map, display keys and values.
     Select Container map subset by keys.
+    Generate new container map by switching the values to keys and keys to values.
   core :
     - package: m
       code: |
@@ -36,34 +42,9 @@
         keys(map)
         values(map)
         containers.Map(keys, values)
+        cellfun(@(x) num2str(x(:)), num_cell, 'uni', 0);
   date: 2020-06-30
-  date_start: 2020-06-07
-  output:
-    pdf_document:
-      pandoc_args: '../../_output_kniti_pdf.yaml'
-      includes:
-        in_header: '../../preamble.tex'
-    html_document:
-      pandoc_args: '../../_output_kniti_html.yaml'
-      includes:
-        in_header: '../../hdga.html'
-  always_allow_html: true
-  urlcolor: blue
-
-- file: fs_map_anytype
-  title: "Matlab Container Map Varied Value Type"
-  titleshort: "Container Map Varied Value Type"
-  description: |
-    Numeric scalar, string, matrix as values for map container.
-    Get values for multiple keys in map.
-  core :
-    - package: m
-      code: |
-        map.keys()
-        map.values()
-        values(param_map, {'share_unbanked_j', 'equi_r_j'})
-  date: 2020-06-07
-  date_start: 2020-06-07
+  date_start: 2020-12-26
   output:
     pdf_document:
       pandoc_args: '../../_output_kniti_pdf.yaml'

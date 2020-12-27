@@ -144,3 +144,31 @@ tb_ev_at_gx123_all = array2table(mt_ev_at_gx123_all);
 cl_col_names_a = {'YRS_POST16', 'G', 'X1', 'X2', 'X3', 'EV'};
 tb_ev_at_gx123_all.Properties.VariableNames = cl_col_names_a;
 disp(tb_ev_at_gx123_all);
+%% Mesh Three Vectors Together then Generate A Flat Table
+% There are three parameters, quadratic of preference, height preference, and 
+% reference points preference. Mesh three vectors together with ndgrid. Then generate 
+% a flat table with the index of the parameters as well as the values of the parameters. 
+
+% Generate Arrays
+[it_quadc, it_linh, it_refh] = deal(2, 2, 2);
+ar_fl_quadc = linspace(-0.01, -0.001, it_quadc);
+ar_fl_linh = linspace(0.01, 0.05, it_linh);
+ar_fl_refh = linspace(-0.01, -0.05, it_refh);
+% ndgrid mesh together
+[mn_fl_quadc, ~] = ndgrid(ar_fl_quadc, ar_fl_linh, ar_fl_refh);
+% combine
+[ar_it_quadc_idx, ar_it_linh_idx, ar_it_refh_idx] = ind2sub(size(mn_fl_quadc), find(mn_fl_quadc));
+% Index and values
+mt_paramsmesh_long = [ar_it_quadc_idx, ar_fl_quadc(ar_it_quadc_idx)', ...
+    ar_it_linh_idx, ar_fl_linh(ar_it_linh_idx)', ...
+    ar_it_refh_idx, ar_fl_refh(ar_it_refh_idx)'];
+% Sort by a and z
+mt_paramsmesh_long = sortrows(mt_paramsmesh_long, [1,3, 5]);
+%% 
+% Generate a table with Column names:
+
+% Create Table
+tb_paramsmesh_long = array2table(mt_paramsmesh_long);
+cl_col_names_a = {'quadc_idx', 'quadc_val', 'linh_idx', 'linh_val', 'refh_idx', 'rehfh_val'};
+tb_paramsmesh_long.Properties.VariableNames = cl_col_names_a;
+disp(tb_paramsmesh_long);

@@ -5,7 +5,8 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin.
+Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
@@ -13,21 +14,23 @@ Simulate a model, column combine simulation parameters with multi-row simulation
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin.
+Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin.
+Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   
 
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-12-26" />
+<meta name="date" content="2020-12-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -94,13 +97,13 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.4</b> Array Broadcast and Expansion Examples</a></li>
 <li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.5</b> Grid States, Choices and Optimal Choices Example</a></li>
 <li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.6</b> Accumarray Examples</a></li>
-<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#array-draw-random-index-and-find-combinations-or-permuations"><i class="fa fa-check"></i><b>1.1.7</b> Array Draw Random Index and Find Combinations or Permuations</a></li>
-<li class="chapter" data-level="1.1.8" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.8</b> Matlab Array Basics and Miscellaneous</a></li>
+<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Array Basics and Miscellaneous</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#nd-dimensional-arrays"><i class="fa fa-check"></i><b>1.2</b> ND Dimensional Arrays</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#d-4d-nd-arrays-reshape-and-rearrange-dimensions"><i class="fa fa-check"></i><b>1.2.1</b> 3D, 4D, ND Arrays Reshape and Rearrange Dimensions</a></li>
-<li class="chapter" data-level="1.2.2" data-path="data-structures.html"><a href="data-structures.html#multidimensional-nd-array-to-2d-matrix-with-wide-to-long"><i class="fa fa-check"></i><b>1.2.2</b> Multidimensional ND Array to 2D Matrix with Wide to Long</a></li>
+<li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#joint-arrays-all-combinations-and-by-random-subset"><i class="fa fa-check"></i><b>1.2.1</b> Joint Arrays All Combinations and by Random Subset</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-structures.html"><a href="data-structures.html#d-4d-nd-arrays-reshape-and-rearrange-dimensions"><i class="fa fa-check"></i><b>1.2.2</b> 3D, 4D, ND Arrays Reshape and Rearrange Dimensions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-structures.html"><a href="data-structures.html#multidimensional-nd-array-to-2d-matrix-with-wide-to-long"><i class="fa fa-check"></i><b>1.2.3</b> Multidimensional ND Array to 2D Matrix with Wide to Long</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.3</b> Cells</a>
 <ul>
@@ -189,6 +192,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="6.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>6.2</b> Table Joining</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>6.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>6.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -252,7 +256,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <div id="header">
 <h1 class="title">Data Structures and Dynamic Optimization with Matlab</h1>
 <p class="author"><em>Fan Wang</em></p>
-<p class="date"><em>2020-12-26</em></p>
+<p class="date"><em>2020-12-27</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>

@@ -43,6 +43,7 @@
         strcmp()
         strrep()
         cel2mat(cellfun(@(m) find(strcmp())))
+        cellstr()
   date: 2020-06-14
   date_start: 2020-06-07
   output:

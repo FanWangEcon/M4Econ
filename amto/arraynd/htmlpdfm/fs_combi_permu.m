@@ -1,4 +1,4 @@
-%% All Possible Combinations of Arrays as a Table or Random Subset Mesh
+%% Joint Arrays All Combinations and by Random Subset
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*

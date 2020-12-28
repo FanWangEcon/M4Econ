@@ -11,9 +11,9 @@
 
 <meta name="author" content="Fan Wang" />
 
-<meta name="date" content="2020-06-08" />
+<meta name="date" content="2020-06-07" />
 
-<title>Matlab Table Stack and Combine Rows and Columns</title>
+<title>Matlab All Possible Combinations of Arrays as Table or Random Subset Mesh</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1865,121 +1865,339 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Matlab Table Stack and Combine Rows and Columns</h1>
+<h1 class="title toc-ignore">Matlab All Possible Combinations of Arrays as Table or Random Subset Mesh</h1>
 <h4 class="author"><a href="https://fanwangecon.github.io/">Fan Wang</a></h4>
-<h4 class="date">2020-06-08</h4>
+<h4 class="date">2020-06-07</h4>
 
 </div>
 
 
-<div id="row-and-column-combine-stack-tables-and-matrices" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Row and Column Combine Stack Tables and Matrices</h1>
+<div id="joint-arrays-all-combinations-and-by-random-subset" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Joint Arrays All Combinations and by Random Subset</h1>
 <blockquote>
-<p>Go to the <a href="https://github.com/FanWangEcon//M4Econ/blob/master/G:/repos/M4Econ/table/join//fs_tab_stack.mlx"><strong>MLX</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/G:/repos/M4Econ/table/join//htmlpdfm/fs_tab_stack.m"><strong>M</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/G:/repos/M4Econ/table/join//htmlpdfm/fs_tab_stack.pdf"><strong>PDF</strong></a>, or <a href="https://fanwangecon.github.io//M4Econ/G:/repos/M4Econ/table/join//htmlpdfm/fs_tab_stack.html"><strong>HTML</strong></a> version of this file. Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go to the <a href="https://github.com/FanWangEcon//M4Econ/blob/master/G:/repos/M4Econ/amto/arraynd//fs_combi_permu.mlx"><strong>MLX</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/G:/repos/M4Econ/amto/arraynd//htmlpdfm/fs_combi_permu.m"><strong>M</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/G:/repos/M4Econ/amto/arraynd//htmlpdfm/fs_combi_permu.pdf"><strong>PDF</strong></a>, or <a href="https://fanwangecon.github.io//M4Econ/G:/repos/M4Econ/amto/arraynd//htmlpdfm/fs_combi_permu.html"><strong>HTML</strong></a> version of this file. Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-some-tables-and-matrixes-for-combination" class="section level2" number="1.1">
-<h2 number="1.1"><span class="header-section-number">1.1</span> Generate Some Tables and Matrixes for Combination</h2>
-<pre><code>close all;
+<div id="given-several-arrays-general-all-possible-combinations" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Given Several Arrays, General all Possible Combinations</h2>
+<p>There are several parameters, might want to simulate at all possible combinations. In the example below, there are four parmeters, generate a table with all possible combinations of the four parameters.</p>
+<pre><code>%% A. Quadc linh refh and refsd parameter grids
+[it_p1, it_p2, it_p3] = deal(4, 3, 3);
+ar_p1 = linspace(-0.09, -0.02, it_p1);
+ar_p2 =  linspace( 0.020, 0.100, it_p2);
+ar_p3 =  linspace(-0.100, -0.020, it_p3);
+ar_p4 =  [0.05];
 
-% Generate Table 1
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
-number1 = &#39;123&#39;;
-number2 = &#39;456&#39;;
-mt_data_a = [ar_fl_abc1&#39; ar_fl_abc2&#39;];
+%% B. Mesh Parameters together
+% ndgrid mesh together
+[mn_p1, ~] = ndgrid(ar_p1, ar_p2, ar_p3, ar_p4);
+% combine
+[ar_p1_idx, ar_p2_idx, ar_p3_idx, ar_p4_idx] = ind2sub(size(mn_p1), find(mn_p1));
+% Index and values
+ar_p1_flat = ar_p1(ar_p1_idx)&#39;;
+ar_p2_flat = ar_p2(ar_p2_idx)&#39;;
+ar_p3_flat = ar_p3(ar_p3_idx)&#39;;
+ar_p4_flat = ar_p4(ar_p4_idx)&#39;;
+mt_paramsmesh_long = [ar_p1_idx(:), ar_p1_flat(:), ...
+    ar_p2_idx(:), ar_p2_flat(:), ...
+    ar_p3_idx(:), ar_p3_flat(:), ...
+    ar_p4_idx(:), ar_p4_flat(:)];
+% Sort by a and z
+mt_paramsmesh_long = sortrows(mt_paramsmesh_long, [1,3, 5]);
 
-tb_test_a = array2table(mt_data_a);
-cl_col_names_a = {[&#39;col&#39; num2str(number1)], [&#39;col&#39; num2str(number2)]};
-cl_row_names_a = strcat(&#39;rowA=&#39;, string((1:size(mt_data_a,1))));
+% C. Create Table
+tb_paramsmesh_long = array2table(mt_paramsmesh_long);
+cl_col_names_a = {&#39;quadc_idx&#39;, &#39;quadc_val&#39;, ...
+    &#39;linh_idx&#39;, &#39;linh_val&#39;, ...
+    &#39;refh_idx&#39;, &#39;rehfh_val&#39;, ...
+    &#39;refsd_idx&#39;, &#39;rehfsd_val&#39;};
+tb_paramsmesh_long.Properties.VariableNames = cl_col_names_a;
+% D. Display Table
+disp(tb_paramsmesh_long);
 
-tb_test_a.Properties.VariableNames = cl_col_names_a;
-tb_test_a.Properties.RowNames = cl_row_names_a;
-disp(tb_test_a);
+    quadc_idx    quadc_val    linh_idx    linh_val    refh_idx    rehfh_val    refsd_idx    rehfsd_val
+    _________    _________    ________    ________    ________    _________    _________    __________
 
-              col123    col456
-              ______    ______
-
-    rowA=1      0.4      0.4  
-    rowA=2      0.1      0.1  
-    rowA=3     0.25      0.2  
-    rowA=4      0.3      0.3  
-    rowA=5      0.4      0.4  
-
-% Generate Table 2
-rng(123);
-ar_fl_abc3 = rand(size(ar_fl_abc1));
-ar_fl_abc4 = rand(size(ar_fl_abc1));
-ar_fl_abc5 = rand(size(ar_fl_abc1));
-
-mt_data_b = [ar_fl_abc3&#39; ar_fl_abc4&#39; ar_fl_abc5&#39;];
-
-tb_test_b = array2table(mt_data_b);
-cl_col_names_b = {[&#39;col&#39; num2str(33)], [&#39;col&#39; num2str(44)], [&#39;col&#39; num2str(55)]};
-cl_row_names_b = strcat(&#39;rowB=&#39;, string((1:size(mt_data_a,1))));
-
-tb_test_b.Properties.VariableNames = cl_col_names_b;
-tb_test_b.Properties.RowNames = cl_row_names_b;
-disp(tb_test_b);
-
-               col33      col44      col55  
-              _______    _______    ________
-
-    rowB=1    0.69647    0.42311     0.34318
-    rowB=2    0.28614    0.98076     0.72905
-    rowB=3    0.22685    0.68483     0.43857
-    rowB=4    0.55131    0.48093    0.059678
-    rowB=5    0.71947    0.39212     0.39804</code></pre>
+        1            -0.09       1          0.02         1           -0.1          1           0.05   
+        1            -0.09       1          0.02         2          -0.06          1           0.05   
+        1            -0.09       1          0.02         3          -0.02          1           0.05   
+        1            -0.09       2          0.06         1           -0.1          1           0.05   
+        1            -0.09       2          0.06         2          -0.06          1           0.05   
+        1            -0.09       2          0.06         3          -0.02          1           0.05   
+        1            -0.09       3           0.1         1           -0.1          1           0.05   
+        1            -0.09       3           0.1         2          -0.06          1           0.05   
+        1            -0.09       3           0.1         3          -0.02          1           0.05   
+        2        -0.066667       1          0.02         1           -0.1          1           0.05   
+        2        -0.066667       1          0.02         2          -0.06          1           0.05   
+        2        -0.066667       1          0.02         3          -0.02          1           0.05   
+        2        -0.066667       2          0.06         1           -0.1          1           0.05   
+        2        -0.066667       2          0.06         2          -0.06          1           0.05   
+        2        -0.066667       2          0.06         3          -0.02          1           0.05   
+        2        -0.066667       3           0.1         1           -0.1          1           0.05   
+        2        -0.066667       3           0.1         2          -0.06          1           0.05   
+        2        -0.066667       3           0.1         3          -0.02          1           0.05   
+        3        -0.043333       1          0.02         1           -0.1          1           0.05   
+        3        -0.043333       1          0.02         2          -0.06          1           0.05   
+        3        -0.043333       1          0.02         3          -0.02          1           0.05   
+        3        -0.043333       2          0.06         1           -0.1          1           0.05   
+        3        -0.043333       2          0.06         2          -0.06          1           0.05   
+        3        -0.043333       2          0.06         3          -0.02          1           0.05   
+        3        -0.043333       3           0.1         1           -0.1          1           0.05   
+        3        -0.043333       3           0.1         2          -0.06          1           0.05   
+        3        -0.043333       3           0.1         3          -0.02          1           0.05   
+        4            -0.02       1          0.02         1           -0.1          1           0.05   
+        4            -0.02       1          0.02         2          -0.06          1           0.05   
+        4            -0.02       1          0.02         3          -0.02          1           0.05   
+        4            -0.02       2          0.06         1           -0.1          1           0.05   
+        4            -0.02       2          0.06         2          -0.06          1           0.05   
+        4            -0.02       2          0.06         3          -0.02          1           0.05   
+        4            -0.02       3           0.1         1           -0.1          1           0.05   
+        4            -0.02       3           0.1         2          -0.06          1           0.05   
+        4            -0.02       3           0.1         3          -0.02          1           0.05   </code></pre>
 </div>
-<div id="combine-tables-together-stack-columns" class="section level2" number="1.2">
-<h2 number="1.2"><span class="header-section-number">1.2</span> Combine Tables Together Stack Columns</h2>
-<p>Tables with the same number of rows, add more columns with named variables</p>
-<pre><code>% a and b must have the same row names
-tb_test_b_withArownames = tb_test_b;
-tb_test_b_withArownames.Properties.RowNames = tb_test_a.Properties.RowNames;
-tb_ab_col_stacked = [tb_test_a tb_test_b_withArownames];
-disp(tb_ab_col_stacked);
+<div id="matlab-draw-random-with-and-without-replacement" class="section level2" number="1.2">
+<h2 number="1.2"><span class="header-section-number">1.2</span> Matlab Draw Random with and without Replacement</h2>
+<pre><code>%Generate a matrix named foo, with limited numbers
+rng(1234);
+foo = unique((round((randn(5,1)+1)*100)));
+disp(foo);
 
-              col123    col456     col33      col44      col55  
-              ______    ______    _______    _______    ________
+     5
+    78
+   154
+   219
+   232
 
-    rowA=1      0.4      0.4      0.69647    0.42311     0.34318
-    rowA=2      0.1      0.1      0.28614    0.98076     0.72905
-    rowA=3     0.25      0.2      0.22685    0.68483     0.43857
-    rowA=4      0.3      0.3      0.55131    0.48093    0.059678
-    rowA=5      0.4      0.4      0.71947    0.39212     0.39804</code></pre>
+
+% draw 10 random samples without replacement
+index = randsample(1:length(foo), 4);
+bar_rand_noreplace = foo(index,:);
+
+% draw 1000 random samples with replacement
+index = randsample(1:length(foo), 4, true);
+bar_rand_replace = foo(index,:);
+
+% Display
+disp(table(bar_rand_noreplace, bar_rand_replace));
+
+    bar_rand_noreplace    bar_rand_replace
+    __________________    ________________
+
+             5                   78       
+            78                  154       
+           154                  219       
+           232                  219       </code></pre>
 </div>
-<div id="combine-tables-together-stack-rows" class="section level2" number="1.3">
-<h2 number="1.3"><span class="header-section-number">1.3</span> Combine Tables Together Stack Rows</h2>
-<p>Tables with the same number of columns, dd more rows variables</p>
-<pre><code>% Select only 2 columns to match table a column count
-tb_test_b_subset = tb_test_b(:,1:2);
+<div id="matrix-meshgrid-to-loop-permutated-vectors" class="section level2" number="1.3">
+<h2 number="1.3"><span class="header-section-number">1.3</span> Matrix Meshgrid to Loop Permutated Vectors</h2>
+<p>Meshgrid to generate all permutations of arrays.</p>
+<pre><code>k = linspace(1,10,10);
+kp = linspace(1,10,10);
+z = linspace(0,1,10);
+ 
+[kM kpM zM] = meshgrid(k,kp,z);
+kMVec = kM(:);
+kMpVec = kpM(:);
+zMVec = zM(:);
+ 
+outputVec = zeros(size(zMVec));
+for a=1:length(zMVec)
+     outputVec(a) = kMVec(a)+kMpVec(a)+zMVec(a);
+end
+ 
+outputTens = reshape(outputVec,size(kM));
+disp(outputTens);
 
-% Make Column Names consistent
-tb_test_b_subset.Properties.VariableNames = cl_col_names_a;
+(:,:,1) =
 
-% Reset Row Names, can not have identical row names
-tb_test_a.Properties.RowNames = strcat(&#39;row=&#39;, string((1:size(mt_data_a,1))));
-tb_test_b_subset.Properties.RowNames = ...
-    strcat(&#39;row=&#39;, string(((size(mt_data_a,1)+1):(size(mt_data_a,1)+size(tb_test_b_subset,1)))));
-% tb_test_b_subset.Properties.RowNames =
+     2     3     4     5     6     7     8     9    10    11
+     3     4     5     6     7     8     9    10    11    12
+     4     5     6     7     8     9    10    11    12    13
+     5     6     7     8     9    10    11    12    13    14
+     6     7     8     9    10    11    12    13    14    15
+     7     8     9    10    11    12    13    14    15    16
+     8     9    10    11    12    13    14    15    16    17
+     9    10    11    12    13    14    15    16    17    18
+    10    11    12    13    14    15    16    17    18    19
+    11    12    13    14    15    16    17    18    19    20
 
-% Stack Rows
-tb_ab_row_stacked = [tb_test_a; tb_test_b_subset];
-disp(tb_ab_row_stacked);
 
-              col123     col456 
-              _______    _______
+(:,:,2) =
 
-    row=1         0.4        0.4
-    row=2         0.1        0.1
-    row=3        0.25        0.2
-    row=4         0.3        0.3
-    row=5         0.4        0.4
-    row=6     0.69647    0.42311
-    row=7     0.28614    0.98076
-    row=8     0.22685    0.68483
-    row=9     0.55131    0.48093
-    row=10    0.71947    0.39212</code></pre>
+    2.1111    3.1111    4.1111    5.1111    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111
+    3.1111    4.1111    5.1111    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111
+    4.1111    5.1111    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111
+    5.1111    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111
+    6.1111    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111
+    7.1111    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111
+    8.1111    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111   17.1111
+    9.1111   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111   17.1111   18.1111
+   10.1111   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111   17.1111   18.1111   19.1111
+   11.1111   12.1111   13.1111   14.1111   15.1111   16.1111   17.1111   18.1111   19.1111   20.1111
+
+
+(:,:,3) =
+
+    2.2222    3.2222    4.2222    5.2222    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222
+    3.2222    4.2222    5.2222    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222
+    4.2222    5.2222    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222
+    5.2222    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222
+    6.2222    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222
+    7.2222    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222
+    8.2222    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222   17.2222
+    9.2222   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222   17.2222   18.2222
+   10.2222   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222   17.2222   18.2222   19.2222
+   11.2222   12.2222   13.2222   14.2222   15.2222   16.2222   17.2222   18.2222   19.2222   20.2222
+
+
+(:,:,4) =
+
+    2.3333    3.3333    4.3333    5.3333    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333
+    3.3333    4.3333    5.3333    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333
+    4.3333    5.3333    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333
+    5.3333    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333
+    6.3333    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333
+    7.3333    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333
+    8.3333    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333   17.3333
+    9.3333   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333   17.3333   18.3333
+   10.3333   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333   17.3333   18.3333   19.3333
+   11.3333   12.3333   13.3333   14.3333   15.3333   16.3333   17.3333   18.3333   19.3333   20.3333
+
+
+(:,:,5) =
+
+    2.4444    3.4444    4.4444    5.4444    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444
+    3.4444    4.4444    5.4444    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444
+    4.4444    5.4444    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444
+    5.4444    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444
+    6.4444    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444
+    7.4444    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444
+    8.4444    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444   17.4444
+    9.4444   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444   17.4444   18.4444
+   10.4444   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444   17.4444   18.4444   19.4444
+   11.4444   12.4444   13.4444   14.4444   15.4444   16.4444   17.4444   18.4444   19.4444   20.4444
+
+
+(:,:,6) =
+
+    2.5556    3.5556    4.5556    5.5556    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556
+    3.5556    4.5556    5.5556    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556
+    4.5556    5.5556    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556
+    5.5556    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556
+    6.5556    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556
+    7.5556    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556
+    8.5556    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556   17.5556
+    9.5556   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556   17.5556   18.5556
+   10.5556   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556   17.5556   18.5556   19.5556
+   11.5556   12.5556   13.5556   14.5556   15.5556   16.5556   17.5556   18.5556   19.5556   20.5556
+
+
+(:,:,7) =
+
+    2.6667    3.6667    4.6667    5.6667    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667
+    3.6667    4.6667    5.6667    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667
+    4.6667    5.6667    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667
+    5.6667    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667
+    6.6667    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667
+    7.6667    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667
+    8.6667    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667   17.6667
+    9.6667   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667   17.6667   18.6667
+   10.6667   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667   17.6667   18.6667   19.6667
+   11.6667   12.6667   13.6667   14.6667   15.6667   16.6667   17.6667   18.6667   19.6667   20.6667
+
+
+(:,:,8) =
+
+    2.7778    3.7778    4.7778    5.7778    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778
+    3.7778    4.7778    5.7778    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778
+    4.7778    5.7778    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778
+    5.7778    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778
+    6.7778    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778
+    7.7778    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778
+    8.7778    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778   17.7778
+    9.7778   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778   17.7778   18.7778
+   10.7778   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778   17.7778   18.7778   19.7778
+   11.7778   12.7778   13.7778   14.7778   15.7778   16.7778   17.7778   18.7778   19.7778   20.7778
+
+
+(:,:,9) =
+
+    2.8889    3.8889    4.8889    5.8889    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889
+    3.8889    4.8889    5.8889    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889
+    4.8889    5.8889    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889
+    5.8889    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889
+    6.8889    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889
+    7.8889    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889
+    8.8889    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889   17.8889
+    9.8889   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889   17.8889   18.8889
+   10.8889   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889   17.8889   18.8889   19.8889
+   11.8889   12.8889   13.8889   14.8889   15.8889   16.8889   17.8889   18.8889   19.8889   20.8889
+
+
+(:,:,10) =
+
+     3     4     5     6     7     8     9    10    11    12
+     4     5     6     7     8     9    10    11    12    13
+     5     6     7     8     9    10    11    12    13    14
+     6     7     8     9    10    11    12    13    14    15
+     7     8     9    10    11    12    13    14    15    16
+     8     9    10    11    12    13    14    15    16    17
+     9    10    11    12    13    14    15    16    17    18
+    10    11    12    13    14    15    16    17    18    19
+    11    12    13    14    15    16    17    18    19    20
+    12    13    14    15    16    17    18    19    20    21</code></pre>
+</div>
+<div id="given-integer-arrays-all-possible-combinations" class="section level2" number="1.4">
+<h2 number="1.4"><span class="header-section-number">1.4</span> Given Integer Arrays, All Possible Combinations</h2>
+<p>given any sizes arrays, N of them, create all possible combinations</p>
+<pre><code>ar_it_a = 1:3;
+ar_it_b = 1:2;
+ar_it_c = 2:4;
+ar_it_d = -1:-1:-2;
+ar_it_e = 0.1;
+
+cl_ar_all = {ar_it_a, ar_it_b, ar_it_c, ar_it_d, ar_it_e};
+cl_mt_all = cl_ar_all;
+[cl_mt_all{:}] = ndgrid(cl_ar_all{:});
+mt_it_allcombo = cell2mat(cellfun(@(m) m(:), cl_mt_all, &#39;uni&#39;, 0));
+
+disp(mt_it_allcombo)
+
+    1.0000    1.0000    2.0000   -1.0000    0.1000
+    2.0000    1.0000    2.0000   -1.0000    0.1000
+    3.0000    1.0000    2.0000   -1.0000    0.1000
+    1.0000    2.0000    2.0000   -1.0000    0.1000
+    2.0000    2.0000    2.0000   -1.0000    0.1000
+    3.0000    2.0000    2.0000   -1.0000    0.1000
+    1.0000    1.0000    3.0000   -1.0000    0.1000
+    2.0000    1.0000    3.0000   -1.0000    0.1000
+    3.0000    1.0000    3.0000   -1.0000    0.1000
+    1.0000    2.0000    3.0000   -1.0000    0.1000
+    2.0000    2.0000    3.0000   -1.0000    0.1000
+    3.0000    2.0000    3.0000   -1.0000    0.1000
+    1.0000    1.0000    4.0000   -1.0000    0.1000
+    2.0000    1.0000    4.0000   -1.0000    0.1000
+    3.0000    1.0000    4.0000   -1.0000    0.1000
+    1.0000    2.0000    4.0000   -1.0000    0.1000
+    2.0000    2.0000    4.0000   -1.0000    0.1000
+    3.0000    2.0000    4.0000   -1.0000    0.1000
+    1.0000    1.0000    2.0000   -2.0000    0.1000
+    2.0000    1.0000    2.0000   -2.0000    0.1000
+    3.0000    1.0000    2.0000   -2.0000    0.1000
+    1.0000    2.0000    2.0000   -2.0000    0.1000
+    2.0000    2.0000    2.0000   -2.0000    0.1000
+    3.0000    2.0000    2.0000   -2.0000    0.1000
+    1.0000    1.0000    3.0000   -2.0000    0.1000
+    2.0000    1.0000    3.0000   -2.0000    0.1000
+    3.0000    1.0000    3.0000   -2.0000    0.1000
+    1.0000    2.0000    3.0000   -2.0000    0.1000
+    2.0000    2.0000    3.0000   -2.0000    0.1000
+    3.0000    2.0000    3.0000   -2.0000    0.1000
+    1.0000    1.0000    4.0000   -2.0000    0.1000
+    2.0000    1.0000    4.0000   -2.0000    0.1000
+    3.0000    1.0000    4.0000   -2.0000    0.1000
+    1.0000    2.0000    4.0000   -2.0000    0.1000
+    2.0000    2.0000    4.0000   -2.0000    0.1000
+    3.0000    2.0000    4.0000   -2.0000    0.1000</code></pre>
 </div>
 </div>
 

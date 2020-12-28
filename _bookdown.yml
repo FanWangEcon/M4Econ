@@ -17,12 +17,13 @@ rmd_files:
   - amto/array/fs_broadcast_expand.Rmd
   - amto/array/fs_stateschoicesopti.Rmd
   - amto/array/fs_accumarray.Rmd
-  - amto/array/fs_combi_permu.Rmd
   - amto/array/fs_img.Rmd
 
   - amto/arraynd/main.Rmd
+  - amto/arraynd/fs_combi_permu.Rmd
   - amto/arraynd/fs_3d4dndarray.Rmd
   - amto/arraynd/fs_3d4dndarray_nan.Rmd
+
 
   - amto/cell/main.Rmd
   - amto/cell/fs_cellfuns.Rmd
@@ -91,6 +92,7 @@ rmd_files:
 
   - table/join/main.Rmd
   - table/join/fs_tab_stack.Rmd
+  - table/join/fs_tab_stack_simuesti.Rmd
 
 
   - README_appendix.md

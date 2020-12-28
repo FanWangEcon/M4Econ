@@ -21,6 +21,10 @@ disp(ar_st_titles);
 
 st_titles = ['Title1','Title2','Title3'];
 disp(st_titles);
+%% 
+% Convert the string array to a cell string array
+
+disp(cellstr(ar_st_titles));
 %% String Cell Array
 % Create a string array:
 

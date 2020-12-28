@@ -1,3 +1,28 @@
+- file: fs_combi_permu
+  title: "Matlab All Possible Combinations of Arrays as Table or Random Subset Mesh"
+  titleshort: "All Possible Combinations of Arrays as Table or Random Subset Mesh"
+  description: |
+    Generate a Table based on all possible combinations of several arrays.
+    Draw randomly from array, permutate arrays.
+  core :
+    - package: m
+      code: |
+        ndgrid()
+        cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))
+  date: 2020-06-07
+  date_start: 2020-06-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
 - file: fs_3d4dndarray
   title: "Matlab Group by Summarize Arrays (3D, 4D, ND) Reshape and Slice 2D"
   titleshort: "3D, 4D, ND Arrays Reshape and Summarize"

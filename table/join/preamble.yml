@@ -3,7 +3,6 @@
   titleshort: "Stack Matlab Tables"
   description: |
     Append columns to existing table. Stack tables vertically and horizontally.
-    Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
   core :
     - package: m
       code: |
@@ -13,7 +12,35 @@
         tb.Properties.VariableNames
         tb.Properties.RowNames
   date: 2020-06-08
-  date_start: 2020-06-08
+  date_start: 2020-12-27
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+
+- file: fs_tab_stack_simuesti
+  title: "Matlab Table Stack and Join Estimation and Simulation Results"
+  titleshort: "Stack and Join Estimation and Simulation Results"
+  description: |
+    Stack different tables together with varying columns via outerjoin.
+    Stack different estiamtion results together into a common table where columns show parameter names and other strings.
+    Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
+  core :
+    - package: m
+      code: |
+        array2table()
+        outerjoin()
+        addvars()
+  date: 2020-12-27
+  date_start: 2020-12-27
   output:
     pdf_document:
       pandoc_args: '../../_output_kniti_pdf.yaml'

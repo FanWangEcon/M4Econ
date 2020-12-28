@@ -26,10 +26,7 @@
 6. [Accumarray Examples](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_accumarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html)
 	+ Accumarray to sum up probabilities/values for discrete elements of arrays.
 	+ **m**: *unique() + reshape() + accumarray()*
-7. [Array Random Draws and Permutation](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_combi_permu.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html)
-	+ Draw randomly from array, permutate arrays.
-	+ **m**: *ndgrid() + cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))*
-8. [Matlab Array Miscellaneous](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
+7. [Matlab Array Miscellaneous](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
 	+ Check data/parameter types.
 	+ Compare approximately similar values.
 	+ Find imaginary elements of array.
@@ -39,11 +36,15 @@
 ][ND Dimensional Arrays
 ] links
 
-1. [3D, 4D, ND Arrays Reshape and Summarize](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html)
+1. [All Possible Combinations of Arrays as Table or Random Subset Mesh](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_combi_permu.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_combi_permu.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_combi_permu.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_combi_permu.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_combi_permu.html)
+	+ Generate a Table based on all possible combinations of several arrays.
+	+ Draw randomly from array, permutate arrays.
+	+ **m**: *ndgrid() + cell2mat(cellfun(@(m) m(:), cl_mt_all, 'uni', 0))*
+2. [3D, 4D, ND Arrays Reshape and Summarize](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html)
 	+ Slice 2D matrixes out of ND matrixes. The 2D matrix is contiguous, but can be intermediate dimensions.
 	+ Summarize a nd dimensional matrix along one or two dimensions group by various other dimensions.
 	+ **m**: *permute(mn, [3,1,2,4]) + squeeze(num2cell(mn, [1,2])) + celldisp() + ndgrid()*
-2. [ND Array Wide to Long Reshape to Table Dataframe with Variable Values for Each Dimension](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray_nan.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html)
+3. [ND Array Wide to Long Reshape to Table Dataframe with Variable Values for Each Dimension](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray_nan.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray_nan.html)
 	+ Given 2D policy function f(a,z), generate table/dataframe with a, z, and f(a,z) columns.
 	+ There is a ND Array where each dimension is a different attribute, generate 2D dataframe with columns for attribute values and ND Array values stored as a single column.
 	+ There might be many NaN values in the ND array, drop NaN values in the ND array for 2D dataframe. Find the non-NaN values along each index dimension.
@@ -80,7 +81,7 @@
 	+ String arrays and cell strings.
 	+ Duplicate strings, concatenate string, and paste strings jointly with separator.
 	+ Find string element positions, replace substrings.
-	+ **m**: *repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp())))*
+	+ **m**: *repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp()))) + cellstr()*
 3. [Convert and Cancatenate String and Numeric Array Concatenations](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html)
 	+ Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.
 	+ Create a title string by joining rounded parameter and parameter names, with decimal formatting.
@@ -245,5 +246,9 @@
 
 1. [Stack Matlab Tables](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html)
 	+ Append columns to existing table. Stack tables vertically and horizontally.
-	+ Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
 	+ **m**: *array2table() + [tb_a tb_b] + [tb_a; tb_b] + tb.Properties.VariableNames + tb.Properties.RowNames*
+2. [Stack and Join Estimation and Simulation Results](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack_simuesti.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html)
+	+ Stack different tables together with varying columns via outerjoin.
+	+ Stack different estiamtion results together into a common table where columns show parameter names and other strings.
+	+ Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
+	+ **m**: *array2table() + outerjoin() + addvars()*

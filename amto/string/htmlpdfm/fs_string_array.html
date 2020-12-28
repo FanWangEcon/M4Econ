@@ -1901,6 +1901,12 @@ disp(ar_st_titles);
 disp(st_titles);
 
 Title1Title2Title3</code></pre>
+<p>Convert the string array to a cell string array</p>
+<pre><code>disp(cellstr(ar_st_titles));
+
+    {&#39;Title1&#39;}
+    {&#39;Title2&#39;}
+    {&#39;Title3&#39;}</code></pre>
 </div>
 <div id="string-cell-array" class="section level2" number="1.2">
 <h2 number="1.2"><span class="header-section-number">1.2</span> String Cell Array</h2>
@@ -1942,13 +1948,7 @@ disp(strcat(ar_st_titles, &#39;_init&#39;));
 <pre><code>it_duplicate_n = 10;
 disp(repmat({&#39;String&#39;}, [1, it_duplicate_n]));
 
-  Columns 1 through 9
-
-    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}
-
-  Column 10
-
-    {&#39;String&#39;}</code></pre>
+    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}</code></pre>
 </div>
 <div id="string-join-to-form-single-element" class="section level2" number="1.5">
 <h2 number="1.5"><span class="header-section-number">1.5</span> String Join to form Single Element</h2>

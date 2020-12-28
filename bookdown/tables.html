@@ -5,7 +5,8 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Tables | Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin.
+Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
@@ -13,21 +14,23 @@ Simulate a model, column combine simulation parameters with multi-row simulation
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin.
+Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 6 Tables | Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Append columns to existing table. Stack tables vertically and horizontally.
+  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin.
+Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   
 
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-12-26" />
+<meta name="date" content="2020-12-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -94,13 +97,13 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.4</b> Array Broadcast and Expansion Examples</a></li>
 <li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.5</b> Grid States, Choices and Optimal Choices Example</a></li>
 <li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.6</b> Accumarray Examples</a></li>
-<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#array-draw-random-index-and-find-combinations-or-permuations"><i class="fa fa-check"></i><b>1.1.7</b> Array Draw Random Index and Find Combinations or Permuations</a></li>
-<li class="chapter" data-level="1.1.8" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.8</b> Matlab Array Basics and Miscellaneous</a></li>
+<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Array Basics and Miscellaneous</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#nd-dimensional-arrays"><i class="fa fa-check"></i><b>1.2</b> ND Dimensional Arrays</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#d-4d-nd-arrays-reshape-and-rearrange-dimensions"><i class="fa fa-check"></i><b>1.2.1</b> 3D, 4D, ND Arrays Reshape and Rearrange Dimensions</a></li>
-<li class="chapter" data-level="1.2.2" data-path="data-structures.html"><a href="data-structures.html#multidimensional-nd-array-to-2d-matrix-with-wide-to-long"><i class="fa fa-check"></i><b>1.2.2</b> Multidimensional ND Array to 2D Matrix with Wide to Long</a></li>
+<li class="chapter" data-level="1.2.1" data-path="data-structures.html"><a href="data-structures.html#joint-arrays-all-combinations-and-by-random-subset"><i class="fa fa-check"></i><b>1.2.1</b> Joint Arrays All Combinations and by Random Subset</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-structures.html"><a href="data-structures.html#d-4d-nd-arrays-reshape-and-rearrange-dimensions"><i class="fa fa-check"></i><b>1.2.2</b> 3D, 4D, ND Arrays Reshape and Rearrange Dimensions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-structures.html"><a href="data-structures.html#multidimensional-nd-array-to-2d-matrix-with-wide-to-long"><i class="fa fa-check"></i><b>1.2.3</b> Multidimensional ND Array to 2D Matrix with Wide to Long</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.3</b> Cells</a>
 <ul>
@@ -189,6 +192,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="6.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>6.2</b> Table Joining</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>6.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>6.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -640,9 +644,123 @@ disp(tb_ab_row_stacked);
     row=8     0.22685    0.68483
     row=9     0.55131    0.48093
     row=10    0.71947    0.39212</code></pre>
+
 </div>
-<div id="nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables" class="section level4" number="6.2.1.4">
-<h4><span class="header-section-number">6.2.1.4</span> ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables</h4>
+</div>
+<div id="matlab-table-stack-and-join-estimation-and-simulation-results" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Matlab Table Stack and Join Estimation and Simulation Results</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="combine-tables-together-stack-rows-loop-template-common-columns" class="section level4" number="6.2.2.1">
+<h4><span class="header-section-number">6.2.2.1</span> Combine Tables Together Stack Rows Loop Template Common Columns</h4>
+<p>There is an estimation routine, each time the routine outputs a table
+with a single row, the single row contains estimation outputs including
+estiamtes, standard erros, initial parameters etc. We loop over
+different estimation routines, with different starting values etc, and
+rather than saving many tables, we want to save a joint table with all
+rows stacked together.</p>
+<p>This simply means that we have a loop, during each iteration, generating
+a table, we want to stack things together. For this assume that the
+column names are the same.</p>
+<pre><code>for i=1:5
+    % a row of coefficent estimates
+    rng(123+i);
+    it_num_cols = 4;
+    it_num_rows = 1;
+    mt_saveCoef = rand([it_num_rows, it_num_cols]);
+    
+    % row to table
+    ar_st_col_names = [&quot;FVAL&quot;, &quot;EXITFLAG&quot;, &quot;esti_iterations&quot;, &quot;esti_funccount&quot;];        
+    tb_saveCoef = array2table(mt_saveCoef);
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;
+    
+    % Stack all results
+    if(i == 1)
+        tb_saveCoef_stack = tb_saveCoef;
+    else
+        tb_saveCoef_stack = [tb_saveCoef_stack; tb_saveCoef];
+    end
+end
+% Add esti Counter as column
+estimodelctr = (1:size(tb_saveCoef_stack,1))&#39;;
+tb_saveCoef_stack = addvars(tb_saveCoef_stack, estimodelctr, &#39;Before&#39;, 1);
+% Add a row name as a variable
+cl_row_names_a = strcat(&#39;esti&#39;, string((1:size(tb_saveCoef_stack,1))));
+tb_saveCoef_stack.Properties.RowNames = cl_row_names_a;
+% display results
+disp(tb_saveCoef_stack);
+
+             estimodelctr     FVAL      EXITFLAG    esti_iterations    esti_funccount
+             ____________    _______    ________    _______________    ______________
+
+    esti1         1          0.10606     0.74547        0.57231            0.45824   
+    esti2         2          0.50673    0.057531        0.62758            0.13255   
+    esti3         3          0.10517     0.12814       0.087406            0.11548   
+    esti4         4          0.52383    0.039963        0.18597            0.77279   
+    esti5         5          0.86664     0.26314        0.13141           0.041593   </code></pre>
+</div>
+<div id="combine-tables-together-stack-rows-loop-template-outterjoin" class="section level4" number="6.2.2.2">
+<h4><span class="header-section-number">6.2.2.2</span> Combine Tables Together Stack Rows Loop Template Outterjoin</h4>
+<p>Similar to the previous estimation problem, however, now during
+different iterations, the column names, i.e. the parameters been
+estiamted are different. For example, there are 10 parameters, sometimes
+we estimate 5 of the 10, sometimes 10 or the 10. Want to stack all
+results together similar to above.</p>
+<p>This is accomplished in the following example with the <a href="https://www.mathworks.com/help/matlab/ref/outerjoin.html">outerjoin
+function</a>.</p>
+<pre><code>for i=1:5   
+    % a row of coefficent estimates
+    rng(123+i);
+    
+    it_num_rows = 1;
+    if (i &lt;= 2) 
+        it_num_cols = 4;
+        mt_saveCoef = rand([it_num_rows, it_num_cols]);    
+        % row to table    
+        ar_st_col_names = [&quot;FVAL&quot;, &quot;EXITFLAG&quot;, &quot;esti_iterations&quot;, &quot;esti_funccount&quot;];
+    elseif (i &lt;= 4) 
+        it_num_cols = 2;
+        mt_saveCoef = rand([it_num_rows, it_num_cols]);
+        % row to table    
+        ar_st_col_names = [&quot;FVAL&quot;, &quot;EXITFLAG&quot;];
+    else
+        it_num_cols = 3;
+        mt_saveCoef = rand([it_num_rows, it_num_cols]);
+        % row to table    
+        ar_st_col_names = [&quot;FVAL&quot;, &quot;esti_iterations&quot;, &quot;esti_funccount&quot;];
+    end
+    
+    tb_saveCoef = array2table(mt_saveCoef);
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;        
+    
+    % Stack all results
+    if(i == 1)
+        tb_saveCoef_stack = tb_saveCoef;
+    else
+        tb_saveCoef_stack = outerjoin(tb_saveCoef_stack, tb_saveCoef, &#39;MergeKeys&#39;, true);
+    end
+end
+% Add esti Counter as column
+estimodelctr = (1:size(tb_saveCoef_stack,1))&#39;;
+tb_saveCoef_stack = addvars(tb_saveCoef_stack, estimodelctr, &#39;Before&#39;, 1);
+% Add a row name as a variable
+cl_row_names_a = strcat(&#39;esti&#39;, string((1:size(tb_saveCoef_stack,1))));
+tb_saveCoef_stack.Properties.RowNames = cl_row_names_a;
+% display results
+disp(tb_saveCoef_stack);
+
+             estimodelctr     FVAL      EXITFLAG    esti_iterations    esti_funccount
+             ____________    _______    ________    _______________    ______________
+
+    esti1         1          0.10517     0.12814            NaN               NaN    
+    esti2         2          0.10606     0.74547        0.57231           0.45824    
+    esti3         3          0.50673    0.057531        0.62758           0.13255    
+    esti4         4          0.52383    0.039963            NaN               NaN    
+    esti5         5          0.86664         NaN        0.26314           0.13141    </code></pre>
+</div>
+<div id="nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables" class="section level4" number="6.2.2.3">
+<h4><span class="header-section-number">6.2.2.3</span> ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables</h4>
 <p>Now we will first column combine matrixes, model parameters and model
 outcomes, and then row combine matrixes from different simulations.</p>
 <p>A model takes a N parameters, solve the model over M sets of parameters.

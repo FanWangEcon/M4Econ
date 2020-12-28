@@ -107,7 +107,7 @@
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-12-26}
+\date{2020-12-27}
 
 \begin{document}
 \maketitle
@@ -1386,15 +1386,215 @@ ans = 3x1
     0.1667
 \end{verbatim}
 
-\hypertarget{array-draw-random-index-and-find-combinations-or-permuations}{%
-\subsection{Array Draw Random Index and Find Combinations or Permuations}\label{array-draw-random-index-and-find-combinations-or-permuations}}
+\hypertarget{matlab-array-basics-and-miscellaneous}{%
+\subsection{Matlab Array Basics and Miscellaneous}\label{matlab-array-basics-and-miscellaneous}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
+\hypertarget{check-parameter-types}{%
+\subsubsection{Check Parameter Types}\label{check-parameter-types}}
+
+There parameter input can either be a cell array or an integer,
+conditional processing based on parameter input type
+
+\begin{verbatim}
+% Float and Cell
+curEstiParamA = 1;
+curEstiParamB = {146, 'R3'};
+% test if is float
+st_test = strjoin(...
+    ["", ...
+     ['isfloat(curEstiParamA)=' num2str(isfloat(curEstiParamA))], ...
+     ['isfloat(curEstiParamB)=' num2str(isfloat(curEstiParamB))], ...
+    ], ";");
+disp(st_test);
+
+;isfloat(curEstiParamA)=1;isfloat(curEstiParamB)=0
+
+% test if is cell
+st_test = strjoin(...
+    ["", ...
+     ['iscell(curEstiParamA)=' num2str(iscell(curEstiParamA))], ...
+     ['iscell(curEstiParamB)=' num2str(iscell(curEstiParamB))], ...
+    ], ";");
+disp(st_test);
+
+;iscell(curEstiParamA)=0;iscell(curEstiParamB)=1
+\end{verbatim}
+
+\hypertarget{compare-array-values-that-are-approximately-similar}{%
+\subsubsection{Compare Array Values That are Approximately Similar}\label{compare-array-values-that-are-approximately-similar}}
+
+\href{https://stackoverflow.com/a/33024979/8280804}{What is the best way to compare floats for almost-equality in
+Python?}
+
+\begin{itemize}
+\item
+  \texttt{rel\_tol\ is\ a\ relative\ tolerance,\ it\ is\ multiplied\ by\ the\ greater\ of\ the\ magnitudes\ of\ the\ two\ arguments;\ as\ the\ values\ get\ larger,\ so\ does\ the\ allowed\ difference\ between\ them\ while\ still\ considering\ them\ equal.}
+\item
+  \texttt{abs\_tol\ is\ an\ absolute\ tolerance\ that\ is\ applied\ as-is\ in\ all\ cases.\ If\ the\ difference\ is\ less\ than\ either\ of\ those\ tolerances,\ the\ values\ are\ considered\ equal.}
+\end{itemize}
+
+\begin{verbatim}
+rel_tol=1e-09;
+abs_tol=0.0;
+if_is_close = @(a,b) (abs(a-b) <= max(rel_tol * max(abs(a), abs(b)), abs_tol));
+disp(['1 and 1, if_is_close:' num2str(if_is_close(1,1))]);
+
+1 and 1, if_is_close:1
+
+disp(['1e-300 and 1e-301, if_is_close:' num2str(if_is_close(1e-300,1e-301))]);
+
+1e-300 and 1e-301, if_is_close:0
+
+disp(['1+1e-9 and 1+1e-10, if_is_close:' num2str(if_is_close(1+1e-9,1+1e-10))]);
+
+1+1e-9 and 1+1e-10, if_is_close:1
+\end{verbatim}
+
+\hypertarget{imaginary-number-examples}{%
+\subsubsection{Imaginary Number Examples}\label{imaginary-number-examples}}
+
+\begin{verbatim}
+rng(123);
+
+% Imaginary array
+ar_img = rand([1,7]) + 1i*rand([1,7]);
+
+% Regular Array
+ar_real = rand([1,10]);
+
+% Combine arrays
+ar_full = [ar_real ar_img];
+ar_full = ar_full(randperm(length(ar_full)));
+disp(ar_full);
+
+  Columns 1 through 7
+
+   0.6344 + 0.0000i   0.1755 + 0.0000i   0.5316 + 0.0000i   0.2861 + 0.4809i   0.7380 + 0.0000i   0.1825 + 0.0000i   0.6965 + 0.6848i
+
+  Columns 8 through 14
+
+   0.2269 + 0.3921i   0.7245 + 0.0000i   0.8494 + 0.0000i   0.6110 + 0.0000i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5318 + 0.0000i
+
+  Columns 15 through 17
+
+   0.3980 + 0.0000i   0.5513 + 0.3432i   0.7195 + 0.7290i
+
+
+% real index
+disp(~imag(ar_full));
+
+   1   1   1   0   1   1   0   0   1   1   1   0   0   1   1   0   0
+
+
+% Get Real and not real Components
+disp(ar_full(imag(ar_full) == 0));
+
+    0.6344    0.1755    0.5316    0.7380    0.1825    0.7245    0.8494    0.6110    0.5318    0.3980
+
+disp(ar_full(imag(ar_full) ~= 0));
+
+   0.2861 + 0.4809i   0.6965 + 0.6848i   0.2269 + 0.3921i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5513 + 0.3432i   0.7195 + 0.7290i
+\end{verbatim}
+
+\hypertarget{nd-dimensional-arrays}{%
+\section{ND Dimensional Arrays}\label{nd-dimensional-arrays}}
+
+\hypertarget{joint-arrays-all-combinations-and-by-random-subset}{%
+\subsection{Joint Arrays All Combinations and by Random Subset}\label{joint-arrays-all-combinations-and-by-random-subset}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{given-several-arrays-general-all-possible-combinations}{%
+\subsubsection{Given Several Arrays, General all Possible Combinations}\label{given-several-arrays-general-all-possible-combinations}}
+
+There are several parameters, might want to simulate at all possible
+combinations. In the example below, there are four parmeters, generate a
+table with all possible combinations of the four parameters.
+
+\begin{verbatim}
+%% A. Quadc linh refh and refsd parameter grids
+[it_p1, it_p2, it_p3] = deal(4, 3, 3);
+ar_p1 = linspace(-0.09, -0.02, it_p1);
+ar_p2 =  linspace( 0.020, 0.100, it_p2);
+ar_p3 =  linspace(-0.100, -0.020, it_p3);
+ar_p4 =  [0.05];
+
+%% B. Mesh Parameters together
+% ndgrid mesh together
+[mn_p1, ~] = ndgrid(ar_p1, ar_p2, ar_p3, ar_p4);
+% combine
+[ar_p1_idx, ar_p2_idx, ar_p3_idx, ar_p4_idx] = ind2sub(size(mn_p1), find(mn_p1));
+% Index and values
+ar_p1_flat = ar_p1(ar_p1_idx)';
+ar_p2_flat = ar_p2(ar_p2_idx)';
+ar_p3_flat = ar_p3(ar_p3_idx)';
+ar_p4_flat = ar_p4(ar_p4_idx)';
+mt_paramsmesh_long = [ar_p1_idx(:), ar_p1_flat(:), ...
+    ar_p2_idx(:), ar_p2_flat(:), ...
+    ar_p3_idx(:), ar_p3_flat(:), ...
+    ar_p4_idx(:), ar_p4_flat(:)];
+% Sort by a and z
+mt_paramsmesh_long = sortrows(mt_paramsmesh_long, [1,3, 5]);
+
+% C. Create Table
+tb_paramsmesh_long = array2table(mt_paramsmesh_long);
+cl_col_names_a = {'quadc_idx', 'quadc_val', ...
+    'linh_idx', 'linh_val', ...
+    'refh_idx', 'rehfh_val', ...
+    'refsd_idx', 'rehfsd_val'};
+tb_paramsmesh_long.Properties.VariableNames = cl_col_names_a;
+% D. Display Table
+disp(tb_paramsmesh_long);
+
+    quadc_idx    quadc_val    linh_idx    linh_val    refh_idx    rehfh_val    refsd_idx    rehfsd_val
+    _________    _________    ________    ________    ________    _________    _________    __________
+
+        1            -0.09       1          0.02         1           -0.1          1           0.05   
+        1            -0.09       1          0.02         2          -0.06          1           0.05   
+        1            -0.09       1          0.02         3          -0.02          1           0.05   
+        1            -0.09       2          0.06         1           -0.1          1           0.05   
+        1            -0.09       2          0.06         2          -0.06          1           0.05   
+        1            -0.09       2          0.06         3          -0.02          1           0.05   
+        1            -0.09       3           0.1         1           -0.1          1           0.05   
+        1            -0.09       3           0.1         2          -0.06          1           0.05   
+        1            -0.09       3           0.1         3          -0.02          1           0.05   
+        2        -0.066667       1          0.02         1           -0.1          1           0.05   
+        2        -0.066667       1          0.02         2          -0.06          1           0.05   
+        2        -0.066667       1          0.02         3          -0.02          1           0.05   
+        2        -0.066667       2          0.06         1           -0.1          1           0.05   
+        2        -0.066667       2          0.06         2          -0.06          1           0.05   
+        2        -0.066667       2          0.06         3          -0.02          1           0.05   
+        2        -0.066667       3           0.1         1           -0.1          1           0.05   
+        2        -0.066667       3           0.1         2          -0.06          1           0.05   
+        2        -0.066667       3           0.1         3          -0.02          1           0.05   
+        3        -0.043333       1          0.02         1           -0.1          1           0.05   
+        3        -0.043333       1          0.02         2          -0.06          1           0.05   
+        3        -0.043333       1          0.02         3          -0.02          1           0.05   
+        3        -0.043333       2          0.06         1           -0.1          1           0.05   
+        3        -0.043333       2          0.06         2          -0.06          1           0.05   
+        3        -0.043333       2          0.06         3          -0.02          1           0.05   
+        3        -0.043333       3           0.1         1           -0.1          1           0.05   
+        3        -0.043333       3           0.1         2          -0.06          1           0.05   
+        3        -0.043333       3           0.1         3          -0.02          1           0.05   
+        4            -0.02       1          0.02         1           -0.1          1           0.05   
+        4            -0.02       1          0.02         2          -0.06          1           0.05   
+        4            -0.02       1          0.02         3          -0.02          1           0.05   
+        4            -0.02       2          0.06         1           -0.1          1           0.05   
+        4            -0.02       2          0.06         2          -0.06          1           0.05   
+        4            -0.02       2          0.06         3          -0.02          1           0.05   
+        4            -0.02       3           0.1         1           -0.1          1           0.05   
+        4            -0.02       3           0.1         2          -0.06          1           0.05   
+        4            -0.02       3           0.1         3          -0.02          1           0.05   
+\end{verbatim}
+
 \hypertarget{matlab-draw-random-with-and-without-replacement}{%
-\subsubsection{\texorpdfstring{\textbf{Matlab Draw Random with and without Replacement}}{Matlab Draw Random with and without Replacement}}\label{matlab-draw-random-with-and-without-replacement}}
+\subsubsection{Matlab Draw Random with and without Replacement}\label{matlab-draw-random-with-and-without-replacement}}
 
 \begin{verbatim}
 %Generate a matrix named foo, with limited numbers
@@ -1648,123 +1848,6 @@ disp(mt_it_allcombo)
     2.0000    2.0000    4.0000   -2.0000    0.1000
     3.0000    2.0000    4.0000   -2.0000    0.1000
 \end{verbatim}
-
-\hypertarget{matlab-array-basics-and-miscellaneous}{%
-\subsection{Matlab Array Basics and Miscellaneous}\label{matlab-array-basics-and-miscellaneous}}
-
-\begin{quote}
-Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
-\end{quote}
-
-\hypertarget{check-parameter-types}{%
-\subsubsection{Check Parameter Types}\label{check-parameter-types}}
-
-There parameter input can either be a cell array or an integer,
-conditional processing based on parameter input type
-
-\begin{verbatim}
-% Float and Cell
-curEstiParamA = 1;
-curEstiParamB = {146, 'R3'};
-% test if is float
-st_test = strjoin(...
-    ["", ...
-     ['isfloat(curEstiParamA)=' num2str(isfloat(curEstiParamA))], ...
-     ['isfloat(curEstiParamB)=' num2str(isfloat(curEstiParamB))], ...
-    ], ";");
-disp(st_test);
-
-;isfloat(curEstiParamA)=1;isfloat(curEstiParamB)=0
-
-% test if is cell
-st_test = strjoin(...
-    ["", ...
-     ['iscell(curEstiParamA)=' num2str(iscell(curEstiParamA))], ...
-     ['iscell(curEstiParamB)=' num2str(iscell(curEstiParamB))], ...
-    ], ";");
-disp(st_test);
-
-;iscell(curEstiParamA)=0;iscell(curEstiParamB)=1
-\end{verbatim}
-
-\hypertarget{compare-array-values-that-are-approximately-similar}{%
-\subsubsection{Compare Array Values That are Approximately Similar}\label{compare-array-values-that-are-approximately-similar}}
-
-\href{https://stackoverflow.com/a/33024979/8280804}{What is the best way to compare floats for almost-equality in
-Python?}
-
-\begin{itemize}
-\item
-  \texttt{rel\_tol\ is\ a\ relative\ tolerance,\ it\ is\ multiplied\ by\ the\ greater\ of\ the\ magnitudes\ of\ the\ two\ arguments;\ as\ the\ values\ get\ larger,\ so\ does\ the\ allowed\ difference\ between\ them\ while\ still\ considering\ them\ equal.}
-\item
-  \texttt{abs\_tol\ is\ an\ absolute\ tolerance\ that\ is\ applied\ as-is\ in\ all\ cases.\ If\ the\ difference\ is\ less\ than\ either\ of\ those\ tolerances,\ the\ values\ are\ considered\ equal.}
-\end{itemize}
-
-\begin{verbatim}
-rel_tol=1e-09;
-abs_tol=0.0;
-if_is_close = @(a,b) (abs(a-b) <= max(rel_tol * max(abs(a), abs(b)), abs_tol));
-disp(['1 and 1, if_is_close:' num2str(if_is_close(1,1))]);
-
-1 and 1, if_is_close:1
-
-disp(['1e-300 and 1e-301, if_is_close:' num2str(if_is_close(1e-300,1e-301))]);
-
-1e-300 and 1e-301, if_is_close:0
-
-disp(['1+1e-9 and 1+1e-10, if_is_close:' num2str(if_is_close(1+1e-9,1+1e-10))]);
-
-1+1e-9 and 1+1e-10, if_is_close:1
-\end{verbatim}
-
-\hypertarget{imaginary-number-examples}{%
-\subsubsection{Imaginary Number Examples}\label{imaginary-number-examples}}
-
-\begin{verbatim}
-rng(123);
-
-% Imaginary array
-ar_img = rand([1,7]) + 1i*rand([1,7]);
-
-% Regular Array
-ar_real = rand([1,10]);
-
-% Combine arrays
-ar_full = [ar_real ar_img];
-ar_full = ar_full(randperm(length(ar_full)));
-disp(ar_full);
-
-  Columns 1 through 7
-
-   0.6344 + 0.0000i   0.1755 + 0.0000i   0.5316 + 0.0000i   0.2861 + 0.4809i   0.7380 + 0.0000i   0.1825 + 0.0000i   0.6965 + 0.6848i
-
-  Columns 8 through 14
-
-   0.2269 + 0.3921i   0.7245 + 0.0000i   0.8494 + 0.0000i   0.6110 + 0.0000i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5318 + 0.0000i
-
-  Columns 15 through 17
-
-   0.3980 + 0.0000i   0.5513 + 0.3432i   0.7195 + 0.7290i
-
-
-% real index
-disp(~imag(ar_full));
-
-   1   1   1   0   1   1   0   0   1   1   1   0   0   1   1   0   0
-
-
-% Get Real and not real Components
-disp(ar_full(imag(ar_full) == 0));
-
-    0.6344    0.1755    0.5316    0.7380    0.1825    0.7245    0.8494    0.6110    0.5318    0.3980
-
-disp(ar_full(imag(ar_full) ~= 0));
-
-   0.2861 + 0.4809i   0.6965 + 0.6848i   0.2269 + 0.3921i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5513 + 0.3432i   0.7195 + 0.7290i
-\end{verbatim}
-
-\hypertarget{nd-dimensional-arrays}{%
-\section{ND Dimensional Arrays}\label{nd-dimensional-arrays}}
 
 \hypertarget{d-4d-nd-arrays-reshape-and-rearrange-dimensions}{%
 \subsection{3D, 4D, ND Arrays Reshape and Rearrange Dimensions}\label{d-4d-nd-arrays-reshape-and-rearrange-dimensions}}
@@ -3013,6 +3096,16 @@ disp(st_titles);
 Title1Title2Title3
 \end{verbatim}
 
+Convert the string array to a cell string array
+
+\begin{verbatim}
+disp(cellstr(ar_st_titles));
+
+    {'Title1'}
+    {'Title2'}
+    {'Title3'}
+\end{verbatim}
+
 \hypertarget{string-cell-array}{%
 \subsubsection{String Cell Array}\label{string-cell-array}}
 
@@ -3070,13 +3163,7 @@ disp(strcat(ar_st_titles, '_init'));
 it_duplicate_n = 10;
 disp(repmat({'String'}, [1, it_duplicate_n]));
 
-  Columns 1 through 9
-
-    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}
-
-  Column 10
-
-    {'String'}
+    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}    {'String'}
 \end{verbatim}
 
 \hypertarget{string-join-to-form-single-element}{%
@@ -6549,6 +6636,130 @@ disp(tb_ab_row_stacked);
     row=10    0.71947    0.39212
 \end{verbatim}
 
+\hypertarget{matlab-table-stack-and-join-estimation-and-simulation-results}{%
+\subsection{Matlab Table Stack and Join Estimation and Simulation Results}\label{matlab-table-stack-and-join-estimation-and-simulation-results}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{combine-tables-together-stack-rows-loop-template-common-columns}{%
+\subsubsection{Combine Tables Together Stack Rows Loop Template Common Columns}\label{combine-tables-together-stack-rows-loop-template-common-columns}}
+
+There is an estimation routine, each time the routine outputs a table
+with a single row, the single row contains estimation outputs including
+estiamtes, standard erros, initial parameters etc. We loop over
+different estimation routines, with different starting values etc, and
+rather than saving many tables, we want to save a joint table with all
+rows stacked together.
+
+This simply means that we have a loop, during each iteration, generating
+a table, we want to stack things together. For this assume that the
+column names are the same.
+
+\begin{verbatim}
+for i=1:5
+    % a row of coefficent estimates
+    rng(123+i);
+    it_num_cols = 4;
+    it_num_rows = 1;
+    mt_saveCoef = rand([it_num_rows, it_num_cols]);
+    
+    % row to table
+    ar_st_col_names = ["FVAL", "EXITFLAG", "esti_iterations", "esti_funccount"];        
+    tb_saveCoef = array2table(mt_saveCoef);
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;
+    
+    % Stack all results
+    if(i == 1)
+        tb_saveCoef_stack = tb_saveCoef;
+    else
+        tb_saveCoef_stack = [tb_saveCoef_stack; tb_saveCoef];
+    end
+end
+% Add esti Counter as column
+estimodelctr = (1:size(tb_saveCoef_stack,1))';
+tb_saveCoef_stack = addvars(tb_saveCoef_stack, estimodelctr, 'Before', 1);
+% Add a row name as a variable
+cl_row_names_a = strcat('esti', string((1:size(tb_saveCoef_stack,1))));
+tb_saveCoef_stack.Properties.RowNames = cl_row_names_a;
+% display results
+disp(tb_saveCoef_stack);
+
+             estimodelctr     FVAL      EXITFLAG    esti_iterations    esti_funccount
+             ____________    _______    ________    _______________    ______________
+
+    esti1         1          0.10606     0.74547        0.57231            0.45824   
+    esti2         2          0.50673    0.057531        0.62758            0.13255   
+    esti3         3          0.10517     0.12814       0.087406            0.11548   
+    esti4         4          0.52383    0.039963        0.18597            0.77279   
+    esti5         5          0.86664     0.26314        0.13141           0.041593   
+\end{verbatim}
+
+\hypertarget{combine-tables-together-stack-rows-loop-template-outterjoin}{%
+\subsubsection{Combine Tables Together Stack Rows Loop Template Outterjoin}\label{combine-tables-together-stack-rows-loop-template-outterjoin}}
+
+Similar to the previous estimation problem, however, now during
+different iterations, the column names, i.e.~the parameters been
+estiamted are different. For example, there are 10 parameters, sometimes
+we estimate 5 of the 10, sometimes 10 or the 10. Want to stack all
+results together similar to above.
+
+This is accomplished in the following example with the \href{https://www.mathworks.com/help/matlab/ref/outerjoin.html}{outerjoin
+function}.
+
+\begin{verbatim}
+for i=1:5   
+    % a row of coefficent estimates
+    rng(123+i);
+    
+    it_num_rows = 1;
+    if (i <= 2) 
+        it_num_cols = 4;
+        mt_saveCoef = rand([it_num_rows, it_num_cols]);    
+        % row to table    
+        ar_st_col_names = ["FVAL", "EXITFLAG", "esti_iterations", "esti_funccount"];
+    elseif (i <= 4) 
+        it_num_cols = 2;
+        mt_saveCoef = rand([it_num_rows, it_num_cols]);
+        % row to table    
+        ar_st_col_names = ["FVAL", "EXITFLAG"];
+    else
+        it_num_cols = 3;
+        mt_saveCoef = rand([it_num_rows, it_num_cols]);
+        % row to table    
+        ar_st_col_names = ["FVAL", "esti_iterations", "esti_funccount"];
+    end
+    
+    tb_saveCoef = array2table(mt_saveCoef);
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;        
+    
+    % Stack all results
+    if(i == 1)
+        tb_saveCoef_stack = tb_saveCoef;
+    else
+        tb_saveCoef_stack = outerjoin(tb_saveCoef_stack, tb_saveCoef, 'MergeKeys', true);
+    end
+end
+% Add esti Counter as column
+estimodelctr = (1:size(tb_saveCoef_stack,1))';
+tb_saveCoef_stack = addvars(tb_saveCoef_stack, estimodelctr, 'Before', 1);
+% Add a row name as a variable
+cl_row_names_a = strcat('esti', string((1:size(tb_saveCoef_stack,1))));
+tb_saveCoef_stack.Properties.RowNames = cl_row_names_a;
+% display results
+disp(tb_saveCoef_stack);
+
+             estimodelctr     FVAL      EXITFLAG    esti_iterations    esti_funccount
+             ____________    _______    ________    _______________    ______________
+
+    esti1         1          0.10517     0.12814            NaN               NaN    
+    esti2         2          0.10606     0.74547        0.57231           0.45824    
+    esti3         3          0.50673    0.057531        0.62758           0.13255    
+    esti4         4          0.52383    0.039963            NaN               NaN    
+    esti5         5          0.86664         NaN        0.26314           0.13141    
+\end{verbatim}
+
 \hypertarget{nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables}{%
 \subsubsection{ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables}\label{nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables}}
 
@@ -6750,16 +6961,6 @@ disp(tb_model_allsimu_w_info);
     \textbf{m}: \emph{unique() + reshape() + accumarray()}
   \end{itemize}
 \item
-  \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html}{Array Random Draws and Permutation}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_combi_permu.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_combi_permu.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_combi_permu.html}{\textbf{html}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Draw randomly from array, permutate arrays.
-  \item
-    \textbf{m}: \emph{ndgrid() + cell2mat(cellfun(@(m) m(:), cl\_mt\_all, `uni', 0))}
-  \end{itemize}
-\item
   \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html}{Matlab Array Miscellaneous}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html}{\textbf{html}}
 
   \begin{itemize}
@@ -6781,6 +6982,18 @@ disp(tb_model_allsimu_w_info);
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_combi_permu.html}{All Possible Combinations of Arrays as Table or Random Subset Mesh}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_combi_permu.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_combi_permu.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_combi_permu.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_combi_permu.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Generate a Table based on all possible combinations of several arrays.
+  \item
+    Draw randomly from array, permutate arrays.
+  \item
+    \textbf{m}: \emph{ndgrid() + cell2mat(cellfun(@(m) m(:), cl\_mt\_all, `uni', 0))}
+  \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html}{3D, 4D, ND Arrays Reshape and Summarize}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/fs_3d4dndarray.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/arraynd/htmlpdfm/fs_3d4dndarray.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/arraynd/htmlpdfm/fs_3d4dndarray.html}{\textbf{html}}
 
@@ -6891,7 +7104,7 @@ disp(tb_model_allsimu_w_info);
   \item
     Find string element positions, replace substrings.
   \item
-    \textbf{m}: \emph{repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp())))}
+    \textbf{m}: \emph{repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp()))) + cellstr()}
   \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{Convert and Cancatenate String and Numeric Array Concatenations}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html}{\textbf{html}}
@@ -7292,9 +7505,21 @@ disp(tb_model_allsimu_w_info);
   \item
     Append columns to existing table. Stack tables vertically and horizontally.
   \item
+    \textbf{m}: \emph{array2table() + {[}tb\_a tb\_b{]} + {[}tb\_a; tb\_b{]} + tb.Properties.VariableNames + tb.Properties.RowNames}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html}{Stack and Join Estimation and Simulation Results}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack_simuesti.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Stack different tables together with varying columns via outerjoin.
+  \item
+    Stack different estiamtion results together into a common table where columns show parameter names and other strings.
+  \item
     Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
   \item
-    \textbf{m}: \emph{array2table() + {[}tb\_a tb\_b{]} + {[}tb\_a; tb\_b{]} + tb.Properties.VariableNames + tb.Properties.RowNames}
+    \textbf{m}: \emph{array2table() + outerjoin() + addvars()}
   \end{itemize}
 \end{enumerate}
 

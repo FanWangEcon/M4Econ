@@ -55,6 +55,7 @@ rmd_files:
   - panel/main.Rmd
   - panel/timeseries/main.Rmd
   - panel/timeseries/fs_autoregressive.Rmd
+  - panel/timeseries/fs_movingaverage.Rmd
   - panel/crosssection/main.Rmd
   - panel/crosssection/fs_wage_equation.Rmd
 

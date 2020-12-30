@@ -25,12 +25,11 @@
   always_allow_html: true
   urlcolor: blue
 
-
 - file: fs_tab_stack_simuesti
   title: "Matlab Table Stack and Join Estimation and Simulation Results"
   titleshort: "Stack and Join Estimation and Simulation Results"
   description: |
-    Stack different tables together with varying columns via outerjoin.
+    Stack different tables together with varying columns via outerjoin, store with parallel parfor.
     Stack different estiamtion results together into a common table where columns show parameter names and other strings.
     Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
   core :
@@ -39,6 +38,9 @@
         array2table()
         outerjoin()
         addvars()
+    - package: parallel
+      code: |
+        parfor
   date: 2020-12-27
   date_start: 2020-12-27
   output:

@@ -13,9 +13,11 @@
 % table, we want to stack things together. For this assume that the column names 
 % are the same. 
 
-for i=1:5
-    % a row of coefficent estimates
-    rng(123+i);
+rng("default");
+tb_saveCoef_stack = [];
+for row_idx=1:5
+    % a row of coefficent estimates    
+    rng(123+row_idx);
     it_num_cols = 4;
     it_num_rows = 1;
     mt_saveCoef = rand([it_num_rows, it_num_cols]);
@@ -26,11 +28,7 @@ for i=1:5
     tb_saveCoef.Properties.VariableNames = ar_st_col_names;
     
     % Stack all results
-    if(i == 1)
-        tb_saveCoef_stack = tb_saveCoef;
-    else
-        tb_saveCoef_stack = [tb_saveCoef_stack; tb_saveCoef];
-    end
+    tb_saveCoef_stack = [tb_saveCoef_stack; tb_saveCoef];
 end
 % Add esti Counter as column
 estimodelctr = (1:size(tb_saveCoef_stack,1))';
@@ -49,17 +47,17 @@ disp(tb_saveCoef_stack);
 % This is accomplished in the following example with the <https://www.mathworks.com/help/matlab/ref/outerjoin.html 
 % outerjoin function>.
 
-for i=1:5   
+for row_idx=1:5
     % a row of coefficent estimates
-    rng(123+i);
+    rng(123+row_idx);
     
     it_num_rows = 1;
-    if (i <= 2) 
+    if (row_idx <= 2) 
         it_num_cols = 4;
         mt_saveCoef = rand([it_num_rows, it_num_cols]);    
         % row to table    
         ar_st_col_names = ["FVAL", "EXITFLAG", "esti_iterations", "esti_funccount"];
-    elseif (i <= 4) 
+    elseif (row_idx <= 4) 
         it_num_cols = 2;
         mt_saveCoef = rand([it_num_rows, it_num_cols]);
         % row to table    
@@ -72,10 +70,11 @@ for i=1:5
     end
     
     tb_saveCoef = array2table(mt_saveCoef);
-    tb_saveCoef.Properties.VariableNames = ar_st_col_names;        
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;
+    tb_saveCoef = addvars(tb_saveCoef, row_idx, 'Before', 1);
     
     % Stack all results
-    if(i == 1)
+    if(row_idx == 1)
         tb_saveCoef_stack = tb_saveCoef;
     else
         tb_saveCoef_stack = outerjoin(tb_saveCoef_stack, tb_saveCoef, 'MergeKeys', true);
@@ -87,6 +86,43 @@ tb_saveCoef_stack = addvars(tb_saveCoef_stack, estimodelctr, 'Before', 1);
 % Add a row name as a variable
 cl_row_names_a = strcat('esti', string((1:size(tb_saveCoef_stack,1))));
 tb_saveCoef_stack.Properties.RowNames = cl_row_names_a;
+% display results
+disp(tb_saveCoef_stack);
+%% Combine Tables Outterjoin with Parfor
+% Same as above, but iterate/solve over loops with parfor
+
+% Start cluster
+delete(gcp('nocreate'));
+myCluster = parcluster('local');
+it_workers = 4;
+myCluster.NumWorkers = it_workers;
+parpool(it_workers);
+% prepare storage
+cl_stores = cell([4,1]);
+% Loop over
+parfor row_idx=1:4
+    % a row of coefficent estimates
+    rng(123+row_idx);    
+    ar_st_col_names = ["FVAL", "EXITFLAG", "esti_iterations", "esti_funccount"];
+    it_num_rows = 1;
+    it_num_cols = 4;
+    mt_saveCoef = rand([it_num_rows, it_num_cols]);        
+    tb_saveCoef = array2table(mt_saveCoef);
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;
+    tb_saveCoef = addvars(tb_saveCoef, row_idx, 'Before', 1);    
+    % Stack all results
+    cl_stores{row_idx} = tb_saveCoef;
+end
+% delete cluster
+delete(gcp('nocreate'));
+%% 
+% Stack tables stored in cells together:
+
+% Combine
+tb_saveCoef_stack = [];
+for row_idx=1:4
+    tb_saveCoef_stack = [tb_saveCoef_stack; cl_stores{row_idx}];
+end
 % display results
 disp(tb_saveCoef_stack);
 %% ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables

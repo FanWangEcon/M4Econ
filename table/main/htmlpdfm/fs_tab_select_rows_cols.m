@@ -31,3 +31,44 @@ disp(tb_test_a);
 disp(tb_test_a(strcmp(tb_test_a.Var1, "b"),:));
 % select the rows where col123=0.4
 disp(tb_test_a(tb_test_a.col123==0.4,:));
+%% Read in a Table from an Excel File
+% There are estimates stored in a table. Each row is a different estimation 
+% result, with a different set of estimates, for each row some fixed (not-estimated) 
+% parameter might vary. Each column represents a different parameter, or the parameter's 
+% state (initial value, estimated value, standard error, etc). 
+% 
+% The estimatetion results file is stored in: M4Econ\table\_exa\excel_exa.xlsx. 
+% We want to load in this file. Directory is one root up and one root down. The 
+% file has multiple sheets, automatically loads in the first sheet. And print 
+% table variables names, column names. 
+
+srn_excel_exa = 'C:\Users\fan\M4Econ\table\_exa\excel_exa.xlsx';
+tb_read = readtable(srn_excel_exa);
+disp((tb_read.Properties.VariableNames)');
+%% Select Table Columns based on Column Name Strings
+% Given the table that we loaded in above, select only the columns that start 
+% with some string like "gamma", or columns that end with certain strings, like 
+% "_esti".
+% 
+% The <https://www.mathworks.com/help/matlab/ref/startswith.html startsWith>, 
+% <https://www.mathworks.com/help/matlab/ref/contains.html contains>, and <https://www.mathworks.com/help/matlab/ref/endswith.html 
+% endsWith> are string functions that generate logical arrays based on which elements 
+% of the tring array satisfies the criteria. So this is not a table function, 
+% it is a string function.
+
+ar_st_col_names = tb_read.Properties.VariableNames;
+ar_st_col_names_prod = ar_st_col_names(startsWith(ar_st_col_names, 'prod_'));
+ar_st_col_names_esti = ar_st_col_names(endsWith(ar_st_col_names, '_esti'));
+ar_st_col_names_sd = ar_st_col_names(contains(ar_st_col_names, '_sd_'));
+disp(ar_st_col_names_prod');
+disp(ar_st_col_names_esti');
+disp(ar_st_col_names_sd');
+%% 
+% We can select columns that contain the string _sd_ as well as _actl_ in them, 
+% by considering joint conditions.
+
+ar_it_select = contains(ar_st_col_names, '_sd_').*endsWith(ar_st_col_names, '_actl');
+ar_st_col_names_selected = ar_st_col_names(ar_it_select==1);
+disp(ar_st_col_names_selected');
+% show values from selected columns
+disp(tb_read(1:10, ar_st_col_names_selected));

@@ -24,3 +24,30 @@
         in_header: '../../hdga.html'
   always_allow_html: true
   urlcolor: blue
+
+- file: fs_movingaverage
+  title: "Matlab Moving Average of Time-series Varying Windows"
+  titleshort: "Moving Average of Neighboring Values"
+  description: |
+    Compute moving average of surrounding values with different windows.
+    Visualize moving averages compare actual to smoothed average to fully flat moving average.
+  core :
+    - package: m
+      code: |
+        movmean()
+    - package: MEconTools
+      code: |
+        ff_graph_grid()
+  date: 2020-12-29
+  date_start: 2020-12-29
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

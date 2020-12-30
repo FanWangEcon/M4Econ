@@ -127,6 +127,11 @@
 	+ Simulate and graph an AR(1) persistent process.
 	+ Simulate log income process with parameters estimated from Indian income data.
 	+ **m**: *normrnd() + for it_t=1:1:length(ar_shk) + plot(ar_t, ar_y)*
+2. [Moving Average of Neighboring Values](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_movingaverage.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_movingaverage.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_movingaverage.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_movingaverage.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_movingaverage.html)
+	+ Compute moving average of surrounding values with different windows.
+	+ Visualize moving averages compare actual to smoothed average to fully flat moving average.
+	+ **m**: *movmean()*
+	+ **MEconTools**: *ff_graph_grid()*
 
 ## 3.2  Cross-sectional Data
 
@@ -204,7 +209,8 @@
 	+ **m**: *array2table() + string() + strcat('rowA=', string((1:size(mt, 1)))) + tb_test_a.Properties.VariableNames + tb_test_a.Properties.RowNames + addvars(tb, rownames, 'Before', 1)*
 4. [Select Subset of Rows and Columns](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_select_rows_cols.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html)
 	+ Conditional selection based on cell values and column and row names.
-	+ **m**: *tb(strcmp(tb.v1, "b"),:) + tb(tb.va==0.4,:)*
+	+ Load a excel file and select based on column name string conditions.
+	+ **m**: *tb(strcmp(tb.v1, "b"),:) + tb(tb.va==0.4,:) + readtable() + startsWith() + endsWith() + contains()*
 
 ## 6.2  Table Joining
 
@@ -212,7 +218,8 @@
 	+ Append columns to existing table. Stack tables vertically and horizontally.
 	+ **m**: *array2table() + [tb_a tb_b] + [tb_a; tb_b] + tb.Properties.VariableNames + tb.Properties.RowNames*
 2. [Stack and Join Estimation and Simulation Results](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack_simuesti.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html)
-	+ Stack different tables together with varying columns via outerjoin.
+	+ Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 	+ Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 	+ Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
 	+ **m**: *array2table() + outerjoin() + addvars()*
+	+ **parallel**: *parfor*

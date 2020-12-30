@@ -87,13 +87,18 @@
   titleshort: "Select Subset of Rows and Columns"
   description: |
     Conditional selection based on cell values and column and row names.
+    Load a excel file and select based on column name string conditions.
   core :
     - package: m
       code: |
         tb(strcmp(tb.v1, "b"),:)
         tb(tb.va==0.4,:)
+        readtable()
+        startsWith()
+        endsWith()
+        contains()
   date: 2020-10-11
-  date_start: 2020-10-11
+  date_start: 2020-12-29
   output:
     pdf_document:
       pandoc_args: '../../_output_kniti_pdf.yaml'

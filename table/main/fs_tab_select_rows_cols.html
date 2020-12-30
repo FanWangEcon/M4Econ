@@ -26,22 +26,107 @@
 .inlineElement .textElement {}
 .embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
 .rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
-.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Select Subset of Rows and Columns</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/MEconTools/"><span style=' font-weight: bold;'>MEconTools</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span>Generate a Table </span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>close </span><span style="color: rgb(170, 4, 249);">all</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Generate Table 1</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>number1 = </span><span style="color: rgb(170, 4, 249);">'123'</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>number2 = </span><span style="color: rgb(170, 4, 249);">'456'</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mt_data_a = [ar_fl_abc1' ar_fl_abc2'];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a = array2table(mt_data_a);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>cl_col_names_a = {[</span><span style="color: rgb(170, 4, 249);">'col' </span><span>num2str(number1)], [</span><span style="color: rgb(170, 4, 249);">'col' </span><span>num2str(number2)]};</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>cl_row_names_a = strcat(</span><span style="color: rgb(170, 4, 249);">'rowA='</span><span>, string((1:size(mt_data_a,1))));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a.Properties.VariableNames = cl_col_names_a;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a.Properties.RowNames = cl_row_names_a;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% a and b must have the same row names</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>cl_st_varrownames = tb_test_a.Properties.RowNames;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a = addvars(tb_test_a, cl_st_varrownames, </span><span style="color: rgb(170, 4, 249);">'Before'</span><span>, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% a and b must have the same row names</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>st_varrownames = string(cl_st_varrownames);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a = addvars(tb_test_a, st_varrownames, </span><span style="color: rgb(170, 4, 249);">'Before'</span><span>, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a = addvars(tb_test_a, [</span><span style="color: rgb(170, 4, 249);">"a"</span><span>, </span><span style="color: rgb(170, 4, 249);">"b"</span><span>, </span><span style="color: rgb(170, 4, 249);">"cc"</span><span>, </span><span style="color: rgb(170, 4, 249);">"aa"</span><span>, </span><span style="color: rgb(170, 4, 249);">"b"</span><span>]', </span><span style="color: rgb(170, 4, 249);">'Before'</span><span>, 1);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_test_a);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="C49FDA08" data-testid="output_0" data-width="1128" data-height="115" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">              <strong>Var1</strong>    <strong>st_varrownames</strong>    <strong>cl_st_varrownames</strong>    <strong>col123</strong>    <strong>col456</strong>
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S9 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Select Subset of Rows and Columns</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/MEconTools/"><span style=' font-weight: bold;'>MEconTools</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span>Generate a Table </span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>close </span><span style="color: rgb(170, 4, 249);">all</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Generate Table 1</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>number1 = </span><span style="color: rgb(170, 4, 249);">'123'</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>number2 = </span><span style="color: rgb(170, 4, 249);">'456'</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mt_data_a = [ar_fl_abc1' ar_fl_abc2'];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a = array2table(mt_data_a);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>cl_col_names_a = {[</span><span style="color: rgb(170, 4, 249);">'col' </span><span>num2str(number1)], [</span><span style="color: rgb(170, 4, 249);">'col' </span><span>num2str(number2)]};</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>cl_row_names_a = strcat(</span><span style="color: rgb(170, 4, 249);">'rowA='</span><span>, string((1:size(mt_data_a,1))));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a.Properties.VariableNames = cl_col_names_a;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a.Properties.RowNames = cl_row_names_a;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% a and b must have the same row names</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>cl_st_varrownames = tb_test_a.Properties.RowNames;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a = addvars(tb_test_a, cl_st_varrownames, </span><span style="color: rgb(170, 4, 249);">'Before'</span><span>, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% a and b must have the same row names</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>st_varrownames = string(cl_st_varrownames);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a = addvars(tb_test_a, st_varrownames, </span><span style="color: rgb(170, 4, 249);">'Before'</span><span>, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_test_a = addvars(tb_test_a, [</span><span style="color: rgb(170, 4, 249);">"a"</span><span>, </span><span style="color: rgb(170, 4, 249);">"b"</span><span>, </span><span style="color: rgb(170, 4, 249);">"cc"</span><span>, </span><span style="color: rgb(170, 4, 249);">"aa"</span><span>, </span><span style="color: rgb(170, 4, 249);">"b"</span><span>]', </span><span style="color: rgb(170, 4, 249);">'Before'</span><span>, 1);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_test_a);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="09F54D20" data-testid="output_0" data-width="1128" data-height="115" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">              <strong>Var1</strong>    <strong>st_varrownames</strong>    <strong>cl_st_varrownames</strong>    <strong>col123</strong>    <strong>col456</strong>
               <strong>____</strong>    <strong>______________</strong>    <strong>_________________</strong>    <strong>______</strong>    <strong>______</strong>
 
     <strong>rowA=1</strong>    "a"        "rowA=1"          {'rowA=1'}          0.4      0.4  
     <strong>rowA=2</strong>    "b"        "rowA=2"          {'rowA=2'}          0.1      0.1  
     <strong>rowA=3</strong>    "cc"       "rowA=3"          {'rowA=3'}         0.25      0.2  
     <strong>rowA=4</strong>    "aa"       "rowA=4"          {'rowA=4'}          0.3      0.3  
-    <strong>rowA=5</strong>    "b"        "rowA=5"          {'rowA=5'}          0.4      0.4  </div></div></div></div></div><h2  class = 'S2'><span>Select Rows if ColX is Equal to Something</span></h2><div  class = 'S1'><span>Select a subset of rows based on the variable value in one column </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% select the rows where Var1="b"</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_test_a(strcmp(tb_test_a.Var1, </span><span style="color: rgb(170, 4, 249);">"b"</span><span>),:));</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="97D591E4" data-testid="output_1" data-width="1128" data-height="73" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">              <strong>Var1</strong>    <strong>st_varrownames</strong>    <strong>cl_st_varrownames</strong>    <strong>col123</strong>    <strong>col456</strong>
+    <strong>rowA=5</strong>    "b"        "rowA=5"          {'rowA=5'}          0.4      0.4  </div></div></div></div></div><h2  class = 'S2'><span>Select Rows if ColX is Equal to Something</span></h2><div  class = 'S1'><span>Select a subset of rows based on the variable value in one column </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% select the rows where Var1="b"</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_test_a(strcmp(tb_test_a.Var1, </span><span style="color: rgb(170, 4, 249);">"b"</span><span>),:));</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="0CE32D0F" data-testid="output_1" data-width="1128" data-height="73" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">              <strong>Var1</strong>    <strong>st_varrownames</strong>    <strong>cl_st_varrownames</strong>    <strong>col123</strong>    <strong>col456</strong>
               <strong>____</strong>    <strong>______________</strong>    <strong>_________________</strong>    <strong>______</strong>    <strong>______</strong>
 
     <strong>rowA=2</strong>    "b"        "rowA=2"          {'rowA=2'}         0.1       0.1  
-    <strong>rowA=5</strong>    "b"        "rowA=5"          {'rowA=5'}         0.4       0.4  </div></div></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% select the rows where col123=0.4</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_test_a(tb_test_a.col123==0.4,:));</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="9843E9DA" data-testid="output_2" data-width="1128" data-height="73" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">              <strong>Var1</strong>    <strong>st_varrownames</strong>    <strong>cl_st_varrownames</strong>    <strong>col123</strong>    <strong>col456</strong>
+    <strong>rowA=5</strong>    "b"        "rowA=5"          {'rowA=5'}         0.4       0.4  </div></div></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% select the rows where col123=0.4</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_test_a(tb_test_a.col123==0.4,:));</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="F10BD88E" data-testid="output_2" data-width="1128" data-height="73" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">              <strong>Var1</strong>    <strong>st_varrownames</strong>    <strong>cl_st_varrownames</strong>    <strong>col123</strong>    <strong>col456</strong>
               <strong>____</strong>    <strong>______________</strong>    <strong>_________________</strong>    <strong>______</strong>    <strong>______</strong>
 
     <strong>rowA=1</strong>    "a"        "rowA=1"          {'rowA=1'}         0.4       0.4  
-    <strong>rowA=5</strong>    "b"        "rowA=5"          {'rowA=5'}         0.4       0.4  </div></div></div></div></div></div>
+    <strong>rowA=5</strong>    "b"        "rowA=5"          {'rowA=5'}         0.4       0.4  </div></div></div></div></div><h2  class = 'S2'><span>Read in a Table from an Excel File</span></h2><div  class = 'S1'><span>There are estimates stored in a table. Each row is a different estimation result, with a different set of estimates, for each row some fixed (not-estimated) parameter might vary. Each column represents a different parameter, or the parameter's state (initial value, estimated value, standard error, etc). </span></div><div  class = 'S1'><span>The estimatetion results file is stored in: M4Econ\table\_exa\excel_exa.xlsx. We want to load in this file. Directory is one root up and one root down. The file has multiple sheets, automatically loads in the first sheet. And print table variables names, column names. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>srn_excel_exa = </span><span style="color: rgb(170, 4, 249);">'C:\Users\fan\M4Econ\table\_exa\excel_exa.xlsx'</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_read = readtable(srn_excel_exa);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp((tb_read.Properties.VariableNames)');</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement scrollableOutput" uid="F8C9C9A4" data-testid="output_3" data-width="1128" data-height="745" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    {'estimodelctr'       }
+    {'Var1'               }
+    {'FVAL'               }
+    {'EXITFLAG'           }
+    {'esti_iterations'    }
+    {'esti_funccount'     }
+    {'mean_h_sd'          }
+    {'NPquad_esti'        }
+    {'NPquad_se'          }
+    {'NPquad_actl'        }
+    {'gamma_esti'         }
+    {'gamma_se'           }
+    {'gamma_actl'         }
+    {'lambda_esti'        }
+    {'lambda_se'          }
+    {'lambda_actl'        }
+    {'msrErrProtSD_esti'  }
+    {'msrErrProtSD_se'    }
+    {'msrErrProtSD_actl'  }
+    {'freePriceFrac_esti' }
+    {'freePriceFrac_se'   }
+    {'freePriceFrac_actl' }
+    {'h_exoshk_sd_esti'   }
+    {'h_exoshk_sd_se'     }
+    {'h_exoshk_sd_actl'   }
+    {'h_endoshk_sd_esti'  }
+    {'h_endoshk_sd_se'    }
+    {'h_endoshk_sd_actl'  }
+    {'parm_sk_mean_init'  }
+    {'parm_sk_sd_init'    }
+    {'NPquad_init'        }
+    {'gamma_init'         }
+    {'HAquad_init'        }
+    {'theta_init'         }
+    {'lambda_init'        }
+    {'msrErrProtSD_init'  }
+    {'logProt_init'       }
+    {'freePriceFrac_init' }
+    {'h_exoshk_sd_init'   }
+    {'h_endoshk_sd_init'  }
+    {'prod_hgt0_coef_init'}
+    {'prod_prot_coef_init'}
+    {'prod_cons_coef_init'}
+    {'prod_male_coef_init'}
+    {'prod_wgt0_coef_init'}
+    {'endoshkCount'       }
+    {'guasshermite'       }
+    {'len_curEstiParam'   }
+    {'fixedVarIndex'      }
+    {'esti_method'        }
+    {'esti_option_type'   }
+    {'subset_iter_rounds' }
+    {'lambda_frac_disc'   }</div></div></div></div></div><h2  class = 'S2'><span>Select Table Columns based on Column Name Strings</span></h2><div  class = 'S1'><span>Given the table that we loaded in above, select only the columns that start with some string like "gamma", or columns that end with certain strings, like "_esti".</span></div><div  class = 'S1'><span>The </span><a href = "https://www.mathworks.com/help/matlab/ref/startswith.html"><span>startsWith</span></a><span>, </span><a href = "https://www.mathworks.com/help/matlab/ref/contains.html"><span>contains</span></a><span>, and </span><a href = "https://www.mathworks.com/help/matlab/ref/endswith.html"><span>endsWith</span></a><span> are string functions that generate logical arrays based on which elements of the tring array satisfies the criteria. So this is not a table function, it is a string function.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>ar_st_col_names = tb_read.Properties.VariableNames;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_st_col_names_prod = ar_st_col_names(startsWith(ar_st_col_names, </span><span style="color: rgb(170, 4, 249);">'prod_'</span><span>));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_st_col_names_esti = ar_st_col_names(endsWith(ar_st_col_names, </span><span style="color: rgb(170, 4, 249);">'_esti'</span><span>));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_st_col_names_sd = ar_st_col_names(contains(ar_st_col_names, </span><span style="color: rgb(170, 4, 249);">'_sd_'</span><span>));</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(ar_st_col_names_prod');</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="EB4A972E" data-testid="output_4" data-width="1128" data-height="73" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    {'prod_hgt0_coef_init'}
+    {'prod_prot_coef_init'}
+    {'prod_cons_coef_init'}
+    {'prod_male_coef_init'}
+    {'prod_wgt0_coef_init'}</div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>disp(ar_st_col_names_esti');</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="B23C67BE" data-testid="output_5" data-width="1128" data-height="101" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    {'NPquad_esti'       }
+    {'gamma_esti'        }
+    {'lambda_esti'       }
+    {'msrErrProtSD_esti' }
+    {'freePriceFrac_esti'}
+    {'h_exoshk_sd_esti'  }
+    {'h_endoshk_sd_esti' }</div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>disp(ar_st_col_names_sd');</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="9B0A8946" data-testid="output_6" data-width="1128" data-height="129" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    {'h_exoshk_sd_esti' }
+    {'h_exoshk_sd_se'   }
+    {'h_exoshk_sd_actl' }
+    {'h_endoshk_sd_esti'}
+    {'h_endoshk_sd_se'  }
+    {'h_endoshk_sd_actl'}
+    {'parm_sk_sd_init'  }
+    {'h_exoshk_sd_init' }
+    {'h_endoshk_sd_init'}</div></div></div></div></div><div  class = 'S9'><span>We can select columns that contain the string </span><span style=' font-style: italic;'>sd</span><span> as well as </span><span style=' font-style: italic;'>actl</span><span> in them, by considering joint conditions.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>ar_it_select = contains(ar_st_col_names, </span><span style="color: rgb(170, 4, 249);">'_sd_'</span><span>).*endsWith(ar_st_col_names, </span><span style="color: rgb(170, 4, 249);">'_actl'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_st_col_names_selected = ar_st_col_names(ar_it_select==1);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(ar_st_col_names_selected');</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="5B178FAF" data-testid="output_7" data-width="1128" data-height="31" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    {'h_exoshk_sd_actl' }
+    {'h_endoshk_sd_actl'}</div></div></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% show values from selected columns</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_read(1:10, ar_st_col_names_selected));</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="E9C036F0" data-testid="output_8" data-width="1128" data-height="185" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    <strong>h_exoshk_sd_actl</strong>    <strong>h_endoshk_sd_actl</strong>
+    <strong>________________</strong>    <strong>_________________</strong>
+
+        0.042154             0.012103    
+        0.042514             0.011849    
+        0.042571             0.011352    
+         0.04263             0.010598    
+        0.042662            0.0089398    
+        0.042664            0.0088495    
+        0.042638            0.0078152    
+        0.042689            0.0027549    
+        0.042692            0.0024652    
+        0.042625             0.002309    </div></div></div></div></div></div>
 <br>
 <!-- 
 ##### SOURCE BEGIN #####
@@ -78,5 +163,46 @@ disp(tb_test_a);
 disp(tb_test_a(strcmp(tb_test_a.Var1, "b"),:));
 % select the rows where col123=0.4
 disp(tb_test_a(tb_test_a.col123==0.4,:));
+%% Read in a Table from an Excel File
+% There are estimates stored in a table. Each row is a different estimation 
+% result, with a different set of estimates, for each row some fixed (not-estimated) 
+% parameter might vary. Each column represents a different parameter, or the parameter's 
+% state (initial value, estimated value, standard error, etc). 
+% 
+% The estimatetion results file is stored in: M4Econ\table\_exa\excel_exa.xlsx. 
+% We want to load in this file. Directory is one root up and one root down. The 
+% file has multiple sheets, automatically loads in the first sheet. And print 
+% table variables names, column names. 
+
+srn_excel_exa = 'C:\Users\fan\M4Econ\table\_exa\excel_exa.xlsx';
+tb_read = readtable(srn_excel_exa);
+disp((tb_read.Properties.VariableNames)');
+%% Select Table Columns based on Column Name Strings
+% Given the table that we loaded in above, select only the columns that start 
+% with some string like "gamma", or columns that end with certain strings, like 
+% "_esti".
+% 
+% The <https://www.mathworks.com/help/matlab/ref/startswith.html startsWith>, 
+% <https://www.mathworks.com/help/matlab/ref/contains.html contains>, and <https://www.mathworks.com/help/matlab/ref/endswith.html 
+% endsWith> are string functions that generate logical arrays based on which elements 
+% of the tring array satisfies the criteria. So this is not a table function, 
+% it is a string function.
+
+ar_st_col_names = tb_read.Properties.VariableNames;
+ar_st_col_names_prod = ar_st_col_names(startsWith(ar_st_col_names, 'prod_'));
+ar_st_col_names_esti = ar_st_col_names(endsWith(ar_st_col_names, '_esti'));
+ar_st_col_names_sd = ar_st_col_names(contains(ar_st_col_names, '_sd_'));
+disp(ar_st_col_names_prod');
+disp(ar_st_col_names_esti');
+disp(ar_st_col_names_sd');
+%% 
+% We can select columns that contain the string _sd_ as well as _actl_ in them, 
+% by considering joint conditions.
+
+ar_it_select = contains(ar_st_col_names, '_sd_').*endsWith(ar_st_col_names, '_actl');
+ar_st_col_names_selected = ar_st_col_names(ar_it_select==1);
+disp(ar_st_col_names_selected');
+% show values from selected columns
+disp(tb_read(1:10, ar_st_col_names_selected));
 ##### SOURCE END #####
 --></body></html>

@@ -59,6 +59,7 @@
   titleshort: "Array Based Row and Column Names"
   description: |
     Generate a column and row named table. Convert row names to a column as strings. Remove Row Names.
+    Generate string-keys based on column names and values for a subset of columns.
   core :
     - package: m
       code: |
@@ -68,7 +69,10 @@
         tb_test_a.Properties.VariableNames
         tb_test_a.Properties.RowNames
         addvars(tb, rownames, 'Before', 1)
-  date: 2020-06-08
+        strcat()
+        strjoin()
+        cellfun(@(x) f(x), ar_x)
+  date: 2020-12-30
   date_start: 2020-06-08
   output:
     pdf_document:

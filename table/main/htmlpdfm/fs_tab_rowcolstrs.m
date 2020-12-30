@@ -40,3 +40,28 @@ disp(tb_test_a);
 
 tb_test_a.Properties.RowNames = {};
 disp(tb_test_a);
+%% Generate String Based on Row Values and Column Names
+% Suppose we are looping over meshed grid of parameter values, want to generate 
+% a KEY that is based on three of the parameters, but not the remaining parameter. 
+% One strategy is to use the current values of the three parameters, combine them 
+% with the string column names, and concatenate together. This generate a string 
+% key. 
+
+cl_ar_identifier = cell([size(tb_test_a,1), 1]);
+for esti_row_idx=1:size(tb_test_a,1)
+    
+    % Get the current row, 3rd and 4th columns
+    ar_fl_colvals = tb_test_a{esti_row_idx,[3,4]};
+    ar_st_colnames = tb_test_a.Properties.VariableNames([3,4]);
+    ar_st_colvals = cellfun(@(x) strtrim(x), cellstr(num2str(ar_fl_colvals')), 'UniformOutput', false);
+    ar_st_identifier = strcat(ar_st_colnames', '=', ar_st_colvals);
+    esti_identifier = strjoin(ar_st_identifier, "#");
+    
+    % add to cell
+    cl_ar_identifier{esti_row_idx} = esti_identifier;
+end
+% this is a group identifier
+ar_st_identifier = string(cl_ar_identifier);
+tb_test_a = addvars(tb_test_a, cl_ar_identifier, 'Before', 1);
+tb_test_a = addvars(tb_test_a, ar_st_identifier, 'Before', 1);
+disp(tb_test_a);

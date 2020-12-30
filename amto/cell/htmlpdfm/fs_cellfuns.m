@@ -1,7 +1,19 @@
-%% List Comprehension with Cells
+%% Matlab List Comprehension with Cells
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Concatenate Numeric Values as String with Trimming
+% There is a list of numbers, combine (paste) to single string with some connector, 
+% trim each element to eliminate spaces.
+
+rng(123,'philox')
+ar_rand = rand([5,1]);
+st_fl_rand = string(num2str(ar_rand));
+st_untrimmmed = strjoin(st_fl_rand, "#");
+cl_st_trimmmed = cellfun(@(x) strtrim(x), cellstr(st_fl_rand), 'UniformOutput', false);
+st_trimmmed = strjoin(string(cl_st_trimmmed), "#");
+disp(['st_untrimmmed:' st_untrimmmed]);
+disp(['st_trimmmed:' st_trimmmed]);
 %% Find Index of Elements of String Cells in a larger String Cells
 % the function below returns the position of cl_st_param_keys in ls_st_param_key 
 % should only include in cl_st_param_keys strings that also exist in ls_st_param_key.

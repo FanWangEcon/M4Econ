@@ -26,9 +26,9 @@ rmd_files:
 
 
   - amto/cell/main.Rmd
+  - amto/cell/fs_cellscombine.Rmd
   - amto/cell/fs_cellfuns.Rmd
   - amto/cell/fs_cellscombinations.Rmd
-  - amto/cell/fs_cellscombine.Rmd
   - amto/cell/fs_cellsnested.Rmd
 
   - amto/string/main.Rmd

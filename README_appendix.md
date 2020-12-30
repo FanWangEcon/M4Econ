@@ -54,17 +54,18 @@
 ][Cells
 ] links
 
-1. [List Comprehension with Cells](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellfuns.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellfuns.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellfuns.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellfuns.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellfuns.html)
+1. [Combine Cells](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombine.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellscombine.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombine.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombine.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombine.html)
+	+ Combine string cell arrays and string.
+	+ **m**: *[{st_param}, ls_st_param_key, cl_st_param_keys]*
+2. [List Comprehension with Cells](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellfuns.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellfuns.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellfuns.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellfuns.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellfuns.html)
 	+ Cell2mat, cellfun, anonymous function list comprehension over cells.
 	+ Find min and max of all arrays in cells.
 	+ Find length of all arrays in cells; find index of elements of one array in another cell array.
-	+ **m**: *cell2mat() + cellfun() + strcmp() + find() + cell2mat(cellfun(@(m) find(strcmp(ls_st_param_key, m)), cl_st_param_keys, ‘UniformOutput’, false))*
-2. [Permutate Cells](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombinations.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellscombinations.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombinations.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombinations.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombinations.html)
+	+ Trim and concatenate floats to single string.
+	+ **m**: *cell2mat() + cellfun() + strcmp() + strtrim() + find() + cell2mat(cellfun(@(m) find(strcmp(ls_st_param_key, m)), cl_st_param_keys, ‘UniformOutput’, false)) + cellfun(@(x) strtrim(x), cellstr(st_fl_rand), 'UniformOutput', false)*
+3. [Permutate Cells](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombinations.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellscombinations.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombinations.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombinations.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombinations.html)
 	+ Generate all possible combinations of various arrays contained in cell array.
 	+ **m**: *ndgrid() + cell2mat() + array2table() + cell2mat(cellfun(@(m) m(:), cl_mt_all, ‘uni’, 0))*
-3. [Combine Cells](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombine.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellscombine.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombine.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombine.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombine.html)
-	+ Combine string cell arrays and string.
-	+ **m**: *[{st_param}, ls_st_param_key, cl_st_param_keys]*
 4. [Nested Cells](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellsnested.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellsnested.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellsnested.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellsnested.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellsnested.html)
 	+ Cell of cells with inner cell having multiple types.
 	+ **m**: *linspace() + cell([4,1]) + clns_parm_tstar{1} = {‘fl_crra’, ‘CRRA’, linspace(1, 2, it_simu_vec_len)} + disp(clns_parm_tstar(1)) + disp(clns_parm_tstar{1}{1})*
@@ -240,7 +241,8 @@
 	+ **m**: *array2table() + rng() + addvars() + movevars() + removevars() + matlab.lang.makeValidName() + tb.Properties.VariableNames + tb.Properties.RowNames*
 3. [Array Based Row and Column Names](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_rowcolstrs.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_rowcolstrs.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_rowcolstrs.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_rowcolstrs.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_rowcolstrs.html)
 	+ Generate a column and row named table. Convert row names to a column as strings. Remove Row Names.
-	+ **m**: *array2table() + string() + strcat('rowA=', string((1:size(mt, 1)))) + tb_test_a.Properties.VariableNames + tb_test_a.Properties.RowNames + addvars(tb, rownames, 'Before', 1)*
+	+ Generate string-keys based on column names and values for a subset of columns.
+	+ **m**: *array2table() + string() + strcat('rowA=', string((1:size(mt, 1)))) + tb_test_a.Properties.VariableNames + tb_test_a.Properties.RowNames + addvars(tb, rownames, 'Before', 1) + strcat() + strjoin() + cellfun(@(x) f(x), ar_x)*
 4. [Select Subset of Rows and Columns](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_select_rows_cols.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html)
 	+ Conditional selection based on cell values and column and row names.
 	+ Load a excel file and select based on column name string conditions.

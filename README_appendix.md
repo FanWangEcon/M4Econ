@@ -219,7 +219,15 @@
 	+ Two dimensional matrix for x and y, a third variable with color spectrum set via loop.
 	+ **m**: *plot(2d, 2d) + jet + set(chart(m), 'Color', clr)*
 
-### [Section 5.3  Write and Read Plots
+### [Section 5.3  Graph Functions
+][Graph Functions
+] links
+
+1. [Matlab Plot a One Variable Function](https://fanwangecon.github.io/M4Econ/graph/func/htmlpdfm/fs_fplot.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/fs_fplot.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/htmlpdfm/fs_fplot.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/htmlpdfm/fs_fplot.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/func/htmlpdfm/fs_fplot.html)
+	+ Use fplot to plot a one variable function.
+	+ **m**: *fplot() + xline() + yline() + title([char(f_x)],'Interpreter',"none");*
+
+### [Section 5.4  Write and Read Plots
 ][Write and Read Plots
 ] links
 

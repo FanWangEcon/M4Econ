@@ -1,0 +1,25 @@
+- file: fs_fplot
+  title: "Matlab Plot a One Variable Function"
+  titleshort: "Matlab Plot a One Variable Function"
+  description: |
+    Use fplot to plot a one variable function.
+  core :
+    - package: m
+      code: |
+        fplot()
+        xline()
+        yline()
+        title([char(f_x)],'Interpreter',"none");
+  date: 2021-02-03
+  date_start: 2021-02-03
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

@@ -21,10 +21,13 @@
 srn_excel_exa = 'C:\Users\fan\M4Econ\table\_exa\excel_exa.xlsx';
 tb_estimates = readtable(srn_excel_exa);
 % columns to select
-ar_st_colnames = tb_read.Properties.VariableNames;
-ar_st_colnames_sel = ["mean_h_sd", ar_st_col_names(endsWith(ar_st_colnames, '_esti'))];
+ar_st_colnames = tb_estimates.Properties.VariableNames;
+ar_st_colnames_sel = ["mean_h_sd", ar_st_colnames(endsWith(ar_st_colnames, '_esti'))];
 % Select all estimates columns and the exogenous parameter column
 mt_estimates_sel = tb_estimates{:, ar_st_colnames_sel};
+% sort by the first column
+mt_estimates_sel = sortrows(mt_estimates_sel, 1);
+disp(mt_estimates_sel(1:10,:));
 % show size
 disp(size(mt_estimates_sel));
 %% 

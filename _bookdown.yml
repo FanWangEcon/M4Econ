@@ -79,6 +79,9 @@ rmd_files:
   - graph/main/fs_lines.Rmd
   - graph/main/fs_specline.Rmd
 
+  - graph/func/main.Rmd
+  - graph/func/fs_fplot.Rmd
+
   - graph/export/main.Rmd
   - graph/export/fs_eps.Rmd
 

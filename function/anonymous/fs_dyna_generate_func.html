@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Dynamically Generate M Files</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S9 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Dynamically Generate M Files</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/MEconTools/"><span style=' font-weight: bold;'>MEconTools</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span>Dynamically Generate and Run M Files</span></h2><div  class = 'S1'><span>Use-case: There is a wage equation that provides wage for college or non-college educated indivdiuals. The parameter for college and non-college educated distinguishes them with values 2 and 1. Initially, model was designed to be solved jointly for college and non-college educated, so the education grid as both values 1 and 2. In modified code version, only one education group solved at once. The education grid is always length 1. This wage education is called by many functions, so do not want to change the parameter structure. Instead, depending on whether low or high education group is been solved for, regenerate this function with hard-coded values for education groups.</span></div><div  class = 'S1'><span>see </span><a href = "https://www.mathworks.com/matlabcentral/answers/407161-how-to-use-one-matlab-program-to-create-a-new-m-file-and-insert-executable-code-into-it-which-is-fr"><span>this</span></a><span> and </span><a href = "https://www.mathworks.com/matlabcentral/answers/13077-error-with-dynamically-created-m-files"><span>this</span></a><span>.</span></div><div  class = 'S1'><span>First cell array to store function code lines. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>cl_code = {</span><span style="color: rgb(170, 4, 249);">'function F=fsi_test_wage(j,educ)'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'% both'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'%it_edu_grid_type = 1;'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'% non-college only'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'%it_edu_grid_type = 2;'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'% college only'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'it_edu_grid_type = 3;'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'if (it_edu_grid_type == 1 || it_edu_grid_type == 2)'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'    % no changes needed when both, or low education type'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'    % low type = 1, educ = 1'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'    F = fsi_test_wage_equa(j,educ);'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'elseif (it_edu_grid_type == 3)'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'    % problem high type, educ should equal 2, but solving for high edu only, educ=1'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'    F = fsi_test_wage_equa(j,1);'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'end'</span><span>, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>	 </span><span style="color: rgb(170, 4, 249);">'end'</span><span>};</span></span></div></div></div><div  class = 'S6'><span>Second, get current path.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Check folder to use</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>spn_current_mlx_path = matlab.desktop.editor.getActiveFilename;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>[spt_filepath, snm_name, st_ext] = fileparts(spn_current_mlx_path);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>disp([</span><span style="color: rgb(170, 4, 249);">'spt_filepath=' </span><span>spt_filepath]);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="9166EEE9" data-testid="output_0" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">spt_filepath=G:\repos\M4Econ\function\anonymous</div></div></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre;"><span>spt_filepath = fullfile(spt_filepath, </span><span style="color: rgb(170, 4, 249);">'_file'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">if </span><span>~exist(spt_filepath, </span><span style="color: rgb(170, 4, 249);">'dir'</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    mkdir(spt_filepath);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(14, 0, 255);">end</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>disp([</span><span style="color: rgb(170, 4, 249);">'spt_filepath:' </span><span>spt_filepath]);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="C3BE7113" data-testid="output_1" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">spt_filepath:G:\repos\M4Econ\function\anonymous\_file</div></div></div></div></div><div  class = 'S6'><span>Third, generate file.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Start file</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>spn_path_file = fullfile(spt_filepath, </span><span style="color: rgb(170, 4, 249);">'fsi_test_wage.m'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>f = fopen(spn_path_file, </span><span style="color: rgb(170, 4, 249);">'w'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>fprintf(f, </span><span style="color: rgb(170, 4, 249);">'%s\n'</span><span>, cl_code{:});</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>fclose(f);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>tmpfile;</span></span></div></div></div><div  class = 'S6'><span>Third, add functions in subfolder to path.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Add to path to matlab path</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>addpath(spt_filepath);</span></span></div></div></div><div  class = 'S6'><span>Call and use function</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>wage = fsi_test_wage(19, 1);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>disp([</span><span style="color: rgb(170, 4, 249);">'wage:' </span><span>num2str(wage)]);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="1630FCD2" data-testid="output_2" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">wage:0.54154</div></div></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Dynamically Generate M Files
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Dynamically Generate and Run M Files
+% Use-case: There is a wage equation that provides wage for college or non-college 
+% educated indivdiuals. The parameter for college and non-college educated distinguishes 
+% them with values 2 and 1. Initially, model was designed to be solved jointly 
+% for college and non-college educated, so the education grid as both values 1 
+% and 2. In modified code version, only one education group solved at once. The 
+% education grid is always length 1. This wage education is called by many functions, 
+% so do not want to change the parameter structure. Instead, depending on whether 
+% low or high education group is been solved for, regenerate this function with 
+% hard-coded values for education groups.
+% 
+% see <https://www.mathworks.com/matlabcentral/answers/407161-how-to-use-one-matlab-program-to-create-a-new-m-file-and-insert-executable-code-into-it-which-is-fr 
+% this> and <https://www.mathworks.com/matlabcentral/answers/13077-error-with-dynamically-created-m-files 
+% this>.
+% 
+% First cell array to store function code lines. 
+
+cl_code = {'function F=fsi_test_wage(j,educ)', ...
+	 '% both', ...
+	 '%it_edu_grid_type = 1;', ...
+	 '% non-college only', ...
+	 '%it_edu_grid_type = 2;', ...
+	 '% college only', ...
+	 'it_edu_grid_type = 3;', ...
+	 'if (it_edu_grid_type == 1 || it_edu_grid_type == 2)', ...
+	 '    % no changes needed when both, or low education type', ...
+	 '    % low type = 1, educ = 1', ...
+	 '    F = fsi_test_wage_equa(j,educ);', ...
+	 'elseif (it_edu_grid_type == 3)', ...
+	 '    % problem high type, educ should equal 2, but solving for high edu only, educ=1', ...
+	 '    F = fsi_test_wage_equa(j,1);', ...
+	 'end', ...
+	 'end'};
+%% 
+% Second, get current path.
+
+% Check folder to use
+spn_current_mlx_path = matlab.desktop.editor.getActiveFilename;
+[spt_filepath, snm_name, st_ext] = fileparts(spn_current_mlx_path);
+disp(['spt_filepath=' spt_filepath]);
+spt_filepath = fullfile(spt_filepath, '_file');
+if ~exist(spt_filepath, 'dir')
+    mkdir(spt_filepath);
+end
+disp(['spt_filepath:' spt_filepath]);
+%% 
+% Third, generate file.
+
+% Start file
+spn_path_file = fullfile(spt_filepath, 'fsi_test_wage.m');
+f = fopen(spn_path_file, 'w');
+fprintf(f, '%s\n', cl_code{:});
+fclose(f);
+tmpfile;
+%% 
+% Third, add functions in subfolder to path.
+
+% Add to path to matlab path
+addpath(spt_filepath);
+%% 
+% Call and use function
+
+wage = fsi_test_wage(19, 1);
+disp(['wage:' num2str(wage)]);
+##### SOURCE END #####
+--></body></html>

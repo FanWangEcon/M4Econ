@@ -50,7 +50,7 @@ rmd_files:
   - function/defaultparam/fs_defaultmap.Rmd
   - function/anonymous/main.Rmd
   - function/anonymous/fs_anonymous_func.Rmd
-
+  - function/anonymous/fs_dyna_generate_func.Rmd
 
   - panel/main.Rmd
   - panel/timeseries/main.Rmd

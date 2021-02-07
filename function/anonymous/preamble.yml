@@ -21,3 +21,33 @@
         in_header: '../../hdga.html'
   always_allow_html: true
   urlcolor: blue
+
+- file: fs_dyna_generate_func
+  title: "Matlab Dynamically Generate M File"
+  titleshort: "Dynamically Generate M File"
+  description: |
+    Get current working file file name and path.
+    Generate a m file from strings, add file to path, can call that m file.
+  core :
+    - package: m
+      code: |
+        matlab.desktop.editor.getActiveFilename
+        fileparts()
+        fullfile()
+        addpath()
+        fopen()
+        fprintf()
+        fclose()
+  date: 2021-02-07
+  date_start: 2021-02-07
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

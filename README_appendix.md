@@ -131,13 +131,17 @@
 	+ Core model functions with potentially many parameters, possibly override default generation to save time.
 	+ **m**: *varargin + function [out_put] = func_name(varargin) + cm_defaults = {cm_a, cm_b} + [cm_defaults{1:optional_params_len}] = varargin{:} + cm_c = [cm_a;cm_b]*
 
-### [Section 2.2  Anonymous Functions
-][Anonymous Functions
+### [Section 2.2  Dynamic Functions
+][Dynamic Functions
 ] links
 
 1. [Anonymous Function Examples](https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_anonymous_func.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/fs_anonymous_func.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_anonymous_func.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_anonymous_func.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_anonymous_func.html)
 	+ Define a wage equation where individuals working part time earn a fraction of the full time earnings.
 	+ **m**: *gamrnd() + f_x = @(x) x*
+2. [Dynamically Generate M File](https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_dyna_generate_func.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/fs_dyna_generate_func.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_dyna_generate_func.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_dyna_generate_func.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_dyna_generate_func.html)
+	+ Get current working file file name and path.
+	+ Generate a m file from strings, add file to path, can call that m file.
+	+ **m**: *matlab.desktop.editor.getActiveFilename + fileparts() + fullfile() + addpath() + fopen() + fprintf() + fclose()*
 
 ## Distributional Processes links
 

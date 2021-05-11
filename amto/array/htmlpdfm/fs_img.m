@@ -2,6 +2,30 @@
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Check if Array is All Above or Below Zero
+% There is an array that contains possible NaN values, check if all elements 
+% of array are positive, or all elements are negative, ignoring the NaN values.
+
+for it_arrays=[1,2,3,4,5,6]
+    if (it_arrays == 1)
+        ar_values = [0.0001, 0.0002, 0.0005, 0.0012, 0.0013, NaN, NaN, NaN, NaN];
+    elseif (it_arrays == 2)
+        ar_values = [NaN, -0.0002, -0.0005, -0.0012, -0.0013, NaN, NaN, NaN, NaN];
+    elseif (it_arrays == 3)
+        ar_values = [0.0001, 0.0002, 0.0005, 0.0012, 0.0013];
+    elseif (it_arrays == 4)
+        ar_values = [-0.0002, -0.0005, -0.0012, -0.0013];
+    elseif (it_arrays == 5)
+        ar_values = [-0.0002, 0.0005, -0.0012, -0.0013];
+    elseif (it_arrays == 6)
+        ar_values = [-0.0002, 0.0005, -0.0012, NaN, -0.0013];
+    end
+    bl_all_pos = min(ar_values(~isnan(ar_values))>=0);
+    bl_all_neg = min(ar_values(~isnan(ar_values))<=0);
+    st_print = ['str=' num2str(it_arrays) ...
+        ' has bl_all_pos=' num2str(bl_all_pos) ' and bl_all_neg=' num2str(bl_all_neg)];
+    disp(st_print);
+end
 %% Check Parameter Types
 % There parameter input can either be a cell array or an integer, conditional 
 % processing based on parameter input type
@@ -12,15 +36,15 @@ curEstiParamB = {146, 'R3'};
 % test if is float
 st_test = strjoin(...
     ["", ...
-     ['isfloat(curEstiParamA)=' num2str(isfloat(curEstiParamA))], ...
-     ['isfloat(curEstiParamB)=' num2str(isfloat(curEstiParamB))], ...
+    ['isfloat(curEstiParamA)=' num2str(isfloat(curEstiParamA))], ...
+    ['isfloat(curEstiParamB)=' num2str(isfloat(curEstiParamB))], ...
     ], ";");
 disp(st_test);
 % test if is cell
 st_test = strjoin(...
     ["", ...
-     ['iscell(curEstiParamA)=' num2str(iscell(curEstiParamA))], ...
-     ['iscell(curEstiParamB)=' num2str(iscell(curEstiParamB))], ...
+    ['iscell(curEstiParamA)=' num2str(iscell(curEstiParamA))], ...
+    ['iscell(curEstiParamB)=' num2str(iscell(curEstiParamB))], ...
     ], ";");
 disp(st_test);
 %% Compare Array Values That are Approximately Similar

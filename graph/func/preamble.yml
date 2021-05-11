@@ -1,8 +1,9 @@
 - file: fs_fplot
-  title: "Matlab Plot a One Variable Function"
-  titleshort: "Matlab Plot a One Variable Function"
+  title: "Matlab Plot Polynomials, Budget and Indifference Functions"
+  titleshort: "Matlab Plot Polynomials, Budget and Indifference Functions"
   description: |
     Use fplot to plot a one variable function.
+    Plot budget constraint and indifference curve.
   core :
     - package: m
       code: |

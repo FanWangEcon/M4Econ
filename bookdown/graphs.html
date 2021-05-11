@@ -4,25 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Graphs | Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <title>Chapter 6 Graphs | Data Structures and Dynamic Optimization with Matlab</title>
+  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Graphs | Data Structures and Dynamic Optimization with Matlab" />
+  <meta property="og:title" content="Chapter 6 Graphs | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Graphs | Data Structures and Dynamic Optimization with Matlab" />
+  <meta name="twitter:title" content="Chapter 6 Graphs | Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   
@@ -30,14 +30,14 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-12-27" />
+<meta name="date" content="2021-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="simulation.html"/>
+<link rel="prev" href="estimation.html"/>
 <link rel="next" href="tables.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -107,9 +107,9 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.3</b> Cells</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.3.1</b> List Comprehension with Cells</a></li>
-<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.3.2</b> All Possible Combinations of Multiple Arrays</a></li>
-<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#combine-cells-together"><i class="fa fa-check"></i><b>1.3.3</b> Combine Cells Together</a></li>
+<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#matlab-cell-array-basic-operations"><i class="fa fa-check"></i><b>1.3.1</b> Matlab Cell Array Basic Operations</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#matlab-list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.3.2</b> Matlab List Comprehension with Cells</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.3.3</b> All Possible Combinations of Multiple Arrays</a></li>
 <li class="chapter" data-level="1.3.4" data-path="data-structures.html"><a href="data-structures.html#nested-cells"><i class="fa fa-check"></i><b>1.3.4</b> Nested Cells</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.4</b> Characters and Strings</a>
@@ -136,9 +136,10 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
 <li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#anonymous-functions"><i class="fa fa-check"></i><b>2.2</b> Anonymous Functions</a>
+<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#dynamic-functions"><i class="fa fa-check"></i><b>2.2</b> Dynamic Functions</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="functions.html"><a href="functions.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.2.1</b> Anonymous Function in Matlab</a></li>
+<li class="chapter" data-level="2.2.2" data-path="functions.html"><a href="functions.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.2.2</b> Dynamically Generate M Files</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distributional-processes.html"><a href="distributional-processes.html"><i class="fa fa-check"></i><b>3</b> Distributional Processes</a>
@@ -146,6 +147,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="3.1" data-path="distributional-processes.html"><a href="distributional-processes.html#time-series"><i class="fa fa-check"></i><b>3.1</b> Time Series</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="distributional-processes.html"><a href="distributional-processes.html#simulate-ar1-autoregressive-processes"><i class="fa fa-check"></i><b>3.1.1</b> Simulate AR(1) Autoregressive Processes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="distributional-processes.html"><a href="distributional-processes.html#matlab-moving-average-of-time-series"><i class="fa fa-check"></i><b>3.1.2</b> Matlab Moving Average of Time-series</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="distributional-processes.html"><a href="distributional-processes.html#cross-sectional-data"><i class="fa fa-check"></i><b>3.2</b> Cross-sectional Data</a>
 <ul>
@@ -161,38 +163,53 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="4.1.3" data-path="simulation.html"><a href="simulation.html#cholesky-decomposition-correlated-five-dimensional-multivariate-normal-shock"><i class="fa fa-check"></i><b>4.1.3</b> Cholesky Decomposition Correlated Five Dimensional Multivariate Normal Shock</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> Graphs</a>
+<li class="chapter" data-level="5" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>5</b> Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>5.1</b> Figure Components</a>
+<li class="chapter" data-level="5.1" data-path="estimation.html"><a href="estimation.html#linear-estimation"><i class="fa fa-check"></i><b>5.1</b> Linear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>5.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
-<li class="chapter" data-level="5.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>5.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
-<li class="chapter" data-level="5.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>5.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
+<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-estimation"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Estimation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>5.2</b> Basic Figure Types</a>
+<li class="chapter" data-level="5.2" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation"><i class="fa fa-check"></i><b>5.2</b> Nonlinear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>5.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
-<li class="chapter" data-level="5.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>5.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
-<li class="chapter" data-level="5.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>5.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>5.3</b> Write and Read Plots</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>5.3.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
+<li class="chapter" data-level="5.2.1" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation-with-fminunc"><i class="fa fa-check"></i><b>5.2.1</b> Nonlinear Estimation with Fminunc</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>6</b> Tables</a>
+<li class="chapter" data-level="6" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>6</b> Graphs</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>6.1</b> Basic Table Generation</a>
+<li class="chapter" data-level="6.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>6.1</b> Figure Components</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>6.1.1</b> Named Tables with Random Data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>6.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
-<li class="chapter" data-level="6.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>6.1.3</b> Row and Column Names for Table based on Arrays</a></li>
-<li class="chapter" data-level="6.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>6.1.4</b> Select Subset of Rows and Columns</a></li>
+<li class="chapter" data-level="6.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>6.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
+<li class="chapter" data-level="6.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>6.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
+<li class="chapter" data-level="6.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>6.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>6.2</b> Table Joining</a>
+<li class="chapter" data-level="6.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>6.2</b> Basic Figure Types</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>6.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
-<li class="chapter" data-level="6.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>6.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+<li class="chapter" data-level="6.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>6.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
+<li class="chapter" data-level="6.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>6.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
+<li class="chapter" data-level="6.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>6.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="graphs.html"><a href="graphs.html#graph-functions"><i class="fa fa-check"></i><b>6.3</b> Graph Functions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-one-variable-function"><i class="fa fa-check"></i><b>6.3.1</b> Matlab Graph One Variable Function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>6.4</b> Write and Read Plots</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>6.4.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>7</b> Tables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>7.1</b> Basic Table Generation</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>7.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>7.1.3</b> Row and Column Names for Table based on Arrays</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>7.1.4</b> Select Subset of Rows and Columns</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>7.2</b> Table Joining</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -210,7 +227,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
 <ul>
 <li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
-<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-anonymous-functionsanonymous-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Anonymous Functions</span> links</a></li>
+<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Dynamic Functions</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#distributional-processes-links"><i class="fa fa-check"></i><b>A.3</b> Distributional Processes links</a>
 <ul>
@@ -221,16 +238,22 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="A.4.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-4.1-normal-distributionnormal-distribution-links"><i class="fa fa-check"></i><b>A.4.1</b> <span>Section 4.1 Normal Distribution</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.5</b> Graphs links</a>
+<li class="chapter" data-level="A.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#estimation-links"><i class="fa fa-check"></i><b>A.5</b> Estimation links</a>
 <ul>
-<li class="chapter" data-level="A.5.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.5.1</b> <span>Section 5.1 Figure Components</span> links</a></li>
-<li class="chapter" data-level="A.5.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.5.2</b> <span>Section 5.2 Basic Figure Types</span> links</a></li>
-<li class="chapter" data-level="A.5.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.3-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.5.3</b> <span>Section 5.3 Write and Read Plots</span> links</a></li>
+<li class="chapter" data-level="A.5.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.1-linear-estimationlinear-estimation-links"><i class="fa fa-check"></i><b>A.5.1</b> <span>Section 5.1 Linear Estimation</span> links</a></li>
+<li class="chapter" data-level="A.5.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.2-nonlinear-estimationnonlinear-estimation-links"><i class="fa fa-check"></i><b>A.5.2</b> <span>Section 5.2 Nonlinear Estimation</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.6</b> Tables links</a>
+<li class="chapter" data-level="A.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.6</b> Graphs links</a>
 <ul>
-<li class="chapter" data-level="A.6.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.6.1</b> <span>Section 6.1 Basic Table Generation</span> links</a></li>
-<li class="chapter" data-level="A.6.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.6.2</b> <span>Section 6.2 Table Joining</span> links</a></li>
+<li class="chapter" data-level="A.6.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.6.1</b> <span>Section 6.1 Figure Components</span> links</a></li>
+<li class="chapter" data-level="A.6.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.6.2</b> <span>Section 6.2 Basic Figure Types</span> links</a></li>
+<li class="chapter" data-level="A.6.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.3-graph-functionsgraph-functions-links"><i class="fa fa-check"></i><b>A.6.3</b> <span>Section 6.3 Graph Functions</span> links</a></li>
+<li class="chapter" data-level="A.6.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.4-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.6.4</b> <span>Section 6.4 Write and Read Plots</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.7" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.7</b> Tables links</a>
+<ul>
+<li class="chapter" data-level="A.7.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.7.1</b> <span>Section 7.1 Basic Table Generation</span> links</a></li>
+<li class="chapter" data-level="A.7.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.7.2</b> <span>Section 7.2 Table Joining</span> links</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -253,19 +276,19 @@ Simulate a model, column combine simulation parameters with multi-row simulation
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graphs" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Graphs</h1>
+<div id="graphs" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Graphs</h1>
 
-<div id="figure-components" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Figure Components</h2>
+<div id="figure-components" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Figure Components</h2>
 
-<div id="matlab-graph-safe-colors-for-web-presentation-and-publications-examples" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</h3>
+<div id="matlab-graph-safe-colors-for-web-presentation-and-publications-examples" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="good-colors-to-use-darker" class="section level4" number="5.1.1.1">
-<h4><span class="header-section-number">5.1.1.1</span> Good Colors to Use Darker</h4>
+<div id="good-colors-to-use-darker" class="section level4" number="6.1.1.1">
+<h4><span class="header-section-number">6.1.1.1</span> Good Colors to Use Darker</h4>
 <p>Nice darker light colors to use in matlab.</p>
 <pre><code>close all
 
@@ -299,8 +322,8 @@ end</code></pre>
 <p><img src="img/fs_color_images/figure_4.png" width="500" /></p>
 <p><img src="img/fs_color_images/figure_5.png" width="500" /></p>
 </div>
-<div id="good-colors-to-use-lighter" class="section level4" number="5.1.1.2">
-<h4><span class="header-section-number">5.1.1.2</span> Good Colors to Use Lighter</h4>
+<div id="good-colors-to-use-lighter" class="section level4" number="6.1.1.2">
+<h4><span class="header-section-number">6.1.1.2</span> Good Colors to Use Lighter</h4>
 <p>Nice ligher colors to use in matlab.</p>
 <pre><code>close all
 
@@ -335,8 +358,8 @@ end</code></pre>
 <p><img src="img/fs_color_images/figure_10.png" width="500" /></p>
 <p><img src="img/fs_color_images/figure_11.png" width="500" /></p>
 </div>
-<div id="matlab-has-a-graphical-tool-for-picking-color" class="section level4" number="5.1.1.3">
-<h4><span class="header-section-number">5.1.1.3</span> Matlab has a graphical tool for picking color</h4>
+<div id="matlab-has-a-graphical-tool-for-picking-color" class="section level4" number="6.1.1.3">
+<h4><span class="header-section-number">6.1.1.3</span> Matlab has a graphical tool for picking color</h4>
 <p>Enter uisetcolor pick color from new window and color values will appear
 uisetcolor</p>
 <pre><code>% Color Pickers
@@ -359,13 +382,13 @@ scatter(x, y, 10, ...
 
 </div>
 </div>
-<div id="matlab-graph-titling-labels-and-legends-examples" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Matlab Graph Titling, Labels and Legends Examples</h3>
+<div id="matlab-graph-titling-labels-and-legends-examples" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Matlab Graph Titling, Labels and Legends Examples</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="draw-a-figure-label-title-x-and-y-axises-with-latex-equations" class="section level4" number="5.1.2.1">
-<h4><span class="header-section-number">5.1.2.1</span> <strong>Draw A figure Label Title, X and Y Axises with Latex Equations</strong></h4>
+<div id="draw-a-figure-label-title-x-and-y-axises-with-latex-equations" class="section level4" number="6.1.2.1">
+<h4><span class="header-section-number">6.1.2.1</span> <strong>Draw A figure Label Title, X and Y Axises with Latex Equations</strong></h4>
 <pre><code>clear all;
 close all;
 figure();
@@ -390,8 +413,8 @@ grid on;
 grid minor;</code></pre>
 <p><img src="img/fs_titling_images/figure_0.png" width="500" /></p>
 </div>
-<div id="matlab-graph-specify-legends-manually" class="section level4" number="5.1.2.2">
-<h4><span class="header-section-number">5.1.2.2</span> Matlab Graph Specify Legends Manually</h4>
+<div id="matlab-graph-specify-legends-manually" class="section level4" number="6.1.2.2">
+<h4><span class="header-section-number">6.1.2.2</span> Matlab Graph Specify Legends Manually</h4>
 <p>Specify labels manually, note we can use HandleVisibility to control
 what part of figure show up in legends.</p>
 <pre><code>% Generate Random Data
@@ -430,8 +453,8 @@ xlabel(&#39;Approximated Util based on  Interpolation&#39;)</code></pre>
 <p><img src="img/fs_titling_images/figure_1.png" width="500" /></p>
 <pre><code>snapnow;</code></pre>
 </div>
-<div id="given-graph-graph-subset-of-lines-and-add-extra-line-with-legend" class="section level4" number="5.1.2.3">
-<h4><span class="header-section-number">5.1.2.3</span> Given Graph, Graph Subset of Lines and Add Extra Line with Legend</h4>
+<div id="given-graph-graph-subset-of-lines-and-add-extra-line-with-legend" class="section level4" number="6.1.2.3">
+<h4><span class="header-section-number">6.1.2.3</span> Given Graph, Graph Subset of Lines and Add Extra Line with Legend</h4>
 <p>Same plot as before, except we plot only 2 of the three lines and add
 another line with associated legend entry.</p>
 <pre><code>legendCell = cellstr(num2str(ar_x&#39;, &#39;shock=%3.2f&#39;));
@@ -446,13 +469,13 @@ legend([g1, g3, xlinemax], legendCell([1,3,length(legendCell)]), &#39;Location&#
 
 </div>
 </div>
-<div id="matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</h3>
+<div id="matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples" class="section level3" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="plot-a-subset-of-data-matrix-with-appropriate-legends" class="section level4" number="5.1.3.1">
-<h4><span class="header-section-number">5.1.3.1</span> Plot a Subset of Data Matrix with Appropriate Legends</h4>
+<div id="plot-a-subset-of-data-matrix-with-appropriate-legends" class="section level4" number="6.1.3.1">
+<h4><span class="header-section-number">6.1.3.1</span> Plot a Subset of Data Matrix with Appropriate Legends</h4>
 <p>Sometimes we solve a model across many states, but we can only plot at a
 subset of states, or perhaps we plot at all states, but only show
 legends/labels for a subset.</p>
@@ -517,16 +540,16 @@ legend(chart([legend2plot length(legendCell)]), ...
 </div>
 </div>
 </div>
-<div id="basic-figure-types" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Basic Figure Types</h2>
+<div id="basic-figure-types" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Basic Figure Types</h2>
 
-<div id="matlab-graph-scatter-plot-examples" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Matlab Graph Scatter Plot Examples</h3>
+<div id="matlab-graph-scatter-plot-examples" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Matlab Graph Scatter Plot Examples</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="scatter-plot-example" class="section level4" number="5.2.1.1">
-<h4><span class="header-section-number">5.2.1.1</span> Scatter Plot Example</h4>
+<div id="scatter-plot-example" class="section level4" number="6.2.1.1">
+<h4><span class="header-section-number">6.2.1.1</span> Scatter Plot Example</h4>
 <p>The plot below as square scatter points, each one with think border. Can
 set transparency of border/edge and inside separately.</p>
 <pre><code>close all;
@@ -559,8 +582,8 @@ grid minor;</code></pre>
 % &#39;hexagram&#39; or &#39;h&#39; Six-pointed star (hexagram)
 % &#39;none&#39;    No markers</code></pre>
 </div>
-<div id="scatter-with-edge-and-face-color-and-transparency" class="section level4" number="5.2.1.2">
-<h4><span class="header-section-number">5.2.1.2</span> Scatter with Edge and Face Color and Transparency</h4>
+<div id="scatter-with-edge-and-face-color-and-transparency" class="section level4" number="6.2.1.2">
+<h4><span class="header-section-number">6.2.1.2</span> Scatter with Edge and Face Color and Transparency</h4>
 <p>Here is another way to Set Scatter Edge and Fac Colors and
 Transparencies.</p>
 <pre><code>% Generate Data
@@ -606,13 +629,13 @@ grid minor;</code></pre>
 
 </div>
 </div>
-<div id="matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines" class="section level3" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</h3>
+<div id="matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="six-lines-plot" class="section level4" number="5.2.2.1">
-<h4><span class="header-section-number">5.2.2.1</span> Six lines Plot</h4>
+<div id="six-lines-plot" class="section level4" number="6.2.2.1">
+<h4><span class="header-section-number">6.2.2.1</span> Six lines Plot</h4>
 <p>Colors from <a href="http://ksrowell.com/blog-visualizing-data/2012/02/02/optimal-colors-for-graphs/">optimal
 colors</a>.
 Generate A line plot with multiple lines using safe colors, with
@@ -692,8 +715,8 @@ grid on;</code></pre>
 <p><img src="img/fs_lines_images/figure_0.png" width="500" /></p>
 <pre><code>snapnow;</code></pre>
 </div>
-<div id="horizontal-and-vertical-lines-and-45-degree" class="section level4" number="5.2.2.2">
-<h4><span class="header-section-number">5.2.2.2</span> Horizontal and Vertical Lines and 45 Degree</h4>
+<div id="horizontal-and-vertical-lines-and-45-degree" class="section level4" number="6.2.2.2">
+<h4><span class="header-section-number">6.2.2.2</span> Horizontal and Vertical Lines and 45 Degree</h4>
 <p>Draw x and y axis, and draw a 45 degree line.</p>
 <pre><code>figure();
 
@@ -717,8 +740,8 @@ grid minor;</code></pre>
 
 </div>
 </div>
-<div id="matlab-graph-scatter-and-line-spectrum-with-three-variables" class="section level3" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> Matlab Graph Scatter and Line Spectrum with Three Variables</h3>
+<div id="matlab-graph-scatter-and-line-spectrum-with-three-variables" class="section level3" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Matlab Graph Scatter and Line Spectrum with Three Variables</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
@@ -736,8 +759,8 @@ case, we will give color to the columns.</p>
 <li><p>X and Y could be asset choices, color could be utility, consumption
 etc.</p></li>
 </ol>
-<div id="setting-up-data" class="section level4" number="5.2.3.1">
-<h4><span class="header-section-number">5.2.3.1</span> Setting Up Data</h4>
+<div id="setting-up-data" class="section level4" number="6.2.3.1">
+<h4><span class="header-section-number">6.2.3.1</span> Setting Up Data</h4>
 <pre><code>close all
 clear all
 
@@ -770,8 +793,8 @@ ar_kp_mw_wth_na = mt_kp_wth_na(:);
 ar_bp_mw = ar_bp_mw_wth_na(~isnan(ar_bp_mw_wth_na));
 ar_kp_mw = ar_kp_mw_wth_na(~isnan(ar_kp_mw_wth_na));</code></pre>
 </div>
-<div id="graphing" class="section level4" number="5.2.3.2">
-<h4><span class="header-section-number">5.2.3.2</span> Graphing</h4>
+<div id="graphing" class="section level4" number="6.2.3.2">
+<h4><span class="header-section-number">6.2.3.2</span> Graphing</h4>
 <pre><code>figure(&#39;PaperPosition&#39;, [0 0 7 4]);
 hold on;
 
@@ -800,16 +823,185 @@ grid on;</code></pre>
 </div>
 </div>
 </div>
-<div id="write-and-read-plots" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Write and Read Plots</h2>
+<div id="graph-functions" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Graph Functions</h2>
 
-<div id="matlab-graph-generate-eps-postscript-figures-in-matlab" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Matlab Graph Generate EPS postscript figures in matlab</h3>
+<div id="matlab-graph-one-variable-function" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Matlab Graph One Variable Function</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="properly-save-eps-with-scatter-and-other-graphing-methods-renderer-painters" class="section level4" number="5.3.1.1">
-<h4><span class="header-section-number">5.3.1.1</span> Properly Save EPS with Scatter and Other Graphing Methods: Renderer = Painters</h4>
+<div id="fplot-a-function-of-x" class="section level4" number="6.3.1.1">
+<h4><span class="header-section-number">6.3.1.1</span> fplot a Function of X</h4>
+<p>Given a cubic (polynomial) function, graph it using the fplot function,
+between some values along the domain of the function. This function is
+defined everywhere along the real-line. Note that fplot automatically
+resizes the y-scale to show the full plot clearly.</p>
+<pre><code>% close all
+figure();
+hold on;
+
+% Define a function
+syms x
+f_x = -7*x^(3);
+
+% Set bounds on the domain
+fl_x_lower = -2;
+fl_x_higher = 2;
+
+% Graph
+fplot(f_x, [fl_x_lower, fl_x_higher])
+
+% Add x-axis and y-axis
+xline(0);
+yline(0);
+
+% Title and y and y-able
+title([&#39;Plot function: &#39; char(f_x)],&#39;Interpreter&#39;,&quot;none&quot;);
+ylabel(&#39;f(x)&#39;);
+xlabel(&#39;x&#39;);
+
+% Add grids
+grid on;
+grid minor;</code></pre>
+<p><img src="img/fs_fplot_images/figure_0.png" width="500" /></p>
+<p>Plot a rational function, that is a function of polynomials.</p>
+<pre><code>% close all
+figure();
+hold on;
+
+% Define a function
+syms x
+f_x = (x)/(x^2 + 1);
+
+% Set bounds on the domain
+fl_x_lower = -2;
+fl_x_higher = 2;
+
+% Graph
+fplot(f_x, [fl_x_lower, fl_x_higher])
+
+% Add x-axis and y-axis
+xline(0);
+yline(0);
+
+% Title and y and y-able
+title([&#39;Plot function: &#39; char(f_x)],&#39;Interpreter&#39;,&quot;none&quot;);
+ylabel(&#39;f(x)&#39;);
+xlabel(&#39;x&#39;);
+
+% Add grids
+grid on;
+grid minor;</code></pre>
+<p><img src="img/fs_fplot_images/figure_1.png" width="500" /></p>
+<p>Plot a function that is not defined at all points along the real line.
+Note also that the function always returns a positive value. Note the
+fplot function automatically identifies the part of the x-axis where the
+function is not defined, and draws dashed lines to demarcate.</p>
+<pre><code>% close all
+figure();
+hold on;
+
+% Define a function
+syms x
+f_x = 5*(x^5 - 6*x^2 + 3*x)^(2/3);
+
+% Set bounds on the domain
+fl_x_lower = -1;
+fl_x_higher = 2;
+
+% Graph
+fplot(f_x, [fl_x_lower, fl_x_higher])
+
+% Add x-axis and y-axis
+xline(0);
+yline(0);
+
+% Title and y and y-able
+title([&#39;Plot function: &#39; char(f_x)],&#39;Interpreter&#39;,&quot;none&quot;);
+ylabel(&#39;f(x)&#39;);
+xlabel(&#39;x&#39;);
+
+% Add grids
+grid on;
+grid minor;</code></pre>
+<p><img src="img/fs_fplot_images/figure_2.png" width="500" /></p>
+</div>
+<div id="plot-indifference-curve-and-budget-constraint" class="section level4" number="6.3.1.2">
+<h4><span class="header-section-number">6.3.1.2</span> Plot Indifference Curve and Budget Constraint</h4>
+<p>Indifference curve and two budget lines. From <a href="https://fanwangecon.github.io/Math4Econ/derivative_application/htmlpdfm/K_save_households.html">two period consumption
+and savings
+problem</a>.</p>
+<pre><code>% close all
+figure();
+hold on;
+
+% Define parameters
+e1 = 1.5;
+e2 = 1.9;
+r = 0.05;
+
+u_star = 1.5;
+beta = 0.9;
+
+% Define a function
+% x = c1, f_x = c2
+syms x
+f_x_indiff = exp((u_star - log(x))/beta);
+
+% Formula for optimal choice that minimize expenditure
+c2_star_exp_min = exp((u_star + log(beta*(1+r)))/(1+beta));
+c1_star_exp_min = (1/(beta*(1+r)))*c2_star_exp_min;
+f_optimal_cost = c1_star_exp_min*(1+r)+c2_star_exp_min;
+
+% budget equation
+% x = c1, f_x = y
+f_x_budget = (e1*(1+r) + e2) + (-1)*(1+r)*x;
+f_x_budget_optimal_cost = f_optimal_cost + (-1)*(1+r)*x;
+
+% Set bounds on the domain
+fl_x_lower = 0;
+fl_x_higher = 6;
+
+% Graph
+hold on;
+fplot(f_x_indiff, [fl_x_lower, fl_x_higher])
+fplot(f_x_budget, [fl_x_lower, fl_x_higher])
+fplot(f_x_budget_optimal_cost, [fl_x_lower, fl_x_higher])
+
+% plot a one point scatter plot
+scatter(c1_star_exp_min, c2_star_exp_min, 300, &#39;filled&#39;);
+
+% Add x-axis and y-axis
+xline(0);
+yline(0);
+
+% Title and y and y-able
+title([&#39;Plot function: &#39; char(f_x_indiff)],&#39;Interpreter&#39;,&quot;none&quot;);
+ylabel(&#39;c2&#39;);
+xlabel(&#39;c1&#39;);
+
+% this sets x and y visual boundaries
+ylim([0,6]);
+xlim([0,6]);
+% Add grids
+grid on;
+grid minor;</code></pre>
+<p><img src="img/fs_fplot_images/figure_3.png" width="500" /></p>
+
+</div>
+</div>
+</div>
+<div id="write-and-read-plots" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Write and Read Plots</h2>
+
+<div id="matlab-graph-generate-eps-postscript-figures-in-matlab" class="section level3" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Matlab Graph Generate EPS postscript figures in matlab</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="properly-save-eps-with-scatter-and-other-graphing-methods-renderer-painters" class="section level4" number="6.4.1.1">
+<h4><span class="header-section-number">6.4.1.1</span> Properly Save EPS with Scatter and Other Graphing Methods: Renderer = Painters</h4>
 <p>scatter plot saving as eps seems to only work when Renderer is set to
 Painters</p>
 <pre><code>fl_fig_wdt = 3;
@@ -838,7 +1030,7 @@ print(strcat(st_img_path, st_file_name), &#39;-depsc&#39;, &#39;-tiff&#39;);</co
           </div>
         </div>
       </div>
-<a href="simulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

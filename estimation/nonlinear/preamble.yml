@@ -1,0 +1,23 @@
+- file: fs_nonlinear_explog
+  title: "Matlab Nonlinear Estimation"
+  titleshort: "Matlab Simple Nonlinear Estimation"
+  description: |
+    Nonlinear estimation using fminunc.
+  core :
+    - package: m
+      code: |
+        optimset()
+        fminunc()
+  date: 2021-05-10
+  date_start: 2021-05-10
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

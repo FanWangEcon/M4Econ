@@ -1,0 +1,22 @@
+- file: fs_linear_ols
+  title: "Matlab Linear OLS Estimation"
+  titleshort: "Matlab Linear OLS Estimation"
+  description: |
+    Linear OLS estimation with and without intercept.
+  core :
+    - package: m
+      code: |
+        fitlm()
+  date: 2021-05-10
+  date_start: 2021-05-10
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

@@ -165,9 +165,23 @@
 	+ Draw five correlated normal shocks from uniform random variables using Cholesky Decomposition.
 	+ **m**: *mvnrnd + corrcoef + norminv + subplot*
 
-# 5  Graphs
+# 5  Estimation
 
-## 5.1  Figure Components
+## 5.1  Linear Estimation
+
+1. [Matlab Linear OLS Estimation](https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/fs_linear_ols.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html)
+	+ Linear OLS estimation with and without intercept.
+	+ **m**: *fitlm()*
+
+## 5.2  Nonlinear Estimation
+
+1. [Matlab Simple Nonlinear Estimation](https://fanwangecon.github.io/M4Econ/estimation/nonlinear/htmlpdfm/fs_nonlinear_explog.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/nonlinear/fs_nonlinear_explog.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/nonlinear/htmlpdfm/fs_nonlinear_explog.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/nonlinear/htmlpdfm/fs_nonlinear_explog.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/estimation/nonlinear/htmlpdfm/fs_nonlinear_explog.html)
+	+ Nonlinear estimation using fminunc.
+	+ **m**: *optimset() + fminunc()*
+
+# 6  Graphs
+
+## 6.1  Figure Components
 
 1. [Image Pick Safe Colors](https://fanwangecon.github.io/M4Econ/graph/tools/htmlpdfm/fs_color.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/fs_color.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/htmlpdfm/fs_color.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/tools/htmlpdfm/fs_color.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/tools/htmlpdfm/fs_color.html)
 	+ Display safe colors.
@@ -180,7 +194,7 @@
 	+ State-space plots with color spectrum: can not show all states in legend, show subset, add additional line to plot and legend.
 	+ **m**: *jet() + numel() + fliplr() + jet(numel(chart)), set(chart(m), 'Color', clr(m,:))*
 
-## 5.2  Basic Figure Types
+## 6.2  Basic Figure Types
 
 1. [Scatter Plot Examples](https://fanwangecon.github.io/M4Econ/graph/main/htmlpdfm/fs_scatter.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/fs_scatter.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/htmlpdfm/fs_scatter.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/main/htmlpdfm/fs_scatter.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/main/htmlpdfm/fs_scatter.html)
 	+ Scatter multiple lines different colors, shapes and sizes.
@@ -193,21 +207,22 @@
 	+ Two dimensional matrix for x and y, a third variable with color spectrum set via loop.
 	+ **m**: *plot(2d, 2d) + jet + set(chart(m), 'Color', clr)*
 
-## 5.3  Graph Functions
+## 6.3  Graph Functions
 
-1. [Matlab Plot a One Variable Function](https://fanwangecon.github.io/M4Econ/graph/func/htmlpdfm/fs_fplot.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/fs_fplot.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/htmlpdfm/fs_fplot.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/htmlpdfm/fs_fplot.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/func/htmlpdfm/fs_fplot.html)
+1. [Matlab Plot Polynomials, Budget and Indifference Functions](https://fanwangecon.github.io/M4Econ/graph/func/htmlpdfm/fs_fplot.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/fs_fplot.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/htmlpdfm/fs_fplot.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/htmlpdfm/fs_fplot.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/func/htmlpdfm/fs_fplot.html)
 	+ Use fplot to plot a one variable function.
+	+ Plot budget constraint and indifference curve.
 	+ **m**: *fplot() + xline() + yline() + title([char(f_x)],'Interpreter',"none");*
 
-## 5.4  Write and Read Plots
+## 6.4  Write and Read Plots
 
 1. [Graph Generate EPS Postscript Figures](https://fanwangecon.github.io/M4Econ/graph/export/htmlpdfm/fs_eps.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/fs_eps.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/htmlpdfm/fs_eps.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/graph/export/htmlpdfm/fs_eps.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/graph/export/htmlpdfm/fs_eps.html)
 	+ EPS vector graphics, avoid bitmap (jpg, png), use vector graphics.
 	+ **m**: *figure('Renderer', 'Painters')*
 
-# 6  Tables
+# 7  Tables
 
-## 6.1  Basic Table Generation
+## 7.1  Basic Table Generation
 
 1. [Named Tables with Random Data](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_gensample.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html)
 	+ Convert a random matrix to a table with column and row names defined with arrays.
@@ -224,7 +239,7 @@
 	+ Load a excel file and select based on column name string conditions.
 	+ **m**: *tb(strcmp(tb.v1, "b"),:) + tb(tb.va==0.4,:) + readtable() + startsWith() + endsWith() + contains()*
 
-## 6.2  Table Joining
+## 7.2  Table Joining
 
 1. [Stack Matlab Tables](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html)
 	+ Append columns to existing table. Stack tables vertically and horizontally.

@@ -76,7 +76,8 @@ if(!is.null(spt_file_current)) {
   sph_html='/htmlpdfm'
   sph_r='/htmlpdfm'
 
-  spt_root <- 'C:/Users/fan/M4Econ/'
+  # spt_root <- 'C:/Users/fan/M4Econ/'
+  spt_root <- 'G:/repos/M4Econ/'
   spn_prj_rmd <- gsub(spt_root, "", spt_file_current)
   spt_rmd_path <- paste0('/',dirname(spn_prj_rmd))
 
@@ -122,6 +123,6 @@ if (knitr::is_latex_output()) {
     text_top_count <- ""
     text_end_count <- ""
 } else {
-    text_top_count <- "[![HitCount](http://hits.dwyl.com/fanwangecon/M4Econ.svg)](https://github.com/FanWangEcon/M4Econ)  [![Star](https://img.shields.io/github/stars/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/stargazers) [![Fork](https://img.shields.io/github/forks/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/network/members) [![Star](https://img.shields.io/github/watchers/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/watchers) [![DOI](https://zenodo.org/badge/180438801.svg)](https://zenodo.org/badge/latestdoi/180438801)"
+    text_top_count <- "[![Star](https://img.shields.io/github/stars/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/stargazers) [![Fork](https://img.shields.io/github/forks/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/network/members) [![Star](https://img.shields.io/github/watchers/fanwangecon/M4Econ?style=social)](https://github.com/FanWangEcon/M4Econ/watchers) [![DOI](https://zenodo.org/badge/180438801.svg)](https://zenodo.org/badge/latestdoi/180438801)"
     text_end_count <- "[![](https://img.shields.io/github/last-commit/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/commits/master) [![](https://img.shields.io/github/commit-activity/m/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/graphs/commit-activity) [![](https://img.shields.io/github/issues/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/issues) [![](https://img.shields.io/github/issues-pr/fanwangecon/M4Econ)](https://github.com/FanWangEcon/M4Econ/pulls)"
 }

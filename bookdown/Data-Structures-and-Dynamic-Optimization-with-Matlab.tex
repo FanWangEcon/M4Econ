@@ -107,7 +107,7 @@
 
 \title{Data Structures and Dynamic Optimization with Matlab}
 \author{Fan Wang}
-\date{2020-12-27}
+\date{2021-05-11}
 
 \begin{document}
 \maketitle
@@ -295,6 +295,88 @@ ans = 1x15
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
+
+\hypertarget{find-the-first-negative-element-of-array}{%
+\subsubsection{Find the First Negative Element of Array}\label{find-the-first-negative-element-of-array}}
+
+There is an array with positive, negative and NaN values, find the first
+negative number's index, and the last positive number index. Use the
+find function.
+
+\begin{verbatim}
+for it_array=1:1:2
+    % Construct Array
+    if (it_array == 1) 
+        ar_alpha_sum_devi_one = [0.1, 0.7, -0.001, NaN, NaN];
+    elseif (it_array ==2)
+        ar_alpha_sum_devi_one = [0.1, 0.7, 0.001, NaN, NaN];
+    end
+    % Find last positive
+    it_last_pos_idx = find(ar_alpha_sum_devi_one > 0, 1, 'last');
+    % Find first negative
+    it_first_neg_idx = find(ar_alpha_sum_devi_one < 0, 1, 'first');
+    if (isempty(it_first_neg_idx))
+        it_first_neg_idx = NaN;
+    end
+    disp(['it_last_pos_idx=' num2str(it_last_pos_idx) ...
+        ', it_first_neg_idx=' num2str(it_first_neg_idx)])
+end
+
+it_last_pos_idx=2, it_first_neg_idx=3
+it_last_pos_idx=3, it_first_neg_idx=NaN
+\end{verbatim}
+
+\hypertarget{first-the-first-negative-element-of-last-segment-of-array}{%
+\subsubsection{First the First Negative Element of Last Segment of Array}\label{first-the-first-negative-element-of-last-segment-of-array}}
+
+There is an array with some negative numbers, then some positive
+numbers, then some negative numbers again. Find the first element of the
+final segment of negative numbers.
+
+\begin{verbatim}
+for it_array=1:5
+    
+    % Construct Array
+    if (it_array == 1) 
+        ar_alpha_sum_devi_one = [0.1, 0.7, -0.001, NaN, NaN];
+    elseif (it_array ==2)
+        ar_alpha_sum_devi_one = [0.1, 0.7, 0.001, NaN, NaN];
+    elseif (it_array ==3)
+        ar_alpha_sum_devi_one = [-0.001, 0.1, 0.7, 0.001, NaN, NaN];
+    elseif (it_array ==4)
+        ar_alpha_sum_devi_one = [-0.001, 0.1, 0.7, 0.001, -0.0002, -0.05, NaN, NaN];
+    elseif (it_array ==5)
+        ar_alpha_sum_devi_one = [NaN, NaN, -0.001, 0.1, 0.7, 0.001, -0.0002, NaN];
+    end
+    
+    % Find last positive
+    it_last_pos_idx = find(ar_alpha_sum_devi_one > 0, 1, 'last');
+    % Find first negative
+    it_first_neg_idx = find(ar_alpha_sum_devi_one < 0, 1, 'first');
+    % Find first negative of last negative segment
+    ar_alpha_sum_after_last_pos = ...
+        ar_alpha_sum_devi_one(it_last_pos_idx:length(ar_alpha_sum_devi_one));
+    it_first_neg_last_neg_seg_idx = it_last_pos_idx - 1 + ...
+        find(ar_alpha_sum_after_last_pos < 0, 1, 'first');
+    
+    if (isempty(it_first_neg_idx))
+        it_first_neg_idx = NaN;
+    end
+    if (isempty(it_first_neg_last_neg_seg_idx))
+        it_first_neg_last_neg_seg_idx = NaN;
+    end
+    
+    disp(['it_last_pos_idx=' num2str(it_last_pos_idx) ...
+        ', it_first_neg_idx=' num2str(it_first_neg_idx)... 
+        ', it_first_neg_last_neg_seg_idx=' num2str(it_first_neg_last_neg_seg_idx)])
+end
+
+it_last_pos_idx=2, it_first_neg_idx=3, it_first_neg_last_neg_seg_idx=3
+it_last_pos_idx=3, it_first_neg_idx=NaN, it_first_neg_last_neg_seg_idx=NaN
+it_last_pos_idx=4, it_first_neg_idx=1, it_first_neg_last_neg_seg_idx=NaN
+it_last_pos_idx=4, it_first_neg_idx=1, it_first_neg_last_neg_seg_idx=5
+it_last_pos_idx=6, it_first_neg_idx=3, it_first_neg_last_neg_seg_idx=7
+\end{verbatim}
 
 \hypertarget{index-select-rows-and-columns-of-a-2d-matrix}{%
 \subsubsection{Index Select Rows and Columns of a 2D matrix}\label{index-select-rows-and-columns-of-a-2d-matrix}}
@@ -593,22 +675,22 @@ associated with the max values.
 randMat = rand(5,3);
 disp(randMat);
 
-    0.4264    0.1156    0.4830
-    0.8934    0.3173    0.9856
-    0.9442    0.4148    0.5195
-    0.5018    0.8663    0.6129
-    0.6240    0.2505    0.1206
+    0.2283    0.4309    0.8934
+    0.2937    0.4937    0.9442
+    0.6310    0.4258    0.5018
+    0.0921    0.3123    0.6240
+    0.4337    0.4264    0.1156
 
 [maxVal maxIndex] = max(randMat);
 linearIndex = sub2ind(size(randMat),maxIndex,(1:1:size(randMat,2)))
 
 linearIndex = 1x3    
-     3     9    12
+     3     7    12
 
 randMat(linearIndex)
 
 ans = 1x3    
-    0.9442    0.8663    0.9856
+    0.6310    0.4937    0.9442
 
 t_pV = [1,2;3,4;5,6];
 t_pV_Ind = [1,1;0,0;1,1];
@@ -1393,6 +1475,43 @@ ans = 3x1
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
 
+\hypertarget{check-if-array-is-all-above-or-below-zero}{%
+\subsubsection{Check if Array is All Above or Below Zero}\label{check-if-array-is-all-above-or-below-zero}}
+
+There is an array that contains possible NaN values, check if all
+elements of array are positive, or all elements are negative, ignoring
+the NaN values.
+
+\begin{verbatim}
+for it_arrays=[1,2,3,4,5,6]
+    if (it_arrays == 1)
+        ar_values = [0.0001, 0.0002, 0.0005, 0.0012, 0.0013, NaN, NaN, NaN, NaN];
+    elseif (it_arrays == 2)
+        ar_values = [NaN, -0.0002, -0.0005, -0.0012, -0.0013, NaN, NaN, NaN, NaN];
+    elseif (it_arrays == 3)
+        ar_values = [0.0001, 0.0002, 0.0005, 0.0012, 0.0013];
+    elseif (it_arrays == 4)
+        ar_values = [-0.0002, -0.0005, -0.0012, -0.0013];
+    elseif (it_arrays == 5)
+        ar_values = [-0.0002, 0.0005, -0.0012, -0.0013];
+    elseif (it_arrays == 6)
+        ar_values = [-0.0002, 0.0005, -0.0012, NaN, -0.0013];
+    end
+    bl_all_pos = min(ar_values(~isnan(ar_values))>=0);
+    bl_all_neg = min(ar_values(~isnan(ar_values))<=0);
+    st_print = ['str=' num2str(it_arrays) ...
+        ' has bl_all_pos=' num2str(bl_all_pos) ' and bl_all_neg=' num2str(bl_all_neg)];
+    disp(st_print);
+end
+
+str=1 has bl_all_pos=1 and bl_all_neg=0
+str=2 has bl_all_pos=0 and bl_all_neg=1
+str=3 has bl_all_pos=1 and bl_all_neg=0
+str=4 has bl_all_pos=0 and bl_all_neg=1
+str=5 has bl_all_pos=0 and bl_all_neg=0
+str=6 has bl_all_pos=0 and bl_all_neg=0
+\end{verbatim}
+
 \hypertarget{check-parameter-types}{%
 \subsubsection{Check Parameter Types}\label{check-parameter-types}}
 
@@ -1406,8 +1525,8 @@ curEstiParamB = {146, 'R3'};
 % test if is float
 st_test = strjoin(...
     ["", ...
-     ['isfloat(curEstiParamA)=' num2str(isfloat(curEstiParamA))], ...
-     ['isfloat(curEstiParamB)=' num2str(isfloat(curEstiParamB))], ...
+    ['isfloat(curEstiParamA)=' num2str(isfloat(curEstiParamA))], ...
+    ['isfloat(curEstiParamB)=' num2str(isfloat(curEstiParamB))], ...
     ], ";");
 disp(st_test);
 
@@ -1416,8 +1535,8 @@ disp(st_test);
 % test if is cell
 st_test = strjoin(...
     ["", ...
-     ['iscell(curEstiParamA)=' num2str(iscell(curEstiParamA))], ...
-     ['iscell(curEstiParamB)=' num2str(iscell(curEstiParamB))], ...
+    ['iscell(curEstiParamA)=' num2str(iscell(curEstiParamA))], ...
+    ['iscell(curEstiParamB)=' num2str(iscell(curEstiParamB))], ...
     ], ";");
 disp(st_test);
 
@@ -2674,12 +2793,61 @@ disp(tb_paramsmesh_long);
 \hypertarget{cells}{%
 \section{Cells}\label{cells}}
 
-\hypertarget{list-comprehension-with-cells}{%
-\subsection{List Comprehension with Cells}\label{list-comprehension-with-cells}}
+\hypertarget{matlab-cell-array-basic-operations}{%
+\subsection{Matlab Cell Array Basic Operations}\label{matlab-cell-array-basic-operations}}
 
 \begin{quote}
 Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
 \end{quote}
+
+\hypertarget{string-combine-with-string-cell}{%
+\subsubsection{String Combine with string cell}\label{string-combine-with-string-cell}}
+
+\begin{verbatim}
+ls_st_param_key = {'fl_crra', 'fl_beta', ...
+                   'fl_w', 'fl_r_save', ...
+                   'fl_a_max', 'it_z_n', 'it_a_n'};
+cl_st_param_keys = {'fl_wad', 'fl_betart', 'it_z_nfg'};
+st_param = 'asdjfl';
+disp([{st_param}, ls_st_param_key, cl_st_param_keys]);
+
+  Columns 1 through 10
+
+    {'asdjfl'}    {'fl_crra'}    {'fl_beta'}    {'fl_w'}    {'fl_r_save'}    {'fl_a_max'}    {'it_z_n'}    {'it_a_n'}    {'fl_wad'}    {'fl_betart'}
+
+  Column 11
+
+    {'it_z_nfg'}
+\end{verbatim}
+
+\hypertarget{matlab-list-comprehension-with-cells}{%
+\subsection{Matlab List Comprehension with Cells}\label{matlab-list-comprehension-with-cells}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{concatenate-numeric-values-as-string-with-trimming}{%
+\subsubsection{Concatenate Numeric Values as String with Trimming}\label{concatenate-numeric-values-as-string-with-trimming}}
+
+There is a list of numbers, combine (paste) to single string with some
+connector, trim each element to eliminate spaces.
+
+\begin{verbatim}
+rng(123,'philox')
+ar_rand = rand([5,1]);
+st_fl_rand = string(num2str(ar_rand));
+st_untrimmmed = strjoin(st_fl_rand, "#");
+cl_st_trimmmed = cellfun(@(x) strtrim(x), cellstr(st_fl_rand), 'UniformOutput', false);
+st_trimmmed = strjoin(string(cl_st_trimmmed), "#");
+disp(['st_untrimmmed:' st_untrimmmed]);
+
+    "st_untrimmmed:"    "  0.53162##  0.60704##  0.31843#0.0016474##  0.65784"
+
+disp(['st_trimmmed:' st_trimmmed]);
+
+    "st_trimmmed:"    "0.53162#0.60704#0.31843#0.0016474#0.65784"
+\end{verbatim}
 
 \hypertarget{find-index-of-elements-of-string-cells-in-a-larger-string-cells}{%
 \subsubsection{Find Index of Elements of String Cells in a larger String Cells}\label{find-index-of-elements-of-string-cells-in-a-larger-string-cells}}
@@ -2757,26 +2925,26 @@ disp(tb_rand_draws);
     fl_crra    fl_beta
     _______    _______
 
-    1.6965     0.96538
-    1.2861     0.97398
-    1.2269     0.96898
-    1.5513     0.96444
-    1.7195      0.9689
-    1.4231     0.95292
-    1.9808     0.95447
-    1.6848     0.94913
-    1.4809     0.95175
-    1.3921     0.96524
-    1.3432     0.94368
-     1.729     0.95735
-    1.4386     0.95723
-    1.0597     0.95975
-     1.398     0.95703
-     1.738     0.95249
-    1.1825     0.95705
-    1.1755     0.97574
-    1.5316     0.97777
-    1.5318     0.96007
+    1.5316     0.97337
+     1.607     0.97305
+    1.3184     0.94644
+    1.0016     0.97349
+    1.6578     0.94983
+    1.7505     0.97152
+    1.7407     0.94277
+    1.7108     0.94781
+    1.3542     0.97625
+    1.1479     0.95709
+    1.8834     0.94962
+    1.1274     0.96042
+    1.2132     0.96637
+    1.0676     0.94936
+    1.4318     0.96911
+    1.3791     0.97365
+    1.9399     0.94242
+    1.6369     0.96946
+    1.9791     0.95752
+    1.5709     0.96145
 \end{verbatim}
 
 \hypertarget{all-possible-combinations-of-multiple-arrays}{%
@@ -2859,31 +3027,6 @@ disp(tb_all_combi);
     3         0.5
     4         0.5
     5         0.5
-\end{verbatim}
-
-\hypertarget{combine-cells-together}{%
-\subsection{Combine Cells Together}\label{combine-cells-together}}
-
-\begin{quote}
-Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
-\end{quote}
-
-\hypertarget{string-combine-with-string-cell}{%
-\subsubsection{String Combine with string cell}\label{string-combine-with-string-cell}}
-
-\begin{verbatim}
-ls_st_param_key = {'fl_crra', 'fl_beta', ...
-                   'fl_w', 'fl_r_save', ...
-                   'fl_a_max', 'it_z_n', 'it_a_n'};
-
-cl_st_param_keys = {'fl_wad', 'fl_betart', 'it_z_nfg'};
-
-st_param = 'asdjfl';
-
-[{st_param}, ls_st_param_key, cl_st_param_keys]
-
-ans = 
-    {'asdjfl'}    {'fl_crra'}    {'fl_beta'}    {'fl_w'}    {'fl_r_save'}    {'fl_a_max'}    {'it_z_n'}    {'it_a_n'}    {'fl_wad'}    {'fl_betart'}    {'it_z_nfg'}
 \end{verbatim}
 
 \hypertarget{nested-cells}{%
@@ -4224,8 +4367,8 @@ if (bl_time); toc; end
 end
 \end{verbatim}
 
-\hypertarget{anonymous-functions}{%
-\section{Anonymous Functions}\label{anonymous-functions}}
+\hypertarget{dynamic-functions}{%
+\section{Dynamic Functions}\label{dynamic-functions}}
 
 \hypertarget{anonymous-function-in-matlab}{%
 \subsection{Anonymous Function in Matlab}\label{anonymous-function-in-matlab}}
@@ -4307,6 +4450,99 @@ f_wage(0,0.5,0,0,0)=3901.7326
 disp(['f_wage(0,1,0,0,0)=' num2str(f_wage(0,1,0,0))]);
 
 f_wage(0,1,0,0,0)=7867.7167
+\end{verbatim}
+
+\hypertarget{dynamically-generate-m-files}{%
+\subsection{Dynamically Generate M Files}\label{dynamically-generate-m-files}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{dynamically-generate-and-run-m-files}{%
+\subsubsection{Dynamically Generate and Run M Files}\label{dynamically-generate-and-run-m-files}}
+
+Use-case: There is a wage equation that provides wage for college or
+non-college educated indivdiuals. The parameter for college and
+non-college educated distinguishes them with values 2 and 1. Initially,
+model was designed to be solved jointly for college and non-college
+educated, so the education grid as both values 1 and 2. In modified code
+version, only one education group solved at once. The education grid is
+always length 1. This wage education is called by many functions, so do
+not want to change the parameter structure. Instead, depending on
+whether low or high education group is been solved for, regenerate this
+function with hard-coded values for education groups.
+
+see
+\href{https://www.mathworks.com/matlabcentral/answers/407161-how-to-use-one-matlab-program-to-create-a-new-m-file-and-insert-executable-code-into-it-which-is-fr}{this}
+and
+\href{https://www.mathworks.com/matlabcentral/answers/13077-error-with-dynamically-created-m-files}{this}.
+
+First cell array to store function code lines.
+
+\begin{verbatim}
+cl_code = {'function F=fsi_test_wage(j,educ)', ...
+     '% both', ...
+     '%it_edu_grid_type = 1;', ...
+     '% non-college only', ...
+     '%it_edu_grid_type = 2;', ...
+     '% college only', ...
+     'it_edu_grid_type = 3;', ...
+     'if (it_edu_grid_type == 1 || it_edu_grid_type == 2)', ...
+     '    % no changes needed when both, or low education type', ...
+     '    % low type = 1, educ = 1', ...
+     '    F = fsi_test_wage_equa(j,educ);', ...
+     'elseif (it_edu_grid_type == 3)', ...
+     '    % problem high type, educ should equal 2, but solving for high edu only, educ=1', ...
+     '    F = fsi_test_wage_equa(j,1);', ...
+     'end', ...
+     'end'};
+\end{verbatim}
+
+Second, get current path.
+
+\begin{verbatim}
+% Check folder to use
+spn_current_mlx_path = matlab.desktop.editor.getActiveFilename;
+[spt_filepath, snm_name, st_ext] = fileparts(spn_current_mlx_path);
+disp(['spt_filepath=' spt_filepath]);
+
+spt_filepath=G:\repos\M4Econ\function\anonymous
+
+spt_filepath = fullfile(spt_filepath, '_file');
+if ~exist(spt_filepath, 'dir')
+    mkdir(spt_filepath);
+end
+disp(['spt_filepath:' spt_filepath]);
+
+spt_filepath:G:\repos\M4Econ\function\anonymous\_file
+\end{verbatim}
+
+Third, generate file.
+
+\begin{verbatim}
+% Start file
+spn_path_file = fullfile(spt_filepath, 'fsi_test_wage.m');
+f = fopen(spn_path_file, 'w');
+fprintf(f, '%s\n', cl_code{:});
+fclose(f);
+tmpfile;
+\end{verbatim}
+
+Third, add functions in subfolder to path.
+
+\begin{verbatim}
+% Add to path to matlab path
+addpath(spt_filepath);
+\end{verbatim}
+
+Call and use function
+
+\begin{verbatim}
+wage = fsi_test_wage(19, 1);
+disp(['wage:' num2str(wage)]);
+
+wage:0.54154
 \end{verbatim}
 
 \hypertarget{distributional-processes}{%
@@ -4626,6 +4862,107 @@ xxx tb_outcomes: all stats xxx
     {'fracByP90'        }      0.89045        0.73747
     {'fracByP99'        }      0.98852        0.95275
 \end{verbatim}
+
+\hypertarget{matlab-moving-average-of-time-series}{%
+\subsection{Matlab Moving Average of Time-series}\label{matlab-moving-average-of-time-series}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{weighted-average-of-neighbors}{%
+\subsubsection{Weighted Average of Neighbors}\label{weighted-average-of-neighbors}}
+
+Not actually a time-series moving average. There is a vector of a
+parameter value, this parameter is not been estimated, we estimate all
+other parameters while varying this one parameter. At different values
+of this parameter, there is a vector of estimates. We have estimated a
+model along a equi-distance grid of this exogenous parameter. Now for
+each of the estimated parameter, calculate a "moving-average" based on
+averaging across estimated neighbor values of this parameter, where
+neighbor distance is defined by the fixed exogenous parameter. Why do
+this? This can be considered a "smoother" tool, but more importantly,
+use the moving averages as new initial parameter guesses for a new round
+of estimation at each of the exogenous parameter's values. For different
+starting seeds, use different moving windows.
+
+First, select out all estimates:
+
+\begin{verbatim}
+% Load in file
+srn_excel_exa = 'C:\Users\fan\M4Econ\table\_exa\excel_exa.xlsx';
+tb_estimates = readtable(srn_excel_exa);
+% columns to select
+ar_st_colnames = tb_estimates.Properties.VariableNames;
+ar_st_colnames_sel = ["mean_h_sd", ar_st_colnames(endsWith(ar_st_colnames, '_esti'))];
+% Select all estimates columns and the exogenous parameter column
+mt_estimates_sel = tb_estimates{:, ar_st_colnames_sel};
+% sort by the first column
+mt_estimates_sel = sortrows(mt_estimates_sel, 1);
+disp(mt_estimates_sel(1:10,:));
+
+    0.0500   -3.4978   -2.6181   -2.7631   -0.9659   -0.4155   -3.1664   -4.4143
+    0.1000   -3.5013   -2.6949   -2.8498   -0.9718   -0.4155   -3.1579   -4.4355
+    0.1500   -3.4849   -2.8976   -3.0884   -0.9737   -0.4155   -3.1566   -4.4783
+    0.2000   -3.4633   -2.7626   -2.9237   -0.9746   -0.4155   -3.1552   -4.5471
+    0.2500   -3.3769   -1.4130   -1.4498   -0.9752   -0.4155   -3.1545   -4.7172
+    0.3000   -3.3928   -2.7294   -2.8764   -0.9737   -0.4155   -3.1544   -4.7274
+    0.3500   -3.3356   -2.5737   -2.6928   -0.9711   -0.4155   -3.1550   -4.8517
+    0.4000   -3.1298   -1.7669   -1.8096   -0.9509   -0.4155   -3.1538   -5.8944
+    0.4500   -3.1357   -2.2754   -2.3482   -0.9509   -0.4155   -3.1537   -6.0055
+    0.5000   -3.1579   -2.6960   -2.8119   -0.9513   -0.4155   -3.1553   -6.0710
+
+% show size
+disp(size(mt_estimates_sel));
+
+    82     8
+\end{verbatim}
+
+Second, calculate moving aveage with
+\href{https://www.mathworks.com/help/matlab/ref/movmean.html\#bu6jxup}{movmean},
+take the mean of up to 33 surrounding values, 66 and 99. Note that there
+is only 82 elements of the array. But the movmean function's window
+parameter will divide the window left and right.
+
+\begin{verbatim}
+mt_estimates_mov33 = movmean(mt_estimates_sel, 33);
+mt_estimates_mov66 = movmean(mt_estimates_sel, 66);
+mt_estimates_movflat = movmean(mt_estimates_sel, size(mt_estimates_sel,1)*2);
+\end{verbatim}
+
+Visualize using the
+\href{https://fanwangecon.github.io/MEconTools/MEconTools/doc/graph/htmlpdfm/fx_graph_grid.html}{ff\_graph\_grid}
+function from \href{https://fanwangecon.github.io/MEconTools/}{MEconTools}
+moving average for one parameter, with different windows. Note that with
+a moving window of 82*2, the moving average becomes flat, because there
+are 82 elements of the underlying "time-series", so the window needs
+to be 82*2 for the moving average to be fully flat.
+
+\begin{verbatim}
+% Generate some Data
+ar_row_grid = ["actual", "moving avg widow=33","mov window=66","mov window=82*2"];
+ar_exo_param_grid = mt_estimates_sel(:, 1);
+it_col = 4;
+mt_mov_value = [mt_estimates_sel(:,it_col), ...
+    mt_estimates_mov33(:,it_col), ...
+    mt_estimates_mov66(:,it_col), ...
+    mt_estimates_movflat(:,it_col)]'; 
+% container map settings
+mp_support_graph = containers.Map('KeyType', 'char', 'ValueType', 'any');
+mp_support_graph('cl_st_graph_title') = {'Moving Average with Widening Sliding Windows'};
+mp_support_graph('cl_st_ytitle') = {'Parameter Estimates Moving Average'};
+mp_support_graph('cl_st_xtitle') = {'Exogenous Parameter (not estimated)'};
+mp_support_graph('st_legend_loc') = 'best';
+mp_support_graph('bl_graph_logy') = false;
+mp_support_graph('it_legend_select') = 4; % how many shock legends to show
+mp_support_graph('st_rounding') = '6.2f'; % format shock legend
+mp_support_graph('cl_scatter_shapes') = {'s', 'o', '*', 'x'};
+mp_support_graph('cl_colors') = 'lines';
+% Call function
+ff_graph_grid(mt_mov_value, ar_row_grid, ar_exo_param_grid, mp_support_graph);
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_movingaverage_images/figure_0.png}
 
 \hypertarget{cross-sectional-data}{%
 \section{Cross-sectional Data}\label{cross-sectional-data}}
@@ -5517,6 +5854,157 @@ disp([num2str(round(corrcoef(mt_kp97_eps_chol),2))]);
    0           0           0           0           1
 \end{verbatim}
 
+\hypertarget{estimation}{%
+\chapter{Estimation}\label{estimation}}
+
+\hypertarget{linear-estimation}{%
+\section{Linear Estimation}\label{linear-estimation}}
+
+\hypertarget{linear-ols-estimation}{%
+\subsection{Linear OLS Estimation}\label{linear-ols-estimation}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{estimation-without-an-intercept}{%
+\subsubsection{Estimation without an Intercept}\label{estimation-without-an-intercept}}
+
+Fit a line from the origin through two points, given Equations
+\(Y=a\cdot X\), where we have two pairs of points for x and y.
+
+\begin{verbatim}
+rng(3);
+[x1, x2] = deal(rand(),rand());
+[y1, y2] = deal(rand(),rand());
+ar_x = [x1,x2]';
+ar_y = [y1,y2]';
+\end{verbatim}
+
+Fit a line through the two points, passing through the x-intercept.
+Three formulas that provide the same answer.
+
+\begin{verbatim}
+% simple formula
+fl_slope_basic = (1/(x1*x1 + x2*x2))*(x1*y1 + x2*y2);
+% (X'X)^(-1)(X'Y)
+fl_slope_matrix = inv(ar_x'*ar_x)*(ar_x'*ar_y);
+% Use matlab function
+tb_slope_fitlm = fitlm(ar_x, ar_y, 'Intercept',false);
+fl_slope_fitlm = tb_slope_fitlm.Coefficients{1, 1};
+\end{verbatim}
+
+Visualize results.
+
+\begin{verbatim}
+figure();
+hold on;
+scatter([x1,x2], [y1,y2]);
+xlim([0, 1]);
+ylim([0, 1]);
+refline(fl_slope_basic, 0);
+grid on;
+grid minor;
+title('Best fit line through origin with two points');
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_linear_ols_images/figure_0.png}
+
+\hypertarget{nonlinear-estimation}{%
+\section{Nonlinear Estimation}\label{nonlinear-estimation}}
+
+\hypertarget{nonlinear-estimation-with-fminunc}{%
+\subsection{Nonlinear Estimation with Fminunc}\label{nonlinear-estimation-with-fminunc}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{nonlinear-estimation-inputs-lhs-and-rhs}{%
+\subsubsection{Nonlinear Estimation Inputs LHS and RHS}\label{nonlinear-estimation-inputs-lhs-and-rhs}}
+
+Estimate this equation:
+\(\omega_t =\left(\nu_0 +a_0 \right)+a_1 t-\log \left(1-\exp \left(a_0 +a_1 t\right)\right)+\nu_t\).
+We have data from multiple \(t\), and want to estimate the \(a_0\), and
+\(a_1\) coefficients mainly, but also \(\nu_0\) is good as well. This is an
+estimation problem with 3 unknowns. \(t\) ranges from
+
+\begin{verbatim}
+% LHS outcome variable
+ar_w = [-1.7349,-1.5559,-1.4334,-1.3080,-1.1791,-1.0462,-0.9085,-0.7652,-0.6150,-0.4564,-0.2874,-0.1052,0.0943];
+% RHS t variable
+ar_t = [0,3,5,7,9,11,13,15,16,19,21,23,25];
+% actual parameters, estimation checks if gets actual parameters back
+ar_a = [-1.8974, 0.0500];
+\end{verbatim}
+
+\hypertarget{prediction-and-mse-equations}{%
+\subsubsection{Prediction and MSE Equations}\label{prediction-and-mse-equations}}
+
+Objective function for prediction and mean-squared-error.
+
+\begin{verbatim}
+obj_ar_predictions = @(a) (v_0 + a(1) + a(2).*ar_t - log(1 - exp(a(1) + a(2).*ar_t)));
+obj_fl_mse = @(a) mean((obj_ar_predictions(a) - ar_w).^2);
+\end{verbatim}
+
+Evaluate given ar\_a vectors.
+
+\begin{verbatim}
+ar_predict_at_actual = obj_ar_predictions(ar_a);
+fl_mse_at_actual = obj_fl_mse(ar_a);
+mt_compare = [ar_w', ar_predict_at_actual'];
+tb_compare = array2table(mt_compare);
+tb_compare.Properties.VariableNames = {'lhs-outcomes', 'evaluate-rhs-at-actual-parameters'};
+disp(tb_compare);
+
+    lhs-outcomes    evaluate-rhs-at-actual-parameters
+    ____________    _________________________________
+
+      -1.7349                    -1.7349             
+      -1.5559                     -1.556             
+      -1.4334                    -1.4335             
+       -1.308                    -1.3081             
+      -1.1791                    -1.1793             
+      -1.0462                    -1.0464             
+      -0.9085                   -0.90877             
+      -0.7652                   -0.76546             
+       -0.615                   -0.69133             
+      -0.4564                   -0.45679             
+      -0.2874                   -0.28786             
+      -0.1052                   -0.10571             
+       0.0943                   0.093688             
+\end{verbatim}
+
+\hypertarget{unconstrained-nonlinear-estimation}{%
+\subsubsection{Unconstrained Nonlinear Estimation}\label{unconstrained-nonlinear-estimation}}
+
+Estimation to minimize mean-squared-error.
+
+\begin{verbatim}
+% Estimation options
+options = optimset('display','off');
+% Starting values
+ar_a_init = [-10, -10];
+% Optimize
+[ar_a_opti, fl_fval] = fminunc(obj_est, ar_a_init, options);
+\end{verbatim}
+
+Compare results.
+
+\begin{verbatim}
+mt_compare = [ar_a_opti', ar_a'];
+tb_compare = array2table(mt_compare);
+tb_compare.Properties.VariableNames = {'estimated-best-fit', 'actual-parameters'};
+disp(tb_compare);
+
+    estimated-best-fit    actual-parameters
+    __________________    _________________
+
+          -1.8939              -1.8974     
+         0.050037                 0.05     
+\end{verbatim}
+
 \hypertarget{graphs}{%
 \chapter{Graphs}\label{graphs}}
 
@@ -6160,6 +6648,194 @@ grid on;
 
 \includegraphics[width=5.20833in,height=\textheight]{img/fs_specline_images/figure_0.png}
 
+\hypertarget{graph-functions}{%
+\section{Graph Functions}\label{graph-functions}}
+
+\hypertarget{matlab-graph-one-variable-function}{%
+\subsection{Matlab Graph One Variable Function}\label{matlab-graph-one-variable-function}}
+
+\begin{quote}
+Go back to \href{http://fanwangecon.github.io/}{fan}'s \href{https://fanwangecon.github.io/MEconTools/}{MEconTools} Package, \href{https://fanwangecon.github.io/M4Econ/}{Matlab Code Examples} Repository (\href{https://fanwangecon.github.io/M4Econ/bookdown}{bookdown site}), or \href{https://fanwangecon.github.io/Math4Econ/}{Math for Econ with Matlab} Repository (\href{https://fanwangecon.github.io/Math4Econ/bookdown}{bookdown site}).
+\end{quote}
+
+\hypertarget{fplot-a-function-of-x}{%
+\subsubsection{fplot a Function of X}\label{fplot-a-function-of-x}}
+
+Given a cubic (polynomial) function, graph it using the fplot function,
+between some values along the domain of the function. This function is
+defined everywhere along the real-line. Note that fplot automatically
+resizes the y-scale to show the full plot clearly.
+
+\begin{verbatim}
+% close all
+figure();
+hold on;
+
+% Define a function
+syms x
+f_x = -7*x^(3);
+
+% Set bounds on the domain
+fl_x_lower = -2;
+fl_x_higher = 2;
+
+% Graph
+fplot(f_x, [fl_x_lower, fl_x_higher])
+
+% Add x-axis and y-axis
+xline(0);
+yline(0);
+
+% Title and y and y-able
+title(['Plot function: ' char(f_x)],'Interpreter',"none");
+ylabel('f(x)');
+xlabel('x');
+
+% Add grids
+grid on;
+grid minor;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_fplot_images/figure_0.png}
+
+Plot a rational function, that is a function of polynomials.
+
+\begin{verbatim}
+% close all
+figure();
+hold on;
+
+% Define a function
+syms x
+f_x = (x)/(x^2 + 1);
+
+% Set bounds on the domain
+fl_x_lower = -2;
+fl_x_higher = 2;
+
+% Graph
+fplot(f_x, [fl_x_lower, fl_x_higher])
+
+% Add x-axis and y-axis
+xline(0);
+yline(0);
+
+% Title and y and y-able
+title(['Plot function: ' char(f_x)],'Interpreter',"none");
+ylabel('f(x)');
+xlabel('x');
+
+% Add grids
+grid on;
+grid minor;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_fplot_images/figure_1.png}
+
+Plot a function that is not defined at all points along the real line.
+Note also that the function always returns a positive value. Note the
+fplot function automatically identifies the part of the x-axis where the
+function is not defined, and draws dashed lines to demarcate.
+
+\begin{verbatim}
+% close all
+figure();
+hold on;
+
+% Define a function
+syms x
+f_x = 5*(x^5 - 6*x^2 + 3*x)^(2/3);
+
+% Set bounds on the domain
+fl_x_lower = -1;
+fl_x_higher = 2;
+
+% Graph
+fplot(f_x, [fl_x_lower, fl_x_higher])
+
+% Add x-axis and y-axis
+xline(0);
+yline(0);
+
+% Title and y and y-able
+title(['Plot function: ' char(f_x)],'Interpreter',"none");
+ylabel('f(x)');
+xlabel('x');
+
+% Add grids
+grid on;
+grid minor;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_fplot_images/figure_2.png}
+
+\hypertarget{plot-indifference-curve-and-budget-constraint}{%
+\subsubsection{Plot Indifference Curve and Budget Constraint}\label{plot-indifference-curve-and-budget-constraint}}
+
+Indifference curve and two budget lines. From \href{https://fanwangecon.github.io/Math4Econ/derivative_application/htmlpdfm/K_save_households.html}{two period consumption
+and savings
+problem}.
+
+\begin{verbatim}
+% close all
+figure();
+hold on;
+
+% Define parameters
+e1 = 1.5;
+e2 = 1.9;
+r = 0.05;
+
+u_star = 1.5;
+beta = 0.9;
+
+% Define a function
+% x = c1, f_x = c2
+syms x
+f_x_indiff = exp((u_star - log(x))/beta);
+
+% Formula for optimal choice that minimize expenditure
+c2_star_exp_min = exp((u_star + log(beta*(1+r)))/(1+beta));
+c1_star_exp_min = (1/(beta*(1+r)))*c2_star_exp_min;
+f_optimal_cost = c1_star_exp_min*(1+r)+c2_star_exp_min;
+
+% budget equation
+% x = c1, f_x = y
+f_x_budget = (e1*(1+r) + e2) + (-1)*(1+r)*x;
+f_x_budget_optimal_cost = f_optimal_cost + (-1)*(1+r)*x;
+
+% Set bounds on the domain
+fl_x_lower = 0;
+fl_x_higher = 6;
+
+% Graph
+hold on;
+fplot(f_x_indiff, [fl_x_lower, fl_x_higher])
+fplot(f_x_budget, [fl_x_lower, fl_x_higher])
+fplot(f_x_budget_optimal_cost, [fl_x_lower, fl_x_higher])
+
+% plot a one point scatter plot
+scatter(c1_star_exp_min, c2_star_exp_min, 300, 'filled');
+
+% Add x-axis and y-axis
+xline(0);
+yline(0);
+
+% Title and y and y-able
+title(['Plot function: ' char(f_x_indiff)],'Interpreter',"none");
+ylabel('c2');
+xlabel('c1');
+
+% this sets x and y visual boundaries
+ylim([0,6]);
+xlim([0,6]);
+% Add grids
+grid on;
+grid minor;
+\end{verbatim}
+
+\includegraphics[width=5.20833in,height=\textheight]{img/fs_fplot_images/figure_3.png}
+
 \hypertarget{write-and-read-plots}{%
 \section{Write and Read Plots}\label{write-and-read-plots}}
 
@@ -6443,6 +7119,45 @@ disp(tb_test_a);
        "rowA=5"          {'rowA=5'}          0.4      0.4  
 \end{verbatim}
 
+\hypertarget{generate-string-based-on-row-values-and-column-names}{%
+\subsubsection{Generate String Based on Row Values and Column Names}\label{generate-string-based-on-row-values-and-column-names}}
+
+Suppose we are looping over meshed grid of parameter values, want to
+generate a KEY that is based on three of the parameters, but not the
+remaining parameter. One strategy is to use the current values of the
+three parameters, combine them with the string column names, and
+concatenate together. This generate a string key.
+
+\begin{verbatim}
+cl_ar_identifier = cell([size(tb_test_a,1), 1]);
+for esti_row_idx=1:size(tb_test_a,1)
+    
+    % Get the current row, 3rd and 4th columns
+    ar_fl_colvals = tb_test_a{esti_row_idx,[3,4]};
+    ar_st_colnames = tb_test_a.Properties.VariableNames([3,4]);
+    ar_st_colvals = cellfun(@(x) strtrim(x), cellstr(num2str(ar_fl_colvals')), 'UniformOutput', false);
+    ar_st_identifier = strcat(ar_st_colnames', '=', ar_st_colvals);
+    esti_identifier = strjoin(ar_st_identifier, "#");
+    
+    % add to cell
+    cl_ar_identifier{esti_row_idx} = esti_identifier;
+end
+% this is a group identifier
+ar_st_identifier = string(cl_ar_identifier);
+tb_test_a = addvars(tb_test_a, cl_ar_identifier, 'Before', 1);
+tb_test_a = addvars(tb_test_a, ar_st_identifier, 'Before', 1);
+disp(tb_test_a);
+
+        ar_st_identifier             cl_ar_identifier         st_varrownames    cl_st_varrownames    col123    col456
+    ________________________    __________________________    ______________    _________________    ______    ______
+
+    "col123=0.4#col456=0.4"     {'col123=0.4#col456=0.4' }       "rowA=1"          {'rowA=1'}          0.4      0.4  
+    "col123=0.1#col456=0.1"     {'col123=0.1#col456=0.1' }       "rowA=2"          {'rowA=2'}          0.1      0.1  
+    "col123=0.25#col456=0.2"    {'col123=0.25#col456=0.2'}       "rowA=3"          {'rowA=3'}         0.25      0.2  
+    "col123=0.3#col456=0.3"     {'col123=0.3#col456=0.3' }       "rowA=4"          {'rowA=4'}          0.3      0.3  
+    "col123=0.4#col456=0.4"     {'col123=0.4#col456=0.4' }       "rowA=5"          {'rowA=5'}          0.4      0.4  
+\end{verbatim}
+
 \hypertarget{select-subset-of-rows-and-columns}{%
 \subsection{Select Subset of Rows and Columns}\label{select-subset-of-rows-and-columns}}
 
@@ -6508,6 +7223,161 @@ disp(tb_test_a(tb_test_a.col123==0.4,:));
 
     rowA=1    "a"        "rowA=1"          {'rowA=1'}         0.4       0.4  
     rowA=5    "b"        "rowA=5"          {'rowA=5'}         0.4       0.4  
+\end{verbatim}
+
+\hypertarget{read-in-a-table-from-an-excel-file}{%
+\subsubsection{Read in a Table from an Excel File}\label{read-in-a-table-from-an-excel-file}}
+
+There are estimates stored in a table. Each row is a different
+estimation result, with a different set of estimates, for each row some
+fixed (not-estimated) parameter might vary. Each column represents a
+different parameter, or the parameter's state (initial value, estimated
+value, standard error, etc).
+
+The estimatetion results file is stored in:
+M4Econ\textbackslash table\textbackslash\_exa\textbackslash excel\_exa.xlsx. We want to load in this file.
+Directory is one root up and one root down. The file has multiple
+sheets, automatically loads in the first sheet. And print table
+variables names, column names.
+
+\begin{verbatim}
+srn_excel_exa = 'C:\Users\fan\M4Econ\table\_exa\excel_exa.xlsx';
+tb_read = readtable(srn_excel_exa);
+disp((tb_read.Properties.VariableNames)');
+
+    {'estimodelctr'       }
+    {'Var1'               }
+    {'FVAL'               }
+    {'EXITFLAG'           }
+    {'esti_iterations'    }
+    {'esti_funccount'     }
+    {'mean_h_sd'          }
+    {'NPquad_esti'        }
+    {'NPquad_se'          }
+    {'NPquad_actl'        }
+    {'gamma_esti'         }
+    {'gamma_se'           }
+    {'gamma_actl'         }
+    {'lambda_esti'        }
+    {'lambda_se'          }
+    {'lambda_actl'        }
+    {'msrErrProtSD_esti'  }
+    {'msrErrProtSD_se'    }
+    {'msrErrProtSD_actl'  }
+    {'freePriceFrac_esti' }
+    {'freePriceFrac_se'   }
+    {'freePriceFrac_actl' }
+    {'h_exoshk_sd_esti'   }
+    {'h_exoshk_sd_se'     }
+    {'h_exoshk_sd_actl'   }
+    {'h_endoshk_sd_esti'  }
+    {'h_endoshk_sd_se'    }
+    {'h_endoshk_sd_actl'  }
+    {'parm_sk_mean_init'  }
+    {'parm_sk_sd_init'    }
+    {'NPquad_init'        }
+    {'gamma_init'         }
+    {'HAquad_init'        }
+    {'theta_init'         }
+    {'lambda_init'        }
+    {'msrErrProtSD_init'  }
+    {'logProt_init'       }
+    {'freePriceFrac_init' }
+    {'h_exoshk_sd_init'   }
+    {'h_endoshk_sd_init'  }
+    {'prod_hgt0_coef_init'}
+    {'prod_prot_coef_init'}
+    {'prod_cons_coef_init'}
+    {'prod_male_coef_init'}
+    {'prod_wgt0_coef_init'}
+    {'endoshkCount'       }
+    {'guasshermite'       }
+    {'len_curEstiParam'   }
+    {'fixedVarIndex'      }
+    {'esti_method'        }
+    {'esti_option_type'   }
+    {'subset_iter_rounds' }
+    {'lambda_frac_disc'   }
+\end{verbatim}
+
+\hypertarget{select-table-columns-based-on-column-name-strings}{%
+\subsubsection{Select Table Columns based on Column Name Strings}\label{select-table-columns-based-on-column-name-strings}}
+
+Given the table that we loaded in above, select only the columns that
+start with some string like "gamma", or columns that end with certain
+strings, like "\_esti".
+
+The
+\href{https://www.mathworks.com/help/matlab/ref/startswith.html}{startsWith},
+\href{https://www.mathworks.com/help/matlab/ref/contains.html}{contains}, and
+\href{https://www.mathworks.com/help/matlab/ref/endswith.html}{endsWith} are
+string functions that generate logical arrays based on which elements of
+the tring array satisfies the criteria. So this is not a table function,
+it is a string function.
+
+\begin{verbatim}
+ar_st_col_names = tb_read.Properties.VariableNames;
+ar_st_col_names_prod = ar_st_col_names(startsWith(ar_st_col_names, 'prod_'));
+ar_st_col_names_esti = ar_st_col_names(endsWith(ar_st_col_names, '_esti'));
+ar_st_col_names_sd = ar_st_col_names(contains(ar_st_col_names, '_sd_'));
+disp(ar_st_col_names_prod');
+
+    {'prod_hgt0_coef_init'}
+    {'prod_prot_coef_init'}
+    {'prod_cons_coef_init'}
+    {'prod_male_coef_init'}
+    {'prod_wgt0_coef_init'}
+
+disp(ar_st_col_names_esti');
+
+    {'NPquad_esti'       }
+    {'gamma_esti'        }
+    {'lambda_esti'       }
+    {'msrErrProtSD_esti' }
+    {'freePriceFrac_esti'}
+    {'h_exoshk_sd_esti'  }
+    {'h_endoshk_sd_esti' }
+
+disp(ar_st_col_names_sd');
+
+    {'h_exoshk_sd_esti' }
+    {'h_exoshk_sd_se'   }
+    {'h_exoshk_sd_actl' }
+    {'h_endoshk_sd_esti'}
+    {'h_endoshk_sd_se'  }
+    {'h_endoshk_sd_actl'}
+    {'parm_sk_sd_init'  }
+    {'h_exoshk_sd_init' }
+    {'h_endoshk_sd_init'}
+\end{verbatim}
+
+We can select columns that contain the string \emph{sd} as well as \emph{actl} in
+them, by considering joint conditions.
+
+\begin{verbatim}
+ar_it_select = contains(ar_st_col_names, '_sd_').*endsWith(ar_st_col_names, '_actl');
+ar_st_col_names_selected = ar_st_col_names(ar_it_select==1);
+disp(ar_st_col_names_selected');
+
+    {'h_exoshk_sd_actl' }
+    {'h_endoshk_sd_actl'}
+
+% show values from selected columns
+disp(tb_read(1:10, ar_st_col_names_selected));
+
+    h_exoshk_sd_actl    h_endoshk_sd_actl
+    ________________    _________________
+
+        0.042154             0.012103    
+        0.042514             0.011849    
+        0.042571             0.011352    
+         0.04263             0.010598    
+        0.042662            0.0089398    
+        0.042664            0.0088495    
+        0.042638            0.0078152    
+        0.042689            0.0027549    
+        0.042692            0.0024652    
+        0.042625             0.002309    
 \end{verbatim}
 
 \hypertarget{table-joining}{%
@@ -6658,9 +7528,11 @@ a table, we want to stack things together. For this assume that the
 column names are the same.
 
 \begin{verbatim}
-for i=1:5
-    % a row of coefficent estimates
-    rng(123+i);
+rng("default");
+tb_saveCoef_stack = [];
+for row_idx=1:5
+    % a row of coefficent estimates    
+    rng(123+row_idx);
     it_num_cols = 4;
     it_num_rows = 1;
     mt_saveCoef = rand([it_num_rows, it_num_cols]);
@@ -6671,11 +7543,7 @@ for i=1:5
     tb_saveCoef.Properties.VariableNames = ar_st_col_names;
     
     % Stack all results
-    if(i == 1)
-        tb_saveCoef_stack = tb_saveCoef;
-    else
-        tb_saveCoef_stack = [tb_saveCoef_stack; tb_saveCoef];
-    end
+    tb_saveCoef_stack = [tb_saveCoef_stack; tb_saveCoef];
 end
 % Add esti Counter as column
 estimodelctr = (1:size(tb_saveCoef_stack,1))';
@@ -6709,17 +7577,17 @@ This is accomplished in the following example with the \href{https://www.mathwor
 function}.
 
 \begin{verbatim}
-for i=1:5   
+for row_idx=1:5
     % a row of coefficent estimates
-    rng(123+i);
+    rng(123+row_idx);
     
     it_num_rows = 1;
-    if (i <= 2) 
+    if (row_idx <= 2) 
         it_num_cols = 4;
         mt_saveCoef = rand([it_num_rows, it_num_cols]);    
         % row to table    
         ar_st_col_names = ["FVAL", "EXITFLAG", "esti_iterations", "esti_funccount"];
-    elseif (i <= 4) 
+    elseif (row_idx <= 4) 
         it_num_cols = 2;
         mt_saveCoef = rand([it_num_rows, it_num_cols]);
         % row to table    
@@ -6732,10 +7600,11 @@ for i=1:5
     end
     
     tb_saveCoef = array2table(mt_saveCoef);
-    tb_saveCoef.Properties.VariableNames = ar_st_col_names;        
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;
+    tb_saveCoef = addvars(tb_saveCoef, row_idx, 'Before', 1);
     
     % Stack all results
-    if(i == 1)
+    if(row_idx == 1)
         tb_saveCoef_stack = tb_saveCoef;
     else
         tb_saveCoef_stack = outerjoin(tb_saveCoef_stack, tb_saveCoef, 'MergeKeys', true);
@@ -6750,14 +7619,70 @@ tb_saveCoef_stack.Properties.RowNames = cl_row_names_a;
 % display results
 disp(tb_saveCoef_stack);
 
-             estimodelctr     FVAL      EXITFLAG    esti_iterations    esti_funccount
-             ____________    _______    ________    _______________    ______________
+             estimodelctr    row_idx     FVAL      EXITFLAG    esti_iterations    esti_funccount
+             ____________    _______    _______    ________    _______________    ______________
 
-    esti1         1          0.10517     0.12814            NaN               NaN    
-    esti2         2          0.10606     0.74547        0.57231           0.45824    
-    esti3         3          0.50673    0.057531        0.62758           0.13255    
-    esti4         4          0.52383    0.039963            NaN               NaN    
-    esti5         5          0.86664         NaN        0.26314           0.13141    
+    esti1         1             1       0.10606     0.74547        0.57231           0.45824    
+    esti2         2             2       0.50673    0.057531        0.62758           0.13255    
+    esti3         3             3       0.10517     0.12814            NaN               NaN    
+    esti4         4             4       0.52383    0.039963            NaN               NaN    
+    esti5         5             5       0.86664         NaN        0.26314           0.13141    
+\end{verbatim}
+
+\hypertarget{combine-tables-outterjoin-with-parfor}{%
+\subsubsection{Combine Tables Outterjoin with Parfor}\label{combine-tables-outterjoin-with-parfor}}
+
+Same as above, but iterate/solve over loops with parfor
+
+\begin{verbatim}
+% Start cluster
+delete(gcp('nocreate'));
+myCluster = parcluster('local');
+it_workers = 4;
+myCluster.NumWorkers = it_workers;
+parpool(it_workers);
+
+Starting parallel pool (parpool) using the 'local' profile ...
+Connected to the parallel pool (number of workers: 4).
+
+% prepare storage
+cl_stores = cell([4,1]);
+% Loop over
+parfor row_idx=1:4
+    % a row of coefficent estimates
+    rng(123+row_idx);    
+    ar_st_col_names = ["FVAL", "EXITFLAG", "esti_iterations", "esti_funccount"];
+    it_num_rows = 1;
+    it_num_cols = 4;
+    mt_saveCoef = rand([it_num_rows, it_num_cols]);        
+    tb_saveCoef = array2table(mt_saveCoef);
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;
+    tb_saveCoef = addvars(tb_saveCoef, row_idx, 'Before', 1);    
+    % Stack all results
+    cl_stores{row_idx} = tb_saveCoef;
+end
+% delete cluster
+delete(gcp('nocreate'));
+\end{verbatim}
+
+Stack tables stored in cells together:
+
+\begin{verbatim}
+% Combine
+tb_saveCoef_stack = [];
+for row_idx=1:4
+    tb_saveCoef_stack = [tb_saveCoef_stack; cl_stores{row_idx}];
+end
+% display results
+disp(tb_saveCoef_stack);
+
+    Var1     FVAL      EXITFLAG    esti_iterations    esti_funccount
+    ____    _______    ________    _______________    ______________
+
+     1      0.48946    0.58215          0.2796           0.23945    
+     2      0.28746     0.3907         0.12685             0.694    
+     3      0.76682    0.48312         0.50655           0.24223    
+     4      0.71522    0.15045         0.43025            0.4845    
 \end{verbatim}
 
 \hypertarget{nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables}{%
@@ -7029,6 +7954,16 @@ disp(tb_model_allsimu_w_info);
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
+  \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombine.html}{Combine Cells}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellscombine.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombine.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombine.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombine.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Combine string cell arrays and string.
+  \item
+    \textbf{m}: \emph{{[}\{st\_param\}, ls\_st\_param\_key, cl\_st\_param\_keys{]}}
+  \end{itemize}
+\item
   \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellfuns.html}{List Comprehension with Cells}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellfuns.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellfuns.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellfuns.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellfuns.html}{\textbf{html}}
 
   \begin{itemize}
@@ -7040,7 +7975,9 @@ disp(tb_model_allsimu_w_info);
   \item
     Find length of all arrays in cells; find index of elements of one array in another cell array.
   \item
-    \textbf{m}: \emph{cell2mat() + cellfun() + strcmp() + find() + cell2mat(cellfun(@(m) find(strcmp(ls\_st\_param\_key, m)), cl\_st\_param\_keys, `UniformOutput', false))}
+    Trim and concatenate floats to single string.
+  \item
+    \textbf{m}: \emph{cell2mat() + cellfun() + strcmp() + strtrim() + find() + cell2mat(cellfun(@(m) find(strcmp(ls\_st\_param\_key, m)), cl\_st\_param\_keys, `UniformOutput', false)) + cellfun(@(x) strtrim(x), cellstr(st\_fl\_rand), `UniformOutput', false)}
   \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombinations.html}{Permutate Cells}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellscombinations.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombinations.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombinations.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombinations.html}{\textbf{html}}
@@ -7051,16 +7988,6 @@ disp(tb_model_allsimu_w_info);
     Generate all possible combinations of various arrays contained in cell array.
   \item
     \textbf{m}: \emph{ndgrid() + cell2mat() + array2table() + cell2mat(cellfun(@(m) m(:), cl\_mt\_all, `uni', 0))}
-  \end{itemize}
-\item
-  \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombine.html}{Combine Cells}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellscombine.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombine.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellscombine.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellscombine.html}{\textbf{html}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Combine string cell arrays and string.
-  \item
-    \textbf{m}: \emph{{[}\{st\_param\}, ls\_st\_param\_key, cl\_st\_param\_keys{]}}
   \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellsnested.html}{Nested Cells}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/fs_cellsnested.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellsnested.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/amto/cell/htmlpdfm/fs_cellsnested.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/amto/cell/htmlpdfm/fs_cellsnested.html}{\textbf{html}}
@@ -7223,8 +8150,8 @@ disp(tb_model_allsimu_w_info);
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-2.2-anonymous-functionsanonymous-functions-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{anonymous-functions}{Section 2.2 Anonymous Functions} links}{Section 2.2 Anonymous Functions links}}\label{section-2.2-anonymous-functionsanonymous-functions-links}}
+\hypertarget{section-2.2-dynamic-functionsdynamic-functions-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{dynamic-functions}{Section 2.2 Dynamic Functions} links}{Section 2.2 Dynamic Functions links}}\label{section-2.2-dynamic-functionsdynamic-functions-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -7238,6 +8165,18 @@ disp(tb_model_allsimu_w_info);
     Define a wage equation where individuals working part time earn a fraction of the full time earnings.
   \item
     \textbf{m}: \emph{gamrnd() + f\_x = @(x) x}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_dyna_generate_func.html}{Dynamically Generate M File}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/fs_dyna_generate_func.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_dyna_generate_func.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_dyna_generate_func.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_dyna_generate_func.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Get current working file file name and path.
+  \item
+    Generate a m file from strings, add file to path, can call that m file.
+  \item
+    \textbf{m}: \emph{matlab.desktop.editor.getActiveFilename + fileparts() + fullfile() + addpath() + fopen() + fprintf() + fclose()}
   \end{itemize}
 \end{enumerate}
 
@@ -7263,6 +8202,20 @@ disp(tb_model_allsimu_w_info);
     Simulate log income process with parameters estimated from Indian income data.
   \item
     \textbf{m}: \emph{normrnd() + for it\_t=1:1:length(ar\_shk) + plot(ar\_t, ar\_y)}
+  \end{itemize}
+\item
+  \href{https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_movingaverage.html}{Moving Average of Neighboring Values}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_movingaverage.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_movingaverage.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_movingaverage.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_movingaverage.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Compute moving average of surrounding values with different windows.
+  \item
+    Visualize moving averages compare actual to smoothed average to fully flat moving average.
+  \item
+    \textbf{m}: \emph{movmean()}
+  \item
+    \textbf{MEconTools}: \emph{ff\_graph\_grid()}
   \end{itemize}
 \end{enumerate}
 
@@ -7339,11 +8292,50 @@ disp(tb_model_allsimu_w_info);
   \end{itemize}
 \end{enumerate}
 
+\hypertarget{estimation-links}{%
+\section{Estimation links}\label{estimation-links}}
+
+\hypertarget{section-5.1-linear-estimationlinear-estimation-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{linear-estimation}{Section 5.1 Linear Estimation} links}{Section 5.1 Linear Estimation links}}\label{section-5.1-linear-estimationlinear-estimation-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html}{Matlab Linear OLS Estimation}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/fs_linear_ols.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Linear OLS estimation with and without intercept.
+  \item
+    \textbf{m}: \emph{fitlm()}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{section-5.2-nonlinear-estimationnonlinear-estimation-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{nonlinear-estimation}{Section 5.2 Nonlinear Estimation} links}{Section 5.2 Nonlinear Estimation links}}\label{section-5.2-nonlinear-estimationnonlinear-estimation-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/estimation/nonlinear/htmlpdfm/fs_nonlinear_explog.html}{Matlab Simple Nonlinear Estimation}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/estimation/nonlinear/fs_nonlinear_explog.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/estimation/nonlinear/htmlpdfm/fs_nonlinear_explog.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/estimation/nonlinear/htmlpdfm/fs_nonlinear_explog.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/estimation/nonlinear/htmlpdfm/fs_nonlinear_explog.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Nonlinear estimation using fminunc.
+  \item
+    \textbf{m}: \emph{optimset() + fminunc()}
+  \end{itemize}
+\end{enumerate}
+
 \hypertarget{graphs-links}{%
 \section{Graphs links}\label{graphs-links}}
 
-\hypertarget{section-5.1-figure-componentsfigure-components-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{figure-components}{Section 5.1 Figure Components} links}{Section 5.1 Figure Components links}}\label{section-5.1-figure-componentsfigure-components-links}}
+\hypertarget{section-6.1-figure-componentsfigure-components-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{figure-components}{Section 6.1 Figure Components} links}{Section 6.1 Figure Components links}}\label{section-6.1-figure-componentsfigure-components-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -7382,8 +8374,8 @@ disp(tb_model_allsimu_w_info);
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-5.2-basic-figure-typesbasic-figure-types-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{basic-figure-types}{Section 5.2 Basic Figure Types} links}{Section 5.2 Basic Figure Types links}}\label{section-5.2-basic-figure-typesbasic-figure-types-links}}
+\hypertarget{section-6.2-basic-figure-typesbasic-figure-types-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{basic-figure-types}{Section 6.2 Basic Figure Types} links}{Section 6.2 Basic Figure Types links}}\label{section-6.2-basic-figure-typesbasic-figure-types-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -7422,8 +8414,28 @@ disp(tb_model_allsimu_w_info);
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-5.3-write-and-read-plotswrite-and-read-plots-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{write-and-read-plots}{Section 5.3 Write and Read Plots} links}{Section 5.3 Write and Read Plots links}}\label{section-5.3-write-and-read-plotswrite-and-read-plots-links}}
+\hypertarget{section-6.3-graph-functionsgraph-functions-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{graph-functions}{Section 6.3 Graph Functions} links}{Section 6.3 Graph Functions links}}\label{section-6.3-graph-functionsgraph-functions-links}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://fanwangecon.github.io/M4Econ/graph/func/htmlpdfm/fs_fplot.html}{Matlab Plot Polynomials, Budget and Indifference Functions}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/fs_fplot.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/htmlpdfm/fs_fplot.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/graph/func/htmlpdfm/fs_fplot.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/graph/func/htmlpdfm/fs_fplot.html}{\textbf{html}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use fplot to plot a one variable function.
+  \item
+    Plot budget constraint and indifference curve.
+  \item
+    \textbf{m}: \emph{fplot() + xline() + yline() + title({[}char(f\_x){]},`Interpreter',``none'');}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{section-6.4-write-and-read-plotswrite-and-read-plots-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{write-and-read-plots}{Section 6.4 Write and Read Plots} links}{Section 6.4 Write and Read Plots links}}\label{section-6.4-write-and-read-plotswrite-and-read-plots-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -7443,8 +8455,8 @@ disp(tb_model_allsimu_w_info);
 \hypertarget{tables-links}{%
 \section{Tables links}\label{tables-links}}
 
-\hypertarget{section-6.1-basic-table-generationbasic-table-generation-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{basic-table-generation}{Section 6.1 Basic Table Generation} links}{Section 6.1 Basic Table Generation links}}\label{section-6.1-basic-table-generationbasic-table-generation-links}}
+\hypertarget{section-7.1-basic-table-generationbasic-table-generation-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{basic-table-generation}{Section 7.1 Basic Table Generation} links}{Section 7.1 Basic Table Generation links}}\label{section-7.1-basic-table-generationbasic-table-generation-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -7477,7 +8489,9 @@ disp(tb_model_allsimu_w_info);
   \item
     Generate a column and row named table. Convert row names to a column as strings. Remove Row Names.
   \item
-    \textbf{m}: \emph{array2table() + string() + strcat(`rowA=', string((1:size(mt, 1)))) + tb\_test\_a.Properties.VariableNames + tb\_test\_a.Properties.RowNames + addvars(tb, rownames, `Before', 1)}
+    Generate string-keys based on column names and values for a subset of columns.
+  \item
+    \textbf{m}: \emph{array2table() + string() + strcat(`rowA=', string((1:size(mt, 1)))) + tb\_test\_a.Properties.VariableNames + tb\_test\_a.Properties.RowNames + addvars(tb, rownames, `Before', 1) + strcat() + strjoin() + cellfun(@(x) f(x), ar\_x)}
   \end{itemize}
 \item
   \href{https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html}{Select Subset of Rows and Columns}: \href{https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_select_rows_cols.mlx}{\textbf{mlx}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.m}{\textbf{m}} \textbar{} \href{https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.pdf}{\textbf{pdf}} \textbar{} \href{https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html}{\textbf{html}}
@@ -7487,12 +8501,14 @@ disp(tb_model_allsimu_w_info);
   \item
     Conditional selection based on cell values and column and row names.
   \item
-    \textbf{m}: \emph{tb(strcmp(tb.v1, ``b''),:) + tb(tb.va==0.4,:)}
+    Load a excel file and select based on column name string conditions.
+  \item
+    \textbf{m}: \emph{tb(strcmp(tb.v1, ``b''),:) + tb(tb.va==0.4,:) + readtable() + startsWith() + endsWith() + contains()}
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{section-6.2-table-joiningtable-joining-links}{%
-\subsection{\texorpdfstring{\protect\hyperlink{table-joining}{Section 6.2 Table Joining} links}{Section 6.2 Table Joining links}}\label{section-6.2-table-joiningtable-joining-links}}
+\hypertarget{section-7.2-table-joiningtable-joining-links}{%
+\subsection{\texorpdfstring{\protect\hyperlink{table-joining}{Section 7.2 Table Joining} links}{Section 7.2 Table Joining links}}\label{section-7.2-table-joiningtable-joining-links}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -7513,13 +8529,15 @@ disp(tb_model_allsimu_w_info);
   \begin{itemize}
   \tightlist
   \item
-    Stack different tables together with varying columns via outerjoin.
+    Stack different tables together with varying columns via outerjoin, store with parallel parfor.
   \item
     Stack different estiamtion results together into a common table where columns show parameter names and other strings.
   \item
     Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
   \item
     \textbf{m}: \emph{array2table() + outerjoin() + addvars()}
+  \item
+    \textbf{parallel}: \emph{parfor}
   \end{itemize}
 \end{enumerate}
 

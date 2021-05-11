@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
@@ -14,7 +14,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
@@ -22,7 +22,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   
@@ -30,7 +30,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-12-27" />
+<meta name="date" content="2021-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -107,9 +107,9 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.3</b> Cells</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.3.1</b> List Comprehension with Cells</a></li>
-<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.3.2</b> All Possible Combinations of Multiple Arrays</a></li>
-<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#combine-cells-together"><i class="fa fa-check"></i><b>1.3.3</b> Combine Cells Together</a></li>
+<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#matlab-cell-array-basic-operations"><i class="fa fa-check"></i><b>1.3.1</b> Matlab Cell Array Basic Operations</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#matlab-list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.3.2</b> Matlab List Comprehension with Cells</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.3.3</b> All Possible Combinations of Multiple Arrays</a></li>
 <li class="chapter" data-level="1.3.4" data-path="data-structures.html"><a href="data-structures.html#nested-cells"><i class="fa fa-check"></i><b>1.3.4</b> Nested Cells</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.4</b> Characters and Strings</a>
@@ -136,9 +136,10 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
 <li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#anonymous-functions"><i class="fa fa-check"></i><b>2.2</b> Anonymous Functions</a>
+<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#dynamic-functions"><i class="fa fa-check"></i><b>2.2</b> Dynamic Functions</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="functions.html"><a href="functions.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.2.1</b> Anonymous Function in Matlab</a></li>
+<li class="chapter" data-level="2.2.2" data-path="functions.html"><a href="functions.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.2.2</b> Dynamically Generate M Files</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distributional-processes.html"><a href="distributional-processes.html"><i class="fa fa-check"></i><b>3</b> Distributional Processes</a>
@@ -146,6 +147,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="3.1" data-path="distributional-processes.html"><a href="distributional-processes.html#time-series"><i class="fa fa-check"></i><b>3.1</b> Time Series</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="distributional-processes.html"><a href="distributional-processes.html#simulate-ar1-autoregressive-processes"><i class="fa fa-check"></i><b>3.1.1</b> Simulate AR(1) Autoregressive Processes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="distributional-processes.html"><a href="distributional-processes.html#matlab-moving-average-of-time-series"><i class="fa fa-check"></i><b>3.1.2</b> Matlab Moving Average of Time-series</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="distributional-processes.html"><a href="distributional-processes.html#cross-sectional-data"><i class="fa fa-check"></i><b>3.2</b> Cross-sectional Data</a>
 <ul>
@@ -161,38 +163,53 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="4.1.3" data-path="simulation.html"><a href="simulation.html#cholesky-decomposition-correlated-five-dimensional-multivariate-normal-shock"><i class="fa fa-check"></i><b>4.1.3</b> Cholesky Decomposition Correlated Five Dimensional Multivariate Normal Shock</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> Graphs</a>
+<li class="chapter" data-level="5" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>5</b> Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>5.1</b> Figure Components</a>
+<li class="chapter" data-level="5.1" data-path="estimation.html"><a href="estimation.html#linear-estimation"><i class="fa fa-check"></i><b>5.1</b> Linear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>5.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
-<li class="chapter" data-level="5.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>5.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
-<li class="chapter" data-level="5.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>5.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
+<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-estimation"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Estimation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>5.2</b> Basic Figure Types</a>
+<li class="chapter" data-level="5.2" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation"><i class="fa fa-check"></i><b>5.2</b> Nonlinear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>5.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
-<li class="chapter" data-level="5.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>5.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
-<li class="chapter" data-level="5.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>5.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>5.3</b> Write and Read Plots</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>5.3.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
+<li class="chapter" data-level="5.2.1" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation-with-fminunc"><i class="fa fa-check"></i><b>5.2.1</b> Nonlinear Estimation with Fminunc</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>6</b> Tables</a>
+<li class="chapter" data-level="6" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>6</b> Graphs</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>6.1</b> Basic Table Generation</a>
+<li class="chapter" data-level="6.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>6.1</b> Figure Components</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>6.1.1</b> Named Tables with Random Data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>6.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
-<li class="chapter" data-level="6.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>6.1.3</b> Row and Column Names for Table based on Arrays</a></li>
-<li class="chapter" data-level="6.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>6.1.4</b> Select Subset of Rows and Columns</a></li>
+<li class="chapter" data-level="6.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>6.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
+<li class="chapter" data-level="6.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>6.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
+<li class="chapter" data-level="6.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>6.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>6.2</b> Table Joining</a>
+<li class="chapter" data-level="6.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>6.2</b> Basic Figure Types</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>6.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
-<li class="chapter" data-level="6.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>6.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+<li class="chapter" data-level="6.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>6.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
+<li class="chapter" data-level="6.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>6.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
+<li class="chapter" data-level="6.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>6.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="graphs.html"><a href="graphs.html#graph-functions"><i class="fa fa-check"></i><b>6.3</b> Graph Functions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-one-variable-function"><i class="fa fa-check"></i><b>6.3.1</b> Matlab Graph One Variable Function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>6.4</b> Write and Read Plots</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>6.4.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>7</b> Tables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>7.1</b> Basic Table Generation</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>7.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>7.1.3</b> Row and Column Names for Table based on Arrays</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>7.1.4</b> Select Subset of Rows and Columns</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>7.2</b> Table Joining</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -210,7 +227,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
 <ul>
 <li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
-<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-anonymous-functionsanonymous-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Anonymous Functions</span> links</a></li>
+<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Dynamic Functions</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#distributional-processes-links"><i class="fa fa-check"></i><b>A.3</b> Distributional Processes links</a>
 <ul>
@@ -221,16 +238,22 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="A.4.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-4.1-normal-distributionnormal-distribution-links"><i class="fa fa-check"></i><b>A.4.1</b> <span>Section 4.1 Normal Distribution</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.5</b> Graphs links</a>
+<li class="chapter" data-level="A.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#estimation-links"><i class="fa fa-check"></i><b>A.5</b> Estimation links</a>
 <ul>
-<li class="chapter" data-level="A.5.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.5.1</b> <span>Section 5.1 Figure Components</span> links</a></li>
-<li class="chapter" data-level="A.5.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.5.2</b> <span>Section 5.2 Basic Figure Types</span> links</a></li>
-<li class="chapter" data-level="A.5.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.3-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.5.3</b> <span>Section 5.3 Write and Read Plots</span> links</a></li>
+<li class="chapter" data-level="A.5.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.1-linear-estimationlinear-estimation-links"><i class="fa fa-check"></i><b>A.5.1</b> <span>Section 5.1 Linear Estimation</span> links</a></li>
+<li class="chapter" data-level="A.5.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.2-nonlinear-estimationnonlinear-estimation-links"><i class="fa fa-check"></i><b>A.5.2</b> <span>Section 5.2 Nonlinear Estimation</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.6</b> Tables links</a>
+<li class="chapter" data-level="A.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.6</b> Graphs links</a>
 <ul>
-<li class="chapter" data-level="A.6.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.6.1</b> <span>Section 6.1 Basic Table Generation</span> links</a></li>
-<li class="chapter" data-level="A.6.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.6.2</b> <span>Section 6.2 Table Joining</span> links</a></li>
+<li class="chapter" data-level="A.6.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.6.1</b> <span>Section 6.1 Figure Components</span> links</a></li>
+<li class="chapter" data-level="A.6.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.6.2</b> <span>Section 6.2 Basic Figure Types</span> links</a></li>
+<li class="chapter" data-level="A.6.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.3-graph-functionsgraph-functions-links"><i class="fa fa-check"></i><b>A.6.3</b> <span>Section 6.3 Graph Functions</span> links</a></li>
+<li class="chapter" data-level="A.6.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.4-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.6.4</b> <span>Section 6.4 Write and Read Plots</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.7" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.7</b> Tables links</a>
+<ul>
+<li class="chapter" data-level="A.7.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.7.1</b> <span>Section 7.1 Basic Table Generation</span> links</a></li>
+<li class="chapter" data-level="A.7.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.7.2</b> <span>Section 7.2 Table Joining</span> links</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -398,8 +421,82 @@ ans = 1x15
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="index-select-rows-and-columns-of-a-2d-matrix" class="section level4" number="1.1.2.1">
-<h4><span class="header-section-number">1.1.2.1</span> Index Select Rows and Columns of a 2D matrix</h4>
+<div id="find-the-first-negative-element-of-array" class="section level4" number="1.1.2.1">
+<h4><span class="header-section-number">1.1.2.1</span> Find the First Negative Element of Array</h4>
+<p>There is an array with positive, negative and NaN values, find the first
+negative number’s index, and the last positive number index. Use the
+find function.</p>
+<pre><code>for it_array=1:1:2
+    % Construct Array
+    if (it_array == 1) 
+        ar_alpha_sum_devi_one = [0.1, 0.7, -0.001, NaN, NaN];
+    elseif (it_array ==2)
+        ar_alpha_sum_devi_one = [0.1, 0.7, 0.001, NaN, NaN];
+    end
+    % Find last positive
+    it_last_pos_idx = find(ar_alpha_sum_devi_one &gt; 0, 1, &#39;last&#39;);
+    % Find first negative
+    it_first_neg_idx = find(ar_alpha_sum_devi_one &lt; 0, 1, &#39;first&#39;);
+    if (isempty(it_first_neg_idx))
+        it_first_neg_idx = NaN;
+    end
+    disp([&#39;it_last_pos_idx=&#39; num2str(it_last_pos_idx) ...
+        &#39;, it_first_neg_idx=&#39; num2str(it_first_neg_idx)])
+end
+
+it_last_pos_idx=2, it_first_neg_idx=3
+it_last_pos_idx=3, it_first_neg_idx=NaN</code></pre>
+</div>
+<div id="first-the-first-negative-element-of-last-segment-of-array" class="section level4" number="1.1.2.2">
+<h4><span class="header-section-number">1.1.2.2</span> First the First Negative Element of Last Segment of Array</h4>
+<p>There is an array with some negative numbers, then some positive
+numbers, then some negative numbers again. Find the first element of the
+final segment of negative numbers.</p>
+<pre><code>for it_array=1:5
+    
+    % Construct Array
+    if (it_array == 1) 
+        ar_alpha_sum_devi_one = [0.1, 0.7, -0.001, NaN, NaN];
+    elseif (it_array ==2)
+        ar_alpha_sum_devi_one = [0.1, 0.7, 0.001, NaN, NaN];
+    elseif (it_array ==3)
+        ar_alpha_sum_devi_one = [-0.001, 0.1, 0.7, 0.001, NaN, NaN];
+    elseif (it_array ==4)
+        ar_alpha_sum_devi_one = [-0.001, 0.1, 0.7, 0.001, -0.0002, -0.05, NaN, NaN];
+    elseif (it_array ==5)
+        ar_alpha_sum_devi_one = [NaN, NaN, -0.001, 0.1, 0.7, 0.001, -0.0002, NaN];
+    end
+    
+    % Find last positive
+    it_last_pos_idx = find(ar_alpha_sum_devi_one &gt; 0, 1, &#39;last&#39;);
+    % Find first negative
+    it_first_neg_idx = find(ar_alpha_sum_devi_one &lt; 0, 1, &#39;first&#39;);
+    % Find first negative of last negative segment
+    ar_alpha_sum_after_last_pos = ...
+        ar_alpha_sum_devi_one(it_last_pos_idx:length(ar_alpha_sum_devi_one));
+    it_first_neg_last_neg_seg_idx = it_last_pos_idx - 1 + ...
+        find(ar_alpha_sum_after_last_pos &lt; 0, 1, &#39;first&#39;);
+    
+    if (isempty(it_first_neg_idx))
+        it_first_neg_idx = NaN;
+    end
+    if (isempty(it_first_neg_last_neg_seg_idx))
+        it_first_neg_last_neg_seg_idx = NaN;
+    end
+    
+    disp([&#39;it_last_pos_idx=&#39; num2str(it_last_pos_idx) ...
+        &#39;, it_first_neg_idx=&#39; num2str(it_first_neg_idx)... 
+        &#39;, it_first_neg_last_neg_seg_idx=&#39; num2str(it_first_neg_last_neg_seg_idx)])
+end
+
+it_last_pos_idx=2, it_first_neg_idx=3, it_first_neg_last_neg_seg_idx=3
+it_last_pos_idx=3, it_first_neg_idx=NaN, it_first_neg_last_neg_seg_idx=NaN
+it_last_pos_idx=4, it_first_neg_idx=1, it_first_neg_last_neg_seg_idx=NaN
+it_last_pos_idx=4, it_first_neg_idx=1, it_first_neg_last_neg_seg_idx=5
+it_last_pos_idx=6, it_first_neg_idx=3, it_first_neg_last_neg_seg_idx=7</code></pre>
+</div>
+<div id="index-select-rows-and-columns-of-a-2d-matrix" class="section level4" number="1.1.2.3">
+<h4><span class="header-section-number">1.1.2.3</span> Index Select Rows and Columns of a 2D matrix</h4>
 <p>In the example below, select by entire rows and columns:</p>
 <pre><code>% There is a 2D Matrix
 rng(123);
@@ -420,8 +517,8 @@ disp(randMatZ([1,2,3,3,3,2], [1,1,2,2,2,1]))
     0.2269    0.2269    0.4231    0.4231    0.4231    0.2269
     0.2861    0.2861    0.7195    0.7195    0.7195    0.2861</code></pre>
 </div>
-<div id="index-select-set-of-elements-from-2d-matrix" class="section level4" number="1.1.2.2">
-<h4><span class="header-section-number">1.1.2.2</span> Index Select Set of Elements from 2D matrix</h4>
+<div id="index-select-set-of-elements-from-2d-matrix" class="section level4" number="1.1.2.4">
+<h4><span class="header-section-number">1.1.2.4</span> Index Select Set of Elements from 2D matrix</h4>
 <p>Rather than selecting entire rows and columns, suppose we want to select
 only one element at row 1 col 2, the element at row 2 col 4, element at
 row 5 col 1, etc.</p>
@@ -440,8 +537,8 @@ disp(ar_sel_val&#39;);
     0.4231
     0.6848</code></pre>
 </div>
-<div id="find-closest-element-of-array-to-each-element-of-another-array" class="section level4" number="1.1.2.3">
-<h4><span class="header-section-number">1.1.2.3</span> Find Closest Element of Array to Each Element of Another Array</h4>
+<div id="find-closest-element-of-array-to-each-element-of-another-array" class="section level4" number="1.1.2.5">
+<h4><span class="header-section-number">1.1.2.5</span> Find Closest Element of Array to Each Element of Another Array</h4>
 <p>Given scalar value, find the cloest value in array:</p>
 <pre><code>fl_a = 3.4;
 ar_bb = [1,2,3,4];
@@ -492,8 +589,8 @@ disp(mt_a_less_b_idx);
      4
      4</code></pre>
 </div>
-<div id="matlab-index-based-replacement-of-subset-of-matrix-values" class="section level4" number="1.1.2.4">
-<h4><span class="header-section-number">1.1.2.4</span> Matlab Index based Replacement of Subset of Matrix Values</h4>
+<div id="matlab-index-based-replacement-of-subset-of-matrix-values" class="section level4" number="1.1.2.6">
+<h4><span class="header-section-number">1.1.2.6</span> Matlab Index based Replacement of Subset of Matrix Values</h4>
 <pre><code>rng(123);
 randMatZ = rand(3,6)+1;
 randMat = rand(3,6)-0.5;
@@ -514,8 +611,8 @@ disp(min(randMatZ,[],2));
     1.0597
     1.1755</code></pre>
 </div>
-<div id="matlab-matrix-index-based-matrix-expansion-manual" class="section level4" number="1.1.2.5">
-<h4><span class="header-section-number">1.1.2.5</span> Matlab Matrix Index Based Matrix Expansion (Manual)</h4>
+<div id="matlab-matrix-index-based-matrix-expansion-manual" class="section level4" number="1.1.2.7">
+<h4><span class="header-section-number">1.1.2.7</span> Matlab Matrix Index Based Matrix Expansion (Manual)</h4>
 <p>In the example below, we start with a 4 by 2 matrix, than we expand
 specific rows and columns of the matrix. Specifically, we expand the
 matrix such that the result matrix repeats the 1st, 2nd, 1st, 2nd, then
@@ -546,8 +643,8 @@ disp(base_expand);
      1     5     5     5     1
      1     5     5     5     1</code></pre>
 </div>
-<div id="duplicate-matrix-downwards-n-times-using-index" class="section level4" number="1.1.2.6">
-<h4><span class="header-section-number">1.1.2.6</span> Duplicate Matrix Downwards N times Using Index</h4>
+<div id="duplicate-matrix-downwards-n-times-using-index" class="section level4" number="1.1.2.8">
+<h4><span class="header-section-number">1.1.2.8</span> Duplicate Matrix Downwards N times Using Index</h4>
 <p>The example here has the same idea, but we do the operations above in a
 more automated way. This could be done using alternative methods.</p>
 <pre><code>% Original Matrix
@@ -579,8 +676,8 @@ disp(mat_repdown&#39;);
      1     2     3     4     1     2     3     4     1     2     3     4
      5     6     7     8     5     6     7     8     5     6     7     8</code></pre>
 </div>
-<div id="given-nd-array-get-row-and-column-and-other-dimension-index-with-value-conditioning" class="section level4" number="1.1.2.7">
-<h4><span class="header-section-number">1.1.2.7</span> Given ND Array, Get Row and Column (and other dimension) Index With Value Conditioning</h4>
+<div id="given-nd-array-get-row-and-column-and-other-dimension-index-with-value-conditioning" class="section level4" number="1.1.2.9">
+<h4><span class="header-section-number">1.1.2.9</span> Given ND Array, Get Row and Column (and other dimension) Index With Value Conditioning</h4>
 <p>There is a matrix where some values are equal to 1 (based on some prior
 selection), get the row and column index of the matrix.</p>
 <pre><code>% Some matrix with 1s
@@ -646,29 +743,29 @@ disp([d1_idx, d2_idx, d3_idx]);
      2     3     3
      3     3     3</code></pre>
 </div>
-<div id="max-of-matrix-column-by-column-linear-to-2d-index" class="section level4" number="1.1.2.8">
-<h4><span class="header-section-number">1.1.2.8</span> Max of Matrix column by Column Linear to 2d Index</h4>
+<div id="max-of-matrix-column-by-column-linear-to-2d-index" class="section level4" number="1.1.2.10">
+<h4><span class="header-section-number">1.1.2.10</span> Max of Matrix column by Column Linear to 2d Index</h4>
 <p>Finding max of matrix column by column, then obtain the linear index
 associated with the max values.</p>
 <pre><code>randMat = rand(5,3);
 disp(randMat);
 
-    0.4264    0.1156    0.4830
-    0.8934    0.3173    0.9856
-    0.9442    0.4148    0.5195
-    0.5018    0.8663    0.6129
-    0.6240    0.2505    0.1206
+    0.2283    0.4309    0.8934
+    0.2937    0.4937    0.9442
+    0.6310    0.4258    0.5018
+    0.0921    0.3123    0.6240
+    0.4337    0.4264    0.1156
 
 [maxVal maxIndex] = max(randMat);
 linearIndex = sub2ind(size(randMat),maxIndex,(1:1:size(randMat,2)))
 
 linearIndex = 1x3    
-     3     9    12
+     3     7    12
 
 randMat(linearIndex)
 
 ans = 1x3    
-    0.9442    0.8663    0.9856
+    0.6310    0.4937    0.9442
 
 t_pV = [1,2;3,4;5,6];
 t_pV_Ind = [1,1;0,0;1,1];
@@ -677,8 +774,8 @@ t_pV_Ind = [1,1;0,0;1,1];
 maxVal = 6
 maxIndex = 4</code></pre>
 </div>
-<div id="given-array-of-size-m-select-n-somewhat-equi-distance-elements" class="section level4" number="1.1.2.9">
-<h4><span class="header-section-number">1.1.2.9</span> Given Array of size M, Select N somewhat equi-distance elements</h4>
+<div id="given-array-of-size-m-select-n-somewhat-equi-distance-elements" class="section level4" number="1.1.2.11">
+<h4><span class="header-section-number">1.1.2.11</span> Given Array of size M, Select N somewhat equi-distance elements</h4>
 <pre><code>% Subset count
 it_n = 5;
 
@@ -1387,8 +1484,41 @@ ans = 3x1
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="check-parameter-types" class="section level4" number="1.1.7.1">
-<h4><span class="header-section-number">1.1.7.1</span> Check Parameter Types</h4>
+<div id="check-if-array-is-all-above-or-below-zero" class="section level4" number="1.1.7.1">
+<h4><span class="header-section-number">1.1.7.1</span> Check if Array is All Above or Below Zero</h4>
+<p>There is an array that contains possible NaN values, check if all
+elements of array are positive, or all elements are negative, ignoring
+the NaN values.</p>
+<pre><code>for it_arrays=[1,2,3,4,5,6]
+    if (it_arrays == 1)
+        ar_values = [0.0001, 0.0002, 0.0005, 0.0012, 0.0013, NaN, NaN, NaN, NaN];
+    elseif (it_arrays == 2)
+        ar_values = [NaN, -0.0002, -0.0005, -0.0012, -0.0013, NaN, NaN, NaN, NaN];
+    elseif (it_arrays == 3)
+        ar_values = [0.0001, 0.0002, 0.0005, 0.0012, 0.0013];
+    elseif (it_arrays == 4)
+        ar_values = [-0.0002, -0.0005, -0.0012, -0.0013];
+    elseif (it_arrays == 5)
+        ar_values = [-0.0002, 0.0005, -0.0012, -0.0013];
+    elseif (it_arrays == 6)
+        ar_values = [-0.0002, 0.0005, -0.0012, NaN, -0.0013];
+    end
+    bl_all_pos = min(ar_values(~isnan(ar_values))&gt;=0);
+    bl_all_neg = min(ar_values(~isnan(ar_values))&lt;=0);
+    st_print = [&#39;str=&#39; num2str(it_arrays) ...
+        &#39; has bl_all_pos=&#39; num2str(bl_all_pos) &#39; and bl_all_neg=&#39; num2str(bl_all_neg)];
+    disp(st_print);
+end
+
+str=1 has bl_all_pos=1 and bl_all_neg=0
+str=2 has bl_all_pos=0 and bl_all_neg=1
+str=3 has bl_all_pos=1 and bl_all_neg=0
+str=4 has bl_all_pos=0 and bl_all_neg=1
+str=5 has bl_all_pos=0 and bl_all_neg=0
+str=6 has bl_all_pos=0 and bl_all_neg=0</code></pre>
+</div>
+<div id="check-parameter-types" class="section level4" number="1.1.7.2">
+<h4><span class="header-section-number">1.1.7.2</span> Check Parameter Types</h4>
 <p>There parameter input can either be a cell array or an integer,
 conditional processing based on parameter input type</p>
 <pre><code>% Float and Cell
@@ -1397,8 +1527,8 @@ curEstiParamB = {146, &#39;R3&#39;};
 % test if is float
 st_test = strjoin(...
     [&quot;&quot;, ...
-     [&#39;isfloat(curEstiParamA)=&#39; num2str(isfloat(curEstiParamA))], ...
-     [&#39;isfloat(curEstiParamB)=&#39; num2str(isfloat(curEstiParamB))], ...
+    [&#39;isfloat(curEstiParamA)=&#39; num2str(isfloat(curEstiParamA))], ...
+    [&#39;isfloat(curEstiParamB)=&#39; num2str(isfloat(curEstiParamB))], ...
     ], &quot;;&quot;);
 disp(st_test);
 
@@ -1407,15 +1537,15 @@ disp(st_test);
 % test if is cell
 st_test = strjoin(...
     [&quot;&quot;, ...
-     [&#39;iscell(curEstiParamA)=&#39; num2str(iscell(curEstiParamA))], ...
-     [&#39;iscell(curEstiParamB)=&#39; num2str(iscell(curEstiParamB))], ...
+    [&#39;iscell(curEstiParamA)=&#39; num2str(iscell(curEstiParamA))], ...
+    [&#39;iscell(curEstiParamB)=&#39; num2str(iscell(curEstiParamB))], ...
     ], &quot;;&quot;);
 disp(st_test);
 
 ;iscell(curEstiParamA)=0;iscell(curEstiParamB)=1</code></pre>
 </div>
-<div id="compare-array-values-that-are-approximately-similar" class="section level4" number="1.1.7.2">
-<h4><span class="header-section-number">1.1.7.2</span> Compare Array Values That are Approximately Similar</h4>
+<div id="compare-array-values-that-are-approximately-similar" class="section level4" number="1.1.7.3">
+<h4><span class="header-section-number">1.1.7.3</span> Compare Array Values That are Approximately Similar</h4>
 <p><a href="https://stackoverflow.com/a/33024979/8280804">What is the best way to compare floats for almost-equality in
 Python?</a></p>
 <ul>
@@ -1438,8 +1568,8 @@ disp([&#39;1+1e-9 and 1+1e-10, if_is_close:&#39; num2str(if_is_close(1+1e-9,1+1e
 
 1+1e-9 and 1+1e-10, if_is_close:1</code></pre>
 </div>
-<div id="imaginary-number-examples" class="section level4" number="1.1.7.3">
-<h4><span class="header-section-number">1.1.7.3</span> Imaginary Number Examples</h4>
+<div id="imaginary-number-examples" class="section level4" number="1.1.7.4">
+<h4><span class="header-section-number">1.1.7.4</span> Imaginary Number Examples</h4>
 <pre><code>rng(123);
 
 % Imaginary array
@@ -2541,13 +2671,55 @@ disp(tb_paramsmesh_long);
 <div id="cells" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Cells</h2>
 
-<div id="list-comprehension-with-cells" class="section level3" number="1.3.1">
-<h3><span class="header-section-number">1.3.1</span> List Comprehension with Cells</h3>
+<div id="matlab-cell-array-basic-operations" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Matlab Cell Array Basic Operations</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="find-index-of-elements-of-string-cells-in-a-larger-string-cells" class="section level4" number="1.3.1.1">
-<h4><span class="header-section-number">1.3.1.1</span> Find Index of Elements of String Cells in a larger String Cells</h4>
+<div id="string-combine-with-string-cell" class="section level4" number="1.3.1.1">
+<h4><span class="header-section-number">1.3.1.1</span> String Combine with string cell</h4>
+<pre><code>ls_st_param_key = {&#39;fl_crra&#39;, &#39;fl_beta&#39;, ...
+                   &#39;fl_w&#39;, &#39;fl_r_save&#39;, ...
+                   &#39;fl_a_max&#39;, &#39;it_z_n&#39;, &#39;it_a_n&#39;};
+cl_st_param_keys = {&#39;fl_wad&#39;, &#39;fl_betart&#39;, &#39;it_z_nfg&#39;};
+st_param = &#39;asdjfl&#39;;
+disp([{st_param}, ls_st_param_key, cl_st_param_keys]);
+
+  Columns 1 through 10
+
+    {&#39;asdjfl&#39;}    {&#39;fl_crra&#39;}    {&#39;fl_beta&#39;}    {&#39;fl_w&#39;}    {&#39;fl_r_save&#39;}    {&#39;fl_a_max&#39;}    {&#39;it_z_n&#39;}    {&#39;it_a_n&#39;}    {&#39;fl_wad&#39;}    {&#39;fl_betart&#39;}
+
+  Column 11
+
+    {&#39;it_z_nfg&#39;}</code></pre>
+
+</div>
+</div>
+<div id="matlab-list-comprehension-with-cells" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Matlab List Comprehension with Cells</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="concatenate-numeric-values-as-string-with-trimming" class="section level4" number="1.3.2.1">
+<h4><span class="header-section-number">1.3.2.1</span> Concatenate Numeric Values as String with Trimming</h4>
+<p>There is a list of numbers, combine (paste) to single string with some
+connector, trim each element to eliminate spaces.</p>
+<pre><code>rng(123,&#39;philox&#39;)
+ar_rand = rand([5,1]);
+st_fl_rand = string(num2str(ar_rand));
+st_untrimmmed = strjoin(st_fl_rand, &quot;#&quot;);
+cl_st_trimmmed = cellfun(@(x) strtrim(x), cellstr(st_fl_rand), &#39;UniformOutput&#39;, false);
+st_trimmmed = strjoin(string(cl_st_trimmmed), &quot;#&quot;);
+disp([&#39;st_untrimmmed:&#39; st_untrimmmed]);
+
+    &quot;st_untrimmmed:&quot;    &quot;  0.53162##  0.60704##  0.31843#0.0016474##  0.65784&quot;
+
+disp([&#39;st_trimmmed:&#39; st_trimmmed]);
+
+    &quot;st_trimmmed:&quot;    &quot;0.53162#0.60704#0.31843#0.0016474#0.65784&quot;</code></pre>
+</div>
+<div id="find-index-of-elements-of-string-cells-in-a-larger-string-cells" class="section level4" number="1.3.2.2">
+<h4><span class="header-section-number">1.3.2.2</span> Find Index of Elements of String Cells in a larger String Cells</h4>
 <p>the function below returns the position of cl_st_param_keys in
 ls_st_param_key should only include in cl_st_param_keys strings that
 also exist in ls_st_param_key.</p>
@@ -2563,8 +2735,8 @@ cell2mat(cellfun(@(m) find(strcmp(ls_st_param_key, m)), ...
 ans = 1x3    
      3     2     6</code></pre>
 </div>
-<div id="given-container-of-arrays-find-total-length-of-all-arrays-for-selected-keys" class="section level4" number="1.3.1.2">
-<h4><span class="header-section-number">1.3.1.2</span> Given Container of Arrays, Find Total Length of All Arrays for Selected Keys</h4>
+<div id="given-container-of-arrays-find-total-length-of-all-arrays-for-selected-keys" class="section level4" number="1.3.2.3">
+<h4><span class="header-section-number">1.3.2.3</span> Given Container of Arrays, Find Total Length of All Arrays for Selected Keys</h4>
 <pre><code>cl_st_param_keys = {&#39;fl_crra&#39;, &#39;fl_beta&#39;};
 
 param_tstar_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
@@ -2587,8 +2759,8 @@ disp([&#39;it_total_length: &#39; num2str(it_total_length)])
 
 it_total_length: 15</code></pre>
 </div>
-<div id="given-container-of-arrays-find-min-and-max-of-each-and-draw-random-n-sets" class="section level4" number="1.3.1.3">
-<h4><span class="header-section-number">1.3.1.3</span> Given Container of Arrays, Find Min and Max of Each and Draw Random N sets</h4>
+<div id="given-container-of-arrays-find-min-and-max-of-each-and-draw-random-n-sets" class="section level4" number="1.3.2.4">
+<h4><span class="header-section-number">1.3.2.4</span> Given Container of Arrays, Find Min and Max of Each and Draw Random N sets</h4>
 <pre><code>cl_st_param_keys = {&#39;fl_crra&#39;, &#39;fl_beta&#39;};
 
 param_tstar_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
@@ -2613,36 +2785,36 @@ disp(tb_rand_draws);
     fl_crra    fl_beta
     _______    _______
 
-    1.6965     0.96538
-    1.2861     0.97398
-    1.2269     0.96898
-    1.5513     0.96444
-    1.7195      0.9689
-    1.4231     0.95292
-    1.9808     0.95447
-    1.6848     0.94913
-    1.4809     0.95175
-    1.3921     0.96524
-    1.3432     0.94368
-     1.729     0.95735
-    1.4386     0.95723
-    1.0597     0.95975
-     1.398     0.95703
-     1.738     0.95249
-    1.1825     0.95705
-    1.1755     0.97574
-    1.5316     0.97777
-    1.5318     0.96007</code></pre>
+    1.5316     0.97337
+     1.607     0.97305
+    1.3184     0.94644
+    1.0016     0.97349
+    1.6578     0.94983
+    1.7505     0.97152
+    1.7407     0.94277
+    1.7108     0.94781
+    1.3542     0.97625
+    1.1479     0.95709
+    1.8834     0.94962
+    1.1274     0.96042
+    1.2132     0.96637
+    1.0676     0.94936
+    1.4318     0.96911
+    1.3791     0.97365
+    1.9399     0.94242
+    1.6369     0.96946
+    1.9791     0.95752
+    1.5709     0.96145</code></pre>
 
 </div>
 </div>
-<div id="all-possible-combinations-of-multiple-arrays" class="section level3" number="1.3.2">
-<h3><span class="header-section-number">1.3.2</span> All Possible Combinations of Multiple Arrays</h3>
+<div id="all-possible-combinations-of-multiple-arrays" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> All Possible Combinations of Multiple Arrays</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="given-several-arrays-of-possibly-different-length-in-container-all-possible-combinations" class="section level4" number="1.3.2.1">
-<h4><span class="header-section-number">1.3.2.1</span> Given Several Arrays of Possibly different Length in Container, all Possible combinations</h4>
+<div id="given-several-arrays-of-possibly-different-length-in-container-all-possible-combinations" class="section level4" number="1.3.3.1">
+<h4><span class="header-section-number">1.3.3.1</span> Given Several Arrays of Possibly different Length in Container, all Possible combinations</h4>
 <pre><code>param_tstar_map = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
 param_tstar_map(&#39;a&#39;) = linspace(1, 5, 5);
 param_tstar_map(&#39;b&#39;) = linspace(0.87, 0.97, 6);
@@ -2712,28 +2884,6 @@ disp(tb_all_combi);
     3         0.5
     4         0.5
     5         0.5</code></pre>
-
-</div>
-</div>
-<div id="combine-cells-together" class="section level3" number="1.3.3">
-<h3><span class="header-section-number">1.3.3</span> Combine Cells Together</h3>
-<blockquote>
-<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
-</blockquote>
-<div id="string-combine-with-string-cell" class="section level4" number="1.3.3.1">
-<h4><span class="header-section-number">1.3.3.1</span> String Combine with string cell</h4>
-<pre><code>ls_st_param_key = {&#39;fl_crra&#39;, &#39;fl_beta&#39;, ...
-                   &#39;fl_w&#39;, &#39;fl_r_save&#39;, ...
-                   &#39;fl_a_max&#39;, &#39;it_z_n&#39;, &#39;it_a_n&#39;};
-
-cl_st_param_keys = {&#39;fl_wad&#39;, &#39;fl_betart&#39;, &#39;it_z_nfg&#39;};
-
-st_param = &#39;asdjfl&#39;;
-
-[{st_param}, ls_st_param_key, cl_st_param_keys]
-
-ans = 
-    {&#39;asdjfl&#39;}    {&#39;fl_crra&#39;}    {&#39;fl_beta&#39;}    {&#39;fl_w&#39;}    {&#39;fl_r_save&#39;}    {&#39;fl_a_max&#39;}    {&#39;it_z_n&#39;}    {&#39;it_a_n&#39;}    {&#39;fl_wad&#39;}    {&#39;fl_betart&#39;}    {&#39;it_z_nfg&#39;}</code></pre>
 
 </div>
 </div>

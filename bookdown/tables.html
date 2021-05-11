@@ -4,25 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Tables | Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <title>Chapter 7 Tables | Data Structures and Dynamic Optimization with Matlab</title>
+  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Tables | Data Structures and Dynamic Optimization with Matlab" />
+  <meta property="og:title" content="Chapter 7 Tables | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Tables | Data Structures and Dynamic Optimization with Matlab" />
+  <meta name="twitter:title" content="Chapter 7 Tables | Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin.
+  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
   
@@ -30,7 +30,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2020-12-27" />
+<meta name="date" content="2021-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -107,9 +107,9 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="data-structures.html"><a href="data-structures.html#cells"><i class="fa fa-check"></i><b>1.3</b> Cells</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.3.1</b> List Comprehension with Cells</a></li>
-<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.3.2</b> All Possible Combinations of Multiple Arrays</a></li>
-<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#combine-cells-together"><i class="fa fa-check"></i><b>1.3.3</b> Combine Cells Together</a></li>
+<li class="chapter" data-level="1.3.1" data-path="data-structures.html"><a href="data-structures.html#matlab-cell-array-basic-operations"><i class="fa fa-check"></i><b>1.3.1</b> Matlab Cell Array Basic Operations</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-structures.html"><a href="data-structures.html#matlab-list-comprehension-with-cells"><i class="fa fa-check"></i><b>1.3.2</b> Matlab List Comprehension with Cells</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-structures.html"><a href="data-structures.html#all-possible-combinations-of-multiple-arrays"><i class="fa fa-check"></i><b>1.3.3</b> All Possible Combinations of Multiple Arrays</a></li>
 <li class="chapter" data-level="1.3.4" data-path="data-structures.html"><a href="data-structures.html#nested-cells"><i class="fa fa-check"></i><b>1.3.4</b> Nested Cells</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.4</b> Characters and Strings</a>
@@ -136,9 +136,10 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
 <li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#anonymous-functions"><i class="fa fa-check"></i><b>2.2</b> Anonymous Functions</a>
+<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#dynamic-functions"><i class="fa fa-check"></i><b>2.2</b> Dynamic Functions</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="functions.html"><a href="functions.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.2.1</b> Anonymous Function in Matlab</a></li>
+<li class="chapter" data-level="2.2.2" data-path="functions.html"><a href="functions.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.2.2</b> Dynamically Generate M Files</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distributional-processes.html"><a href="distributional-processes.html"><i class="fa fa-check"></i><b>3</b> Distributional Processes</a>
@@ -146,6 +147,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="3.1" data-path="distributional-processes.html"><a href="distributional-processes.html#time-series"><i class="fa fa-check"></i><b>3.1</b> Time Series</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="distributional-processes.html"><a href="distributional-processes.html#simulate-ar1-autoregressive-processes"><i class="fa fa-check"></i><b>3.1.1</b> Simulate AR(1) Autoregressive Processes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="distributional-processes.html"><a href="distributional-processes.html#matlab-moving-average-of-time-series"><i class="fa fa-check"></i><b>3.1.2</b> Matlab Moving Average of Time-series</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="distributional-processes.html"><a href="distributional-processes.html#cross-sectional-data"><i class="fa fa-check"></i><b>3.2</b> Cross-sectional Data</a>
 <ul>
@@ -161,38 +163,53 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="4.1.3" data-path="simulation.html"><a href="simulation.html#cholesky-decomposition-correlated-five-dimensional-multivariate-normal-shock"><i class="fa fa-check"></i><b>4.1.3</b> Cholesky Decomposition Correlated Five Dimensional Multivariate Normal Shock</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> Graphs</a>
+<li class="chapter" data-level="5" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>5</b> Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>5.1</b> Figure Components</a>
+<li class="chapter" data-level="5.1" data-path="estimation.html"><a href="estimation.html#linear-estimation"><i class="fa fa-check"></i><b>5.1</b> Linear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>5.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
-<li class="chapter" data-level="5.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>5.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
-<li class="chapter" data-level="5.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>5.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
+<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-estimation"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Estimation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>5.2</b> Basic Figure Types</a>
+<li class="chapter" data-level="5.2" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation"><i class="fa fa-check"></i><b>5.2</b> Nonlinear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>5.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
-<li class="chapter" data-level="5.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>5.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
-<li class="chapter" data-level="5.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>5.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>5.3</b> Write and Read Plots</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>5.3.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
+<li class="chapter" data-level="5.2.1" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation-with-fminunc"><i class="fa fa-check"></i><b>5.2.1</b> Nonlinear Estimation with Fminunc</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>6</b> Tables</a>
+<li class="chapter" data-level="6" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>6</b> Graphs</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>6.1</b> Basic Table Generation</a>
+<li class="chapter" data-level="6.1" data-path="graphs.html"><a href="graphs.html#figure-components"><i class="fa fa-check"></i><b>6.1</b> Figure Components</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>6.1.1</b> Named Tables with Random Data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>6.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
-<li class="chapter" data-level="6.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>6.1.3</b> Row and Column Names for Table based on Arrays</a></li>
-<li class="chapter" data-level="6.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>6.1.4</b> Select Subset of Rows and Columns</a></li>
+<li class="chapter" data-level="6.1.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-safe-colors-for-web-presentation-and-publications-examples"><i class="fa fa-check"></i><b>6.1.1</b> Matlab Graph Safe Colors for Web, Presentation and Publications Examples</a></li>
+<li class="chapter" data-level="6.1.2" data-path="graphs.html"><a href="graphs.html#matlab-graph-titling-labels-and-legends-examples"><i class="fa fa-check"></i><b>6.1.2</b> Matlab Graph Titling, Labels and Legends Examples</a></li>
+<li class="chapter" data-level="6.1.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-matrix-with-jet-spectrum-color-label-a-subset-examples"><i class="fa fa-check"></i><b>6.1.3</b> Matlab Graph Matrix with Jet Spectrum Color, Label a Subset Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>6.2</b> Table Joining</a>
+<li class="chapter" data-level="6.2" data-path="graphs.html"><a href="graphs.html#basic-figure-types"><i class="fa fa-check"></i><b>6.2</b> Basic Figure Types</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>6.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
-<li class="chapter" data-level="6.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>6.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+<li class="chapter" data-level="6.2.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-plot-examples"><i class="fa fa-check"></i><b>6.2.1</b> Matlab Graph Scatter Plot Examples</a></li>
+<li class="chapter" data-level="6.2.2" data-path="graphs.html"><a href="graphs.html#matlab-line-and-scatter-plot-with-multiple-lines-and-axis-lines"><i class="fa fa-check"></i><b>6.2.2</b> Matlab Line and Scatter Plot with Multiple Lines and Axis Lines</a></li>
+<li class="chapter" data-level="6.2.3" data-path="graphs.html"><a href="graphs.html#matlab-graph-scatter-and-line-spectrum-with-three-variables"><i class="fa fa-check"></i><b>6.2.3</b> Matlab Graph Scatter and Line Spectrum with Three Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="graphs.html"><a href="graphs.html#graph-functions"><i class="fa fa-check"></i><b>6.3</b> Graph Functions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-one-variable-function"><i class="fa fa-check"></i><b>6.3.1</b> Matlab Graph One Variable Function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="graphs.html"><a href="graphs.html#write-and-read-plots"><i class="fa fa-check"></i><b>6.4</b> Write and Read Plots</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="graphs.html"><a href="graphs.html#matlab-graph-generate-eps-postscript-figures-in-matlab"><i class="fa fa-check"></i><b>6.4.1</b> Matlab Graph Generate EPS postscript figures in matlab</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>7</b> Tables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>7.1</b> Basic Table Generation</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>7.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>7.1.3</b> Row and Column Names for Table based on Arrays</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>7.1.4</b> Select Subset of Rows and Columns</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>7.2</b> Table Joining</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -210,7 +227,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
 <ul>
 <li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
-<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-anonymous-functionsanonymous-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Anonymous Functions</span> links</a></li>
+<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Dynamic Functions</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#distributional-processes-links"><i class="fa fa-check"></i><b>A.3</b> Distributional Processes links</a>
 <ul>
@@ -221,16 +238,22 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="A.4.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-4.1-normal-distributionnormal-distribution-links"><i class="fa fa-check"></i><b>A.4.1</b> <span>Section 4.1 Normal Distribution</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.5</b> Graphs links</a>
+<li class="chapter" data-level="A.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#estimation-links"><i class="fa fa-check"></i><b>A.5</b> Estimation links</a>
 <ul>
-<li class="chapter" data-level="A.5.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.5.1</b> <span>Section 5.1 Figure Components</span> links</a></li>
-<li class="chapter" data-level="A.5.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.5.2</b> <span>Section 5.2 Basic Figure Types</span> links</a></li>
-<li class="chapter" data-level="A.5.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.3-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.5.3</b> <span>Section 5.3 Write and Read Plots</span> links</a></li>
+<li class="chapter" data-level="A.5.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.1-linear-estimationlinear-estimation-links"><i class="fa fa-check"></i><b>A.5.1</b> <span>Section 5.1 Linear Estimation</span> links</a></li>
+<li class="chapter" data-level="A.5.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-5.2-nonlinear-estimationnonlinear-estimation-links"><i class="fa fa-check"></i><b>A.5.2</b> <span>Section 5.2 Nonlinear Estimation</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.6</b> Tables links</a>
+<li class="chapter" data-level="A.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#graphs-links"><i class="fa fa-check"></i><b>A.6</b> Graphs links</a>
 <ul>
-<li class="chapter" data-level="A.6.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.6.1</b> <span>Section 6.1 Basic Table Generation</span> links</a></li>
-<li class="chapter" data-level="A.6.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.6.2</b> <span>Section 6.2 Table Joining</span> links</a></li>
+<li class="chapter" data-level="A.6.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.1-figure-componentsfigure-components-links"><i class="fa fa-check"></i><b>A.6.1</b> <span>Section 6.1 Figure Components</span> links</a></li>
+<li class="chapter" data-level="A.6.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.2-basic-figure-typesbasic-figure-types-links"><i class="fa fa-check"></i><b>A.6.2</b> <span>Section 6.2 Basic Figure Types</span> links</a></li>
+<li class="chapter" data-level="A.6.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.3-graph-functionsgraph-functions-links"><i class="fa fa-check"></i><b>A.6.3</b> <span>Section 6.3 Graph Functions</span> links</a></li>
+<li class="chapter" data-level="A.6.4" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-6.4-write-and-read-plotswrite-and-read-plots-links"><i class="fa fa-check"></i><b>A.6.4</b> <span>Section 6.4 Write and Read Plots</span> links</a></li>
+</ul></li>
+<li class="chapter" data-level="A.7" data-path="index-and-code-links.html"><a href="index-and-code-links.html#tables-links"><i class="fa fa-check"></i><b>A.7</b> Tables links</a>
+<ul>
+<li class="chapter" data-level="A.7.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.7.1</b> <span>Section 7.1 Basic Table Generation</span> links</a></li>
+<li class="chapter" data-level="A.7.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.7.2</b> <span>Section 7.2 Table Joining</span> links</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -253,19 +276,19 @@ Simulate a model, column combine simulation parameters with multi-row simulation
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tables" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Tables</h1>
+<div id="tables" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Tables</h1>
 
-<div id="basic-table-generation" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Basic Table Generation</h2>
+<div id="basic-table-generation" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Basic Table Generation</h2>
 
-<div id="named-tables-with-random-data" class="section level3" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Named Tables with Random Data</h3>
+<div id="named-tables-with-random-data" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Named Tables with Random Data</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-a-table-with-m-variables" class="section level4" number="6.1.1.1">
-<h4><span class="header-section-number">6.1.1.1</span> Generate A Table with M Variables</h4>
+<div id="generate-a-table-with-m-variables" class="section level4" number="7.1.1.1">
+<h4><span class="header-section-number">7.1.1.1</span> Generate A Table with M Variables</h4>
 <p>Generate a numeric table with random varlues and a string column</p>
 <pre><code>% Numeric Matrix
 it_num_cols = 4;
@@ -302,13 +325,13 @@ disp(tb_test);
 
 </div>
 </div>
-<div id="tables-order-sort-add-rename-and-drop-columns" class="section level3" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Tables Order, Sort, Add, Rename and Drop Columns</h3>
+<div id="tables-order-sort-add-rename-and-drop-columns" class="section level3" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Tables Order, Sort, Add, Rename and Drop Columns</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="given-table-show-some-columns-first" class="section level4" number="6.1.2.1">
-<h4><span class="header-section-number">6.1.2.1</span> Given Table, Show Some Columns First</h4>
+<div id="given-table-show-some-columns-first" class="section level4" number="7.1.2.1">
+<h4><span class="header-section-number">7.1.2.1</span> Given Table, Show Some Columns First</h4>
 <pre><code>% Generate Table
 it_num_cols = 4;
 it_num_rows = 5;
@@ -350,8 +373,8 @@ disp(tb_test_varmove);
     row_4    &quot;data=0.55131&quot;    &quot;data=0.48093&quot;    0.059678    0.53155    0.61102    0.29371
     row_5    &quot;data=0.71947&quot;    &quot;data=0.39212&quot;     0.39804    0.53183    0.72244    0.63098</code></pre>
 </div>
-<div id="rename-table-columns" class="section level4" number="6.1.2.2">
-<h4><span class="header-section-number">6.1.2.2</span> Rename Table Columns</h4>
+<div id="rename-table-columns" class="section level4" number="7.1.2.2">
+<h4><span class="header-section-number">7.1.2.2</span> Rename Table Columns</h4>
 <p>Rename the first Column, rename the ‘sd’ column, then rename the 3rd and
 4th Columns. Note for multiple column renaming, use parenthesis, but for
 single column renaming, use bracket.</p>
@@ -369,8 +392,8 @@ disp(tb_test_varmove);
     row_4    &quot;data=0.55131&quot;    &quot;data=0.48093&quot;    0.059678    0.53155    0.61102    0.29371
     row_5    &quot;data=0.71947&quot;    &quot;data=0.39212&quot;     0.39804    0.53183    0.72244    0.63098</code></pre>
 </div>
-<div id="remove-table-column" class="section level4" number="6.1.2.3">
-<h4><span class="header-section-number">6.1.2.3</span> <code>Remove Table Column</code></h4>
+<div id="remove-table-column" class="section level4" number="7.1.2.3">
+<h4><span class="header-section-number">7.1.2.3</span> <code>Remove Table Column</code></h4>
 <p><code>Remove columns from the Table</code></p>
 <pre><code>tb_test_varmove_drop = removevars(tb_test_varmove, {&#39;3rd&#39;, &#39;col_3&#39;});
 disp(tb_test_varmove_drop);
@@ -386,13 +409,13 @@ disp(tb_test_varmove_drop);
 
 </div>
 </div>
-<div id="row-and-column-names-for-table-based-on-arrays" class="section level3" number="6.1.3">
-<h3><span class="header-section-number">6.1.3</span> Row and Column Names for Table based on Arrays</h3>
+<div id="row-and-column-names-for-table-based-on-arrays" class="section level3" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Row and Column Names for Table based on Arrays</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-table-with-row-and-column-names-based-on-multiple-numeric-array" class="section level4" number="6.1.3.1">
-<h4><span class="header-section-number">6.1.3.1</span> Generate Table with Row and Column Names based on Multiple Numeric Array</h4>
+<div id="generate-table-with-row-and-column-names-based-on-multiple-numeric-array" class="section level4" number="7.1.3.1">
+<h4><span class="header-section-number">7.1.3.1</span> Generate Table with Row and Column Names based on Multiple Numeric Array</h4>
 <p>Two numeric arrays describe the column names, combine numeric arrays
 together to form string array which becomes table variable/column names.</p>
 <pre><code>close all;
@@ -421,8 +444,8 @@ disp(tb_test_a);
     rowA=4      0.3      0.3  
     rowA=5      0.4      0.4  </code></pre>
 </div>
-<div id="include-row-names-as-a-a-string-cell-variable" class="section level4" number="6.1.3.2">
-<h4><span class="header-section-number">6.1.3.2</span> Include Row Names as a a String Cell Variable</h4>
+<div id="include-row-names-as-a-a-string-cell-variable" class="section level4" number="7.1.3.2">
+<h4><span class="header-section-number">7.1.3.2</span> Include Row Names as a a String Cell Variable</h4>
 <pre><code>% a and b must have the same row names
 cl_st_varrownames = tb_test_a.Properties.RowNames;
 tb_test_a = addvars(tb_test_a, cl_st_varrownames, &#39;Before&#39;, 1);
@@ -438,8 +461,8 @@ disp(tb_test_a);
     rowA=4       {&#39;rowA=4&#39;}          0.3      0.3  
     rowA=5       {&#39;rowA=5&#39;}          0.4      0.4  </code></pre>
 </div>
-<div id="include-row-names-as-a-string-variable" class="section level4" number="6.1.3.3">
-<h4><span class="header-section-number">6.1.3.3</span> Include Row Names as a String Variable</h4>
+<div id="include-row-names-as-a-string-variable" class="section level4" number="7.1.3.3">
+<h4><span class="header-section-number">7.1.3.3</span> Include Row Names as a String Variable</h4>
 <pre><code>% a and b must have the same row names
 st_varrownames = string(cl_st_varrownames);
 tb_test_a = addvars(tb_test_a, st_varrownames, &#39;Before&#39;, 1);
@@ -454,8 +477,8 @@ disp(tb_test_a);
     rowA=4       &quot;rowA=4&quot;          {&#39;rowA=4&#39;}          0.3      0.3  
     rowA=5       &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4  </code></pre>
 </div>
-<div id="remove-row-names" class="section level4" number="6.1.3.4">
-<h4><span class="header-section-number">6.1.3.4</span> Remove Row Names</h4>
+<div id="remove-row-names" class="section level4" number="7.1.3.4">
+<h4><span class="header-section-number">7.1.3.4</span> Remove Row Names</h4>
 <p>Remove row names</p>
 <pre><code>tb_test_a.Properties.RowNames = {};
 disp(tb_test_a);
@@ -468,16 +491,51 @@ disp(tb_test_a);
        &quot;rowA=3&quot;          {&#39;rowA=3&#39;}         0.25      0.2  
        &quot;rowA=4&quot;          {&#39;rowA=4&#39;}          0.3      0.3  
        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4  </code></pre>
+</div>
+<div id="generate-string-based-on-row-values-and-column-names" class="section level4" number="7.1.3.5">
+<h4><span class="header-section-number">7.1.3.5</span> Generate String Based on Row Values and Column Names</h4>
+<p>Suppose we are looping over meshed grid of parameter values, want to
+generate a KEY that is based on three of the parameters, but not the
+remaining parameter. One strategy is to use the current values of the
+three parameters, combine them with the string column names, and
+concatenate together. This generate a string key.</p>
+<pre><code>cl_ar_identifier = cell([size(tb_test_a,1), 1]);
+for esti_row_idx=1:size(tb_test_a,1)
+    
+    % Get the current row, 3rd and 4th columns
+    ar_fl_colvals = tb_test_a{esti_row_idx,[3,4]};
+    ar_st_colnames = tb_test_a.Properties.VariableNames([3,4]);
+    ar_st_colvals = cellfun(@(x) strtrim(x), cellstr(num2str(ar_fl_colvals&#39;)), &#39;UniformOutput&#39;, false);
+    ar_st_identifier = strcat(ar_st_colnames&#39;, &#39;=&#39;, ar_st_colvals);
+    esti_identifier = strjoin(ar_st_identifier, &quot;#&quot;);
+    
+    % add to cell
+    cl_ar_identifier{esti_row_idx} = esti_identifier;
+end
+% this is a group identifier
+ar_st_identifier = string(cl_ar_identifier);
+tb_test_a = addvars(tb_test_a, cl_ar_identifier, &#39;Before&#39;, 1);
+tb_test_a = addvars(tb_test_a, ar_st_identifier, &#39;Before&#39;, 1);
+disp(tb_test_a);
+
+        ar_st_identifier             cl_ar_identifier         st_varrownames    cl_st_varrownames    col123    col456
+    ________________________    __________________________    ______________    _________________    ______    ______
+
+    &quot;col123=0.4#col456=0.4&quot;     {&#39;col123=0.4#col456=0.4&#39; }       &quot;rowA=1&quot;          {&#39;rowA=1&#39;}          0.4      0.4  
+    &quot;col123=0.1#col456=0.1&quot;     {&#39;col123=0.1#col456=0.1&#39; }       &quot;rowA=2&quot;          {&#39;rowA=2&#39;}          0.1      0.1  
+    &quot;col123=0.25#col456=0.2&quot;    {&#39;col123=0.25#col456=0.2&#39;}       &quot;rowA=3&quot;          {&#39;rowA=3&#39;}         0.25      0.2  
+    &quot;col123=0.3#col456=0.3&quot;     {&#39;col123=0.3#col456=0.3&#39; }       &quot;rowA=4&quot;          {&#39;rowA=4&#39;}          0.3      0.3  
+    &quot;col123=0.4#col456=0.4&quot;     {&#39;col123=0.4#col456=0.4&#39; }       &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4  </code></pre>
 
 </div>
 </div>
-<div id="select-subset-of-rows-and-columns" class="section level3" number="6.1.4">
-<h3><span class="header-section-number">6.1.4</span> Select Subset of Rows and Columns</h3>
+<div id="select-subset-of-rows-and-columns" class="section level3" number="7.1.4">
+<h3><span class="header-section-number">7.1.4</span> Select Subset of Rows and Columns</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-a-table" class="section level4" number="6.1.4.1">
-<h4><span class="header-section-number">6.1.4.1</span> Generate a Table</h4>
+<div id="generate-a-table" class="section level4" number="7.1.4.1">
+<h4><span class="header-section-number">7.1.4.1</span> Generate a Table</h4>
 <pre><code>close all;
 % Generate Table 1
 ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
@@ -508,8 +566,8 @@ disp(tb_test_a);
     rowA=4    &quot;aa&quot;       &quot;rowA=4&quot;          {&#39;rowA=4&#39;}          0.3      0.3  
     rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4  </code></pre>
 </div>
-<div id="select-rows-if-colx-is-equal-to-something" class="section level4" number="6.1.4.2">
-<h4><span class="header-section-number">6.1.4.2</span> Select Rows if ColX is Equal to Something</h4>
+<div id="select-rows-if-colx-is-equal-to-something" class="section level4" number="7.1.4.2">
+<h4><span class="header-section-number">7.1.4.2</span> Select Rows if ColX is Equal to Something</h4>
 <p>Select a subset of rows based on the variable value in one column</p>
 <pre><code>% select the rows where Var1=&quot;b&quot;
 disp(tb_test_a(strcmp(tb_test_a.Var1, &quot;b&quot;),:));
@@ -528,20 +586,161 @@ disp(tb_test_a(tb_test_a.col123==0.4,:));
 
     rowA=1    &quot;a&quot;        &quot;rowA=1&quot;          {&#39;rowA=1&#39;}         0.4       0.4  
     rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}         0.4       0.4  </code></pre>
+</div>
+<div id="read-in-a-table-from-an-excel-file" class="section level4" number="7.1.4.3">
+<h4><span class="header-section-number">7.1.4.3</span> Read in a Table from an Excel File</h4>
+<p>There are estimates stored in a table. Each row is a different
+estimation result, with a different set of estimates, for each row some
+fixed (not-estimated) parameter might vary. Each column represents a
+different parameter, or the parameter’s state (initial value, estimated
+value, standard error, etc).</p>
+<p>The estimatetion results file is stored in:
+M4Econ\table\_exa\excel_exa.xlsx. We want to load in this file.
+Directory is one root up and one root down. The file has multiple
+sheets, automatically loads in the first sheet. And print table
+variables names, column names.</p>
+<pre><code>srn_excel_exa = &#39;C:\Users\fan\M4Econ\table\_exa\excel_exa.xlsx&#39;;
+tb_read = readtable(srn_excel_exa);
+disp((tb_read.Properties.VariableNames)&#39;);
+
+    {&#39;estimodelctr&#39;       }
+    {&#39;Var1&#39;               }
+    {&#39;FVAL&#39;               }
+    {&#39;EXITFLAG&#39;           }
+    {&#39;esti_iterations&#39;    }
+    {&#39;esti_funccount&#39;     }
+    {&#39;mean_h_sd&#39;          }
+    {&#39;NPquad_esti&#39;        }
+    {&#39;NPquad_se&#39;          }
+    {&#39;NPquad_actl&#39;        }
+    {&#39;gamma_esti&#39;         }
+    {&#39;gamma_se&#39;           }
+    {&#39;gamma_actl&#39;         }
+    {&#39;lambda_esti&#39;        }
+    {&#39;lambda_se&#39;          }
+    {&#39;lambda_actl&#39;        }
+    {&#39;msrErrProtSD_esti&#39;  }
+    {&#39;msrErrProtSD_se&#39;    }
+    {&#39;msrErrProtSD_actl&#39;  }
+    {&#39;freePriceFrac_esti&#39; }
+    {&#39;freePriceFrac_se&#39;   }
+    {&#39;freePriceFrac_actl&#39; }
+    {&#39;h_exoshk_sd_esti&#39;   }
+    {&#39;h_exoshk_sd_se&#39;     }
+    {&#39;h_exoshk_sd_actl&#39;   }
+    {&#39;h_endoshk_sd_esti&#39;  }
+    {&#39;h_endoshk_sd_se&#39;    }
+    {&#39;h_endoshk_sd_actl&#39;  }
+    {&#39;parm_sk_mean_init&#39;  }
+    {&#39;parm_sk_sd_init&#39;    }
+    {&#39;NPquad_init&#39;        }
+    {&#39;gamma_init&#39;         }
+    {&#39;HAquad_init&#39;        }
+    {&#39;theta_init&#39;         }
+    {&#39;lambda_init&#39;        }
+    {&#39;msrErrProtSD_init&#39;  }
+    {&#39;logProt_init&#39;       }
+    {&#39;freePriceFrac_init&#39; }
+    {&#39;h_exoshk_sd_init&#39;   }
+    {&#39;h_endoshk_sd_init&#39;  }
+    {&#39;prod_hgt0_coef_init&#39;}
+    {&#39;prod_prot_coef_init&#39;}
+    {&#39;prod_cons_coef_init&#39;}
+    {&#39;prod_male_coef_init&#39;}
+    {&#39;prod_wgt0_coef_init&#39;}
+    {&#39;endoshkCount&#39;       }
+    {&#39;guasshermite&#39;       }
+    {&#39;len_curEstiParam&#39;   }
+    {&#39;fixedVarIndex&#39;      }
+    {&#39;esti_method&#39;        }
+    {&#39;esti_option_type&#39;   }
+    {&#39;subset_iter_rounds&#39; }
+    {&#39;lambda_frac_disc&#39;   }</code></pre>
+</div>
+<div id="select-table-columns-based-on-column-name-strings" class="section level4" number="7.1.4.4">
+<h4><span class="header-section-number">7.1.4.4</span> Select Table Columns based on Column Name Strings</h4>
+<p>Given the table that we loaded in above, select only the columns that
+start with some string like "gamma", or columns that end with certain
+strings, like "_esti".</p>
+<p>The
+<a href="https://www.mathworks.com/help/matlab/ref/startswith.html">startsWith</a>,
+<a href="https://www.mathworks.com/help/matlab/ref/contains.html">contains</a>, and
+<a href="https://www.mathworks.com/help/matlab/ref/endswith.html">endsWith</a> are
+string functions that generate logical arrays based on which elements of
+the tring array satisfies the criteria. So this is not a table function,
+it is a string function.</p>
+<pre><code>ar_st_col_names = tb_read.Properties.VariableNames;
+ar_st_col_names_prod = ar_st_col_names(startsWith(ar_st_col_names, &#39;prod_&#39;));
+ar_st_col_names_esti = ar_st_col_names(endsWith(ar_st_col_names, &#39;_esti&#39;));
+ar_st_col_names_sd = ar_st_col_names(contains(ar_st_col_names, &#39;_sd_&#39;));
+disp(ar_st_col_names_prod&#39;);
+
+    {&#39;prod_hgt0_coef_init&#39;}
+    {&#39;prod_prot_coef_init&#39;}
+    {&#39;prod_cons_coef_init&#39;}
+    {&#39;prod_male_coef_init&#39;}
+    {&#39;prod_wgt0_coef_init&#39;}
+
+disp(ar_st_col_names_esti&#39;);
+
+    {&#39;NPquad_esti&#39;       }
+    {&#39;gamma_esti&#39;        }
+    {&#39;lambda_esti&#39;       }
+    {&#39;msrErrProtSD_esti&#39; }
+    {&#39;freePriceFrac_esti&#39;}
+    {&#39;h_exoshk_sd_esti&#39;  }
+    {&#39;h_endoshk_sd_esti&#39; }
+
+disp(ar_st_col_names_sd&#39;);
+
+    {&#39;h_exoshk_sd_esti&#39; }
+    {&#39;h_exoshk_sd_se&#39;   }
+    {&#39;h_exoshk_sd_actl&#39; }
+    {&#39;h_endoshk_sd_esti&#39;}
+    {&#39;h_endoshk_sd_se&#39;  }
+    {&#39;h_endoshk_sd_actl&#39;}
+    {&#39;parm_sk_sd_init&#39;  }
+    {&#39;h_exoshk_sd_init&#39; }
+    {&#39;h_endoshk_sd_init&#39;}</code></pre>
+<p>We can select columns that contain the string <em>sd</em> as well as <em>actl</em> in
+them, by considering joint conditions.</p>
+<pre><code>ar_it_select = contains(ar_st_col_names, &#39;_sd_&#39;).*endsWith(ar_st_col_names, &#39;_actl&#39;);
+ar_st_col_names_selected = ar_st_col_names(ar_it_select==1);
+disp(ar_st_col_names_selected&#39;);
+
+    {&#39;h_exoshk_sd_actl&#39; }
+    {&#39;h_endoshk_sd_actl&#39;}
+
+% show values from selected columns
+disp(tb_read(1:10, ar_st_col_names_selected));
+
+    h_exoshk_sd_actl    h_endoshk_sd_actl
+    ________________    _________________
+
+        0.042154             0.012103    
+        0.042514             0.011849    
+        0.042571             0.011352    
+         0.04263             0.010598    
+        0.042662            0.0089398    
+        0.042664            0.0088495    
+        0.042638            0.0078152    
+        0.042689            0.0027549    
+        0.042692            0.0024652    
+        0.042625             0.002309    </code></pre>
 
 </div>
 </div>
 </div>
-<div id="table-joining" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Table Joining</h2>
+<div id="table-joining" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Table Joining</h2>
 
-<div id="row-and-column-combine-stack-tables-and-matrices" class="section level3" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Row and Column Combine Stack Tables and Matrices</h3>
+<div id="row-and-column-combine-stack-tables-and-matrices" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Row and Column Combine Stack Tables and Matrices</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-some-tables-and-matrixes-for-combination" class="section level4" number="6.2.1.1">
-<h4><span class="header-section-number">6.2.1.1</span> Generate Some Tables and Matrixes for Combination</h4>
+<div id="generate-some-tables-and-matrixes-for-combination" class="section level4" number="7.2.1.1">
+<h4><span class="header-section-number">7.2.1.1</span> Generate Some Tables and Matrixes for Combination</h4>
 <pre><code>close all;
 
 % Generate Table 1
@@ -593,8 +792,8 @@ disp(tb_test_b);
     rowB=4    0.55131    0.48093    0.059678
     rowB=5    0.71947    0.39212     0.39804</code></pre>
 </div>
-<div id="combine-tables-together-stack-columns" class="section level4" number="6.2.1.2">
-<h4><span class="header-section-number">6.2.1.2</span> Combine Tables Together Stack Columns</h4>
+<div id="combine-tables-together-stack-columns" class="section level4" number="7.2.1.2">
+<h4><span class="header-section-number">7.2.1.2</span> Combine Tables Together Stack Columns</h4>
 <p>Tables with the same number of rows, add more columns with named
 variables</p>
 <pre><code>% a and b must have the same row names
@@ -612,8 +811,8 @@ disp(tb_ab_col_stacked);
     rowA=4      0.3      0.3      0.55131    0.48093    0.059678
     rowA=5      0.4      0.4      0.71947    0.39212     0.39804</code></pre>
 </div>
-<div id="combine-tables-together-stack-rows" class="section level4" number="6.2.1.3">
-<h4><span class="header-section-number">6.2.1.3</span> Combine Tables Together Stack Rows</h4>
+<div id="combine-tables-together-stack-rows" class="section level4" number="7.2.1.3">
+<h4><span class="header-section-number">7.2.1.3</span> Combine Tables Together Stack Rows</h4>
 <p>Tables with the same number of columns, dd more rows variables</p>
 <pre><code>% Select only 2 columns to match table a column count
 tb_test_b_subset = tb_test_b(:,1:2);
@@ -647,13 +846,13 @@ disp(tb_ab_row_stacked);
 
 </div>
 </div>
-<div id="matlab-table-stack-and-join-estimation-and-simulation-results" class="section level3" number="6.2.2">
-<h3><span class="header-section-number">6.2.2</span> Matlab Table Stack and Join Estimation and Simulation Results</h3>
+<div id="matlab-table-stack-and-join-estimation-and-simulation-results" class="section level3" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Matlab Table Stack and Join Estimation and Simulation Results</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="combine-tables-together-stack-rows-loop-template-common-columns" class="section level4" number="6.2.2.1">
-<h4><span class="header-section-number">6.2.2.1</span> Combine Tables Together Stack Rows Loop Template Common Columns</h4>
+<div id="combine-tables-together-stack-rows-loop-template-common-columns" class="section level4" number="7.2.2.1">
+<h4><span class="header-section-number">7.2.2.1</span> Combine Tables Together Stack Rows Loop Template Common Columns</h4>
 <p>There is an estimation routine, each time the routine outputs a table
 with a single row, the single row contains estimation outputs including
 estiamtes, standard erros, initial parameters etc. We loop over
@@ -663,9 +862,11 @@ rows stacked together.</p>
 <p>This simply means that we have a loop, during each iteration, generating
 a table, we want to stack things together. For this assume that the
 column names are the same.</p>
-<pre><code>for i=1:5
-    % a row of coefficent estimates
-    rng(123+i);
+<pre><code>rng(&quot;default&quot;);
+tb_saveCoef_stack = [];
+for row_idx=1:5
+    % a row of coefficent estimates    
+    rng(123+row_idx);
     it_num_cols = 4;
     it_num_rows = 1;
     mt_saveCoef = rand([it_num_rows, it_num_cols]);
@@ -676,11 +877,7 @@ column names are the same.</p>
     tb_saveCoef.Properties.VariableNames = ar_st_col_names;
     
     % Stack all results
-    if(i == 1)
-        tb_saveCoef_stack = tb_saveCoef;
-    else
-        tb_saveCoef_stack = [tb_saveCoef_stack; tb_saveCoef];
-    end
+    tb_saveCoef_stack = [tb_saveCoef_stack; tb_saveCoef];
 end
 % Add esti Counter as column
 estimodelctr = (1:size(tb_saveCoef_stack,1))&#39;;
@@ -700,8 +897,8 @@ disp(tb_saveCoef_stack);
     esti4         4          0.52383    0.039963        0.18597            0.77279   
     esti5         5          0.86664     0.26314        0.13141           0.041593   </code></pre>
 </div>
-<div id="combine-tables-together-stack-rows-loop-template-outterjoin" class="section level4" number="6.2.2.2">
-<h4><span class="header-section-number">6.2.2.2</span> Combine Tables Together Stack Rows Loop Template Outterjoin</h4>
+<div id="combine-tables-together-stack-rows-loop-template-outterjoin" class="section level4" number="7.2.2.2">
+<h4><span class="header-section-number">7.2.2.2</span> Combine Tables Together Stack Rows Loop Template Outterjoin</h4>
 <p>Similar to the previous estimation problem, however, now during
 different iterations, the column names, i.e. the parameters been
 estiamted are different. For example, there are 10 parameters, sometimes
@@ -709,17 +906,17 @@ we estimate 5 of the 10, sometimes 10 or the 10. Want to stack all
 results together similar to above.</p>
 <p>This is accomplished in the following example with the <a href="https://www.mathworks.com/help/matlab/ref/outerjoin.html">outerjoin
 function</a>.</p>
-<pre><code>for i=1:5   
+<pre><code>for row_idx=1:5
     % a row of coefficent estimates
-    rng(123+i);
+    rng(123+row_idx);
     
     it_num_rows = 1;
-    if (i &lt;= 2) 
+    if (row_idx &lt;= 2) 
         it_num_cols = 4;
         mt_saveCoef = rand([it_num_rows, it_num_cols]);    
         % row to table    
         ar_st_col_names = [&quot;FVAL&quot;, &quot;EXITFLAG&quot;, &quot;esti_iterations&quot;, &quot;esti_funccount&quot;];
-    elseif (i &lt;= 4) 
+    elseif (row_idx &lt;= 4) 
         it_num_cols = 2;
         mt_saveCoef = rand([it_num_rows, it_num_cols]);
         % row to table    
@@ -732,10 +929,11 @@ function</a>.</p>
     end
     
     tb_saveCoef = array2table(mt_saveCoef);
-    tb_saveCoef.Properties.VariableNames = ar_st_col_names;        
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;
+    tb_saveCoef = addvars(tb_saveCoef, row_idx, &#39;Before&#39;, 1);
     
     % Stack all results
-    if(i == 1)
+    if(row_idx == 1)
         tb_saveCoef_stack = tb_saveCoef;
     else
         tb_saveCoef_stack = outerjoin(tb_saveCoef_stack, tb_saveCoef, &#39;MergeKeys&#39;, true);
@@ -750,17 +948,65 @@ tb_saveCoef_stack.Properties.RowNames = cl_row_names_a;
 % display results
 disp(tb_saveCoef_stack);
 
-             estimodelctr     FVAL      EXITFLAG    esti_iterations    esti_funccount
-             ____________    _______    ________    _______________    ______________
+             estimodelctr    row_idx     FVAL      EXITFLAG    esti_iterations    esti_funccount
+             ____________    _______    _______    ________    _______________    ______________
 
-    esti1         1          0.10517     0.12814            NaN               NaN    
-    esti2         2          0.10606     0.74547        0.57231           0.45824    
-    esti3         3          0.50673    0.057531        0.62758           0.13255    
-    esti4         4          0.52383    0.039963            NaN               NaN    
-    esti5         5          0.86664         NaN        0.26314           0.13141    </code></pre>
+    esti1         1             1       0.10606     0.74547        0.57231           0.45824    
+    esti2         2             2       0.50673    0.057531        0.62758           0.13255    
+    esti3         3             3       0.10517     0.12814            NaN               NaN    
+    esti4         4             4       0.52383    0.039963            NaN               NaN    
+    esti5         5             5       0.86664         NaN        0.26314           0.13141    </code></pre>
 </div>
-<div id="nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables" class="section level4" number="6.2.2.3">
-<h4><span class="header-section-number">6.2.2.3</span> ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables</h4>
+<div id="combine-tables-outterjoin-with-parfor" class="section level4" number="7.2.2.3">
+<h4><span class="header-section-number">7.2.2.3</span> Combine Tables Outterjoin with Parfor</h4>
+<p>Same as above, but iterate/solve over loops with parfor</p>
+<pre><code>% Start cluster
+delete(gcp(&#39;nocreate&#39;));
+myCluster = parcluster(&#39;local&#39;);
+it_workers = 4;
+myCluster.NumWorkers = it_workers;
+parpool(it_workers);
+
+Starting parallel pool (parpool) using the &#39;local&#39; profile ...
+Connected to the parallel pool (number of workers: 4).
+
+% prepare storage
+cl_stores = cell([4,1]);
+% Loop over
+parfor row_idx=1:4
+    % a row of coefficent estimates
+    rng(123+row_idx);    
+    ar_st_col_names = [&quot;FVAL&quot;, &quot;EXITFLAG&quot;, &quot;esti_iterations&quot;, &quot;esti_funccount&quot;];
+    it_num_rows = 1;
+    it_num_cols = 4;
+    mt_saveCoef = rand([it_num_rows, it_num_cols]);        
+    tb_saveCoef = array2table(mt_saveCoef);
+    tb_saveCoef.Properties.VariableNames = ar_st_col_names;
+    tb_saveCoef = addvars(tb_saveCoef, row_idx, &#39;Before&#39;, 1);    
+    % Stack all results
+    cl_stores{row_idx} = tb_saveCoef;
+end
+% delete cluster
+delete(gcp(&#39;nocreate&#39;));</code></pre>
+<p>Stack tables stored in cells together:</p>
+<pre><code>% Combine
+tb_saveCoef_stack = [];
+for row_idx=1:4
+    tb_saveCoef_stack = [tb_saveCoef_stack; cl_stores{row_idx}];
+end
+% display results
+disp(tb_saveCoef_stack);
+
+    Var1     FVAL      EXITFLAG    esti_iterations    esti_funccount
+    ____    _______    ________    _______________    ______________
+
+     1      0.48946    0.58215          0.2796           0.23945    
+     2      0.28746     0.3907         0.12685             0.694    
+     3      0.76682    0.48312         0.50655           0.24223    
+     4      0.71522    0.15045         0.43025            0.4845    </code></pre>
+</div>
+<div id="nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables" class="section level4" number="7.2.2.4">
+<h4><span class="header-section-number">7.2.2.4</span> ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables</h4>
 <p>Now we will first column combine matrixes, model parameters and model
 outcomes, and then row combine matrixes from different simulations.</p>
 <p>A model takes a N parameters, solve the model over M sets of parameters.

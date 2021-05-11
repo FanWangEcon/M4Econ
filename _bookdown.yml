@@ -59,13 +59,17 @@ rmd_files:
   - panel/crosssection/main.Rmd
   - panel/crosssection/fs_wage_equation.Rmd
 
-
   - simulation/main.Rmd
   - simulation/normal/main.Rmd
   - simulation/normal/fs_bivariate_normal.Rmd
   - simulation/normal/fs_cholesky_decomposition.Rmd
   - simulation/normal/fs_cholesky_decomposition_d5.Rmd
 
+  - estimation/main.Rmd
+  - estimation/linear/main.Rmd
+  - estimation/linear/fs_linear_ols.Rmd
+  - estimation/nonlinear/main.Rmd
+  - estimation/nonlinear/fs_nonlinear_explog.Rmd
 
   - graph/main.Rmd
 

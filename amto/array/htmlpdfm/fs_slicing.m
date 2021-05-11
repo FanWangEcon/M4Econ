@@ -2,6 +2,68 @@
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Find the First Negative Element of Array
+% There is an array with positive, negative and NaN values, find the first negative 
+% number's index, and the last positive number index. Use the find function.
+
+for it_array=1:1:2
+    % Construct Array
+    if (it_array == 1) 
+        ar_alpha_sum_devi_one = [0.1, 0.7, -0.001, NaN, NaN];
+    elseif (it_array ==2)
+        ar_alpha_sum_devi_one = [0.1, 0.7, 0.001, NaN, NaN];
+    end
+    % Find last positive
+    it_last_pos_idx = find(ar_alpha_sum_devi_one > 0, 1, 'last');
+    % Find first negative
+    it_first_neg_idx = find(ar_alpha_sum_devi_one < 0, 1, 'first');
+    if (isempty(it_first_neg_idx))
+        it_first_neg_idx = NaN;
+    end
+    disp(['it_last_pos_idx=' num2str(it_last_pos_idx) ...
+        ', it_first_neg_idx=' num2str(it_first_neg_idx)])
+end
+%% First the First Negative Element of Last Segment of Array
+% There is an array with some negative numbers, then some positive numbers, 
+% then some negative numbers again. Find the first element of the final segment 
+% of negative numbers.
+
+for it_array=1:5
+    
+    % Construct Array
+    if (it_array == 1) 
+        ar_alpha_sum_devi_one = [0.1, 0.7, -0.001, NaN, NaN];
+    elseif (it_array ==2)
+        ar_alpha_sum_devi_one = [0.1, 0.7, 0.001, NaN, NaN];
+    elseif (it_array ==3)
+        ar_alpha_sum_devi_one = [-0.001, 0.1, 0.7, 0.001, NaN, NaN];
+    elseif (it_array ==4)
+        ar_alpha_sum_devi_one = [-0.001, 0.1, 0.7, 0.001, -0.0002, -0.05, NaN, NaN];
+    elseif (it_array ==5)
+        ar_alpha_sum_devi_one = [NaN, NaN, -0.001, 0.1, 0.7, 0.001, -0.0002, NaN];
+    end
+    
+    % Find last positive
+    it_last_pos_idx = find(ar_alpha_sum_devi_one > 0, 1, 'last');
+    % Find first negative
+    it_first_neg_idx = find(ar_alpha_sum_devi_one < 0, 1, 'first');
+    % Find first negative of last negative segment
+    ar_alpha_sum_after_last_pos = ...
+        ar_alpha_sum_devi_one(it_last_pos_idx:length(ar_alpha_sum_devi_one));
+    it_first_neg_last_neg_seg_idx = it_last_pos_idx - 1 + ...
+        find(ar_alpha_sum_after_last_pos < 0, 1, 'first');
+    
+    if (isempty(it_first_neg_idx))
+        it_first_neg_idx = NaN;
+    end
+    if (isempty(it_first_neg_last_neg_seg_idx))
+        it_first_neg_last_neg_seg_idx = NaN;
+    end
+    
+    disp(['it_last_pos_idx=' num2str(it_last_pos_idx) ...
+        ', it_first_neg_idx=' num2str(it_first_neg_idx)... 
+        ', it_first_neg_last_neg_seg_idx=' num2str(it_first_neg_last_neg_seg_idx)])
+end
 %% Index Select Rows and Columns of a 2D matrix
 % In the example below, select by entire rows and columns:
 

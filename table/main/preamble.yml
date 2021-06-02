@@ -1,16 +1,18 @@
 - file: fs_tab_gensample
-  title: "Matlab Table with Random Data and Labels"
-  titleshort: "Named Tables with Random Data"
+  title: "Matlab Table Fill Data Row by Row or with Random Data"
+  titleshort: "Table Fill Data Row by Row or with Random Data"
   description: |
+    Generate an empty table and fill with data row by row.
     Convert a random matrix to a table with column and row names defined with arrays.
   core :
     - package: m
       code: |
+        table()
         array2table()
         strcat()
         addvars()
         matlab.lang.makeValidName()
-  date: 2020-06-08
+  date: 2021-05-31
   date_start: 2020-06-08
   output:
     pdf_document:

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Matlab Table Summarize and Aggregate by Groups</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S7 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Matlab Table Summarize and Aggregate by Groups</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/MEconTools/"><span style=' font-weight: bold;'>MEconTools</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span>Group Table Rows and Sum within Group</span></h2><div  class = 'S1'><span>There is a table where subsets of rows belong to different simulations, with exogenous fixed </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: italic; font-weight: 400; color: rgb(0, 0, 0);">ρ</span><span> parameters. For each </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: italic; font-weight: 400; color: rgb(0, 0, 0);">ρ</span><span> parameter combination, there are, stored as different rows, a number of model predictions and data moments, and corresponding difference. Find the total difference between model and data for subsets of rows based for each </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: italic; font-weight: 400; color: rgb(0, 0, 0);">ρ</span><span> parameter set.</span></div><div  class = 'S1'><span>First, create a table where each </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: italic; font-weight: 400; color: rgb(0, 0, 0);">ρ</span><span> group is identified jointly by </span><span texencoding="\rho_a" style="vertical-align:-6px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAoCAYAAAAG0SEsAAACh0lEQVRYR+3WX8iOdxwG8M8bpRWJNJRwYC3tQI0cUFaUkX9ZFLPJ/03sQEpom8ifkn+txETLv7XZijhwoqSQQg5knFDsQMLEtmTZWt+3712vu/v1Pq8eXgfPXffJ8/zu7/X7Xt/run6/Jh34NHUgtgZ4h7DfoL1B+xtloCG4N0p3AdagvS3a38FEfIJbGIp3cQR78EdbBar+r4X2AdiOB1iZQH2wFxNwAF/hSXs30BZ4b3yfRb/AvRYAq7ARf2IsLtQTPKjejEmYhkul4rNwKH/7DIfrCT4FB/EDVuBZqfhs7M/fZuDneoH3wD5MRWzieKlwjGtNvneTncv1Ah+Do7iKT3G7VLh7Ci7GEevm41E9wDtlR9+k2JbhaanwcBxDXyxIltqLXXmB7JWzHocvW6i9KN4FG7AcvyBc0O6uo1iV1SJATqArxuNcqaXRqfI7mIvr7W45P6gCj05243zFvAen+uPzJXiZyAbi83RJZ/yHfvi2SMQyeHg70iw2cCrB7ydDwcgO3MTX+L2VjgNoIT7GavyGUTiToRQueV5Fe0TpjxiB06nyyPIPM9PD81Esumgtrudhcb4Xc1EBHmdDuKP5KXc+Eifx1yt6dxh+xVbsKjpEOCbYmI5rrYHHom0lymvVU7gg4vgjzGwhxCKw/kmdPKwC74adKZKYe5xg8UGtzyD8lMG0FH/nh0VMb8rN/VsF/n7m8xC8ykERIzuLAImACpBwR7BR3AWuZCY8Ls+8OKXCty/MpsbWP8jQuYFF6I/JuYk56aJwQhzRzYlZCK4n1uG9VPmWFmKpEVthsfUIe8YNJ069mP/atOl3aO66Su21AtVlXVs3mbqAtFakAf5a6X0raf8f7ziFKaxdEHwAAAAASUVORK5CYII=" width="15.5" height="20" /></span><span> and </span><span texencoding="\rho_b" style="vertical-align:-6px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAoCAYAAAAG0SEsAAACsklEQVRYR+3WS6hVdRQG8N9FMoMkCtGcWBNfJAaJIYkTpUhMQkmULCVKFMSBBKKkCEphEeVA8UGZmpWPIDEiEMEXRaBNDA0HSfkkDIMyRFGRdVhbtrtzuOdcL96BZ8OZ7L3W+tb/W9/6/qdDDz4dPYitDd4j7Ldpb9N+TxloC+6e0l2AtWnvjPaH8BKm4hRGoT92YiMudVag3vdmaH8CH+MvLE6gx/EJJmErFuCfVhvoDHwANmTRufizBLAE7+FfvICfuhM8qP4Ak/EKjlaKz8S2fPcavuhO8JfxOT7DIlytFJ+FLfluBnZ0F/ij+BRTEE3sqRSOcS3P34Vk5+eM6YdxGIFBGXO+FcFNwDf4Ba/ij0ryIym4GEfEvYm/SzHDchN+xEJcaRa8V3a7LMVWL/lZ7MZAvJUsleuPwV5EjTW40Sx40BazfhHzSmov8h/Eu3gbuxBbUD51xMW7GEto4VAjLdRbtTCQb/EwJuKHSvL4VPlpvIFfK99jS8IXhuB1nGsFPLpej5hXdd7DU/1Rbz4KkZXrhyl9iSP4KhkKFn/PnMONLpai62hgX4JfpPb/PhhZjd+wFGcanOj5nPdHuIZ1CIHGKGM84Q819VdpL7p+DvtT5eHlz6Snx86fwM0GwFHvHazE5jx1+H5xqBhZbMixeuBj8T0uV3a3Wf8oVnA0ZuNgJvbFWjyZbJ6tBx5rFXSVKW8WOOJG4mscyP3+L5Ofys34LkdWc8sy7UV3odBQa9xgMbNWnsLv4+oN84knfCPseTrmpBBrH8rgQ9Ofn0ZXLoreWIWYawCdTPAYZWjl/bwLrtdTe9F17O00HG/lyCjMqU9J0eHvweKmpP02cPnkj2EFBqfKP8QdgU00EooOkcVlFM4XY3wA2xGG9L+nsz8TTWB2PaQN3nXu7iLz/qX9FrBBjCkC2ll6AAAAAElFTkSuQmCC" width="15.5" height="20" /></span><span>, stored in the 3rd and 4th rows. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Make N by 2 matrix of fieldname + value type</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mt_st_variable_names_types = [</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    [</span><span style="color: rgb(170, 4, 249);">"year"</span><span>, </span><span style="color: rgb(170, 4, 249);">"double"</span><span>];[</span><span style="color: rgb(170, 4, 249);">"category"</span><span>, </span><span style="color: rgb(170, 4, 249);">"string"</span><span>];</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    [</span><span style="color: rgb(170, 4, 249);">"rhoa"</span><span>, </span><span style="color: rgb(170, 4, 249);">"double"</span><span>];[</span><span style="color: rgb(170, 4, 249);">"rhob"</span><span>, </span><span style="color: rgb(170, 4, 249);">"double"</span><span>]; </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    [</span><span style="color: rgb(170, 4, 249);">"numberWorkersSimu"</span><span>, </span><span style="color: rgb(170, 4, 249);">"logical"</span><span>]; [</span><span style="color: rgb(170, 4, 249);">"numberWorkersData"</span><span>, </span><span style="color: rgb(170, 4, 249);">"double"</span><span>]];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Make table using fieldnames &amp; value types from above</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_agg_exa = table(</span><span style="color: rgb(170, 4, 249);">'Size'</span><span>,[0,size(mt_st_variable_names_types,1)],</span><span style="color: rgb(14, 0, 255);">...</span><span style="color: rgb(2, 128, 9);"> </span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	</span><span style="color: rgb(170, 4, 249);">'VariableNames'</span><span>, mt_st_variable_names_types(:,1),</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>	</span><span style="color: rgb(170, 4, 249);">'VariableTypes'</span><span>, mt_st_variable_names_types(:,2));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Table with data inputs</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_agg_exa = [tb_agg_exa;</span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    {1, </span><span style="color: rgb(170, 4, 249);">'C001'</span><span>, 0.50, 0.50, 5.5, 6.05}; {2, </span><span style="color: rgb(170, 4, 249);">'C002'</span><span>, 0.50, 0.50, 3.7, 4.4}; </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    {1, </span><span style="color: rgb(170, 4, 249);">'C001'</span><span>, 0.25, 0.30, 2.5, 3.65}; {2, </span><span style="color: rgb(170, 4, 249);">'C002'</span><span>, 0.25, 0.30, 0.1, 1.6}; </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>    {3, </span><span style="color: rgb(170, 4, 249);">'C001'</span><span>, 0.25, 0.50, 0.01, 1.66}];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Generate model and data difference</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_agg_exa{:, </span><span style="color: rgb(170, 4, 249);">"diff"</span><span>} = tb_agg_exa{:, </span><span style="color: rgb(170, 4, 249);">"numberWorkersSimu"</span><span>} - tb_agg_exa{:, </span><span style="color: rgb(170, 4, 249);">"numberWorkersData"</span><span>};</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Display</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_agg_exa);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="4CA2F95D" data-testid="output_0" data-width="1128" data-height="115" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    <strong>year</strong>    <strong>category</strong>    <strong>rhoa</strong>    <strong>rhob</strong>    <strong>numberWorkersSimu</strong>    <strong>numberWorkersData</strong>    <strong>diff</strong> 
+    <strong>____</strong>    <strong>________</strong>    <strong>____</strong>    <strong>____</strong>    <strong>_________________</strong>    <strong>_________________</strong>    <strong>_____</strong>
+
+     1       "C001"      0.5    0.5            5.5                 6.05           -0.55
+     2       "C002"      0.5    0.5            3.7                  4.4            -0.7
+     1       "C001"     0.25    0.3            2.5                 3.65           -1.15
+     2       "C002"     0.25    0.3            0.1                  1.6            -1.5
+     3       "C001"     0.25    0.5           0.01                 1.66           -1.65</div></div></div></div></div><div  class = 'S7'><span>Second, select the subset of columns that are relevant for aggregation.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Select</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_agg_exa = tb_agg_exa(:, [</span><span style="color: rgb(170, 4, 249);">"rhoa"</span><span>, </span><span style="color: rgb(170, 4, 249);">"rhob"</span><span>, </span><span style="color: rgb(170, 4, 249);">"diff"</span><span>]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Display</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_agg_exa);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="DD63FE82" data-testid="output_1" data-width="1128" data-height="115" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    <strong>rhoa</strong>    <strong>rhob</strong>    <strong>diff</strong> 
+    <strong>____</strong>    <strong>____</strong>    <strong>_____</strong>
+
+     0.5    0.5     -0.55
+     0.5    0.5      -0.7
+    0.25    0.3     -1.15
+    0.25    0.3      -1.5
+    0.25    0.5     -1.65</div></div></div></div></div><div  class = 'S7'><span>Third, group by unique combinations of rhoa, rhob, and aggregate. Then generate group ID. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Sum within groupo</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_groupby_agg_sum = groupsummary(tb_agg_exa, [</span><span style="color: rgb(170, 4, 249);">"rhoa"</span><span>, </span><span style="color: rgb(170, 4, 249);">"rhob"</span><span>], </span><span style="color: rgb(170, 4, 249);">"sum"</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Generate grouping ID</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_groupby_agg_sum{:, </span><span style="color: rgb(170, 4, 249);">"ID"</span><span>} = (1:1:size(tb_groupby_agg_sum, 1))';</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>tb_groupby_agg_sum = movevars(tb_groupby_agg_sum, </span><span style="color: rgb(170, 4, 249);">"ID"</span><span>, </span><span style="color: rgb(170, 4, 249);">"Before"</span><span>, 1);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>disp(tb_groupby_agg_sum);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="6694CFE0" data-testid="output_2" data-width="1128" data-height="87" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="textElement">    <strong>ID</strong>    <strong>rhoa</strong>    <strong>rhob</strong>    <strong>GroupCount</strong>    <strong>sum_diff</strong>
+    <strong>__</strong>    <strong>____</strong>    <strong>____</strong>    <strong>__________</strong>    <strong>________</strong>
+
+    1     0.25    0.3         2          -2.65  
+    2     0.25    0.5         1          -1.65  
+    3      0.5    0.5         2          -1.25  </div></div></div></div></div><div  class = 'S7'><span></span></div><div  class = 'S1'><span></span></div><div  class = 'S1'></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Matlab Table Summarize and Aggregate by Groups
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Group Table Rows and Sum within Group
+% There is a table where subsets of rows belong to different simulations, with 
+% exogenous fixed $\rho$ parameters. For each $\rho$ parameter combination, there 
+% are, stored as different rows, a number of model predictions and data moments, 
+% and corresponding difference. Find the total difference between model and data 
+% for subsets of rows based for each $\rho$ parameter set.
+% 
+% First, create a table where each $\rho$ group is identified jointly by $\rho_a$ 
+% and $\rho_b$, stored in the 3rd and 4th rows. 
+
+% Make N by 2 matrix of fieldname + value type
+mt_st_variable_names_types = [...
+    ["year", "double"];["category", "string"];...
+    ["rhoa", "double"];["rhob", "double"]; ...
+    ["numberWorkersSimu", "logical"]; ["numberWorkersData", "double"]];
+% Make table using fieldnames & value types from above
+tb_agg_exa = table('Size',[0,size(mt_st_variable_names_types,1)],... 
+	'VariableNames', mt_st_variable_names_types(:,1),...
+	'VariableTypes', mt_st_variable_names_types(:,2));
+% Table with data inputs
+tb_agg_exa = [tb_agg_exa;...
+    {1, 'C001', 0.50, 0.50, 5.5, 6.05}; {2, 'C002', 0.50, 0.50, 3.7, 4.4}; ...
+    {1, 'C001', 0.25, 0.30, 2.5, 3.65}; {2, 'C002', 0.25, 0.30, 0.1, 1.6}; ...
+    {3, 'C001', 0.25, 0.50, 0.01, 1.66}];
+% Generate model and data difference
+tb_agg_exa{:, "diff"} = tb_agg_exa{:, "numberWorkersSimu"} - tb_agg_exa{:, "numberWorkersData"};
+% Display
+disp(tb_agg_exa);
+%% 
+% Second, select the subset of columns that are relevant for aggregation.
+
+% Select
+tb_agg_exa = tb_agg_exa(:, ["rhoa", "rhob", "diff"]);
+% Display
+disp(tb_agg_exa);
+%% 
+% Third, group by unique combinations of rhoa, rhob, and aggregate. Then generate 
+% group ID. 
+
+% Sum within groupo
+tb_groupby_agg_sum = groupsummary(tb_agg_exa, ["rhoa", "rhob"], "sum");
+% Generate grouping ID
+tb_groupby_agg_sum{:, "ID"} = (1:1:size(tb_groupby_agg_sum, 1))';
+tb_groupby_agg_sum = movevars(tb_groupby_agg_sum, "ID", "Before", 1);
+disp(tb_groupby_agg_sum);
+%% 
+% 
+% 
+% 
+% 
+%
+##### SOURCE END #####
+--></body></html>

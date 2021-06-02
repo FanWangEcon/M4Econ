@@ -1,3 +1,27 @@
+- file: fs_tab_join
+  title: "Matlab Join Tables by Keys"
+  titleshort: "Join Table by Keys"
+  description: |
+    Left join larger table with smaller table with common keys.
+  core :
+    - package: m
+      code: |
+        join()
+        table()
+  date: 2021-06-01
+  date_start: 2021-06-01
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
 - file: fs_tab_stack
   title: "Matlab Table Stack and Combine Rows and Columns"
   titleshort: "Stack Matlab Tables"

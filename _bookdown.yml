@@ -99,9 +99,12 @@ rmd_files:
   - table/main/fs_tab_select_rows_cols.Rmd
 
   - table/join/main.Rmd
+  - table/join/fs_tab_join.Rmd
   - table/join/fs_tab_stack.Rmd
   - table/join/fs_tab_stack_simuesti.Rmd
 
+  - table/summarize/main.Rmd
+  - table/summarize/fs_tab_group_summ.Rmd
 
   - README_appendix.md
   - title.Rmd

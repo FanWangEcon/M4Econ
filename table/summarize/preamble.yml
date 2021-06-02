@@ -1,0 +1,24 @@
+- file: fs_tab_group_summ
+  title: "Matlab Table Summarize and Aggregate by Groups"
+  titleshort: "Table Summarize and Aggregate by Groups"
+  description: |
+    Group table by one or several group variables, and aggregate over another numerical variable within group.
+  core :
+    - package: m
+      code: |
+        groupsummary()
+        table()
+        movevars()
+  date: 2021-06-01
+  date_start: 2021-06-01
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

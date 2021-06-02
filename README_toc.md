@@ -224,9 +224,10 @@
 
 ## 7.1  Basic Table Generation
 
-1. [Named Tables with Random Data](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_gensample.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html)
+1. [Table Fill Data Row by Row or with Random Data](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_gensample.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html)
+	+ Generate an empty table and fill with data row by row.
 	+ Convert a random matrix to a table with column and row names defined with arrays.
-	+ **m**: *array2table() + strcat() + addvars() + matlab.lang.makeValidName()*
+	+ **m**: *table() + array2table() + strcat() + addvars() + matlab.lang.makeValidName()*
 2. [Order, Sort and Rename Columns](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_ordersort.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_ordersort.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_ordersort.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_ordersort.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_ordersort.html)
 	+ Convert a matrix to table with mean and sd columns. Rearrange and rename columns.
 	+ **m**: *array2table() + rng() + addvars() + movevars() + removevars() + matlab.lang.makeValidName() + tb.Properties.VariableNames + tb.Properties.RowNames*
@@ -241,12 +242,21 @@
 
 ## 7.2  Table Joining
 
-1. [Stack Matlab Tables](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html)
+1. [Join Table by Keys](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_join.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_join.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_join.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_join.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_join.html)
+	+ Left join larger table with smaller table with common keys.
+	+ **m**: *join() + table()*
+2. [Stack Matlab Tables](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html)
 	+ Append columns to existing table. Stack tables vertically and horizontally.
 	+ **m**: *array2table() + [tb_a tb_b] + [tb_a; tb_b] + tb.Properties.VariableNames + tb.Properties.RowNames*
-2. [Stack and Join Estimation and Simulation Results](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack_simuesti.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html)
+3. [Stack and Join Estimation and Simulation Results](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack_simuesti.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack_simuesti.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack_simuesti.html)
 	+ Stack different tables together with varying columns via outerjoin, store with parallel parfor.
 	+ Stack different estiamtion results together into a common table where columns show parameter names and other strings.
 	+ Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.
 	+ **m**: *array2table() + outerjoin() + addvars()*
 	+ **parallel**: *parfor*
+
+## 7.3  Summarize
+
+1. [Table Summarize and Aggregate by Groups](https://fanwangecon.github.io/M4Econ/table/summarize/htmlpdfm/fs_tab_group_summ.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/summarize/fs_tab_group_summ.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/summarize/htmlpdfm/fs_tab_group_summ.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/summarize/htmlpdfm/fs_tab_group_summ.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/summarize/htmlpdfm/fs_tab_group_summ.html)
+	+ Group table by one or several group variables, and aggregate over another numerical variable within group.
+	+ **m**: *groupsummary() + table() + movevars()*

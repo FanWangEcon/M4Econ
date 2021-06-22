@@ -37,10 +37,10 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 	+ Accumarray to sum up probabilities/values for discrete elements of arrays.
 	+ **m**: *unique() + reshape() + accumarray()*
 7. [Matlab Array Miscellaneous](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
-	+ Check data/parameter types.
+	+ Check data and parameter types.
 	+ Compare approximately similar values.
 	+ Find imaginary elements of array.
-	+ **m**: *imag() + isfloat() + iscell()*
+	+ **m**: *imag() + isfloat() + iscell() + isnan()*
 
 ## 1.2  ND Dimensional Arrays
 
@@ -124,7 +124,7 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 	+ Default parameters allow for maintaining code testability.
 	+ Use varargin for functions with limited parameters.
 	+ **m**: *varargin + cell2mat() + function [out_put] = func_name(varargin)*
-2. [Use varargin as a Function Parameter](https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_defaultmap.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/fs_defaultmap.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_defaultmap.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_defaultmap.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_defaultmap.html)
+2. [Container Default Parameter with varargin and Input Type Check](https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_defaultmap.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/fs_defaultmap.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_defaultmap.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_defaultmap.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_defaultmap.html)
 	+ The varargin structure could lead to excessive code lines. Container Map works well with large parameter structure.
 	+ Core model functions with potentially many parameters, possibly override default generation to save time.
 	+ **m**: *varargin + function [out_put] = func_name(varargin) + cm_defaults = {cm_a, cm_b} + [cm_defaults{1:optional_params_len}] = varargin{:} + cm_c = [cm_a;cm_b]*

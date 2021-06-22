@@ -47,6 +47,40 @@ st_test = strjoin(...
     ['iscell(curEstiParamB)=' num2str(iscell(curEstiParamB))], ...
     ], ";");
 disp(st_test);
+%% Check if a value is an array of single scalar boolean
+% A function could take an array, if the array parameter input is boolean and 
+% false, then generate the array needed by the function in a different way. All 
+% that is needed is a NaN checker, works for scalar or array of NaN.
+
+rng(123);
+it_len = 3;
+for it_case=[1,2,3]
+    
+    if (it_case == 1)        
+        ob_val = rand(1,it_len);
+    elseif (it_case == 2)
+        % Single NaN
+        ob_val = NaN;
+    elseif (it_case == 3)
+        % Single NaN
+        ob_val = NaN(1,it_len);
+    end
+    
+    if (isnan(ob_val))
+        % Generates random output vector since input is not provided
+        ob_val_out = rand(1, it_len);
+    else
+        % Input is the output vector since input is not NaN
+        ob_val_out = ob_val;
+    end
+
+    st_test = strjoin(...
+        ["", ...
+        ['ob_val=' num2str(ob_val)], ...
+        ['ob_val_out=' num2str(ob_val_out)], ...
+        ], ";");
+    disp(st_test);    
+end
 %% Compare Array Values That are Approximately Similar
 % <https://stackoverflow.com/a/33024979/8280804 What is the best way to compare 
 % floats for almost-equality in Python?>

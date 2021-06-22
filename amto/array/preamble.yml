@@ -46,7 +46,7 @@
   title: "Matlab Array Miscellaneous"
   titleshort: "Matlab Array Miscellaneous"
   description: |
-    Check data/parameter types.
+    Check data and parameter types.
     Compare approximately similar values.
     Find imaginary elements of array.
   core :
@@ -55,7 +55,8 @@
         imag()
         isfloat()
         iscell()
-  date: 2020-07-11
+        isnan()
+  date: 2021-06-21
   date_start: 2020-11-29
   output:
     pdf_document:

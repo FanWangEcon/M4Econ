@@ -1,8 +1,8 @@
 - file: fs_varargin
-  title: "Matlab varargin as a Function Parameter"
-  titleshort: "Use varargin as a Function Parameter"
+  title: "Matlab varargin as a Function Parameter Inputs"
+  titleshort: "Use varargin as a Function Parameter Inputs"
   description: |
-    Default parameters allow for maintaining code testability.
+    Default parameters via varargin parsing allow for maintaining code testability.
     Use varargin for functions with limited parameters.
   core :
     - package: m
@@ -25,8 +25,8 @@
   urlcolor: blue
 
 - file: fs_defaultmap
-  title: "Matlab varargin as a Function Parameter"
-  titleshort: "Use varargin as a Function Parameter"
+  title: "Container Default Parameter with varargin and Input Type Check"
+  titleshort: "Container Default Parameter with varargin and Input Type Check"
   description: |
     The varargin structure could lead to excessive code lines. Container Map works well with large parameter structure.
     Core model functions with potentially many parameters, possibly override default generation to save time.

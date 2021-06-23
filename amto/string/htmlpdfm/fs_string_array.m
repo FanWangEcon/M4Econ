@@ -1,9 +1,9 @@
-%% String Manipulations with Arrays
+%% String Array Manipulations, Join, Find, Replace and the Alphabet
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
-%% String Array
-% Empty String Array:
+%% Generate a String Array from Strings
+% Empty String Array and fill with values. 
 
 ar_st_titles = strings([3,1]);
 ar_st_titles(1) = 'Title1';
@@ -22,9 +22,25 @@ disp(ar_st_titles);
 st_titles = ['Title1','Title2','Title3'];
 disp(st_titles);
 %% 
+% Given some previously defined chars or strings with single or double quotes, 
+% not sure which. To safely generate a string array, wrap in brackets and then 
+% conver with string function. This generates a string array whether the original 
+% inputs were single or double quoted:
+
+st_a = 'a';
+st_b = 'b';
+st_c = 'c';
+st_a_dq = "a";
+st_b_dq = "b";
+st_c_dq = "c";
+ar_st_singlequotes = string({st_a, st_b, st_c});
+ar_st_doublequotes = string({st_a_dq, st_b_dq, st_c_dq});
+disp(["st_singlequotes" ar_st_singlequotes]);
+disp(["ar_st_doublequotes" ar_st_doublequotes]);
+%% 
 % Convert the string array to a cell string array
 
-disp(cellstr(ar_st_titles));
+disp(cellstr(ar_st_doublequotes));
 %% String Cell Array
 % Create a string array:
 
@@ -108,3 +124,15 @@ length(find(strcmp(ls_st_param_key, 'fl_crra_not_exist')))
 
 cl_st_param_keys = {'fl_crra', 'fl_beta'};
 display(strrep(strjoin(cl_st_param_keys, '-'), '_', '\_'));
+%% Generate Alphebetical String Array from A to Z
+% Generate a single string that is A to Z, then generate this as a string array. 
+
+% a to z single string
+st_a2z = 'a':'z';
+% a to z array of letters
+ar_st_a2z = string(('A':'Z')')';
+% Display
+disp(st_a2z);
+disp(ar_st_a2z);
+%% 
+%

@@ -1,4 +1,4 @@
-%% Basic String Operations
+%% Basic String Operations, Display, Search, Join and Split
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
@@ -23,20 +23,30 @@ disp(strjoin(ar_st, ""));
 st_a = 'another string';
 str = ['abc ', num2str(2), ' opq ', st_a];
 disp((str));
-%% Construct String Array and String Elements of String Array
+%% Construct String Print Statement with String and Numeric Elements
 % In the example below, we have a number of strings we want to put inside a 
 % string array, then join with strjoin, but two of the strings need to be constructed 
 % as strings first. Note below that double quoates are own strings, single quotes 
 % in brackets constructing additional strings. 
 
 st_a = "another string";
-ar_st = strjoin(...
-    ["Completed SNW_DS_MAIN", ...
-     ['SNW_MP_PARAM=' num2str(123.345)], ...
-     ['SNW_MP_CONTROL=' num2str(678.90)], ...
-     st_a...
+ar_st = ["abc", "efg"];
+ar_fl_vals = rand([1,10]);
+st_print = strjoin(...
+    ["Completed SNW_DS_MAIN:", ...
+    ['SNW_MP_PARAM=' num2str(123)], ...
+    ['SNW_MP_CONTROL=' num2str(678)], ...
+    ['STR_VAR1=' char('string')], ...
+    ['STR_VAR2=' char(strjoin(ar_st, "-"))], ...
+    ['STR_VAR3:;' char(strjoin(ar_st, ";"))], ...
+    ['ar_st:;' char(strjoin(strcat( ...
+    num2str((1:length(ar_st))', '%0.3d'), '=', ar_st' ...
+    ), ";"))], ...
+    ['ar_fl_vals:;' strjoin(string(strcat( ...
+    num2str((1:length(ar_fl_vals))', '%0.3d'), '=', num2str(ar_fl_vals', '%3.2f'))), ";")], ...
     ], ";");
-disp(ar_st);
+disp(st_print);
+disp(strsplit(st_print,";")');
 %% Paste Join Strings Together with Separator
 % Join strings together with separator, this is similar to the paste0 function 
 % in R.
@@ -65,6 +75,16 @@ st_long4 = 'simu_medium';
 st_long5 = 'simuverysmall';
 disp([contains(st_long1, 'dense'), contains(st_long2, 'dense'), contains(st_long3, 'dense'), ...
     contains(st_long4, 'dense'), contains(st_long5, 'dense')]);
+%% Find Elements of an Array that Matches Any Elements of Another Array
+% There is an array of strings, check if each element equals values specified 
+% in another string, using the match function.
+
+% String array from strings
+ar_st_long = string({st_long1, st_long2, st_long3, st_long4, st_long5});
+% If matches simu_dense
+disp(matches(ar_st_long, 'simu_dense'));
+% If matches simu_dense or simu_denser
+disp(matches(ar_st_long, ["simu_dense", "simu_denser"]));
 %% Change File Name MLX to M
 
 st_file_name_mlx = 'continuous_differentiable.mlx';

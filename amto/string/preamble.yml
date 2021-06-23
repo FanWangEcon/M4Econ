@@ -1,17 +1,22 @@
 - file: fs_string
-  title: "Matlab Single String Manipulation, Combine and Split"
-  titleshort: "String Basics"
+  title: "Matlab Basic String Operations, Display, Search, Join and Split"
+  titleshort: "Basic String Operations, DisplayDisplay, Search, Join and Split"
   description: |
+    Print info segment of multiple numeric and string parameters, scalar and array.
     Compose string and rounded numeric array.
     Cut string suffix and append new suffix.
+    Search which element of string array contains, and which element matches other strings.
   core :
     - package: m
       code: |
+        char()
         compose()
         strjoin()
+        contains()
+        matches()
         str_sub = split(string, ".")
         strcat(str_sub{1}, '_m.m')
-  date: 2020-06-14
+  date: 2021-06-22
   date_start: 2020-06-07
   output:
     pdf_document:
@@ -26,10 +31,11 @@
   urlcolor: blue
 
 - file: fs_string_array
-  title: "Matlab String Array"
-  titleshort: "String Arrays Operations"
+  title: "Matlab String Arrays Operations, Join, Find, Replace and the Alphabet"
+  titleshort: "String Arrays Operations, Join, Find, Replace and the Alphabet"
   description: |
-    String arrays and cell strings.
+    Generate string arrays and cell strings.
+    String array from single and double quoted strings.
     Duplicate strings, concatenate string, and paste strings jointly with separator.
     Find string element positions, replace substrings.
   core :
@@ -37,6 +43,7 @@
       code: |
         repmat()
         num2str()
+        string()
         strcat()
         strjoin()
         fprintf()
@@ -44,7 +51,8 @@
         strrep()
         cel2mat(cellfun(@(m) find(strcmp())))
         cellstr()
-  date: 2020-06-14
+        'a':'z'
+  date: 2021-06-22
   date_start: 2020-06-07
   output:
     pdf_document:
@@ -63,17 +71,19 @@
   titleshort: "Convert and Cancatenate String and Numeric Array Concatenations"
   description: |
     Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.
+    Generate a string from a numeric array and join with positional counter.
     Create a title string by joining rounded parameter and parameter names, with decimal formatting.
     Concatenate multiple numeric arrays together with strings and format.
   core :
     - package: m
       code: |
+        num2str()
         compose()
         cellstr()
         strcat()
         strjoin()
         %.2f
-  date: 2020-06-14
+  date: 2021-06-22
   date_start: 2020-12-03
   output:
     pdf_document:

@@ -78,20 +78,24 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 
 ## 1.4  Characters and Strings
 
-1. [String Basics](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html)
+1. [Basic String Operations, DisplayDisplay, Search, Join and Split](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html)
+	+ Print info segment of multiple numeric and string parameters, scalar and array.
 	+ Compose string and rounded numeric array.
 	+ Cut string suffix and append new suffix.
-	+ **m**: *compose() + strjoin() + str_sub = split(string, ".") + strcat(str_sub{1}, '_m.m')*
-2. [String Arrays Operations](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_array.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html)
-	+ String arrays and cell strings.
+	+ Search which element of string array contains, and which element matches other strings.
+	+ **m**: *char() + compose() + strjoin() + contains() + matches() + str_sub = split(string, ".") + strcat(str_sub{1}, '_m.m')*
+2. [String Arrays Operations, Join, Find, Replace and the Alphabet](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_array.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html)
+	+ Generate string arrays and cell strings.
+	+ String array from single and double quoted strings.
 	+ Duplicate strings, concatenate string, and paste strings jointly with separator.
 	+ Find string element positions, replace substrings.
-	+ **m**: *repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp()))) + cellstr()*
+	+ **m**: *repmat() + num2str() + string() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp()))) + cellstr() + 'a':'z'*
 3. [Convert and Cancatenate String and Numeric Array Concatenations](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html)
 	+ Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.
+	+ Generate a string from a numeric array and join with positional counter.
 	+ Create a title string by joining rounded parameter and parameter names, with decimal formatting.
 	+ Concatenate multiple numeric arrays together with strings and format.
-	+ **m**: *compose() + cellstr() + strcat() + strjoin() + %.2f*
+	+ **m**: *num2str() + compose() + cellstr() + strcat() + strjoin() + %.2f*
 
 ## 1.5  Map Containers
 
@@ -253,8 +257,9 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 	+ **m**: *array2table() + string() + strcat('rowA=', string((1:size(mt, 1)))) + tb_test_a.Properties.VariableNames + tb_test_a.Properties.RowNames + addvars(tb, rownames, 'Before', 1) + strcat() + strjoin() + cellfun(@(x) f(x), ar_x)*
 4. [Select Subset of Rows and Columns](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_select_rows_cols.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html)
 	+ Conditional selection based on cell values and column and row names.
+	+ Select if row value matches any value from an arry of values.
 	+ Load a excel file and select based on column name string conditions.
-	+ **m**: *tb(strcmp(tb.v1, "b"),:) + tb(tb.va==0.4,:) + readtable() + startsWith() + endsWith() + contains()*
+	+ **m**: *tb(strcmp(tb.v1, "b"),:) + tb(tb.va==0.4,:) + readtable() + startsWith() + endsWith() + contains() + matches()*
 
 ## 7.2  Table Joining
 

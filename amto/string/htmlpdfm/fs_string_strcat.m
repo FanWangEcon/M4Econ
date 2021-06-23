@@ -2,7 +2,21 @@
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
-%% Combine A String Array with A Numeric Array using Compose
+%% Generate a String from Numeric Array and Print on Screen with Counter
+% Want to quickly print on screen an array of number with the array name and 
+% a counter printed before each value. 
+
+% An array of numbers to print
+rng(123);
+ar_fl_values = rand(5,1);
+% A string array of counters with leading zeros for even display
+ar_st_counter_leading0 = num2str((1:length(ar_fl))', '%0.3d');
+% A float array of value formatted
+ar_fl_values_formated = num2str(ar_fl', '%3.2f');
+ar_ch_values_display = strcat('fl_val, c', ar_st_counter_leading0, '=', ar_fl_values_formated);
+% print
+disp(ar_ch_values_display);
+%% Combine A String Array with a Numeric Array using Compose
 % String array and numeric array, combine together using the compose function, 
 % and test different formatting functions. Formating with leading empty spaces, 
 % leading zeros, and convert to integer or not.

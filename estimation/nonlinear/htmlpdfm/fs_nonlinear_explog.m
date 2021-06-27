@@ -18,6 +18,7 @@ ar_a = [-1.8974, 0.0500];
 %% Prediction and MSE Equations
 % Objective function for prediction and mean-squared-error.
 
+v_0 = 0.5;
 obj_ar_predictions = @(a) (v_0 + a(1) + a(2).*ar_t - log(1 - exp(a(1) + a(2).*ar_t)));
 obj_fl_mse = @(a) mean((obj_ar_predictions(a) - ar_w).^2);
 %% 
@@ -33,11 +34,11 @@ disp(tb_compare);
 % Estimation to minimize mean-squared-error.
 
 % Estimation options
-options = optimset('display','off');
+options = optimset('display','on');
 % Starting values
 ar_a_init = [-10, -10];
 % Optimize
-[ar_a_opti, fl_fval] = fminunc(obj_est, ar_a_init, options);
+[ar_a_opti, fl_fval] = fminunc(obj_fl_mse, ar_a_init, options);
 %% 
 % Compare results.
 

@@ -56,7 +56,8 @@
         isfloat()
         iscell()
         isnan()
-  date: 2021-06-21
+        isnumeric()
+  date: 2021-06-23
   date_start: 2020-11-29
   output:
     pdf_document:

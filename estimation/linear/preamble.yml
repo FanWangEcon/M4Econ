@@ -1,13 +1,15 @@
 - file: fs_linear_ols
-  title: "Matlab Linear OLS Estimation"
-  titleshort: "Matlab Linear OLS Estimation"
+  title: "Matlab Estimate and Solve for Parameters in Linear System of Equation and OLS Regression"
+  titleshort: "Estimate and Solve for Parameters in Linear System of Equation and OLS Regression"
   description: |
-    Linear OLS estimation with and without intercept.
+    Fit a line through the origin with two points of data.
+    Solve/estimate an exactly identified system of linear equations.
   core :
     - package: m
       code: |
         fitlm()
-  date: 2021-05-10
+        fc_ols_lin = @(y, x) (x'x)^(-1)(x'y);
+  date: 2021-06-27
   date_start: 2021-05-10
   output:
     pdf_document:

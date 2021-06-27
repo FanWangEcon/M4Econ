@@ -40,7 +40,7 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 	+ Check data and parameter types.
 	+ Compare approximately similar values.
 	+ Find imaginary elements of array.
-	+ **m**: *imag() + isfloat() + iscell() + isnan()*
+	+ **m**: *imag() + isfloat() + iscell() + isnan() + isnumeric()*
 
 ## 1.2  ND Dimensional Arrays
 
@@ -189,9 +189,10 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 
 ## 5.1  Linear Estimation
 
-1. [Matlab Linear OLS Estimation](https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/fs_linear_ols.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html)
-	+ Linear OLS estimation with and without intercept.
-	+ **m**: *fitlm()*
+1. [Estimate and Solve for Parameters in Linear System of Equation and OLS Regression](https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/fs_linear_ols.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html)
+	+ Fit a line through the origin with two points of data.
+	+ Solve/estimate an exactly identified system of linear equations.
+	+ **m**: *fitlm() + fc_ols_lin = @(y, x) (x'x)^(-1)(x'y);*
 
 ## 5.2  Nonlinear Estimation
 

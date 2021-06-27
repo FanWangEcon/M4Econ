@@ -31,7 +31,7 @@ disp((str));
 
 st_a = "another string";
 ar_st = ["abc", "efg"];
-ar_fl_vals = rand([1,10]);
+ar_fl_vals = rand([1,3]);
 st_print = strjoin(...
     ["Completed SNW_DS_MAIN:", ...
     ['SNW_MP_PARAM=' num2str(123)], ...
@@ -45,8 +45,14 @@ st_print = strjoin(...
     ['ar_fl_vals:;' strjoin(string(strcat( ...
     num2str((1:length(ar_fl_vals))', '%0.3d'), '=', num2str(ar_fl_vals', '%3.2f'))), ";")], ...
     ], ";");
-disp(st_print);
-disp(strsplit(st_print,";")');
+% Ways to print
+st_out = st_print;
+ar_ch_out = char(strsplit(st_print,";")');
+ar_st_out = strsplit(st_print,";")';
+% Print
+disp(st_out);
+disp(ar_ch_out);
+disp(ar_st_out);
 %% Paste Join Strings Together with Separator
 % Join strings together with separator, this is similar to the paste0 function 
 % in R.

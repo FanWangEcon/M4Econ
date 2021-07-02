@@ -1,7 +1,39 @@
-%% Matlab Profiler Save to HTML
+%% Matlab tic toc timeit Timers and Profiler Save to HTML, Testing to Improve Code Speed
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Tic and Toc and Timeit
+% Simple timing example. In the following example, we want to simulate many 
+% random normal draws with different means.  Calling Method B which uses mean 
+% and standard deviation as parameters for normrnd is similar in speed to using 
+% the z-score inverse function to transform from standard normal to normal as 
+% in method A. Using tic and toc, it is much faster to use method A when we want 
+% to draw from many normal distributions with different means.
+
+% Two method to generate random normal draws
+f_replace_method_a = @() normrnd(0, 1)*10+10;
+f_replace_method_b = @() normrnd(10, 10);
+
+% Time replacing one value
+fl_speed_method_a = timeit(f_replace_method_a);
+fl_speed_method_b = timeit(f_replace_method_b);
+fl_speed_a_b_ratio = fl_speed_method_a/fl_speed_method_b;
+disp(['Load table cell time, fl_speed_a_b_ratio=' num2str(fl_speed_a_b_ratio)]);
+
+% Timing assignment with Method A
+ar_rand = rand([1,1e4]);
+fl_time_start = tic;
+ar_z = normrnd(0, 1)*10+ar_rand;
+fl_time_end = toc(fl_time_start);
+disp(['Method A fl_time_end = ' num2str(fl_time_end)]);
+
+% Timing assignment with Method A
+fl_time_start = tic;
+for (it_rand_ctr=1:length(ar_rand))
+    ar_z(it_rand_ctr) = normrnd(ar_rand(it_rand_ctr), 10);
+end
+fl_time_end = toc(fl_time_start);
+disp(['Method B fl_time_end = ' num2str(fl_time_end)]);
 %% Profiling Lines of Code
 % There is a program that we have written. We want to know which lines of code 
 % is taking more or less time, and identify opportunities for speed improvement. 

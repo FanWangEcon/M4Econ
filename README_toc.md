@@ -112,9 +112,10 @@
 1. [Matlab Errors and Warnings](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_error_warning.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/fs_error_warning.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_error_warning.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_error_warning.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_error_warning.html)
 	+ Turn off warning messages.
 	+ **m**: *lastwarn + warning('off', st_warn_id);*
-2. [Matlab Profiling and Testing to Improve Code Speed](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_profiler_tester.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/fs_profiler_tester.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_profiler_tester.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_profiler_tester.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_profiler_tester.html)
+2. [Matlab tic toc timeit Timers and Profiler Save to HTML, Testing to Improve Code Speed](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_profiler_tester.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/fs_profiler_tester.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_profiler_tester.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_profiler_tester.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_profiler_tester.html)
+	+ timeit for testing anonymous functions, and tic toc for testing code segment speed.
 	+ Profile code segment and save profiling results to HTML folder in the current directory.
-	+ **m**: *profile on + profile off + profsave(profile('info'), spn) + matlab.desktop.editor.getActiveFilename + fileparts() + fullfile()*
+	+ **m**: *tic + toc + timeit + profile on + profile off + profsave(profile('info'), spn) + matlab.desktop.editor.getActiveFilename + fileparts() + fullfile()*
 
 ## 2.2  varargin Default Parameters
 
@@ -239,10 +240,11 @@
 
 ## 7.1  Basic Table Generation
 
-1. [Table Fill Data Row by Row or with Random Data](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_gensample.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html)
+1. [Table Generate Table And Fill Data Row by Row or Cell by Cell](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_gensample.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html)
 	+ Generate an empty table and fill with data row by row.
+	+ Replace or fill table cell value with tb.col{it_row} = rand() is faster than tb{it_row, st_col} = rand().
 	+ Convert a random matrix to a table with column and row names defined with arrays.
-	+ **m**: *table() + array2table() + strcat() + addvars() + matlab.lang.makeValidName()*
+	+ **m**: *table() + array2table() + tb{it_row, st_col} = rand() + tb.col{it_row} = rand() + strcat() + addvars() + matlab.lang.makeValidName() + timeit + tic + toc*
 2. [Order, Sort and Rename Columns](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_ordersort.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_ordersort.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_ordersort.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_ordersort.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_ordersort.html)
 	+ Convert a matrix to table with mean and sd columns. Rearrange and rename columns.
 	+ **m**: *array2table() + rng() + addvars() + movevars() + removevars() + matlab.lang.makeValidName() + tb.Properties.VariableNames + tb.Properties.RowNames*

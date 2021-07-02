@@ -1,18 +1,24 @@
 - file: fs_tab_gensample
-  title: "Matlab Table Fill Data Row by Row or with Random Data"
-  titleshort: "Table Fill Data Row by Row or with Random Data"
+  title: "Matlab Generate Table And Fill Data Row by Row or Cell by Cell"
+  titleshort: "Table Generate Table And Fill Data Row by Row or Cell by Cell"
   description: |
     Generate an empty table and fill with data row by row.
+    Replace or fill table cell value with tb.col{it_row} = rand() is faster than tb{it_row, st_col} = rand().
     Convert a random matrix to a table with column and row names defined with arrays.
   core :
     - package: m
       code: |
         table()
         array2table()
+        tb{it_row, st_col} = rand()
+        tb.col{it_row} = rand()
         strcat()
         addvars()
         matlab.lang.makeValidName()
-  date: 2021-05-31
+        timeit
+        tic
+        toc
+  date: 2021-07-01
   date_start: 2020-06-08
   output:
     pdf_document:

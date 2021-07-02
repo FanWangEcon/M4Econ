@@ -23,13 +23,17 @@
   urlcolor: blue
 
 - file: fs_profiler_tester
-  title: "Matlab Profiling and Testing to Improve Code Speed"
-  titleshort: "Matlab Profiling and Testing to Improve Code Speed"
+  title: "Matlab tic toc timeit Timers and Profiler Save to HTML, Testing to Improve Code Speed"
+  titleshort: "Matlab tic toc timeit Timers and Profiler Save to HTML, Testing to Improve Code Speed"
   description: |
+    timeit for testing anonymous functions, and tic toc for testing code segment speed.
     Profile code segment and save profiling results to HTML folder in the current directory.
   core :
     - package: m
       code: |
+        tic
+        toc
+        timeit
         profile on
         profile off
         profsave(profile('info'), spn)

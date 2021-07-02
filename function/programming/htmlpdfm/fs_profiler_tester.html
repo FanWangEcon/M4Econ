@@ -13,7 +13,7 @@
 
 <meta name="date" content="2021-07-01" />
 
-<title>Matlab Profiling and Testing to Improve Code Speed</title>
+<title>Matlab tic toc timeit Timers and Profiler Save to HTML, Testing to Improve Code Speed</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1417,7 +1417,7 @@ e=le(a),f=a.split(/[?#]/)[0],h=e.search,k=e.hash;"?"===h[0]&&(h=h.substring(1));
 function Be(a){var b;if(a===B.body)b="body";else{var c;if(a.id)c="#"+a.id;else{var d;if(a.parentElement){var e;a:{var f=a.parentElement;if(f){for(var h=0;h<f.childElementCount;h++)if(f.children[h]===a){e=h+1;break a}e=-1}else e=1}d=Be(a.parentElement)+">:nth-child("+e+")"}else d="";c=d}b=c}return b}function Ce(a,b){if(1>=a.length)return a;var c=a.filter(b);return 0==c.length?a:c}
 function De(a){if(0==a.length)return null;var b;b=Ce(a,function(c){return!qe.test(c.xa)});b=Ce(b,function(c){return"INPUT"===c.element.tagName.toUpperCase()});b=Ce(b,function(c){return!Xd(c.element)});return b[0]}
 var Ee=function(){var a=te["true.true"];if(a&&200>g()-a.timestamp)return a.result;var b;var c=[],d=B.body;if(d){for(var e=d.querySelectorAll("*"),f=0;f<e.length&&1E4>f;f++){var h=e[f];if(!(0<=re.indexOf(h.tagName.toUpperCase()))){for(var k=!1,l=0;l<h.childElementCount&&1E4>l;l++)if(!(0<=se.indexOf(h.children[l].tagName.toUpperCase()))){k=!0;break}k||c.push(h)}}b={elements:c,status:1E4<e.length?"2":"1"}}else b={elements:c,status:"4"};for(var n=b,q=n.elements,p=[],r=0;r<q.length;r++){var t=q[r],u=t.textContent;
-t.value&&(u=t.value);if(u){var v=u.match(oe);if(v){var x=v[0],y;if(m.location){var w=ie(m.location,"host",!0);y=0<=x.toLowerCase().indexOf(w)}else y=!1;y||p.push({element:t,xa:x})}}}var z=De(p),A=[];if(z){var C=z.element,F={xa:z.xa,tagName:C.tagName,type:1};F.querySelector=Be(C);F.isVisible=!Xd(C);A.push(F)}var D={elements:A,status:10<p.length?"3":n.status};te["true.true"]={timestamp:g(),result:D};return D},Fe=function(a){return a.tagName+":"+a.isVisible+":"+a.xa.length+":"+pe.test(a.xa)};var $e={},af=null,bf=Math.random();$e.M="UA-92953468-6";$e.Rc="6u0";$e.Ki="";$e.wg="ChEI8M/1hgYQyL/NvOaE4sLzARImAMHEhDg0fzAzZbaXfL+AxEZ+vLpwv4Yt6HTVATvX2ZJSOmHPP58aAov0";var cf={__cl:!0,__ecl:!0,__ehl:!0,__evl:!0,__fal:!0,__fil:!0,__fsl:!0,__hl:!0,__jel:!0,__lcl:!0,__sdl:!0,__tl:!0,__ytl:!0},df={__paused:!0,__tg:!0},ef;for(ef in cf)cf.hasOwnProperty(ef)&&(df[ef]=!0);var ff="www.googletagmanager.com/gtm.js";ff="www.googletagmanager.com/gtag/js";
+t.value&&(u=t.value);if(u){var v=u.match(oe);if(v){var x=v[0],y;if(m.location){var w=ie(m.location,"host",!0);y=0<=x.toLowerCase().indexOf(w)}else y=!1;y||p.push({element:t,xa:x})}}}var z=De(p),A=[];if(z){var C=z.element,F={xa:z.xa,tagName:C.tagName,type:1};F.querySelector=Be(C);F.isVisible=!Xd(C);A.push(F)}var D={elements:A,status:10<p.length?"3":n.status};te["true.true"]={timestamp:g(),result:D};return D},Fe=function(a){return a.tagName+":"+a.isVisible+":"+a.xa.length+":"+pe.test(a.xa)};var $e={},af=null,bf=Math.random();$e.M="UA-92953468-6";$e.Rc="6u0";$e.Ki="";$e.wg="ChEI8M/1hgYQyL/NvOaE4sLzARImAMHEhDhh49Rt705LrgNQXwKq5T7j9wn9XKQZCmT13IU92+Kp/CIaAg37";var cf={__cl:!0,__ecl:!0,__ehl:!0,__evl:!0,__fal:!0,__fil:!0,__fsl:!0,__hl:!0,__jel:!0,__lcl:!0,__sdl:!0,__tl:!0,__ytl:!0},df={__paused:!0,__tg:!0},ef;for(ef in cf)cf.hasOwnProperty(ef)&&(df[ef]=!0);var ff="www.googletagmanager.com/gtm.js";ff="www.googletagmanager.com/gtag/js";
 var gf=ff,hf=Ma(""),jf=null,kf=null,lf="https://www.googletagmanager.com/a?id="+$e.M+"&cv=1",mf={},nf={},of=function(){var a=af.sequence||1;af.sequence=a+1;return a};$e.vg="";var pf={},qf=new Fa,rf={},sf={},vf={name:"dataLayer",set:function(a,b){G(Wa(a,b),rf);tf()},get:function(a){return uf(a,2)},reset:function(){qf=new Fa;rf={};tf()}},uf=function(a,b){return 2!=b?qf.get(a):wf(a)},wf=function(a){var b,c=a.split(".");b=b||[];for(var d=rf,e=0;e<c.length;e++){if(null===d)return!1;if(void 0===d)break;d=d[c[e]];if(-1!==Aa(b,d))return}return d},xf=function(a,b){sf.hasOwnProperty(a)||(qf.set(a,b),G(Wa(a,b),rf),tf())},tf=function(a){Ja(sf,function(b,c){qf.set(b,c);G(Wa(b,
 void 0),rf);G(Wa(b,c),rf);a&&delete sf[b]})},zf=function(a,b,c){pf[a]=pf[a]||{};pf[a][b]=yf(b,c)},yf=function(a,b){var c,d=1!==(void 0===b?2:b)?wf(a):qf.get(a);"array"===Pb(d)||"object"===Pb(d)?c=G(d):c=d;return c},Af=function(a,b){if(pf[a])return pf[a][b]},Bf=function(a,b){pf[a]&&delete pf[a][b]};var Ff={},Gf=function(a,b){if(m._gtmexpgrp&&m._gtmexpgrp.hasOwnProperty(a))return m._gtmexpgrp[a];void 0===Ff[a]&&(Ff[a]=Math.floor(Math.random()*b));return Ff[a]};function Hf(a,b,c){for(var d=[],e=b.split(";"),f=0;f<e.length;f++){var h=e[f].split("="),k=h[0].replace(/^\s*|\s*$/g,"");if(k&&k==a){var l=h.slice(1).join("=").replace(/^\s*|\s*$/g,"");l&&c&&(l=decodeURIComponent(l));d.push(l)}}return d};function If(a){return ud(pd)&&!a.navigator.cookieEnabled?!1:"null"!==a.origin};var Lf=function(a,b,c,d){return Jf(d)?Hf(a,String(b||Kf()),c):[]},Of=function(a,b,c,d,e){if(Jf(e)){var f=Mf(a,d,e);if(1===f.length)return f[0].id;if(0!==f.length){f=Nf(f,function(h){return h.Yc},b);if(1===f.length)return f[0].id;f=Nf(f,function(h){return h.hc},c);return f[0]?f[0].id:void 0}}};function Pf(a,b,c,d){var e=Kf(),f=window;If(f)&&(f.document.cookie=a);var h=Kf();return e!=h||void 0!=c&&0<=Lf(b,h,!1,d).indexOf(c)}
 var Tf=function(a,b,c){function d(t,u,v){if(null==v)return delete h[u],t;h[u]=v;return t+"; "+u+"="+v}function e(t,u){if(null==u)return delete h[u],t;h[u]=!0;return t+"; "+u}if(!Jf(c.Pa))return 2;var f;void 0==b?f=a+"=deleted; expires="+(new Date(0)).toUTCString():(c.encode&&(b=encodeURIComponent(b)),b=Qf(b),f=a+"="+b);var h={};f=d(f,"path",c.path);var k;c.expires instanceof Date?k=c.expires.toUTCString():null!=c.expires&&(k=""+c.expires);f=d(f,"expires",k);f=d(f,"max-age",c.Xi);f=d(f,"samesite",
@@ -1844,20 +1844,56 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Matlab Profiling and Testing to Improve Code Speed</h1>
+<h1 class="title toc-ignore">Matlab tic toc timeit Timers and Profiler Save to HTML, Testing to Improve Code Speed</h1>
 <h4 class="author"><a href="https://fanwangecon.github.io/">Fan Wang</a></h4>
 <h4 class="date">2021-07-01</h4>
 
 </div>
 
 
-<div id="matlab-profiler-save-to-html" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Matlab Profiler Save to HTML</h1>
+<div id="matlab-tic-toc-timeit-timers-and-profiler-save-to-html-testing-to-improve-code-speed" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Matlab tic toc timeit Timers and Profiler Save to HTML, Testing to Improve Code Speed</h1>
 <blockquote>
 <p>Go to the <a href="https://github.com/FanWangEcon//M4Econ/blob/master/function/programming//fs_profiler_tester.mlx"><strong>MLX</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/function/programming//htmlpdfm/fs_profiler_tester.m"><strong>M</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/function/programming//htmlpdfm/fs_profiler_tester.pdf"><strong>PDF</strong></a>, or <a href="https://fanwangecon.github.io//M4Econ/function/programming//htmlpdfm/fs_profiler_tester.html"><strong>HTML</strong></a> version of this file. Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="profiling-lines-of-code" class="section level2" number="1.1">
-<h2 number="1.1"><span class="header-section-number">1.1</span> Profiling Lines of Code</h2>
+<div id="tic-and-toc-and-timeit" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Tic and Toc and Timeit</h2>
+<p>Simple timing example. In the following example, we want to simulate many random normal draws with different means. Calling Method B which uses mean and standard deviation as parameters for normrnd is similar in speed to using the z-score inverse function to transform from standard normal to normal as in method A. Using tic and toc, it is much faster to use method A when we want to draw from many normal distributions with different means.</p>
+<pre><code>% Two method to generate random normal draws
+f_replace_method_a = @() normrnd(0, 1)*10+10;
+f_replace_method_b = @() normrnd(10, 10);
+
+% Time replacing one value
+fl_speed_method_a = timeit(f_replace_method_a);
+fl_speed_method_b = timeit(f_replace_method_b);
+fl_speed_a_b_ratio = fl_speed_method_a/fl_speed_method_b;
+disp([&#39;Load table cell time, fl_speed_a_b_ratio=&#39; num2str(fl_speed_a_b_ratio)]);
+
+Load table cell time, fl_speed_a_b_ratio=1.0042
+
+
+% Timing assignment with Method A
+ar_rand = rand([1,1e4]);
+fl_time_start = tic;
+ar_z = normrnd(0, 1)*10+ar_rand;
+fl_time_end = toc(fl_time_start);
+disp([&#39;Method A fl_time_end = &#39; num2str(fl_time_end)]);
+
+Method A fl_time_end = 0.0026843
+
+
+% Timing assignment with Method A
+fl_time_start = tic;
+for (it_rand_ctr=1:length(ar_rand))
+    ar_z(it_rand_ctr) = normrnd(ar_rand(it_rand_ctr), 10);
+end
+fl_time_end = toc(fl_time_start);
+disp([&#39;Method B fl_time_end = &#39; num2str(fl_time_end)]);
+
+Method B fl_time_end = 0.062244</code></pre>
+</div>
+<div id="profiling-lines-of-code" class="section level2" number="1.2">
+<h2 number="1.2"><span class="header-section-number">1.2</span> Profiling Lines of Code</h2>
 <p>There is a program that we have written. We want to know which lines of code is taking more or less time, and identify opportunities for speed improvement. Use Matlab Profiler to run through code and generate performance report line by line. This can be achieved by clicking on the Run and Time button under the Editor Pane. Below, we start the profiler inline, run a function, and save profiling results to a HTML file.</p>
 <p>The function below finds the file to the current m file where the profiler is running at, and generates a subfolder which will contain a subfolder that contains all HTML results from a particular profiler timing run.</p>
 <pre><code>% Define profiling folder and file names

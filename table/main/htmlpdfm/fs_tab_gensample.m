@@ -37,6 +37,40 @@ for it_rho_set=[1,2,3]
     tb_equilibrium = [tb_equilibrium; cl_data_row];
 end
 disp(tb_equilibrium);
+%% Data Assignment to Table Cell Value
+% Given an existing table, we might want to replace values in specific tables 
+% cells. There are two main methods to accomplish as shown below. If the string 
+% name is known, the TAB.COL(ROW) replacement method is dramatically faster. Test 
+% speed with timeit first loading the value in table cell via method a vs b, method 
+% a takes 20 to 30 times more time than method b. Then test assigment with tic 
+% toc, with about a 7 time speed difference. 
+
+% Two replacement functions
+f_replace_method_a = @() tb_equilibrium{1, "labdemand"};
+f_replace_method_b = @() tb_equilibrium.labdemand(1);
+
+% Time replacing one value
+fl_speed_method_a = timeit(f_replace_method_a);
+fl_speed_method_b = timeit(f_replace_method_b);
+fl_speed_a_b_ratio = fl_speed_method_a/fl_speed_method_b;
+disp(['Load table cell time, fl_speed_a_b_ratio=' num2str(fl_speed_a_b_ratio)]);
+
+% Timing assignment with Method A
+ar_rand = rand([1,1e4]);
+fl_time_start = tic;
+for (fl_rand=ar_rand)
+    tb_equilibrium{1, "labdemand"} = fl_rand;
+end
+fl_time_end = toc(fl_time_start);
+disp(['Method A assigment fl_time_end = ' num2str(fl_time_end)]);
+
+% Timing assignment with Method A
+fl_time_start = tic;
+for (fl_rand=ar_rand)
+    tb_equilibrium.labdemand(1) = fl_rand;
+end
+fl_time_end = toc(fl_time_start);
+disp(['Method B assignment fl_time_end = ' num2str(fl_time_end)]);
 %% Generate a Table with M Variables of Random Data
 % Generate a numeric table with random varlues and a string column
 

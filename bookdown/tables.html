@@ -5,32 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Tables | Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta name="description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Tables | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta property="og:description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 7 Tables | Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta name="twitter:description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   
 
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2021-05-11" />
+<meta name="date" content="2021-07-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -97,7 +91,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.4</b> Array Broadcast and Expansion Examples</a></li>
 <li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.5</b> Grid States, Choices and Optimal Choices Example</a></li>
 <li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.6</b> Accumarray Examples</a></li>
-<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Array Basics and Miscellaneous</a></li>
+<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-miscellaneous-and-basic-numeric-and-array-operations"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Miscellaneous and Basic Numeric and Array Operations</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#nd-dimensional-arrays"><i class="fa fa-check"></i><b>1.2</b> ND Dimensional Arrays</a>
 <ul>
@@ -114,8 +108,8 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.4</b> Characters and Strings</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations</a></li>
-<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-manipulations-with-arrays"><i class="fa fa-check"></i><b>1.4.2</b> String Manipulations with Arrays</a></li>
+<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations-display-search-join-and-split"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations, Display, Search, Join and Split</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-array-manipulations-join-find-replace-and-the-alphabet"><i class="fa fa-check"></i><b>1.4.2</b> String Array Manipulations, Join, Find, Replace and the Alphabet</a></li>
 <li class="chapter" data-level="1.4.3" data-path="data-structures.html"><a href="data-structures.html#convert-and-concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings"><i class="fa fa-check"></i><b>1.4.3</b> Convert and Concatenate Strings Arrays with Numbers and Number Arrays with Strings</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.5</b> Map Containers</a>
@@ -129,17 +123,22 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.6.1" data-path="data-structures.html"><a href="data-structures.html#maplab-nested-container-map-with-struct"><i class="fa fa-check"></i><b>1.6.1</b> Maplab Nested Container Map with Struct</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
+<li class="chapter" data-level="2" data-path="functions-and-programming.html"><a href="functions-and-programming.html"><i class="fa fa-check"></i><b>2</b> Functions and Programming</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.1</b> varargin Default Parameters</a>
+<li class="chapter" data-level="2.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#development-and-debugging"><i class="fa fa-check"></i><b>2.1</b> Development and Debugging</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
-<li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
+<li class="chapter" data-level="2.1.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#matlab-error-and-warning-handling"><i class="fa fa-check"></i><b>2.1.1</b> Matlab Error and Warning Handling</a></li>
+<li class="chapter" data-level="2.1.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#matlab-profiler-save-to-html"><i class="fa fa-check"></i><b>2.1.2</b> Matlab Profiler Save to HTML</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#dynamic-functions"><i class="fa fa-check"></i><b>2.2</b> Dynamic Functions</a>
+<li class="chapter" data-level="2.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.2</b> varargin Default Parameters</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="functions.html"><a href="functions.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.2.1</b> Anonymous Function in Matlab</a></li>
-<li class="chapter" data-level="2.2.2" data-path="functions.html"><a href="functions.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.2.2</b> Dynamically Generate M Files</a></li>
+<li class="chapter" data-level="2.2.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.2.1</b> varargin as a Function Parameter</a></li>
+<li class="chapter" data-level="2.2.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#container-default-parameter-with-varargin"><i class="fa fa-check"></i><b>2.2.2</b> Container Default Parameter with varargin</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="functions-and-programming.html"><a href="functions-and-programming.html#dynamic-functions"><i class="fa fa-check"></i><b>2.3</b> Dynamic Functions</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.3.1</b> Anonymous Function in Matlab</a></li>
+<li class="chapter" data-level="2.3.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.3.2</b> Dynamically Generate M Files</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distributional-processes.html"><a href="distributional-processes.html"><i class="fa fa-check"></i><b>3</b> Distributional Processes</a>
@@ -167,7 +166,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="5.1" data-path="estimation.html"><a href="estimation.html#linear-estimation"><i class="fa fa-check"></i><b>5.1</b> Linear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-estimation"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Estimation</a></li>
+<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-regression"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation"><i class="fa fa-check"></i><b>5.2</b> Nonlinear Estimation</a>
 <ul>
@@ -201,15 +200,20 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="7.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>7.1</b> Basic Table Generation</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#generate-a-table-and-fill-with-data-row-by-row-or-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Generate a Table and Fill with Data Row by Row or Random Data</a></li>
 <li class="chapter" data-level="7.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>7.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
 <li class="chapter" data-level="7.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>7.1.3</b> Row and Column Names for Table based on Arrays</a></li>
 <li class="chapter" data-level="7.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>7.1.4</b> Select Subset of Rows and Columns</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>7.2</b> Table Joining</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
-<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#matlab-join-tables-by-keys"><i class="fa fa-check"></i><b>7.2.1</b> Matlab Join Tables by Keys</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.2</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="7.2.3" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.3</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tables.html"><a href="tables.html#summarize"><i class="fa fa-check"></i><b>7.3</b> Summarize</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="tables.html"><a href="tables.html#matlab-table-summarize-and-aggregate-by-groups"><i class="fa fa-check"></i><b>7.3.1</b> Matlab Table Summarize and Aggregate by Groups</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -224,10 +228,11 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.1.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.5-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.5</b> <span>Section 1.5 Map Containers</span> links</a></li>
 <li class="chapter" data-level="A.1.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.6-map-structure-arraymap-structure-array-links"><i class="fa fa-check"></i><b>A.1.6</b> <span>Section 1.6 Map Structure Array</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
+<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-and-programming-links"><i class="fa fa-check"></i><b>A.2</b> Functions and Programming links</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
-<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Dynamic Functions</span> links</a></li>
+<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-development-and-debuggingdevelopment-and-debugging-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 Development and Debugging</span> links</a></li>
+<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 varargin Default Parameters</span> links</a></li>
+<li class="chapter" data-level="A.2.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.3-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.3</b> <span>Section 2.3 Dynamic Functions</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#distributional-processes-links"><i class="fa fa-check"></i><b>A.3</b> Distributional Processes links</a>
 <ul>
@@ -254,6 +259,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="A.7.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.7.1</b> <span>Section 7.1 Basic Table Generation</span> links</a></li>
 <li class="chapter" data-level="A.7.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.7.2</b> <span>Section 7.2 Table Joining</span> links</a></li>
+<li class="chapter" data-level="A.7.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.3-summarizesummarize-links"><i class="fa fa-check"></i><b>A.7.3</b> <span>Section 7.3 Summarize</span> links</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -282,13 +288,56 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <div id="basic-table-generation" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Basic Table Generation</h2>
 
-<div id="named-tables-with-random-data" class="section level3" number="7.1.1">
-<h3><span class="header-section-number">7.1.1</span> Named Tables with Random Data</h3>
+<div id="generate-a-table-and-fill-with-data-row-by-row-or-random-data" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Generate a Table and Fill with Data Row by Row or Random Data</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-a-table-with-m-variables" class="section level4" number="7.1.1.1">
-<h4><span class="header-section-number">7.1.1.1</span> Generate A Table with M Variables</h4>
+<div id="an-empty-table-filled-with-loop-row-by-row" class="section level4" number="7.1.1.1">
+<h4><span class="header-section-number">7.1.1.1</span> An Empty Table, Filled with Loop Row by Row</h4>
+<p>First, generate <a href="https://www.mathworks.com/matlabcentral/answers/244084-is-there-a-simpler-way-to-create-an-empty-table-with-a-list-of-variablenames#answer_422250">an empty
+table</a>.</p>
+<pre><code>% Make N by 2 matrix of fieldname + value type
+mt_st_variable_names_types = [[&quot;category&quot;, &quot;string&quot;]; ...
+    [&quot;wage&quot;, &quot;double&quot;]; ...
+    [&quot;skilled&quot;, &quot;logical&quot;]; ...
+    [&quot;labdemand&quot;, &quot;double&quot;]; ...
+    [&quot;labsupply&quot;, &quot;double&quot;]; ...
+    [&quot;labsupplyprob&quot;, &quot;string&quot;]; ...
+    [&quot;rho_manual&quot;, &quot;double&quot;]; ...
+    [&quot;rho_routine&quot;, &quot;double&quot;]; ...
+    [&quot;rho_analytical&quot;, &quot;double&quot;]; ...
+    ];
+% Make table using fieldnames &amp; value types from above
+tb_equilibrium = table(&#39;Size&#39;,[0,size(mt_st_variable_names_types,1)],... 
+    &#39;VariableNames&#39;, mt_st_variable_names_types(:,1),...
+    &#39;VariableTypes&#39;, mt_st_variable_names_types(:,2));
+% display table
+disp(size(tb_equilibrium));
+
+     0     9</code></pre>
+<p>Second, over a loop, fill the table with values row by row.</p>
+<pre><code>for it_rho_set=[1,2,3]
+    if (it_rho_set == 1)
+        cl_data_row = {&#39;C001&#39;,1,  true,1,1,0.5,0.5,0.5,0.5};
+    elseif (it_rho_set == 2)
+        cl_data_row = {&#39;C002&#39;,1,  0   ,1.2,0.6,0.5,0.45,0.5,0.5};
+    elseif (it_rho_set == 3)
+        cl_data_row = {&#39;C011&#39;,1.1,false,1.2,0.6,0.5,0.45,0.45,0.45};
+    end
+    tb_equilibrium = [tb_equilibrium; cl_data_row];
+end
+disp(tb_equilibrium);
+
+    category    wage    skilled    labdemand    labsupply    labsupplyprob    rho_manual    rho_routine    rho_analytical
+    ________    ____    _______    _________    _________    _____________    __________    ___________    ______________
+
+     &quot;C001&quot;       1        1            1            1           &quot;0.5&quot;            0.5           0.5              0.5     
+     &quot;C002&quot;       1        0          1.2          0.6           &quot;0.5&quot;           0.45           0.5              0.5     
+     &quot;123&quot;      1.1        0          1.2          0.6           &quot;0.5&quot;           0.45          0.45             0.45     </code></pre>
+</div>
+<div id="generate-a-table-with-m-variables-of-random-data" class="section level4" number="7.1.1.2">
+<h4><span class="header-section-number">7.1.1.2</span> Generate a Table with M Variables of Random Data</h4>
 <p>Generate a numeric table with random varlues and a string column</p>
 <pre><code>% Numeric Matrix
 it_num_cols = 4;
@@ -538,8 +587,8 @@ disp(tb_test_a);
 <h4><span class="header-section-number">7.1.4.1</span> Generate a Table</h4>
 <pre><code>close all;
 % Generate Table 1
-ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
-ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4];
+ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4 1 1.1];
+ar_fl_abc2 = [0.4 0.1 0.2 0.3 0.4  2 2.2];
 number1 = &#39;123&#39;;
 number2 = &#39;456&#39;;
 mt_data_a = [ar_fl_abc1&#39; ar_fl_abc2&#39;];
@@ -554,7 +603,7 @@ tb_test_a = addvars(tb_test_a, cl_st_varrownames, &#39;Before&#39;, 1);
 % a and b must have the same row names
 st_varrownames = string(cl_st_varrownames);
 tb_test_a = addvars(tb_test_a, st_varrownames, &#39;Before&#39;, 1);
-tb_test_a = addvars(tb_test_a, [&quot;a&quot;, &quot;b&quot;, &quot;cc&quot;, &quot;aa&quot;, &quot;b&quot;]&#39;, &#39;Before&#39;, 1);
+tb_test_a = addvars(tb_test_a, [&quot;a&quot;, &quot;b&quot;, &quot;cc&quot;, &quot;aa&quot;, &quot;b&quot;, &quot;z&quot;, &quot;zz&quot;]&#39;, &#39;Before&#39;, 1);
 disp(tb_test_a);
 
               Var1    st_varrownames    cl_st_varrownames    col123    col456
@@ -564,7 +613,9 @@ disp(tb_test_a);
     rowA=2    &quot;b&quot;        &quot;rowA=2&quot;          {&#39;rowA=2&#39;}          0.1      0.1  
     rowA=3    &quot;cc&quot;       &quot;rowA=3&quot;          {&#39;rowA=3&#39;}         0.25      0.2  
     rowA=4    &quot;aa&quot;       &quot;rowA=4&quot;          {&#39;rowA=4&#39;}          0.3      0.3  
-    rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4  </code></pre>
+    rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}          0.4      0.4  
+    rowA=6    &quot;z&quot;        &quot;rowA=6&quot;          {&#39;rowA=6&#39;}            1        2  
+    rowA=7    &quot;zz&quot;       &quot;rowA=7&quot;          {&#39;rowA=7&#39;}          1.1      2.2  </code></pre>
 </div>
 <div id="select-rows-if-colx-is-equal-to-something" class="section level4" number="7.1.4.2">
 <h4><span class="header-section-number">7.1.4.2</span> Select Rows if ColX is Equal to Something</h4>
@@ -587,8 +638,49 @@ disp(tb_test_a(tb_test_a.col123==0.4,:));
     rowA=1    &quot;a&quot;        &quot;rowA=1&quot;          {&#39;rowA=1&#39;}         0.4       0.4  
     rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}         0.4       0.4  </code></pre>
 </div>
-<div id="read-in-a-table-from-an-excel-file" class="section level4" number="7.1.4.3">
-<h4><span class="header-section-number">7.1.4.3</span> Read in a Table from an Excel File</h4>
+<div id="select-rows-if-colx-is-equal-to-something-or-something-else" class="section level4" number="7.1.4.3">
+<h4><span class="header-section-number">7.1.4.3</span> Select Rows if ColX is Equal to Something or Something else</h4>
+<p>Select if the value in Var1 is either the string a or the string b,
+below, specify these explicitly</p>
+<pre><code>% select the rows where Var1=&quot;b&quot; or Var1=&quot;a&quot;
+disp(tb_test_a(strcmp(tb_test_a.Var1, &quot;b&quot;) | strcmp(tb_test_a.Var1, &quot;a&quot;),:));
+
+              Var1    st_varrownames    cl_st_varrownames    col123    col456
+              ____    ______________    _________________    ______    ______
+
+    rowA=1    &quot;a&quot;        &quot;rowA=1&quot;          {&#39;rowA=1&#39;}         0.4       0.4  
+    rowA=2    &quot;b&quot;        &quot;rowA=2&quot;          {&#39;rowA=2&#39;}         0.1       0.1  
+    rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}         0.4       0.4  </code></pre>
+<p>Alternatively, use
+<a href="https://www.mathworks.com/help/matlab/ref/matches.html">matches</a>, to
+find if the variable is equal to either a or b, the list of potential
+match is a string array.</p>
+<pre><code>% Using matches
+ar_st_potential_matches = [&quot;a&quot;, &quot;b&quot;];
+disp(tb_test_a(matches(tb_test_a.Var1, ar_st_potential_matches),:));
+
+              Var1    st_varrownames    cl_st_varrownames    col123    col456
+              ____    ______________    _________________    ______    ______
+
+    rowA=1    &quot;a&quot;        &quot;rowA=1&quot;          {&#39;rowA=1&#39;}         0.4       0.4  
+    rowA=2    &quot;b&quot;        &quot;rowA=2&quot;          {&#39;rowA=2&#39;}         0.1       0.1  
+    rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}         0.4       0.4  </code></pre>
+<p>Now match over any a to z letters, picking up any letters a to z if they
+appear in column Var1.</p>
+<pre><code>% Using matches
+ar_st_match_atz = string((&#39;a&#39;:&#39;z&#39;)&#39;)&#39;;
+disp(tb_test_a(matches(tb_test_a.Var1, ar_st_match_atz),:));
+
+              Var1    st_varrownames    cl_st_varrownames    col123    col456
+              ____    ______________    _________________    ______    ______
+
+    rowA=1    &quot;a&quot;        &quot;rowA=1&quot;          {&#39;rowA=1&#39;}         0.4       0.4  
+    rowA=2    &quot;b&quot;        &quot;rowA=2&quot;          {&#39;rowA=2&#39;}         0.1       0.1  
+    rowA=5    &quot;b&quot;        &quot;rowA=5&quot;          {&#39;rowA=5&#39;}         0.4       0.4  
+    rowA=6    &quot;z&quot;        &quot;rowA=6&quot;          {&#39;rowA=6&#39;}           1         2  </code></pre>
+</div>
+<div id="read-in-a-table-from-an-excel-file" class="section level4" number="7.1.4.4">
+<h4><span class="header-section-number">7.1.4.4</span> Read in a Table from an Excel File</h4>
 <p>There are estimates stored in a table. Each row is a different
 estimation result, with a different set of estimates, for each row some
 fixed (not-estimated) parameter might vary. Each column represents a
@@ -657,8 +749,8 @@ disp((tb_read.Properties.VariableNames)&#39;);
     {&#39;subset_iter_rounds&#39; }
     {&#39;lambda_frac_disc&#39;   }</code></pre>
 </div>
-<div id="select-table-columns-based-on-column-name-strings" class="section level4" number="7.1.4.4">
-<h4><span class="header-section-number">7.1.4.4</span> Select Table Columns based on Column Name Strings</h4>
+<div id="select-table-columns-based-on-column-name-strings" class="section level4" number="7.1.4.5">
+<h4><span class="header-section-number">7.1.4.5</span> Select Table Columns based on Column Name Strings</h4>
 <p>Given the table that we loaded in above, select only the columns that
 start with some string like "gamma", or columns that end with certain
 strings, like "_esti".</p>
@@ -734,13 +826,81 @@ disp(tb_read(1:10, ar_st_col_names_selected));
 <div id="table-joining" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Table Joining</h2>
 
-<div id="row-and-column-combine-stack-tables-and-matrices" class="section level3" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> Row and Column Combine Stack Tables and Matrices</h3>
+<div id="matlab-join-tables-by-keys" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Matlab Join Tables by Keys</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="generate-some-tables-and-matrixes-for-combination" class="section level4" number="7.2.1.1">
-<h4><span class="header-section-number">7.2.1.1</span> Generate Some Tables and Matrixes for Combination</h4>
+<div id="left-join-two-tables-together" class="section level4" number="7.2.1.1">
+<h4><span class="header-section-number">7.2.1.1</span> Left Join Two Tables Together</h4>
+<p>There is a table with simulation results, and a table with data
+information. Join together with common keys.</p>
+<p>First generate the simulation table.</p>
+<pre><code>% Make N by 2 matrix of fieldname + value type
+mt_st_variable_names_types = [...
+    [&quot;year&quot;, &quot;double&quot;];[&quot;category&quot;, &quot;string&quot;];[&quot;rho&quot;, &quot;double&quot;]; ...
+    [&quot;numberWorkersSimu&quot;, &quot;logical&quot;]; [&quot;meanWageSimu&quot;, &quot;double&quot;]];
+% Make table using fieldnames &amp; value types from above
+tb_solution = table(&#39;Size&#39;,[0,size(mt_st_variable_names_types,1)],... 
+    &#39;VariableNames&#39;, mt_st_variable_names_types(:,1),...
+    &#39;VariableTypes&#39;, mt_st_variable_names_types(:,2));
+% Table with data to be merged
+tb_solution = [tb_solution;...
+    {1, &#39;C001&#39;, 0.50, 5.5, 6.6}; {2, &#39;C002&#39;, 0.50, 3.3, 4.4}; ...
+    {1, &#39;C001&#39;, 0.25, 2.5, 3.6}; {2, &#39;C002&#39;, 0.25, 0.3, 1.4}];
+disp(tb_solution);
+
+    year    category    rho     numberWorkersSimu    meanWageSimu
+    ____    ________    ____    _________________    ____________
+
+     1       &quot;C001&quot;      0.5           5.5               6.6     
+     2       &quot;C002&quot;      0.5           3.3               4.4     
+     1       &quot;C001&quot;     0.25           2.5               3.6     
+     2       &quot;C002&quot;     0.25           0.3               1.4     </code></pre>
+<p>Second generate the data table.</p>
+<pre><code>% Make N by 2 matrix of fieldname + value type
+mt_st_variable_names_types = [...
+    [&quot;year&quot;, &quot;double&quot;];[&quot;category&quot;, &quot;string&quot;]; ...
+    [&quot;numberWorkersData&quot;, &quot;logical&quot;]; [&quot;meanWageData&quot;, &quot;double&quot;]];
+% Make table using fieldnames &amp; value types from above
+tb_data = table(&#39;Size&#39;,[0,size(mt_st_variable_names_types,1)],... 
+    &#39;VariableNames&#39;, mt_st_variable_names_types(:,1),...
+    &#39;VariableTypes&#39;, mt_st_variable_names_types(:,2));
+% Table with data to be merged
+tb_data = [tb_data; {1, &#39;C001&#39;, 1, 2}; {2, &#39;C002&#39;, 2, 3}];
+disp(tb_data);
+
+    year    category    numberWorkersData    meanWageData
+    ____    ________    _________________    ____________
+
+     1       &quot;C001&quot;             1                 2      
+     2       &quot;C002&quot;             2                 3      </code></pre>
+<p>Third merge the tables together with left-join, that will match by all
+variables with the same name.</p>
+<pre><code>% left-join tables together
+tb_solu_joined_data = join(tb_solution, tb_data);
+% Rescale a variable
+tb_solu_joined_data{:, &quot;numberWorkersData&quot;} = tb_solu_joined_data{:, &quot;numberWorkersData&quot;}*10;
+% Display
+disp(tb_solu_joined_data);
+
+    year    category    rho     numberWorkersSimu    meanWageSimu    numberWorkersData    meanWageData
+    ____    ________    ____    _________________    ____________    _________________    ____________
+
+     1       &quot;C001&quot;      0.5           5.5               6.6                10                 2      
+     2       &quot;C002&quot;      0.5           3.3               4.4                20                 3      
+     1       &quot;C001&quot;     0.25           2.5               3.6                10                 2      
+     2       &quot;C002&quot;     0.25           0.3               1.4                20                 3      </code></pre>
+
+</div>
+</div>
+<div id="row-and-column-combine-stack-tables-and-matrices" class="section level3" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Row and Column Combine Stack Tables and Matrices</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="generate-some-tables-and-matrixes-for-combination" class="section level4" number="7.2.2.1">
+<h4><span class="header-section-number">7.2.2.1</span> Generate Some Tables and Matrixes for Combination</h4>
 <pre><code>close all;
 
 % Generate Table 1
@@ -792,8 +952,8 @@ disp(tb_test_b);
     rowB=4    0.55131    0.48093    0.059678
     rowB=5    0.71947    0.39212     0.39804</code></pre>
 </div>
-<div id="combine-tables-together-stack-columns" class="section level4" number="7.2.1.2">
-<h4><span class="header-section-number">7.2.1.2</span> Combine Tables Together Stack Columns</h4>
+<div id="combine-tables-together-stack-columns" class="section level4" number="7.2.2.2">
+<h4><span class="header-section-number">7.2.2.2</span> Combine Tables Together Stack Columns</h4>
 <p>Tables with the same number of rows, add more columns with named
 variables</p>
 <pre><code>% a and b must have the same row names
@@ -811,8 +971,8 @@ disp(tb_ab_col_stacked);
     rowA=4      0.3      0.3      0.55131    0.48093    0.059678
     rowA=5      0.4      0.4      0.71947    0.39212     0.39804</code></pre>
 </div>
-<div id="combine-tables-together-stack-rows" class="section level4" number="7.2.1.3">
-<h4><span class="header-section-number">7.2.1.3</span> Combine Tables Together Stack Rows</h4>
+<div id="combine-tables-together-stack-rows" class="section level4" number="7.2.2.3">
+<h4><span class="header-section-number">7.2.2.3</span> Combine Tables Together Stack Rows</h4>
 <p>Tables with the same number of columns, dd more rows variables</p>
 <pre><code>% Select only 2 columns to match table a column count
 tb_test_b_subset = tb_test_b(:,1:2);
@@ -846,13 +1006,13 @@ disp(tb_ab_row_stacked);
 
 </div>
 </div>
-<div id="matlab-table-stack-and-join-estimation-and-simulation-results" class="section level3" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> Matlab Table Stack and Join Estimation and Simulation Results</h3>
+<div id="matlab-table-stack-and-join-estimation-and-simulation-results" class="section level3" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Matlab Table Stack and Join Estimation and Simulation Results</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="combine-tables-together-stack-rows-loop-template-common-columns" class="section level4" number="7.2.2.1">
-<h4><span class="header-section-number">7.2.2.1</span> Combine Tables Together Stack Rows Loop Template Common Columns</h4>
+<div id="combine-tables-together-stack-rows-loop-template-common-columns" class="section level4" number="7.2.3.1">
+<h4><span class="header-section-number">7.2.3.1</span> Combine Tables Together Stack Rows Loop Template Common Columns</h4>
 <p>There is an estimation routine, each time the routine outputs a table
 with a single row, the single row contains estimation outputs including
 estiamtes, standard erros, initial parameters etc. We loop over
@@ -897,8 +1057,8 @@ disp(tb_saveCoef_stack);
     esti4         4          0.52383    0.039963        0.18597            0.77279   
     esti5         5          0.86664     0.26314        0.13141           0.041593   </code></pre>
 </div>
-<div id="combine-tables-together-stack-rows-loop-template-outterjoin" class="section level4" number="7.2.2.2">
-<h4><span class="header-section-number">7.2.2.2</span> Combine Tables Together Stack Rows Loop Template Outterjoin</h4>
+<div id="combine-tables-together-stack-rows-loop-template-outterjoin" class="section level4" number="7.2.3.2">
+<h4><span class="header-section-number">7.2.3.2</span> Combine Tables Together Stack Rows Loop Template Outterjoin</h4>
 <p>Similar to the previous estimation problem, however, now during
 different iterations, the column names, i.e. the parameters been
 estiamted are different. For example, there are 10 parameters, sometimes
@@ -957,8 +1117,8 @@ disp(tb_saveCoef_stack);
     esti4         4             4       0.52383    0.039963            NaN               NaN    
     esti5         5             5       0.86664         NaN        0.26314           0.13141    </code></pre>
 </div>
-<div id="combine-tables-outterjoin-with-parfor" class="section level4" number="7.2.2.3">
-<h4><span class="header-section-number">7.2.2.3</span> Combine Tables Outterjoin with Parfor</h4>
+<div id="combine-tables-outterjoin-with-parfor" class="section level4" number="7.2.3.3">
+<h4><span class="header-section-number">7.2.3.3</span> Combine Tables Outterjoin with Parfor</h4>
 <p>Same as above, but iterate/solve over loops with parfor</p>
 <pre><code>% Start cluster
 delete(gcp(&#39;nocreate&#39;));
@@ -1005,8 +1165,8 @@ disp(tb_saveCoef_stack);
      3      0.76682    0.48312         0.50655           0.24223    
      4      0.71522    0.15045         0.43025            0.4845    </code></pre>
 </div>
-<div id="nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables" class="section level4" number="7.2.2.4">
-<h4><span class="header-section-number">7.2.2.4</span> ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables</h4>
+<div id="nd-dimensional-parameter-arrays-simulate-model-and-stack-output-tables" class="section level4" number="7.2.3.4">
+<h4><span class="header-section-number">7.2.3.4</span> ND Dimensional Parameter Arrays, Simulate Model and Stack Output Tables</h4>
 <p>Now we will first column combine matrixes, model parameters and model
 outcomes, and then row combine matrixes from different simulations.</p>
 <p>A model takes a N parameters, solve the model over M sets of parameters.
@@ -1118,6 +1278,84 @@ end
     row=13      3.6       1.96      &quot;outvar_1&quot;      2.7199    3.3129     3.0577 
     row=14      3.6       1.96      &quot;outvar_2&quot;      3.9804    1.4529     2.9285 
     row=15      3.6       1.96      &quot;outvar_3&quot;      2.8445    4.4117     2.6576 </code></pre>
+
+</div>
+</div>
+</div>
+<div id="summarize" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Summarize</h2>
+
+<div id="matlab-table-summarize-and-aggregate-by-groups" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Matlab Table Summarize and Aggregate by Groups</h3>
+<blockquote>
+<p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+</blockquote>
+<div id="group-table-rows-and-sum-within-group" class="section level4" number="7.3.1.1">
+<h4><span class="header-section-number">7.3.1.1</span> Group Table Rows and Sum within Group</h4>
+<p>There is a table where subsets of rows belong to different simulations,
+with exogenous fixed <span class="math inline">\(\rho\)</span> parameters. For each <span class="math inline">\(\rho\)</span> parameter
+combination, there are, stored as different rows, a number of model
+predictions and data moments, and corresponding difference. Find the
+total difference between model and data for subsets of rows based for
+each <span class="math inline">\(\rho\)</span> parameter set.</p>
+<p>First, create a table where each <span class="math inline">\(\rho\)</span> group is identified jointly by
+<span class="math inline">\(\rho_a\)</span> and <span class="math inline">\(\rho_b\)</span>, stored in the 3rd and 4th rows.</p>
+<pre><code>% Make N by 2 matrix of fieldname + value type
+mt_st_variable_names_types = [...
+    [&quot;year&quot;, &quot;double&quot;];[&quot;category&quot;, &quot;string&quot;];...
+    [&quot;rhoa&quot;, &quot;double&quot;];[&quot;rhob&quot;, &quot;double&quot;]; ...
+    [&quot;numberWorkersSimu&quot;, &quot;logical&quot;]; [&quot;numberWorkersData&quot;, &quot;double&quot;]];
+% Make table using fieldnames &amp; value types from above
+tb_agg_exa = table(&#39;Size&#39;,[0,size(mt_st_variable_names_types,1)],... 
+    &#39;VariableNames&#39;, mt_st_variable_names_types(:,1),...
+    &#39;VariableTypes&#39;, mt_st_variable_names_types(:,2));
+% Table with data inputs
+tb_agg_exa = [tb_agg_exa;...
+    {1, &#39;C001&#39;, 0.50, 0.50, 5.5, 6.05}; {2, &#39;C002&#39;, 0.50, 0.50, 3.7, 4.4}; ...
+    {1, &#39;C001&#39;, 0.25, 0.30, 2.5, 3.65}; {2, &#39;C002&#39;, 0.25, 0.30, 0.1, 1.6}; ...
+    {3, &#39;C001&#39;, 0.25, 0.50, 0.01, 1.66}];
+% Generate model and data difference
+tb_agg_exa{:, &quot;diff&quot;} = tb_agg_exa{:, &quot;numberWorkersSimu&quot;} - tb_agg_exa{:, &quot;numberWorkersData&quot;};
+% Display
+disp(tb_agg_exa);
+
+    year    category    rhoa    rhob    numberWorkersSimu    numberWorkersData    diff 
+    ____    ________    ____    ____    _________________    _________________    _____
+
+     1       &quot;C001&quot;      0.5    0.5            5.5                 6.05           -0.55
+     2       &quot;C002&quot;      0.5    0.5            3.7                  4.4            -0.7
+     1       &quot;C001&quot;     0.25    0.3            2.5                 3.65           -1.15
+     2       &quot;C002&quot;     0.25    0.3            0.1                  1.6            -1.5
+     3       &quot;C001&quot;     0.25    0.5           0.01                 1.66           -1.65</code></pre>
+<p>Second, select the subset of columns that are relevant for aggregation.</p>
+<pre><code>% Select
+tb_agg_exa = tb_agg_exa(:, [&quot;rhoa&quot;, &quot;rhob&quot;, &quot;diff&quot;]);
+% Display
+disp(tb_agg_exa);
+
+    rhoa    rhob    diff 
+    ____    ____    _____
+
+     0.5    0.5     -0.55
+     0.5    0.5      -0.7
+    0.25    0.3     -1.15
+    0.25    0.3      -1.5
+    0.25    0.5     -1.65</code></pre>
+<p>Third, group by unique combinations of rhoa, rhob, and aggregate. Then
+generate group ID.</p>
+<pre><code>% Sum within groupo
+tb_groupby_agg_sum = groupsummary(tb_agg_exa, [&quot;rhoa&quot;, &quot;rhob&quot;], &quot;sum&quot;);
+% Generate grouping ID
+tb_groupby_agg_sum{:, &quot;ID&quot;} = (1:1:size(tb_groupby_agg_sum, 1))&#39;;
+tb_groupby_agg_sum = movevars(tb_groupby_agg_sum, &quot;ID&quot;, &quot;Before&quot;, 1);
+disp(tb_groupby_agg_sum);
+
+    ID    rhoa    rhob    GroupCount    sum_diff
+    __    ____    ____    __________    ________
+
+    1     0.25    0.3         2          -2.65  
+    2     0.25    0.5         1          -1.65  
+    3      0.5    0.5         2          -1.25  </code></pre>
 
 </div>
 </div>

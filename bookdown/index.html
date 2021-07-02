@@ -5,32 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta name="description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta property="og:description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta name="twitter:description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   
 
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2021-05-11" />
+<meta name="date" content="2021-07-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -97,7 +91,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.4</b> Array Broadcast and Expansion Examples</a></li>
 <li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.5</b> Grid States, Choices and Optimal Choices Example</a></li>
 <li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.6</b> Accumarray Examples</a></li>
-<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Array Basics and Miscellaneous</a></li>
+<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-miscellaneous-and-basic-numeric-and-array-operations"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Miscellaneous and Basic Numeric and Array Operations</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#nd-dimensional-arrays"><i class="fa fa-check"></i><b>1.2</b> ND Dimensional Arrays</a>
 <ul>
@@ -114,8 +108,8 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.4</b> Characters and Strings</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations</a></li>
-<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-manipulations-with-arrays"><i class="fa fa-check"></i><b>1.4.2</b> String Manipulations with Arrays</a></li>
+<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations-display-search-join-and-split"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations, Display, Search, Join and Split</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-array-manipulations-join-find-replace-and-the-alphabet"><i class="fa fa-check"></i><b>1.4.2</b> String Array Manipulations, Join, Find, Replace and the Alphabet</a></li>
 <li class="chapter" data-level="1.4.3" data-path="data-structures.html"><a href="data-structures.html#convert-and-concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings"><i class="fa fa-check"></i><b>1.4.3</b> Convert and Concatenate Strings Arrays with Numbers and Number Arrays with Strings</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.5</b> Map Containers</a>
@@ -129,17 +123,22 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.6.1" data-path="data-structures.html"><a href="data-structures.html#maplab-nested-container-map-with-struct"><i class="fa fa-check"></i><b>1.6.1</b> Maplab Nested Container Map with Struct</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
+<li class="chapter" data-level="2" data-path="functions-and-programming.html"><a href="functions-and-programming.html"><i class="fa fa-check"></i><b>2</b> Functions and Programming</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.1</b> varargin Default Parameters</a>
+<li class="chapter" data-level="2.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#development-and-debugging"><i class="fa fa-check"></i><b>2.1</b> Development and Debugging</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
-<li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
+<li class="chapter" data-level="2.1.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#matlab-error-and-warning-handling"><i class="fa fa-check"></i><b>2.1.1</b> Matlab Error and Warning Handling</a></li>
+<li class="chapter" data-level="2.1.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#matlab-profiler-save-to-html"><i class="fa fa-check"></i><b>2.1.2</b> Matlab Profiler Save to HTML</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#dynamic-functions"><i class="fa fa-check"></i><b>2.2</b> Dynamic Functions</a>
+<li class="chapter" data-level="2.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.2</b> varargin Default Parameters</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="functions.html"><a href="functions.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.2.1</b> Anonymous Function in Matlab</a></li>
-<li class="chapter" data-level="2.2.2" data-path="functions.html"><a href="functions.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.2.2</b> Dynamically Generate M Files</a></li>
+<li class="chapter" data-level="2.2.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.2.1</b> varargin as a Function Parameter</a></li>
+<li class="chapter" data-level="2.2.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#container-default-parameter-with-varargin"><i class="fa fa-check"></i><b>2.2.2</b> Container Default Parameter with varargin</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="functions-and-programming.html"><a href="functions-and-programming.html#dynamic-functions"><i class="fa fa-check"></i><b>2.3</b> Dynamic Functions</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.3.1</b> Anonymous Function in Matlab</a></li>
+<li class="chapter" data-level="2.3.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.3.2</b> Dynamically Generate M Files</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distributional-processes.html"><a href="distributional-processes.html"><i class="fa fa-check"></i><b>3</b> Distributional Processes</a>
@@ -167,7 +166,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="5.1" data-path="estimation.html"><a href="estimation.html#linear-estimation"><i class="fa fa-check"></i><b>5.1</b> Linear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-estimation"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Estimation</a></li>
+<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-regression"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation"><i class="fa fa-check"></i><b>5.2</b> Nonlinear Estimation</a>
 <ul>
@@ -201,15 +200,20 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="7.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>7.1</b> Basic Table Generation</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#generate-a-table-and-fill-with-data-row-by-row-or-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Generate a Table and Fill with Data Row by Row or Random Data</a></li>
 <li class="chapter" data-level="7.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>7.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
 <li class="chapter" data-level="7.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>7.1.3</b> Row and Column Names for Table based on Arrays</a></li>
 <li class="chapter" data-level="7.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>7.1.4</b> Select Subset of Rows and Columns</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>7.2</b> Table Joining</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
-<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#matlab-join-tables-by-keys"><i class="fa fa-check"></i><b>7.2.1</b> Matlab Join Tables by Keys</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.2</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="7.2.3" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.3</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tables.html"><a href="tables.html#summarize"><i class="fa fa-check"></i><b>7.3</b> Summarize</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="tables.html"><a href="tables.html#matlab-table-summarize-and-aggregate-by-groups"><i class="fa fa-check"></i><b>7.3.1</b> Matlab Table Summarize and Aggregate by Groups</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -224,10 +228,11 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.1.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.5-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.5</b> <span>Section 1.5 Map Containers</span> links</a></li>
 <li class="chapter" data-level="A.1.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.6-map-structure-arraymap-structure-array-links"><i class="fa fa-check"></i><b>A.1.6</b> <span>Section 1.6 Map Structure Array</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
+<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-and-programming-links"><i class="fa fa-check"></i><b>A.2</b> Functions and Programming links</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
-<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Dynamic Functions</span> links</a></li>
+<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-development-and-debuggingdevelopment-and-debugging-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 Development and Debugging</span> links</a></li>
+<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 varargin Default Parameters</span> links</a></li>
+<li class="chapter" data-level="A.2.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.3-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.3</b> <span>Section 2.3 Dynamic Functions</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#distributional-processes-links"><i class="fa fa-check"></i><b>A.3</b> Distributional Processes links</a>
 <ul>
@@ -254,6 +259,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="A.7.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.7.1</b> <span>Section 7.1 Basic Table Generation</span> links</a></li>
 <li class="chapter" data-level="A.7.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.7.2</b> <span>Section 7.2 Table Joining</span> links</a></li>
+<li class="chapter" data-level="A.7.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.3-summarizesummarize-links"><i class="fa fa-check"></i><b>A.7.3</b> <span>Section 7.3 Summarize</span> links</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -279,7 +285,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <div id="header">
 <h1 class="title">Data Structures and Dynamic Optimization with Matlab</h1>
 <p class="author"><em>Fan Wang</em></p>
-<p class="date"><em>2021-05-11</em></p>
+<p class="date"><em>2021-07-01</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>

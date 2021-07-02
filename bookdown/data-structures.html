@@ -5,32 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta name="description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta property="og:description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Data Structures | Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta name="twitter:description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   
 
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2021-05-11" />
+<meta name="date" content="2021-07-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -38,7 +32,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="functions.html"/>
+<link rel="next" href="functions-and-programming.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -97,7 +91,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.4</b> Array Broadcast and Expansion Examples</a></li>
 <li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.5</b> Grid States, Choices and Optimal Choices Example</a></li>
 <li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.6</b> Accumarray Examples</a></li>
-<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Array Basics and Miscellaneous</a></li>
+<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-miscellaneous-and-basic-numeric-and-array-operations"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Miscellaneous and Basic Numeric and Array Operations</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#nd-dimensional-arrays"><i class="fa fa-check"></i><b>1.2</b> ND Dimensional Arrays</a>
 <ul>
@@ -114,8 +108,8 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.4</b> Characters and Strings</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations</a></li>
-<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-manipulations-with-arrays"><i class="fa fa-check"></i><b>1.4.2</b> String Manipulations with Arrays</a></li>
+<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations-display-search-join-and-split"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations, Display, Search, Join and Split</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-array-manipulations-join-find-replace-and-the-alphabet"><i class="fa fa-check"></i><b>1.4.2</b> String Array Manipulations, Join, Find, Replace and the Alphabet</a></li>
 <li class="chapter" data-level="1.4.3" data-path="data-structures.html"><a href="data-structures.html#convert-and-concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings"><i class="fa fa-check"></i><b>1.4.3</b> Convert and Concatenate Strings Arrays with Numbers and Number Arrays with Strings</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.5</b> Map Containers</a>
@@ -129,17 +123,22 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.6.1" data-path="data-structures.html"><a href="data-structures.html#maplab-nested-container-map-with-struct"><i class="fa fa-check"></i><b>1.6.1</b> Maplab Nested Container Map with Struct</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
+<li class="chapter" data-level="2" data-path="functions-and-programming.html"><a href="functions-and-programming.html"><i class="fa fa-check"></i><b>2</b> Functions and Programming</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.1</b> varargin Default Parameters</a>
+<li class="chapter" data-level="2.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#development-and-debugging"><i class="fa fa-check"></i><b>2.1</b> Development and Debugging</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
-<li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
+<li class="chapter" data-level="2.1.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#matlab-error-and-warning-handling"><i class="fa fa-check"></i><b>2.1.1</b> Matlab Error and Warning Handling</a></li>
+<li class="chapter" data-level="2.1.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#matlab-profiler-save-to-html"><i class="fa fa-check"></i><b>2.1.2</b> Matlab Profiler Save to HTML</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#dynamic-functions"><i class="fa fa-check"></i><b>2.2</b> Dynamic Functions</a>
+<li class="chapter" data-level="2.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.2</b> varargin Default Parameters</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="functions.html"><a href="functions.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.2.1</b> Anonymous Function in Matlab</a></li>
-<li class="chapter" data-level="2.2.2" data-path="functions.html"><a href="functions.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.2.2</b> Dynamically Generate M Files</a></li>
+<li class="chapter" data-level="2.2.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.2.1</b> varargin as a Function Parameter</a></li>
+<li class="chapter" data-level="2.2.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#container-default-parameter-with-varargin"><i class="fa fa-check"></i><b>2.2.2</b> Container Default Parameter with varargin</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="functions-and-programming.html"><a href="functions-and-programming.html#dynamic-functions"><i class="fa fa-check"></i><b>2.3</b> Dynamic Functions</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.3.1</b> Anonymous Function in Matlab</a></li>
+<li class="chapter" data-level="2.3.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.3.2</b> Dynamically Generate M Files</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distributional-processes.html"><a href="distributional-processes.html"><i class="fa fa-check"></i><b>3</b> Distributional Processes</a>
@@ -167,7 +166,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="5.1" data-path="estimation.html"><a href="estimation.html#linear-estimation"><i class="fa fa-check"></i><b>5.1</b> Linear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-estimation"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Estimation</a></li>
+<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-regression"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation"><i class="fa fa-check"></i><b>5.2</b> Nonlinear Estimation</a>
 <ul>
@@ -201,15 +200,20 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="7.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>7.1</b> Basic Table Generation</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#generate-a-table-and-fill-with-data-row-by-row-or-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Generate a Table and Fill with Data Row by Row or Random Data</a></li>
 <li class="chapter" data-level="7.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>7.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
 <li class="chapter" data-level="7.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>7.1.3</b> Row and Column Names for Table based on Arrays</a></li>
 <li class="chapter" data-level="7.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>7.1.4</b> Select Subset of Rows and Columns</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>7.2</b> Table Joining</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
-<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#matlab-join-tables-by-keys"><i class="fa fa-check"></i><b>7.2.1</b> Matlab Join Tables by Keys</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.2</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="7.2.3" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.3</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tables.html"><a href="tables.html#summarize"><i class="fa fa-check"></i><b>7.3</b> Summarize</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="tables.html"><a href="tables.html#matlab-table-summarize-and-aggregate-by-groups"><i class="fa fa-check"></i><b>7.3.1</b> Matlab Table Summarize and Aggregate by Groups</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -224,10 +228,11 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.1.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.5-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.5</b> <span>Section 1.5 Map Containers</span> links</a></li>
 <li class="chapter" data-level="A.1.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.6-map-structure-arraymap-structure-array-links"><i class="fa fa-check"></i><b>A.1.6</b> <span>Section 1.6 Map Structure Array</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
+<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-and-programming-links"><i class="fa fa-check"></i><b>A.2</b> Functions and Programming links</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
-<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Dynamic Functions</span> links</a></li>
+<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-development-and-debuggingdevelopment-and-debugging-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 Development and Debugging</span> links</a></li>
+<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 varargin Default Parameters</span> links</a></li>
+<li class="chapter" data-level="A.2.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.3-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.3</b> <span>Section 2.3 Dynamic Functions</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#distributional-processes-links"><i class="fa fa-check"></i><b>A.3</b> Distributional Processes links</a>
 <ul>
@@ -254,6 +259,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="A.7.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.7.1</b> <span>Section 7.1 Basic Table Generation</span> links</a></li>
 <li class="chapter" data-level="A.7.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.7.2</b> <span>Section 7.2 Table Joining</span> links</a></li>
+<li class="chapter" data-level="A.7.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.3-summarizesummarize-links"><i class="fa fa-check"></i><b>A.7.3</b> <span>Section 7.3 Summarize</span> links</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -1479,13 +1485,84 @@ ans = 3x1
 
 </div>
 </div>
-<div id="matlab-array-basics-and-miscellaneous" class="section level3" number="1.1.7">
-<h3><span class="header-section-number">1.1.7</span> Matlab Array Basics and Miscellaneous</h3>
+<div id="matlab-miscellaneous-and-basic-numeric-and-array-operations" class="section level3" number="1.1.7">
+<h3><span class="header-section-number">1.1.7</span> Matlab Miscellaneous and Basic Numeric and Array Operations</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="check-if-array-is-all-above-or-below-zero" class="section level4" number="1.1.7.1">
-<h4><span class="header-section-number">1.1.7.1</span> Check if Array is All Above or Below Zero</h4>
+<div id="divisor-quotient-and-remainder" class="section level4" number="1.1.7.1">
+<h4><span class="header-section-number">1.1.7.1</span> Divisor, Quotient and Remainder</h4>
+<p>Given an array of integer values, and some divisor, find the quotient
+and remainder.</p>
+<pre><code>it_divisor = 10;
+for bl_int=[0,1]
+    if (bl_int == 1)
+        ar_integers = int16([1,2,3, 11,12,13, 21,22,23]);
+    else
+        ar_integers = [1,2,3, 11,12,13, 21,22,23];
+    end
+    for it_integer=ar_integers
+        % Modulus and quotient
+        if(isinteger(it_integer))
+            it_quotient = idivide(it_integer, it_divisor);
+        else
+            it_quotient = fix(it_integer/it_divisor);
+        end
+        it_remainder = rem(it_integer, it_divisor);
+
+        if (it_remainder == 1)
+            fl_power = 1.0;
+        elseif (it_remainder == 2)
+            fl_power = 1.5;
+        elseif (it_remainder == 3)
+            fl_power = 2.0;
+        end
+
+        if (it_quotient == 0)
+            fl_base = 2;
+        elseif (it_quotient == 1)
+            fl_base = exp(1);
+        elseif (it_quotient == 2)
+            fl_base = 10;
+        end
+
+        fl_value = fl_base^fl_power;
+
+        % Print
+        st_print = strjoin(...
+            [&quot;Divide test:&quot;, ...
+            [&#39;bl_int=&#39; num2str(bl_int)], ...
+            [&#39;it_integer=&#39; num2str(it_integer)], ...
+            [&#39;it_remainder=&#39; num2str(it_remainder)], ...
+            [&#39;it_quotient=&#39; num2str(it_quotient)], ...
+            [&#39;fl_value=&#39; num2str(fl_value)], ...
+            ], &quot;;&quot;);
+        disp(st_print);
+
+    end
+end
+
+Divide test:;bl_int=0;it_integer=1;it_remainder=1;it_quotient=0;fl_value=2
+Divide test:;bl_int=0;it_integer=2;it_remainder=2;it_quotient=0;fl_value=2.8284
+Divide test:;bl_int=0;it_integer=3;it_remainder=3;it_quotient=0;fl_value=4
+Divide test:;bl_int=0;it_integer=11;it_remainder=1;it_quotient=1;fl_value=2.7183
+Divide test:;bl_int=0;it_integer=12;it_remainder=2;it_quotient=1;fl_value=4.4817
+Divide test:;bl_int=0;it_integer=13;it_remainder=3;it_quotient=1;fl_value=7.3891
+Divide test:;bl_int=0;it_integer=21;it_remainder=1;it_quotient=2;fl_value=10
+Divide test:;bl_int=0;it_integer=22;it_remainder=2;it_quotient=2;fl_value=31.6228
+Divide test:;bl_int=0;it_integer=23;it_remainder=3;it_quotient=2;fl_value=100
+Divide test:;bl_int=1;it_integer=1;it_remainder=1;it_quotient=0;fl_value=2
+Divide test:;bl_int=1;it_integer=2;it_remainder=2;it_quotient=0;fl_value=2.8284
+Divide test:;bl_int=1;it_integer=3;it_remainder=3;it_quotient=0;fl_value=4
+Divide test:;bl_int=1;it_integer=11;it_remainder=1;it_quotient=1;fl_value=2.7183
+Divide test:;bl_int=1;it_integer=12;it_remainder=2;it_quotient=1;fl_value=4.4817
+Divide test:;bl_int=1;it_integer=13;it_remainder=3;it_quotient=1;fl_value=7.3891
+Divide test:;bl_int=1;it_integer=21;it_remainder=1;it_quotient=2;fl_value=10
+Divide test:;bl_int=1;it_integer=22;it_remainder=2;it_quotient=2;fl_value=31.6228
+Divide test:;bl_int=1;it_integer=23;it_remainder=3;it_quotient=2;fl_value=100</code></pre>
+</div>
+<div id="check-if-array-is-all-above-or-below-zero" class="section level4" number="1.1.7.2">
+<h4><span class="header-section-number">1.1.7.2</span> Check if Array is All Above or Below Zero</h4>
 <p>There is an array that contains possible NaN values, check if all
 elements of array are positive, or all elements are negative, ignoring
 the NaN values.</p>
@@ -1517,35 +1594,102 @@ str=4 has bl_all_pos=0 and bl_all_neg=1
 str=5 has bl_all_pos=0 and bl_all_neg=0
 str=6 has bl_all_pos=0 and bl_all_neg=0</code></pre>
 </div>
-<div id="check-parameter-types" class="section level4" number="1.1.7.2">
-<h4><span class="header-section-number">1.1.7.2</span> Check Parameter Types</h4>
+<div id="check-parameter-types" class="section level4" number="1.1.7.3">
+<h4><span class="header-section-number">1.1.7.3</span> Check Parameter Types</h4>
 <p>There parameter input can either be a cell array or an integer,
-conditional processing based on parameter input type</p>
+conditional processing based on parameter input type. To distinguish
+between an array or container map, for example, can use
+<a href="https://www.mathworks.com/help/matlab/ref/isnumeric.html">isnumeric</a> or
+<a href="https://www.mathworks.com/help/matlab/ref/isfloat.html">isfloat</a>.</p>
 <pre><code>% Float and Cell
 curEstiParamA = 1;
 curEstiParamB = {146, &#39;R3&#39;};
+curEstiParamC = rand([1,5]);
+curEstiParamD = [1,2,3,4.5];
+curEstiParamE = containers.Map(&#39;KeyType&#39;,&#39;char&#39;, &#39;ValueType&#39;,&#39;any&#39;);
+param_map(&#39;share_unbanked_j&#39;) = 12;
+param_map(&#39;equi_r_j&#39;) = 2;
 % test if is float
 st_test = strjoin(...
     [&quot;&quot;, ...
     [&#39;isfloat(curEstiParamA)=&#39; num2str(isfloat(curEstiParamA))], ...
     [&#39;isfloat(curEstiParamB)=&#39; num2str(isfloat(curEstiParamB))], ...
+    [&#39;isfloat(curEstiParamC)=&#39; num2str(isfloat(curEstiParamC))], ...
+    [&#39;isfloat(curEstiParamD)=&#39; num2str(isfloat(curEstiParamD))], ...
+    [&#39;isfloat(curEstiParamE)=&#39; num2str(isfloat(curEstiParamE))], ...
     ], &quot;;&quot;);
 disp(st_test);
 
-;isfloat(curEstiParamA)=1;isfloat(curEstiParamB)=0
+;isfloat(curEstiParamA)=1;isfloat(curEstiParamB)=0;isfloat(curEstiParamC)=1;isfloat(curEstiParamD)=1;isfloat(curEstiParamE)=0
 
 % test if is cell
 st_test = strjoin(...
     [&quot;&quot;, ...
     [&#39;iscell(curEstiParamA)=&#39; num2str(iscell(curEstiParamA))], ...
     [&#39;iscell(curEstiParamB)=&#39; num2str(iscell(curEstiParamB))], ...
+    [&#39;iscell(curEstiParamC)=&#39; num2str(iscell(curEstiParamC))], ...
+    [&#39;iscell(curEstiParamD)=&#39; num2str(iscell(curEstiParamD))], ...
+    [&#39;iscell(curEstiParamE)=&#39; num2str(iscell(curEstiParamE))], ...
     ], &quot;;&quot;);
 disp(st_test);
 
-;iscell(curEstiParamA)=0;iscell(curEstiParamB)=1</code></pre>
+;iscell(curEstiParamA)=0;iscell(curEstiParamB)=1;iscell(curEstiParamC)=0;iscell(curEstiParamD)=0;iscell(curEstiParamE)=0
+
+% test if is numeric
+st_test = strjoin(...
+    [&quot;&quot;, ...
+    [&#39;isnumeric(curEstiParamA)=&#39; num2str(isfloat(curEstiParamA))], ...
+    [&#39;isnumeric(curEstiParamB)=&#39; num2str(isfloat(curEstiParamB))], ...
+    [&#39;isnumeric(curEstiParamC)=&#39; num2str(isfloat(curEstiParamC))], ...
+    [&#39;isnumeric(curEstiParamD)=&#39; num2str(isfloat(curEstiParamD))], ...
+    [&#39;isnumeric(curEstiParamE)=&#39; num2str(isfloat(curEstiParamE))], ...
+    ], &quot;;&quot;);
+disp(st_test);
+
+;isnumeric(curEstiParamA)=1;isnumeric(curEstiParamB)=0;isnumeric(curEstiParamC)=1;isnumeric(curEstiParamD)=1;isnumeric(curEstiParamE)=0</code></pre>
 </div>
-<div id="compare-array-values-that-are-approximately-similar" class="section level4" number="1.1.7.3">
-<h4><span class="header-section-number">1.1.7.3</span> Compare Array Values That are Approximately Similar</h4>
+<div id="check-if-a-value-is-an-array-of-single-scalar-boolean" class="section level4" number="1.1.7.4">
+<h4><span class="header-section-number">1.1.7.4</span> Check if a value is an array of single scalar boolean</h4>
+<p>A function could take an array, if the array parameter input is boolean
+and false, then generate the array needed by the function in a different
+way. All that is needed is a NaN checker, works for scalar or array of
+NaN.</p>
+<pre><code>rng(123);
+it_len = 3;
+for it_case=[1,2,3]
+    
+    if (it_case == 1)        
+        ob_val = rand(1,it_len);
+    elseif (it_case == 2)
+        % Single NaN
+        ob_val = NaN;
+    elseif (it_case == 3)
+        % Single NaN
+        ob_val = NaN(1,it_len);
+    end
+    
+    if (~isnan(ob_val))
+        % Input is the output vector since input is not NaN
+        ob_val_out = ob_val;
+    else
+        % Generates random output vector since input is not provided
+        ob_val_out = rand(1, it_len);
+    end
+
+    st_test = strjoin(...
+        [&quot;&quot;, ...
+        [&#39;ob_val=&#39; num2str(ob_val)], ...
+        [&#39;ob_val_out=&#39; num2str(ob_val_out)], ...
+        ], &quot;;&quot;);
+    disp(st_test);    
+end
+
+;ob_val=0.69647     0.28614     0.22685;ob_val_out=0.69647     0.28614     0.22685
+;ob_val=NaN;ob_val_out=0.55131     0.71947     0.42311
+;ob_val=NaN  NaN  NaN;ob_val_out=0.98076     0.68483     0.48093</code></pre>
+</div>
+<div id="compare-array-values-that-are-approximately-similar" class="section level4" number="1.1.7.5">
+<h4><span class="header-section-number">1.1.7.5</span> Compare Array Values That are Approximately Similar</h4>
 <p><a href="https://stackoverflow.com/a/33024979/8280804">What is the best way to compare floats for almost-equality in
 Python?</a></p>
 <ul>
@@ -1568,8 +1712,8 @@ disp([&#39;1+1e-9 and 1+1e-10, if_is_close:&#39; num2str(if_is_close(1+1e-9,1+1e
 
 1+1e-9 and 1+1e-10, if_is_close:1</code></pre>
 </div>
-<div id="imaginary-number-examples" class="section level4" number="1.1.7.4">
-<h4><span class="header-section-number">1.1.7.4</span> Imaginary Number Examples</h4>
+<div id="imaginary-number-examples" class="section level4" number="1.1.7.6">
+<h4><span class="header-section-number">1.1.7.6</span> Imaginary Number Examples</h4>
 <pre><code>rng(123);
 
 % Imaginary array
@@ -1583,17 +1727,17 @@ ar_full = [ar_real ar_img];
 ar_full = ar_full(randperm(length(ar_full)));
 disp(ar_full);
 
-  Columns 1 through 7
+  Columns 1 through 6
 
-   0.6344 + 0.0000i   0.1755 + 0.0000i   0.5316 + 0.0000i   0.2861 + 0.4809i   0.7380 + 0.0000i   0.1825 + 0.0000i   0.6965 + 0.6848i
+   0.6344 + 0.0000i   0.1755 + 0.0000i   0.5316 + 0.0000i   0.2861 + 0.4809i   0.7380 + 0.0000i   0.1825 + 0.0000i
 
-  Columns 8 through 14
+  Columns 7 through 12
 
-   0.2269 + 0.3921i   0.7245 + 0.0000i   0.8494 + 0.0000i   0.6110 + 0.0000i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5318 + 0.0000i
+   0.6965 + 0.6848i   0.2269 + 0.3921i   0.7245 + 0.0000i   0.8494 + 0.0000i   0.6110 + 0.0000i   0.4231 + 0.4386i
 
-  Columns 15 through 17
+  Columns 13 through 17
 
-   0.3980 + 0.0000i   0.5513 + 0.3432i   0.7195 + 0.7290i
+   0.9808 + 0.0597i   0.5318 + 0.0000i   0.3980 + 0.0000i   0.5513 + 0.3432i   0.7195 + 0.7290i
 
 
 % real index
@@ -1609,7 +1753,13 @@ disp(ar_full(imag(ar_full) == 0));
 
 disp(ar_full(imag(ar_full) ~= 0));
 
-   0.2861 + 0.4809i   0.6965 + 0.6848i   0.2269 + 0.3921i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5513 + 0.3432i   0.7195 + 0.7290i</code></pre>
+  Columns 1 through 6
+
+   0.2861 + 0.4809i   0.6965 + 0.6848i   0.2269 + 0.3921i   0.4231 + 0.4386i   0.9808 + 0.0597i   0.5513 + 0.3432i
+
+  Column 7
+
+   0.7195 + 0.7290i</code></pre>
 
 </div>
 </div>
@@ -2925,13 +3075,21 @@ disp(clns_parm_tstar{1}{3});
 <div id="characters-and-strings" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Characters and Strings</h2>
 
-<div id="basic-string-operations" class="section level3" number="1.4.1">
-<h3><span class="header-section-number">1.4.1</span> Basic String Operations</h3>
+<div id="basic-string-operations-display-search-join-and-split" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Basic String Operations, Display, Search, Join and Split</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="combine-string-numeric-values-etc-single-and-double-quotes" class="section level4" number="1.4.1.1">
-<h4><span class="header-section-number">1.4.1.1</span> Combine String, Numeric values etc, Single and Double Quotes</h4>
+<div id="date-string" class="section level4" number="1.4.1.1">
+<h4><span class="header-section-number">1.4.1.1</span> Date String</h4>
+<p>Generate a string based on date and time as file suffix.</p>
+<pre><code>st_file_suffix = [&#39;_d&#39; datestr(now,&#39;yymmdd_tHHMMSS&#39;)];
+disp(st_file_suffix);
+
+_d210701_t094001</code></pre>
+</div>
+<div id="combine-string-numeric-values-etc-single-and-double-quotes" class="section level4" number="1.4.1.2">
+<h4><span class="header-section-number">1.4.1.2</span> Combine String, Numeric values etc, Single and Double Quotes</h4>
 <p>Convert a string array into a single string, note the double quotes, and
 the auto space between:</p>
 <pre><code>st_a = &quot;another string&quot;;
@@ -2954,25 +3112,75 @@ disp((str));
 
 abc 2 opq another string</code></pre>
 </div>
-<div id="construct-string-array-and-string-elements-of-string-array" class="section level4" number="1.4.1.2">
-<h4><span class="header-section-number">1.4.1.2</span> Construct String Array and String Elements of String Array</h4>
+<div id="construct-string-print-statement-with-string-and-numeric-elements" class="section level4" number="1.4.1.3">
+<h4><span class="header-section-number">1.4.1.3</span> Construct String Print Statement with String and Numeric Elements</h4>
 <p>In the example below, we have a number of strings we want to put inside
 a string array, then join with strjoin, but two of the strings need to
 be constructed as strings first. Note below that double quoates are own
 strings, single quotes in brackets constructing additional strings.</p>
 <pre><code>st_a = &quot;another string&quot;;
-ar_st = strjoin(...
-    [&quot;Completed SNW_DS_MAIN&quot;, ...
-     [&#39;SNW_MP_PARAM=&#39; num2str(123.345)], ...
-     [&#39;SNW_MP_CONTROL=&#39; num2str(678.90)], ...
-     st_a...
+ar_st = [&quot;abc&quot;, &quot;efg&quot;];
+ar_fl_vals = rand([1,3]);
+st_print = strjoin(...
+    [&quot;Completed SNW_DS_MAIN:&quot;, ...
+    [&#39;SNW_MP_PARAM=&#39; num2str(123)], ...
+    [&#39;SNW_MP_CONTROL=&#39; num2str(678)], ...
+    [&#39;STR_VAR1=&#39; char(&#39;string&#39;)], ...
+    [&#39;STR_VAR2=&#39; char(strjoin(ar_st, &quot;-&quot;))], ...
+    [&#39;STR_VAR3:;&#39; char(strjoin(ar_st, &quot;;&quot;))], ...
+    [&#39;ar_st:;&#39; char(strjoin(strcat( ...
+    num2str((1:length(ar_st))&#39;, &#39;%0.3d&#39;), &#39;=&#39;, ar_st&#39; ...
+    ), &quot;;&quot;))], ...
+    [&#39;ar_fl_vals:;&#39; strjoin(string(strcat( ...
+    num2str((1:length(ar_fl_vals))&#39;, &#39;%0.3d&#39;), &#39;=&#39;, num2str(ar_fl_vals&#39;, &#39;%3.2f&#39;))), &quot;;&quot;)], ...
     ], &quot;;&quot;);
-disp(ar_st);
+% Ways to print
+st_out = st_print;
+ar_ch_out = char(strsplit(st_print,&quot;;&quot;)&#39;);
+ar_st_out = strsplit(st_print,&quot;;&quot;)&#39;;
+% Print
+disp(st_out);
 
-Completed SNW_DS_MAIN;SNW_MP_PARAM=123.345;SNW_MP_CONTROL=678.9;another string</code></pre>
+Completed SNW_DS_MAIN:;SNW_MP_PARAM=123;SNW_MP_CONTROL=678;STR_VAR1=string;STR_VAR2=abc-efg;STR_VAR3:;abc;efg;ar_st:;001=abc;002=efg;ar_fl_vals:;;001=0.87;002=0.25;003=0.48
+
+disp(ar_ch_out);
+
+Completed SNW_DS_MAIN:
+SNW_MP_PARAM=123      
+SNW_MP_CONTROL=678    
+STR_VAR1=string       
+STR_VAR2=abc-efg      
+STR_VAR3:             
+abc                   
+efg                   
+ar_st:                
+001=abc               
+002=efg               
+ar_fl_vals:           
+001=0.87              
+002=0.25              
+003=0.48              
+
+disp(ar_st_out);
+
+    &quot;Completed SNW_DS_MAIN:&quot;
+    &quot;SNW_MP_PARAM=123&quot;
+    &quot;SNW_MP_CONTROL=678&quot;
+    &quot;STR_VAR1=string&quot;
+    &quot;STR_VAR2=abc-efg&quot;
+    &quot;STR_VAR3:&quot;
+    &quot;abc&quot;
+    &quot;efg&quot;
+    &quot;ar_st:&quot;
+    &quot;001=abc&quot;
+    &quot;002=efg&quot;
+    &quot;ar_fl_vals:&quot;
+    &quot;001=0.87&quot;
+    &quot;002=0.25&quot;
+    &quot;003=0.48&quot;</code></pre>
 </div>
-<div id="paste-join-strings-together-with-separator" class="section level4" number="1.4.1.3">
-<h4><span class="header-section-number">1.4.1.3</span> Paste Join Strings Together with Separator</h4>
+<div id="paste-join-strings-together-with-separator" class="section level4" number="1.4.1.4">
+<h4><span class="header-section-number">1.4.1.4</span> Paste Join Strings Together with Separator</h4>
 <p>Join strings together with separator, this is similar to the paste0
 function in R.</p>
 <pre><code>ar_st = [&quot;abc&quot;, &quot;efg&quot;, &quot;opq&quot;];
@@ -2980,8 +3188,8 @@ disp(strjoin(ar_st, &#39;-&#39;));
 
 abc-efg-opq</code></pre>
 </div>
-<div id="combine-char-with-numeric-value" class="section level4" number="1.4.1.4">
-<h4><span class="header-section-number">1.4.1.4</span> Combine Char with Numeric Value</h4>
+<div id="combine-char-with-numeric-value" class="section level4" number="1.4.1.5">
+<h4><span class="header-section-number">1.4.1.5</span> Combine Char with Numeric Value</h4>
 <p>Compose a string with words and numerical values</p>
 <pre><code>st_title = strcat(&quot;Figure Title &quot;, ...
     &quot;(&quot;, ...
@@ -2995,8 +3203,8 @@ disp(st_combo);
 
 Figure Title (threedeci=123.457,twodeci=123.46,int=123)</code></pre>
 </div>
-<div id="search-if-string-contains-substring" class="section level4" number="1.4.1.5">
-<h4><span class="header-section-number">1.4.1.5</span> Search if String Contains Substring</h4>
+<div id="search-if-string-contains-substring" class="section level4" number="1.4.1.6">
+<h4><span class="header-section-number">1.4.1.6</span> Search if String Contains Substring</h4>
 <p>Does string contain substring?</p>
 <pre><code>st_long1 = &#39;simu_dense&#39;;
 st_long2 = &#39;simu_denser&#39;;
@@ -3008,8 +3216,24 @@ disp([contains(st_long1, &#39;dense&#39;), contains(st_long2, &#39;dense&#39;), 
 
    1   1   1   0   0</code></pre>
 </div>
-<div id="change-file-name-mlx-to-m" class="section level4" number="1.4.1.6">
-<h4><span class="header-section-number">1.4.1.6</span> Change File Name MLX to M</h4>
+<div id="find-elements-of-an-array-that-matches-any-elements-of-another-array" class="section level4" number="1.4.1.7">
+<h4><span class="header-section-number">1.4.1.7</span> Find Elements of an Array that Matches Any Elements of Another Array</h4>
+<p>There is an array of strings, check if each element equals values
+specified in another string, using the match function.</p>
+<pre><code>% String array from strings
+ar_st_long = string({st_long1, st_long2, st_long3, st_long4, st_long5});
+% If matches simu_dense
+disp(matches(ar_st_long, &#39;simu_dense&#39;));
+
+   1   0   0   0   0
+
+% If matches simu_dense or simu_denser
+disp(matches(ar_st_long, [&quot;simu_dense&quot;, &quot;simu_denser&quot;]));
+
+   1   1   0   0   0</code></pre>
+</div>
+<div id="change-file-name-mlx-to-m" class="section level4" number="1.4.1.8">
+<h4><span class="header-section-number">1.4.1.8</span> Change File Name MLX to M</h4>
 <pre><code>st_file_name_mlx = &#39;continuous_differentiable.mlx&#39;;
 at_st_split_file_name = split(st_file_name_mlx, &quot;.&quot;);
 st_file_name_m = strcat(at_st_split_file_name{1}, &#39;_m.m&#39;);
@@ -3019,14 +3243,14 @@ continuous_differentiable_m.m</code></pre>
 
 </div>
 </div>
-<div id="string-manipulations-with-arrays" class="section level3" number="1.4.2">
-<h3><span class="header-section-number">1.4.2</span> String Manipulations with Arrays</h3>
+<div id="string-array-manipulations-join-find-replace-and-the-alphabet" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> String Array Manipulations, Join, Find, Replace and the Alphabet</h3>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="string-array" class="section level4" number="1.4.2.1">
-<h4><span class="header-section-number">1.4.2.1</span> String Array</h4>
-<p>Empty String Array:</p>
+<div id="generate-a-string-array-from-strings" class="section level4" number="1.4.2.1">
+<h4><span class="header-section-number">1.4.2.1</span> Generate a String Array from Strings</h4>
+<p>Empty String Array and fill with values.</p>
 <pre><code>ar_st_titles = strings([3,1]);
 ar_st_titles(1) = &#39;Title1&#39;;
 ar_st_titles(2) = &#39;Title2&#39;;
@@ -3049,12 +3273,29 @@ string, rather than a string array:</p>
 disp(st_titles);
 
 Title1Title2Title3</code></pre>
-<p>Convert the string array to a cell string array</p>
-<pre><code>disp(cellstr(ar_st_titles));
+<p>Given some previously defined chars or strings with single or double
+quotes, not sure which. To safely generate a string array, wrap in
+brackets and then conver with string function. This generates a string
+array whether the original inputs were single or double quoted:</p>
+<pre><code>st_a = &#39;a&#39;;
+st_b = &#39;b&#39;;
+st_c = &#39;c&#39;;
+st_a_dq = &quot;a&quot;;
+st_b_dq = &quot;b&quot;;
+st_c_dq = &quot;c&quot;;
+ar_st_singlequotes = string({st_a, st_b, st_c});
+ar_st_doublequotes = string({st_a_dq, st_b_dq, st_c_dq});
+disp([&quot;st_singlequotes&quot; ar_st_singlequotes]);
 
-    {&#39;Title1&#39;}
-    {&#39;Title2&#39;}
-    {&#39;Title3&#39;}</code></pre>
+    &quot;st_singlequotes&quot;    &quot;a&quot;    &quot;b&quot;    &quot;c&quot;
+
+disp([&quot;ar_st_doublequotes&quot; ar_st_doublequotes]);
+
+    &quot;ar_st_doublequotes&quot;    &quot;a&quot;    &quot;b&quot;    &quot;c&quot;</code></pre>
+<p>Convert the string array to a cell string array</p>
+<pre><code>disp(cellstr(ar_st_doublequotes));
+
+    {&#39;a&#39;}    {&#39;b&#39;}    {&#39;c&#39;}</code></pre>
 </div>
 <div id="string-cell-array" class="section level4" number="1.4.2.2">
 <h4><span class="header-section-number">1.4.2.2</span> String Cell Array</h4>
@@ -3096,7 +3337,13 @@ disp(strcat(ar_st_titles, &#39;_init&#39;));
 <pre><code>it_duplicate_n = 10;
 disp(repmat({&#39;String&#39;}, [1, it_duplicate_n]));
 
-    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}</code></pre>
+  Columns 1 through 9
+
+    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}    {&#39;String&#39;}
+
+  Column 10
+
+    {&#39;String&#39;}</code></pre>
 </div>
 <div id="string-join-to-form-single-element" class="section level4" number="1.4.2.5">
 <h4><span class="header-section-number">1.4.2.5</span> String Join to form Single Element</h4>
@@ -3208,6 +3455,29 @@ ans =
 display(strrep(strjoin(cl_st_param_keys, &#39;-&#39;), &#39;_&#39;, &#39;\_&#39;));
 
 fl\_crra-fl\_beta</code></pre>
+</div>
+<div id="generate-alphebetical-string-array-from-a-to-z" class="section level4" number="1.4.2.12">
+<h4><span class="header-section-number">1.4.2.12</span> Generate Alphebetical String Array from A to Z</h4>
+<p>Generate a single string that is A to Z, then generate this as a string
+array.</p>
+<pre><code>% a to z single string
+st_a2z = &#39;a&#39;:&#39;z&#39;;
+% a to z array of letters
+ar_st_a2z = string((&#39;A&#39;:&#39;Z&#39;)&#39;)&#39;;
+% Display
+disp(st_a2z);
+
+abcdefghijklmnopqrstuvwxyz
+
+disp(ar_st_a2z);
+
+  Columns 1 through 18
+
+    &quot;A&quot;    &quot;B&quot;    &quot;C&quot;    &quot;D&quot;    &quot;E&quot;    &quot;F&quot;    &quot;G&quot;    &quot;H&quot;    &quot;I&quot;    &quot;J&quot;    &quot;K&quot;    &quot;L&quot;    &quot;M&quot;    &quot;N&quot;    &quot;O&quot;    &quot;P&quot;    &quot;Q&quot;    &quot;R&quot;
+
+  Columns 19 through 26
+
+    &quot;S&quot;    &quot;T&quot;    &quot;U&quot;    &quot;V&quot;    &quot;W&quot;    &quot;X&quot;    &quot;Y&quot;    &quot;Z&quot;</code></pre>
 
 </div>
 </div>
@@ -3216,8 +3486,34 @@ fl\_crra-fl\_beta</code></pre>
 <blockquote>
 <p>Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="combine-a-string-array-with-a-numeric-array-using-compose" class="section level4" number="1.4.3.1">
-<h4><span class="header-section-number">1.4.3.1</span> Combine A String Array with A Numeric Array using Compose</h4>
+<div id="generate-a-string-from-numeric-array-and-print-on-screen-with-counter" class="section level4" number="1.4.3.1">
+<h4><span class="header-section-number">1.4.3.1</span> Generate a String from Numeric Array and Print on Screen with Counter</h4>
+<p>Want to quickly print on screen an array of number with the array name
+and a counter printed before each value.</p>
+<pre><code>% An array of numbers to print
+rng(123);
+ar_fl_values = rand(5,1);
+% A string array of counters with leading zeros for even display
+ar_st_counter_leading0 = num2str((1:length(ar_fl))&#39;, &#39;%0.3d&#39;);
+% A float array of value formatted
+ar_fl_values_formated = num2str(ar_fl&#39;, &#39;%3.2f&#39;);
+ar_ch_values_display = strcat(&#39;fl_val, c&#39;, ar_st_counter_leading0, &#39;=&#39;, ar_fl_values_formated);
+% print
+disp(ar_ch_values_display);
+
+fl_val, c001=0.78
+fl_val, c002=0.29
+fl_val, c003=0.31
+fl_val, c004=0.67
+fl_val, c005=0.11
+fl_val, c006=0.66
+fl_val, c007=0.89
+fl_val, c008=0.70
+fl_val, c009=0.44
+fl_val, c010=0.44</code></pre>
+</div>
+<div id="combine-a-string-array-with-a-numeric-array-using-compose" class="section level4" number="1.4.3.2">
+<h4><span class="header-section-number">1.4.3.2</span> Combine A String Array with a Numeric Array using Compose</h4>
 <p>String array and numeric array, combine together using the compose
 function, and test different formatting functions. Formating with
 leading empty spaces, leading zeros, and convert to integer or not.</p>
@@ -3240,8 +3536,8 @@ disp(st_combo);
     {&#39;ar_mu_pos_1=1213&#39;    }
     {&#39;ar_COEF_U_gamma= 456&#39;}</code></pre>
 </div>
-<div id="numeric-array-to-string-array-with-decimal-formatting" class="section level4" number="1.4.3.2">
-<h4><span class="header-section-number">1.4.3.2</span> Numeric Array to String Array with Decimal Formatting</h4>
+<div id="numeric-array-to-string-array-with-decimal-formatting" class="section level4" number="1.4.3.3">
+<h4><span class="header-section-number">1.4.3.3</span> Numeric Array to String Array with Decimal Formatting</h4>
 <p>There is a numeric array, format with a certain number of decimal
 points, and convert to string array.</p>
 <pre><code>% Inputs
@@ -3255,8 +3551,8 @@ disp(ar_st_params);
 
     &quot;1.233&quot;    &quot;493.123&quot;    &quot;4994.111&quot;    &quot;123.000&quot;</code></pre>
 </div>
-<div id="title-from-an-array-of-values" class="section level4" number="1.4.3.3">
-<h4><span class="header-section-number">1.4.3.3</span> Title from an Array of Values</h4>
+<div id="title-from-an-array-of-values" class="section level4" number="1.4.3.4">
+<h4><span class="header-section-number">1.4.3.4</span> Title from an Array of Values</h4>
 <p>There is a vector of parameter values and a vector of names for these
 parameter values, I want to include these in the title of a figure with
 the same decimal formating.</p>
@@ -3277,8 +3573,8 @@ disp(st_title_wth_params);
 
 this is the figure title (param1=0.70, param2=0.29, param3=0.23)</code></pre>
 </div>
-<div id="combine-string-with-numeric-array" class="section level4" number="1.4.3.4">
-<h4><span class="header-section-number">1.4.3.4</span> Combine String with Numeric Array</h4>
+<div id="combine-string-with-numeric-array" class="section level4" number="1.4.3.5">
+<h4><span class="header-section-number">1.4.3.5</span> Combine String with Numeric Array</h4>
 <p>Example 1:</p>
 <pre><code>ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
 disp([num2str(ar_fl_abc1&#39;, &#39;zw=%3.2f;&#39;), num2str(ar_fl_abc1&#39;, &#39;zr=%3.2f&#39;)]);
@@ -3320,8 +3616,8 @@ disp(cl_col_names);
     {&#39;zi=4:zr=0.23;zw=0.68&#39;}
     {&#39;zi=4:zr=0.72;zw=0.39&#39;}</code></pre>
 </div>
-<div id="combine-number-with-string-cell-array" class="section level4" number="1.4.3.5">
-<h4><span class="header-section-number">1.4.3.5</span> Combine Number with String Cell Array</h4>
+<div id="combine-number-with-string-cell-array" class="section level4" number="1.4.3.6">
+<h4><span class="header-section-number">1.4.3.6</span> Combine Number with String Cell Array</h4>
 <p>We have a string cell array we created from the previous section, now
 append numbers to it</p>
 <pre><code>% Append Common Numbers
@@ -3332,8 +3628,8 @@ disp(cl_col_names_append);
     {&#39;zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-123&#39;}
     {&#39;zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-123&#39;}</code></pre>
 </div>
-<div id="combine-numeric-array-with-string-cell-array" class="section level4" number="1.4.3.6">
-<h4><span class="header-section-number">1.4.3.6</span> Combine Numeric Array with String Cell Array</h4>
+<div id="combine-numeric-array-with-string-cell-array" class="section level4" number="1.4.3.7">
+<h4><span class="header-section-number">1.4.3.7</span> Combine Numeric Array with String Cell Array</h4>
 <p>Append an array of numeric values</p>
 <pre><code>% Append Common Numbers
 cl_col_names_append = strcat(cl_col_names, &#39;-String-Cell-With-Numeric-Array-&#39;, ...
@@ -3344,8 +3640,8 @@ disp(cl_col_names_append);
     {&#39;zi=4:zr=0.23;zw=0.68-String-Cell-With-Numeric-Array-2&#39;}
     {&#39;zi=4:zr=0.72;zw=0.39-String-Cell-With-Numeric-Array-3&#39;}</code></pre>
 </div>
-<div id="convert-numeric-array-to-string-apeend-prefix-to-all-elements." class="section level4" number="1.4.3.7">
-<h4><span class="header-section-number">1.4.3.7</span> Convert Numeric Array to String, Apeend Prefix to all elements.</h4>
+<div id="convert-numeric-array-to-string-apeend-prefix-to-all-elements." class="section level4" number="1.4.3.8">
+<h4><span class="header-section-number">1.4.3.8</span> Convert Numeric Array to String, Apeend Prefix to all elements.</h4>
 <pre><code>ar_fl_abc1 = [0.4 0.1 0.25 0.3 0.4];
 ar_st_wth_prefix = strcat(&#39;row=&#39;, string(ar_fl_abc1));
 disp(ar_st_wth_prefix);
@@ -3766,7 +4062,7 @@ The explog of parameter index 11 is &quot;1&quot; (param index 11 is &quot;h_exo
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="functions-and-programming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

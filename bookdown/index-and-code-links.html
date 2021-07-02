@@ -5,32 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A Index and Code Links | Data Structures and Dynamic Optimization with Matlab</title>
-  <meta name="description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta name="description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A Index and Code Links | Data Structures and Dynamic Optimization with Matlab" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta property="og:description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   <meta name="github-repo" content="fanwangecon/M4Econ" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="A Index and Code Links | Data Structures and Dynamic Optimization with Matlab" />
   
-  <meta name="twitter:description" content="<p>Stack different tables together with varying columns via outerjoin, store with parallel parfor.
-Stack different estiamtion results together into a common table where columns show parameter names and other strings.
-Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</p>" />
+  <meta name="twitter:description" content="Group table by one or several group variables, and aggregate over another numerical variable within group." />
   
 
 <meta name="author" content="Fan Wang" />
 
 
-<meta name="date" content="2021-05-11" />
+<meta name="date" content="2021-07-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -97,7 +91,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.1.4" data-path="data-structures.html"><a href="data-structures.html#array-broadcast-and-expansion-examples"><i class="fa fa-check"></i><b>1.1.4</b> Array Broadcast and Expansion Examples</a></li>
 <li class="chapter" data-level="1.1.5" data-path="data-structures.html"><a href="data-structures.html#grid-states-choices-and-optimal-choices-example"><i class="fa fa-check"></i><b>1.1.5</b> Grid States, Choices and Optimal Choices Example</a></li>
 <li class="chapter" data-level="1.1.6" data-path="data-structures.html"><a href="data-structures.html#accumarray-examples"><i class="fa fa-check"></i><b>1.1.6</b> Accumarray Examples</a></li>
-<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-array-basics-and-miscellaneous"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Array Basics and Miscellaneous</a></li>
+<li class="chapter" data-level="1.1.7" data-path="data-structures.html"><a href="data-structures.html#matlab-miscellaneous-and-basic-numeric-and-array-operations"><i class="fa fa-check"></i><b>1.1.7</b> Matlab Miscellaneous and Basic Numeric and Array Operations</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-structures.html"><a href="data-structures.html#nd-dimensional-arrays"><i class="fa fa-check"></i><b>1.2</b> ND Dimensional Arrays</a>
 <ul>
@@ -114,8 +108,8 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="data-structures.html"><a href="data-structures.html#characters-and-strings"><i class="fa fa-check"></i><b>1.4</b> Characters and Strings</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations</a></li>
-<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-manipulations-with-arrays"><i class="fa fa-check"></i><b>1.4.2</b> String Manipulations with Arrays</a></li>
+<li class="chapter" data-level="1.4.1" data-path="data-structures.html"><a href="data-structures.html#basic-string-operations-display-search-join-and-split"><i class="fa fa-check"></i><b>1.4.1</b> Basic String Operations, Display, Search, Join and Split</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-structures.html"><a href="data-structures.html#string-array-manipulations-join-find-replace-and-the-alphabet"><i class="fa fa-check"></i><b>1.4.2</b> String Array Manipulations, Join, Find, Replace and the Alphabet</a></li>
 <li class="chapter" data-level="1.4.3" data-path="data-structures.html"><a href="data-structures.html#convert-and-concatenate-strings-arrays-with-numbers-and-number-arrays-with-strings"><i class="fa fa-check"></i><b>1.4.3</b> Convert and Concatenate Strings Arrays with Numbers and Number Arrays with Strings</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="data-structures.html"><a href="data-structures.html#map-containers"><i class="fa fa-check"></i><b>1.5</b> Map Containers</a>
@@ -129,17 +123,22 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="1.6.1" data-path="data-structures.html"><a href="data-structures.html#maplab-nested-container-map-with-struct"><i class="fa fa-check"></i><b>1.6.1</b> Maplab Nested Container Map with Struct</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
+<li class="chapter" data-level="2" data-path="functions-and-programming.html"><a href="functions-and-programming.html"><i class="fa fa-check"></i><b>2</b> Functions and Programming</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.1</b> varargin Default Parameters</a>
+<li class="chapter" data-level="2.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#development-and-debugging"><i class="fa fa-check"></i><b>2.1</b> Development and Debugging</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.1.1</b> varargin as a Function Parameter</a></li>
-<li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#map-based-default-parameter-structure-with-varargin"><i class="fa fa-check"></i><b>2.1.2</b> Map Based Default Parameter Structure with varargin</a></li>
+<li class="chapter" data-level="2.1.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#matlab-error-and-warning-handling"><i class="fa fa-check"></i><b>2.1.1</b> Matlab Error and Warning Handling</a></li>
+<li class="chapter" data-level="2.1.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#matlab-profiler-save-to-html"><i class="fa fa-check"></i><b>2.1.2</b> Matlab Profiler Save to HTML</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#dynamic-functions"><i class="fa fa-check"></i><b>2.2</b> Dynamic Functions</a>
+<li class="chapter" data-level="2.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#varargin-default-parameters"><i class="fa fa-check"></i><b>2.2</b> varargin Default Parameters</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="functions.html"><a href="functions.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.2.1</b> Anonymous Function in Matlab</a></li>
-<li class="chapter" data-level="2.2.2" data-path="functions.html"><a href="functions.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.2.2</b> Dynamically Generate M Files</a></li>
+<li class="chapter" data-level="2.2.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#varargin-as-a-function-parameter"><i class="fa fa-check"></i><b>2.2.1</b> varargin as a Function Parameter</a></li>
+<li class="chapter" data-level="2.2.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#container-default-parameter-with-varargin"><i class="fa fa-check"></i><b>2.2.2</b> Container Default Parameter with varargin</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="functions-and-programming.html"><a href="functions-and-programming.html#dynamic-functions"><i class="fa fa-check"></i><b>2.3</b> Dynamic Functions</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="functions-and-programming.html"><a href="functions-and-programming.html#anonymous-function-in-matlab"><i class="fa fa-check"></i><b>2.3.1</b> Anonymous Function in Matlab</a></li>
+<li class="chapter" data-level="2.3.2" data-path="functions-and-programming.html"><a href="functions-and-programming.html#dynamically-generate-m-files"><i class="fa fa-check"></i><b>2.3.2</b> Dynamically Generate M Files</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="distributional-processes.html"><a href="distributional-processes.html"><i class="fa fa-check"></i><b>3</b> Distributional Processes</a>
@@ -167,7 +166,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="5.1" data-path="estimation.html"><a href="estimation.html#linear-estimation"><i class="fa fa-check"></i><b>5.1</b> Linear Estimation</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-estimation"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Estimation</a></li>
+<li class="chapter" data-level="5.1.1" data-path="estimation.html"><a href="estimation.html#linear-ols-regression"><i class="fa fa-check"></i><b>5.1.1</b> Linear OLS Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="estimation.html"><a href="estimation.html#nonlinear-estimation"><i class="fa fa-check"></i><b>5.2</b> Nonlinear Estimation</a>
 <ul>
@@ -201,15 +200,20 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="7.1" data-path="tables.html"><a href="tables.html#basic-table-generation"><i class="fa fa-check"></i><b>7.1</b> Basic Table Generation</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#named-tables-with-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Named Tables with Random Data</a></li>
+<li class="chapter" data-level="7.1.1" data-path="tables.html"><a href="tables.html#generate-a-table-and-fill-with-data-row-by-row-or-random-data"><i class="fa fa-check"></i><b>7.1.1</b> Generate a Table and Fill with Data Row by Row or Random Data</a></li>
 <li class="chapter" data-level="7.1.2" data-path="tables.html"><a href="tables.html#tables-order-sort-add-rename-and-drop-columns"><i class="fa fa-check"></i><b>7.1.2</b> Tables Order, Sort, Add, Rename and Drop Columns</a></li>
 <li class="chapter" data-level="7.1.3" data-path="tables.html"><a href="tables.html#row-and-column-names-for-table-based-on-arrays"><i class="fa fa-check"></i><b>7.1.3</b> Row and Column Names for Table based on Arrays</a></li>
 <li class="chapter" data-level="7.1.4" data-path="tables.html"><a href="tables.html#select-subset-of-rows-and-columns"><i class="fa fa-check"></i><b>7.1.4</b> Select Subset of Rows and Columns</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="tables.html"><a href="tables.html#table-joining"><i class="fa fa-check"></i><b>7.2</b> Table Joining</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Row and Column Combine Stack Tables and Matrices</a></li>
-<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.2</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+<li class="chapter" data-level="7.2.1" data-path="tables.html"><a href="tables.html#matlab-join-tables-by-keys"><i class="fa fa-check"></i><b>7.2.1</b> Matlab Join Tables by Keys</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tables.html"><a href="tables.html#row-and-column-combine-stack-tables-and-matrices"><i class="fa fa-check"></i><b>7.2.2</b> Row and Column Combine Stack Tables and Matrices</a></li>
+<li class="chapter" data-level="7.2.3" data-path="tables.html"><a href="tables.html#matlab-table-stack-and-join-estimation-and-simulation-results"><i class="fa fa-check"></i><b>7.2.3</b> Matlab Table Stack and Join Estimation and Simulation Results</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tables.html"><a href="tables.html#summarize"><i class="fa fa-check"></i><b>7.3</b> Summarize</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="tables.html"><a href="tables.html#matlab-table-summarize-and-aggregate-by-groups"><i class="fa fa-check"></i><b>7.3.1</b> Matlab Table Summarize and Aggregate by Groups</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -224,10 +228,11 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li class="chapter" data-level="A.1.5" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.5-map-containersmap-containers-links"><i class="fa fa-check"></i><b>A.1.5</b> <span>Section 1.5 Map Containers</span> links</a></li>
 <li class="chapter" data-level="A.1.6" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-1.6-map-structure-arraymap-structure-array-links"><i class="fa fa-check"></i><b>A.1.6</b> <span>Section 1.6 Map Structure Array</span> links</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-links"><i class="fa fa-check"></i><b>A.2</b> Functions links</a>
+<li class="chapter" data-level="A.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#functions-and-programming-links"><i class="fa fa-check"></i><b>A.2</b> Functions and Programming links</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 varargin Default Parameters</span> links</a></li>
-<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 Dynamic Functions</span> links</a></li>
+<li class="chapter" data-level="A.2.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.1-development-and-debuggingdevelopment-and-debugging-links"><i class="fa fa-check"></i><b>A.2.1</b> <span>Section 2.1 Development and Debugging</span> links</a></li>
+<li class="chapter" data-level="A.2.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.2-varargin-default-parametersvarargin-default-parameters-links"><i class="fa fa-check"></i><b>A.2.2</b> <span>Section 2.2 varargin Default Parameters</span> links</a></li>
+<li class="chapter" data-level="A.2.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-2.3-dynamic-functionsdynamic-functions-links"><i class="fa fa-check"></i><b>A.2.3</b> <span>Section 2.3 Dynamic Functions</span> links</a></li>
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#distributional-processes-links"><i class="fa fa-check"></i><b>A.3</b> Distributional Processes links</a>
 <ul>
@@ -254,6 +259,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <ul>
 <li class="chapter" data-level="A.7.1" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.1-basic-table-generationbasic-table-generation-links"><i class="fa fa-check"></i><b>A.7.1</b> <span>Section 7.1 Basic Table Generation</span> links</a></li>
 <li class="chapter" data-level="A.7.2" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.2-table-joiningtable-joining-links"><i class="fa fa-check"></i><b>A.7.2</b> <span>Section 7.2 Table Joining</span> links</a></li>
+<li class="chapter" data-level="A.7.3" data-path="index-and-code-links.html"><a href="index-and-code-links.html#section-7.3-summarizesummarize-links"><i class="fa fa-check"></i><b>A.7.3</b> <span>Section 7.3 Summarize</span> links</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -313,12 +319,13 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li>Accumarray to sum up probabilities/values for discrete elements of arrays.</li>
 <li><strong>m</strong>: <em>unique() + reshape() + accumarray()</em></li>
 </ul></li>
-<li><a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html">Matlab Array Miscellaneous</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html">Matlab Miscellaneous Array and Numeric Operations</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html"><strong>html</strong></a>
 <ul>
-<li>Check data/parameter types.</li>
+<li>Loop over numbers, find modulus (remainder) and quotient given divisor.</li>
+<li>Check data and parameter types.</li>
 <li>Compare approximately similar values.</li>
 <li>Find imaginary elements of array.</li>
-<li><strong>m</strong>: <em>imag() + isfloat() + iscell()</em></li>
+<li><strong>m</strong>: <em>imag() + isfloat() + iscell() + isnan() + isnumeric()</em></li>
 </ul></li>
 </ol>
 </div>
@@ -377,25 +384,29 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <div id="section-1.4-characters-and-stringscharacters-and-strings-links" class="section level3" number="8.1.4">
 <h3><span class="header-section-number">A.1.4</span> <a href="data-structures.html#characters-and-strings">Section 1.4 Characters and Strings</a> links</h3>
 <ol style="list-style-type: decimal">
-<li><a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html">String Basics</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html">Basic String Operations, DisplayDisplay, Search, Join and Split</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html"><strong>html</strong></a>
 <ul>
+<li>Generating a string for file suffix based on date and time.</li>
+<li>Print info segment of multiple numeric and string parameters, scalar and array.</li>
 <li>Compose string and rounded numeric array.</li>
 <li>Cut string suffix and append new suffix.</li>
-<li><strong>m</strong>: *compose() + strjoin() + str_sub = split(string, “.”) + strcat(str_sub{1}, ’_m.m’)*</li>
+<li><strong>m</strong>: *datestr(now, ‘mm-dd-yyyy-HH-MM’) + char() + compose() + strjoin() + contains() + matches() + str_sub = split(string, “.”) + strcat(str_sub{1}, ’_m.m’)*</li>
 </ul></li>
-<li><a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html">String Arrays Operations</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_array.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html">String Arrays Operations, Join, Find, Replace and the Alphabet</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_array.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html"><strong>html</strong></a>
 <ul>
-<li>String arrays and cell strings.</li>
+<li>Generate string arrays and cell strings.</li>
+<li>String array from single and double quoted strings.</li>
 <li>Duplicate strings, concatenate string, and paste strings jointly with separator.</li>
 <li>Find string element positions, replace substrings.</li>
-<li><strong>m</strong>: <em>repmat() + num2str() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp()))) + cellstr()</em></li>
+<li><strong>m</strong>: <em>repmat() + num2str() + string() + strcat() + strjoin() + fprintf() + strcmp() + strrep() + cel2mat(cellfun(@(m) find(strcmp()))) + cellstr() + ‘a’:‘z’</em></li>
 </ul></li>
 <li><a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html">Convert and Cancatenate String and Numeric Array Concatenations</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_strcat.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_strcat.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_strcat.html"><strong>html</strong></a>
 <ul>
 <li>Generate rounded string array matrix with leading zero, leading space, decimal round from numeric matrix.</li>
+<li>Generate a string from a numeric array and join with positional counter.</li>
 <li>Create a title string by joining rounded parameter and parameter names, with decimal formatting.</li>
 <li>Concatenate multiple numeric arrays together with strings and format.</li>
-<li><strong>m</strong>: <em>compose() + cellstr() + strcat() + strjoin() + %.2f</em></li>
+<li><strong>m</strong>: <em>num2str() + compose() + cellstr() + strcat() + strjoin() + %.2f</em></li>
 </ul></li>
 </ol>
 </div>
@@ -435,10 +446,25 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ol>
 </div>
 </div>
-<div id="functions-links" class="section level2" number="8.2">
-<h2><span class="header-section-number">A.2</span> Functions links</h2>
-<div id="section-2.1-varargin-default-parametersvarargin-default-parameters-links" class="section level3" number="8.2.1">
-<h3><span class="header-section-number">A.2.1</span> <a href="functions.html#varargin-default-parameters">Section 2.1 varargin Default Parameters</a> links</h3>
+<div id="functions-and-programming-links" class="section level2" number="8.2">
+<h2><span class="header-section-number">A.2</span> Functions and Programming links</h2>
+<div id="section-2.1-development-and-debuggingdevelopment-and-debugging-links" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">A.2.1</span> <a href="functions-and-programming.html#development-and-debugging">Section 2.1 Development and Debugging</a> links</h3>
+<ol style="list-style-type: decimal">
+<li><a href="https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_error_warning.html">Matlab Errors and Warnings</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/fs_error_warning.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_error_warning.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_error_warning.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_error_warning.html"><strong>html</strong></a>
+<ul>
+<li>Turn off warning messages.</li>
+<li><strong>m</strong>: <em>lastwarn + warning(‘off,’ st_warn_id);</em></li>
+</ul></li>
+<li><a href="https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_profiler_tester.html">Matlab Profiling and Testing to Improve Code Speed</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/fs_profiler_tester.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_profiler_tester.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_profiler_tester.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_profiler_tester.html"><strong>html</strong></a>
+<ul>
+<li>Profile code segment and save profiling results to HTML folder in the current directory.</li>
+<li><strong>m</strong>: <em>profile on + profile off + profsave(profile(‘info’), spn) + matlab.desktop.editor.getActiveFilename + fileparts() + fullfile()</em></li>
+</ul></li>
+</ol>
+</div>
+<div id="section-2.2-varargin-default-parametersvarargin-default-parameters-links" class="section level3" number="8.2.2">
+<h3><span class="header-section-number">A.2.2</span> <a href="functions-and-programming.html#varargin-default-parameters">Section 2.2 varargin Default Parameters</a> links</h3>
 <ol style="list-style-type: decimal">
 <li><a href="https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_varargin.html">Use varargin as a Function Parameter</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/fs_varargin.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_varargin.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_varargin.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_varargin.html"><strong>html</strong></a>
 <ul>
@@ -446,7 +472,7 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li>Use varargin for functions with limited parameters.</li>
 <li><strong>m</strong>: <em>varargin + cell2mat() + function [out_put] = func_name(varargin)</em></li>
 </ul></li>
-<li><a href="https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_defaultmap.html">Use varargin as a Function Parameter</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/fs_defaultmap.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_defaultmap.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_defaultmap.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_defaultmap.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_defaultmap.html">Container Default Parameter with varargin and Input Type Check</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/fs_defaultmap.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_defaultmap.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/defaultparam/htmlpdfm/fs_defaultmap.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/function/defaultparam/htmlpdfm/fs_defaultmap.html"><strong>html</strong></a>
 <ul>
 <li>The varargin structure could lead to excessive code lines. Container Map works well with large parameter structure.</li>
 <li>Core model functions with potentially many parameters, possibly override default generation to save time.</li>
@@ -454,8 +480,8 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 </ul></li>
 </ol>
 </div>
-<div id="section-2.2-dynamic-functionsdynamic-functions-links" class="section level3" number="8.2.2">
-<h3><span class="header-section-number">A.2.2</span> <a href="functions.html#dynamic-functions">Section 2.2 Dynamic Functions</a> links</h3>
+<div id="section-2.3-dynamic-functionsdynamic-functions-links" class="section level3" number="8.2.3">
+<h3><span class="header-section-number">A.2.3</span> <a href="functions-and-programming.html#dynamic-functions">Section 2.3 Dynamic Functions</a> links</h3>
 <ol style="list-style-type: decimal">
 <li><a href="https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_anonymous_func.html">Anonymous Function Examples</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/fs_anonymous_func.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_anonymous_func.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/function/anonymous/htmlpdfm/fs_anonymous_func.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/function/anonymous/htmlpdfm/fs_anonymous_func.html"><strong>html</strong></a>
 <ul>
@@ -538,10 +564,11 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <div id="section-5.1-linear-estimationlinear-estimation-links" class="section level3" number="8.5.1">
 <h3><span class="header-section-number">A.5.1</span> <a href="estimation.html#linear-estimation">Section 5.1 Linear Estimation</a> links</h3>
 <ol style="list-style-type: decimal">
-<li><a href="https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html">Matlab Linear OLS Estimation</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/fs_linear_ols.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html">Estimate and Solve for Parameters in Linear System of Equation and OLS Regression</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/fs_linear_ols.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/estimation/linear/htmlpdfm/fs_linear_ols.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/estimation/linear/htmlpdfm/fs_linear_ols.html"><strong>html</strong></a>
 <ul>
-<li>Linear OLS estimation with and without intercept.</li>
-<li><strong>m</strong>: <em>fitlm()</em></li>
+<li>Fit a line through the origin with two points of data.</li>
+<li>Solve/estimate an exactly identified system of linear equations.</li>
+<li><strong>m</strong>: <em>fitlm() + fc_ols_lin = @(y, x) (x’x)^(-1)(x’y);</em></li>
 </ul></li>
 </ol>
 </div>
@@ -627,10 +654,11 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <div id="section-7.1-basic-table-generationbasic-table-generation-links" class="section level3" number="8.7.1">
 <h3><span class="header-section-number">A.7.1</span> <a href="tables.html#basic-table-generation">Section 7.1 Basic Table Generation</a> links</h3>
 <ol style="list-style-type: decimal">
-<li><a href="https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html">Named Tables with Random Data</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_gensample.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html"><strong>html</strong></a>
+<li><a href="https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html">Table Fill Data Row by Row or with Random Data</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_gensample.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_gensample.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_gensample.html"><strong>html</strong></a>
 <ul>
+<li>Generate an empty table and fill with data row by row.</li>
 <li>Convert a random matrix to a table with column and row names defined with arrays.</li>
-<li><strong>m</strong>: <em>array2table() + strcat() + addvars() + matlab.lang.makeValidName()</em></li>
+<li><strong>m</strong>: <em>table() + array2table() + strcat() + addvars() + matlab.lang.makeValidName()</em></li>
 </ul></li>
 <li><a href="https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_ordersort.html">Order, Sort and Rename Columns</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_ordersort.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_ordersort.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_ordersort.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_ordersort.html"><strong>html</strong></a>
 <ul>
@@ -646,14 +674,20 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li><a href="https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html">Select Subset of Rows and Columns</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/fs_tab_select_rows_cols.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/main/htmlpdfm/fs_tab_select_rows_cols.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/table/main/htmlpdfm/fs_tab_select_rows_cols.html"><strong>html</strong></a>
 <ul>
 <li>Conditional selection based on cell values and column and row names.</li>
+<li>Select if row value matches any value from an arry of values.</li>
 <li>Load a excel file and select based on column name string conditions.</li>
-<li><strong>m</strong>: <em>tb(strcmp(tb.v1, “b”),:) + tb(tb.va==0.4,:) + readtable() + startsWith() + endsWith() + contains()</em></li>
+<li><strong>m</strong>: <em>tb(strcmp(tb.v1, “b”),:) + tb(tb.va==0.4,:) + readtable() + startsWith() + endsWith() + contains() + matches()</em></li>
 </ul></li>
 </ol>
 </div>
 <div id="section-7.2-table-joiningtable-joining-links" class="section level3" number="8.7.2">
 <h3><span class="header-section-number">A.7.2</span> <a href="tables.html#table-joining">Section 7.2 Table Joining</a> links</h3>
 <ol style="list-style-type: decimal">
+<li><a href="https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_join.html">Join Table by Keys</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_join.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_join.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_join.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_join.html"><strong>html</strong></a>
+<ul>
+<li>Left join larger table with smaller table with common keys.</li>
+<li><strong>m</strong>: <em>join() + table()</em></li>
+</ul></li>
 <li><a href="https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html">Stack Matlab Tables</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/join/fs_tab_stack.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/join/htmlpdfm/fs_tab_stack.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/table/join/htmlpdfm/fs_tab_stack.html"><strong>html</strong></a>
 <ul>
 <li>Append columns to existing table. Stack tables vertically and horizontally.</li>
@@ -666,6 +700,16 @@ Simulate a model, column combine simulation parameters with multi-row simulation
 <li>Simulate a model, column combine simulation parameters with multi-row simulation results. Then row stack results from multiple simulations together.</li>
 <li><strong>m</strong>: <em>array2table() + outerjoin() + addvars()</em></li>
 <li><strong>parallel</strong>: <em>parfor</em></li>
+</ul></li>
+</ol>
+</div>
+<div id="section-7.3-summarizesummarize-links" class="section level3" number="8.7.3">
+<h3><span class="header-section-number">A.7.3</span> <a href="tables.html#summarize">Section 7.3 Summarize</a> links</h3>
+<ol style="list-style-type: decimal">
+<li><a href="https://fanwangecon.github.io/M4Econ/table/summarize/htmlpdfm/fs_tab_group_summ.html">Table Summarize and Aggregate by Groups</a>: <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/summarize/fs_tab_group_summ.mlx"><strong>mlx</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/summarize/htmlpdfm/fs_tab_group_summ.m"><strong>m</strong></a> | <a href="https://github.com/FanWangEcon/M4Econ/blob/master/table/summarize/htmlpdfm/fs_tab_group_summ.pdf"><strong>pdf</strong></a> | <a href="https://fanwangecon.github.io/M4Econ/table/summarize/htmlpdfm/fs_tab_group_summ.html"><strong>html</strong></a>
+<ul>
+<li>Group table by one or several group variables, and aggregate over another numerical variable within group.</li>
+<li><strong>m</strong>: <em>groupsummary() + table() + movevars()</em></li>
 </ul></li>
 </ol>
 

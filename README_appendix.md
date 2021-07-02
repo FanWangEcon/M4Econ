@@ -26,7 +26,8 @@
 6. [Accumarray Examples](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_accumarray.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_accumarray.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_accumarray.html)
 	+ Accumarray to sum up probabilities/values for discrete elements of arrays.
 	+ **m**: *unique() + reshape() + accumarray()*
-7. [Matlab Array Miscellaneous](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
+7. [Matlab Miscellaneous Array and Numeric Operations](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
+	+ Loop over numbers, find modulus (remainder) and quotient given divisor.
 	+ Check data and parameter types.
 	+ Compare approximately similar values.
 	+ Find imaginary elements of array.
@@ -75,11 +76,11 @@
 ] links
 
 1. [Basic String Operations, DisplayDisplay, Search, Join and Split](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string.html)
+	+ Generating a string for file suffix based on date and time.
 	+ Print info segment of multiple numeric and string parameters, scalar and array.
 	+ Compose string and rounded numeric array.
 	+ Cut string suffix and append new suffix.
-	+ Search which element of string array contains, and which element matches other strings.
-	+ **m**: *char() + compose() + strjoin() + contains() + matches() + str_sub = split(string, ".") + strcat(str_sub{1}, '_m.m')*
+	+ **m**: *datestr(now, 'mm-dd-yyyy-HH-MM') + char() + compose() + strjoin() + contains() + matches() + str_sub = split(string, ".") + strcat(str_sub{1}, '_m.m')*
 2. [String Arrays Operations, Join, Find, Replace and the Alphabet](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/fs_string_array.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/string/htmlpdfm/fs_string_array.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/string/htmlpdfm/fs_string_array.html)
 	+ Generate string arrays and cell strings.
 	+ String array from single and double quoted strings.
@@ -120,9 +121,20 @@
 	+ Use struct to in effect make single-line nested container map calls.
 	+ **m**: *struct*
 
-## Functions links
+## Functions and Programming links
 
-### [Section 2.1  varargin Default Parameters
+### [Section 2.1  Development and Debugging
+][Development and Debugging
+] links
+
+1. [Matlab Errors and Warnings](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_error_warning.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/fs_error_warning.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_error_warning.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_error_warning.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_error_warning.html)
+	+ Turn off warning messages.
+	+ **m**: *lastwarn + warning('off', st_warn_id);*
+2. [Matlab Profiling and Testing to Improve Code Speed](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_profiler_tester.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/fs_profiler_tester.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_profiler_tester.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/function/programming/htmlpdfm/fs_profiler_tester.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/function/programming/htmlpdfm/fs_profiler_tester.html)
+	+ Profile code segment and save profiling results to HTML folder in the current directory.
+	+ **m**: *profile on + profile off + profsave(profile('info'), spn) + matlab.desktop.editor.getActiveFilename + fileparts() + fullfile()*
+
+### [Section 2.2  varargin Default Parameters
 ][varargin Default Parameters
 ] links
 
@@ -135,7 +147,7 @@
 	+ Core model functions with potentially many parameters, possibly override default generation to save time.
 	+ **m**: *varargin + function [out_put] = func_name(varargin) + cm_defaults = {cm_a, cm_b} + [cm_defaults{1:optional_params_len}] = varargin{:} + cm_c = [cm_a;cm_b]*
 
-### [Section 2.2  Dynamic Functions
+### [Section 2.3  Dynamic Functions
 ][Dynamic Functions
 ] links
 

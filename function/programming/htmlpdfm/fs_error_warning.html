@@ -11,9 +11,9 @@
 
 <meta name="author" content="Fan Wang" />
 
-<meta name="date" content="2021-06-22" />
+<meta name="date" content="2021-06-30" />
 
-<title>Matlab Basic String Operations, Display, Search, Join and Split</title>
+<title>Matlab Errors and Warnings</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1844,170 +1844,45 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Matlab Basic String Operations, Display, Search, Join and Split</h1>
+<h1 class="title toc-ignore">Matlab Errors and Warnings</h1>
 <h4 class="author"><a href="https://fanwangecon.github.io/">Fan Wang</a></h4>
-<h4 class="date">2021-06-22</h4>
+<h4 class="date">2021-06-30</h4>
 
 </div>
 
 
-<div id="basic-string-operations-display-search-join-and-split" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Basic String Operations, Display, Search, Join and Split</h1>
+<div id="matlab-error-and-warning-handling" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Matlab Error and Warning Handling</h1>
 <blockquote>
-<p>Go to the <a href="https://github.com/FanWangEcon//M4Econ/blob/master/amto/string//fs_string.mlx"><strong>MLX</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/amto/string//htmlpdfm/fs_string.m"><strong>M</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/amto/string//htmlpdfm/fs_string.pdf"><strong>PDF</strong></a>, or <a href="https://fanwangecon.github.io//M4Econ/amto/string//htmlpdfm/fs_string.html"><strong>HTML</strong></a> version of this file. Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
+<p>Go to the <a href="https://github.com/FanWangEcon//M4Econ/blob/master/function/programming//fs_error_warning.mlx"><strong>MLX</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/function/programming//htmlpdfm/fs_error_warning.m"><strong>M</strong></a>, <a href="https://github.com/FanWangEcon//M4Econ/blob/master/function/programming//htmlpdfm/fs_error_warning.pdf"><strong>PDF</strong></a>, or <a href="https://fanwangecon.github.io//M4Econ/function/programming//htmlpdfm/fs_error_warning.html"><strong>HTML</strong></a> version of this file. Go back to <a href="http://fanwangecon.github.io/">fan</a>’s <a href="https://fanwangecon.github.io/MEconTools/">MEconTools</a> Package, <a href="https://fanwangecon.github.io/M4Econ/">Matlab Code Examples</a> Repository (<a href="https://fanwangecon.github.io/M4Econ/bookdown">bookdown site</a>), or <a href="https://fanwangecon.github.io/Math4Econ/">Math for Econ with Matlab</a> Repository (<a href="https://fanwangecon.github.io/Math4Econ/bookdown">bookdown site</a>).</p>
 </blockquote>
-<div id="date-string" class="section level2" number="1.1">
-<h2 number="1.1"><span class="header-section-number">1.1</span> Date String</h2>
-<p>Generate a string based on date and time as file suffix.</p>
-<pre><code>st_file_suffix = [&#39;_d&#39; datestr(now,&#39;yymmdd_tHHMMSS&#39;)];
-disp(st_file_suffix);
+<div id="turn-off-warning-messages" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Turn off Warning Messages</h2>
+<p>During estimation, at some parameter values, estimation routine generates warnings messages. These warning messages fill up the screen and makes it hard to track estimation outputs. In the example below, we run an OLS regression that generates a warning message. We turn the message off, and then we turn the message on again.</p>
+<p>First run a regression that generates a <a href="https://www.mathworks.com/help/matlab/ref/lastwarn.html">warning message</a>.</p>
+<pre><code>% OLS Regression
+fci_ols_lin = @(y, x) (x&#39;*x)^(-1)*(x&#39;*y);
+% Regression inputs
+ar_y = [1;1];
+mt_x = [0 0; 0 0];
+% Estimates
+ar_esti = fci_ols_lin(ar_y, mt_x);
 
-_d210701_t094001</code></pre>
-</div>
-<div id="combine-string-numeric-values-etc-single-and-double-quotes" class="section level2" number="1.2">
-<h2 number="1.2"><span class="header-section-number">1.2</span> Combine String, Numeric values etc, Single and Double Quotes</h2>
-<p>Convert a string array into a single string, note the double quotes, and the auto space between:</p>
-<pre><code>st_a = &quot;another string&quot;;
-ar_st = [&quot;abc&quot;, num2str(2), &quot;opq&quot;, st_a];
-disp(strjoin(ar_st));
+Warning: Matrix is singular to working precision.</code></pre>
+<p>Second, identify and turn off the warning message.</p>
+<pre><code>% Check warning message and warning ID of the last message.
+[st_msg, st_warnID] = lastwarn;
+% Turn off earning message
+warning(&#39;off&#39;, st_warnID);
+% Estimates no longer generates warning
+ar_esti = fci_ols_lin(ar_y, mt_x);</code></pre>
+<p>Third, turn warning message back on.</p>
+<pre><code>% Warning message back on
+warning(&#39;on&#39;, st_warnID);
+% Estimates generates warning again
+ar_esti = fci_ols_lin(ar_y, mt_x);
 
-abc 2 opq another string</code></pre>
-<p>If we do not want to have spaces between words, the second parameter for strjoin allows for string connectors:</p>
-<pre><code>st_a = &quot;another string&quot;;
-ar_st = [&quot;abc&quot;, num2str(2), &quot;opq&quot;, st_a];
-disp(strjoin(ar_st, &quot;&quot;));
-
-abc2opqanother string</code></pre>
-<p>With single quotes, the str element is not an array, so does not need strjoin, but not need to have spaces:</p>
-<pre><code>st_a = &#39;another string&#39;;
-str = [&#39;abc &#39;, num2str(2), &#39; opq &#39;, st_a];
-disp((str));
-
-abc 2 opq another string</code></pre>
-</div>
-<div id="construct-string-print-statement-with-string-and-numeric-elements" class="section level2" number="1.3">
-<h2 number="1.3"><span class="header-section-number">1.3</span> Construct String Print Statement with String and Numeric Elements</h2>
-<p>In the example below, we have a number of strings we want to put inside a string array, then join with strjoin, but two of the strings need to be constructed as strings first. Note below that double quoates are own strings, single quotes in brackets constructing additional strings.</p>
-<pre><code>st_a = &quot;another string&quot;;
-ar_st = [&quot;abc&quot;, &quot;efg&quot;];
-ar_fl_vals = rand([1,3]);
-st_print = strjoin(...
-    [&quot;Completed SNW_DS_MAIN:&quot;, ...
-    [&#39;SNW_MP_PARAM=&#39; num2str(123)], ...
-    [&#39;SNW_MP_CONTROL=&#39; num2str(678)], ...
-    [&#39;STR_VAR1=&#39; char(&#39;string&#39;)], ...
-    [&#39;STR_VAR2=&#39; char(strjoin(ar_st, &quot;-&quot;))], ...
-    [&#39;STR_VAR3:;&#39; char(strjoin(ar_st, &quot;;&quot;))], ...
-    [&#39;ar_st:;&#39; char(strjoin(strcat( ...
-    num2str((1:length(ar_st))&#39;, &#39;%0.3d&#39;), &#39;=&#39;, ar_st&#39; ...
-    ), &quot;;&quot;))], ...
-    [&#39;ar_fl_vals:;&#39; strjoin(string(strcat( ...
-    num2str((1:length(ar_fl_vals))&#39;, &#39;%0.3d&#39;), &#39;=&#39;, num2str(ar_fl_vals&#39;, &#39;%3.2f&#39;))), &quot;;&quot;)], ...
-    ], &quot;;&quot;);
-% Ways to print
-st_out = st_print;
-ar_ch_out = char(strsplit(st_print,&quot;;&quot;)&#39;);
-ar_st_out = strsplit(st_print,&quot;;&quot;)&#39;;
-% Print
-disp(st_out);
-
-Completed SNW_DS_MAIN:;SNW_MP_PARAM=123;SNW_MP_CONTROL=678;STR_VAR1=string;STR_VAR2=abc-efg;STR_VAR3:;abc;efg;ar_st:;001=abc;002=efg;ar_fl_vals:;;001=0.87;002=0.25;003=0.48
-
-disp(ar_ch_out);
-
-Completed SNW_DS_MAIN:
-SNW_MP_PARAM=123      
-SNW_MP_CONTROL=678    
-STR_VAR1=string       
-STR_VAR2=abc-efg      
-STR_VAR3:             
-abc                   
-efg                   
-ar_st:                
-001=abc               
-002=efg               
-ar_fl_vals:           
-001=0.87              
-002=0.25              
-003=0.48              
-
-disp(ar_st_out);
-
-    &quot;Completed SNW_DS_MAIN:&quot;
-    &quot;SNW_MP_PARAM=123&quot;
-    &quot;SNW_MP_CONTROL=678&quot;
-    &quot;STR_VAR1=string&quot;
-    &quot;STR_VAR2=abc-efg&quot;
-    &quot;STR_VAR3:&quot;
-    &quot;abc&quot;
-    &quot;efg&quot;
-    &quot;ar_st:&quot;
-    &quot;001=abc&quot;
-    &quot;002=efg&quot;
-    &quot;ar_fl_vals:&quot;
-    &quot;001=0.87&quot;
-    &quot;002=0.25&quot;
-    &quot;003=0.48&quot;</code></pre>
-</div>
-<div id="paste-join-strings-together-with-separator" class="section level2" number="1.4">
-<h2 number="1.4"><span class="header-section-number">1.4</span> Paste Join Strings Together with Separator</h2>
-<p>Join strings together with separator, this is similar to the paste0 function in R.</p>
-<pre><code>ar_st = [&quot;abc&quot;, &quot;efg&quot;, &quot;opq&quot;];
-disp(strjoin(ar_st, &#39;-&#39;));
-
-abc-efg-opq</code></pre>
-</div>
-<div id="combine-char-with-numeric-value" class="section level2" number="1.5">
-<h2 number="1.5"><span class="header-section-number">1.5</span> Combine Char with Numeric Value</h2>
-<p>Compose a string with words and numerical values</p>
-<pre><code>st_title = strcat(&quot;Figure Title &quot;, ...
-    &quot;(&quot;, ...
-    &quot;threedeci=%.3f,&quot;, ...
-    &quot;twodeci=%.2f,&quot;, ...
-    &quot;int=%.0f&quot;, ...
-    &quot;)&quot;);
-ar_params = 123.4567 + zeros(1,3);
-st_combo = compose(st_title, ar_params);
-disp(st_combo);
-
-Figure Title (threedeci=123.457,twodeci=123.46,int=123)</code></pre>
-</div>
-<div id="search-if-string-contains-substring" class="section level2" number="1.6">
-<h2 number="1.6"><span class="header-section-number">1.6</span> Search if String Contains Substring</h2>
-<p>Does string contain substring?</p>
-<pre><code>st_long1 = &#39;simu_dense&#39;;
-st_long2 = &#39;simu_denser&#39;;
-st_long3 = &#39;simuverydense&#39;;
-st_long4 = &#39;simu_medium&#39;;
-st_long5 = &#39;simuverysmall&#39;;
-disp([contains(st_long1, &#39;dense&#39;), contains(st_long2, &#39;dense&#39;), contains(st_long3, &#39;dense&#39;), ...
-    contains(st_long4, &#39;dense&#39;), contains(st_long5, &#39;dense&#39;)]);
-
-   1   1   1   0   0</code></pre>
-</div>
-<div id="find-elements-of-an-array-that-matches-any-elements-of-another-array" class="section level2" number="1.7">
-<h2 number="1.7"><span class="header-section-number">1.7</span> Find Elements of an Array that Matches Any Elements of Another Array</h2>
-<p>There is an array of strings, check if each element equals values specified in another string, using the match function.</p>
-<pre><code>% String array from strings
-ar_st_long = string({st_long1, st_long2, st_long3, st_long4, st_long5});
-% If matches simu_dense
-disp(matches(ar_st_long, &#39;simu_dense&#39;));
-
-   1   0   0   0   0
-
-% If matches simu_dense or simu_denser
-disp(matches(ar_st_long, [&quot;simu_dense&quot;, &quot;simu_denser&quot;]));
-
-   1   1   0   0   0</code></pre>
-</div>
-<div id="change-file-name-mlx-to-m" class="section level2" number="1.8">
-<h2 number="1.8"><span class="header-section-number">1.8</span> Change File Name MLX to M</h2>
-<pre><code>st_file_name_mlx = &#39;continuous_differentiable.mlx&#39;;
-at_st_split_file_name = split(st_file_name_mlx, &quot;.&quot;);
-st_file_name_m = strcat(at_st_split_file_name{1}, &#39;_m.m&#39;);
-disp(st_file_name_m);
-
-continuous_differentiable_m.m</code></pre>
+Warning: Matrix is singular to working precision.</code></pre>
 </div>
 </div>
 

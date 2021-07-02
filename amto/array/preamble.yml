@@ -43,9 +43,10 @@
   urlcolor: blue
 
 - file: fs_img
-  title: "Matlab Array Miscellaneous"
-  titleshort: "Matlab Array Miscellaneous"
+  title: "Matlab Miscellaneous Array and Numeric Operations"
+  titleshort: "Matlab Miscellaneous Array and Numeric Operations"
   description: |
+    Loop over numbers, find modulus (remainder) and quotient given divisor.
     Check data and parameter types.
     Compare approximately similar values.
     Find imaginary elements of array.

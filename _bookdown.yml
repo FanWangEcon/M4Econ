@@ -45,6 +45,9 @@ rmd_files:
   - amto/struct/fs_struct_map.Rmd
 
   - function/main.Rmd
+  - function/programming/main.Rmd
+  - function/programming/fs_error_warning.Rmd
+  - function/programming/fs_profiler_tester.Rmd
   - function/defaultparam/main.Rmd
   - function/defaultparam/fs_varargin.Rmd
   - function/defaultparam/fs_defaultmap.Rmd

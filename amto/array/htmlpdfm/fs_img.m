@@ -1,7 +1,58 @@
-%% Matlab Array Basics and Miscellaneous
+%% Matlab Miscellaneous and Basic Numeric and Array Operations
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Divisor, Quotient and Remainder
+% Given an array of integer values, and some divisor, find the quotient and 
+% remainder.
+
+it_divisor = 10;
+for bl_int=[0,1]
+    if (bl_int == 1)
+        ar_integers = int16([1,2,3, 11,12,13, 21,22,23]);
+    else
+        ar_integers = [1,2,3, 11,12,13, 21,22,23];
+    end
+    for it_integer=ar_integers
+        % Modulus and quotient
+        if(isinteger(it_integer))
+            it_quotient = idivide(it_integer, it_divisor);
+        else
+            it_quotient = fix(it_integer/it_divisor);
+        end
+        it_remainder = rem(it_integer, it_divisor);
+
+        if (it_remainder == 1)
+            fl_power = 1.0;
+        elseif (it_remainder == 2)
+            fl_power = 1.5;
+        elseif (it_remainder == 3)
+            fl_power = 2.0;
+        end
+
+        if (it_quotient == 0)
+            fl_base = 2;
+        elseif (it_quotient == 1)
+            fl_base = exp(1);
+        elseif (it_quotient == 2)
+            fl_base = 10;
+        end
+
+        fl_value = fl_base^fl_power;
+
+        % Print
+        st_print = strjoin(...
+            ["Divide test:", ...
+            ['bl_int=' num2str(bl_int)], ...
+            ['it_integer=' num2str(it_integer)], ...
+            ['it_remainder=' num2str(it_remainder)], ...
+            ['it_quotient=' num2str(it_quotient)], ...
+            ['fl_value=' num2str(fl_value)], ...
+            ], ";");
+        disp(st_print);
+
+    end
+end
 %% Check if Array is All Above or Below Zero
 % There is an array that contains possible NaN values, check if all elements 
 % of array are positive, or all elements are negative, ignoring the NaN values.

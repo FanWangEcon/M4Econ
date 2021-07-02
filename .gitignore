@@ -8,6 +8,7 @@
 # RMD
 ###################
 
+**/_profile
 _img/
 *.Rmd
 !index.Rmd

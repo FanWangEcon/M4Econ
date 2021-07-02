@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Matlab Error and Warning Handling</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S7 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S8 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S9 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Matlab Error and Warning Handling</span></h1><div  class = 'S1'><span style=' font-weight: bold;'>back to </span><a href = "https://fanwangecon.github.io"><span style=' font-weight: bold;'>Fan</span></a><span style=' font-weight: bold;'>'s </span><a href = "https://fanwangecon.github.io/Math4Econ/"><span style=' font-weight: bold;'>Intro Math for Econ</span></a><span style=' font-weight: bold;'>,  </span><a href = "https://fanwangecon.github.io/M4Econ/"><span style=' font-weight: bold;'>Matlab Examples</span></a><span style=' font-weight: bold;'>, or </span><a href = "https://fanwangecon.github.io/MEconTools/"><span style=' font-weight: bold;'>MEconTools</span></a><span style=' font-weight: bold;'> Repositories</span></div><h2  class = 'S2'><span>Turn off Warning Messages</span></h2><div  class = 'S1'><span>During estimation, at some parameter values, estimation routine generates warnings messages. These warning messages fill up the screen and makes it hard to track estimation outputs. In the example below, we run an OLS regression that generates a warning message. We turn the message off, and then we turn the message on again.</span></div><div  class = 'S1'><span>First run a regression that generates a </span><a href = "https://www.mathworks.com/help/matlab/ref/lastwarn.html"><span>warning message</span></a><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% OLS Regression</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>fci_ols_lin = @(y, x) (x'*x)^(-1)*(x'*y);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Regression inputs</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>ar_y = [1;1];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>mt_x = [0 0; 0 0];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Estimates</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span class="warning_squiggle_rte1865859824">ar_esti</span><span> = fci_ols_lin(ar_y, mt_x);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsWarningElement" uid="6AE8E695" data-testid="output_0" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="diagnosticMessage-wrapper diagnosticMessage-warningType"><div class="diagnosticMessage-messagePart">Warning: Matrix is singular to working precision.</div><div class="diagnosticMessage-stackPart"></div></div></div></div></div></div><div  class = 'S7'><span>Second, identify and turn off the warning message. </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Check warning message and warning ID of the last message.</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>[st_msg, st_warnID] = lastwarn;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Turn off earning message</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>warning(</span><span style="color: rgb(170, 4, 249);">'off'</span><span>, st_warnID);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Estimates no longer generates warning</span></span></div></div><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre;"><span class="warning_squiggle_rte1865859824">ar_esti</span><span> = fci_ols_lin(ar_y, mt_x);</span></span></div></div></div><div  class = 'S7'><span>Third, turn warning message back on.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Warning message back on</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>warning(</span><span style="color: rgb(170, 4, 249);">'on'</span><span>, st_warnID);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% Estimates generates warning again</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S5'><span style="white-space: pre;"><span>ar_esti = fci_ols_lin(ar_y, mt_x);</span></span></div><div  class = 'S6'><div class="inlineElement eoOutputWrapper embeddedOutputsWarningElement" uid="A87A272E" data-testid="output_1" data-width="1128" data-height="18" data-hashorizontaloverflow="false" style="width: 1158px; max-height: 261px;"><div class="diagnosticMessage-wrapper diagnosticMessage-warningType"><div class="diagnosticMessage-messagePart">Warning: Matrix is singular to working precision.</div><div class="diagnosticMessage-stackPart"></div></div></div></div></div></div><h2  class = 'S9'></h2></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Matlab Error and Warning Handling
+% *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
+% *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
+% or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Turn off Warning Messages
+% During estimation, at some parameter values, estimation routine generates 
+% warnings messages. These warning messages fill up the screen and makes it hard 
+% to track estimation outputs. In the example below, we run an OLS regression 
+% that generates a warning message. We turn the message off, and then we turn 
+% the message on again.
+% 
+% First run a regression that generates a <https://www.mathworks.com/help/matlab/ref/lastwarn.html 
+% warning message>.
+
+% OLS Regression
+fci_ols_lin = @(y, x) (x'*x)^(-1)*(x'*y);
+% Regression inputs
+ar_y = [1;1];
+mt_x = [0 0; 0 0];
+% Estimates
+ar_esti = fci_ols_lin(ar_y, mt_x);
+%% 
+% Second, identify and turn off the warning message. 
+
+% Check warning message and warning ID of the last message.
+[st_msg, st_warnID] = lastwarn;
+% Turn off earning message
+warning('off', st_warnID);
+% Estimates no longer generates warning
+ar_esti = fci_ols_lin(ar_y, mt_x);
+%% 
+% Third, turn warning message back on.
+
+% Warning message back on
+warning('on', st_warnID);
+% Estimates generates warning again
+ar_esti = fci_ols_lin(ar_y, mt_x);
+%%
+##### SOURCE END #####
+--></body></html>

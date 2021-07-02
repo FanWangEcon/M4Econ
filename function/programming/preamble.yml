@@ -1,0 +1,51 @@
+- file: fs_error_warning
+  title: "Matlab Errors and Warnings"
+  titleshort: "Matlab Errors and Warnings"
+  description: |
+    Turn off warning messages.
+  core :
+    - package: m
+      code: |
+        lastwarn
+        warning('off', st_warn_id);
+  date: 2021-06-30
+  date_start: 2021-06-30
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue
+
+- file: fs_profiler_tester
+  title: "Matlab Profiling and Testing to Improve Code Speed"
+  titleshort: "Matlab Profiling and Testing to Improve Code Speed"
+  description: |
+    Profile code segment and save profiling results to HTML folder in the current directory.
+  core :
+    - package: m
+      code: |
+        profile on
+        profile off
+        profsave(profile('info'), spn)
+        matlab.desktop.editor.getActiveFilename
+        fileparts()
+        fullfile()
+  date: 2021-07-01
+  date_start: 2021-07-01
+  output:
+    pdf_document:
+      pandoc_args: '../../_output_kniti_pdf.yaml'
+      includes:
+        in_header: '../../preamble.tex'
+    html_document:
+      pandoc_args: '../../_output_kniti_html.yaml'
+      includes:
+        in_header: '../../hdga.html'
+  always_allow_html: true
+  urlcolor: blue

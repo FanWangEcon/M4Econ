@@ -2,6 +2,7 @@
   title: "Matlab Basic String Operations, Display, Search, Join and Split"
   titleshort: "Basic String Operations, DisplayDisplay, Search, Join and Split"
   description: |
+    Generating a string for file suffix based on date and time.
     Print info segment of multiple numeric and string parameters, scalar and array.
     Compose string and rounded numeric array.
     Cut string suffix and append new suffix.
@@ -9,6 +10,7 @@
   core :
     - package: m
       code: |
+        datestr(now, 'mm-dd-yyyy-HH-MM')
         char()
         compose()
         strjoin()

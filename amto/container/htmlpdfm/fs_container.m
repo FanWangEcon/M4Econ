@@ -38,6 +38,28 @@ ar_st_colors_pick = {'blue', 'blue', 'red', 'black', 'blue'};
 ar_colors = values(mp_colors, ar_st_colors_pick);
 % Print selected colors
 celldisp(ar_colors);
+%% Use Stringed Numeric Array Array as Key for Container Map
+% The key for the container map below are char of an array, with string and 
+% array values associated with each key. Access values by converting array to 
+% string in the form of the keys.
+
+% Define a Map with stringed array as keys
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+ar_key1 = [11, 12, 21, 22, 31, 32];
+ar_key2 = [10, 20, 30];
+ar_key3 = [2];
+ar_key4 = [1];
+param_map(num2str(ar_key1)) = "nest1";
+param_map(num2str(ar_key2)) = [1,3,4];
+param_map(num2str(ar_key3)) = "nest3";
+param_map(num2str(ar_key4)) = [2,3;4,5];
+
+% Show keys and values
+disp(param_map.keys);
+disp(param_map.values);
+
+% Access value via stringed arrays
+disp(param_map(num2str(ar_key2)))
 %% Container Integer Keys
 % Given some matrix, I want to store matrix column names as well as labels for 
 % what each row and column correspond to. Achieve this using a cell array of container 

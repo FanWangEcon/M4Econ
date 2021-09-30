@@ -37,10 +37,10 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 	+ Accumarray to sum up probabilities/values for discrete elements of arrays.
 	+ **m**: *unique() + reshape() + accumarray()*
 7. [Matlab Miscellaneous Array and Numeric Operations](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/fs_img.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/array/htmlpdfm/fs_img.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/array/htmlpdfm/fs_img.html)
+	+ Divide an array into sub-segments.
 	+ Loop over numbers, find modulus (remainder) and quotient given divisor.
 	+ Check data and parameter types.
 	+ Compare approximately similar values.
-	+ Find imaginary elements of array.
 	+ **m**: *imag() + isfloat() + iscell() + isnan() + isnumeric()*
 
 ## 1.2  ND Dimensional Arrays
@@ -103,8 +103,9 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 1. [Container Map Basics](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_container.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_container.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_container.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_container.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_container.html)
 	+ Numeric container map, dynamically filled container map.
 	+ Numeric scalar, string, matrix as values for map container.
+	+ String and stringed numeric arrays as keys for map container.
 	+ Get values for multiple keys in map.
-	+ **m**: *isKey() + strjoin() + containers.Map('KeyType', 'char', 'ValueType', 'any') + map.keys() + map.values() + values(param_map, {'share_unbanked_j', 'equi_r_j'})*
+	+ **m**: *isKey() + strjoin() + num2str() + containers.Map('KeyType', 'char', 'ValueType', 'any') + map.keys() + map.values() + values(param_map, {'share_unbanked_j', 'equi_r_j'})*
 2. [Container Map Display Swtich Key and Values and Subseting](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/fs_containermap.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/amto/container/htmlpdfm/fs_containermap.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/amto/container/htmlpdfm/fs_containermap.html)
 	+ Loop over map, display keys and values.
 	+ Select Container map subset by keys.
@@ -162,7 +163,9 @@ Please contact [FanWangEcon](https://fanwangecon.github.io/) for issues or probl
 	+ The Mean and standard deviation of an AR(1) process.
 	+ Simulate and graph an AR(1) persistent process.
 	+ Simulate log income process with parameters estimated from Indian income data.
-	+ **m**: *normrnd() + for it_t=1:1:length(ar_shk) + plot(ar_t, ar_y)*
+	+ Given a monthly persistent AR(1) process, estimate the persistence of the process when data is aggregated at the annual and quadrennial levels, persistence weakens with aggregation.
+	+ **m**: *normrnd() + for it_t=1:1:length(ar_shk) + plot(ar_t, ar_y) + polyfit(x, y, 1)*
+	+ **stats**: *fitlm(table, 'y ~ x1 + x2')*
 2. [Moving Average of Neighboring Values](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_movingaverage.html): [**mlx**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/fs_movingaverage.mlx) \| [**m**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_movingaverage.m) \| [**pdf**](https://github.com/FanWangEcon/M4Econ/blob/master/panel/timeseries/htmlpdfm/fs_movingaverage.pdf) \| [**html**](https://fanwangecon.github.io/M4Econ/panel/timeseries/htmlpdfm/fs_movingaverage.html)
 	+ Compute moving average of surrounding values with different windows.
 	+ Visualize moving averages compare actual to smoothed average to fully flat moving average.

@@ -5,13 +5,19 @@
     The Mean and standard deviation of an AR(1) process.
     Simulate and graph an AR(1) persistent process.
     Simulate log income process with parameters estimated from Indian income data.
+    Given a monthly persistent AR(1) process, estimate the persistence of the process when data is aggregated at the annual and quadrennial levels, persistence weakens with aggregation.
+    Generate scatter-plot with trend-line.
   core :
     - package: m
       code: |
         normrnd()
         for it_t=1:1:length(ar_shk)
         plot(ar_t, ar_y)
-  date: 2020-06-14
+        polyfit(x, y, 1)
+    - package: stats
+      code: |
+        fitlm(table, 'y ~ x1 + x2')
+  date: 2021-09-30
   date_start: 2020-06-07
   output:
     pdf_document:

@@ -2,6 +2,17 @@
 % *back to* <https://fanwangecon.github.io *Fan*>*'s* <https://fanwangecon.github.io/Math4Econ/ 
 % *Intro Math for Econ*>*,*  <https://fanwangecon.github.io/M4Econ/ *Matlab Examples*>*, 
 % or* <https://fanwangecon.github.io/MEconTools/ *MEconTools*> *Repositories*
+%% Divide an Array into Sub-segments
+% There is a loop, divide N elements into O segments of M elements or less in 
+% each segment.
+
+it_count_m = 100;
+for it_ctr=1:5
+    rng(it_ctr);
+    it_elements_n = round(rand()*1000);
+    ar_seg_ends = unique([1:it_count_m:it_elements_n it_elements_n]);
+    disp(ar_seg_ends);
+end
 %% Divisor, Quotient and Remainder
 % Given an array of integer values, and some divisor, find the quotient and 
 % remainder.

@@ -76,7 +76,7 @@ st_title = strcat("Figure Title ", ...
 ar_params = 123.4567 + zeros(1,3);
 st_combo = compose(st_title, ar_params);
 disp(st_combo);
-%% Search if String Contains Substring
+%% Search if String Contains Substring of Any Element of Array of Substrings
 % Does string contain substring?
 
 st_long1 = 'simu_dense';
@@ -84,8 +84,19 @@ st_long2 = 'simu_denser';
 st_long3 = 'simuverydense';
 st_long4 = 'simu_medium';
 st_long5 = 'simuverysmall';
-disp([contains(st_long1, 'dense'), contains(st_long2, 'dense'), contains(st_long3, 'dense'), ...
-    contains(st_long4, 'dense'), contains(st_long5, 'dense')]);
+disp([contains(st_long1, 'dense'), contains(st_long2, 'dense'), ...
+      contains(st_long3, 'dense'), contains(st_long4, 'dense'), ...
+      contains(st_long5, 'dense')]);
+%% 
+% Finds if string contains any element of an array of strings. In the example 
+% below, the strings that contains either _dense_ or _small_ is identified.
+
+at_st_substr_search_list = ["dense", "small"];
+disp([contains(st_long1, at_st_substr_search_list), ...
+      contains(st_long2, at_st_substr_search_list), ...
+      contains(st_long3, at_st_substr_search_list), ...
+      contains(st_long4, at_st_substr_search_list), ...
+      contains(st_long5, at_st_substr_search_list)]);
 %% Find Elements of an Array that Matches Any Elements of Another Array
 % There is an array of strings, check if each element equals values specified 
 % in another string, using the match function.

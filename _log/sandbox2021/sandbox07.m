@@ -82,3 +82,35 @@ for (it_rand_ctr=1:length(ar_rand))
 end
 fl_time_end = toc(fl_time_start);
 disp(['Method B fl_time_end = ' num2str(fl_time_end)]);
+
+%% 2021-07-02 11:37
+% The key for the container map below are char of an array, with string and array values associated with each key. Access values by converting array to string in the form of the keys.
+
+% Define a Map with stringed array as keys
+param_map = containers.Map('KeyType','char', 'ValueType','any');
+ar_key1 = [11, 12, 21, 22, 31, 32];
+ar_key2 = [10, 20, 30];
+ar_key3 = [2];
+ar_key4 = [1];
+param_map(num2str(ar_key1)) = "nest1";
+param_map(num2str(ar_key2)) = [1,3,4];
+param_map(num2str(ar_key3)) = "nest3";
+param_map(num2str(ar_key4)) = [2,3;4,5];
+
+% Show keys and values
+disp(param_map.keys);
+disp(param_map.values);
+
+% Access value via stringed arrays
+disp(param_map(num2str(ar_key2)))
+
+%% 2021-07-17 23:14
+% There is a loop, divide N elements into O segments of M elements or less in each segment.
+
+it_count_m = 100;
+for it_ctr=1:5
+    rng(it_ctr);
+    it_elements_n = round(rand()*1000);
+    ar_seg_ends = unique([1:it_count_m:it_elements_n it_elements_n]);
+    disp(ar_seg_ends);
+end

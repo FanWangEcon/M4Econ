@@ -4,12 +4,14 @@
   description: |
     Numeric container map, dynamically filled container map.
     Numeric scalar, string, matrix as values for map container.
+    String and stringed numeric arrays as keys for map container.
     Get values for multiple keys in map.
   core :
     - package: m
       code: |
         isKey()
         strjoin()
+        num2str()
         containers.Map('KeyType', 'char', 'ValueType', 'any')
         map.keys()
         map.values()

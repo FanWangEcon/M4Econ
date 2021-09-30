@@ -64,10 +64,17 @@ disp(ar_st_titles);
 
 ar_st_titles = {'Title1','Title2','Title3'};
 disp(strcat(ar_st_titles, '_init'));
-%% Duplicate String
+%% Duplicate String N Times
+% Create a string array of abc 10 times.
 
 it_duplicate_n = 10;
-disp(repmat({'String'}, [1, it_duplicate_n]));
+ar_st = strings(1, it_duplicate_n) + "abc";
+disp(ar_st);
+%% 
+% Create a cell array of strings, with the word abc repeated.
+
+it_duplicate_n = 10;
+disp(repmat({'abc'}, [1, it_duplicate_n]));
 %% String Join to form Single Element
 % using char() is safe
 

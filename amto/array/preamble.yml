@@ -46,6 +46,7 @@
   title: "Matlab Miscellaneous Array and Numeric Operations"
   titleshort: "Matlab Miscellaneous Array and Numeric Operations"
   description: |
+    Divide an array into sub-segments.
     Loop over numbers, find modulus (remainder) and quotient given divisor.
     Check data and parameter types.
     Compare approximately similar values.
@@ -58,7 +59,7 @@
         iscell()
         isnan()
         isnumeric()
-  date: 2021-06-23
+  date: 2021-07-17
   date_start: 2020-11-29
   output:
     pdf_document:
